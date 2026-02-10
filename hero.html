@@ -1,0 +1,268 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+    /* Fonts loaded via link above */
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    *{box-sizing:border-box}
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+      outline:none;
+      box-shadow: 0 0 0 4px rgba(1,50,175,.08);
+      border-color: rgba(1,50,175,.35);
+    }
+
+    /* Helpers */
+    .ue-card{
+      background:#ffffff;
+      border-radius:14px;
+      box-shadow:0 6px 16px rgba(1,50,175,0.04);
+      padding:18px;
+    }
+    .ue-muted{color:rgba(1,50,175,0.72)}
+    .ue-grid{display:grid;gap:16px}
+    .ue-section{margin:28px 0}
+
+    /* Buttons */
+    .ue-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;border-radius:12px;border:1px solid transparent;
+      cursor:pointer;font-weight:600;text-decoration:none;user-select:none;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .ue-btn:active{transform:translateY(1px)}
+    .ue-btn-primary{background:linear-gradient(180deg,#1db954, #12a844);color:#fff}
+    .ue-btn-primary:hover{box-shadow: 0 8px 20px rgba(1,50,175,0.24)}
+    .ue-btn-outline{background:transparent;border-color: rgba(1,50,175,.18);color:#145aa3}
+    .ue-btn-outline:hover{border-color: rgba(1,50,175,.35); background:#f3f9ff}
+    .ue-btn-wa{background:#25d366;color:#062b1f}
+    .ue-btn-wa:hover{box-shadow: 0 8px 20px rgba(1,50,175,0.06)}
+    .ue-btn-block{width:100%}
+
+    /* Accordion base */
+    .ue-accordion{
+      border-radius:12px;overflow:hidden;
+      border:1px solid rgba(1,50,175,0.04);
+      background:#ffffff;
+    }
+    .ue-acc-item{border-top:1px solid rgba(1,50,175,0.04)}
+    .ue-acc-item:first-child{border-top:none}
+    .ue-acc-btn{
+      width:100%;background:transparent;border:none;
+      padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
+      cursor:pointer;text-align:left;font-weight:950;color:#092b57;
+    }
+    .ue-acc-icon{
+      width:28px;height:28px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(1,50,175,.14);
+      background:#fff;color:#0f3f78;
+      transition: transform .2s ease;
+    }
+    .ue-acc-btn[aria-expanded="true"] .ue-acc-icon{transform:rotate(45deg)}
+    .ue-acc-panel{overflow:hidden;height:0;transition: height .28s ease}
+    .ue-acc-panel-inner{padding:0 16px 14px}
+    .ue-course{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed #f1f6fb;font-size:14px}
+    .ue-course:last-child{border-bottom:none}
+    .ue-course .ue-cr{color:rgba(1,50,175,0.72);font-weight:900}
+
+    /* HERO (2 columnas) */
+    .ue-hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .ue-hero__visual{
+      width:100%;
+      min-height:320px;
+      border-radius:14px;
+      background: transparent;
+      border:1px solid rgba(1,50,175,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .ue-hero__placeholder{text-align:center;max-width:320px}
+    .ue-hero__ph-title{margin-top:10px;color:#0f3f78;font-weight:950}
+    .ue-hero__ph-sub{color:rgba(1,50,175,0.72);font-size:12px;margin-top:4px}
+
+    .ue-hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .ue-hero-chip{
+      background: #f7faff;
+      color:#092b57;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:13px;
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid rgba(1,50,175,0.12);
+    }
+    .ue-hero-badge{
+      background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 950;
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ue-hero__h1{margin:6px 0 8px;font-size:40px;font-weight:950;color:#0132AF !important;line-height:1.1;letter-spacing:-0.5px}
+    .ue-hero__lead{color:#06325a;margin:0 0 14px;font-size:16px;line-height:1.6;font-weight:500}
+
+    .ue-hero-metaRow{
+      display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;
+    }
+    .ue-hero-meta{
+      background: #ffffff;
+      border:1px solid rgba(1,50,175,0.04);
+      border-radius:12px;
+      padding:12px 14px;
+      min-width:160px;
+      flex:1 1 160px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      color:#06325a;
+    }
+    .ue-hero-meta__k{font-size:12px;color:rgba(1,50,175,0.72);font-weight:700}
+    .ue-hero-meta__v{color:#06325a;font-weight:600}
+    .ue-hero-meta__v--big{font-size:18px;font-weight:900;color:#0132AF}
+
+    .ue-section.hero-panel{background:#ffffff;padding:34px;border-radius:16px;color:#06325a;box-shadow:0 8px 20px rgba(1,50,175,0.06)}
+
+    .ue-hero__cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+    .ue-hero__micro{font-size:13px;color:rgba(1,50,175,0.72);margin-top:12px;font-weight:600;line-height:1.5}
+    
+    .campus-institucional {
+      padding: 0 0px 0px;
+    }
+    
+    .campus-btn-institucional {
+      padding: 14px;
+      background: #57D100;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .campus-btn-institucional:hover {
+      background: #6AFF00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4);
+      color: #ffffff;
+    }
+    
+    .campus-btn-institucional i {
+      font-size: 30px;
+      align-content: center;
+    }
+    
+    body .campus-btn,
+    body .campus-btn-institucional,
+    body a.campus-btn,
+    body a.campus-btn-institucional {
+  -webkit-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out !important;
+  transition: t
+    }
+
+    @media (max-width:980px){
+      .ue-hero{grid-template-columns:1fr}
+      .ue-hero__visual{min-height:260px}
+    }
+    @media (max-width:560px){
+      .ue-hero__visual{min-height:180px}
+    }
+        
+    .ue-hero-btn-outline{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 24px;
+      border-radius:8px;
+      background:transparent;
+      border:2px solid #0076FF;
+      color:#0076FF;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+      transition:all 0.3s ease !important;
+    }
+    .ue-hero-btn-outline:hover{
+      background:#0076FF !important;
+      color:#ffffff !important;
+      box-shadow:0 8px 20px rgba(0,118,255,0.3) !important;
+      transform:translateY(-2px) !important;
+    }
+    .ue-hero-btn-outline:active{
+      transform:translateY(0px) !important;
+    }
+    
+    
+
+</style>
+
+<section class="ue-section ue-hero hero-panel" aria-label="Presentación del programa">
+
+  <div class="ue-hero__right">
+    <div class="ue-hero-chips">
+      <span class="ue-hero-chip">Virtual <span class="ue-hero-badge">NUEVO</span></span>
+    </div>
+
+    <h1 class="ue-hero__h1">Administración de Empresas</h1>
+    <p class="ue-hero__lead" id="heroDesc">
+      Formación virtual orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación para facilitar tu ingreso al mercado laboral.
+    </p>
+
+    <div class="ue-hero-metaRow" role="list" aria-label="Datos clave del programa">
+      <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Duración</span>
+        <span class="ue-hero-meta__v" id="duracion">8 semestres</span>
+      </div>
+      <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Modalidad</span>
+        <span class="ue-hero-meta__v" id="modalidad">Virtual</span>
+      </div>
+      <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Valor por semestre</span>
+        <span class="ue-hero-meta__v ue-hero-meta__v--big">$ 6.757.00 <span id="precioSemestre"></span></span>
+      </div>
+    </div>
+    
+
+    <div class="ue-hero__cta">
+            <div class="campus-institucional">
+  <a href="#" class="campus-btn-institucional"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:8px;flex-shrink:0">
+          <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#25D366"/>
+          <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#fff"/>
+        </svg>
+        ¡Inscríbete Ya!
+  </a>
+    </div>
+    
+  <a href="#" class="ue-hero-btn-outline">Ver plan de estudios</a>
+  
+    </div>
+
+    <div class="ue-hero__micro" id="microCopy">Te contactamos por WhatsApp en horario hábil.</div>
+  </div>
+</section>

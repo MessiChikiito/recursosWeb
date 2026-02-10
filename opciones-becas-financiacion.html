@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones para Sección de Becas y Financiación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #06325a;
+            font-size: 2.5rem;
+        }
+
+        .option {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 60px;
+        }
+
+        .option h2 {
+            color: #0132AF;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #10B981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .preview {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* STATS GRID */
+        .pp-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .pp-stat-card {
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #EF1218;
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        .pp-stat-card strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #EF1218;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .pp-stat-card p {
+            color: #718096;
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* ============ OPCIÓN 1 ============ */
+        .pp-stats-grid-1 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .pp-stat-card-1 {
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #EF1218;
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        .pp-stat-card-1 strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #EF1218;
+            margin-bottom: 8px;
+        }
+
+        .pp-stat-card-1 p {
+            color: #718096;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ============ OPCIÓN 2 - 3 columnas ============ */
+        .pp-finance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pp-finance-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px 24px;
+            border-top: 4px solid #0132AF;
+        }
+
+        .pp-finance-card.orange {
+            border-top-color: #F59E0B;
+        }
+
+        .pp-finance-card.teal {
+            border-top-color: #10B981;
+        }
+
+        .pp-finance-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .pp-finance-card.orange h3 {
+            color: #F59E0B;
+        }
+
+        .pp-finance-card.teal h3 {
+            color: #10B981;
+        }
+
+        .pp-finance-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .pp-finance-card li {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .pp-finance-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0132AF;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pp-finance-card.orange li::before {
+            color: #F59E0B;
+        }
+
+        .pp-finance-card.teal li::before {
+            color: #10B981;
+        }
+
+        .pp-finance-button {
+            background: #0132AF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pp-finance-button:hover {
+            background: #0a1f7d;
+            transform: translateY(-2px);
+        }
+
+        .pp-finance-button.orange {
+            background: #F59E0B;
+        }
+
+        .pp-finance-button.orange:hover {
+            background: #D97706;
+        }
+
+        .pp-finance-button.teal {
+            background: #10B981;
+        }
+
+        .pp-finance-button.teal:hover {
+            background: #059669;
+        }
+
+        /* ============ OPCIÓN 3 - Híbrida ============ */
+        .hybrid-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hybrid-small-card {
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #EF1218;
+            border-radius: 8px;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .hybrid-small-card strong {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #EF1218;
+            margin-bottom: 6px;
+        }
+
+        .hybrid-small-card p {
+            color: #718096;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .hybrid-finance-section {
+            background: #f9fafb;
+            padding: 32px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .hybrid-finance-section h3 {
+            color: #06325a;
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .hybrid-finance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .pp-stats-grid,
+            .pp-stats-grid-1,
+            .pp-finance-grid,
+            .hybrid-finance-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hybrid-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pp-stats-grid,
+            .pp-stats-grid-1,
+            .pp-finance-grid,
+            .hybrid-finance-grid,
+            .hybrid-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .code-box {
+            background: #1a202c;
+            color: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .recommendation {
+            background: #e0e7ff;
+            border-left: 4px solid #0132AF;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            color: #4a5568;
+        }
+
+        .recommendation h4 {
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Opciones para Sección de Becas y Financiación</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 1</span> Reemplazar primer stat por "Inversión"</h2>
+            <p class="description">
+                Cambiar solo el primer card de "9 semestres" por "Inversión por semestre". Mantiene la estructura actual de 4 stats.
+            </p>
+
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card">
+                        <strong>$6.757.000</strong>
+                        <p>Inversión por semestre</p>
+                    </div>
+                    <div class="pp-stat-card">
+                        <strong>18</strong>
+                        <p>Meses de experiencia laboral</p>
+                    </div>
+                    <div class="pp-stat-card">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card">
+                        <strong>500+</strong>
+                        <p>egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Rápido de implementar, mantiene simetría visual, información financiera visible.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 2</span> Reemplazar toda sección por 3 columnas (Inversión, Becas, Financiación)</h2>
+            <p class="description">
+                Cambiar toda la sección de stats actuales por una nueva estructura con 3 columnas: Inversión, Becas y Opciones de financiación. Más enfocado en el aspecto económico.
+            </p>
+
+            <div class="preview">
+                <div class="pp-finance-grid">
+                    <div class="pp-finance-card">
+                        <h3>💵 Inversión</h3>
+                        <p style="color: #4a5568; margin-bottom: 16px; font-weight: 600;">Por semestre</p>
+                        <strong style="font-size: 2rem; color: #1f2937; display: block; margin-bottom: 8px;">$6.757.000</strong>
+                        <p style="color: #718096; font-size: 0.9rem;">Aprox. USD $1.690</p>
+                    </div>
+
+                    <div class="pp-finance-card orange">
+                        <h3>🎓 Becas y Convenios</h3>
+                        <ul>
+                            <li>Jóvenes a la E — Beca diferencial</li>
+                            <li>Cundinamarca</li>
+                            <li>Convenios empresariales</li>
+                        </ul>
+                        <button class="pp-finance-button orange">Ver convenios</button>
+                    </div>
+
+                    <div class="pp-finance-card teal">
+                        <h3>💳 Opciones de Financiación</h3>
+                        <ul>
+                            <li>ICETEX</li>
+                            <li>Aliados bancarios</li>
+                            <li>Planes de pago flexibles</li>
+                        </ul>
+                        <button class="pp-finance-button teal">Ver preguntas</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Información completa sobre financiamiento, botones de CTA (llamadas a acción), visual más atractivo. Desventaja: Reemplaza completamente los stats actuales.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 3</span> Híbrida - 4 stats + Sección expandida</h2>
+            <p class="description">
+                Mantener los 4 stats actuales pero agregarlos reducidos, luego una sección expandida de becas y financiación debajo. Lo mejor de ambos mundos.
+            </p>
+
+            <div class="preview">
+                <div class="hybrid-section">
+                    <div class="hybrid-small-card">
+                        <strong>18</strong>
+                        <p>Meses experiencia laboral</p>
+                    </div>
+                    <div class="hybrid-small-card">
+                        <strong>95%</strong>
+                        <p>Tasa empleabilidad</p>
+                    </div>
+                    <div class="hybrid-small-card">
+                        <strong>500+</strong>
+                        <p>egresados exitosos</p>
+                    </div>
+                    <div class="hybrid-small-card">
+                        <strong>$6.7M</strong>
+                        <p>Inversión/semestre</p>
+                    </div>
+                </div>
+
+                <div class="hybrid-finance-section">
+                    <h3>Inversión, Becas y Financiación</h3>
+                    <div class="hybrid-finance-grid">
+                        <div class="pp-finance-card">
+                            <h3>💵 Inversión por Semestre</h3>
+                            <strong style="font-size: 2rem; color: #1f2937; display: block; margin-bottom: 8px;">$6.757.000</strong>
+                            <p style="color: #718096; font-size: 0.9rem; margin-bottom: 16px;">Aprox. USD $1.690</p>
+                            <button class="pp-finance-button">Más info</button>
+                        </div>
+
+                        <div class="pp-finance-card orange">
+                            <h3>🎓 Becas y Convenios</h3>
+                            <ul>
+                                <li>Jóvenes a la E</li>
+                                <li>Beca diferencial</li>
+                                <li>Cundinamarca</li>
+                                <li>Convenios empresariales</li>
+                            </ul>
+                            <button class="pp-finance-button orange">Ver convenios</button>
+                        </div>
+
+                        <div class="pp-finance-card teal">
+                            <h3>💳 Opciones de Financiación</h3>
+                            <ul>
+                                <li>ICETEX</li>
+                                <li>Aliados bancarios</li>
+                                <li>Planes de pago flexibles</li>
+                                <li>Financiación a 3 años</li>
+                            </ul>
+                            <button class="pp-finance-button teal">Ver preguntas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Combina información académica (stats) con financiera, más completo, sección expandible. Ideal si quieres dar mucha información sin perder los datos principales.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 4</span> Solo reemplazar texto - "9 semestres" por "Becas disponibles"</h2>
+            <p class="description">
+                Cambio minimalista: mantener el número 9 (o usar otro) pero cambiar el label a "Becas disponibles" o similar. Mantiene consistencia visual.
+            </p>
+
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card">
+                        <strong>9+</strong>
+                        <p>Becas y convenios disponibles</p>
+                    </div>
+                    <div class="pp-stat-card">
+                        <strong>18</strong>
+                        <p>Meses de experiencia laboral</p>
+                    </div>
+                    <div class="pp-stat-card">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card">
+                        <strong>500+</strong>
+                        <p>egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Cambio rápido, mantiene la estructura visual, menos invasivo. Solo referencia a becas pero sin detalles.</p>
+            </div>
+        </div>
+
+        <div class="recommendation" style="margin-top: 60px; background: #fef3c7; border-left-color: #F59E0B;">
+            <h4 style="color: #78350f;">🏆 Mi Recomendación</h4>
+            <p><strong>OPCIÓN 3 (Híbrida)</strong> es la mejor porque:</p>
+            <ul style="margin-top: 10px; margin-left: 20px; color: #78350f;">
+                <li style="margin-bottom: 8px;">Mantiene los stats académicos que respaldan la calidad</li>
+                <li style="margin-bottom: 8px;">Añade información financiera completa</li>
+                <li style="margin-bottom: 8px;">Botones de CTA (Ver convenios, Ver preguntas) generan engagement</li>
+                <li style="margin-bottom: 8px;">Sección expandida no abruma, se ve profesional</li>
+                <li style="margin-bottom: 8px;">Responde preguntas estudiantes sobre costo + becas</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

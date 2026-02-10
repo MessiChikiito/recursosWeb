@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Virtual Personalizado - Opción Combinada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 3px solid #0132AF;
+        }
+        
+        .demo-card h2 {
+            font-size: 1.4rem;
+            color: #0132AF;
+            margin-bottom: 15px;
+        }
+        
+        .demo-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* ========== CARD PREVIEW ========== */
+        .card-preview {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            padding: 25px;
+            color: white;
+            height: 240px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            overflow: visible;
+            margin-bottom: 20px;
+        }
+        
+        .card-preview h3 {
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-preview p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        
+        /* ========== BADGE PERSONALIZADO ========== */
+        .badge-custom {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #0bd926;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: help;
+            box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        /* Sin punto - solo texto */
+        .badge-custom::before {
+            content: none;
+        }
+        
+        /* Tooltip */
+        .badge-custom::after {
+            content: 'También disponible en modalidad virtual';
+            position: absolute;
+            bottom: -48px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a202c;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .badge-custom:hover {
+            background: #06f526;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
+        }
+        
+        .badge-custom:hover::after {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* ========== ANIMACIONES QUE FUNCIONAN ========== */
+        /* Parpadeo del puntito - Opción 5 */
+        @keyframes blink {
+            0%, 49%, 100% { opacity: 1; }
+            50%, 99% { opacity: 0.3; }
+        }
+        
+        /* Flotante - Badge completo flota */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Pulse - Escala pulsante */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Respirante - Combinación de opacity y scale */
+        @keyframes breathing {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.08);
+                opacity: 0.85;
+            }
+        }
+        
+        /* Glow - Sombra radiante |  */
+        @keyframes glow-pulse {
+            0%, 100% { 
+                box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(11, 217, 38, 0.8), 0 0 40px rgba(11, 217, 38, 0.4);
+            }
+        }
+        
+        /* Color Pulse - Cambio de color intenso */
+        @keyframes color-pulse {
+            0%, 100% { 
+                background: #0bd926;
+                box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+            }
+            50% { 
+                background: #06f526;
+                box-shadow: 0 4px 16px rgba(11, 217, 38, 0.6);
+            }
+        }
+        
+        /* ========== CSS PARA COPIAR ========== */
+        .code-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .code-section h3 {
+            color: #0132AF;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 10px;
+        }
+        
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #81c784;
+        }
+        
+        .highlight-comment {
+            color: #78909c;
+        }
+        
+        /* ========== CARACTERÍSTICAS ========== */
+        .features {
+            background: #f0fdf4;
+            border-left: 4px solid #0bd926;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        
+        .features h4 {
+            color: #0bd926;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features li {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0bd926;
+            font-weight: bold;
+        }
+        
+        /* ========== IMPLEMENTACIÓN ========== */
+        .implementation {
+            background: white;
+            border: 2px solid #0132AF;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 60px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .implementation h2 {
+            color: #0132AF;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #0132AF;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .step p {
+            display: inline;
+            color: #6b7280;
+        }
+        
+        .step-example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            color: #1a202c;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .comparison-item {
+            padding: 15px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            border-left: 3px solid #94a3b8;
+        }
+        
+        .comparison-item.v5 {
+            border-left-color: #3b82f6;
+        }
+        
+        .comparison-item.v10 {
+            border-left-color: #8b5cf6;
+        }
+        
+        .comparison-item h4 {
+            color: #1a202c;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-item p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        .variant-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .variant-title {
+            color: #0132AF;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .variant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .variant-preview {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .variant-preview h4 {
+            color: #0132AF;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .mini-card {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            padding: 15px;
+            color: white;
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            overflow: visible;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Badge Virtual Personalizado</h1>
+        <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 1.05rem;">
+            Combinación de Opción 5 (Notificación Flotante) + Opción 10 (Tooltip)<br>
+            Con animación sutil y tamaño compacto
+        </p>
+        
+        <!-- PREVIEW PRINCIPAL -->
+        <div class="grid">
+            <div class="demo-card">
+                <h2>Variante 1: Color Pulse (Recomendada)</h2>
+                <p>Color del badge se intensifica. Ideal para diseños modernos.</p>
+                <div class="card-preview">
+                    <button class="badge-custom" style="animation: color-pulse 2s ease-in-out infinite;">VIRTUAL</button>
+                    <div>
+                        <h3>Ingeniería de Software</h3>
+                        <p>Modalidad Presencial / 9 semestres</p>
+                    </div>
+                </div>
+                <div class="features">
+                    <h4>Características:</h4>
+                    <ul>
+                        <li>Tamaño compacto y elegante</li>
+                        <li>Animación de color pulsante</li>
+                        <li>Tooltip interactivo al hover</li>
+                        <li>Texto limpio sin puntos</li>
+                        <li>No interfiere con contenido</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <h2>Variante 2: Con Hover Intenso</h2>
+                <p>Mismo badge pero con efecto más fuerte al pasar el cursor.</p>
+                <div class="card-preview">
+                    <button class="badge-custom" style="animation: color-pulse 2s ease-in-out infinite;">VIRTUAL</button>
+                    <div>
+                        <h3>Administración Empresas</h3>
+                        <p>Modalidad Presencial / 8 semestres</p>
+                    </div>
+                </div>
+                <div class="features">
+                    <h4>Mejora visual:</h4>
+                    <ul>
+                        <li>Animación continua color-pulse</li>
+                        <li>Color intenso al hover (#06f526)</li>
+                        <li>Sombra más prominente</li>
+                        <li>Interactividad clara y elegante</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CSS PARA COPIAR -->
+        <div class="code-section">
+            <h3>📋 CSS PARA IMPLEMENTAR (Animaciones Funcionando)</h3>
+            <div class="code-block"><code><span class="highlight-comment">/* Badge Virtual - Con animaciones de Opción 5 + 10 */</span>
+
+<span class="highlight">.badge-virtual-custom</span> {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #0bd926;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: help;
+    box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+<span class="highlight-comment">/* Punto pulsante */</span>
+<span class="highlight">.badge-virtual-custom::before</span> {
+    content: '●';
+    font-size: 0.6rem;
+    animation: blink 1s infinite;
+}
+
+<span class="highlight-comment">/* Tooltip */</span>
+<span class="highlight">.badge-virtual-custom::after</span> {
+    content: 'También disponible en modalidad virtual';
+    position: absolute;
+    bottom: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a202c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+<span class="highlight-comment">/* Hover del badge */</span>
+<span class="highlight">.badge-virtual-custom:hover</span> {
+    background: #06f526;
+    box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
+}
+
+<span class="highlight">.badge-virtual-custom:hover::after</span> {
+    opacity: 1;
+}
+
+<span class="highlight-comment">/* ========== ANIMACIONES ========== */</span>
+
+<span class="highlight">@keyframes blink</span> {
+    0%, 49%, 100% { opacity: 1; }
+    50%, 99% { opacity: 0.3; }
+}
+
+<span class="highlight">@keyframes float</span> {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+<span class="highlight">@keyframes pulse</span> {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+<span class="highlight">@keyframes breathing</span> {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.08);
+        opacity: 0.85;
+    }
+}
+
+<span class="highlight">@keyframes glow-pulse</span> {
+    0%, 100% { 
+        box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 20px rgba(11, 217, 38, 0.8), 0 0 40px rgba(11, 217, 38, 0.4);
+    }
+}
+
+<span class="highlight">@keyframes color-pulse</span> {
+    0%, 100% { 
+        background: #0bd926;
+        box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+    }
+    50% { 
+        background: #06f526;
+        box-shadow: 0 4px 16px rgba(11, 217, 38, 0.6);
+    }
+}</code></div>
+        </div>
+        
+        <!-- IMPLEMENTACIÓN EN HTML -->
+        <div class="implementation">
+            <h2>🔧 Cómo Implementar en pregradoswp.html</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Agrega el CSS</strong> a la etiqueta <код>&lt;style&gt;</código></p>
+                <div class="step-example">
+                    Coloca todo el bloque CSS anterior dentro del &lt;style&gt; del archivo
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <p><strong>Modifica el renderizado</strong> de las tarjetas en JavaScript</p>
+                <div class="step-example">
+// En la función renderizarProgramas(), dentro del innerHTML de la card:
+if (programa.tieneVirtual) {
+    card.innerHTML = `
+        &lt;button class="badge-virtual-custom"&gt;● VIRTUAL&lt;/button&gt;
+        ${programa.imagen ? ...
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <p><strong>Condicional</strong> para mostrar solo si tieneVirtual = true</p>
+                <div class="step-example">
+// Asegúrate de que las tarjetas de Ingeniería de Software 
+// y Administración de Empresas tengan: tieneVirtual: true
+                </div>
+            </div>
+            
+            <!-- COMPARACIÓN -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #0132AF; margin-bottom: 20px;">📊 Resumen de la Combinación</h3>
+                <div class="comparison">
+                    <div class="comparison-item v5">
+                        <h4>De Opción 5 (Notificación Flotante):</h4>
+                        <p>✓ Punto pulsante que atrae atención<br>✓ Animación de flotación suave<br>✓ Compacta y moderna</p>
+                    </div>
+                    <div class="comparison-item v10">
+                        <h4>De Opción 10 (Tooltip):</h4>
+                        <p>✓ Información adicional útil<br>✓ Tamaño pequeño y elegante<br>✓ Interactivo pero no invasivo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VARIANTES ADICIONALES -->
+        <div class="variant-section">
+            <h3 class="variant-title">🎨 Variantes de Animaciones</h3>
+            
+            <div class="variant-grid">
+                <div class="variant-preview">
+                    <h4>Variante 1: Color Pulse ⭐</h4>
+                    <div class="mini-card">
+                        <button class="badge-custom" style="animation: color-pulse 2s ease-in-out infinite;">VIRTUAL</button>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem;">Color se intensifica (Recomendado)</p>
+                </div>
+                
+                <div class="variant-preview">
+                    <h4>Variante 2: Flotante</h4>
+                    <div class="mini-card">
+                        <button class="badge-custom" style="animation: float 3s ease-in-out infinite;">VIRTUAL</button>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem;">Badge flota hacia arriba y abajo</p>
+                </div>
+                
+                <div class="variant-preview">
+                    <h4>Variante 3: Pulse</h4>
+                    <div class="mini-card">
+                        <button class="badge-custom" style="animation: pulse 2s ease-in-out infinite;">VIRTUAL</button>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem;">Se expande y contrae suavemente</p>
+                </div>
+                
+                <div class="variant-preview">
+                    <h4>Variante 4: Respirante</h4>
+                    <div class="mini-card">
+                        <button class="badge-custom" style="animation: breathing 3s ease-in-out infinite;">VIRTUAL</button>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem;">Respira con escala y opacidad</p>
+                </div>
+                
+                <div class="variant-preview">
+                    <h4>Variante 5: Glow</h4>
+                    <div class="mini-card">
+                        <button class="badge-custom" style="animation: glow-pulse 2.5s ease-in-out infinite;">VIRTUAL</button>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem;">Brillo radiante intenso</p>
+                </div>
+                
+                <div class="variant-preview">
+                    <h4>Variante 6: Punto Parpadeante</h4>
+                    <div class="mini-card">
+                        <button class="badge-custom" style="animation: blink 1s infinite;">● VIRTUAL</button>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.85rem;">Punto parpadea (opción 5)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Badge Virtual para Tarjetas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+        
+        .opciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .opcion {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 3px solid #0132AF;
+        }
+        
+        .opcion h2 {
+            font-size: 1.3rem;
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+        
+        .opcion p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .card-demo {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            padding: 20px;
+            color: white;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        
+        .card-demo h3 {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* ========== OPCIÓN 1: ESQUINA SUPERIOR DERECHA ========== */
+        .badge-corner {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: linear-gradient(135deg, #0bd926 0%, #06a820 100%);
+            color: white;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 0 8px 0 20px;
+            box-shadow: 0 2px 8px rgba(11, 217, 38, 0.4);
+            letter-spacing: 0.5px;
+        }
+        
+        /* ========== OPCIÓN 2: ESQUINA CON ICONO ========== */
+        .badge-with-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0bd926;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.5);
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-align: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* ========== OPCIÓN 3: BARRA LATERAL IZQUIERDA ========== */
+        .badge-sidebar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, #0bd926 0%, #06a820 100%);
+            animation: slideIn 0.5s ease;
+        }
+        
+        .badge-sidebar::after {
+            content: 'VIRTUAL';
+            position: absolute;
+            left: -35px;
+            top: 10px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: #0bd926;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: slideInText 0.5s ease 0.2s forwards;
+        }
+        
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 6px; }
+        }
+        
+        @keyframes slideInText {
+            from { opacity: 0; left: -35px; }
+            to { opacity: 1; left: -40px; }
+        }
+        
+        /* ========== OPCIÓN 4: RIBBON DIAGONAL ========== */
+        .badge-ribbon {
+            position: absolute;
+            top: 12px;
+            left: -50px;
+            width: 200px;
+            background: #0bd926;
+            color: white;
+            padding: 8px 20px;
+            text-align: center;
+            transform: rotate(-45deg);
+            box-shadow: 0 3px 10px rgba(11, 217, 38, 0.4);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .badge-ribbon::before,
+        .badge-ribbon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        
+        .badge-ribbon::before {
+            right: -10px;
+            border-width: 0 10px 10px 0;
+            border-color: transparent #07a820 transparent transparent;
+        }
+        
+        .badge-ribbon::after {
+            left: -10px;
+            border-width: 10px 10px 0 0;
+            border-color: #07a820 transparent transparent transparent;
+        }
+        
+        /* ========== OPCIÓN 5: NOTIFICACIÓN FLOTANTE ========== */
+        .badge-float {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #0bd926;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .badge-float::before {
+            content: '●';
+            font-size: 0.5rem;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes blink {
+            0%, 49%, 100% { opacity: 1; }
+            50%, 99% { opacity: 0.3; }
+        }
+        
+        /* ========== OPCIÓN 6: ETIQUETA SUPERIOR ========== */
+        .badge-top {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0bd926;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
+            white-space: nowrap;
+            border: 2px solid white;
+        }
+        
+        /* ========== OPCIÓN 7: ESTAMPILLA ========== */
+        .badge-stamp {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #0bd926;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0bd926;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-align: center;
+            transform: rotate(-15deg);
+            background: transparent;
+        }
+        
+        .badge-stamp::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px dashed #0bd926;
+            border-radius: 8px;
+            top: -3px;
+            right: -3px;
+        }
+        
+        /* ========== OPCIÓN 8: MINIMALIST FLAG ========== */
+        .badge-flag {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            background: #0bd926;
+            color: white;
+            padding: 6px 2px 6px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 0 4px 4px 0;
+            letter-spacing: 1px;
+        }
+        
+        .badge-flag::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #0bd926;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        
+        /* ========== OPCIÓN 9: BUBBLE FLOTANTE ========== */
+        .badge-bubble {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #0bd926;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.5);
+            border: 3px solid white;
+        }
+        
+        /* ========== OPCIÓN 10: ETIQUETA CON TOOLTIP ========== */
+        .badge-tooltip {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0bd926;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: help;
+        }
+        
+        .badge-tooltip::after {
+            content: 'También disponible en modalidad virtual';
+            position: absolute;
+            bottom: -45px;
+            right: 0;
+            background: #1a202c;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 10;
+        }
+        
+        .badge-tooltip:hover::after {
+            opacity: 1;
+        }
+        
+        .code-block {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        
+        .nota {
+            background: #fef7ee;
+            border-left: 4px solid #f59e0b;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+        
+        .ventaja {
+            color: #059669;
+            font-weight: 600;
+            display: block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .desventaja {
+            color: #d97706;
+            font-weight: 600;
+            display: block;
+            margin-top: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 10 Opciones de Badge Virtual para Tarjetas</h1>
+        
+        <div class="opciones-grid">
+            <!-- OPCIÓN 1 -->
+            <div class="opcion">
+                <h2>1. Esquina Superior Derecha</h2>
+                <p>Badge elegante posicionado en la esquina con bordes redondeados personalizados.</p>
+                <div class="card-demo">
+                    <div class="badge-corner">Virtual</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Clásico y fácil de notar</span>
+                <span class="ventaja">✓ No interfiere con contenidos</span>
+                <div class="nota">Mejor para: Diseño tradicional</div>
+                <div class="code-block"><code>.badge-corner {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: linear-gradient(135deg, #0bd926 0%, #06a820 100%);
+    padding: 6px 16px;
+    border-radius: 0 8px 0 20px;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 2 -->
+            <div class="opcion">
+                <h2>2. Círculo con Icono</h2>
+                <p>Badge circular con animación de pulso que llama la atención.</p>
+                <div class="card-demo">
+                    <div class="badge-with-icon">VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Muy visible y dinámico</span>
+                <span class="ventaja">✓ Atrae atención visual</span>
+                <span class="desventaja">✗ Puede distraer</span>
+                <div class="nota">Mejor para: Destacar opciones nuevas</div>
+                <div class="code-block"><code>.badge-with-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 3 -->
+            <div class="opcion">
+                <h2>3. Barra Lateral Izquierda</h2>
+                <p>Línea decorativa verde que acompaña con texto en rotación.</p>
+                <div class="card-demo">
+                    <div class="badge-sidebar"></div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Diseño moderno y minimalista</span>
+                <span class="ventaja">✓ Muy elegante</span>
+                <span class="ventaja">✓ No compite con contenido</span>
+                <div class="nota">Mejor para: Diseño contemporáneo</div>
+                <div class="code-block"><code>.badge-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, #0bd926 0%, #06a820 100%);
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 4 -->
+            <div class="opcion">
+                <h2>4. Ribbon Diagonal</h2>
+                <p>Cinta diagonal clásica con triángulos decorativos.</p>
+                <div class="card-demo">
+                    <div class="badge-ribbon">VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Clásico y profesional</span>
+                <span class="ventaja">✓ Muy reconocible</span>
+                <span class="desventaja">✗ Oculta parte del contenido</span>
+                <div class="nota">Mejor para: Diseño clásico premium</div>
+                <div class="code-block"><code>.badge-ribbon {
+    position: absolute;
+    top: 12px;
+    left: -50px;
+    width: 200px;
+    transform: rotate(-45deg);
+    background: #0bd926;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 5 -->
+            <div class="opcion">
+                <h2>5. Notificación Flotante</h2>
+                <p>Pequeño badge que flota suavemente con indicador pulsante.</p>
+                <div class="card-demo">
+                    <div class="badge-float">● VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Moderno y dinámico</span>
+                <span class="ventaja">✓ Punto pulsante atrae atención</span>
+                <span class="ventaja">✓ Compacto</span>
+                <div class="nota">Mejor para: Diseño moderno app-like</div>
+                <div class="code-block"><code>.badge-float {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 50px;
+    animation: float 3s ease-in-out infinite;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 6 -->
+            <div class="opcion">
+                <h2>6. Etiqueta Superior Centrada</h2>
+                <p>Badge centrado en la parte superior con borde blanco.</p>
+                <div class="card-demo">
+                    <div class="badge-top">También en Virtual</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Muy visible</span>
+                <span class="ventaja">✓ Equilibrado</span>
+                <span class="desventaja">✗ Requiere más espacio</span>
+                <div class="nota">Mejor para: Información importante</div>
+                <div class="code-block"><code>.badge-top {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    border: 2px solid white;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 7 -->
+            <div class="opcion">
+                <h2>7. Estampilla Rotada</h2>
+                <p>Estilo estampilla con bordes puntillados rotativos.</p>
+                <div class="card-demo">
+                    <div class="badge-stamp">VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Diseño único y atrevido</span>
+                <span class="ventaja">✓ Muy memorable</span>
+                <span class="ventaja">✓ Marca especial</span>
+                <div class="nota">Mejor para: Programas premium o especiales</div>
+                <div class="code-block"><code>.badge-stamp {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #0bd926;
+    transform: rotate(-15deg);
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 8 -->
+            <div class="opcion">
+                <h2>8. Bandera Minimalista</h2>
+                <p>Pequeña bandera con punta triangular moderna.</p>
+                <div class="card-demo">
+                    <div class="badge-flag">VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Muy compacto</span>
+                <span class="ventaja">✓ Elegante y moderno</span>
+                <span class="ventaja">✓ No interfiere</span>
+                <div class="nota">Mejor para: Diseño minimalista</div>
+                <div class="code-block"><code>.badge-flag {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border-radius: 0 4px 4px 0;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 9 -->
+            <div class="opcion">
+                <h2>9. Burbuja Flotante</h2>
+                <p>Círculo grande con efecto 3D y borde blanco.</p>
+                <div class="card-demo">
+                    <div class="badge-bubble">VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Muy visible y limpio</span>
+                <span class="ventaja">✓ Efecto 3D profesional</span>
+                <span class="ventaja">✓ Encaja bien en esquina</span>
+                <div class="nota">Mejor para: Tarjetas amplias</div>
+                <div class="code-block"><code>.badge-bubble {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 3px solid white;
+}</code></div>
+            </div>
+            
+            <!-- OPCIÓN 10 -->
+            <div class="opcion">
+                <h2>10. Etiqueta con Tooltip</h2>
+                <p>Pequeña etiqueta que muestra tooltip al pasar el cursor.</p>
+                <div class="card-demo">
+                    <div class="badge-tooltip">VIRTUAL</div>
+                    <h3>Ingeniería de Software</h3>
+                </div>
+                <span class="ventaja">✓ Información adicional</span>
+                <span class="ventaja">✓ Interactivo</span>
+                <span class="ventaja">✓ Compacto</span>
+                <span class="desventaja">✗ Requiere interacción</span>
+                <div class="nota">💡 Pasa el cursor sobre el badge para ver el tooltip</div>
+                <div class="code-block"><code>.badge-tooltip::after {
+    content: 'También disponible en modalidad virtual';
+    position: absolute;
+    bottom: -45px;
+}</code></div>
+            </div>
+        </div>
+        
+        <!-- RECOMENDACIÓN -->
+        <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 4px solid #0bd926;">
+            <h2 style="color: #0bd926; margin-bottom: 20px;">📋 RECOMENDACIÓN PARA TU PROYECTO</h2>
+            <p style="color: #4b5563; line-height: 1.8; margin-bottom: 15px;">
+                <strong>Opción sugerida: 5. Notificación Flotante</strong> con variante compacta
+            </p>
+            <p style="color: #6b7280; margin-bottom: 15px;">
+                Razones:
+            </p>
+            <ul style="color: #6b7280; line-height: 2;">
+                <li>✓ Moderno y encaja con el diseño de pregradoswp</li>
+                <li>✓ No interfiere con la información de la tarjeta</li>
+                <li>✓ Muy visible pero no invasivo</li>
+                <li>✓ Animación atrae atención sin ser molesta</li>
+                <li>✓ Fácil de implementar en todas las tarjetas</li>
+            </ul>
+            <p style="color: #6b7280; margin-top: 20px;">Si prefieres algo más minimalista: <strong>8. Bandera Minimalista</strong></p>
+        </div>
+    </div>
+</body>
+</html>

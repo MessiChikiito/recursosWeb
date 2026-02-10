@@ -1,0 +1,1674 @@
+<style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #0132AF;
+            --color-primary-light: #0052D6;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== BOTONES GLOBALES ========== */
+        .btn-cta {
+            background: var(--color-accent) !important;
+            color: var(--color-white) !important;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ========== CAJA 1: HERO SECTION ========== */
+        /* Sección principal 2 columnas */
+        .pp-hero {
+            background: linear-gradient(135deg, #067A2E 0%, #0B9C3D 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pp-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .pp-hero-content {
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .pp-hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pp-hero-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pp-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .pp-hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .pp-hero-info-card {
+            background: rgba(255,255,255,0.1) !important;
+            backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-hero-info-card-dual {
+            background: rgba(255,255,255,0.1) !important;
+            backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            border-radius: 12px !important;
+            padding: 24px !important;
+            line-height: 1.3;
+            color: white !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-hero-info-card-dual strong {
+            display: block !important;
+            font-size: 2rem !important;
+            font-weight: 900 !important;
+            text-align: center !important;
+            margin-bottom: 8px !important;
+            letter-spacing: -0.5px !important;
+        }
+
+        .pp-hero-info-card-dual p {
+            font-size: 0.93rem !important;
+            opacity: 0.95 !important;
+            margin: 0 !important;
+            text-align: center !important;
+        }
+
+
+        .pp-dual{
+            color: red !important;
+            background-color: white !important;
+            padding-bottom: 5px !important;
+            margin-top: 2px !important;
+            border-radius: 15px !important;
+            text-align: center !important;
+        }
+
+        .pp-hero-info-card strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .pp-hero-info-card p {
+            font-size: 0.93rem;
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .pp-badge-nuevo-button {
+            position: absolute !important;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%) !important;
+            color: white !important;
+            padding: 6px 12px !important;
+            border-radius: 50px !important;
+            font-size: 0.7rem !important;
+            font-weight: 700 !important;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            height: 24px;
+            box-shadow: 0 3px 12px rgba(239, 18, 24, 0.6);
+            animation: breathing-badge 4s cubic-bezier(0.2, 0.2, 0.4, 0.4) infinite !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            transform-origin: center;
+        }
+
+        /* Contenedor acciones hero (botones) */
+        .pp-hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .pp-btn-verde {
+            background: #0748ed !important;
+            border: 2px solid #0748ed !important;
+            color: white !important;
+            padding: 15px 24px !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            width: fit-content !important;
+            height: auto !important;
+            white-space: nowrap !important;
+        }
+
+        .pp-btn-verde:hover {
+            background: #044dc2 !important;
+            border-color: #044dc2 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .pp-btn-asesoria {
+            background: transparent !important;
+            border: 2px solid white !important;
+            color: white !important;
+            padding: 15px 24px !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            width: fit-content !important;
+            height: auto !important;
+            white-space: nowrap !important;
+        }
+
+        .pp-btn-asesoria:hover {
+            background: #ffffff53 !important;
+            border-color: #ffffff !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* ========== CAJA STATS: NÚMEROS CLAVE ========== */
+        .pp-stats-section {
+            max-width: 1200px;
+            margin: 30px auto 0;
+
+            position: relative;
+            z-index: 5;
+        }
+
+        .pp-stats-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 0.9fr 0.9fr 0.9fr;
+            gap: 24px;
+        }
+
+        .pp-stat-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #067A2E;
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: none !important;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
+        }
+        
+            @keyframes pulse-badge {
+            0% {
+                box-shadow: 0 0 6px rgba(239, 18, 24, 0.2), 0 2px 8px rgba(239, 18, 24, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(239, 18, 24, 0.8), 0 0 30px rgba(239, 18, 24, 0.5), 0 4px 12px rgba(239, 18, 24, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 6px rgba(239, 18, 24, 0.2), 0 2px 8px rgba(239, 18, 24, 0.15);
+            }
+        }
+
+        @keyframes breathing-badge {
+            0% {
+                box-shadow: 0 2px 8px rgba(239, 18, 24, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 4px 16px rgba(239, 18, 24, 0.8);
+                transform: scale(1.09);
+            }
+            100% {
+                box-shadow: 0 2px 8px rgba(239, 18, 24, 0.5);
+                transform: scale(1);
+            }
+        }
+        
+        /* Card especial de becas */
+        .pp-stat-card-becas {
+            border-top-color: #F59E0B;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .pp-card-becas-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .pp-card-becas-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pp-card-becas-svg {
+            width: 50px !important;
+            height: 50px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .pp-card-becas-title {
+            font-size: 1.7rem !important;
+            font-weight: 900 !important;
+            color: #F59E0B !important;
+            margin-bottom: 4px !important;
+        }
+
+        .pp-card-becas-subtitle {
+            color: var(--color-gray-700) !important;
+            font-size: 0.9rem !important;
+            margin-bottom: 8px !important;
+            font-weight: 500 !important;
+        }
+
+        .pp-becas-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pp-becas-list li {
+            padding: 2px 0;
+            color: var(--color-gray-700);
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .pp-becas-list li.highlight-blue {
+            color: #0132AF !important;
+            font-weight: 600 !important;
+        }
+        .pp-becas-list li:before {
+            content: "✓ ";
+            color: #F59E0B;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        /* Colores de bordes para stats (excluye becas) */
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) {
+            border-top-color: #0A943A;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) {
+            border-top-color: #0A943A;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) {
+            border-top-color: #0A943A;
+        }
+
+        .pp-stat-card strong {
+            display: block !important;
+            font-size: 2rem !important;
+            font-weight: 900;
+            color: #F59E0B !important;
+            margin-bottom: 8px !important;
+            letter-spacing: -0.5px !important;
+            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+            font-synthesis: weight !important;
+            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03) !important;
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02) !important;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) strong {
+            color: #1C1917 !important;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) strong {
+            color: #1C1917 !important;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) strong {
+            color: #1C1917 !important;
+        }
+
+        .pp-stat-card p{
+            color: #0A943A;
+            font-size: 0.95rem !important;
+            margin: 0 ;
+            font-weight: 600 !important;
+            line-height: 1.4 !important;
+        }
+
+        /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
+        /* Grid responsive de cards */
+        .pp-programs-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        .pp-programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Card de programa */
+        .pp-program-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-gray-200);
+            transform: translateY(0) !important;
+            will-change: transform, box-shadow;
+            overflow: visible;
+        }
+
+        .pp-program-card:hover {
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #e0e7ff !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-card-image-container {
+            width: calc(100% + 56px);
+            height: 170px;
+            margin: -28px -28px 20px -28px;
+            overflow: hidden;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .pp-card-image-container {
+                width: 100%;
+                height: 170px;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .pp-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-program-card:hover .pp-card-image {
+            transform: none;
+        }
+
+        .pp-card-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%) !important;
+            color: var(--color-white) !important;
+            font-size: 0.7rem !important;
+            padding: 5px 10px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 
+                0 2px 8px rgba(239, 18, 24, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: pulse-badge 2s ease-in-out infinite !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            z-index: 5;
+        }
+
+        /* Cuando está solo (sin VIRTUAL), el badge NUEVO va a la derecha */
+        .pp-card-tag:only-of-type {
+            left: auto;
+            right: 12px;
+        }
+
+        .pp-card-header {
+            margin-bottom: 16px;
+        }
+
+        .pp-card-title {
+            font-size: 1.90rem !important;
+            font-weight: 900 !important;
+            color: #1f2937 !important;
+            margin-bottom: 8px !important;
+            line-height: 1.3 !important;
+            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+            font-synthesis: weight !important;
+            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03) !important;
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02) !important;
+        }
+
+        .pp-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .pp-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem !important;
+            color: #8893a4 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-meta-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Iconos SVG como background para meta info */
+        .pp-meta-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            opacity: 1;
+        }
+
+        .pp-meta-icon.icon-calendar {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+        }
+
+        .pp-meta-icon.icon-clock {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+        }
+
+        .pp-meta-icon.icon-location {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23067A2E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+            opacity: 1;
+        }
+
+        .pp-card-bullets {
+            list-style: none;
+            margin: 0 0 20px 0 !important;
+            padding: 0 !important;
+            flex-grow: 1;
+            text-align: left !important;
+        }
+        
+        .pp-card-bullets ul {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .pp-card-bullets li {
+            font-size: 0.9rem !important;
+            color: var(--color-gray-700) !important;
+            padding: 6px 0 !important;
+            padding-left: 20px !important;
+            position: relative;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            line-height: 1.5 !important;
+        }
+
+        .pp-card-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .pp-btn-secondary {
+            flex: 1;
+            padding: 12px 20px;
+            background: #374151 !important;
+            color: var(--color-white) !important;
+            border: 2px solid #374151 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+
+        .pp-btn-secondary:hover {
+            background: #1f2937 !important;
+            color: var(--color-white) !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-secondary-cerrar {
+            flex: 1;
+            padding: 12px 20px;
+            background: #374151 !important;
+            color: var(--color-white) !important;
+            border: 2px solid #374151 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+        
+        .btn-secondary-cerrar:hover {
+            background: #1f2937 !important;
+            color: var(--color-white) !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Contenedor de botones de la card */
+        .pp-card-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .pp-btn-info {
+            flex: 1;
+            padding: 12px 20px;
+            background: white !important;
+            color: #0BD926 !important;
+            border: 2px solid #0BD926 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+        }
+
+        .pp-btn-info:hover {
+            background: #08B81F !important;
+            color: white !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+
+        /* ========== MODAL ========== */
+        /* Modal para detalles del programa */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease !important;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(30px) scale(0.95) !important;
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease !important;
+            will-change: transform, opacity;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1) !important;
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 24px 24px 0 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+        }
+
+        .modal-tag {
+            background: var(--color-accent) !important;
+            color: var(--color-white) !important;
+            font-size: 0.7rem !important;
+            padding: 4px 10px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            display: inline-block;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .modal-title {
+            font-size: 1.8rem !important;
+            font-weight: 700 !important;
+            color: #0ec427 !important;
+            margin-top: 15px !important;
+            margin-bottom: 8px !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: left !important;
+        }
+
+        .modal-close {
+            background: var(--color-gray-200) !important;
+            border: none !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: var(--transition);
+            flex-shrink: 0 !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        .modal-close svg {
+            stroke: var(--color-gray-700) !important;
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
+            stroke-width: 2 !important;
+            fill: none !important;
+        }
+
+        .modal-close:hover {
+            background: var(--color-gray-300) !important;
+        }
+
+        .modal-close:hover svg {
+            stroke: var(--color-gray-900) !important;
+        }
+
+        /* Regla adicional con máxima especificidad para WordPress */
+        .modal-overlay .modal .modal-header .modal-close {
+            background: #edf2f7 !important;
+            border: none !important;
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            position: relative !important;
+            z-index: 999 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .modal-overlay .modal .modal-header .modal-close svg {
+            stroke: #4a5568 !important;
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
+            stroke-width: 2 !important;
+            fill: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .modal-overlay .modal .modal-header .modal-close:hover {
+            background: #e2e8f0 !important;
+        }
+
+        .modal-overlay .modal .modal-header .modal-close:hover svg {
+            stroke: #1a202c !important;
+        }
+
+        .modal-body {
+            padding: 24px;
+            padding-top: 0px;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-top: 2px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--color-gray-200);
+            text-align: left !important;
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem !important;
+            color: var(--color-gray-700) !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .modal-meta-item svg {
+            color: var(--color-primary);
+        }
+
+        .modal-meta-item .meta-icon {
+            font-size: 16px;
+            color: var(--color-primary);
+        }
+
+        .modal-description {
+            margin-bottom: 24px;
+            text-align: left !important;
+        }
+
+        .modal-description h3 {
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            color: var(--color-gray-900) !important;
+            margin-bottom: 12px !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: left !important;
+        }
+
+        .modal-description p {
+            font-size: 0.95rem !important;
+            color: var(--color-gray-700) !important;
+            line-height: 1.7 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: left !important;
+        }
+
+        /* ========== FORMULARIO DEL MODAL ========== */
+        .modal-form {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 2px solid #a7f3d0;
+            margin-bottom: 10px;
+        }
+
+        .modal-form h3 {
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            color: #047857 !important;
+            margin-bottom: 16px !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: center !important;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            padding-right: 44px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(42, 68, 156, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-primary);
+            pointer-events: none;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #1a365d 0%, var(--color-primary) 100%) !important;
+            color: white !important;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42, 68, 156, 0.3);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--color-gray-700);
+            line-height: 1.4;
+        }
+
+        .form-checkbox input {
+            margin-top: 3px;
+            accent-color: var(--color-primary);
+        }
+
+        .form-checkbox a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .modal-footer {
+            padding: 0 24px 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-footer .btn-cta {
+            flex: 1;
+        }
+
+        .modal-footer .pp-btn-secondary {
+            flex: 1;
+        }
+
+        /* ========== BADGE VIRTUAL PERSONALIZADO ========== */
+        .badge-virtual-custom {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #0bd926;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: help;
+            box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            animation: color-pulse 2s ease-in-out infinite !important;
+            z-index: 5;
+        }
+
+        /* Cuando hay badge "NUEVO" también, ajusta posición del badge virtual */
+        .pp-program-card .pp-card-tag + .badge-virtual-custom {
+            right: 12px;
+        }
+
+        /* Tooltip */
+        .badge-virtual-custom::after {
+            content: 'También disponible en modalidad virtual';
+            position: absolute;
+            bottom: -48px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a202c;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .badge-virtual-custom:hover {
+            background: #06f526;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
+        }
+
+        .badge-virtual-custom:hover::after {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Animación Color Pulse */
+        @keyframes color-pulse {
+            0%, 100% { 
+                background: #0bd926;
+                box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
+            }
+            50% { 
+                background: #06f526;
+                box-shadow: 0 4px 16px rgba(11, 217, 38, 0.6);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        /* Tablet */
+        @media (max-width: 992px) {
+            .pp-programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pp-hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .pp-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pp-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 768px) {
+            .pp-hero {
+                padding: 40px 16px;
+            }
+
+            .pp-hero h1 {
+                font-size: 2rem;
+            }
+
+            .pp-hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 100%;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .pp-hero-right {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .pp-programs-section {
+                padding: 32px 16px 40px;
+            }
+
+            .pp-programs-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 16px;
+            }
+
+            .pp-program-card {
+                padding: 20px;
+            }
+
+            .pp-stats-section {
+                padding: 24px 16px;
+            }
+
+            .pp-stats-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 16px;
+            }
+
+            .pp-stat-card {
+                padding: 24px 16px;
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .modal {
+                max-width: calc(100% - 32px);
+                margin: 16px;
+            }
+
+            .pp-btn-asesoria {
+                padding: 12px 10px !important;
+                font-size: 0.85rem !important;
+            }
+
+            .pp-btn-verde {
+                padding: 12px 10px !important;
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Animación de carga de cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pp-program-card {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .pp-program-card:nth-child(1) { animation-delay: 0.05s; }
+        .pp-program-card:nth-child(2) { animation-delay: 0.1s; }
+        .pp-program-card:nth-child(3) { animation-delay: 0.15s; }
+        .pp-program-card:nth-child(4) { animation-delay: 0.2s; }
+        .pp-program-card:nth-child(5) { animation-delay: 0.25s; }
+        .pp-program-card:nth-child(6) { animation-delay: 0.3s; }
+    </style>
+
+</head>
+<body>
+
+<!-- 
+     CAJA 1: HERO
+ -->
+
+    <section class="pp-hero" id="pp-caja-hero">
+        <div class="pp-hero-content">
+            <!-- Columna Izquierda -->
+            <div class="pp-hero-left">
+                <h1>Pregrados Virtuales</h1>
+                <p class="pp-hero-subtitle">
+                    Aprende con la calidad de nuestros programas desde cualquier lugar. Modalidad 100% virtual con tutorías en vivo, plataforma interactiva 24/7 y prácticas en empresas de tu ciudad.
+                </p>
+                <div class="pp-hero-actions">
+                    <button class="pp-btn-verde" onclick="alert('Ir a programas presenciales')" style="position: relative;">
+                        <span>Ver Pregrados Presenciales →</span>
+                        <!-- <span class="pp-badge-nuevo-button">Nuevo</span> -->
+                    </button>
+                    <button class="pp-btn-asesoria" onclick="alert('Solicitar asesoría')">
+                        <span>Solicitar una asesoría</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Columna Derecha - Tarjetas Info -->
+            <div class="pp-hero-right">
+                <div class="pp-hero-info-card">
+                    <strong>3.5</strong>
+                    <p>Años de duración / 7 Semestres</p>
+                </div>
+                <div class="pp-hero-info-card">
+                    <strong>18</strong>
+                    <p>Meses de experiencia laboral</p>
+                </div>
+                <div class="pp-hero-info-card-dual">
+                    <strong>Modalidad <strong class="pp-dual">Dual</strong></strong>
+                    <p>Adquieres experiencia mientras estudias </p>
+                </div>
+                <div class="pp-hero-info-card-dual">
+                    <strong>Enfoques Reales</strong>
+                    <p>programas acreditados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: STATS/NÚMEROS CLAVE -->
+    <section class="pp-stats-section" id="pp-caja-stats">
+        <div class="pp-stats-grid">
+            <div class="pp-stat-card pp-stat-card-becas">
+                <div class="pp-card-becas-content">
+                    <svg class="pp-card-becas-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="25" r="12" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                        <path d="M18 25L30 15L42 25" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30 37 Q15 42 15 48 Q15 52 20 54 L40 54 Q45 52 45 48 Q45 42 30 37" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="30" cy="48" r="3" fill="#F59E0B"/>
+                    </svg>
+                    <div class="pp-card-becas-text">
+                        <h1 class="pp-card-becas-title">Becas y Financiamiento</h1>
+                        <a class="pp-card-becas-subtitle">Múltiples opciones para tu acceso</a>
+                        <ul class="pp-becas-list">
+                            <li class="highlight-blue">Becas con j&oacute;venes a la E</li>
+                            <li>Opciones de financiaci&oacute;n flexible</li>
+                            <li>Convenios institucionales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pp-stat-card">
+                <strong>$6.757.000</strong>
+                <p>Inversi&oacute;n por semestre</p>
+            </div>
+            <div class="pp-stat-card">
+                <strong>95%</strong>
+                <p>Tasa de empleabilidad</p>
+            </div>
+            <div class="pp-stat-card">
+                <strong>500+</strong>
+                <p>Empresas Aliadas</p>
+            </div>
+        </div>
+    </section>
+
+<!-- 
+     CAJA 3: GRID DE PROGRAMAS
+ -->
+
+    <section class="pp-programs-section" id="pp-caja-programas">
+        <div class="pp-programs-grid" id="pp-programsGrid">
+            <!-- Placeholder para el editor de Elementor (desaparece cuando JS carga) -->
+            <div class="editor-placeholder" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #f0f4f8; border-radius: 12px; border: 2px dashed #cbd5e0;">
+                <p style="color: #718096; font-size: 1rem; margin: 0;">
+                     <strong>Cards de programas</strong><br>
+                    <span style="font-size: 0.75rem;">Las cards se cargarán automáticamente al previsualizar o publicar la página.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+<!-- 
+     COMPONENTE: MODAL (Pop-up)
+ -->
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-tag" id="modalTag" style="display: none;">Nuevo</span>
+                    <h2 class="modal-title" id="modalTitle">Nombre del Programa</h2>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta" id="modalMeta">
+                    <!-- Meta info dinámica -->
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p id="modalDescription">Descripción completa del programa...</p>
+                </div>
+                <!-- Formulario de registro -->
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <form id="modalFormulario">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Nombre*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Apellidos*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <input type="email" class="form-input" placeholder="Email*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <input type="tel" class="form-input" placeholder="Teléfono*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="form-submit">Regístrate Ahora</button>
+                        <label class="form-checkbox">
+                            <input type="checkbox" required>
+                            <span>Marca la casilla para confirmar si estás de acuerdo con el uso y manejo de tus datos personales, por favor revisa nuestra <a href="https://uniempresarial.edu.co/politica-de-datos/" target="_blank">Política de Datos Uniempresarial</a>.</span>
+                        </label>
+                        <label class="form-checkbox">
+                            <input type="checkbox">
+                            <span>Acepto recibir comunicaciones comerciales.</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" id="modalCloseBtn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // DATOS DE PROGRAMAS
+        // Array con todos los programas académicos
+        // ========================================
+        const programasData = [
+            // PROGRAMAS VIRTUALES
+            {
+                id: 1,
+                nombre: "Ingeniería de Software Virtual",
+                modalidad: "presencial",
+                duracion: "9 semestres",
+                jornada: "Flexible",
+                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop",
+                bullets: [
+                    "100% virtual con tutorías en vivo",
+                    "Desarrollo de software empresarial",
+                    "Metodologías ágiles y DevOps"
+                ],
+                descripcion: "El mismo programa de alta calidad en Ingeniería de Software, ahora en modalidad virtual. Estudia desde cualquier lugar.",
+                esNuevo: true,
+                tieneVirtual: false,
+                urlPrograma: "https://uniempresarial.edu.co/ingenieria-de-software/"
+            },
+            {
+                id: 3,
+                nombre: "Administración de Empresas Virtual",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Flexible",
+                imagen: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop",
+                bullets: [
+                    "100% virtual con tutorías en vivo",
+                    "Plataforma interactiva 24/7",
+                    "Prácticas en empresas de tu ciudad"
+                ],
+                descripcion: "El mismo programa de alta calidad, ahora en modalidad virtual. Estudia desde cualquier lugar sin sacrificar la formación práctica empresarial.",
+                esNuevo: true,
+                tieneVirtual: false,
+                urlPrograma: "https://uniempresarial.edu.co/administracion-de-empresas/"
+            }
+        ];
+
+        // ========================================
+        // CONFIGURACIÓN GLOBAL
+        // ========================================
+        // URL única para todos los botones "Solicitar información"
+        const URL_INSCRIBETE = "https://uniempresarial.edu.co/inscribete";
+
+        // ========================================
+        // VARIABLES GLOBALES
+        // ========================================
+        let tabActivo = 'presencial'; // Siempre muestra presenciales
+        let terminoBusqueda = ''; // Término de búsqueda actual
+
+        // ========================================
+        // ELEMENTOS DEL DOM
+        // ========================================
+        const grid = document.getElementById('pp-programsGrid');
+        const tabs = document.querySelectorAll('.tab-btn');
+        // const searchInput = document.getElementById('searchInput'); // REMOVIDO - Barra de búsqueda eliminada
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        // ========================================
+        // FUNCIÓN: Renderizar cards de programas
+        // Filtra por modalidad y término de búsqueda
+        // ========================================
+        function renderizarProgramas() {
+            // Filtrar programas por tab activo y búsqueda
+            const programasFiltrados = programasData.filter(programa => {
+                const coincideModalidad = programa.modalidad === tabActivo;
+                const coincideBusqueda = programa.nombre.toLowerCase().includes(terminoBusqueda.toLowerCase());
+                return coincideModalidad && coincideBusqueda;
+            });
+
+            // Limpiar grid
+            grid.innerHTML = '';
+
+            if (programasFiltrados.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                            <path d="M8 8l6 6M14 8l-6 6"/>
+                        </svg>
+                        <h3>No encontramos programas</h3>
+                        <p>Intenta con otro término de búsqueda o cambia de modalidad.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Renderizar cada programa
+            programasFiltrados.forEach((programa, index) => {
+                const card = document.createElement('article');
+                card.className = 'pp-program-card';
+                card.style.animationDelay = `${index * 0.05}s`;
+                card.setAttribute('data-id', programa.id);
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Ver detalles de ${programa.nombre}`);
+
+                // Crear HTML de la cardv
+                card.innerHTML = `
+                    ${programa.imagen ? `<div class="pp-card-image-container"><img src="${programa.imagen}" alt="${programa.nombre}" class="pp-card-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect fill=%27%232A449C%27 width=%27400%27 height=%27200%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27 font-family=%27Arial%27%3E${programa.nombre}%3C/text%3E%3C/svg%3E';"></div>` : ''}
+                    ${programa.esNuevo ? '<span class="pp-card-tag">Nuevo</span>' : ''}
+                    ${programa.tieneVirtual ? '<div class="badge-virtual-custom">VIRTUAL</div>' : ''}
+                    <div class="pp-card-header">
+                        <h3 class="pp-card-title">${programa.nombre}</h3>
+                    </div>
+                    <div class="pp-card-meta">
+                        <span class="pp-meta-item">
+                            <span class="pp-meta-icon icon-calendar"></span>
+                            ${programa.duracion}
+                        </span>
+                        <span class="pp-meta-item">
+                            <span class="pp-meta-icon icon-clock"></span>
+                            ${programa.jornada}
+                        </span>
+                    </div>
+                    <ul class="pp-card-bullets">
+                        ${programa.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                    </ul>
+                    <div class="pp-card-buttons">
+                        <a href="${programa.urlPrograma || '#'}" class="pp-btn-secondary">
+                            Ver programa
+                        </a>
+                        <button class="pp-btn-info" data-modal="true">
+                            Más info
+                        </button>
+                    </div>
+                `;
+
+                // Event listener para botón "Más info" (abre modal)
+                const btnInfo = card.querySelector('.pp-btn-info');
+                btnInfo.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    abrirModal(programa);
+                });
+
+                // Prevenir que el link "Ver programa" abra el modal
+                const btnPrograma = card.querySelector('.pp-btn-secondary');
+                btnPrograma.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ========================================
+        // FUNCIÓN: Cambiar tab activo
+        // ========================================
+        function cambiarTab(modalidad) {
+            tabActivo = modalidad;
+            
+            // Actualizar estilos de tabs
+            tabs.forEach(tab => {
+                if (tab.dataset.tab === modalidad) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            // Re-renderizar programas
+            renderizarProgramas();
+        }
+
+        // ========================================
+        // FUNCIÓN: Abrir modal con detalles
+        // ========================================
+        function abrirModal(programa) {
+            // Llenar datos del modal
+            document.getElementById('modalTitle').textContent = programa.nombre;
+            document.getElementById('modalDescription').textContent = programa.descripcion;
+            
+            // Mostrar/ocultar tag de nuevo
+            const modalTag = document.getElementById('modalTag');
+            modalTag.style.display = programa.esNuevo ? 'inline-block' : 'none';
+
+            // Meta información
+            const modalMeta = document.getElementById('modalMeta');
+            modalMeta.innerHTML = `
+                <span class="modal-meta-item">
+                    <span class="pp-meta-icon icon-location"></span>
+                    ${programa.modalidad === 'virtual' ? 'Virtual' : 'Presencial'}
+                </span>
+                <span class="modal-meta-item">
+                    <span class="pp-meta-icon icon-calendar"></span>
+                    ${programa.duracion}
+                </span>
+                <span class="modal-meta-item">
+                    <span class="pp-meta-icon icon-clock"></span>
+                    ${programa.jornada}
+                </span>
+            `;
+
+            // Mostrar modal
+            modalOverlay.classList.add('active');
+            // Calcular ancho del scrollbar para evitar salto visual
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = scrollbarWidth + 'px';
+        }
+
+        // ========================================
+        // FUNCIÓN: Cerrar modal
+        // ========================================
+        function cerrarModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = ''; // Restaurar padding
+        }
+
+        // ========================================
+        // EVENT LISTENERS
+        // ========================================
+
+        // Buscar y solo mostrar presenciales (sin tabs interactivos)
+        // Los tabs han sido reemplazados por un título y botón ver virtuales
+        
+        // No hay búsqueda en este momento (barra removida)
+        // searchInput.addEventListener('input', (e) => { ... });
+
+        // Modal: cerrar con botones
+        document.getElementById('modalClose').addEventListener('click', cerrarModal);
+        document.getElementById('modalCloseBtn').addEventListener('click', cerrarModal);
+
+        // Modal: cerrar al hacer clic en overlay
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                cerrarModal();
+            }
+        });
+
+        // Modal: cerrar con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                cerrarModal();
+            }
+        });
+
+        // Renderizar programas presenciales al cargar
+        renderizarProgramas();
+    </script>
+
+</body>

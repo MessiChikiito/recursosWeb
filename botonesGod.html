@@ -1,0 +1,104 @@
+<!--
+El botón que brilla
+-->
+
+<style>
+.boton1, .boton2, .boton3, .boton4 {
+  /* ...existing code... */
+}
+body .boton1,
+body .boton2,
+body .boton3,
+body .boton4,
+body a.boton1,
+body a.boton2,
+body a.boton3,
+body a.boton4 {
+  -webkit-transition: background 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1) !important;
+  transition: background 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1) !important;
+}
+.boton1 {
+  padding: 14px;
+  background: #57D100;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+.boton1:hover {
+  background: #6AFF00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4);
+  color: #fff;
+}
+.boton1 i { font-size: 30px; }
+
+
+
+
+.boton3 {
+  padding: 14px;
+  background: #FFB800;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+.boton3:hover {
+  background: #FFD740;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 215, 64, 0.4);
+  color: #fff;
+}
+.boton3 i { font-size: 30px; }
+
+.boton4 {
+  padding: 14px;
+  background: #D0021B;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+.boton4:hover {
+  background: #FF3B3B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 59, 59, 0.4);
+  color: #fff;
+}
+.boton4 i { font-size: 30px; }
+</style>
+
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 420px; margin: 32px auto;">
+  <a href="#" class="boton1"><i class="fas fa-id-badge"></i> Botón verde institucional</a>
+  <a href="#" class="boton2"><i class="fas fa-graduation-cap"></i> Botón azul académico</a>
+  <a href="#" class="boton3"><i class="fas fa-star"></i> Botón dorado destacado</a>
+  <a href="#" class="boton4"><i class="fas fa-bolt"></i> Botón rojo acción</a>
+</div>

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Virtuales - 5 Opciones | Uniempresarial</title>
+    
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #2A449C;
+            --color-primary-light: #3a5bc7;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f0f4f8;
+            --color-white: #ffffff;
+            --color-gray-100: #f1f5f9;
+            --color-gray-200: #e2e8f0;
+            --color-gray-400: #94a3b8;
+            --color-gray-500: #64748b;
+            --color-gray-700: #334155;
+            --color-gray-900: #0f172a;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 50px;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            padding: 40px 24px;
+        }
+
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .version-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .version-label.opt1 { background: var(--color-primary); }
+        .version-label.opt2 { background: #059669; }
+        .version-label.opt3 { background: #7c3aed; }
+        .version-label.opt4 { background: #ea580c; }
+        .version-label.opt5 { background: #0891b2; }
+
+        .version-description {
+            background: var(--color-white);
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .spacer { height: 60px; }
+
+        /* ================================================================
+           ESTILOS BASE COMPARTIDOS
+        ================================================================ */
+
+        .banner {
+            border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner .banner-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            min-height: 280px;
+        }
+
+        .banner .banner-main {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner .banner-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .banner .banner-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .banner .banner-subtitle {
+            font-size: 1rem;
+            margin-bottom: 24px;
+        }
+
+        .banner .program-cards {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .banner .program-card {
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        .banner .program-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .banner .card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .banner .card-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .banner .card-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .banner .card-tech {
+            font-size: 0.75rem;
+        }
+
+        .banner .banner-ctas {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .banner .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .banner .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .banner .btn-primary svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .banner .btn-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .banner .banner-stats {
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .banner .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .banner .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner .stat-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .banner .stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .banner .stat-label {
+            font-size: 0.75rem;
+        }
+
+        /* ================================================================
+           OPCIÓN 1: FONDO BLANCO + STATS AZULES
+           Limpio y profesional
+        ================================================================ */
+
+        .banner-opt1 {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .banner-opt1 .banner-eyebrow {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ff4d52 100%);
+            color: var(--color-white);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+        }
+
+        .banner-opt1 .banner-title { color: var(--color-gray-900); }
+        .banner-opt1 .banner-subtitle { color: var(--color-gray-500); }
+
+        .banner-opt1 .program-card {
+            background: var(--color-gray-100);
+            border: 2px solid transparent;
+        }
+
+        .banner-opt1 .program-card:hover {
+            border-color: var(--color-primary);
+            background: rgba(42, 68, 156, 0.05);
+        }
+
+        .banner-opt1 .card-icon {
+            background: rgba(42, 68, 156, 0.1);
+        }
+
+        .banner-opt1 .card-icon svg { color: var(--color-primary); }
+        .banner-opt1 .card-name { color: var(--color-gray-700); }
+        .banner-opt1 .card-tech { color: var(--color-gray-400); }
+
+        .banner-opt1 .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .banner-opt1 .btn-primary:hover {
+            background: var(--color-accent-hover);
+            box-shadow: 0 4px 12px rgba(239, 18, 24, 0.3);
+        }
+
+        .banner-opt1 .btn-link { color: var(--color-primary); }
+        .banner-opt1 .btn-link:hover { text-decoration: underline; }
+
+        .banner-opt1 .banner-stats { background: var(--color-primary); }
+        .banner-opt1 .stat-icon { background: rgba(255,255,255,0.15); }
+        .banner-opt1 .stat-icon svg { color: #4ade80; }
+        .banner-opt1 .stat-value { color: var(--color-white); }
+        .banner-opt1 .stat-label { color: rgba(255,255,255,0.7); }
+
+        /* ================================================================
+           OPCIÓN 2: GRIS CLARO + STATS BLANCOS CON BORDE
+           Elegante y moderno
+        ================================================================ */
+
+        .banner-opt2 {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .banner-opt2 .banner-eyebrow {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .banner-opt2 .banner-eyebrow::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .banner-opt2 .banner-title { color: var(--color-gray-900); }
+        .banner-opt2 .banner-subtitle { color: var(--color-gray-500); }
+
+        .banner-opt2 .program-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .banner-opt2 .program-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .banner-opt2 .card-icon {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        }
+
+        .banner-opt2 .card-icon svg { color: var(--color-white); }
+        .banner-opt2 .card-name { color: var(--color-gray-700); }
+        .banner-opt2 .card-tech { color: var(--color-gray-400); }
+
+        .banner-opt2 .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ff4d52 100%);
+            color: var(--color-white);
+        }
+
+        .banner-opt2 .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(239, 18, 24, 0.35);
+        }
+
+        .banner-opt2 .btn-link {
+            color: var(--color-gray-500);
+            border-bottom: 1px solid var(--color-gray-300);
+            padding-bottom: 2px;
+        }
+
+        .banner-opt2 .btn-link:hover {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .banner-opt2 .banner-stats {
+            background: var(--color-white);
+            border-left: 1px solid var(--color-gray-200);
+        }
+
+        .banner-opt2 .stat-icon { background: rgba(42, 68, 156, 0.1); }
+        .banner-opt2 .stat-icon svg { color: var(--color-primary); }
+        .banner-opt2 .stat-value { color: var(--color-gray-900); }
+        .banner-opt2 .stat-label { color: var(--color-gray-400); }
+
+        /* ================================================================
+           OPCIÓN 3: DEGRADADO AZUL CLARO
+           Fresco y dinámico
+        ================================================================ */
+
+        .banner-opt3 {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 50%, #a5b4fc 100%);
+        }
+
+        .banner-opt3 .banner-eyebrow {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+        }
+
+        .banner-opt3 .banner-title { color: var(--color-primary); }
+        .banner-opt3 .banner-subtitle { color: var(--color-gray-700); }
+
+        .banner-opt3 .program-card {
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+        }
+
+        .banner-opt3 .program-card:hover {
+            background: rgba(255,255,255,0.9);
+            box-shadow: var(--shadow-md);
+        }
+
+        .banner-opt3 .card-icon { background: var(--color-primary); }
+        .banner-opt3 .card-icon svg { color: var(--color-white); }
+        .banner-opt3 .card-name { color: var(--color-gray-900); }
+        .banner-opt3 .card-tech { color: var(--color-gray-500); }
+
+        .banner-opt3 .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .banner-opt3 .btn-primary:hover {
+            background: var(--color-accent-hover);
+            box-shadow: 0 6px 20px rgba(239, 18, 24, 0.35);
+        }
+
+        .banner-opt3 .btn-link {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .banner-opt3 .btn-link:hover { text-decoration: underline; }
+
+        .banner-opt3 .banner-stats { background: var(--color-primary); }
+        .banner-opt3 .stat-icon { background: rgba(255,255,255,0.15); }
+        .banner-opt3 .stat-icon svg { color: #86efac; }
+        .banner-opt3 .stat-value { color: var(--color-white); }
+        .banner-opt3 .stat-label { color: rgba(255,255,255,0.7); }
+
+        /* ================================================================
+           OPCIÓN 4: BLANCO CON BORDE LATERAL ROJO
+           Minimalista y limpio
+        ================================================================ */
+
+        .banner-opt4 {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .banner-opt4 .banner-eyebrow { color: var(--color-accent); }
+        .banner-opt4 .banner-title { color: var(--color-gray-900); }
+        .banner-opt4 .banner-subtitle { color: var(--color-gray-500); }
+
+        .banner-opt4 .program-card {
+            background: transparent;
+            border: 2px solid var(--color-gray-200);
+        }
+
+        .banner-opt4 .program-card:hover {
+            border-color: var(--color-accent);
+            background: rgba(239, 18, 24, 0.02);
+        }
+
+        .banner-opt4 .card-icon { background: var(--color-gray-100); }
+        .banner-opt4 .card-icon svg { color: var(--color-accent); }
+        .banner-opt4 .card-name { color: var(--color-gray-700); }
+        .banner-opt4 .card-tech { color: var(--color-gray-400); }
+
+        .banner-opt4 .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .banner-opt4 .btn-primary:hover {
+            background: var(--color-primary-light);
+            box-shadow: 0 4px 12px rgba(42, 68, 156, 0.3);
+        }
+
+        .banner-opt4 .btn-link { color: var(--color-accent); }
+        .banner-opt4 .btn-link:hover { text-decoration: underline; }
+
+        .banner-opt4 .banner-stats {
+            background: var(--color-gray-100);
+            border-left: 1px solid var(--color-gray-200);
+        }
+
+        .banner-opt4 .stat-icon {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .banner-opt4 .stat-icon svg { color: var(--color-accent); }
+        .banner-opt4 .stat-value { color: var(--color-gray-900); }
+        .banner-opt4 .stat-label { color: var(--color-gray-400); }
+
+        /* ================================================================
+           OPCIÓN 5: GLASSMORPHISM SUAVE
+           Moderno y sofisticado
+        ================================================================ */
+
+        .banner-opt5 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .banner-opt5::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(2px);
+        }
+
+        .banner-opt5 .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-opt5 .banner-main {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .banner-opt5 .banner-eyebrow {
+            background: rgba(255,255,255,0.25);
+            color: var(--color-white);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(4px);
+        }
+
+        .banner-opt5 .banner-title { color: var(--color-white); }
+        .banner-opt5 .banner-subtitle { color: rgba(255,255,255,0.85); }
+
+        .banner-opt5 .program-card {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .banner-opt5 .program-card:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .banner-opt5 .card-icon { background: rgba(255,255,255,0.2); }
+        .banner-opt5 .card-icon svg { color: var(--color-white); }
+        .banner-opt5 .card-name { color: var(--color-white); }
+        .banner-opt5 .card-tech { color: rgba(255,255,255,0.7); }
+
+        .banner-opt5 .btn-primary {
+            background: var(--color-white);
+            color: #764ba2;
+        }
+
+        .banner-opt5 .btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+        }
+
+        .banner-opt5 .btn-link {
+            color: var(--color-white);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 2px;
+        }
+
+        .banner-opt5 .btn-link:hover { border-color: var(--color-white); }
+
+        .banner-opt5 .banner-stats {
+            background: rgba(0,0,0,0.15);
+            backdrop-filter: blur(8px);
+        }
+
+        .banner-opt5 .stat-icon { background: rgba(255,255,255,0.15); }
+        .banner-opt5 .stat-icon svg { color: #86efac; }
+        .banner-opt5 .stat-value { color: var(--color-white); }
+        .banner-opt5 .stat-label { color: rgba(255,255,255,0.7); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .banner .banner-content {
+                grid-template-columns: 1fr;
+            }
+
+            .banner .banner-main {
+                padding: 32px 24px;
+            }
+
+            .banner .banner-title {
+                font-size: 1.4rem;
+            }
+
+            .banner .program-cards {
+                flex-direction: column;
+            }
+
+            .banner .banner-ctas {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .banner .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .banner .banner-stats {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 24px;
+                gap: 16px;
+            }
+
+            .banner .stat-item {
+                flex: 1 1 45%;
+                min-width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="comparison-container">
+
+        <!-- ============================================================
+             OPCIÓN 1: FONDO BLANCO + STATS AZULES
+        ============================================================ -->
+        <span class="version-label opt1">Opción 1</span>
+        <div class="version-description">Fondo blanco limpio con panel de stats en azul corporativo</div>
+        
+        <div class="banner banner-opt1">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <span class="banner-eyebrow">Pregrados virtuales</span>
+                    <h2 class="banner-title">Tu carrera, tu ritmo</h2>
+                    <p class="banner-subtitle">Estudia desde cualquier lugar con la misma calidad de siempre.</p>
+                    
+                    <div class="program-cards">
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Marketing</div>
+                            <div class="card-tech">Estrategias digitales · Analítica</div>
+                        </div>
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Ing. de Software</div>
+                            <div class="card-tech">Java · Python · JavaScript</div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-ctas">
+                        <a href="#" class="btn-primary">
+                            Solicita una asesoría
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-link">Programas presenciales →</a>
+                    </div>
+                </div>
+                
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">3.5 años</div>
+                            <div class="stat-label">Plan intensivo</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">Desde 3er semestre</div>
+                            <div class="stat-label">Práctica empresarial</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">100% flexible</div>
+                            <div class="stat-label">Estudia donde quieras</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- ============================================================
+             OPCIÓN 2: GRIS CLARO + STATS BLANCOS
+        ============================================================ -->
+        <span class="version-label opt2">Opción 2</span>
+        <div class="version-description">Fondo gris suave con cards elevadas y stats en blanco</div>
+        
+        <div class="banner banner-opt2">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <span class="banner-eyebrow">Pregrados virtuales</span>
+                    <h2 class="banner-title">Tu carrera, tu ritmo</h2>
+                    <p class="banner-subtitle">Estudia desde cualquier lugar con la misma calidad de siempre.</p>
+                    
+                    <div class="program-cards">
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Marketing</div>
+                            <div class="card-tech">Estrategias digitales · Analítica</div>
+                        </div>
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Ing. de Software</div>
+                            <div class="card-tech">Java · Python · JavaScript</div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-ctas">
+                        <a href="#" class="btn-primary">
+                            Solicita una asesoría
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-link">Programas presenciales</a>
+                    </div>
+                </div>
+                
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">3.5 años</div>
+                            <div class="stat-label">Plan intensivo</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">Desde 3er semestre</div>
+                            <div class="stat-label">Práctica empresarial</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">100% flexible</div>
+                            <div class="stat-label">Estudia donde quieras</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- ============================================================
+             OPCIÓN 3: DEGRADADO AZUL CLARO
+        ============================================================ -->
+        <span class="version-label opt3">Opción 3</span>
+        <div class="version-description">Degradado azul pastel con cards glassmorphism y stats azules</div>
+        
+        <div class="banner banner-opt3">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <span class="banner-eyebrow">Pregrados virtuales</span>
+                    <h2 class="banner-title">Tu carrera, tu ritmo</h2>
+                    <p class="banner-subtitle">Estudia desde cualquier lugar con la misma calidad de siempre.</p>
+                    
+                    <div class="program-cards">
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Marketing</div>
+                            <div class="card-tech">Estrategias digitales · Analítica</div>
+                        </div>
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Ing. de Software</div>
+                            <div class="card-tech">Java · Python · JavaScript</div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-ctas">
+                        <a href="#" class="btn-primary">
+                            Solicita una asesoría
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-link">Programas presenciales →</a>
+                    </div>
+                </div>
+                
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">3.5 años</div>
+                            <div class="stat-label">Plan intensivo</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">Desde 3er semestre</div>
+                            <div class="stat-label">Práctica empresarial</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">100% flexible</div>
+                            <div class="stat-label">Estudia donde quieras</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- ============================================================
+             OPCIÓN 4: BLANCO CON BORDE LATERAL ROJO
+        ============================================================ -->
+        <span class="version-label opt4">Opción 4</span>
+        <div class="version-description">Minimalista blanco con acento rojo lateral y stats en gris</div>
+        
+        <div class="banner banner-opt4">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <span class="banner-eyebrow">● Pregrados virtuales</span>
+                    <h2 class="banner-title">Tu carrera, tu ritmo</h2>
+                    <p class="banner-subtitle">Estudia desde cualquier lugar con la misma calidad de siempre.</p>
+                    
+                    <div class="program-cards">
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Marketing</div>
+                            <div class="card-tech">Estrategias digitales · Analítica</div>
+                        </div>
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Ing. de Software</div>
+                            <div class="card-tech">Java · Python · JavaScript</div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-ctas">
+                        <a href="#" class="btn-primary">
+                            Solicita una asesoría
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-link">Programas presenciales →</a>
+                    </div>
+                </div>
+                
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">3.5 años</div>
+                            <div class="stat-label">Plan intensivo</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">Desde 3er semestre</div>
+                            <div class="stat-label">Práctica empresarial</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">100% flexible</div>
+                            <div class="stat-label">Estudia donde quieras</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- ============================================================
+             OPCIÓN 5: GLASSMORPHISM
+        ============================================================ -->
+        <span class="version-label opt5">Opción 5</span>
+        <div class="version-description">Glassmorphism moderno con degradado púrpura y efectos blur</div>
+        
+        <div class="banner banner-opt5">
+            <div class="banner-content">
+                <div class="banner-main">
+                    <span class="banner-eyebrow">Pregrados virtuales</span>
+                    <h2 class="banner-title">Tu carrera, tu ritmo</h2>
+                    <p class="banner-subtitle">Estudia desde cualquier lugar con la misma calidad de siempre.</p>
+                    
+                    <div class="program-cards">
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Marketing</div>
+                            <div class="card-tech">Estrategias digitales · Analítica</div>
+                        </div>
+                        <div class="program-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <div class="card-name">Ing. de Software</div>
+                            <div class="card-tech">Java · Python · JavaScript</div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-ctas">
+                        <a href="#" class="btn-primary">
+                            Solicita una asesoría
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn-link">Programas presenciales</a>
+                    </div>
+                </div>
+                
+                <div class="banner-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">3.5 años</div>
+                            <div class="stat-label">Plan intensivo</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">Desde 3er semestre</div>
+                            <div class="stat-label">Práctica empresarial</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">100% flexible</div>
+                            <div class="stat-label">Estudia donde quieras</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

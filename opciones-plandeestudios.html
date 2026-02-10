@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Diseño - Plan de Estudios</title>
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin-top: 0;
+            color: #0132AF;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .design-option {
+            margin-bottom: 100px;
+        }
+        .option-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #06325a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0132AF;
+        }
+        .option-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        /* ===== OPCIÓN 1: TABS/SEMESTRES ===== */
+        .opt1 .ue-plan-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 24px;
+            letter-spacing: -0.5px;
+        }
+        .opt1 .ue-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #e0e3e8;
+            padding-bottom: 0;
+        }
+        .opt1 .ue-tab {
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            color: #7a8a99;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease !important;
+            margin-bottom: -2px;
+        }
+        .opt1 .ue-tab:nth-child(odd) {
+            border-bottom-color: #0132AF;
+            color: #0132AF;
+        }
+        .opt1 .ue-tab:nth-child(even) {
+            border-bottom-color: #FF3B3B;
+            color: #FF3B3B;
+        }
+        .opt1 .ue-tab:hover {
+            background: rgba(1, 50, 175, 0.05) !important;
+        }
+        .opt1 .ue-courses {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .opt1 .ue-course {
+            background: #f9fcff;
+            border: 1px solid #e0e3e8;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .opt1 .ue-course-name {
+            font-weight: 700;
+            color: #06325a;
+            font-size: 13px;
+            margin: 0 0 4px;
+        }
+        .opt1 .ue-course-credits {
+            color: #7a8a99;
+            font-size: 11px;
+            margin: 0;
+        }
+        @media (max-width: 980px) {
+            .opt1 .ue-courses {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .opt1 .ue-courses {
+                grid-template-columns: 1fr;
+            }
+            .opt1 .ue-tabs {
+                gap: 4px;
+            }
+        }
+
+        /* ===== OPCIÓN 2: TIMELINE VERTICAL ===== */
+        .opt2 .ue-plan-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 24px;
+            letter-spacing: -0.5px;
+        }
+        .opt2 .ue-timeline {
+            position: relative;
+            padding: 0 0 0 40px;
+        }
+        .opt2 .ue-timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #0132AF 0%, #FF3B3B 100%);
+        }
+        .opt2 .ue-semester {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .opt2 .ue-semester::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #0132AF;
+        }
+        .opt2 .ue-semester:nth-child(even)::before {
+            border-color: #FF3B3B;
+        }
+        .opt2 .ue-semester-title {
+            font-weight: 900;
+            color: #06325a;
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+        .opt2 .ue-semester-courses {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .opt2 .ue-course {
+            background: white;
+            border: 1px solid #e0e3e8;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .opt2 .ue-course-name {
+            font-weight: 700;
+            color: #06325a;
+            margin: 0;
+        }
+        .opt2 .ue-course-credits {
+            color: #7a8a99;
+            font-size: 11px;
+            margin: 2px 0 0;
+        }
+        @media (max-width: 640px) {
+            .opt2 .ue-timeline {
+                padding-left: 30px;
+            }
+            .opt2 .ue-semester::before {
+                left: -23px;
+            }
+            .opt2 .ue-semester-courses {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== OPCIÓN 3: TARJETAS APILADAS CON COLORES ===== */
+        .opt3 .ue-plan-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 24px;
+            letter-spacing: -0.5px;
+        }
+        .opt3 .ue-semesters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .opt3 .ue-semester-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease !important;
+        }
+        .opt3 .ue-semester-card:nth-child(odd) {
+            --accent: #0132AF;
+        }
+        .opt3 .ue-semester-card:nth-child(even) {
+            --accent: #FF3B3B;
+        }
+        .opt3 .ue-semester-header {
+            background: linear-gradient(135deg, var(--accent) 0%, rgba(0, 50, 175, 0.7) 100%);
+            color: white;
+            padding: 16px;
+            font-weight: 900;
+            font-size: 14px;
+        }
+        .opt3 .ue-semester-card:nth-child(even) .ue-semester-header {
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+        }
+        .opt3 .ue-semester-courses {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .opt3 .ue-course {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: #f9fcff;
+            border: 1px solid #e0e3e8;
+            border-left: 3px solid var(--accent);
+            padding: 10px 12px;
+            border-radius: 6px;
+        }
+        .opt3 .ue-course-name {
+            font-weight: 600;
+            color: #06325a;
+            font-size: 12px;
+            margin: 0;
+            flex: 1;
+        }
+        .opt3 .ue-course-credits {
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        .opt3 .ue-semester-card:nth-child(even) .ue-course-credits {
+            background: #FF3B3B;
+        }
+        .opt3 .ue-semester-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-4px) !important;
+        }
+        @media (max-width: 640px) {
+            .opt3 .ue-semesters {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== OPCIÓN 4: ACCORDION ===== */
+        .opt4 .ue-plan-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 24px;
+            letter-spacing: -0.5px;
+        }
+        .opt4 .ue-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .opt4 .ue-accordion-item {
+            border: 1px solid #e0e3e8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .opt4 .ue-accordion-header {
+            background: white;
+            border-left: 4px solid #0132AF;
+            padding: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: #06325a;
+            font-size: 14px;
+            transition: all 0.3s ease !important;
+        }
+        .opt4 .ue-accordion-item:nth-child(even) .ue-accordion-header {
+            border-left-color: #FF3B3B;
+        }
+        .opt4 .ue-accordion-header:hover {
+            background: #f9fcff !important;
+        }
+        .opt4 .ue-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .opt4 .ue-accordion-body {
+            background: #f9fcff;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .opt4 .ue-course {
+            background: white;
+            border: 1px solid #e0e3e8;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .opt4 .ue-course-name {
+            font-weight: 700;
+            color: #06325a;
+            margin: 0;
+        }
+        .opt4 .ue-course-credits {
+            color: #0132AF;
+            font-weight: 600;
+            font-size: 11px;
+            margin: 4px 0 0;
+        }
+        @media (max-width: 980px) {
+            .opt4 .ue-accordion-body {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .opt4 .ue-accordion-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== OPCIÓN 5: MATRIZ COMPACTA ===== */
+        .opt5 .ue-plan-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 24px;
+            letter-spacing: -0.5px;
+        }
+        .opt5 .ue-matrix {
+            overflow-x: auto;
+        }
+        .opt5 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .opt5 th {
+            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .opt5 th:nth-child(even) {
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+        }
+        .opt5 td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e3e8;
+            font-size: 13px;
+        }
+        .opt5 tr:hover {
+            background: #f9fcff !important;
+        }
+        .opt5 .ue-credits {
+            background: #e3f2fd;
+            color: #0132AF;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 11px;
+            display: inline-block;
+        }
+        .opt5 tr:nth-child(even) .ue-credits {
+            background: #ffebee;
+            color: #FF3B3B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>5 Opciones de Diseño - Plan de Estudios</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="design-option">
+            <div class="option-title">Opción 1: Tabs por Semestre</div>
+            <div class="option-content opt1">
+                <h3 class="ue-plan-title">Plan de Estudios</h3>
+                
+                <div class="ue-tabs">
+                    <button class="ue-tab">Semestre 1</button>
+                    <button class="ue-tab">Semestre 2</button>
+                    <button class="ue-tab">Semestre 3</button>
+                    <button class="ue-tab">Semestre 4</button>
+                    <button class="ue-tab">Semestre 5</button>
+                    <button class="ue-tab">Semestre 6</button>
+                </div>
+
+                <div class="ue-courses">
+                    <div class="ue-course"><p class="ue-course-name">Introducción a Negocios</p><p class="ue-course-credits">3 créditos</p></div>
+                    <div class="ue-course"><p class="ue-course-name">Contabilidad Básica</p><p class="ue-course-credits">4 créditos</p></div>
+                    <div class="ue-course"><p class="ue-course-name">Economía General</p><p class="ue-course-credits">3 créditos</p></div>
+                    <div class="ue-course"><p class="ue-course-name">Matemáticas Financieras</p><p class="ue-course-credits">3 créditos</p></div>
+                    <div class="ue-course"><p class="ue-course-name">Derecho Comercial</p><p class="ue-course-credits">2 créditos</p></div>
+                    <div class="ue-course"><p class="ue-course-name">Comunicación Efectiva</p><p class="ue-course-credits">2 créditos</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="design-option">
+            <div class="option-title">Opción 2: Timeline Vertical</div>
+            <div class="option-content opt2">
+                <h3 class="ue-plan-title">Plan de Estudios</h3>
+                
+                <div class="ue-timeline">
+                    <div class="ue-semester">
+                        <h4 class="ue-semester-title">Semestre 1</h4>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Introducción a Negocios</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Contabilidad Básica</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Economía General</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Matemáticas Financieras</p><p class="ue-course-credits">3 créditos</p></div>
+                        </div>
+                    </div>
+                    <div class="ue-semester">
+                        <h4 class="ue-semester-title">Semestre 2</h4>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Finanzas Corporativas</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Gestión Administrativa</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Marketing Estratégico</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Derecho Comercial</p><p class="ue-course-credits">2 créditos</p></div>
+                        </div>
+                    </div>
+                    <div class="ue-semester">
+                        <h4 class="ue-semester-title">Semestre 3</h4>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Gestión de Operaciones</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Análisis Financiero</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Recursos Humanos</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Estadística Empresarial</p><p class="ue-course-credits">3 créditos</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="design-option">
+            <div class="option-title">Opción 3: Tarjetas Apiladas (Grid)</div>
+            <div class="option-content opt3">
+                <h3 class="ue-plan-title">Plan de Estudios</h3>
+                
+                <div class="ue-semesters">
+                    <div class="ue-semester-card">
+                        <div class="ue-semester-header">Semestre 1 (17 créditos)</div>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Introducción a Negocios</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Contabilidad Básica</p><span class="ue-course-credits">4 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Economía General</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Matemáticas Financieras</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Comunicación Efectiva</p><span class="ue-course-credits">4 cr</span></div>
+                        </div>
+                    </div>
+                    <div class="ue-semester-card">
+                        <div class="ue-semester-header">Semestre 2 (16 créditos)</div>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Finanzas Corporativas</p><span class="ue-course-credits">4 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Gestión Administrativa</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Marketing Estratégico</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Derecho Comercial</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Estadística I</p><span class="ue-course-credits">3 cr</span></div>
+                        </div>
+                    </div>
+                    <div class="ue-semester-card">
+                        <div class="ue-semester-header">Semestre 3 (17 créditos)</div>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Gestión de Operaciones</p><span class="ue-course-credits">4 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Análisis Financiero</p><span class="ue-course-credits">4 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Recursos Humanos</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Sistemas de Información</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Ética Empresarial</p><span class="ue-course-credits">3 cr</span></div>
+                        </div>
+                    </div>
+                    <div class="ue-semester-card">
+                        <div class="ue-semester-header">Semestre 4 (16 créditos)</div>
+                        <div class="ue-semester-courses">
+                            <div class="ue-course"><p class="ue-course-name">Emprendimiento</p><span class="ue-course-credits">4 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Auditoría Administrativa</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Dirección Estratégica</p><span class="ue-course-credits">4 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Electiva I</p><span class="ue-course-credits">3 cr</span></div>
+                            <div class="ue-course"><p class="ue-course-name">Proyecto Integrador</p><span class="ue-course-credits">2 cr</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="design-option">
+            <div class="option-title">Opción 4: Accordion (Expandible)</div>
+            <div class="option-content opt4">
+                <h3 class="ue-plan-title">Plan de Estudios</h3>
+                
+                <div class="ue-accordion">
+                    <div class="ue-accordion-item">
+                        <div class="ue-accordion-header">
+                            <span>Semestre 1 (17 créditos)</span>
+                            <span class="ue-icon">▼</span>
+                        </div>
+                        <div class="ue-accordion-body">
+                            <div class="ue-course"><p class="ue-course-name">Introducción a Negocios</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Contabilidad Básica</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Economía General</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Matemáticas Financieras</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Derecho Comercial</p><p class="ue-course-credits">2 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Comunicación Efectiva</p><p class="ue-course-credits">2 créditos</p></div>
+                        </div>
+                    </div>
+                    <div class="ue-accordion-item">
+                        <div class="ue-accordion-header">
+                            <span>Semestre 2 (16 créditos)</span>
+                            <span class="ue-icon">▼</span>
+                        </div>
+                        <div class="ue-accordion-body">
+                            <div class="ue-course"><p class="ue-course-name">Finanzas Corporativas</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Gestión Administrativa</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Marketing Estratégico</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Derecho Laboral</p><p class="ue-course-credits">2 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Estadística I</p><p class="ue-course-credits">2 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Sistemas Información</p><p class="ue-course-credits">2 créditos</p></div>
+                        </div>
+                    </div>
+                    <div class="ue-accordion-item">
+                        <div class="ue-accordion-header">
+                            <span>Semestre 3 (17 créditos)</span>
+                            <span class="ue-icon">▼</span>
+                        </div>
+                        <div class="ue-accordion-body">
+                            <div class="ue-course"><p class="ue-course-name">Gestión de Operaciones</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Análisis Financiero</p><p class="ue-course-credits">4 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Recursos Humanos</p><p class="ue-course-credits">3 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Tributación</p><p class="ue-course-credits">2 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Ética Empresarial</p><p class="ue-course-credits">2 créditos</p></div>
+                            <div class="ue-course"><p class="ue-course-name">Electiva I</p><p class="ue-course-credits">2 créditos</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="design-option">
+            <div class="option-title">Opción 5: Tabla Compacta</div>
+            <div class="option-content opt5">
+                <h3 class="ue-plan-title">Plan de Estudios</h3>
+                
+                <div class="ue-matrix">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Semestre 1</th>
+                                <th>Semestre 2</th>
+                                <th>Semestre 3</th>
+                                <th>Semestre 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Introducción a Negocios</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Finanzas Corporativas</strong><br><span class="ue-credits">4 cr</span></td>
+                                <td><strong>Gestión de Operaciones</strong><br><span class="ue-credits">4 cr</span></td>
+                                <td><strong>Emprendimiento</strong><br><span class="ue-credits">4 cr</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contabilidad Básica</strong><br><span class="ue-credits">4 cr</span></td>
+                                <td><strong>Gestión Administrativa</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Análisis Financiero</strong><br><span class="ue-credits">4 cr</span></td>
+                                <td><strong>Auditoría Administrativa</strong><br><span class="ue-credits">3 cr</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Economía General</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Marketing Estratégico</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Recursos Humanos</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Dirección Estratégica</strong><br><span class="ue-credits">4 cr</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Matemáticas Financieras</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Derecho Comercial</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Sistemas de Información</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Proyecto Integrador</strong><br><span class="ue-credits">2 cr</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comunicación Efectiva</strong><br><span class="ue-credits">4 cr</span></td>
+                                <td><strong>Estadística I</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td><strong>Ética Empresarial</strong><br><span class="ue-credits">3 cr</span></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

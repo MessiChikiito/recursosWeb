@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuestas: "También disponible en Virtual"</title>
+    <style>
+        :root {
+            --color-primary: #2A449C;
+            --color-accent: #EF1218;
+            --color-virtual: #10B981;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-white: #ffffff;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f0f4f8;
+            padding: 40px 24px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+            font-size: 1.75rem;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 48px;
+            text-align: center;
+            color: var(--color-gray-700);
+            font-size: 0.95rem;
+        }
+
+        .propuestas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto 48px;
+        }
+
+        .propuesta-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .propuesta-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+        }
+
+        .propuesta-label {
+            background: var(--color-primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .propuesta-title {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .propuesta-desc {
+            font-size: 0.8rem;
+            color: var(--color-gray-500);
+            margin-bottom: 16px;
+        }
+
+        /* Demo card base */
+        .demo-card {
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            position: relative;
+        }
+
+        .demo-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+        }
+
+        .demo-card-meta {
+            font-size: 0.8rem;
+            color: var(--color-gray-500);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-card-bullets {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--color-gray-700);
+        }
+
+        .demo-card-bullets li {
+            padding: 3px 0 3px 14px;
+            position: relative;
+        }
+
+        .demo-card-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        /* ========== PROPUESTA A: Mini chip discreto ========== */
+        .chip-mini {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ecfdf5;
+            color: #059669;
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .chip-mini svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        /* ========== PROPUESTA B: Badge en esquina inferior ========== */
+        .badge-bottom {
+            position: absolute;
+            bottom: -8px;
+            right: 16px;
+            background: linear-gradient(135deg, #10B981 0%, #34d399 100%);
+            color: white;
+            font-size: 0.6rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+        }
+
+        .badge-bottom svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        /* ========== PROPUESTA C: Línea sutil debajo ========== */
+        .virtual-line {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--color-gray-200);
+            font-size: 0.7rem;
+            color: #059669;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .virtual-line svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* ========== PROPUESTA D: Icono flotante ========== */
+        .icon-float {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: #10B981;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .icon-float svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+        }
+
+        .icon-float::after {
+            content: 'También virtual';
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: #1a202c;
+            color: white;
+            font-size: 0.6rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .icon-float:hover::after {
+            opacity: 1;
+        }
+
+        /* ========== PROPUESTA E: Tag junto al título ========== */
+        .title-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .tag-virtual {
+            background: #10B981;
+            color: white;
+            font-size: 0.55rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        /* ========== PROPUESTA F: Texto inline con link ========== */
+        .virtual-link {
+            color: #059669;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: #ecfdf5;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .virtual-link:hover {
+            background: #d1fae5;
+        }
+
+        .virtual-link svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Favorito */
+        .favorito {
+            border: 3px solid #10B981;
+        }
+
+        .favorito-tag {
+            background: #10B981;
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 50px;
+            font-weight: 700;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .propuestas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💡 "También disponible en Virtual"</h1>
+    <p class="intro">
+        Indicador sutil para cards de programas presenciales que <strong>también</strong> tienen versión virtual.
+        Solo aparece en Administración e Ingeniería de Software (las que tienen ambas modalidades).
+    </p>
+
+    <div class="propuestas-grid">
+
+        <!-- PROPUESTA A -->
+        <div class="propuesta-card">
+            <span class="propuesta-label">A</span>
+            <h3 class="propuesta-title">Mini chip en meta</h3>
+            <p class="propuesta-desc">Chip pequeño junto a la duración y jornada</p>
+            
+            <div class="demo-card">
+                <h4 class="demo-card-title">Administración de Empresas</h4>
+                <div class="demo-card-meta">
+                    8 sem · Diurna
+                    <span class="chip-mini">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        +Virtual
+                    </span>
+                </div>
+                <ul class="demo-card-bullets">
+                    <li>Gestión estratégica</li>
+                    <li>Liderazgo empresarial</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROPUESTA B -->
+        <div class="propuesta-card">
+            <span class="propuesta-label">B</span>
+            <h3 class="propuesta-title">Badge esquina inferior</h3>
+            <p class="propuesta-desc">Similar al tag "Nuevo" pero abajo y verde</p>
+            
+            <div class="demo-card" style="margin-bottom: 12px;">
+                <h4 class="demo-card-title">Administración de Empresas</h4>
+                <div class="demo-card-meta">8 sem · Diurna / Nocturna</div>
+                <ul class="demo-card-bullets">
+                    <li>Gestión estratégica</li>
+                    <li>Liderazgo empresarial</li>
+                </ul>
+                <span class="badge-bottom">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    También virtual
+                </span>
+            </div>
+        </div>
+
+        <!-- PROPUESTA C -->
+        <div class="propuesta-card">
+            <span class="propuesta-label">C</span>
+            <h3 class="propuesta-title">Línea sutil debajo</h3>
+            <p class="propuesta-desc">Separador punteado con texto discreto</p>
+            
+            <div class="demo-card">
+                <h4 class="demo-card-title">Administración de Empresas</h4>
+                <div class="demo-card-meta">8 sem · Diurna / Nocturna</div>
+                <ul class="demo-card-bullets">
+                    <li>Gestión estratégica</li>
+                    <li>Liderazgo empresarial</li>
+                </ul>
+                <div class="virtual-line">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    También disponible 100% virtual
+                </div>
+            </div>
+        </div>
+
+        <!-- PROPUESTA D -->
+        <div class="propuesta-card">
+            <span class="propuesta-label">D</span>
+            <h3 class="propuesta-title">Icono flotante con tooltip</h3>
+            <p class="propuesta-desc">Solo icono, muestra texto al pasar el mouse</p>
+            
+            <div class="demo-card">
+                <span class="icon-float">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </span>
+                <h4 class="demo-card-title">Administración de Empresas</h4>
+                <div class="demo-card-meta">8 sem · Diurna / Nocturna</div>
+                <ul class="demo-card-bullets">
+                    <li>Gestión estratégica</li>
+                    <li>Liderazgo empresarial</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROPUESTA E -->
+        <div class="propuesta-card">
+            <span class="propuesta-label">E</span>
+            <h3 class="propuesta-title">Mini tag junto al título</h3>
+            <p class="propuesta-desc">Tag pequeño "VIRTUAL" al lado del nombre</p>
+            
+            <div class="demo-card">
+                <div class="title-row">
+                    <h4 class="demo-card-title" style="margin: 0;">Administración de Empresas</h4>
+                    <span class="tag-virtual">+VIRTUAL</span>
+                </div>
+                <div class="demo-card-meta">8 sem · Diurna / Nocturna</div>
+                <ul class="demo-card-bullets">
+                    <li>Gestión estratégica</li>
+                    <li>Liderazgo empresarial</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROPUESTA F -->
+        <div class="propuesta-card favorito" style="position: relative;">
+            <span class="favorito-tag">⭐ FAVORITA</span>
+            <span class="propuesta-label">F</span>
+            <h3 class="propuesta-title">Link/botón clicable</h3>
+            <p class="propuesta-desc">Botón que lleva a la versión virtual</p>
+            
+            <div class="demo-card">
+                <h4 class="demo-card-title">Administración de Empresas</h4>
+                <div class="demo-card-meta">8 sem · Diurna / Nocturna</div>
+                <ul class="demo-card-bullets">
+                    <li>Gestión estratégica</li>
+                    <li>Liderazgo empresarial</li>
+                </ul>
+                <a href="#" class="virtual-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    Ver versión virtual →
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="max-width: 700px; margin: 0 auto; text-align: center; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h3 style="color: #2A449C; margin-bottom: 12px;">¿Cuál prefieres?</h3>
+        <p style="color: #718096; font-size: 0.9rem;">
+            Dime la letra (A, B, C, D, E o F) y lo implemento en las cards de 
+            <strong>Administración de Empresas</strong> e <strong>Ingeniería de Software</strong> 
+            (los programas que tienen versión virtual).
+        </p>
+    </div>
+
+</body>
+</html>

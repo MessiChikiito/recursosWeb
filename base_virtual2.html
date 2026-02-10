@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Administración de Empresas (Virtual) — Uniempresarial</title>
+  <meta name="description" content="Pregrado Virtual en Administración de Empresas — inversión, financiación, plan de estudios, convenios y admisiones." />
+
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+
+      --blue-950:#052a52;
+      --blue-900:#08386b; /* institucional */
+      --blue-700:#0b4d86;
+      --blue-600:#0b62a3;
+
+      --accent-red:#d0021b; /* CTA principal */
+      --whatsapp-green:#25d366;
+
+      --muted:#64748b;
+      --text:#102a43;
+
+      --shadow: 0 10px 26px rgba(7, 28, 61, 0.10);
+      --shadow-soft: 0 6px 18px rgba(11,38,78,0.08);
+      --ring: 0 0 0 3px rgba(11,98,163,.18);
+
+      --radius:14px;
+      --radius-sm:12px;
+
+      --max-width:1100px;
+      --chip-bg:#e9f2ff;
+
+      --border:#e6eef9;
+      --border-2:#eef4fb;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px 16px;
+      display:flex;
+      justify-content:center;
+    }
+
+    a{color:inherit}
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+      outline:none;
+      box-shadow: var(--ring);
+      border-color: rgba(11,98,163,.55);
+    }
+
+    .container{width:100%;max-width:var(--max-width)}
+    .section{margin:28px 0}
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+      padding:18px;
+    }
+
+    .grid{display:grid;gap:16px}
+    .muted{color:var(--muted)}
+    .sr-only{
+      position:absolute !important;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
+
+    /* smooth scroll */
+    html{scroll-behavior:smooth}
+    section[id]{scroll-margin-top:16px}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .acc-panel{transition:none !important}
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-weight:800;
+      text-decoration:none;
+      user-select:none;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--accent-red);color:#fff}
+    .btn-primary:hover{box-shadow: var(--shadow)}
+    .btn-outline{
+      background:transparent;
+      border-color: rgba(11,98,163,.35);
+      color:var(--blue-600);
+    }
+    .btn-outline:hover{border-color: rgba(11,98,163,.6); background:#f3f9ff}
+    .btn-whatsapp{background:var(--whatsapp-green);color:#062b1f}
+    .btn-whatsapp:hover{box-shadow: var(--shadow)}
+    .btn-block{width:100%}
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .hero-left{display:flex;align-items:stretch}
+    .hero-visual{
+      width:100%;
+      min-height:320px;
+      border-radius:var(--radius);
+      background: radial-gradient(1000px 380px at 20% 20%, rgba(11,98,163,.12), transparent 60%),
+                  linear-gradient(135deg,#e6f0ff, #dfefff);
+      border:1px solid rgba(11,98,163,.14);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .hero-right{padding:6px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .chip{
+      background:var(--chip-bg);
+      color:var(--blue-900);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(11,98,163,.12);
+    }
+    .badge{
+      background:#fff;
+      color:var(--blue-600);
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      border:1px solid rgba(11,98,163,.18);
+    }
+    h1{margin:6px 0 8px;font-size:30px;color:var(--blue-900);line-height:1.15}
+    .lead{color:var(--muted);margin:0 0 14px}
+
+    .decision-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:14px 0;
+    }
+    .meta{
+      background:#fff;
+      border:1px solid rgba(11,98,163,.10);
+      border-radius:12px;
+      padding:10px 12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      box-shadow:0 4px 12px rgba(11,38,78,0.05);
+      min-width: 190px;
+      flex: 1 1 190px;
+    }
+    .meta svg{width:18px;height:18px;color:var(--blue-700);flex:0 0 auto}
+    .meta .k{font-size:12px;color:var(--muted);font-weight:800}
+    .meta .v{font-weight:900}
+    .meta .v.big{font-size:18px;color:var(--blue-900)}
+
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+    .micro{font-size:12px;color:var(--muted);margin-top:8px}
+
+    /* Costos grid */
+    .cost-grid{grid-template-columns:repeat(3,1fr)}
+    .small-title{font-size:13px;color:var(--muted);font-weight:900;letter-spacing:.2px}
+    .big-number{font-size:24px;color:var(--blue-900);font-weight:950}
+
+    /* Opportunities */
+    .chips-wrap{display:flex;flex-wrap:wrap;gap:8px}
+    .op-chip{
+      background:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      color:var(--blue-600);
+      font-weight:800;
+      font-size:13px;
+    }
+    .op-more{
+      background:transparent;
+      border:none;
+      color:var(--blue-600);
+      font-weight:900;
+      cursor:pointer;
+      padding:0;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    /* Two-column why+form */
+    .two-col{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start}
+    .benefit{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+    .benefit .icon{
+      width:34px;height:34px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(11,98,163,.08);
+      border:1px solid rgba(11,98,163,.10);
+      color:var(--blue-700);
+      flex:0 0 auto;
+    }
+    .benefit strong{display:block}
+    .metrics{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+    .metric{
+      background:linear-gradient(180deg,#fff,#f8fbff);
+      border:1px solid rgba(11,98,163,.10);
+      padding:12px 14px;
+      border-radius:12px;
+      box-shadow:var(--shadow-soft);
+      font-weight:950;
+      color:var(--blue-900);
+    }
+    .metric .sub{display:block;font-size:12px;font-weight:900;color:var(--muted);margin-top:2px}
+
+    /* Form */
+    .form-title{font-weight:950;font-size:16px;margin-bottom:10px;color:var(--blue-900)}
+    .field{margin-bottom:10px}
+    .field label{display:block;font-weight:900;font-size:13px;color:var(--blue-950)}
+    .field .req{color:var(--accent-red);margin-left:2px}
+    .control{
+      width:100%;
+      padding:11px 12px;
+      margin-top:6px;
+      border-radius:12px;
+      border:1px solid rgba(11,98,163,.16);
+      background:#fff;
+      box-shadow: inset 0 1px 0 rgba(0,0,0,.02);
+    }
+    .help{font-size:12px;color:var(--muted)}
+    .check{
+      display:flex;gap:8px;align-items:flex-start;
+      font-size:13px;color:var(--muted);
+      margin:10px 0 12px;
+    }
+    .check input{margin-top:2px}
+    .alert{
+      display:none;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:900;
+      border:1px solid transparent;
+    }
+    .alert.ok{background:#e9fff2;color:#07513b;border-color:#bff0cf}
+    .alert.err{background:#fff2f2;color:#8b1e1e;border-color:#ffd0d0}
+
+    /* Partners */
+    .partners{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .partner{
+      background:linear-gradient(180deg,#fff,#f8fbff);
+      border-radius:12px;
+      padding:14px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px dashed #dbe9ff;
+      color:var(--blue-600);
+      font-weight:950;
+      min-height:56px;
+      text-align:center;
+    }
+
+    /* Accordion (accessible) */
+    .accordion{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border-2);
+      background:var(--card);
+    }
+    .acc-item{border-top:1px solid var(--border-2)}
+    .acc-item:first-child{border-top:none}
+    .acc-btn{
+      width:100%;
+      background:transparent;
+      border:none;
+      padding:14px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      text-align:left;
+      font-weight:950;
+      color:var(--blue-900);
+    }
+    .acc-btn .hint{font-weight:900;color:var(--muted);font-size:12px}
+    .acc-icon{
+      width:28px;height:28px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(11,98,163,.14);
+      background:#fff;
+      color:var(--blue-700);
+      flex:0 0 auto;
+      transition: transform .2s ease;
+    }
+    .acc-btn[aria-expanded="true"] .acc-icon{transform:rotate(45deg)}
+    .acc-panel{
+      overflow:hidden;
+      height:0;
+      transition: height .28s ease;
+    }
+    .acc-panel-inner{padding:0 16px 14px}
+    .course{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding:9px 0;
+      border-bottom:1px dashed #f1f6fb;
+      color:var(--text);
+      font-size:14px;
+    }
+    .course:last-child{border-bottom:none}
+    .course .cr{color:var(--muted);font-weight:900}
+
+    /* Docentes */
+    .teachers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .teacher{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(11,98,163,.10);
+      background:linear-gradient(180deg,#fff,#f8fbff);
+    }
+    .avatar{
+      width:56px;height:56px;border-radius:50%;
+      background:linear-gradient(135deg,#dfefff,#eaf4ff);
+      border:1px solid rgba(11,98,163,.18);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:950;color:var(--blue-900);
+      flex:0 0 auto;
+    }
+
+    /* Footer ligero */
+    footer{
+      margin:34px 0 18px;
+      padding:18px;
+      border-radius:var(--radius);
+      background:#fff;
+      border:1px solid rgba(11,98,163,.10);
+      box-shadow:var(--shadow-soft);
+    }
+    .footer-grid{display:grid;grid-template-columns: 1.1fr .9fr .8fr;gap:16px}
+    .footer-title{font-weight:950;color:var(--blue-900);margin:0 0 10px}
+    .footer-links a{display:block;text-decoration:none;color:var(--muted);font-weight:800;margin:6px 0}
+    .footer-links a:hover{color:var(--blue-700)}
+    .legal{margin-top:14px;font-size:12px;color:var(--muted);border-top:1px solid var(--border-2);padding-top:12px}
+
+    /* Sticky mini bar mobile */
+    .mini-bar{
+      position:fixed;
+      left:12px;right:12px;bottom:12px;
+      background:linear-gradient(90deg,#ffffff, #f9fbff);
+      padding:10px;
+      display:none;
+      justify-content:space-between;
+      border-radius:14px;
+      box-shadow:0 10px 26px rgba(4,20,52,0.12);
+      border:1px solid rgba(11,98,163,.12);
+      z-index:50;
+    }
+    .mini-bar .btn{flex:1;margin:0 6px}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-visual{min-height:260px}
+      .two-col{grid-template-columns:1fr}
+      .partners{grid-template-columns:repeat(3,1fr)}
+      .teachers{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:560px){
+      body{padding:14px}
+      .cost-grid{grid-template-columns:1fr}
+      .partners{grid-template-columns:repeat(2,1fr)}
+      .teachers{grid-template-columns:1fr}
+      .mini-bar{display:flex}
+      .hero-visual{min-height:180px}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="section hero" aria-label="Presentación del programa">
+      <div class="hero-left">
+        <div class="hero-visual" aria-hidden="true">
+          <div style="text-align:center;max-width:320px">
+            <svg width="110" height="110" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="14" rx="2" fill="#eaf4ff" stroke="currentColor" stroke-width="1.3" style="color:var(--blue-600)"></rect>
+              <path d="M7 21h10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" style="color:var(--blue-600)"></path>
+              <path d="M7 14l3-3 3 2 4-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue-600)"></path>
+            </svg>
+            <div style="margin-top:10px;color:var(--blue-700);font-weight:950">Imagen del programa</div>
+            <div class="muted" style="font-size:12px;margin-top:4px">Placeholder (reemplazable en Elementor)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="chips">
+          <span class="chip">Pregrados</span>
+          <span class="chip">Virtual <span class="badge">NUEVO</span></span>
+          <span class="chip" id="chipEscuela">Escuela (placeholder)</span>
+        </div>
+
+        <h1>Administración de Empresas</h1>
+        <p class="lead" id="heroDesc">
+          Formación virtual orientada a la gestión estratégica, emprendimiento y dirección de operaciones.
+          Plan práctico y actualizado para perfiles que buscan liderar equipos y proyectos.
+        </p>
+
+        <div class="decision-row" role="list" aria-label="Datos clave del programa">
+          <div class="meta" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 3h10v4H7V3z" fill="currentColor"></path>
+              <path d="M6 7h12v14H6V7z" stroke="currentColor" stroke-width="1.2" fill="none"></path>
+              <path d="M9 11h6M9 14h6M9 17h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            </svg>
+            <div>
+              <div class="k">Duración</div>
+              <div class="v" id="duracion">8 semestres</div>
+            </div>
+          </div>
+
+          <div class="meta" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 8h16v10H4V8z" stroke="currentColor" stroke-width="1.2"></path>
+              <path d="M9 19h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+              <path d="M8 12h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            </svg>
+            <div>
+              <div class="k">Modalidad</div>
+              <div class="v" id="modalidad">Virtual</div>
+            </div>
+          </div>
+
+          <div class="meta" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="1.2"></path>
+              <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div>
+              <div class="k">Jornada</div>
+              <div class="v" id="jornada">Flexible</div>
+            </div>
+          </div>
+
+          <div class="meta" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l2.6 6.2L21 9l-4.8 4 1.5 6.7L12 16.9 6.3 19.7 7.8 13 3 9l6.4-.8L12 2z" fill="currentColor"></path>
+            </svg>
+            <div>
+              <div class="k">Valor aprox. / semestre</div>
+              <div class="v big">$ <span id="precioSemestre">--</span></div>
+            </div>
+          </div>
+
+          <div class="meta" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 4h12v16H6V4z" stroke="currentColor" stroke-width="1.2"></path>
+              <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+            </svg>
+            <div>
+              <div class="k">SNIES / Resolución</div>
+              <div class="v" id="snies">--</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row" aria-label="Acciones principales">
+          <a class="btn btn-primary" href="#formulario" id="ctaInfo">Solicitar información</a>
+          <a class="btn btn-outline" href="#pensum" id="ctaPensum">Ver plan de estudios</a>
+          <button class="btn btn-whatsapp" type="button" id="ctaWhatsapp">WhatsApp</button>
+        </div>
+        <div class="micro" id="microCopy">Te contactamos por WhatsApp en horario hábil.</div>
+      </div>
+    </section>
+
+    <!-- FINANCIACIÓN / COSTOS -->
+    <section id="financiacion" class="section card" aria-label="Financiación">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px">
+        <div style="font-weight:950;color:var(--blue-900);font-size:16px">Inversión, becas y financiación</div>
+        <a href="#financiacion" class="btn btn-outline">Ver financiación</a>
+      </div>
+
+      <div class="grid cost-grid" role="list">
+        <div class="card" role="listitem" style="border:1px solid rgba(11,98,163,.10)">
+          <div class="small-title">Inversión por semestre</div>
+          <div class="big-number">$ <span id="precioSemestreCard">--</span></div>
+          <div class="help" style="margin-top:8px">Valores de referencia — puede variar según convenios.</div>
+        </div>
+
+        <div class="card" role="listitem" style="border:1px solid rgba(11,98,163,.10)">
+          <div class="small-title">Becas y convenios</div>
+          <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted);font-weight:700">
+            <li>Jóvenes a la U (placeholder)</li>
+            <li>Cundinamarca+ (placeholder)</li>
+            <li>Convenios empresariales (ver sección)</li>
+          </ul>
+        </div>
+
+        <div class="card" role="listitem" style="border:1px solid rgba(11,98,163,.10)">
+          <div class="small-title">Opciones de financiación</div>
+          <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted);font-weight:700">
+            <li>ICETEX</li>
+            <li>Planes con aliados</li>
+            <li>Pago flexible (placeholder)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPORTUNIDADES LABORALES -->
+    <section class="section card" aria-labelledby="oppTitle">
+      <h2 id="oppTitle" style="margin:0 0 6px;color:var(--blue-900)">¿En qué puedes trabajar?</h2>
+      <div class="muted" style="margin-bottom:10px">Roles frecuentes según perfil y experiencia.</div>
+
+      <div class="chips-wrap" id="opChips" aria-label="Roles frecuentes">
+        <span class="op-chip">Analista de procesos</span>
+        <span class="op-chip">Gestor administrativo</span>
+        <span class="op-chip">Coordinador comercial</span>
+        <span class="op-chip">Asesor de ventas</span>
+        <span class="op-chip">Analista financiero</span>
+        <span class="op-chip">Gestor de operaciones</span>
+        <span class="op-chip">Director de proyectos</span>
+        <span class="op-chip">Emprendimiento</span>
+      </div>
+
+      <div style="margin-top:10px">
+        <button class="op-more" id="oppToggle" type="button" aria-expanded="false" aria-controls="oppExpanded">Ver más</button>
+      </div>
+
+      <div id="oppExpanded" hidden style="margin-top:12px;color:var(--muted);font-weight:700">
+        <div><strong>Gestión y operaciones:</strong> logística, producción, control de calidad.</div>
+        <div><strong>Comercial y ventas:</strong> gestión de cuentas, estrategia comercial, retail.</div>
+        <div><strong>Analítica y procesos:</strong> mejora continua, análisis de datos operativos.</div>
+        <div><strong>Emprendimiento:</strong> creación de empresas, gestión de proyectos.</div>
+      </div>
+
+      <div class="help" style="margin-top:10px">Los cargos dependen de experiencia y enfoque del estudiante.</div>
+    </section>
+
+    <!-- WHY US + FORM -->
+    <section class="section two-col" aria-label="Beneficios y formulario">
+      <div class="card">
+        <h3 style="margin:0 0 8px;color:var(--blue-900)">¿Por qué elegirnos?</h3>
+
+        <div class="benefit">
+          <div class="icon" aria-hidden="true">✅</div>
+          <div><strong>Enfoque práctico</strong><div class="muted" style="font-size:13px;font-weight:700">Proyectos reales y casos empresariales</div></div>
+        </div>
+
+        <div class="benefit">
+          <div class="icon" aria-hidden="true">🎓</div>
+          <div><strong>Docentes activos</strong><div class="muted" style="font-size:13px;font-weight:700">Profesionales con experiencia en industria</div></div>
+        </div>
+
+        <div class="benefit">
+          <div class="icon" aria-hidden="true">🧩</div>
+          <div><strong>Soporte virtual</strong><div class="muted" style="font-size:13px;font-weight:700">Plataforma y acompañamiento en horarios hábiles</div></div>
+        </div>
+
+        <div class="benefit">
+          <div class="icon" aria-hidden="true">🤝</div>
+          <div><strong>Red de aliados</strong><div class="muted" style="font-size:13px;font-weight:700">Convenios y oportunidades (según disponibilidad)</div></div>
+        </div>
+
+        <div class="metrics" aria-label="Métricas">
+          <div class="metric">+ <span id="metricAllies">--</span><span class="sub">empresas aliadas</span></div>
+          <div class="metric"><span id="metricPractice">--</span><span class="sub">meses de práctica</span></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <a href="#convenios" class="btn btn-outline">Ver convenios empresariales</a>
+        </div>
+      </div>
+
+      <div class="card" id="formulario">
+        <form id="leadForm" novalidate>
+          <div class="form-title">Solicita información</div>
+
+          <div class="field">
+            <label for="name">Nombre y apellidos <span class="req">*</span></label>
+            <input class="control" id="name" name="name" required type="text" placeholder="Ej. María Pérez" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="phone">WhatsApp <span class="req">*</span></label>
+            <input class="control" id="phone" name="phone" required type="tel" placeholder="+57 300 0000000" inputmode="tel" autocomplete="tel" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span class="help">(opcional)</span></label>
+            <input class="control" id="email" name="email" type="email" placeholder="correo@ejemplo.com" autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="interest">¿Qué buscas? <span class="req">*</span></label>
+            <select class="control" id="interest" name="interest" required>
+              <option value="">Selecciona…</option>
+              <option>Información</option>
+              <option>Inscripción</option>
+              <option>Financiación</option>
+            </select>
+          </div>
+
+          <div class="check">
+            <input id="policy" type="checkbox" name="policy" required />
+            <label for="policy">
+              Acepto la <a href="#" style="color:var(--blue-600);font-weight:950">política de datos</a> <span class="req">*</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Solicitar información</button>
+
+          <div id="formMsg" class="alert" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONVENIOS EMPRESARIALES -->
+    <section id="convenios" class="section card" aria-label="Convenios empresariales">
+      <h3 style="margin:0 0 8px;color:var(--blue-900)">Convenios empresariales</h3>
+      <div class="muted" style="margin-bottom:12px">Colaboramos con empresas para prácticas y empleabilidad.</div>
+
+      <div class="partners" role="list" aria-label="Empresas aliadas">
+        <div class="partner" role="listitem">Empresa A</div>
+        <div class="partner" role="listitem">Empresa B</div>
+        <div class="partner" role="listitem">Empresa C</div>
+        <div class="partner" role="listitem">Empresa D</div>
+      </div>
+
+      <div style="margin-top:12px">
+        <a href="#" class="btn btn-outline">Ver todos los aliados</a>
+      </div>
+    </section>
+
+    <!-- PLAN DE ESTUDIOS (PENSUM) -->
+    <section id="pensum" class="section card" aria-label="Plan de estudios">
+      <h3 style="margin:0 0 6px;color:var(--blue-900)">Plan de estudios</h3>
+      <div class="muted" style="margin-bottom:12px;font-weight:700">
+        Créditos totales: <strong id="totalCreditos">--</strong> · Duración: <strong id="duracion2">--</strong>
+      </div>
+
+      <div class="accordion" id="pensumAcc" aria-label="Semestres del plan de estudios"></div>
+
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px">
+        <a href="#" class="btn btn-outline">Descargar plan en PDF</a>
+        <a href="#formulario" class="btn btn-primary">Quiero asesoría</a>
+      </div>
+    </section>
+
+    <!-- DOCENTES -->
+    <section class="section card" aria-label="Equipo docente">
+      <h3 style="margin:0 0 8px;color:var(--blue-900)">Equipo docente</h3>
+      <div class="muted" style="margin-bottom:12px">Profesionales con trayectoria en academia y empresa.</div>
+
+      <div class="teachers" role="list">
+        <div class="teacher" role="listitem">
+          <div class="avatar" aria-hidden="true">MP</div>
+          <div><strong>María Pérez</strong><div class="muted" style="font-size:13px;font-weight:700">Finanzas · 10 años</div></div>
+        </div>
+        <div class="teacher" role="listitem">
+          <div class="avatar" aria-hidden="true">JL</div>
+          <div><strong>Juan López</strong><div class="muted" style="font-size:13px;font-weight:700">Gestión · 8 años</div></div>
+        </div>
+        <div class="teacher" role="listitem">
+          <div class="avatar" aria-hidden="true">AC</div>
+          <div><strong>Ana Cárdenas</strong><div class="muted" style="font-size:13px;font-weight:700">Marketing · 12 años</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <a href="#" class="btn btn-outline">Conoce más</a>
+      </div>
+    </section>
+
+    <!-- FAQ + CTA FINAL -->
+    <section class="section card" aria-label="Preguntas frecuentes">
+      <h3 style="margin:0 0 8px;color:var(--blue-900)">Preguntas frecuentes</h3>
+
+      <div class="accordion" id="faqAcc" aria-label="Preguntas frecuentes">
+        <div class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq1">
+            <span>¿Cuáles son los requisitos de admisión?</span>
+            <span class="acc-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq1" class="acc-panel" role="region" aria-label="Respuesta">
+            <div class="acc-panel-inner muted" style="font-weight:700">
+              Documento de identidad, formulario de inscripción y datos académicos. Puede variar según convocatoria.
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq2">
+            <span>¿Cómo es el proceso de admisión?</span>
+            <span class="acc-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq2" class="acc-panel" role="region" aria-label="Respuesta">
+            <div class="acc-panel-inner muted" style="font-weight:700">
+              Registro, entrega de documentos y orientación con el área de admisiones.
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq3">
+            <span>¿Qué opciones de financiación hay?</span>
+            <span class="acc-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq3" class="acc-panel" role="region" aria-label="Respuesta">
+            <div class="acc-panel-inner muted" style="font-weight:700">
+              ICETEX, convenios y planes con aliados. Te orientamos según tu caso.
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq4">
+            <span>¿Cómo funciona el campus virtual?</span>
+            <span class="acc-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq4" class="acc-panel" role="region" aria-label="Respuesta">
+            <div class="acc-panel-inner muted" style="font-weight:700">
+              Aulas virtuales, contenidos asincrónicos, evaluaciones y tutorías en línea (según programación).
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq5">
+            <span>¿Puedo homologar materias?</span>
+            <span class="acc-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq5" class="acc-panel" role="region" aria-label="Respuesta">
+            <div class="acc-panel-inner muted" style="font-weight:700">
+              Se evalúa caso a caso según normativa institucional.
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq6">
+            <span>¿Qué soporte técnico ofrecen?</span>
+            <span class="acc-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq6" class="acc-panel" role="region" aria-label="Respuesta">
+            <div class="acc-panel-inner muted" style="font-weight:700">
+              Soporte de plataforma y atención al estudiante en horarios hábiles.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+        <a href="#formulario" class="btn btn-primary">Solicitar información</a>
+        <button class="btn btn-whatsapp" type="button" id="ctaWhatsapp2">Hablar por WhatsApp</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer aria-label="Pie de página">
+      <div class="footer-grid">
+        <div>
+          <h4 class="footer-title">Uniempresarial</h4>
+          <div class="muted" style="font-weight:800">
+            Sede principal (placeholder)<br />
+            Correo: <a href="mailto:admisiones@uniempresarial.edu.co" style="color:var(--blue-700);font-weight:950;text-decoration:none">admisiones@uniempresarial.edu.co</a><br />
+            Tel: (601) 0000000 (placeholder)
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4 class="footer-title">Enlaces útiles</h4>
+          <a href="#financiacion">Financiación</a>
+          <a href="#formulario">Admisiones</a>
+          <a href="#">Campus virtual</a>
+          <a href="#">PQRSF</a>
+        </div>
+
+        <div class="footer-links">
+          <h4 class="footer-title">Redes</h4>
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+
+      <div class="legal">
+        © <span id="year"></span> Uniempresarial · Términos y políticas (placeholder).
+      </div>
+    </footer>
+
+    <div style="height:44px"></div>
+  </div>
+
+  <!-- Sticky mini bar mobile -->
+  <div class="mini-bar" role="navigation" aria-label="Accesos rápidos">
+    <button class="btn btn-outline" id="miniInfo" type="button">Info</button>
+    <button class="btn btn-outline" id="miniPensum" type="button">Pensum</button>
+  </div>
+
+  <script>
+    // CONFIG: valores fáciles de cambiar
+    const CONFIG = {
+      escuelaChip: 'Escuela de Ciencias Administrativas',
+      precioSemestre: '1.200.000',
+      duracion: '8 semestres',
+      modalidad: 'Virtual',
+      jornada: 'Flexible',
+      snies: '--',
+      totalCreditos: '160',
+      metricAllies: '24',
+      metricPractice: '3',
+      whatsappText: 'Estoy interesado en Administración de Empresas (virtual). ¿Me pueden dar información, requisitos y opciones de financiación?',
+      semesters: [
+        { title:'Semestre 1', courses:[{name:'Introducción a la Administración', credits:3},{name:'Matemáticas I', credits:3}] },
+        { title:'Semestre 2', courses:[{name:'Contabilidad I', credits:3},{name:'Economía I', credits:3}] },
+        { title:'Semestre 3', courses:[{name:'Marketing I', credits:3},{name:'Estadística', credits:3}] },
+        { title:'Semestre 4', courses:[{name:'Finanzas I', credits:3},{name:'Derecho Empresarial', credits:2}] },
+        { title:'Semestre 5', courses:[{name:'Operaciones', credits:3},{name:'Investigación de Mercados', credits:3}] },
+        { title:'Semestre 6', courses:[{name:'Comportamiento Organizacional', credits:3},{name:'Costos', credits:3}] },
+        { title:'Semestre 7', courses:[{name:'Gestión Estratégica', credits:3},{name:'Emprendimiento', credits:3}] },
+        { title:'Semestre 8', courses:[{name:'Prácticas', credits:6},{name:'Trabajo de Grado', credits:6}] }
+      ]
+    };
+
+    // Init text
+    const $ = (s, r=document) => r.querySelector(s);
+    $('#chipEscuela').textContent = CONFIG.escuelaChip;
+    $('#precioSemestre').textContent = CONFIG.precioSemestre;
+    $('#precioSemestreCard').textContent = CONFIG.precioSemestre;
+    $('#duracion').textContent = CONFIG.duracion;
+    $('#duracion2').textContent = CONFIG.duracion;
+    $('#modalidad').textContent = CONFIG.modalidad;
+    $('#jornada').textContent = CONFIG.jornada;
+    $('#snies').textContent = CONFIG.snies;
+    $('#totalCreditos').textContent = CONFIG.totalCreditos;
+    $('#metricAllies').textContent = CONFIG.metricAllies;
+    $('#metricPractice').textContent = CONFIG.metricPractice;
+    $('#year').textContent = new Date().getFullYear();
+
+    // WhatsApp actions
+    function openWhatsApp(){
+      const url = 'https://wa.me/?text=' + encodeURIComponent(CONFIG.whatsappText);
+      window.location.href = url;
+    }
+    $('#ctaWhatsapp').addEventListener('click', openWhatsApp);
+    $('#ctaWhatsapp2').addEventListener('click', openWhatsApp);
+
+    // Opportunities expand
+    const oppToggle = $('#oppToggle');
+    const oppExpanded = $('#oppExpanded');
+    oppToggle.addEventListener('click', ()=>{
+      const isOpen = oppToggle.getAttribute('aria-expanded') === 'true';
+      oppToggle.setAttribute('aria-expanded', String(!isOpen));
+      oppExpanded.hidden = isOpen;
+      oppToggle.textContent = isOpen ? 'Ver más' : 'Ver menos';
+    });
+
+    // Accordion helpers (height animation)
+    function setPanelHeight(panel, open){
+      const inner = panel.firstElementChild;
+      if(open){
+        panel.style.height = inner.scrollHeight + 'px';
+      }else{
+        panel.style.height = '0px';
+      }
+    }
+
+    function buildAccordion(container, items, options={}){
+      const { openFirst=false } = options;
+      container.innerHTML = '';
+
+      items.forEach((it, idx)=>{
+        const item = document.createElement('div');
+        item.className = 'acc-item';
+
+        const btn = document.createElement('button');
+        btn.className = 'acc-btn';
+        btn.type = 'button';
+
+        const panelId = `${container.id}-panel-${idx}`;
+        btn.setAttribute('aria-controls', panelId);
+
+        const title = document.createElement('span');
+        title.textContent = it.title;
+
+        const icon = document.createElement('span');
+        icon.className = 'acc-icon';
+        icon.setAttribute('aria-hidden','true');
+        icon.textContent = '+';
+
+        btn.appendChild(title);
+        btn.appendChild(icon);
+
+        const panel = document.createElement('div');
+        panel.className = 'acc-panel';
+        panel.id = panelId;
+        panel.setAttribute('role','region');
+        panel.setAttribute('aria-label', `Contenido de ${it.title}`);
+
+        const inner = document.createElement('div');
+        inner.className = 'acc-panel-inner';
+
+        if(Array.isArray(it.courses)){
+          it.courses.forEach(c=>{
+            const row = document.createElement('div');
+            row.className = 'course';
+            row.innerHTML = `<div>${c.name}</div><div class="cr">${c.credits} cr</div>`;
+            inner.appendChild(row);
+          });
+        }else{
+          inner.innerHTML = it.content || '';
+        }
+
+        panel.appendChild(inner);
+
+        const startOpen = openFirst && idx === 0;
+        btn.setAttribute('aria-expanded', String(startOpen));
+        panel.style.height = startOpen ? inner.scrollHeight + 'px' : '0px';
+
+        btn.addEventListener('click', ()=>{
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          setPanelHeight(panel, !expanded);
+        });
+
+        // Keep animation correct on resize
+        window.addEventListener('resize', ()=>{
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          if(expanded) setPanelHeight(panel, true);
+        });
+
+        item.appendChild(btn);
+        item.appendChild(panel);
+        container.appendChild(item);
+      });
+    }
+
+    // Build pensum
+    buildAccordion($('#pensumAcc'), CONFIG.semesters.map(s=>({ title:s.title, courses:s.courses })), { openFirst:true });
+
+    // Upgrade FAQ to same accordion behavior
+    // (turn existing FAQ markup into animated panels without rewriting HTML)
+    function wireAccordion(container){
+      const items = Array.from(container.querySelectorAll('.acc-item'));
+      items.forEach((item)=>{
+        const btn = item.querySelector('.acc-btn');
+        const panel = item.querySelector('.acc-panel');
+        if(!btn || !panel) return;
+        const inner = panel.firstElementChild;
+
+        // init
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        panel.style.height = expanded ? inner.scrollHeight + 'px' : '0px';
+
+        btn.addEventListener('click', ()=>{
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!isOpen));
+          setPanelHeight(panel, !isOpen);
+        });
+
+        window.addEventListener('resize', ()=>{
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          if(isOpen) setPanelHeight(panel, true);
+        });
+      });
+    }
+    wireAccordion($('#faqAcc'));
+
+    // Form validation
+    const form = $('#leadForm');
+    const msg = $('#formMsg');
+
+    function showMsg(type, text){
+      msg.className = 'alert ' + (type === 'ok' ? 'ok' : 'err');
+      msg.textContent = text;
+      msg.style.display = 'block';
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      msg.style.display = 'none';
+
+      const fd = new FormData(form);
+      const name = (fd.get('name') || '').toString().trim();
+      const phone = (fd.get('phone') || '').toString().trim();
+      const interest = (fd.get('interest') || '').toString().trim();
+      const policy = fd.get('policy');
+
+      if(!name || !phone || !interest || !policy){
+        showMsg('err','Por favor completa los campos obligatorios y acepta la política de datos.');
+        return;
+      }
+
+      // Simulación de envío OK
+      showMsg('ok','¡Solicitud enviada! Te contactamos pronto.');
+      form.reset();
+
+      setTimeout(()=>{ msg.style.display = 'none'; }, 6000);
+    });
+
+    // Mobile mini bar
+    $('#miniInfo').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    $('#miniPensum').addEventListener('click', ()=> $('#pensum').scrollIntoView({behavior:'smooth'}));
+  </script>
+</body>
+</html>

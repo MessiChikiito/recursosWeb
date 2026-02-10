@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregrados Presenciales - Cards</title>
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #0132AF;
+            --color-primary-light: #0052D6;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ========== BOTONES GLOBALES ========== */
+        .btn-cta {
+            background: var(--color-accent) !important;
+            color: var(--color-white) !important;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
+        /* Grid responsive de cards */
+        .pp-programs-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        .pp-programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Card de programa */
+        .pp-program-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-gray-200);
+            transform: translateY(0) !important;
+            will-change: transform, box-shadow;
+            overflow: visible;
+        }
+
+        .pp-program-card:hover {
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #e0e7ff !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-card-image-container {
+            width: calc(100% + 56px);
+            height: 170px;
+            margin: -28px -28px 20px -28px;
+            overflow: hidden;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .pp-card-image-container {
+                width: 100%;
+                height: 170px;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .pp-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-program-card:hover .pp-card-image {
+            transform: none;
+        }
+
+        .pp-card-tag {
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%) !important;
+            color: var(--color-white) !important;
+            font-size: 0.8rem !important;
+            padding: 8px 16px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 
+                0 4px 15px rgba(239, 18, 24, 0.5),
+                0 0 0 4px rgba(239, 18, 24, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: color-pulse 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-style: italic;
+        }
+
+        .pp-card-header {
+            margin-bottom: 16px;
+        }
+
+        .pp-card-title {
+            font-size: 1.90rem !important;
+            font-weight: 900 !important;
+            color: #1f2937 !important;
+            margin-bottom: 8px !important;
+            line-height: 1.3 !important;
+            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+            font-synthesis: weight !important;
+            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03) !important;
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02) !important;
+        }
+
+        .pp-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .pp-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem !important;
+            color: #8893a4 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-meta-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Iconos SVG como background para meta info */
+        .pp-meta-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            opacity: 1;
+        }
+
+        .pp-meta-icon.icon-calendar {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+        }
+
+        .pp-meta-icon.icon-clock {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+        }
+
+        .pp-meta-icon.icon-location {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A449C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+            opacity: 1;
+        }
+
+        .pp-card-bullets {
+            list-style: none;
+            margin: 0 0 20px 0 !important;
+            padding: 0 !important;
+            flex-grow: 1;
+            text-align: left !important;
+        }
+        
+        .pp-card-bullets ul {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .pp-card-bullets li {
+            font-size: 0.9rem !important;
+            color: var(--color-gray-700) !important;
+            padding: 6px 0 !important;
+            padding-left: 20px !important;
+            position: relative;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            line-height: 1.5 !important;
+        }
+
+        .pp-card-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .pp-btn-secondary {
+            flex: 1;
+            padding: 12px 20px;
+            background: #374151 !important;
+            color: var(--color-white) !important;
+            border: 2px solid #374151 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+
+        .pp-btn-secondary:hover {
+            background: #2c3a4e !important;
+            color: var(--color-white) !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-secondary-cerrar {
+            flex: 1;
+            padding: 12px 20px;
+            background: #374151 !important;
+            color: var(--color-white) !important;
+            border: 2px solid #374151 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+        
+        .btn-secondary-cerrar:hover {
+            background: #1f2937 !important;
+            color: var(--color-white) !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Contenedor de botones de la card */
+        .pp-card-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .pp-btn-info {
+            flex: 1;
+            padding: 12px 20px;
+            background: white !important;
+            color: #0b48e2 !important;
+            border: 2px solid #0b48e2 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+        }
+
+        .pp-btn-info:hover {
+            background: #0b48e2 !important;
+            color: white !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* ========== MODAL ========== */
+        /* Modal para detalles del programa */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease !important;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(30px) scale(0.95) !important;
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease !important;
+            will-change: transform, opacity;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1) !important;
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 24px 24px 0 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+        }
+
+        .modal-tag {
+            background: var(--color-accent) !important;
+            color: var(--color-white) !important;
+            font-size: 0.7rem !important;
+            padding: 4px 10px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            display: inline-block;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .modal-title {
+            font-size: 1.9rem !important;
+            font-weight: 700 !important;
+            color: var(--color-primary) !important;
+            margin-top: 15px !important;
+            margin-bottom: 8px !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: left !important;
+        }
+
+        .modal-close {
+            background: var(--color-gray-200) !important;
+            border: none !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: var(--transition) !important;
+            flex-shrink: 0 !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        .modal-close svg {
+            stroke: var(--color-gray-700) !important;
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
+            stroke-width: 2 !important;
+            fill: none !important;
+        }
+
+        .modal-close:hover {
+            background: var(--color-gray-300) !important;
+        }
+
+        .modal-close:hover svg {
+            stroke: var(--color-gray-900) !important;
+        }
+
+        /* Regla adicional con máxima especificidad para WordPress */
+        .modal-overlay .modal .modal-header .modal-close {
+            background: #edf2f7 !important;
+            border: none !important;
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            position: relative !important;
+            z-index: 999 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .modal-overlay .modal .modal-header .modal-close:hover {
+            background: #d4d8dc !important;
+        }
+
+        .modal-overlay .modal .modal-header .modal-close svg {
+            stroke: #4a5568 !important;
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
+            stroke-width: 2 !important;
+            fill: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: stroke 0.3s ease !important;
+        }
+
+        .modal-body {
+            padding: 24px;
+            padding-top: 0px;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-top: 2px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--color-gray-200);
+            text-align: left !important;
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem !important;
+            color: var(--color-gray-700) !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .modal-meta-item svg {
+            color: var(--color-primary);
+        }
+
+        .modal-meta-item .meta-icon {
+            font-size: 16px;
+            color: var(--color-primary);
+        }
+
+        .modal-description {
+            margin-bottom: 24px;
+            text-align: left !important;
+        }
+
+        .modal-description h3 {
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            color: var(--color-gray-900) !important;
+            margin-bottom: 12px !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: left !important;
+        }
+
+        .modal-description p {
+            font-size: 0.95rem !important;
+            color: var(--color-gray-700) !important;
+            line-height: 1.7 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: left !important;
+        }
+
+        /* ========== FORMULARIO DEL MODAL ========== */
+        .modal-form {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 2px solid #a7f3d0;
+            margin-bottom: 10px;
+        }
+
+        .modal-form h3 {
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            color: #047857 !important;
+            margin-bottom: 16px !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            text-align: center !important;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            padding-right: 44px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(42, 68, 156, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-primary);
+            pointer-events: none;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #1a365d 0%, var(--color-primary) 100%) !important;
+            color: white !important;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42, 68, 156, 0.3);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--color-gray-700);
+            line-height: 1.4;
+        }
+
+        .form-checkbox input {
+            margin-top: 3px;
+            accent-color: var(--color-primary);
+        }
+
+        .form-checkbox a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .modal-footer {
+            padding: 0 24px 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-footer .btn-cta {
+            flex: 1;
+        }
+
+        .modal-footer .pp-btn-secondary {
+            flex: 1;
+        }
+
+        /* ========== BADGE VIRTUAL PERSONALIZADO ========== */
+        .badge-virtual-custom{
+        position:absolute !important;
+        top:12px !important;
+        right:12px !important;
+        background:#0BD926 !important;
+        color:#fff !important;
+        padding:5px 10px !important;
+        border-radius:16px !important;
+        font-size:.7rem !important;
+        font-weight:700 !important;
+        font-family:'Segoe UI',system-ui,-apple-system,sans-serif !important;
+        line-height:1 !important;
+        text-transform:uppercase !important;
+        text-align:center !important;
+        white-space:nowrap !important;
+        cursor:help !important;
+        z-index:999!important;
+
+        display:inline-block !important;
+        overflow:visible !important;
+        box-shadow:
+            0 4px 15px rgba(11,217,38,.35),
+            0 0 0 4px rgba(11,217,38,.12),
+            inset 0 1px 0 rgba(255,255,255,.25) !important;
+        animation: color-pulse 1.6s cubic-bezier(0.4,0,0.6,1) infinite !important;
+        will-change: box-shadow;
+        }
+
+
+
+        /* Tooltip */
+        .badge-virtual-custom::after {
+            content: 'También disponible en modalidad virtual' !important;
+            position: absolute !important;
+            top: 100% !important;
+            right: 50% !important;
+            transform: translateX(50%) !important;
+            background: #1a202c !important;
+            color: white !important;
+            padding: 10px 14px !important;
+            border-radius: 6px !important;
+            font-size: 0.75rem !important;
+            font-weight: 500 !important;
+            white-space: nowrap !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.3s ease !important;
+            z-index: 999 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+            display: block !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            margin-top: -70px !important;
+        }
+
+        .badge-virtual-custom:hover {
+            animation-play-state: paused !important;
+            background: #06f526 !important;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4) !important;
+        }
+
+        .badge-virtual-custom:hover::after {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        /* Animación Color Pulse - Sin transform, solo sombra como pulse-badge */
+
+        @keyframes color-pulse {
+        0% {
+            box-shadow: 0 0 0 rgba(11, 217, 38, 0), 0 0 0 rgba(11, 217, 38, 0);
+        }
+        50% {
+            box-shadow: 0 0 18px rgba(11, 217, 38, 0.9), 0 0 34px rgba(11, 217, 38, 0.45);
+        }
+        100% {
+            box-shadow: 0 0 0 rgba(11, 217, 38, 0), 0 0 0 rgba(11, 217, 38, 0);
+        }
+        }
+
+
+
+
+        @keyframes pulse-badge {
+            0% {
+                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 24px rgba(239, 18, 24, 1), 0 0 32px rgba(239, 18, 24, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
+                transform: scale(1);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        /* Tablet */
+        @media (max-width: 992px) {
+            .pp-programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 768px) {
+            .pp-programs-section {
+                padding: 32px 0 40px;
+            }
+
+            .pp-programs-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 12px;
+            }
+
+            .pp-program-card {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .modal {
+                max-width: calc(100% - 32px);
+                margin: 16px;
+            }
+        }
+
+        /* Mobile Extra Small */
+        @media (max-width: 480px) {
+            .pp-programs-section {
+                padding: 24px 0 32px;
+            }
+
+            .pp-program-card {
+                padding: 16px;
+            }
+        }
+
+        /* Animación de carga de cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pp-program-card {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .pp-program-card:nth-child(1) { animation-delay: 0.05s; }
+        .pp-program-card:nth-child(2) { animation-delay: 0.1s; }
+        .pp-program-card:nth-child(3) { animation-delay: 0.15s; }
+        .pp-program-card:nth-child(4) { animation-delay: 0.2s; }
+        .pp-program-card:nth-child(5) { animation-delay: 0.25s; }
+        .pp-program-card:nth-child(6) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <!-- CAJA: GRID DE PROGRAMAS -->
+    <section class="pp-programs-section" id="pp-caja-programas">
+        <div class="pp-programs-grid" id="pp-programsGrid">
+            <!-- Placeholder para el editor de Elementor (desaparece cuando JS carga) -->
+            <div class="editor-placeholder" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #f0f4f8; border-radius: 12px; border: 2px dashed #cbd5e0;">
+                <p style="color: #718096; font-size: 1rem; margin: 0;">
+                     <strong>Cards de programas</strong><br>
+                    <span style="font-size: 0.75rem;">Las cards se cargarán automáticamente al previsualizar o publicar la página.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPONENTE: MODAL (Pop-up) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-tag" id="modalTag" style="display: none;">Nuevo</span>
+                    <h2 class="modal-title" id="modalTitle">Nombre del Programa</h2>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta" id="modalMeta">
+                    <!-- Meta info dinámica -->
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p id="modalDescription">Descripción completa del programa...</p>
+                </div>
+                <!-- Formulario de registro -->
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <form id="modalFormulario">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Nombre*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Apellidos*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <input type="email" class="form-input" placeholder="Email*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <input type="tel" class="form-input" placeholder="Teléfono*" required>
+                                <span class="form-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="form-submit">Regístrate Ahora</button>
+                        <label class="form-checkbox">
+                            <input type="checkbox" required>
+                            <span>Marca la casilla para confirmar si estás de acuerdo con el uso y manejo de tus datos personales, por favor revisa nuestra <a href="https://uniempresarial.edu.co/politica-de-datos/" target="_blank">Política de Datos Uniempresarial</a>.</span>
+                        </label>
+                        <label class="form-checkbox">
+                            <input type="checkbox">
+                            <span>Acepto recibir comunicaciones comerciales.</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" id="modalCloseBtn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // DATOS DE PROGRAMAS
+        // Array con todos los programas académicos
+        // ========================================
+        const programasData = [
+            // PROGRAMAS PRESENCIALES
+            {
+                id: 1,
+                nombre: "Ingeniería de Software",
+                modalidad: "presencial",
+                duracion: "9 semestres",
+                jornada: "Diurna / Nocturna",
+                imagen: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop",
+                bullets: [
+                    "Desarrollo de aplicaciones web y móviles",
+                    "Metodologías ágiles y DevOps",
+                    "Inteligencia artificial aplicada"
+                ],
+                descripcion: "Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.",
+                esNuevo: false,
+                tieneVirtual: true, // ← CAMBIAR AQUÍ A true PARA MOSTRAR BADGE VIRTUAL
+                urlPrograma: "https://uniempresarial.edu.co/ingenieria-de-software/"
+            },
+            {
+                id: 2,
+                nombre: "Marketing",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=400&h=200&fit=crop",
+                bullets: [
+                    "Estrategias de marketing digital",
+                    "Analítica de datos y métricas",
+                    "E-commerce y marketplaces"
+                ],
+                descripcion: "Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/marketing/"
+            },
+            {
+                id: 3,
+                nombre: "Administración de Empresas",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna / Nocturna",
+                imagen: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop",
+                bullets: [
+                    "Gestión estratégica empresarial",
+                    "Liderazgo y toma de decisiones",
+                    "Emprendimiento e innovación"
+                ],
+                descripcion: "Desarrolla competencias gerenciales para liderar organizaciones con visión estratégica y responsabilidad social empresarial.",
+                esNuevo: false,
+                tieneVirtual: true,
+                urlPrograma: "https://uniempresarial.edu.co/administracion-de-empresas/"
+            },
+            {
+                id: 4,
+                nombre: "Negocios Internacionales",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=200&fit=crop",
+                bullets: [
+                    "Comercio exterior y logística",
+                    "Negociación internacional",
+                    "Mercados globales"
+                ],
+                descripcion: "Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/negocios-internacionales/"
+            },
+            {
+                id: 5,
+                nombre: "Finanzas y Comercio Exterior",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna / Nocturna",
+                imagen: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=200&fit=crop",
+                bullets: [
+                    "Gestión financiera internacional",
+                    "Comercio exterior estratégico",
+                    "Análisis de mercados globales"
+                ],
+                descripcion: "Forma profesionales expertos en finanzas y comercio internacional, capaces de gestionar operaciones financieras en contextos globales.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/finanzas-y-comercio-exterior/"
+            },
+            {
+                id: 6,
+                nombre: "Ingeniería Industrial",
+                modalidad: "presencial",
+                duracion: "10 semestres",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=200&fit=crop",
+                bullets: [
+                    "Optimización de procesos",
+                    "Gestión de la cadena de suministro",
+                    "Lean Manufacturing"
+                ],
+                descripcion: "Forma ingenieros capaces de optimizar procesos productivos y logísticos para mejorar la eficiencia organizacional.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/ingenieria-industrial/"
+            },
+        ];
+
+        // ========================================
+        // CONFIGURACIÓN GLOBAL
+        // ========================================
+        const URL_INSCRIBETE = "https://uniempresarial.edu.co/inscribete";
+
+        // ========================================
+        // VARIABLES GLOBALES
+        // ========================================
+        let tabActivo = 'presencial';
+        let terminoBusqueda = '';
+
+        // ========================================
+        // ELEMENTOS DEL DOM
+        // ========================================
+        const grid = document.getElementById('pp-programsGrid');
+        const tabs = document.querySelectorAll('.tab-btn');
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        // ========================================
+        // FUNCIÓN: Renderizar cards de programas
+        // ========================================
+        function renderizarProgramas() {
+            const programasFiltrados = programasData.filter(programa => {
+                const coincideModalidad = programa.modalidad === tabActivo;
+                const coincideBusqueda = programa.nombre.toLowerCase().includes(terminoBusqueda.toLowerCase());
+                return coincideModalidad && coincideBusqueda;
+            });
+
+            grid.innerHTML = '';
+
+            if (programasFiltrados.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                            <path d="M8 8l6 6M14 8l-6 6"/>
+                        </svg>
+                        <h3>No encontramos programas</h3>
+                        <p>Intenta con otro término de búsqueda o cambia de modalidad.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            programasFiltrados.forEach((programa, index) => {
+                const card = document.createElement('article');
+                card.className = 'pp-program-card';
+                card.style.animationDelay = `${index * 0.05}s`;
+                card.setAttribute('data-id', programa.id);
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Ver detalles de ${programa.nombre}`);
+
+                card.innerHTML = `
+                    ${programa.imagen ? `<div class="pp-card-image-container"><img src="${programa.imagen}" alt="${programa.nombre}" class="pp-card-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect fill=%27%232A449C%27 width=%27400%27 height=%27200%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27 font-family=%27Arial%27%3E${programa.nombre}%3C/text%3E%3C/svg%3E';"></div>` : ''}
+                    ${programa.tieneVirtual ? '<div class="badge-virtual-custom">VIRTUAL</div>' : ''}
+                    ${programa.esNuevo ? '<span class="pp-card-tag">Nuevo</span>' : ''}
+                    <div class="pp-card-header">
+                        <h3 class="pp-card-title">${programa.nombre}</h3>
+                    </div>
+                    <div class="pp-card-meta">
+                        <span class="pp-meta-item">
+                            <span class="pp-meta-icon icon-calendar"></span>
+                            ${programa.duracion}
+                        </span>
+                        <span class="pp-meta-item">
+                            <span class="pp-meta-icon icon-clock"></span>
+                            ${programa.jornada}
+                        </span>
+                    </div>
+                    <ul class="pp-card-bullets">
+                        ${programa.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                    </ul>
+                    <div class="pp-card-buttons">
+                        <a href="${programa.urlPrograma || '#'}" class="pp-btn-secondary">
+                            Ver programa
+                        </a>
+                        <button class="pp-btn-info" data-modal="true">
+                            Más info
+                        </button>
+                    </div>
+                `;
+
+                const btnInfo = card.querySelector('.pp-btn-info');
+                btnInfo.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    abrirModal(programa);
+                });
+
+                const btnPrograma = card.querySelector('.pp-btn-secondary');
+                btnPrograma.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ========================================
+        // FUNCIÓN: Abrir modal con detalles
+        // ========================================
+        function abrirModal(programa) {
+            document.getElementById('modalTitle').textContent = programa.nombre;
+            document.getElementById('modalDescription').textContent = programa.descripcion;
+            
+            const modalTag = document.getElementById('modalTag');
+            modalTag.style.display = programa.esNuevo ? 'inline-block' : 'none';
+
+            const modalMeta = document.getElementById('modalMeta');
+            modalMeta.innerHTML = `
+                <span class="modal-meta-item">
+                    <span class="pp-meta-icon icon-location"></span>
+                    ${programa.modalidad === 'virtual' ? 'Virtual' : 'Presencial'}
+                </span>
+                <span class="modal-meta-item">
+                    <span class="pp-meta-icon icon-calendar"></span>
+                    ${programa.duracion}
+                </span>
+                <span class="modal-meta-item">
+                    <span class="pp-meta-icon icon-clock"></span>
+                    ${programa.jornada}
+                </span>
+            `;
+
+            modalOverlay.classList.add('active');
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = scrollbarWidth + 'px';
+        }
+
+        // ========================================
+        // FUNCIÓN: Cerrar modal
+        // ========================================
+        function cerrarModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        }
+
+        // ========================================
+        // EVENT LISTENERS
+        // ========================================
+        document.getElementById('modalClose').addEventListener('click', cerrarModal);
+        document.getElementById('modalCloseBtn').addEventListener('click', cerrarModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                cerrarModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                cerrarModal();
+            }
+        });
+
+        renderizarProgramas();
+    </script>
+
+</body>
+</html>

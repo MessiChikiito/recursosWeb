@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paletas grises — preview</title>
+  <style>
+    :root{
+      --blue:#0B62A3;
+      --green:#0BD926;
+      --red:#EF1218;
+    }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f4f6fb;color:#0f172a}
+    .wrap{max-width:1100px;margin:24px auto;padding:0 16px}
+    h1{margin:0 0 14px;font-size:20px}
+    .row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+    .card{
+      border-radius:14px;padding:16px;
+      box-shadow:0 10px 30px rgba(2,6,23,.06);
+      border:1px solid #e5e7eb;
+      background:#fff;
+    }
+    .name{font-weight:800;margin-bottom:10px}
+    .box{border-radius:14px;padding:16px;border:1px solid var(--border);background:var(--bg);box-shadow:var(--shadow)}
+    .label{font-size:12px;color:var(--text);font-weight:800;letter-spacing:.2px}
+    .value{font-size:26px;font-weight:950;margin:6px 0 2px;color:var(--number)}
+    .sub{font-size:13px;color:var(--text)}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .chip{display:flex;align-items:center;gap:8px;font-size:12px;color:#334155}
+    .dot{width:14px;height:14px;border-radius:6px;background:var(--c);border:1px solid rgba(0,0,0,.08)}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      padding:10px 14px;border-radius:12px;border:0;cursor:pointer;
+      font-weight:900;display:inline-flex;align-items:center;gap:10px;
+    }
+    .btn-green{background:var(--green);color:#05210f}
+    .btn-green:hover{background:#08B81F}
+    .btn-green:active{background:#069A1A;transform:translateY(1px)}
+    .btn-outline{background:transparent;border:2px solid #0B62A3;color:#0B62A3}
+    @media (max-width:900px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Previsualización rápida — 3 paletas grises + acentos</h1>
+
+    <div class="row">
+
+      <!-- OPCIÓN 1 -->
+      <div class="card">
+        <div class="name">Opción 1 — Neutro moderno</div>
+
+        <div class="box" style="
+          --bg:#FFFFFF;
+          --border:#E5E7EB;
+          --text:#64748B;
+          --number:#0F172A;
+          --shadow:0 8px 24px rgba(15,23,42,.06);
+        ">
+          <div class="label">Tasa de empleabilidad</div>
+          <div class="value">95%</div>
+          <div class="sub">Texto secundario en gris</div>
+
+          <div class="chips">
+            <div class="chip"><span class="dot" style="--c:var(--blue)"></span>Número en azul (opcional)</div>
+            <div class="chip"><span class="dot" style="--c:var(--green)"></span>Número en verde (opcional)</div>
+            <div class="chip"><span class="dot" style="--c:var(--red)"></span>Número en rojo (opcional)</div>
+          </div>
+        </div>
+
+        <div class="btns">
+          <button class="btn btn-green">Ver Pregrados Virtuales</button>
+          <button class="btn btn-outline">Solicitar asesoría</button>
+        </div>
+      </div>
+
+      <!-- OPCIÓN 2 -->
+      <div class="card">
+        <div class="name">Opción 2 — Gris frío (tech)</div>
+
+        <div class="box" style="
+          --bg:#F8FAFC;
+          --border:#E2E8F0;
+          --text:#64748B;
+          --number:#111827;
+          --shadow:0 10px 30px rgba(2,6,23,.08);
+        ">
+          <div class="label">Inversión por semestre</div>
+          <div class="value">$6.757.000</div>
+          <div class="sub">Borde frío + fondo suave</div>
+
+          <div class="chips">
+            <div class="chip"><span class="dot" style="--c:var(--blue)"></span>Accent opcional</div>
+            <div class="chip"><span class="dot" style="--c:var(--green)"></span>Accent opcional</div>
+          </div>
+        </div>
+
+        <div class="btns">
+          <button class="btn btn-green">CTA verde (hover oscuro)</button>
+          <button class="btn btn-outline">CTA outline</button>
+        </div>
+      </div>
+
+      <!-- OPCIÓN 3 -->
+      <div class="card">
+        <div class="name">Opción 3 — Gris cálido (amable)</div>
+
+        <div class="box" style="
+          --bg:#FAFAF9;
+          --border:#E7E5E4;
+          --text:#78716C;
+          --number:#1C1917;
+          --shadow:0 8px 24px rgba(28,25,23,.06);
+        ">
+          <div class="label">Empresas aliadas</div>
+          <div class="value">500+</div>
+          <div class="sub">Menos “hospital”, más humano</div>
+
+          <div class="chips">
+            <div class="chip"><span class="dot" style="--c:var(--red)"></span>Accent opcional</div>
+          </div>
+        </div>
+
+        <div class="btns">
+          <button class="btn btn-green">CTA verde</button>
+          <button class="btn btn-outline">CTA outline</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <div class="name">Tip rápido</div>
+      <div style="color:#475569">
+        Si quieres que las 3 cards “métricas” se vean consistentes y no saturadas:
+        deja <b>bg + borde + texto</b> en gris, y si acaso dale color <b>solo al número</b>.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

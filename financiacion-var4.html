@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversión, becas y financiación</title>
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #ffffff;
+            color: #06325a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: inherit;
+            margin: 0;
+            color: #0132AF;
+        }
+
+        h3.ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(1, 50, 175, .08);
+            border-color: rgba(1, 50, 175, .35);
+        }
+
+        /* --- Financiación styles --- */
+        .ue-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            transition: all 0.3s ease !important;
+            overflow: hidden;
+        }
+
+        .ue-finCard::before {
+            content: '';
+            display: block;
+            height: 6px;
+            width: 100%;
+        }
+
+        .ue-finCard:nth-child(1)::before {
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+        }
+
+        .ue-finCard:nth-child(2)::before {
+            background: linear-gradient(90deg, #FF6A00 0%, #ff8a2e 100%);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.2);
+        }
+
+        .ue-finCard:nth-child(3)::before {
+            background: linear-gradient(90deg, #00897b 0%, #00a89d 100%);
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.2);
+        }
+
+        .ue-finCard:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+            transform: translateY(-4px) !important;
+        }
+
+        .ue-finCard > div {
+            padding: 28px;
+        }
+
+        .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+
+        .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+
+        .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+
+        .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 12px;
+            margin: 12px 0 0 0;
+        }
+
+        .ue-finV p {
+            margin: 0;
+        }
+
+        .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .ue-list li.jovenes {
+            color: #0132AF;
+            font-weight: 800;
+        }
+
+        .ue-muted {
+            color: #7a8a99;
+        }
+
+        .ue-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.4s cubic-bezier(.4,0,.2,1) !important;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+        }
+
+        .ue-btn-outline {
+            background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+        }
+
+        .ue-btn-outline:hover {
+            background: linear-gradient(135deg, #ff8a2e 0%, #ffaa4e 100%) !important;
+            box-shadow: 0 8px 24px rgba(255, 106, 0, 0.5) !important;
+            transform: translateY(-2px) !important;
+            color: white !important;
+        }
+
+        .ue-btn-outline:active {
+            transform: translateY(0px) !important;
+        }
+
+        .ue-btn-teal {
+            background: linear-gradient(135deg, #00897b 0%, #00a89d 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.3);
+        }
+
+        .ue-btn-teal:hover {
+            background: linear-gradient(135deg, #00a89d 0%, #00c9c0 100%) !important;
+            box-shadow: 0 8px 24px rgba(0, 137, 123, 0.5) !important;
+            transform: translateY(-2px) !important;
+            color: white !important;
+        }
+
+        .ue-btn-teal:active {
+            transform: translateY(0px) !important;
+        }
+
+        @media (max-width: 980px) {
+            .ue-finGrid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ue-finGrid {
+                grid-template-columns: 1fr;
+            }
+            .ue-section {
+                padding: 30px 15px;
+            }
+            h3.ue-h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Financiación -->
+    <section id="financiacion" class="ue-section" aria-label="Inversión, becas y financiación">
+        <div class="ue-headRow">
+            <div>
+                <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                    Valores de referencia. Pueden variar por convenios y convocatorias.
+                </div>
+            </div>
+        </div>
+
+        <div class="ue-finGrid">
+            <div class="ue-finCard">
+                <div>
+                    <div class="ue-finK">Inversión por semestre</div>
+                    <div class="ue-finV"><p>$6.757.000</p></div>
+                    <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                        Ajustable desde el JS (UE_CONFIG.precioSemestre)
+                    </div>
+                </div>
+            </div>
+
+            <div class="ue-finCard">
+                <div>
+                    <div class="ue-finK">Becas y convenios</div>
+                    <ul class="ue-list">
+                        <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                        <li>Cundinamarca+ (placeholder)</li>
+                        <li>Convenios empresariales (ver sección)</li>
+                    </ul>
+                    <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                </div>
+            </div>
+
+            <div class="ue-finCard">
+                <div>
+                    <div class="ue-finK">Opciones de financiación</div>
+                    <ul class="ue-list">
+                        <li>ICETEX</li>
+                        <li>Aliados bancarios</li>
+                        <li>Planes de pago flexibles</li>
+                    </ul>
+                    <a href="#faq" class="ue-btn ue-btn-teal" style="margin-top:10px">Ver preguntas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

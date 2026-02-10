@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones - Sección bajo Hero Pregrados</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2A449C;
+            margin-bottom: 50px;
+        }
+        .design-option {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .option-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #06325a;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2A449C;
+        }
+        
+        /* ===== OPCIÓN 1: STATS/NÚMEROS ===== */
+        .opt1-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+        .opt1-stat {
+            padding: 32px 20px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e3edff 100%);
+            border-radius: 12px;
+            border: 1px solid #d0dce8;
+        }
+        .opt1-stat strong {
+            display: block;
+            font-size: 2.5rem;
+            color: #2A449C;
+            margin-bottom: 8px;
+            font-weight: 900;
+        }
+        .opt1-stat p {
+            color: #718096;
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* ===== OPCIÓN 2: METODOLOGÍA DUAL ===== */
+        .opt2-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .opt2-text h3 {
+            font-size: 1.8rem;
+            color: #06325a;
+            margin: 0 0 16px;
+            font-weight: 900;
+        }
+        .opt2-text p {
+            color: #718096;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0 0 20px;
+        }
+        .opt2-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .opt2-item {
+            background: #f9fcff;
+            border: 2px solid #e0e8f2;
+            border-left: 4px solid #2A449C;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .opt2-item strong {
+            color: #2A449C;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .opt2-item span {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* ===== OPCIÓN 3: CARACTERÍSTICAS ===== */
+        .opt3-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .opt3-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .opt3-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .opt3-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2A449C 0%, #3a5bc7 100%);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        .opt3-card h4 {
+            font-size: 1.1rem;
+            color: #06325a;
+            margin: 0 0 8px;
+            font-weight: 700;
+        }
+        .opt3-card p {
+            color: #718096;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ===== OPCIÓN 4: TIMELINE/PASOS ===== */
+        .opt4-timeline {
+            position: relative;
+            padding: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .opt4-timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2A449C, #EF1218);
+            z-index: 0;
+        }
+        .opt4-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .opt4-step::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 4px solid #2A449C;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+        }
+        .opt4-step:nth-child(3)::before,
+        .opt4-step:nth-child(4)::before {
+            border-color: #EF1218;
+        }
+        .opt4-step strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #06325a;
+            margin-bottom: 4px;
+        }
+        .opt4-step span {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* ===== OPCIÓN 5: DIFERENCIALES PREMIUM ===== */
+        .opt5-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .opt5-header h3 {
+            font-size: 2rem;
+            color: #06325a;
+            margin: 0 0 8px;
+        }
+        .opt5-header p {
+            color: #718096;
+            font-size: 1.05rem;
+            margin: 0;
+        }
+        .opt5-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .opt5-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 20px;
+            padding: 24px;
+            background: linear-gradient(135deg, #f9fcff 0%, #f0f7ff 100%);
+            border: 1px solid #e0ecff;
+            border-radius: 12px;
+        }
+        .opt5-badge {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2A449C 0%, #3a5bc7 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .opt5-content h4 {
+            font-size: 1.1rem;
+            color: #06325a;
+            margin: 0 0 8px;
+            font-weight: 700;
+        }
+        .opt5-content p {
+            color: #718096;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .opt1-section { grid-template-columns: repeat(2, 1fr); }
+            .opt2-container { grid-template-columns: 1fr; }
+            .opt3-row { grid-template-columns: 1fr; }
+            .opt4-timeline { grid-template-columns: repeat(2, 1fr); }
+            .opt4-timeline::before { display: none; }
+            .opt5-grid { grid-template-columns: 1fr; }
+            .opt5-item { grid-template-columns: 1fr; }
+            .opt5-badge { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>5 Opciones - Sección bajo Hero Pregrados</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="design-option">
+            <div class="option-title">Opción 1: Stats/Números Clave</div>
+            <div class="opt1-section">
+                <div class="opt1-stat">
+                    <strong>9</strong>
+                    <p>semestres de formación</p>
+                </div>
+                <div class="opt1-stat">
+                    <strong>18</strong>
+                    <p>meses experiencia laboral</p>
+                </div>
+                <div class="opt1-stat">
+                    <strong>95%</strong>
+                    <p>tasa de empleabilidad</p>
+                </div>
+                <div class="opt1-stat">
+                    <strong>500+</strong>
+                    <p>egresados exitosos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="design-option">
+            <div class="option-title">Opción 2: Metodología Dual (2 Columnas)</div>
+            <div class="opt2-container">
+                <div class="opt2-text">
+                    <h3>Formación Dual Integrada</h3>
+                    <p>Combina teoría académica con experiencia empresarial real. Estudia en la universidad y trabaja simultáneamente con remuneración.</p>
+                    <div class="opt2-grid">
+                        <div class="opt2-item">
+                            <strong>🎓 Académico</strong>
+                            <span>Matutino: Clases especializadas</span>
+                        </div>
+                        <div class="opt2-item">
+                            <strong>💼 Laboral</strong>
+                            <span>Vespertino: Experiencia empresarial</span>
+                        </div>
+                        <div class="opt2-item">
+                            <strong>💰 Remunerado</strong>
+                            <span>Percibe salario durante la carrera</span>
+                        </div>
+                        <div class="opt2-item">
+                            <strong>📈 Crecimiento</strong>
+                            <span>Desarrollo profesional integral</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #2A449C 0%, #3a5bc7 100%); border-radius: 12px; height: 350px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center; padding: 20px;">
+                    [Imagen ilustrando formación dual]
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="design-option">
+            <div class="option-title">Opción 3: Características Destacadas (3 Columnas)</div>
+            <div class="opt3-row">
+                <div class="opt3-card">
+                    <div class="opt3-icon">🏆</div>
+                    <h4>Programas Acreditados</h4>
+                    <p>Todos nuestros pregrados cuentan con acreditación de alta calidad y reconocimiento nacional.</p>
+                </div>
+                <div class="opt3-card">
+                    <div class="opt3-icon">🌐</div>
+                    <h4>Infraestructura Moderna</h4>
+                    <p>Aulas, laboratorios y espacios de trabajo equipados con tecnología de punta.</p>
+                </div>
+                <div class="opt3-card">
+                    <div class="opt3-icon">👨‍🎓</div>
+                    <h4>Docentes Expertos</h4>
+                    <p>Profesionales con experiencia empresarial y académica de alto nivel.</p>
+                </div>
+            </div>
+            <div class="opt3-row">
+                <div class="opt3-card">
+                    <div class="opt3-icon">💼</div>
+                    <h4>Alianzas Empresariales</h4>
+                    <p>Convenios con más de 500 empresas del sector para prácticas y empleo.</p>
+                </div>
+                <div class="opt3-card">
+                    <div class="opt3-icon">🎯</div>
+                    <h4>Educación Enfocada</h4>
+                    <p>Currículum diseñado para responder a demandas del mercado actual.</p>
+                </div>
+                <div class="opt3-card">
+                    <div class="opt3-icon">📱</div>
+                    <h4>Tecnología Innovadora</h4>
+                    <p>Plataformas digitales avanzadas para complementar tu aprendizaje.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="design-option">
+            <div class="option-title">Opción 4: Timeline/Pasos del Programa</div>
+            <div class="opt4-timeline">
+                <div class="opt4-step">
+                    <strong>Año 1</strong>
+                    <span>Fundamentos</span>
+                </div>
+                <div class="opt4-step">
+                    <strong>Años 1-2</strong>
+                    <span>Experiencia Dual</span>
+                </div>
+                <div class="opt4-step">
+                    <strong>Años 2-3</strong>
+                    <span>Especialización</span>
+                </div>
+                <div class="opt4-step">
+                    <strong>Año 3.5</strong>
+                    <span>Egreso Profesional</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="design-option">
+            <div class="option-title">Opción 5: Diferenciales Premium (Grid 2x3)</div>
+            <div class="opt5-header">
+                <h3>¿Por Qué Estudiar aquí?</h3>
+                <p>Diferenciales que nos hacen únicos en educación superior</p>
+            </div>
+            <div class="opt5-grid">
+                <div class="opt5-item">
+                    <div class="opt5-badge">1</div>
+                    <div class="opt5-content">
+                        <h4>Educación Formativa</h4>
+                        <p>Carrera de 3.5 años con formación dual integrada desde el inicio.</p>
+                    </div>
+                </div>
+                <div class="opt5-item">
+                    <div class="opt5-badge">2</div>
+                    <div class="opt5-content">
+                        <h4>Experiencia Laboral</h4>
+                        <p>18 meses de experiencia práctica en empresas reales durante tu formación.</p>
+                    </div>
+                </div>
+                <div class="opt5-item">
+                    <div class="opt5-badge">3</div>
+                    <div class="opt5-content">
+                        <h4>Remuneración</h4>
+                        <p>Percibe salario competitivo durante tu jornada laboral en la empresa.</p>
+                    </div>
+                </div>
+                <div class="opt5-item">
+                    <div class="opt5-badge">4</div>
+                    <div class="opt5-content">
+                        <h4>Inserción Laboral</h4>
+                        <p>95% de nuestros egresados consigue empleo en los primeros 6 meses.</p>
+                    </div>
+                </div>
+                <div class="opt5-item">
+                    <div class="opt5-badge">5</div>
+                    <div class="opt5-content">
+                        <h4>Docentes Empresarios</h4>
+                        <p>Aprende de profesionales activos en la industria con experiencia real.</p>
+                    </div>
+                </div>
+                <div class="opt5-item">
+                    <div class="opt5-badge">6</div>
+                    <div class="opt5-content">
+                        <h4>Certificaciones</h4>
+                        <p>Obtén certificaciones internacionales reconocidas globalmente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

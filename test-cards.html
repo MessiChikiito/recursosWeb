@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Cards Section</title>
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #0132AF;
+            --color-primary-light: #0052D6;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
+        /* Grid responsive de cards */
+        .pp-programs-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        .pp-programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Card de programa */
+        .pp-program-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-gray-200);
+            transform: translateY(0) !important;
+            will-change: transform, box-shadow;
+        }
+
+        .pp-program-card:hover {
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #e0e7ff !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-card-image-container {
+            width: calc(100% + 56px);
+            height: 170px;
+            margin: -28px -28px 20px -28px;
+            overflow: hidden;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .pp-card-image-container {
+                width: 100%;
+                height: 170px;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .pp-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-program-card:hover .pp-card-image {
+            transform: none;
+        }
+
+        .pp-card-tag {
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%) !important;
+            color: var(--color-white) !important;
+            font-size: 0.8rem !important;
+            padding: 8px 16px !important;
+            border-radius: 50px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 
+                0 4px 15px rgba(239, 18, 24, 0.5),
+                0 0 0 4px rgba(239, 18, 24, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: pulse-badge 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-style: italic;
+        }
+
+        @keyframes pulse-badge {
+            0% {
+                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 24px rgba(239, 18, 24, 1), 0 0 32px rgba(239, 18, 24, 0.5);
+                transform: scale(1.08);
+            }
+            100% {
+                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
+                transform: scale(1);
+            }
+        }
+
+        .pp-card-header {
+            margin-bottom: 16px;
+        }
+
+        .pp-card-title {
+            font-size: 1.90rem !important;
+            font-weight: 700 !important;
+            color: #1f2937 !important;
+            margin-bottom: 8px !important;
+            line-height: 1.3 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .pp-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .pp-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem !important;
+            color: #8893a4 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-meta-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Iconos SVG como background para meta info */
+        .pp-meta-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            opacity: 1;
+        }
+
+        .pp-card-bullets {
+            list-style: none;
+            margin: 0 0 20px 0 !important;
+            padding: 0 !important;
+            flex-grow: 1;
+            text-align: left !important;
+        }
+        
+        .pp-card-bullets ul {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .pp-card-bullets li {
+            font-size: 0.9rem !important;
+            color: var(--color-gray-700) !important;
+            padding: 6px 0 !important;
+            padding-left: 20px !important;
+            position: relative;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            line-height: 1.5 !important;
+        }
+
+        .pp-card-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .pp-btn-secondary {
+            flex: 1;
+            padding: 12px 20px;
+            background: #374151 !important;
+            color: var(--color-white) !important;
+            border: 2px solid #374151 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+
+        .pp-btn-secondary:hover {
+            background: #2c3a4e !important;
+            color: var(--color-white) !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Contenedor de botones de la card */
+        .pp-card-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .pp-btn-info {
+            flex: 1;
+            padding: 12px 20px;
+            background: white !important;
+            color: #0b48e2 !important;
+            border: 2px solid #0b48e2 !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+        }
+
+        .pp-btn-info:hover {
+            background: #0b48e2 !important;
+            color: white !important;
+            border: 2px solid transparent !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .pp-programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pp-programs-section {
+                padding: 32px 16px 40px;
+            }
+
+            .pp-programs-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 16px;
+            }
+
+            .pp-program-card {
+                padding: 20px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pp-program-card {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .pp-program-card:nth-child(1) { animation-delay: 0.05s; }
+        .pp-program-card:nth-child(2) { animation-delay: 0.1s; }
+        .pp-program-card:nth-child(3) { animation-delay: 0.15s; }
+    </style>
+</head>
+<body>
+    <section class="pp-programs-section" id="pp-caja-programas">
+        <div class="pp-programs-grid" id="pp-programsGrid">
+            <!-- Card 1 -->
+            <div class="pp-program-card">
+                <div class="pp-card-image-container">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=170&fit=crop" alt="Administración de Empresas" class="pp-card-image">
+                </div>
+                <div class="pp-card-tag">PRESENCIAL</div>
+                <div class="pp-card-header">
+                    <h3 class="pp-card-title">Administración de Empresas</h3>
+                </div>
+                <div class="pp-card-meta">
+                    <span class="pp-meta-item">
+                        <span class="pp-meta-icon" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23718096%22 stroke-width=%222%22><rect x=%223%22 y=%224%22 width=%2218%22 height=%2718%22 rx=%222%22 ry=%222%22/><line x1=%2716%22 y1=%272%22 x2=%2716%22 y2=%276%22/><line x1=%278%22 y1=%272%22 x2=%278%22 y2=%276%22/><line x1=%273%22 y1=%2710%22 x2=%2721%22 y2=%2710%22/></svg>')"></span>
+                        7 Semestres
+                    </span>
+                    <span class="pp-meta-item">
+                        <span class="pp-meta-icon" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%222A449C%22 stroke-width=%222%22><path d=%22M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z%22/><circle cx=%2712%22 cy=%2710%22 r=%273%22/></svg>')"></span>
+                        Bogotá
+                    </span>
+                </div>
+                <ul class="pp-card-bullets">
+                    <li>Modalidad dual con experiencia real</li>
+                    <li>Profesores con experiencia empresarial</li>
+                    <li>18 meses de prácticas remuneradas</li>
+                </ul>
+                <div class="pp-card-buttons">
+                    <button class="pp-btn-info" onclick="alert('Ver más')">Ver más</button>
+                    <button class="pp-btn-secondary" onclick="alert('Solicitar información')">Información</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="pp-program-card">
+                <div class="pp-card-image-container">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=170&fit=crop" alt="Ingeniería de Sistemas" class="pp-card-image">
+                </div>
+                <div class="pp-card-tag">PRESENCIAL</div>
+                <div class="pp-card-header">
+                    <h3 class="pp-card-title">Ingeniería de Sistemas</h3>
+                </div>
+                <div class="pp-card-meta">
+                    <span class="pp-meta-item">
+                        <span class="pp-meta-icon" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23718096%22 stroke-width=%222%22><rect x=%223%22 y=%224%22 width=%2718%22 height=%2718%22 rx=%222%22 ry=%222%22/><line x1=%2716%22 y1=%272%22 x2=%2716%22 y2=%276%22/><line x1=%278%22 y1=%272%22 x2=%278%22 y2=%276%22/><line x1=%273%22 y1=%2710%22 x2=%2721%22 y2=%2710%22/></svg>')"></span>
+                        8 Semestres
+                    </span>
+                    <span class="pp-meta-item">
+                        <span class="pp-meta-icon" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%222A449C%22 stroke-width=%222%22><path d=%22M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z%22/><circle cx=%2712%22 cy=%2710%22 r=%273%22/></svg>')"></span>
+                        Bogotá
+                    </span>
+                </div>
+                <ul class="pp-card-bullets">
+                    <li>Enfocada en transformación digital</li>
+                    <li>Laboratorios modernos y equipados</li>
+                    <li>Convenios con tech companies</li>
+                </ul>
+                <div class="pp-card-buttons">
+                    <button class="pp-btn-info" onclick="alert('Ver más')">Ver más</button>
+                    <button class="pp-btn-secondary" onclick="alert('Solicitar información')">Información</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="pp-program-card">
+                <div class="pp-card-image-container">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=170&fit=crop" alt="Marketing Digital" class="pp-card-image">
+                </div>
+                <div class="pp-card-tag">PRESENCIAL</div>
+                <div class="pp-card-header">
+                    <h3 class="pp-card-title">Marketing Digital</h3>
+                </div>
+                <div class="pp-card-meta">
+                    <span class="pp-meta-item">
+                        <span class="pp-meta-icon" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23718096%22 stroke-width=%222%22><rect x=%223%22 y=%224%22 width=%2718%22 height=%2718%22 rx=%222%22 ry=%222%22/><line x1=%2716%22 y1=%272%22 x2=%2716%22 y2=%276%22/><line x1=%278%22 y1=%272%22 x2=%278%22 y2=%276%22/><line x1=%273%22 y1=%2710%22 x2=%2721%22 y2=%2710%22/></svg>')"></span>
+                        7 Semestres
+                    </span>
+                    <span class="pp-meta-item">
+                        <span class="pp-meta-icon" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%222A449C%22 stroke-width=%222%22><path d=%22M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z%22/><circle cx=%2712%22 cy=%2710%22 r=%273%22/></svg>')"></span>
+                        Bogotá
+                    </span>
+                </div>
+                <ul class="pp-card-bullets">
+                    <li>Estrategias de marketing actual</li>
+                    <li>Herramientas digitales profesionales</li>
+                    <li>Proyectos reales con empresas</li>
+                </ul>
+                <div class="pp-card-buttons">
+                    <button class="pp-btn-info" onclick="alert('Ver más')">Ver más</button>
+                    <button class="pp-btn-secondary" onclick="alert('Solicitar información')">Información</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

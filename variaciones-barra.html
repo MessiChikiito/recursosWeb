@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variaciones - Barra Superior de Color</title>
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin-top: 0;
+            color: #0132AF;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .design-option {
+            margin-bottom: 80px;
+        }
+        .option-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #06325a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0132AF;
+        }
+        .option-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+            outline:none;
+            box-shadow: 0 0 0 4px rgba(1,50,175,.08);
+            border-color: rgba(1,50,175,.35);
+        }
+
+        /* ===== VARIACIÓN 1: BARRA DELGADA (ORIGINAL) ===== */
+        .var1 .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .var1 .ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .var1 .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .var1 .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .var1 .ue-finCard::before {
+            content: '';
+            display: block;
+            height: 4px;
+            width: 100%;
+        }
+        .var1 .ue-finCard:nth-child(1)::before {
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+        }
+        .var1 .ue-finCard:nth-child(2)::before {
+            background: linear-gradient(90deg, #FF6A00 0%, #ff8a2e 100%);
+        }
+        .var1 .ue-finCard:nth-child(3)::before {
+            background: linear-gradient(90deg, #00897b 0%, #00a89d 100%);
+        }
+        .var1 .ue-finCard:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .var1 .ue-finCard > div {
+            padding: 28px;
+        }
+        .var1 .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .var1 .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+        .var1 .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+        .var1 .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+        .var1 .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 12px;
+            margin: 12px 0 0 0;
+        }
+        .var1 .ue-finV p {
+            margin: 0;
+        }
+        .var1 .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .var1 .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* ===== VARIACIÓN 2: BARRA MÁS ANCHA ===== */
+        .var2 .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .var2 .ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .var2 .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .var2 .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .var2 .ue-finCard::before {
+            content: '';
+            display: block;
+            height: 8px;
+            width: 100%;
+        }
+        .var2 .ue-finCard:nth-child(1)::before {
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+        }
+        .var2 .ue-finCard:nth-child(2)::before {
+            background: linear-gradient(90deg, #FF6A00 0%, #ff8a2e 100%);
+        }
+        .var2 .ue-finCard:nth-child(3)::before {
+            background: linear-gradient(90deg, #00897b 0%, #00a89d 100%);
+        }
+        .var2 .ue-finCard:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+        .var2 .ue-finCard > div {
+            padding: 28px;
+        }
+        .var2 .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .var2 .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+        .var2 .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+        .var2 .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+        .var2 .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 12px;
+            margin: 12px 0 0 0;
+        }
+        .var2 .ue-finV p {
+            margin: 0;
+        }
+        .var2 .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .var2 .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* ===== VARIACIÓN 3: BARRA IZQUIERDA ===== */
+        .var3 .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .var3 .ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .var3 .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .var3 .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            border-left: 5px solid;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .var3 .ue-finCard:nth-child(1) {
+            border-left-color: #0132AF;
+        }
+        .var3 .ue-finCard:nth-child(2) {
+            border-left-color: #FF6A00;
+        }
+        .var3 .ue-finCard:nth-child(3) {
+            border-left-color: #00897b;
+        }
+        .var3 .ue-finCard:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateX(4px);
+        }
+        .var3 .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .var3 .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+        .var3 .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+        .var3 .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+        .var3 .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 12px;
+            margin: 12px 0 0 0;
+        }
+        .var3 .ue-finV p {
+            margin: 0;
+        }
+        .var3 .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .var3 .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* ===== VARIACIÓN 4: BARRA CON SOMBRA COLOREADA ===== */
+        .var4 .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .var4 .ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .var4 .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .var4 .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .var4 .ue-finCard::before {
+            content: '';
+            display: block;
+            height: 6px;
+            width: 100%;
+        }
+        .var4 .ue-finCard:nth-child(1)::before {
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+        }
+        .var4 .ue-finCard:nth-child(2)::before {
+            background: linear-gradient(90deg, #FF6A00 0%, #ff8a2e 100%);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.2);
+        }
+        .var4 .ue-finCard:nth-child(3)::before {
+            background: linear-gradient(90deg, #00897b 0%, #00a89d 100%);
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.2);
+        }
+        .var4 .ue-finCard:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+        .var4 .ue-finCard > div {
+            padding: 28px;
+        }
+        .var4 .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .var4 .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+        .var4 .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+        .var4 .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+        .var4 .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 12px;
+            margin: 12px 0 0 0;
+        }
+        .var4 .ue-finV p {
+            margin: 0;
+        }
+        .var4 .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .var4 .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* ===== VARIACIÓN 5: BARRA CON ICONO/CÍRCULO ===== */
+        .var5 .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .var5 .ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .var5 .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .var5 .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 28px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-top: 50px;
+        }
+        .var5 .ue-finCard::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 28px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        .var5 .ue-finCard:nth-child(1)::before {
+            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.3);
+        }
+        .var5 .ue-finCard:nth-child(2)::before {
+            background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+        }
+        .var5 .ue-finCard:nth-child(3)::before {
+            background: linear-gradient(135deg, #00897b 0%, #00a89d 100%);
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.3);
+        }
+        .var5 .ue-finCard:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .var5 .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .var5 .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+        .var5 .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+        .var5 .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+        .var5 .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 12px;
+            margin: 12px 0 0 0;
+        }
+        .var5 .ue-finV p {
+            margin: 0;
+        }
+        .var5 .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .var5 .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* ===== VARIACIÓN 6: BARRA SUPERIOR REDONDEADA ===== */
+        .var6 .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .var6 .ue-h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .var6 .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .var6 .ue-finCard {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .var6 .ue-finCard::before {
+            content: '';
+            display: block;
+            height: 6px;
+            width: 100%;
+            border-radius: 0;
+        }
+        .var6 .ue-finCard:nth-child(1)::before {
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+        }
+        .var6 .ue-finCard:nth-child(2)::before {
+            background: linear-gradient(90deg, #FF6A00 0%, #ff8a2e 100%);
+        }
+        .var6 .ue-finCard:nth-child(3)::before {
+            background: linear-gradient(90deg, #00897b 0%, #00a89d 100%);
+        }
+        .var6 .ue-finCard:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+        }
+        .var6 .card-top {
+            padding: 24px 28px 8px;
+            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+        }
+        .var6 .ue-finCard > .card-content {
+            padding: 16px 28px 28px;
+        }
+        .var6 .ue-finK {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .var6 .ue-finCard:nth-child(1) .ue-finK {
+            color: #0132AF;
+        }
+        .var6 .ue-finCard:nth-child(2) .ue-finK {
+            color: #FF6A00;
+        }
+        .var6 .ue-finCard:nth-child(3) .ue-finK {
+            color: #00897b;
+        }
+        .var6 .ue-finV {
+            font-size: 32px;
+            color: #092b57;
+            font-weight: 900;
+            margin-top: 8px;
+            margin: 8px 0 0 0;
+        }
+        .var6 .ue-finV p {
+            margin: 0;
+        }
+        .var6 .ue-list {
+            margin: 12px 0 0;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .var6 .ue-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .ue-muted {
+            color: #7a8a99;
+        }
+
+        .ue-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .ue-btn-outline {
+            background: transparent;
+            border: 1px solid #0132AF;
+            color: #0132AF;
+        }
+        .ue-btn-outline:hover {
+            background: #0132AF;
+            color: white;
+        }
+
+        @media (max-width: 980px) {
+            .ue-finGrid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .ue-finGrid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6 Variaciones - Barra Superior de Color</h1>
+
+        <!-- VARIACIÓN 1 -->
+        <div class="design-option">
+            <div class="option-title">Variación 1: Barra Delgada 4px</div>
+            <div class="option-content var1">
+                <div class="ue-headRow">
+                    <div>
+                        <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                        <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                            Valores de referencia. Pueden variar por convenios y convocatorias.
+                        </div>
+                    </div>
+                </div>
+                <div class="ue-finGrid">
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Inversión por semestre</div>
+                        <div class="ue-finV"><p>$6.757.000</p></div>
+                        <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                            Ajustable desde el JS
+                        </div>
+                    </div></div>
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Becas y convenios</div>
+                        <ul class="ue-list">
+                            <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                            <li>Cundinamarca+ (placeholder)</li>
+                            <li>Convenios empresariales (ver sección)</li>
+                        </ul>
+                        <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                    </div></div>
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Opciones de financiación</div>
+                        <ul class="ue-list">
+                            <li>ICETEX</li>
+                            <li>Aliados bancarios</li>
+                            <li>Planes de pago flexibles</li>
+                        </ul>
+                        <a href="#faq" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver preguntas</a>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIACIÓN 2 -->
+        <div class="design-option">
+            <div class="option-title">Variación 2: Barra Más Ancha 8px</div>
+            <div class="option-content var2">
+                <div class="ue-headRow">
+                    <div>
+                        <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                        <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                            Valores de referencia. Pueden variar por convenios y convocatorias.
+                        </div>
+                    </div>
+                </div>
+                <div class="ue-finGrid">
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Inversión por semestre</div>
+                        <div class="ue-finV"><p>$6.757.000</p></div>
+                        <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                            Ajustable desde el JS
+                        </div>
+                    </div></div>
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Becas y convenios</div>
+                        <ul class="ue-list">
+                            <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                            <li>Cundinamarca+ (placeholder)</li>
+                            <li>Convenios empresariales (ver sección)</li>
+                        </ul>
+                        <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                    </div></div>
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Opciones de financiación</div>
+                        <ul class="ue-list">
+                            <li>ICETEX</li>
+                            <li>Aliados bancarios</li>
+                            <li>Planes de pago flexibles</li>
+                        </ul>
+                        <a href="#faq" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver preguntas</a>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIACIÓN 3 -->
+        <div class="design-option">
+            <div class="option-title">Variación 3: Barra Izquierda Vertical</div>
+            <div class="option-content var3">
+                <div class="ue-headRow">
+                    <div>
+                        <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                        <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                            Valores de referencia. Pueden variar por convenios y convocatorias.
+                        </div>
+                    </div>
+                </div>
+                <div class="ue-finGrid">
+                    <div class="ue-finCard">
+                        <div class="ue-finK">Inversión por semestre</div>
+                        <div class="ue-finV"><p>$6.757.000</p></div>
+                        <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                            Ajustable desde el JS
+                        </div>
+                    </div>
+                    <div class="ue-finCard">
+                        <div class="ue-finK">Becas y convenios</div>
+                        <ul class="ue-list">
+                            <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                            <li>Cundinamarca+ (placeholder)</li>
+                            <li>Convenios empresariales (ver sección)</li>
+                        </ul>
+                        <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                    </div>
+                    <div class="ue-finCard">
+                        <div class="ue-finK">Opciones de financiación</div>
+                        <ul class="ue-list">
+                            <li>ICETEX</li>
+                            <li>Aliados bancarios</li>
+                            <li>Planes de pago flexibles</li>
+                        </ul>
+                        <a href="#faq" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver preguntas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIACIÓN 4 -->
+        <div class="design-option">
+            <div class="option-title">Variación 4: Barra con Sombra Coloreada</div>
+            <div class="option-content var4">
+                <div class="ue-headRow">
+                    <div>
+                        <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                        <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                            Valores de referencia. Pueden variar por convenios y convocatorias.
+                        </div>
+                    </div>
+                </div>
+                <div class="ue-finGrid">
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Inversión por semestre</div>
+                        <div class="ue-finV"><p>$6.757.000</p></div>
+                        <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                            Ajustable desde el JS
+                        </div>
+                    </div></div>
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Becas y convenios</div>
+                        <ul class="ue-list">
+                            <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                            <li>Cundinamarca+ (placeholder)</li>
+                            <li>Convenios empresariales (ver sección)</li>
+                        </ul>
+                        <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                    </div></div>
+                    <div class="ue-finCard"><div>
+                        <div class="ue-finK">Opciones de financiación</div>
+                        <ul class="ue-list">
+                            <li>ICETEX</li>
+                            <li>Aliados bancarios</li>
+                            <li>Planes de pago flexibles</li>
+                        </ul>
+                        <a href="#faq" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver preguntas</a>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIACIÓN 5 -->
+        <div class="design-option">
+            <div class="option-title">Variación 5: Con Círculo/Punto Decorativo</div>
+            <div class="option-content var5">
+                <div class="ue-headRow">
+                    <div>
+                        <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                        <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                            Valores de referencia. Pueden variar por convenios y convocatorias.
+                        </div>
+                    </div>
+                </div>
+                <div class="ue-finGrid">
+                    <div class="ue-finCard">
+                        <div class="ue-finK">Inversión por semestre</div>
+                        <div class="ue-finV"><p>$6.757.000</p></div>
+                        <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                            Ajustable desde el JS
+                        </div>
+                    </div>
+                    <div class="ue-finCard">
+                        <div class="ue-finK">Becas y convenios</div>
+                        <ul class="ue-list">
+                            <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                            <li>Cundinamarca+ (placeholder)</li>
+                            <li>Convenios empresariales (ver sección)</li>
+                        </ul>
+                        <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                    </div>
+                    <div class="ue-finCard">
+                        <div class="ue-finK">Opciones de financiación</div>
+                        <ul class="ue-list">
+                            <li>ICETEX</li>
+                            <li>Aliados bancarios</li>
+                            <li>Planes de pago flexibles</li>
+                        </ul>
+                        <a href="#faq" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver preguntas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIACIÓN 6 -->
+        <div class="design-option">
+            <div class="option-title">Variación 6: Barra con Fondo Separado</div>
+            <div class="option-content var6">
+                <div class="ue-headRow">
+                    <div>
+                        <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                        <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                            Valores de referencia. Pueden variar por convenios y convocatorias.
+                        </div>
+                    </div>
+                </div>
+                <div class="ue-finGrid">
+                    <div class="ue-finCard">
+                        <div class="card-top">
+                            <div class="ue-finK">Inversión por semestre</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="ue-finV"><p>$6.757.000</p></div>
+                            <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+                                Ajustable desde el JS
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ue-finCard">
+                        <div class="card-top">
+                            <div class="ue-finK">Becas y convenios</div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="ue-list" style="margin-top:4px">
+                                <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
+                                <li>Cundinamarca+ (placeholder)</li>
+                                <li>Convenios empresariales (ver sección)</li>
+                            </ul>
+                            <a href="#convenios" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
+                        </div>
+                    </div>
+                    <div class="ue-finCard">
+                        <div class="card-top">
+                            <div class="ue-finK">Opciones de financiación</div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="ue-list" style="margin-top:4px">
+                                <li>ICETEX</li>
+                                <li>Aliados bancarios</li>
+                                <li>Planes de pago flexibles</li>
+                            </ul>
+                            <a href="#faq" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver preguntas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

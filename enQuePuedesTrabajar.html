@@ -1,0 +1,82 @@
+<style>
+    .ue-work-title {
+        font-size: 24px;
+        font-weight: 900;
+        color: #06325a;
+        margin: 0 0 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .ue-work-subtitle {
+        color: #7a8a99;
+        font-weight: 600;
+        margin: 0 0 24px;
+        font-size: 14px;
+    }
+
+    .ue-work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ue-work-item {
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e0e3e8;
+        border-left: 4px solid;
+        padding: 14px 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .ue-work-item:nth-child(odd) {
+        border-left-color: #0132AF;
+    }
+
+    .ue-work-item:nth-child(even) {
+        border-left-color: #FF3B3B;
+    }
+
+    .ue-work-item:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        transform: translateX(4px) !important;
+    }
+
+    .ue-work-title-item {
+        color: #06325a;
+        font-weight: 700;
+        font-size: 14px;
+        margin: 0 0 4px 0;
+    }
+
+    .ue-work-desc {
+        color: #7a8a99;
+        font-weight: 500;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+        .ue-work-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="ue-section" aria-label="Oportunidades laborales">
+    <h3 class="ue-work-title">¿En qué puedes trabajar?</h3>
+    <p class="ue-work-subtitle">Roles frecuentes según perfil y experiencia.</p>
+
+    <div class="ue-work-grid">
+        <div class="ue-work-item"><p class="ue-work-title-item">Analista de procesos</p><p class="ue-work-desc">Optimiza y mejora procesos empresariales</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Gestor administrativo</p><p class="ue-work-desc">Coordina operaciones y recursos administrativos</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Coordinador comercial</p><p class="ue-work-desc">Gestiona relaciones comerciales y ventas</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Asesor de ventas</p><p class="ue-work-desc">Identifica oportunidades y cierra negocios</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Analista financiero</p><p class="ue-work-desc">Analiza datos financieros y presupuestos</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Gestor de operaciones</p><p class="ue-work-desc">Supervisa la eficiencia operativa</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Director de proyectos</p><p class="ue-work-desc">Lidera equipos y gestiona proyectos</p></div>
+        <div class="ue-work-item"><p class="ue-work-title-item">Emprendimiento</p><p class="ue-work-desc">Crea y desarrolla nuevas iniciativas</p></div>
+    </div>
+</section>
+

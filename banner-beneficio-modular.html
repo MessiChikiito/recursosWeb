@@ -1,0 +1,570 @@
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #2A449C;
+            --color-primary-light: #3a5bc7;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-green: #10B981;
+            --color-white: #ffffff;
+            --color-gray-100: #f1f5f9;
+            --color-gray-200: #e2e8f0;
+            --color-gray-400: #94a3b8;
+            --color-gray-500: #64748b;
+            --color-gray-700: #334155;
+            --color-gray-900: #0f172a;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.8s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        /* ========== BANNER HERO CONTAINER ========== */
+        .banner-hero {
+            background: linear-gradient(135deg, #2A449C 0%, #1e3a8a 100%);
+            padding: 50px;
+            width: 100%;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .banner-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ========== LAYOUT PRINCIPAL ========== */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== COLUMNA IZQUIERDA - HERO CONTENT ========== */
+        .hero-content {
+            color: var(--color-white);
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: #ffffff !important;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.8) !important;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* ========== OPCIONES PRESENCIAL/VIRTUAL ========== */
+        .hero-options {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-option {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255,255,255,0.1) !important;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-decoration: none;
+            color: white !important;
+            transition: background 0.8s ease, border-color 0.8s ease, transform 0.8s ease, box-shadow 0.8s ease !important;
+            position: relative;
+        }
+
+        .hero-option:hover {
+            background: rgba(255,255,255,0.15) !important;
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-4px);
+        }
+
+        .hero-option.presencial:hover {
+            border-color: var(--color-accent) !important;
+            box-shadow: 0 8px 30px rgba(239, 18, 24, 0.4) !important;
+        }
+
+        .hero-option.virtual:hover {
+            border-color: var(--color-green) !important;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .hero-option .option-badge {
+            position: absolute;
+            top: -14px;
+            right: 16px;
+            background: linear-gradient(135deg, #EF1218 0%, #ff4d52 100%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .option-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15) !important;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .option-icon svg {
+            width: 22px;
+            height: 22px;
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+        }
+
+        .hero-option:hover .option-icon svg {
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+        }
+
+        .option-type {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4ade80;
+            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        .option-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff !important;
+        }
+
+        .option-price {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .option-price .price-old {
+            text-decoration: line-through;
+            color: #f87171;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-left: 6px;
+        }
+
+        .option-arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .hero-option:hover .option-arrow {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(4px);
+        }
+
+        /* ========== COLUMNA DERECHA - STATS PANEL ========== */
+        .stats-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-panel {
+            background: rgba(42, 68, 156, 0.3) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .stat-item {
+            background: rgba(30, 58, 138, 0.5) !important;
+            border-radius: var(--radius-sm);
+            padding: 20px 16px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), #ff6b6b);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-item:hover {
+            background: rgba(30, 58, 138, 0.7) !important;
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-white);
+            line-height: 1;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-number .accent {
+            color: #4ade80 !important;
+            -webkit-text-fill-color: #4ade80 !important;
+            background: none !important;
+            background-clip: unset !important;
+            -webkit-background-clip: unset !important;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.8) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            margin: 0 auto 12px;
+            color: rgba(255,255,255,0.8) !important;
+            stroke: rgba(255,255,255,0.8) !important;
+        }
+
+        /* Animación de entrada escalonada */
+        .stat-item:nth-child(1) { animation: statFadeIn 0.4s ease 0.1s both; }
+        .stat-item:nth-child(2) { animation: statFadeIn 0.4s ease 0.2s both; }
+        .stat-item:nth-child(3) { animation: statFadeIn 0.4s ease 0.3s both; }
+        .stat-item:nth-child(4) { animation: statFadeIn 0.4s ease 0.4s both; }
+
+        @keyframes statFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        /* CTA Principal debajo del panel */
+        .stats-cta {
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%) !important;
+            color: white !important;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 18px 32px;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none !important;
+            transition: transform 0.8s ease, box-shadow 0.8s ease !important;
+            box-shadow: 0 4px 20px rgba(239, 18, 24, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-cta:hover {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%) !important;
+            color: white !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(239, 18, 24, 0.5) !important;
+        }
+
+        .stats-cta:focus,
+        .stats-cta:active {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%) !important;
+            color: white !important;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .banner-hero {
+                padding: 40px 30px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-options {
+                flex-direction: column;
+            }
+
+            .stats-panel {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .banner-hero {
+                padding: 30px 20px;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-item {
+                padding: 16px 12px;
+            }
+        }
+    </style>
+    
+<body>
+
+    <div class="banner-hero" role="region" aria-label="Banner de beneficios Uniempresarial">
+
+        <div class="hero-layout">
+            
+            <!-- COLUMNA IZQUIERDA: Hero Content + Opciones -->
+            <div class="hero-content">
+                <h2 class="hero-title">¡Aún estás a tiempo de aprovechar el beneficio Uniempresarial!</h2>
+                <p class="hero-subtitle">Aplica ahora y obtén descuento en TODA tu carrera. Elige la modalidad que mejor se adapte a tu estilo de vida.</p>
+                
+                <div class="hero-options">
+                    <!-- Opción Presencial -->
+                    <a href="#" class="hero-option presencial">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <p class="option-type">25% OFF</p>
+                        <h4 class="option-title">Presencial</h4>
+                        <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                        <div class="option-arrow">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <!-- Opción Virtual -->
+                    <a href="#" class="hero-option virtual">
+                        <span class="option-badge">Nuevo</span>
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <p class="option-type">38% OFF</p>
+                        <h4 class="option-title">Virtual</h4>
+                        <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                        <div class="option-arrow">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- COLUMNA DERECHA: Stats Panel -->
+            <div class="stats-container">
+                <div class="stats-panel">
+                    <!-- Stat 1: Empleabilidad -->
+                    <div class="stat-item">
+                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <div class="stat-number">92<span class="accent">%</span></div>
+                        <div class="stat-label">Empleabilidad</div>
+                    </div>
+                    
+                    <!-- Stat 2: Graduados -->
+                    <div class="stat-item">
+                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                        <div class="stat-number">+15K</div>
+                        <div class="stat-label">Graduados</div>
+                    </div>
+                    
+                    <!-- Stat 3: Años de experiencia -->
+                    <div class="stat-item">
+                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Años</div>
+                    </div>
+                    
+                    <!-- Stat 4: Empresas aliadas -->
+                    <div class="stat-item">
+                        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                        <div class="stat-number">150<span class="accent">+</span></div>
+                        <div class="stat-label">Empresas</div>
+                    </div>
+                </div>
+                
+                <!-- CTA Principal -->
+                <a href="#" class="stats-cta">Solicitar información</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT - Animación de números
+    ============================================ -->
+    <script>
+        // ========================================
+        // ANIMACIÓN DE CONTEO PARA ESTADÍSTICAS
+        // ========================================
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const text = counter.textContent;
+                const hasK = text.includes('K');
+                const hasPlus = text.includes('+');
+                const hasPercent = text.includes('%');
+                
+                // Extraer número
+                let target = parseInt(text.replace(/[^0-9]/g, ''));
+                
+                let current = 0;
+                const increment = target / 50;
+                const duration = 1500;
+                const stepTime = duration / 50;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        let display = Math.floor(current);
+                        if (hasK) display = '+' + display + '<span class="accent">K</span>';
+                        else if (hasPercent) display = display + '<span class="accent">%</span>';
+                        else if (hasPlus) display = display + '<span class="accent">+</span>';
+                        counter.innerHTML = display;
+                        setTimeout(updateCounter, stepTime);
+                    } else {
+                        // Valor final
+                        if (hasK) counter.innerHTML = '+' + target + '<span class="accent">K</span>';
+                        else if (hasPercent) counter.innerHTML = target + '<span class="accent">%</span>';
+                        else if (hasPlus) counter.innerHTML = target + '<span class="accent">+</span>';
+                        else counter.innerHTML = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Iniciar animación cuando el elemento sea visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.stats-panel'));
+    </script>
+
+</body>

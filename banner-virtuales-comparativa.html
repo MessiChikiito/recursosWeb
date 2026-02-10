@@ -1,0 +1,383 @@
+<!-- 
+    =============================================
+    BANNER VIRTUALES - OPTIMIZADO PARA WORDPRESS
+    =============================================
+    Notas para WP:
+    - Usar !important en colores y fondos críticos
+    - Evitar variables CSS en propiedades críticas
+    - Forzar colores de texto y SVG con !important
+    - Transiciones con !important para override de temas
+-->
+<style>
+    /* ========== BANNER VIRTUALES - WP OPTIMIZADO ========== */
+    
+    .bv-banner {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-left: 4px solid #EF1218 !important;
+        border-radius: 0 16px 16px 16px !important;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+    }
+
+    .bv-banner * {
+        box-sizing: border-box !important;
+    }
+
+    .bv-banner-content {
+        display: grid !important;
+        grid-template-columns: 1fr 280px !important;
+        min-height: 280px !important;
+    }
+
+    .bv-banner-main {
+        padding: 40px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        background: transparent !important;
+    }
+
+    .bv-banner-eyebrow {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        font-size: 0.75rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 12px !important;
+        width: fit-content !important;
+        color: #EF1218 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .bv-banner-title {
+        font-size: 1.75rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
+        color: #0f172a !important;
+        background: transparent !important;
+        padding: 0 !important;
+    }
+
+    .bv-banner-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 24px !important;
+        color: #64748b !important;
+        line-height: 1.5 !important;
+        background: transparent !important;
+    }
+
+    .bv-program-cards {
+        display: flex !important;
+        gap: 12px !important;
+        margin-bottom: 24px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .bv-program-card {
+        background: transparent !important;
+        border: 2px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+        padding: 14px 16px !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        flex: 1 !important;
+        min-width: 180px !important;
+        text-decoration: none !important;
+    }
+
+    .bv-program-card:hover {
+        transform: translateY(-2px) !important;
+        border-color: #EF1218 !important;
+        background: rgba(239, 18, 24, 0.02) !important;
+    }
+
+    .bv-card-icon {
+        width: 32px !important;
+        height: 32px !important;
+        background: #f1f5f9 !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 10px !important;
+    }
+
+    .bv-card-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+        color: #EF1218 !important;
+        stroke: #EF1218 !important;
+    }
+
+    .bv-card-name {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 4px !important;
+        color: #334155 !important;
+        background: transparent !important;
+    }
+
+    .bv-card-tech {
+        font-size: 0.75rem !important;
+        color: #94a3b8 !important;
+        background: transparent !important;
+    }
+
+    .bv-banner-ctas {
+        display: flex !important;
+        align-items: center !important;
+        gap: 20px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .bv-btn-primary {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        padding: 14px 24px !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        background: #2A449C !important;
+        color: #ffffff !important;
+    }
+
+    .bv-btn-primary:hover {
+        transform: translateY(-2px) !important;
+        background: #3a5bc7 !important;
+        box-shadow: 0 4px 12px rgba(42, 68, 156, 0.3) !important;
+        color: #ffffff !important;
+    }
+
+    .bv-btn-primary:visited {
+        color: #ffffff !important;
+    }
+
+    .bv-btn-primary svg {
+        width: 18px !important;
+        height: 18px !important;
+        color: #ffffff !important;
+        stroke: #ffffff !important;
+    }
+
+    .bv-btn-link {
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        color: #EF1218 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .bv-btn-link:hover {
+        text-decoration: underline !important;
+        color: #c50e13 !important;
+    }
+
+    .bv-btn-link:visited {
+        color: #EF1218 !important;
+    }
+
+    /* Panel de Stats */
+    .bv-banner-stats {
+        background: #f1f5f9 !important;
+        border-left: 1px solid #e2e8f0 !important;
+        padding: 32px 28px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    .bv-stat-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        background: transparent !important;
+    }
+
+    .bv-stat-icon {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    .bv-stat-icon svg {
+        width: 20px !important;
+        height: 20px !important;
+        color: #EF1218 !important;
+        stroke: #EF1218 !important;
+    }
+
+    .bv-stat-content {
+        flex: 1 !important;
+    }
+
+    .bv-stat-value {
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+        color: #0f172a !important;
+        background: transparent !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .bv-stat-label {
+        font-size: 0.75rem !important;
+        color: #94a3b8 !important;
+        background: transparent !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+        .bv-banner-content {
+            grid-template-columns: 1fr !important;
+        }
+
+        .bv-banner-main {
+            padding: 32px 24px !important;
+        }
+
+        .bv-banner-title {
+            font-size: 1.4rem !important;
+        }
+
+        .bv-program-cards {
+            flex-direction: column !important;
+        }
+
+        .bv-program-card {
+            min-width: 100% !important;
+        }
+
+        .bv-banner-ctas {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+        }
+
+        .bv-btn-primary {
+            width: 100% !important;
+            justify-content: center !important;
+        }
+
+        .bv-banner-stats {
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            padding: 24px !important;
+            gap: 16px !important;
+            border-left: none !important;
+            border-top: 1px solid #e2e8f0 !important;
+        }
+
+        .bv-stat-item {
+            flex: 1 1 45% !important;
+            min-width: 140px !important;
+        }
+    }
+</style>
+
+<div class="bv-banner">
+    <div class="bv-banner-content">
+        <div class="bv-banner-main">
+            <span class="bv-banner-eyebrow">● Pregrados virtuales</span>
+            <h2 class="bv-banner-title">Tu carrera, tu ritmo</h2>
+            <p class="bv-banner-subtitle">Estudia desde cualquier lugar con la misma calidad de siempre.</p>
+            
+            <div class="bv-program-cards">
+                <div class="bv-program-card">
+                    <div class="bv-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-name">Marketing</div>
+                    <div class="bv-card-tech">Estrategias digitales · Analítica</div>
+                </div>
+                <div class="bv-program-card">
+                    <div class="bv-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <div class="bv-card-name">Ing. de Software</div>
+                    <div class="bv-card-tech">Java · Python · JavaScript</div>
+                </div>
+            </div>
+            
+            <div class="bv-banner-ctas">
+                <a href="#" class="bv-btn-primary">
+                    Solicita una asesoría
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#" class="bv-btn-link">Programas presenciales →</a>
+            </div>
+        </div>
+        
+        <div class="bv-banner-stats">
+            <div class="bv-stat-item">
+                <div class="bv-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <div class="bv-stat-content">
+                    <div class="bv-stat-value">3.5 años</div>
+                    <div class="bv-stat-label">Plan intensivo</div>
+                </div>
+            </div>
+            <div class="bv-stat-item">
+                <div class="bv-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <div class="bv-stat-content">
+                    <div class="bv-stat-value">Desde 3er semestre</div>
+                    <div class="bv-stat-label">Práctica empresarial</div>
+                </div>
+            </div>
+            <div class="bv-stat-item">
+                <div class="bv-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <div class="bv-stat-content">
+                    <div class="bv-stat-value">100% flexible</div>
+                    <div class="bv-stat-label">Estudia donde quieras</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

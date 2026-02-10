@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Diseño - ¿En qué puedes trabajar?</title>
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin-top: 0;
+            color: #0132AF;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .design-option {
+            margin-bottom: 80px;
+        }
+        .option-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #06325a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0132AF;
+        }
+        .option-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        /* ===== OPCIÓN 1: CHIPS CON BARRA SUPERIOR ===== */
+        .opt1 .ue-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+        .opt1 .ue-subtitle {
+            color: #7a8a99;
+            font-weight: 600;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+        .opt1 .ue-chips-container {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        .opt1 .ue-chips-header {
+            height: 6px;
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+        }
+        .opt1 .ue-chips-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+        .opt1 .ue-chip {
+            background: linear-gradient(135deg, #f9fcff 0%, #f5fbff 100%);
+            border: 1px solid rgba(1, 50, 175, 0.1);
+            color: #0132AF;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s ease !important;
+        }
+        .opt1 .ue-chip:hover {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+            border-color: rgba(1, 50, 175, 0.2) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* ===== OPCIÓN 2: TARJETAS INDIVIDUALES CON COLORES ALTERNOS ===== */
+        .opt2 .ue-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+        .opt2 .ue-subtitle {
+            color: #7a8a99;
+            font-weight: 600;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+        .opt2 .ue-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .opt2 .ue-chip-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            padding: 16px;
+            transition: all 0.3s ease !important;
+            text-align: center;
+            border-top: 4px solid;
+        }
+        .opt2 .ue-chip-card:nth-child(odd) {
+            border-top-color: #0132AF;
+        }
+        .opt2 .ue-chip-card:nth-child(even) {
+            border-top-color: #FF6A00;
+        }
+        .opt2 .ue-chip-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-4px) !important;
+        }
+        .opt2 .ue-chip-text {
+            color: #06325a;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        @media (max-width: 980px) {
+            .opt2 .ue-chips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .opt2 .ue-chips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== OPCIÓN 3: BADGES MODERNOS CON GRADIENTES ===== */
+        .opt3 .ue-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+        .opt3 .ue-subtitle {
+            color: #7a8a99;
+            font-weight: 600;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+        .opt3 .ue-chips-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .opt3 .ue-chip {
+            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+            border: none;
+        }
+        .opt3 .ue-chip:nth-child(even) {
+            background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.2);
+        }
+        .opt3 .ue-chip:nth-child(4n+3) {
+            background: linear-gradient(135deg, #00897b 0%, #00a89d 100%);
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.2);
+        }
+        .opt3 .ue-chip:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        /* ===== OPCIÓN 4: LISTA VERTICAL CON LÍNEA LATERAL ===== */
+        .opt4 .ue-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+        .opt4 .ue-subtitle {
+            color: #7a8a99;
+            font-weight: 600;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+        .opt4 .ue-chips-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .opt4 .ue-chip-item {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e0e3e8;
+            border-left: 4px solid;
+            padding: 12px 14px;
+            transition: all 0.3s ease !important;
+        }
+        .opt4 .ue-chip-item:nth-child(odd) {
+            border-left-color: #0132AF;
+        }
+        .opt4 .ue-chip-item:nth-child(even) {
+            border-left-color: #FF6A00;
+        }
+        .opt4 .ue-chip-item:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+            transform: translateX(4px) !important;
+        }
+        .opt4 .ue-chip-text {
+            color: #06325a;
+            font-weight: 700;
+            font-size: 14px;
+            margin: 0;
+        }
+        @media (max-width: 640px) {
+            .opt4 .ue-chips-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== OPCIÓN 5: CONTENEDOR CON SCROLL ===== */
+        .opt5 .ue-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #06325a;
+            margin: 0 0 8px;
+            letter-spacing: -0.5px;
+        }
+        .opt5 .ue-subtitle {
+            color: #7a8a99;
+            font-weight: 600;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+        .opt5 .ue-chips-container {
+            background: linear-gradient(135deg, #f9fcff 0%, #f5fbff 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(1, 50, 175, 0.1);
+            padding: 20px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        .opt5 .ue-chips-wrap {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+        }
+        .opt5 .ue-chip {
+            background: white;
+            border: 2px solid #0132AF;
+            color: #0132AF;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s ease !important;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .opt5 .ue-chip:hover {
+            background: #0132AF !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.3) !important;
+        }
+
+        .ue-more-btn {
+            background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            text-decoration: none;
+        }
+        .ue-more-btn:hover {
+            box-shadow: 0 8px 20px rgba(255, 106, 0, 0.3) !important;
+            transform: translateY(-2px) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>5 Opciones de Diseño - ¿En qué puedes trabajar?</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="design-option">
+            <div class="option-title">Opción 1: Tarjeta Unitaria con Barra</div>
+            <div class="option-content opt1">
+                <h3 class="ue-title">¿En qué puedes trabajar?</h3>
+                <p class="ue-subtitle">Roles frecuentes según perfil y experiencia.</p>
+                
+                <div class="ue-chips-container">
+                    <div class="ue-chips-header"></div>
+                    <div class="ue-chips-wrap">
+                        <span class="ue-chip">Analista de procesos</span>
+                        <span class="ue-chip">Gestor administrativo</span>
+                        <span class="ue-chip">Coordinador comercial</span>
+                        <span class="ue-chip">Asesor de ventas</span>
+                        <span class="ue-chip">Analista financiero</span>
+                        <span class="ue-chip">Gestor de operaciones</span>
+                        <span class="ue-chip">Director de proyectos</span>
+                        <span class="ue-chip">Emprendimiento</span>
+                    </div>
+                </div>
+
+                <button class="ue-more-btn" type="button">Ver más</button>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="design-option">
+            <div class="option-title">Opción 2: Grid de Tarjetas Individuales</div>
+            <div class="option-content opt2">
+                <h3 class="ue-title">¿En qué puedes trabajar?</h3>
+                <p class="ue-subtitle">Roles frecuentes según perfil y experiencia.</p>
+                
+                <div class="ue-chips-grid">
+                    <div class="ue-chip-card"><span class="ue-chip-text">Analista de procesos</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Gestor administrativo</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Coordinador comercial</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Asesor de ventas</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Analista financiero</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Gestor de operaciones</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Director de proyectos</span></div>
+                    <div class="ue-chip-card"><span class="ue-chip-text">Emprendimiento</span></div>
+                </div>
+
+                <button class="ue-more-btn" type="button">Ver más</button>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="design-option">
+            <div class="option-title">Opción 3: Badges Modernos Coloreados</div>
+            <div class="option-content opt3">
+                <h3 class="ue-title">¿En qué puedes trabajar?</h3>
+                <p class="ue-subtitle">Roles frecuentes según perfil y experiencia.</p>
+                
+                <div class="ue-chips-wrap">
+                    <span class="ue-chip">Analista de procesos</span>
+                    <span class="ue-chip">Gestor administrativo</span>
+                    <span class="ue-chip">Coordinador comercial</span>
+                    <span class="ue-chip">Asesor de ventas</span>
+                    <span class="ue-chip">Analista financiero</span>
+                    <span class="ue-chip">Gestor de operaciones</span>
+                    <span class="ue-chip">Director de proyectos</span>
+                    <span class="ue-chip">Emprendimiento</span>
+                </div>
+
+                <button class="ue-more-btn" type="button">Ver más</button>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="design-option">
+            <div class="option-title">Opción 4: Lista con Borde Izquierdo</div>
+            <div class="option-content opt4">
+                <h3 class="ue-title">¿En qué puedes trabajar?</h3>
+                <p class="ue-subtitle">Roles frecuentes según perfil y experiencia.</p>
+                
+                <div class="ue-chips-column">
+                    <div class="ue-chip-item"><p class="ue-chip-text">Analista de procesos</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Gestor administrativo</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Coordinador comercial</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Asesor de ventas</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Analista financiero</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Gestor de operaciones</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Director de proyectos</p></div>
+                    <div class="ue-chip-item"><p class="ue-chip-text">Emprendimiento</p></div>
+                </div>
+
+                <button class="ue-more-btn" type="button">Ver más</button>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="design-option">
+            <div class="option-title">Opción 5: Fondo Azul Claro con Chips Blancos</div>
+            <div class="option-content opt5">
+                <h3 class="ue-title">¿En qué puedes trabajar?</h3>
+                <p class="ue-subtitle">Roles frecuentes según perfil y experiencia.</p>
+                
+                <div class="ue-chips-container">
+                    <div class="ue-chips-wrap">
+                        <span class="ue-chip">Analista de procesos</span>
+                        <span class="ue-chip">Gestor administrativo</span>
+                        <span class="ue-chip">Coordinador comercial</span>
+                        <span class="ue-chip">Asesor de ventas</span>
+                        <span class="ue-chip">Analista financiero</span>
+                        <span class="ue-chip">Gestor de operaciones</span>
+                        <span class="ue-chip">Director de proyectos</span>
+                        <span class="ue-chip">Emprendimiento</span>
+                    </div>
+                </div>
+
+                <button class="ue-more-btn" type="button">Ver más</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

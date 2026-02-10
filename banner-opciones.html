@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Banner | Uniempresarial</title>
+    
+    <style>
+        :root {
+            --color-primary: #2A449C;
+            --color-primary-light: #3a5bc7;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-green: #10B981;
+            --color-green-dark: #059669;
+            --color-white: #ffffff;
+            --color-gray-100: #f1f5f9;
+            --color-gray-200: #e2e8f0;
+            --color-gray-500: #64748b;
+            --color-gray-700: #334155;
+            --color-gray-900: #0f172a;
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.35s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background-color: #e2e8f0;
+            padding: 40px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            padding: 30px 0 20px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .section-header h2 {
+            font-size: 1.4rem;
+            color: var(--color-gray-900);
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            font-size: 0.9rem;
+            color: var(--color-gray-500);
+        }
+
+        .banner-wrapper {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+        }
+
+        /* ========== OPCION 1: TABS ========== */
+        .banner-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tab-btn {
+            padding: 14px 28px;
+            background: rgba(255,255,255,0.7);
+            border: none;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #2A449C 0%, #5a3d8a 50%, #7c3a6d 100%);
+            color: var(--color-white);
+        }
+
+        .tab-btn.active.virtual-active {
+            background: linear-gradient(135deg, #0f766e 0%, #10B981 100%);
+        }
+
+        .tab-btn .badge-new {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(239, 18, 24, 0.4);
+            animation: pulse-new 2s infinite;
+        }
+
+        @keyframes pulse-new {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .banner-opt1 {
+            background: linear-gradient(135deg, #2A449C 0%, #5a3d8a 50%, #7c3a6d 100%);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+
+        .banner-opt1.virtual {
+            background: linear-gradient(135deg, #0f766e 0%, #10B981 100%);
+        }
+
+        .banner-opt1::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .banner-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-info { color: var(--color-white); }
+
+        .banner-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .banner-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .benefit-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: #4ade80;
+        }
+
+        .banner-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: var(--color-white);
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff2a30 0%, #EF1218 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(239, 18, 24, 0.45);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            color: var(--color-white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 14px 28px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.95);
+            border-color: white;
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+        }
+
+        .promo-block {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .price-before {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .price-now {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .price-period {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 16px;
+        }
+
+        .savings-badge {
+            display: inline-block;
+            background: rgba(74, 222, 128, 0.2);
+            border: 1px solid rgba(74, 222, 128, 0.4);
+            color: #4ade80;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== OPCION 2: DOS CARDS ========== */
+        .cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .banner-card {
+            background: linear-gradient(135deg, #2A449C 0%, #3a5bc7 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+            color: var(--color-white);
+        }
+
+        .banner-card.virtual {
+            background: linear-gradient(135deg, #0f766e 0%, #10B981 100%);
+        }
+
+        .banner-card::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse-new 2s infinite;
+        }
+
+        .card-type {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .card-benefits {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .card-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .card-benefits svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .card-price {
+            background: rgba(0,0,0,0.2);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-price-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 4px;
+        }
+
+        .card-price-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .card-price-note {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            overflow: hidden;
+        }
+
+        .btn-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-card:hover::before {
+            left: 100%;
+        }
+
+        .banner-card.virtual .btn-card {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: white;
+        }
+
+        .btn-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(239, 18, 24, 0.45);
+        }
+
+        /* ========== OPCION 3: SPLIT DIAGONAL ========== */
+        .banner-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            min-height: 380px;
+            position: relative;
+        }
+
+        .banner-split .diagonal-svg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 120px;
+            z-index: 10;
+        }
+
+        .split-section {
+            padding: 40px 50px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .split-section.presencial {
+            background: linear-gradient(135deg, #2A449C 0%, #3a5bc7 100%);
+            color: white;
+            padding-right: 70px;
+        }
+
+        .split-section.virtual {
+            background: linear-gradient(135deg, #0f766e 0%, #10B981 100%);
+            color: white;
+            padding-left: 70px;
+        }
+
+        .split-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            animation: pulse-new 2s infinite;
+        }
+
+        .split-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .split-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .split-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .split-desc {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .split-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .split-price span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .btn-split {
+            display: inline-block;
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.3);
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-split::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-split:hover::before {
+            left: 100%;
+        }
+
+        .split-section.virtual .btn-split {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: white;
+        }
+
+        .btn-split:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(239, 18, 24, 0.45);
+        }
+
+        /* ========== OPCION 4: ACORDEON / EXPANDIBLE ========== */
+        .banner-accordion {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .accordion-tab {
+            flex: 1;
+            padding: 20px 30px;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .accordion-tab.active {
+            color: var(--color-primary);
+            background: var(--color-gray-100);
+        }
+
+        .accordion-tab.active.virtual {
+            color: var(--color-green);
+        }
+
+        .accordion-tab::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .accordion-tab.active::after {
+            width: 60px;
+        }
+
+        .accordion-tab.active.virtual::after {
+            background: var(--color-green);
+        }
+
+        .accordion-tab .new-tag {
+            background: var(--color-green);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .accordion-body {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .accordion-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 12px;
+        }
+
+        .accordion-info p {
+            font-size: 0.95rem;
+            color: var(--color-gray-500);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .accordion-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .accordion-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+
+        .accordion-features svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-green);
+        }
+
+        .btn-accordion {
+            display: inline-block;
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-accordion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-accordion:hover::before {
+            left: 100%;
+        }
+
+        .btn-accordion.virtual {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+        }
+
+        .btn-accordion:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(239, 18, 24, 0.45);
+        }
+
+        .accordion-promo {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            text-align: center;
+        }
+
+        .accordion-promo.virtual {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+
+        .promo-icon {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .promo-icon svg {
+            width: 28px;
+            height: 28px;
+            color: #f59e0b;
+        }
+
+        .accordion-promo.virtual .promo-icon svg {
+            color: var(--color-green);
+        }
+
+        .promo-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+
+        .accordion-promo.virtual .promo-title {
+            color: #065f46;
+        }
+
+        .promo-amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #78350f;
+            margin-bottom: 4px;
+        }
+
+        .accordion-promo.virtual .promo-amount {
+            color: #047857;
+        }
+
+        .promo-note {
+            font-size: 0.85rem;
+            color: #a16207;
+        }
+
+        .accordion-promo.virtual .promo-note {
+            color: #059669;
+        }
+
+        /* ========== OPCION 5: HERO CON SELECTOR ========== */
+        .banner-hero {
+            background: linear-gradient(135deg, #2A449C 0%, #1e3a8a 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 50px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(0,0,0,0.15);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .hero-options {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-option {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .hero-option:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-4px);
+        }
+
+        .hero-option.presencial:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 8px 30px rgba(239, 18, 24, 0.4);
+        }
+
+        .hero-option.virtual:hover {
+            border-color: var(--color-green);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .hero-option .option-badge {
+            position: absolute;
+            top: -14px;
+            right: 16px;
+            background: linear-gradient(135deg, #EF1218 0%, #ff4d52 100%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .option-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .option-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .option-type {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4ade80;
+            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        .option-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .option-price {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .option-arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .hero-option:hover .option-arrow {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(4px);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .banner-grid, .accordion-body { grid-template-columns: 1fr; }
+            .cards-container { grid-template-columns: 1fr; }
+            .banner-split { flex-direction: column; }
+            .split-section.presencial { padding-right: 50px; }
+            .split-section.presencial::after { display: none; }
+            .split-section.virtual { padding-left: 50px; }
+            .hero-options { flex-direction: column; }
+        }
+
+        @media (max-width: 600px) {
+            .banner-opt1, .banner-card, .banner-hero { padding: 28px; }
+            .banner-title, .hero-title { font-size: 1.5rem; }
+            .accordion-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OPCION 1: TABS -->
+    <div class="section-header">
+        <h2>Opcion 1: Banner con Tabs</h2>
+        <p>Pestanas para alternar entre presencial y virtual con contenido dinamico</p>
+    </div>
+
+    <div class="banner-wrapper">
+        <div class="banner-tabs" id="tabs1">
+            <button class="tab-btn active" data-mode="presencial">Presencial</button>
+            <button class="tab-btn" data-mode="virtual">Virtual <span class="badge-new">Nuevo</span></button>
+        </div>
+
+        <div class="banner-opt1" id="banner1">
+            <div class="banner-grid">
+                <div class="banner-info" id="info1">
+                    <!-- Contenido dinamico -->
+                </div>
+                <div class="promo-block" id="promo1">
+                    <!-- Contenido dinamico -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- OPCION 2: DOS CARDS -->
+    <div class="section-header">
+        <h2>Opcion 2: Dos Cards Lado a Lado</h2>
+        <p>Cards independientes para presencial y virtual</p>
+    </div>
+
+    <div class="banner-wrapper">
+        <div class="cards-container">
+            <div class="banner-card presencial">
+                <p class="card-type">Modalidad Presencial</p>
+                <h3 class="card-title">25% de descuento en TODA tu carrera</h3>
+                <ul class="card-benefits">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Formacion academica + experiencia laboral real</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>4 semestres academicos + 3 en empresa</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Ahorras mas de $11.824.000 en total</li>
+                </ul>
+                <div class="card-price">
+                    <p class="card-price-label">De $6.757.000 pagas solo</p>
+                    <p class="card-price-value">$5.067.750 / sem</p>
+                    <p class="card-price-note">Unicamente estudiantes nuevos</p>
+                </div>
+                <a href="#" class="btn-card">Contactanos y asegura tu cupo</a>
+            </div>
+
+            <div class="banner-card virtual">
+                <span class="card-badge">Nuevo</span>
+                <p class="card-type">Modalidad Virtual</p>
+                <h3 class="card-title">38% de descuento - Lanzamiento</h3>
+                <ul class="card-benefits">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>100% online con tutorias en vivo</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Horarios flexibles para trabajar</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Mismo titulo y calidad academica</li>
+                </ul>
+                <div class="card-price">
+                    <p class="card-price-label">De $6.757.000 pagas solo</p>
+                    <p class="card-price-value">$4.200.000 / sem</p>
+                    <p class="card-price-note">Por tiempo limitado</p>
+                </div>
+                <a href="#" class="btn-card">Ver programas virtuales</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- OPCION 3: SPLIT DIAGONAL -->
+    <div class="section-header">
+        <h2>Opcion 3: Split Diagonal</h2>
+        <p>Diseno dinamico con corte diagonal entre ambas modalidades</p>
+    </div>
+
+    <div class="banner-wrapper">
+        <div class="banner-split">
+            <!-- SVG Diagonal -->
+            <svg class="diagonal-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon points="0,0 100,0 50,100 0,100" fill="#3a5bc7"/>
+            </svg>
+            <div class="split-section presencial">
+                <div class="split-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <h3 class="split-title">Presencial</h3>
+                <p class="split-desc">Vive la experiencia universitaria completa. Formacion academica + experiencia laboral real.</p>
+                <p class="split-price">$5.067.750 <span>/ semestre</span></p>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 16px;">Antes $6.757.000 - 25% OFF</p>
+                <a href="#" class="btn-split">Ver programas</a>
+            </div>
+            <div class="split-section virtual">
+                <span class="split-badge">Nuevo</span>
+                <div class="split-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3 class="split-title">Virtual</h3>
+                <p class="split-desc">Misma calidad academica, total flexibilidad. Estudia desde donde estes con tutorias en vivo.</p>
+                <p class="split-price">$4.200.000 <span>/ semestre</span></p>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 16px;">Antes $6.757.000 - 38% OFF</p>
+                <a href="#" class="btn-split">Ver programas</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- OPCION 4: ACORDEON -->
+    <div class="section-header">
+        <h2>Opcion 4: Banner Acordeon</h2>
+        <p>Tabs con contenido expandible y promocion destacada</p>
+    </div>
+
+    <div class="banner-wrapper">
+        <div class="banner-accordion">
+            <div class="accordion-header" id="accordionTabs">
+                <button class="accordion-tab active" data-mode="presencial">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Presencial
+                </button>
+                <button class="accordion-tab" data-mode="virtual">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Virtual
+                    <span class="new-tag">Nuevo</span>
+                </button>
+            </div>
+            <div class="accordion-body" id="accordionBody">
+                <!-- Contenido dinamico -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- OPCION 5: HERO CON SELECTOR -->
+    <div class="section-header">
+        <h2>Opcion 5: Hero con Selector</h2>
+        <p>Diseno hero oscuro con opciones de modalidad como tarjetas</p>
+    </div>
+
+    <div class="banner-wrapper">
+        <div class="banner-hero">
+            <div class="hero-content">
+                <h2 class="hero-title">¡Aun estas a tiempo de aprovechar el beneficio Uniempresarial!</h2>
+                <p class="hero-subtitle">Aplica ahora y obten un 25% de descuento en TODA tu carrera. Elige la modalidad que mejor se adapte a tu estilo de vida.</p>
+                
+                <div class="hero-options">
+                    <a href="#" class="hero-option presencial">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <p class="option-type">25% OFF</p>
+                        <h4 class="option-title">Presencial</h4>
+                        <p class="option-price">$5.067.750/sem <span style="text-decoration: line-through; color: #f87171; font-size: 0.85em; font-weight: 500; margin-left: 6px;">$6.757.000</span></p>
+                        <div class="option-arrow">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </a>
+                    <a href="#" class="hero-option virtual">
+                        <span class="option-badge">Nuevo</span>
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <p class="option-type">38% OFF</p>
+                        <h4 class="option-title">Virtual</h4>
+                        <p class="option-price">$4.200.000/sem <span style="text-decoration: line-through; color: #f87171; font-size: 0.85em; font-weight: 500; margin-left: 6px;">$6.757.000</span></p>
+                        <div class="option-arrow">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    // Datos para Presencial y Virtual
+    const data = {
+        presencial: {
+            title: "¡Aun estas a tiempo de aprovechar el beneficio Uniempresarial!",
+            subtitle: "Aplica ahora y obten un 25% de descuento en TODA tu carrera. Unicamente para estudiantes nuevos.",
+            benefits: [
+                "Formacion academica + experiencia laboral real",
+                "4 semestres de formacion academica",
+                "+ 3 semestres de formacion profesional en empresa",
+                "Al graduarte tendras ano y medio de experiencia laboral certificada"
+            ],
+            cta: "Contactanos y asegura tu cupo",
+            priceBefore: "De $6.757.000",
+            priceNow: "$5.067.750",
+            pricePeriod: "por semestre",
+            savings: "Ahorras $1.689.250/sem y mas de $11.824.000 en total",
+            promoLabel: "Descuento en toda tu carrera",
+            promoValue: "25% OFF",
+            promoNote: "Unicamente estudiantes nuevos"
+        },
+        virtual: {
+            title: "Nueva modalidad 100% virtual - 38% OFF",
+            subtitle: "Misma calidad academica, total flexibilidad. Estudia desde donde estes con tutorias en vivo.",
+            benefits: [
+                "Clases en vivo y material disponible 24/7",
+                "Horarios flexibles compatibles con trabajo",
+                "Tutorias personalizadas online",
+                "Mismo titulo y reconocimiento que presencial"
+            ],
+            cta: "Ver programas virtuales",
+            priceBefore: "De $6.757.000",
+            priceNow: "$4.200.000",
+            pricePeriod: "por semestre",
+            savings: "Ahorras $2.557.000 por semestre",
+            promoLabel: "Descuento lanzamiento",
+            promoValue: "38% OFF",
+            promoNote: "Por tiempo limitado"
+        }
+    };
+
+    // Funcion para generar el icono check
+    const checkIcon = '<svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+
+    // OPCION 1: Tabs
+    const tabs1 = document.getElementById("tabs1");
+    const banner1 = document.getElementById("banner1");
+    const info1 = document.getElementById("info1");
+    const promo1 = document.getElementById("promo1");
+
+    function updateBanner1(mode) {
+        const d = data[mode];
+        const isVirtual = mode === "virtual";
+        
+        banner1.classList.toggle("virtual", isVirtual);
+        tabs1.querySelectorAll(".tab-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.mode === mode);
+            btn.classList.toggle("virtual-active", btn.dataset.mode === mode && isVirtual);
+        });
+
+        info1.innerHTML = '<div class="fade-in"><h2 class="banner-title">' + d.title + '</h2><p class="banner-subtitle">' + d.subtitle + '</p><ul class="benefits-list">' + d.benefits.map(b => '<li>' + checkIcon + b + '</li>').join("") + '</ul><div class="banner-ctas"><a href="#" class="btn-primary">' + d.cta + '</a><a href="#" class="btn-outline">Solicitar info</a></div></div>';
+
+        promo1.innerHTML = '<div class="fade-in"><p class="price-before">' + d.priceBefore + '</p><p class="price-now">' + d.priceNow + '</p><p class="price-period">' + d.pricePeriod + '</p><span class="savings-badge">' + d.savings + '</span></div>';
+    }
+
+    tabs1.addEventListener("click", e => {
+        const btn = e.target.closest(".tab-btn");
+        if (btn) updateBanner1(btn.dataset.mode);
+    });
+
+    updateBanner1("presencial");
+
+    // OPCION 4: Acordeon
+    const accordionTabs = document.getElementById("accordionTabs");
+    const accordionBody = document.getElementById("accordionBody");
+
+    function updateAccordion(mode) {
+        const d = data[mode];
+        const isVirtual = mode === "virtual";
+        
+        accordionTabs.querySelectorAll(".accordion-tab").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.mode === mode);
+            btn.classList.toggle("virtual", btn.dataset.mode === mode && isVirtual);
+        });
+
+        const featuresIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+
+        accordionBody.innerHTML = '<div class="accordion-info fade-in"><h3>' + d.title + '</h3><p>' + d.subtitle + '</p><ul class="accordion-features">' + d.benefits.map(b => '<li>' + featuresIcon + b + '</li>').join("") + '</ul><a href="#" class="btn-accordion' + (isVirtual ? ' virtual' : '') + '">' + d.cta + '</a></div><div class="accordion-promo' + (isVirtual ? ' virtual' : '') + ' fade-in"><div class="promo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><p class="promo-title">' + d.promoLabel + '</p><p class="promo-amount">' + d.promoValue + '</p><p class="promo-note">' + d.promoNote + '</p></div>';
+    }
+
+    accordionTabs.addEventListener("click", e => {
+        const btn = e.target.closest(".accordion-tab");
+        if (btn) updateAccordion(btn.dataset.mode);
+    });
+
+    updateAccordion("presencial");
+</script>
+
+</body>
+</html>

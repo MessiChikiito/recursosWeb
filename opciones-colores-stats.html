@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Colores - Stats Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #06325a;
+            font-size: 2.5rem;
+        }
+
+        .option {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 80px;
+        }
+
+        .option h2 {
+            color: #0132AF;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #10B981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .preview {
+            background: #f9fafb;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .pp-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .pp-stat-card {
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .pp-stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .pp-stat-card strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .pp-stat-card p {
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* ============ OPCIÓN 1: COLORES ARCOÍRIS ============ */
+        .option1-card1 {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E72 100%);
+            color: white;
+        }
+
+        .option1-card2 {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+            color: white;
+        }
+
+        .option1-card3 {
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+            color: white;
+        }
+
+        .option1-card4 {
+            background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+            color: white;
+        }
+
+        /* ============ OPCIÓN 2: DEGRADADOS SUAVES ============ */
+        .option2-card1 {
+            background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+            border-top: 4px solid #EF1218;
+        }
+
+        .option2-card1 strong {
+            color: #DC2626;
+        }
+
+        .option2-card1 p {
+            color: #7F1D1D;
+        }
+
+        .option2-card2 {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-top: 4px solid #F59E0B;
+        }
+
+        .option2-card2 strong {
+            color: #D97706;
+        }
+
+        .option2-card2 p {
+            color: #78350F;
+        }
+
+        .option2-card3 {
+            background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+            border-top: 4px solid #10B981;
+        }
+
+        .option2-card3 strong {
+            color: #047857;
+        }
+
+        .option2-card3 p {
+            color: #065F46;
+        }
+
+        .option2-card4 {
+            background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
+            border-top: 4px solid #0132AF;
+        }
+
+        .option2-card4 strong {
+            color: #0132AF;
+        }
+
+        .option2-card4 p {
+            color: #0A1F7D;
+        }
+
+        /* ============ OPCIÓN 3: COLORES OSCUROS ============ */
+        .option3-card1 {
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+            color: white;
+        }
+
+        .option3-card2 {
+            background: linear-gradient(135deg, #D97706 0%, #92400E 100%);
+            color: white;
+        }
+
+        .option3-card3 {
+            background: linear-gradient(135deg, #059669 0%, #065F46 100%);
+            color: white;
+        }
+
+        .option3-card4 {
+            background: linear-gradient(135deg, #0A1F7D 0%, #051839 100%);
+            color: white;
+        }
+
+        /* ============ OPCIÓN 4: CORPORATIVO ============ */
+        .option4-card1 {
+            background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+            color: white;
+        }
+
+        .option4-card2 {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+        }
+
+        .option4-card3 {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            color: white;
+        }
+
+        .option4-card4 {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+        }
+
+        /* ============ OPCIÓN 5: PASTEL MODERNO ============ */
+        .option5-card1 {
+            background: linear-gradient(135deg, #FCA5A5 0%, #F87171 100%);
+            color: #7F1D1D;
+            border-top: 4px solid #EF1218;
+        }
+
+        .option5-card1 strong {
+            color: #991B1B;
+        }
+
+        .option5-card2 {
+            background: linear-gradient(135deg, #FCD34D 0%, #FBBF24 100%);
+            color: #78350F;
+            border-top: 4px solid #F59E0B;
+        }
+
+        .option5-card2 strong {
+            color: #92400E;
+        }
+
+        .option5-card3 {
+            background: linear-gradient(135deg, #86EFAC 0%, #6EE7B7 100%);
+            color: #065F46;
+            border-top: 4px solid #10B981;
+        }
+
+        .option5-card3 strong {
+            color: #047857;
+        }
+
+        .option5-card4 {
+            background: linear-gradient(135deg, #93C5FD 0%, #60A5FA 100%);
+            color: #1E3A8A;
+            border-top: 4px solid #0132AF;
+        }
+
+        .option5-card4 strong {
+            color: #1E40AF;
+        }
+
+        /* ============ OPCIÓN 6: NEON ============ */
+        .option6-card1 {
+            background: linear-gradient(135deg, #FF006E 0%, #FF1744 100%);
+            color: white;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .option6-card2 {
+            background: linear-gradient(135deg, #FFB700 0%, #FFC600 100%);
+            color: #4a4a4a;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .option6-card3 {
+            background: linear-gradient(135deg, #00D9FF 0%, #00F5FF 100%);
+            color: #004D5C;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .option6-card4 {
+            background: linear-gradient(135deg, #00FF88 0%, #00D977 100%);
+            color: #004D2D;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendation {
+            background: #e0e7ff;
+            border-left: 4px solid #0132AF;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            color: #4a5568;
+        }
+
+        .recommendation h4 {
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .color-specs {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #1f2937;
+        }
+
+        @media (max-width: 768px) {
+            .pp-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Opciones de Colores - Stats Cards</h1>
+        <p style="text-align: center; color: #718096; margin-bottom: 60px; font-size: 1.05rem;">
+            Cada tarjeta con color diferente para mayor visibilidad e impacto visual
+        </p>
+
+        <!-- OPCIÓN 1: COLORES ARCOÍRIS -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 1</span> Colores Vibrantes (Arcoíris)</h2>
+            <p class="description">
+                Cada tarjeta un color vibrante diferente: Rojo, Naranja, Verde y Azul. Muy llamativo y moderno.
+            </p>
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card option1-card1">
+                        <strong>9</strong>
+                        <p>semestres de formación</p>
+                    </div>
+                    <div class="pp-stat-card option1-card2">
+                        <strong>9+</strong>
+                        <p>Becas y convenios</p>
+                    </div>
+                    <div class="pp-stat-card option1-card3">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card option1-card4">
+                        <strong>500+</strong>
+                        <p>Egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="color-specs">
+                Rojo: #FF6B6B | Naranja: #F59E0B | Verde: #10B981 | Azul: #0132AF
+            </div>
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Muy llamativo, fácil de diferenciar cada stat, moderno y juvenil. Perfecto para edutech.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2: DEGRADADOS SUAVES -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 2</span> Degradados Suaves (Pastel + Borders)</h2>
+            <p class="description">
+                Fondos suaves con colores pastel y borde superior de acento. Profesional y elegante.
+            </p>
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card option2-card1">
+                        <strong>9</strong>
+                        <p>semestres de formación</p>
+                    </div>
+                    <div class="pp-stat-card option2-card2">
+                        <strong>9+</strong>
+                        <p>Becas y convenios</p>
+                    </div>
+                    <div class="pp-stat-card option2-card3">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card option2-card4">
+                        <strong>500+</strong>
+                        <p>Egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="color-specs">
+                Rojo Pastel: #FEE2E2 | Naranja Pastel: #FEF3C7 | Verde Pastel: #D1FAE5 | Azul Pastel: #E0E7FF
+            </div>
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Muy profesional, similar al diseño actual pero colorido. Border superior define cada sección. Buena accesibilidad.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3: COLORES OSCUROS -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 3</span> Colores Oscuros (Premium)</h2>
+            <p class="description">
+                Tonos oscuros y saturados con texto blanco. Muy premium y exclusivo. Impacto visual alto.
+            </p>
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card option3-card1">
+                        <strong>9</strong>
+                        <p>semestres de formación</p>
+                    </div>
+                    <div class="pp-stat-card option3-card2">
+                        <strong>9+</strong>
+                        <p>Becas y convenios</p>
+                    </div>
+                    <div class="pp-stat-card option3-card3">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card option3-card4">
+                        <strong>500+</strong>
+                        <p>Egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="color-specs">
+                Rojo Oscuro: #DC2626 | Naranja Oscuro: #D97706 | Verde Oscuro: #059669 | Azul Oscuro: #0A1F7D
+            </div>
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Muy PREMIUM y sofisticado, impacta bastante. Texto blanco garantiza legibilidad. Puede ser demasiado intenso.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4: CORPORATIVO -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 4</span> Corporativo (Azul + Escala)</h2>
+            <p class="description">
+                Mantiene el azul de la marca como principal, complementado con gris oscuro, rojo y verde. Profesional y alineado.
+            </p>
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card option4-card1">
+                        <strong>9</strong>
+                        <p>semestres de formación</p>
+                    </div>
+                    <div class="pp-stat-card option4-card2">
+                        <strong>9+</strong>
+                        <p>Becas y convenios</p>
+                    </div>
+                    <div class="pp-stat-card option4-card3">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card option4-card4">
+                        <strong>500+</strong>
+                        <p>Egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="color-specs">
+                Azul Principal: #0132AF | Gris: #1f2937 | Rojo Acento: #EF1218 | Verde: #10B981
+            </div>
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Alineado con identidad de marca. Colores corporativos consistentes. Balance entre profesional y llamativo.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5: PASTEL MODERNO -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 5</span> Pastel Moderno (Suave y Colorido)</h2>
+            <p class="description">
+                Colores pastel con texto oscuro y border superior. Moderno, amigable y accesible.
+            </p>
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card option5-card1">
+                        <strong>9</strong>
+                        <p>semestres de formación</p>
+                    </div>
+                    <div class="pp-stat-card option5-card2">
+                        <strong>9+</strong>
+                        <p>Becas y convenios</p>
+                    </div>
+                    <div class="pp-stat-card option5-card3">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card option5-card4">
+                        <strong>500+</strong>
+                        <p>Egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="color-specs">
+                Rojo Pastel: #FCA5A5 | Naranja Pastel: #FCD34D | Verde Pastel: #86EFAC | Azul Pastel: #93C5FD
+            </div>
+            <div class="recommendation">
+                <h4>✓ Ventajas:</h4>
+                <p>Muy amigable y moderno. Colores suaves pero visibles. Excelente accesibilidad y legibilidad. Balanceado.</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 6: NEON -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 6</span> Neon Futurista</h2>
+            <p class="description">
+                Colores neon vibrantes con efecto brillo. Muy moderno, tech, arriesgado.
+            </p>
+            <div class="preview">
+                <div class="pp-stats-grid">
+                    <div class="pp-stat-card option6-card1">
+                        <strong>9</strong>
+                        <p>semestres de formación</p>
+                    </div>
+                    <div class="pp-stat-card option6-card2">
+                        <strong>9+</strong>
+                        <p>Becas y convenios</p>
+                    </div>
+                    <div class="pp-stat-card option6-card3">
+                        <strong>95%</strong>
+                        <p>Tasa de empleabilidad</p>
+                    </div>
+                    <div class="pp-stat-card option6-card4">
+                        <strong>500+</strong>
+                        <p>Egresados exitosos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="color-specs">
+                Neon Pink: #FF006E | Neon Yellow: #FFB700 | Neon Cyan: #00D9FF | Neon Green: #00FF88
+            </div>
+            <div class="recommendation">
+                <h4>⚠️ Ventajas y Riesgos:</h4>
+                <p>Muy llamativo y futurista. Riesgo de parecer demasiado joven o artificial. Solo si quieres ser muy tech/moderno.</p>
+            </div>
+        </div>
+
+        <div style="background: #fef3c7; border-left: 4px solid #F59E0B; padding: 30px; border-radius: 8px; margin-top: 60px; margin-bottom: 40px;">
+            <h3 style="color: #78350f; margin-bottom: 15px;">🏆 Ranking de Recomendaciones</h3>
+            <ol style="color: #78350f; margin-left: 20px; line-height: 2;">
+                <li><strong>🥇 OPCIÓN 5 (Pastel Moderno)</strong> - Mejor balance: colorido + profesional + accesible</li>
+                <li><strong>🥈 OPCIÓN 2 (Degradados Suaves)</strong> - Profesional y elegante, similar al actual pero mejorado</li>
+                <li><strong>🥉 OPCIÓN 1 (Arcoíris)</strong> - Muy llamativo si quieres máximo impacto visual</li>
+                <li><strong>OPCIÓN 4 (Corporativo)</strong> - Si prefieres mantener identidad de marca muy presente</li>
+                <li><strong>OPCIÓN 3 (Oscuros)</strong> - Para diseño ultra-premium, puede ser intenso</li>
+                <li><strong>OPCIÓN 6 (Neon)</strong> - Solo si quieres ser muy futuristico/tech</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Color - Botón "Ver Programa"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #06325a;
+            font-size: 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .option {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .option h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #06325a;
+        }
+
+        .option p {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .button-preview {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-preview {
+            background: #f7fafc;
+            color: #0132AF;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-preview:hover {
+            background: #0132AF;
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .code {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #333;
+            overflow-x: auto;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .color-chip {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin: 10px auto;
+            border: 2px solid #e2e8f0;
+        }
+
+        /* OPCIÓN 1 - GRIS OSCURO */
+        .btn-opcion1 {
+            background: #374151;
+            color: white;
+            border: 2px solid #374151;
+        }
+        .btn-opcion1:hover {
+            background: #1f2937;
+            border-color: #1f2937;
+        }
+        .chip-opcion1 {
+            background: #374151;
+        }
+
+        /* OPCIÓN 2 - ROJO ACENTO */
+        .btn-opcion2 {
+            background: #EF1218;
+            color: white;
+            border: 2px solid #EF1218;
+        }
+        .btn-opcion2:hover {
+            background: #c50e13;
+            border-color: #c50e13;
+        }
+        .chip-opcion2 {
+            background: #EF1218;
+        }
+
+        /* OPCIÓN 3 - VERDE */
+        .btn-opcion3 {
+            background: #10B981;
+            color: white;
+            border: 2px solid #10B981;
+        }
+        .btn-opcion3:hover {
+            background: #059669;
+            border-color: #059669;
+        }
+        .chip-opcion3 {
+            background: #10B981;
+        }
+
+        /* OPCIÓN 4 - NARANJA/ÁMBAR */
+        .btn-opcion4 {
+            background: #F59E0B;
+            color: white;
+            border: 2px solid #F59E0B;
+        }
+        .btn-opcion4:hover {
+            background: #D97706;
+            border-color: #D97706;
+        }
+        .chip-opcion4 {
+            background: #F59E0B;
+        }
+
+        /* OPCIÓN 5 - CYAN/TURQUESA */
+        .btn-opcion5 {
+            background: #06B6D4;
+            color: white;
+            border: 2px solid #06B6D4;
+        }
+        .btn-opcion5:hover {
+            background: #0891B2;
+            border-color: #0891B2;
+        }
+        .chip-opcion5 {
+            background: #06B6D4;
+        }
+
+        /* OPCIÓN 6 - ÍNDIGO/PÚRPURA */
+        .btn-opcion6 {
+            background: #6366F1;
+            color: white;
+            border: 2px solid #6366F1;
+        }
+        .btn-opcion6:hover {
+            background: #4F46E5;
+            border-color: #4F46E5;
+        }
+        .chip-opcion6 {
+            background: #6366F1;
+        }
+
+        .score {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        .score-item {
+            padding: 6px 12px;
+            background: #f0f4f8;
+            border-radius: 20px;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .score-item.good {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .score-item.neutral {
+            background: #fef3c7;
+            color: #78350f;
+        }
+
+        .score-item.caution {
+            background: #fee2e2;
+            color: #7f1d1d;
+        }
+
+        .current-state {
+            background: #e0e7ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 4px solid #0132AF;
+        }
+
+        .current-state h3 {
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .current-state p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .comparison-table {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-top: 40px;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table th {
+            background: #f7fafc;
+            font-weight: 700;
+            color: #06325a;
+        }
+
+        .comparison-table tr:hover {
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Propuestas de Color - Botón "Ver Programa"</h1>
+
+        <div class="current-state">
+            <h3>Estado Actual</h3>
+            <p><strong>Fondo:</strong> Gris claro (#f7fafc)</p>
+            <p><strong>Texto normal:</strong> Azul #0132AF (mucho azul en la página)</p>
+            <p><strong>Hover:</strong> Azul #0132AF (genera sobrecarga visual)</p>
+            <p><strong>Problema:</strong> Demasiado azul en la interfaz, poco contraste visual</p>
+        </div>
+
+        <div class="grid">
+            <!-- OPCIÓN 1 -->
+            <div class="option">
+                <h2>Opción 1: Gris Oscuro</h2>
+                <p>Sobrio y profesional. Buen contraste. Muy común en interfaces módernas.</p>
+                <div class="color-chip chip-opcion1"></div>
+                <div class="button-preview">
+                    <button class="btn btn-opcion1">Ver programa</button>
+                </div>
+                <div class="code">
+background: #374151<br>
+color: white<br>
+hover: #1f2937
+                </div>
+                <div class="score">
+                    <span class="score-item good">✓ Profesional</span>
+                    <span class="score-item good">✓ Equilibrado</span>
+                    <span class="score-item neutral">~ Genérico</span>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 2 -->
+            <div class="option">
+                <h2>Opción 2: Rojo (Acento)</h2>
+                <p>Llamativo y accionable. Mantiene coherencia con el badge "Nuevo". Alto impacto.</p>
+                <div class="color-chip chip-opcion2"></div>
+                <div class="button-preview">
+                    <button class="btn btn-opcion2">Ver programa</button>
+                </div>
+                <div class="code">
+background: #EF1218<br>
+color: white<br>
+hover: #c50e13
+                </div>
+                <div class="score">
+                    <span class="score-item good">✓ Llamativo</span>
+                    <span class="score-item good">✓ Coherente</span>
+                    <span class="score-item caution">! Muy intenso</span>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 3 -->
+            <div class="option">
+                <h2>Opción 3: Verde</h2>
+                <p>Transmite confianza, crecimiento. Sofisticado. Excelente legibilidad.</p>
+                <div class="color-chip chip-opcion3"></div>
+                <div class="button-preview">
+                    <button class="btn btn-opcion3">Ver programa</button>
+                </div>
+                <div class="code">
+background: #10B981<br>
+color: white<br>
+hover: #059669
+                </div>
+                <div class="score">
+                    <span class="score-item good">✓ Elegante</span>
+                    <span class="score-item good">✓ Confianza</span>
+                    <span class="score-item good">✓ Equilibrio</span>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 4 -->
+            <div class="option">
+                <h2>Opción 4: Naranja/Ámbar</h2>
+                <p>Cálido y energético. Optimista. Muy visible pero no agresivo.</p>
+                <div class="color-chip chip-opcion4"></div>
+                <div class="button-preview">
+                    <button class="btn btn-opcion4">Ver programa</button>
+                </div>
+                <div class="code">
+background: #F59E0B<br>
+color: white<br>
+hover: #D97706
+                </div>
+                <div class="score">
+                    <span class="score-item good">✓ Diferenciado</span>
+                    <span class="score-item good">✓ Cálido</span>
+                    <span class="score-item neutral">~ Menos formal</span>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 5 -->
+            <div class="option">
+                <h2>Opción 5: Cyan/Turquesa</h2>
+                <p>Moderno y fresco. Complementa el azul primario. Tecnológico.</p>
+                <div class="color-chip chip-opcion5"></div>
+                <div class="button-preview">
+                    <button class="btn btn-opcion5">Ver programa</button>
+                </div>
+                <div class="code">
+background: #06B6D4<br>
+color: white<br>
+hover: #0891B2
+                </div>
+                <div class="score">
+                    <span class="score-item good">✓ Moderno</span>
+                    <span class="score-item neutral">~ Sigue en azul</span>
+                    <span class="score-item good">✓ Complementario</span>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 6 -->
+            <div class="option">
+                <h2>Opción 6: Índigo/Púrpura</h2>
+                <p>Premium y sofisticado. Distinto pero armonioso. Moderno y exclusivo.</p>
+                <div class="color-chip chip-opcion6"></div>
+                <div class="button-preview">
+                    <button class="btn btn-opcion6">Ver programa</button>
+                </div>
+                <div class="code">
+background: #6366F1<br>
+color: white<br>
+hover: #4F46E5
+                </div>
+                <div class="score">
+                    <span class="score-item good">✓ Premium</span>
+                    <span class="score-item good">✓ Diferenciado</span>
+                    <span class="score-item good">✓ Equilibrio</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <h3 style="margin-bottom: 20px; color: #06325a;">📊 Comparativa Resumida</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Opción</th>
+                        <th>Color</th>
+                        <th>Ventajas</th>
+                        <th>Desventajas</th>
+                        <th>Recomendación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Gris Oscuro</strong></td>
+                        <td>#374151</td>
+                        <td>Profesional, equilibrado</td>
+                        <td>Poco memorable, genérico</td>
+                        <td>✓ Buena opción segura</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Rojo</strong></td>
+                        <td>#EF1218</td>
+                        <td>Coherente con badges, llamativo</td>
+                        <td>Muy intenso, puede cansar</td>
+                        <td>⚠️ Solo si quieres énfasis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Verde ⭐</strong></td>
+                        <td>#10B981</td>
+                        <td>Elegante, confianza, equilibrio</td>
+                        <td>Ninguno significativo</td>
+                        <td><strong>🏆 RECOMENDADO</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Naranja</strong></td>
+                        <td>#F59E0B</td>
+                        <td>Diferenciado, cálido</td>
+                        <td>Menos formal que escuela</td>
+                        <td>✓ Buena alternativa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Cyan</strong></td>
+                        <td>#06B6D4</td>
+                        <td>Moderno, complementario</td>
+                        <td>Sigue siendo tonalidad azul</td>
+                        <td>~ No resuelve problema</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Índigo</strong></td>
+                        <td>#6366F1</td>
+                        <td>Premium, diferenciado</td>
+                        <td>Puede ser muy similar al azul</td>
+                        <td>✓ Buena opción premium</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="background: #e0e7ff; padding: 30px; border-radius: 12px; margin-top: 40px; border-left: 4px solid #0132AF;">
+            <h3 style="color: #0132AF; margin-bottom: 15px;">💡 Mi Recomendación</h3>
+            <p style="color: #4a5568; line-height: 1.8; margin-bottom: 15px;">
+                <strong>OPCIÓN 3 (Verde #10B981)</strong> es la mejor opción porque:
+            </p>
+            <ul style="color: #4a5568; line-height: 1.8; padding-left: 20px;">
+                <li>✓ Crea contraste visual claro sin ser agresivo</li>
+                <li>✓ Transmite confianza y acción positiva (acorde con "Ver programa")</li>
+                <li>✓ Equilibra perfectamente la paleta: Azul (primario) + Rojo (acento) + Verde (secundario)</li>
+                <li>✓ Es moderno y sofisticado, mantiene la elegancia del diseño</li>
+                <li>✓ Excelente accesibilidad y legibilidad</li>
+                <li>✓ Psicología del color: Verde = aprender, crecer, confiar</li>
+            </ul>
+            <p style="color: #4a5568; margin-top: 15px; font-style: italic;">
+                Segunda opción: <strong>Gris Oscuro (#374151)</strong> si prefieres algo más conservador.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregrados | Uniempresarial</title>
+    
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #2A449C;
+            --color-primary-light: #3a5bc7;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+        }
+
+        /* ========== BOTONES GLOBALES ========== */
+        .btn-cta {
+            background: var(--color-accent) !important;
+            color: var(--color-white) !important;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ========== CAJA 1: HERO SECTION ========== */
+        /* Sección principal con búsqueda */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            padding: 64px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        /* Barra de búsqueda */
+        .search-container {
+            display: flex;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto 24px;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.2s ease !important;
+            transform: scale(1) !important;
+            will-change: transform, box-shadow;
+        }
+
+        .search-container:focus-within {
+            box-shadow: var(--shadow-lg), 0 0 0 3px rgba(255,255,255,0.3);
+            transform: scale(1.01) !important;
+        }
+
+        .search-icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            background: var(--color-white);
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+        }
+
+        .search-icon-box svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-gray-500);
+            stroke-width: 2.5;
+            fill: none;
+            transition: stroke 0.3s ease !important;
+        }
+
+        .search-container:focus-within .search-icon-box svg {
+            stroke: var(--color-primary);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 16px 20px 16px 0;
+            font-size: 1rem;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            transition: background 0.3s ease !important;
+        }
+
+        .search-input::placeholder {
+            color: var(--color-gray-500);
+            opacity: 1;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .search-input:focus::placeholder {
+            opacity: 0.5;
+        }
+
+        /* Chips/etiquetas del hero */
+        .hero-chips {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            background: rgba(255,255,255,0.15);
+            color: var(--color-white);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .chip:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .chip.highlight {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        /* ========== CAJA 2: TABS SECTION ========== */
+        /* Sistema de pestañas para filtrar programas */
+        .tabs-section {
+            max-width: 1200px;
+            margin: -40px auto 0;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tabs-container {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 8px;
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            padding: 14px 28px;
+            border: none;
+            background: transparent;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: scale(1) !important;
+            will-change: transform, background, color;
+        }
+
+        .tab-btn:hover {
+            color: var(--color-primary);
+            background: var(--color-gray-100);
+            transform: scale(1.02) !important;
+        }
+
+        .tab-btn.active {
+            background: var(--color-primary) !important;
+            color: var(--color-white) !important;
+            transform: scale(1) !important;
+        }
+
+        .tab-badge {
+            background: var(--color-accent);
+            color: var(--color-white);
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 0 12px rgba(239, 18, 24, 0.5);
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 8px rgba(239, 18, 24, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(239, 18, 24, 0.8); }
+        }
+
+        .tab-btn.active .tab-badge {
+            background: var(--color-white);
+            color: var(--color-accent);
+        }
+
+        /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
+        /* Grid responsive de cards */
+        .programs-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* Card de programa */
+        .program-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 28px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-gray-200);
+            transform: translateY(0) !important;
+            will-change: transform, box-shadow;
+        }
+
+        .program-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            background: linear-gradient(135deg, #EF1218 0%, #ff4d52 100%);
+            color: var(--color-white);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        .card-header {
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+        }
+
+        .meta-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Iconos SVG como background para meta info */
+        .meta-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            opacity: 0.6;
+        }
+
+        .meta-icon.icon-calendar {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+        }
+
+        .meta-icon.icon-clock {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+        }
+
+        .meta-icon.icon-location {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A449C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+            opacity: 1;
+        }
+
+        .card-bullets {
+            list-style: none;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-bullets li {
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--color-gray-100) !important;
+            color: var(--color-primary) !important;
+            border: 2px solid var(--color-gray-200) !important;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            text-align: center;
+            transform: translateY(0) !important;
+            will-change: transform, background;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-primary) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Badge "También en virtual" */
+        .badge-virtual {
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            background: linear-gradient(135deg, #10B981 0%, #34d399 100%);
+            color: white;
+            font-size: 0.7rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            z-index: 5;
+            transform: translateY(0) scale(1) !important;
+            will-change: transform, box-shadow;
+        }
+
+        .badge-virtual:hover {
+            transform: translateY(-2px) scale(1.05) !important;
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+        }
+
+        .badge-virtual svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .badge-virtual .arrow {
+            font-size: 0.8rem;
+            transition: transform 0.2s ease !important;
+            transform: translateX(0) !important;
+            display: inline-block;
+        }
+
+        .badge-virtual:hover .arrow {
+            transform: translateX(3px) !important;
+        }
+
+        /* Estado vacío cuando no hay resultados */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--color-gray-500);
+        }
+
+        .no-results svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .no-results h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--color-gray-700);
+        }
+
+        /* ========== MODAL ========== */
+        /* Modal para detalles del programa */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease !important;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(30px) scale(0.95) !important;
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease !important;
+            will-change: transform, opacity;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1) !important;
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 24px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-tag {
+            background: var(--color-accent);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .modal-close {
+            background: var(--color-gray-100);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            background: var(--color-gray-200);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+        }
+
+        .modal-meta-item svg {
+            color: var(--color-primary);
+        }
+
+        .modal-meta-item .meta-icon {
+            font-size: 16px;
+            color: var(--color-primary);
+        }
+
+        .modal-description {
+            margin-bottom: 24px;
+        }
+
+        .modal-description h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: 12px;
+        }
+
+        .modal-description p {
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            line-height: 1.7;
+        }
+
+        .modal-features {
+            background: var(--color-gray-100);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+        }
+
+        .modal-features h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: 12px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+        }
+
+        .modal-features li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+        }
+
+        .modal-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .modal-footer {
+            padding: 0 24px 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-footer .btn-cta {
+            flex: 1;
+        }
+
+        .modal-footer .btn-secondary {
+            flex: 1;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        /* Tablet */
+        @media (max-width: 992px) {
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .tabs-container {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+        }
+
+        /* Animación de carga de cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-card {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .program-card:nth-child(1) { animation-delay: 0.05s; }
+        .program-card:nth-child(2) { animation-delay: 0.1s; }
+        .program-card:nth-child(3) { animation-delay: 0.15s; }
+        .program-card:nth-child(4) { animation-delay: 0.2s; }
+        .program-card:nth-child(5) { animation-delay: 0.25s; }
+        .program-card:nth-child(6) { animation-delay: 0.3s; }
+    </style>
+
+</head>
+<body>
+
+<!-- 
+     CAJA 1: HERO
+ -->
+
+    <section class="hero" id="caja-hero">
+        <div class="hero-content">
+            <h1>Pregrados</h1>
+            <p class="hero-subtitle">
+                Formación dual que conecta tu aprendizaje con el mundo empresarial real. 
+                Desarrolla competencias prácticas desde el primer semestre.
+            </p>
+            
+            <!-- Barra de búsqueda -->
+            <div class="search-container">
+                <div class="search-icon-box">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="searchInput" 
+                    placeholder="Buscar programa..."
+                    autocomplete="off"
+                >
+            </div>
+            
+            
+        </div>
+    </section>
+    
+<!-- 
+     CAJA 2: TABS (Pestanas)
+ -->
+
+    <section class="tabs-section" id="caja-tabs">
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="presencial">
+                Presenciales
+            </button>
+            <button class="tab-btn" data-tab="virtual">
+                Virtuales
+                <span class="tab-badge">Nuevo</span>
+            </button>
+        </div>
+    </section>
+
+<!-- 
+     CAJA 3: GRID DE PROGRAMAS
+ -->
+
+    <section class="programs-section" id="caja-programas">
+        <div class="programs-grid" id="programsGrid">
+            <!-- Las cards se renderizan dinámicamente con JS -->
+        </div>
+    </section>
+
+
+<!-- 
+     COMPONENTE: MODAL (Pop-up)
+ -->
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-tag" id="modalTag" style="display: none;">Nuevo</span>
+                    <h2 class="modal-title" id="modalTitle">Nombre del Programa</h2>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta" id="modalMeta">
+                    <!-- Meta info dinámica -->
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p id="modalDescription">Descripción completa del programa...</p>
+                </div>
+                <div class="modal-features">
+                    <h3>¿Qué aprenderás?</h3>
+                    <ul id="modalFeatures">
+                        <!-- Lista dinámica -->
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cta">Solicitar información</button>
+                <button class="btn-secondary" id="modalCloseBtn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // DATOS DE PROGRAMAS
+        // Array con todos los programas académicos
+        // ========================================
+        const programasData = [
+            // PROGRAMAS PRESENCIALES
+            {
+                id: 1,
+                nombre: "Ingeniería de Software",
+                modalidad: "presencial",
+                duracion: "9 semestres",
+                jornada: "Diurna / Nocturna",
+                bullets: [
+                    "Desarrollo de aplicaciones web y móviles",
+                    "Metodologías ágiles y DevOps",
+                    "Inteligencia artificial aplicada"
+                ],
+                descripcion: "Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.",
+                features: [
+                    "Programación en múltiples lenguajes",
+                    "Arquitectura de software empresarial",
+                    "Gestión de bases de datos",
+                    "Desarrollo full-stack",
+                    "Ciberseguridad aplicada"
+                ],
+                esNuevo: false,
+                tieneVirtual: true
+            },
+            {
+                id: 2,
+                nombre: "Marketing y Negocios Digitales",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna",
+                bullets: [
+                    "Estrategias de marketing digital",
+                    "Analítica de datos y métricas",
+                    "E-commerce y marketplaces"
+                ],
+                descripcion: "Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.",
+                features: [
+                    "SEO y SEM avanzado",
+                    "Social media marketing",
+                    "Marketing de contenidos",
+                    "Automatización de marketing",
+                    "Branding digital"
+                ],
+                esNuevo: false
+            },
+            {
+                id: 3,
+                nombre: "Administración de Empresas",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna / Nocturna",
+                bullets: [
+                    "Gestión estratégica empresarial",
+                    "Liderazgo y toma de decisiones",
+                    "Emprendimiento e innovación"
+                ],
+                descripcion: "Desarrolla competencias gerenciales para liderar organizaciones con visión estratégica y responsabilidad social empresarial.",
+                features: [
+                    "Planeación estratégica",
+                    "Gestión del talento humano",
+                    "Finanzas corporativas",
+                    "Negociación empresarial",
+                    "Gestión de proyectos"
+                ],
+                esNuevo: false,
+                tieneVirtual: true
+            },
+            {
+                id: 4,
+                nombre: "Contaduría Pública",
+                modalidad: "presencial",
+                duracion: "9 semestres",
+                jornada: "Nocturna",
+                bullets: [
+                    "Normas internacionales NIIF",
+                    "Auditoría y control interno",
+                    "Tributaria y fiscal"
+                ],
+                descripcion: "Forma contadores públicos con sólidos conocimientos en normativa internacional y capacidad de análisis financiero.",
+                features: [
+                    "Contabilidad financiera y de costos",
+                    "Auditoría externa e interna",
+                    "Planeación tributaria",
+                    "Revisoría fiscal",
+                    "Análisis financiero"
+                ],
+                esNuevo: false
+            },
+            {
+                id: 5,
+                nombre: "Negocios Internacionales",
+                modalidad: "presencial",
+                duracion: "8 semestres",
+                jornada: "Diurna",
+                bullets: [
+                    "Comercio exterior y logística",
+                    "Negociación internacional",
+                    "Mercados globales"
+                ],
+                descripcion: "Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.",
+                features: [
+                    "Logística internacional",
+                    "Aduanas y regulaciones",
+                    "Mercadeo internacional",
+                    "Finanzas internacionales",
+                    "Idiomas para negocios"
+                ],
+                esNuevo: false
+            },
+            {
+                id: 6,
+                nombre: "Ingeniería Industrial",
+                modalidad: "presencial",
+                duracion: "10 semestres",
+                jornada: "Diurna",
+                bullets: [
+                    "Optimización de procesos",
+                    "Gestión de la cadena de suministro",
+                    "Lean Manufacturing"
+                ],
+                descripcion: "Forma ingenieros capaces de optimizar procesos productivos y logísticos para mejorar la eficiencia organizacional.",
+                features: [
+                    "Ingeniería de métodos",
+                    "Control de calidad",
+                    "Investigación de operaciones",
+                    "Gestión de producción",
+                    "Simulación de procesos"
+                ],
+                esNuevo: false
+            },
+            // PROGRAMAS VIRTUALES (NUEVOS)
+            {
+                id: 7,
+                nombre: "Administración de Empresas Virtual",
+                modalidad: "virtual",
+                duracion: "8 semestres",
+                jornada: "Flexible",
+                bullets: [
+                    "100% virtual con tutorías en vivo",
+                    "Plataforma interactiva 24/7",
+                    "Prácticas en empresas de tu ciudad"
+                ],
+                descripcion: "El mismo programa de alta calidad, ahora en modalidad virtual. Estudia desde cualquier lugar sin sacrificar la formación práctica empresarial.",
+                features: [
+                    "Aulas virtuales interactivas",
+                    "Casos empresariales reales",
+                    "Networking virtual",
+                    "Certificaciones incluidas",
+                    "Doble titulación disponible"
+                ],
+                esNuevo: true
+            },
+            {
+                id: 8,
+                nombre: "Gestión Logística Virtual",
+                modalidad: "virtual",
+                duracion: "8 semestres",
+                jornada: "Flexible",
+                bullets: [
+                    "Supply Chain Management",
+                    "Simuladores logísticos avanzados",
+                    "Certificación internacional incluida"
+                ],
+                descripcion: "Especialízate en la gestión de cadenas de suministro con tecnología de punta y metodología 100% virtual.",
+                features: [
+                    "Gestión de inventarios",
+                    "Transporte y distribución",
+                    "Comercio electrónico",
+                    "Software logístico",
+                    "Sostenibilidad en logística"
+                ],
+                esNuevo: true
+            }
+        ];
+
+        // ========================================
+        // VARIABLES GLOBALES
+        // ========================================
+        let tabActivo = 'presencial'; // Tab activo por defecto
+        let terminoBusqueda = ''; // Término de búsqueda actual
+
+        // ========================================
+        // ELEMENTOS DEL DOM
+        // ========================================
+        const grid = document.getElementById('programsGrid');
+        const tabs = document.querySelectorAll('.tab-btn');
+        const searchInput = document.getElementById('searchInput');
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        // ========================================
+        // FUNCIÓN: Renderizar cards de programas
+        // Filtra por modalidad y término de búsqueda
+        // ========================================
+        function renderizarProgramas() {
+            // Filtrar programas por tab activo y búsqueda
+            const programasFiltrados = programasData.filter(programa => {
+                const coincideModalidad = programa.modalidad === tabActivo;
+                const coincideBusqueda = programa.nombre.toLowerCase().includes(terminoBusqueda.toLowerCase());
+                return coincideModalidad && coincideBusqueda;
+            });
+
+            // Limpiar grid
+            grid.innerHTML = '';
+
+            // Si no hay resultados, mostrar mensaje
+            if (programasFiltrados.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                            <path d="M8 8l6 6M14 8l-6 6"/>
+                        </svg>
+                        <h3>No encontramos programas</h3>
+                        <p>Intenta con otro término de búsqueda o cambia de modalidad.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Renderizar cada programa
+            programasFiltrados.forEach((programa, index) => {
+                const card = document.createElement('article');
+                card.className = 'program-card';
+                card.style.animationDelay = `${index * 0.05}s`;
+                card.setAttribute('data-id', programa.id);
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Ver detalles de ${programa.nombre}`);
+
+                // Crear HTML de la card
+                card.innerHTML = `
+                    ${programa.esNuevo ? '<span class="card-tag">Nuevo</span>' : ''}
+                    <div class="card-header">
+                        <h3 class="card-title">${programa.nombre}</h3>
+                    </div>
+                    <div class="card-meta">
+                        <span class="meta-item">
+                            <span class="meta-icon icon-calendar"></span>
+                            ${programa.duracion}
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon icon-clock"></span>
+                            ${programa.jornada}
+                        </span>
+                    </div>
+                    <ul class="card-bullets">
+                        ${programa.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                    </ul>
+                    <button class="btn-secondary" aria-label="Ver programa ${programa.nombre}">
+                        Ver programa
+                    </button>
+                    ${programa.tieneVirtual ? `
+                        <a href="#" class="badge-virtual" data-virtual="true">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            Ver en virtual
+                            <span class="arrow">→</span>
+                        </a>
+                    ` : ''}
+                `;
+
+                // Event listener para abrir modal
+                card.addEventListener('click', () => abrirModal(programa));
+                card.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        abrirModal(programa);
+                    }
+                });
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ========================================
+        // FUNCIÓN: Cambiar tab activo
+        // ========================================
+        function cambiarTab(modalidad) {
+            tabActivo = modalidad;
+            
+            // Actualizar estilos de tabs
+            tabs.forEach(tab => {
+                if (tab.dataset.tab === modalidad) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            // Re-renderizar programas
+            renderizarProgramas();
+        }
+
+        // ========================================
+        // FUNCIÓN: Abrir modal con detalles
+        // ========================================
+        function abrirModal(programa) {
+            // Llenar datos del modal
+            document.getElementById('modalTitle').textContent = programa.nombre;
+            document.getElementById('modalDescription').textContent = programa.descripcion;
+            
+            // Mostrar/ocultar tag de nuevo
+            const modalTag = document.getElementById('modalTag');
+            modalTag.style.display = programa.esNuevo ? 'inline-block' : 'none';
+
+            // Meta información
+            const modalMeta = document.getElementById('modalMeta');
+            modalMeta.innerHTML = `
+                <span class="modal-meta-item">
+                    <span class="meta-icon icon-location"></span>
+                    ${programa.modalidad === 'virtual' ? 'Virtual' : 'Presencial'}
+                </span>
+                <span class="modal-meta-item">
+                    <span class="meta-icon icon-calendar"></span>
+                    ${programa.duracion}
+                </span>
+                <span class="modal-meta-item">
+                    <span class="meta-icon icon-clock"></span>
+                    ${programa.jornada}
+                </span>
+            `;
+
+            // Features/características
+            const modalFeatures = document.getElementById('modalFeatures');
+            modalFeatures.innerHTML = programa.features.map(f => `<li>${f}</li>`).join('');
+
+            // Mostrar modal
+            modalOverlay.classList.add('active');
+            // Calcular ancho del scrollbar para evitar salto visual
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = scrollbarWidth + 'px';
+        }
+
+        // ========================================
+        // FUNCIÓN: Cerrar modal
+        // ========================================
+        function cerrarModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = ''; // Restaurar padding
+        }
+
+        // ========================================
+        // EVENT LISTENERS
+        // ========================================
+
+        // Tabs: cambio de modalidad
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => cambiarTab(tab.dataset.tab));
+        });
+
+        // Búsqueda: filtrar mientras escribe
+        searchInput.addEventListener('input', (e) => {
+            terminoBusqueda = e.target.value;
+            renderizarProgramas();
+        });
+
+        // Modal: cerrar con botones
+        document.getElementById('modalClose').addEventListener('click', cerrarModal);
+        document.getElementById('modalCloseBtn').addEventListener('click', cerrarModal);
+
+        // Modal: cerrar al hacer clic en overlay
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                cerrarModal();
+            }
+        });
+
+        // Modal: cerrar con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                cerrarModal();
+            }
+        });
+
+        // Badge "Ver en virtual": cambiar a tab virtual
+        grid.addEventListener('click', (e) => {
+            const badgeVirtual = e.target.closest('.badge-virtual');
+            if (badgeVirtual) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Obtener el nombre del programa desde la card padre
+                const card = badgeVirtual.closest('.program-card');
+                const nombrePrograma = card.querySelector('.card-title').textContent;
+                
+                // Cambiar al tab virtual
+                cambiarTab('virtual');
+                
+                // Poner el nombre en el buscador para filtrar
+                searchInput.value = nombrePrograma;
+                terminoBusqueda = nombrePrograma;
+                renderizarProgramas();
+                
+                // Scroll suave hacia arriba de la sección
+                document.querySelector('.tabs-container').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        });
+
+        renderizarProgramas();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<style>
+    :root {
+      --accent: #0132AF !important;
+      --muted: #6b7280 !important;
+      --card: #ffffff !important;
+      --radius: 12px !important;
+    }
+    .faq-wrap {
+      padding: 24px !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      margin-bottom: 18px !important;
+    }
+    .faq-title {
+      font-size: 1.6rem !important;
+      font-weight: 800 !important;
+      color: #0132AF !important;
+      margin: 0 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-intro {
+      color: #6b7280 !important;
+      margin: 0 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-section {
+      background: #ffffff !important;
+      border-radius: 12px !important;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06) !important;
+      overflow: hidden !important;
+    }
+    .faq-item + .faq-item {
+      border-top: 1px solid #eef2f7 !important;
+    }
+    .faq-question {
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 18px 20px !important;
+      background: transparent !important;
+      border: 0 !important;
+      cursor: pointer !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      text-align: left !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      transition: all 0.3s ease !important;
+    }
+    .faq-question:hover {
+      background: #f7fafc !important;
+    }
+    .faq-question:focus {
+      outline: 3px solid rgba(1,50,175,0.12) !important;
+      outline-offset: -3px !important;
+    }
+    .faq-chevron {
+      transition: transform .28s cubic-bezier(.2,.9,.2,1) !important;
+      color: #6b7280 !important;
+      font-size: 1.2rem !important;
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg) !important;
+    }
+    .faq-answer {
+      max-height: 0 !important;
+      overflow: hidden !important;
+      padding: 0 20px !important;
+      transition: max-height .32s ease, padding .32s ease !important;
+      background: transparent !important;
+    }
+    .faq-answer p {
+      margin: 12px 0 18px !important;
+      color: #374151 !important;
+      line-height: 1.6 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    /* Open state helper */
+    .faq-item.open .faq-answer {
+      padding: 12px 20px 18px !important;
+      max-height: 420px !important;
+    }
+    /* Responsive */
+    @media (max-width:600px) {
+      .faq-wrap {
+        padding: 16px !important;
+        margin: 20px !important;
+      }
+      .faq-question {
+        padding: 14px !important;
+      }
+      .faq-answer {
+        padding: 0 14px !important;
+        color: #0da822;
+            background: #c6c5c553 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="faq-wrap">
+    <header class="faq-header">
+      <h1 class="faq-title">Preguntas frecuentes</h1>
+      <p class="faq-intro">Resolvemos las dudas más comunes sobre nuestros pregrados y procesos.</p>
+    </header>
+    <section class="faq-section" aria-label="Preguntas frecuentes">
+
+      <div class="faq-item" data-index="1">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-1" id="faq-q-1">
+          ¿Cuáles son las modalidades de estudio disponibles?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q-1">
+          <p>
+            Nuestros programas se ofrecen en modalidad presencial, virtual y modalidad dual (combinación de formación teórica y práctica en empresas).
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="2">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-2" id="faq-q-2">
+          ¿Cómo puedo acceder a becas y financiación?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q-2">
+          <p>
+            Contamos con diferentes convocatorias de becas y opciones de financiación. Revisa la sección de Becas en nuestra web o contacta a admisiones para asesoría personalizada.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="3">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-3" id="faq-q-3">
+          ¿Qué requisitos de admisión se solicitan?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-q-3">
+          <p>
+            Los requisitos varían por programa, pero suelen incluir certificado de educación anterior, documento de identidad y completar el formulario de inscripción.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="4">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-4" id="faq-q-4">
+          ¿Puedo convalidar materias de otras instituciones?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-q-4">
+          <p>
+            Existe un proceso de convalidación. Debes presentar el plan de estudios y certificaciones correspondientes para evaluación del comité académico.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="5">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-5" id="faq-q-5">
+          ¿Cómo solicitar asesoría personalizada?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-q-5">
+          <p>
+            Puedes solicitar una asesoría a través del botón "Solicitar una asesoría" en la página del programa, o llamando a nuestras líneas de contacto.
+          </p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  <script>
+    // Acordeón accesible: abre/cierra items y permite navegación por teclado
+    (function(){
+      const items = Array.from(document.querySelectorAll('.faq-item'));
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        const panel = item.querySelector('.faq-answer');
+        btn.addEventListener('click', () => toggle(item, btn, panel));
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle(item, btn, panel);
+          }
+        });
+      });
+
+      function toggle(item, btn, panel){
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        // close all to behave like an accordion (optional)
+        items.forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded','false');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        } else {
+          btn.setAttribute('aria-expanded','false');
+          panel.style.maxHeight = null;
+        }
+      }
+    })();
+</script>

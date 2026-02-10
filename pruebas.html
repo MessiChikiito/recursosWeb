@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesos Rápidos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background: #f5f7fa;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #333;
+      margin: 40px 0 20px;
+      padding-top: 40px;
+      border-top: 2px dashed #ddd;
+    }
+
+    .section-title:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    /* =====================================================
+       VERSIÓN PC - DIAGONAL HORIZONTAL
+       Optimizado para WordPress
+    ===================================================== */
+    .pc-diagonal-access {
+      max-width: 700px !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      gap: 0 !important;
+      position: relative !important;
+    }
+
+    .pc-access-card {
+      flex: 1 !important;
+      text-decoration: none !important;
+      padding: 40px 30px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      position: relative !important;
+      overflow: hidden !important;
+      min-height: 160px !important;
+      cursor: pointer !important;
+      /* Transiciones específicas por propiedad - patrón WP */
+      transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+
+    .pc-access-card.calendario {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%) !important;
+      border-radius: 16px 0 0 16px !important;
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%) !important;
+      padding-right: 50px !important;
+      z-index: 2 !important;
+    }
+
+    .pc-access-card.gestion {
+      background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+      border-radius: 0 16px 16px 0 !important;
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%) !important;
+      margin-left: -40px !important;
+      padding-left: 50px !important;
+      z-index: 1 !important;
+    }
+
+    .pc-access-card i {
+      font-size: 42px !important;
+      color: #ffffff !important;
+      margin-bottom: 14px !important;
+      position: relative !important;
+      z-index: 1 !important;
+      transition: transform 0.4s ease !important;
+    }
+
+    .pc-access-card:hover i {
+      transform: scale(1.15) !important;
+    }
+
+    .pc-access-label {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1.5px !important;
+      position: relative !important;
+      z-index: 1 !important;
+      background: transparent !important;
+    }
+
+    .pc-access-card:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+    }
+
+    .pc-access-card.calendario:hover {
+      background: linear-gradient(135deg, #234b75 0%, #3a7ab8 100%) !important;
+    }
+
+    .pc-access-card.gestion:hover {
+      background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%) !important;
+    }
+
+    /* Línea decorativa diagonal */
+    .pc-diagonal-access::after {
+      content: '' !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) rotate(-15deg) !important;
+      width: 3px !important;
+      height: 120% !important;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.3), transparent) !important;
+      z-index: 3 !important;
+      pointer-events: none !important;
+    }
+
+    /* =====================================================
+       VERSIÓN MÓVIL - DIAGONAL VERTICAL
+    ===================================================== */
+    .mobile-diagonal-access {
+      max-width: 320px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .mobile-access-card {
+      text-decoration: none;
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      min-height: 130px;
+    }
+
+    .mobile-access-card.calendario {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+      border-radius: 16px 16px 0 0;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      padding-bottom: 45px;
+      z-index: 2;
+    }
+
+    .mobile-access-card.gestion {
+      background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+      border-radius: 0 0 16px 16px;
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      margin-top: -25px;
+      padding-top: 45px;
+      z-index: 1;
+    }
+
+    .mobile-access-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.15), transparent) !important;
+      transform: translateY(-100%) !important;
+      transition: transform 0.6s ease !important;
+      pointer-events: none !important;
+    }
+
+    .mobile-access-card:hover::before,
+    .mobile-access-card:active::before {
+      transform: translateY(100%) !important;
+    }
+
+    .mobile-access-card i {
+      font-size: 36px !important;
+      color: white !important;
+      margin-bottom: 12px !important;
+      transition: transform 0.4s ease !important;
+      position: relative !important;
+      z-index: 1 !important;
+    }
+
+    .mobile-access-card:hover i,
+    .mobile-access-card:active i {
+      transform: scale(1.15) !important;
+    }
+
+    .mobile-access-label {
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mobile-access-card:hover,
+    .mobile-access-card:active {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+    }
+
+    .mobile-access-card.calendario:hover,
+    .mobile-access-card.calendario:active {
+      background: linear-gradient(135deg, #234b75 0%, #3a7ab8 100%) !important;
+    }
+
+    .mobile-access-card.gestion:hover,
+    .mobile-access-card.gestion:active {
+      background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%) !important;
+    }
+
+    .mobile-diagonal-access::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(75deg);
+      width: 120%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      z-index: 3;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       VERSIÓN PC - DIAGONAL HORIZONTAL
+  ===================================================== -->
+  <h2 class="section-title">Versión PC (Horizontal)</h2>
+  
+  <div class="pc-diagonal-access">
+    <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="pc-access-card calendario">
+      <i class="fas fa-calendar-alt"></i>
+      <span class="pc-access-label">Calendario Académico</span>
+    </a>
+    <a href="#" class="pc-access-card gestion">
+      <i class="fas fa-book"></i>
+      <span class="pc-access-label">Gestión Académica</span>
+    </a>
+  </div>
+
+  <!-- =====================================================
+       VERSIÓN MÓVIL - DIAGONAL VERTICAL
+  ===================================================== -->
+  <h2 class="section-title">Versión Móvil (Vertical)</h2>
+  
+  <div class="mobile-diagonal-access">
+    <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="mobile-access-card calendario">
+      <i class="fas fa-calendar-alt"></i>
+      <span class="mobile-access-label">Calendario Académico</span>
+    </a>
+    <a href="#" class="mobile-access-card gestion">
+      <i class="fas fa-book"></i>
+      <span class="mobile-access-label">Gestión Académica</span>
+    </a>
+  </div>
+
+</body>
+</html>

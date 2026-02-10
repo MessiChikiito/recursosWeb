@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Opciones de Stats con Color Rojo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #06325a;
+            font-size: 2.5rem;
+        }
+
+        .option {
+            margin-bottom: 100px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .option h2 {
+            color: #EF1218;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #EF1218;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* ========== OPCIÓN 1: HOT RED - GRADIENTE ROJO INTENSO ========== */
+        .stats-grid-1 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card-1 {
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%);
+            border-radius: 12px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-card-1:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 12px 32px rgba(239, 18, 24, 0.3) !important;
+            border: 1px solid transparent !important;
+        }
+
+        .stat-card-1 strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-card-1 p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .option-desc {
+            color: #718096;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: #f7fafc;
+            border-left: 3px solid #EF1218;
+            border-radius: 4px;
+        }
+
+        /* ========== OPCIÓN 2: PASTEL ROJO - SUAVE Y MODERNO ========== */
+        .stats-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card-2 {
+            background: linear-gradient(135deg, #ffe4e4 0%, #ffd4d4 100%);
+            border: 1px solid #ffb3b3;
+            border-radius: 12px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            color: #c50e13;
+        }
+
+        .stat-card-2:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 12px 32px rgba(239, 18, 24, 0.15) !important;
+            border: 1px solid transparent !important;
+            background: linear-gradient(135deg, #ffd4d4 0%, #ffb3b3 100%);
+        }
+
+        .stat-card-2 strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-card-2 p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* ========== OPCIÓN 3: DISEÑO MINIMALISTA - ROJO CON LÍNEA SUPERIOR ========== */
+        .stats-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card-3 {
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #EF1218;
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+        }
+
+        .stat-card-3:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 12px 32px rgba(239, 18, 24, 0.15) !important;
+            border: 1px solid transparent !important;
+            border-top: 4px solid transparent !important;
+            background: linear-gradient(to bottom, #fff5f5, white);
+        }
+
+        .stat-card-3 strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #EF1218;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-card-3 p {
+            font-size: 0.95rem;
+            color: #718096;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* ========== OPCIÓN 4: OSCURO CON ROJO - CONTRASTE FUERTE ========== */
+        .stats-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card-4 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid rgba(239, 18, 24, 0.3);
+            border-radius: 12px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+        }
+
+        .stat-card-4:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 12px 32px rgba(239, 18, 24, 0.3) !important;
+            border: 1px solid transparent !important;
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        .stat-card-4 strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF3B3B, #EF1218);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-card-4 p {
+            font-size: 0.95rem;
+            color: #cbd5e0;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* ========== OPCIÓN 5: NEOMORPHISM - ROJO SUTIL ========== */
+        .stats-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card-5 {
+            background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
+            border: 1px solid #ddd;
+            border-radius: 16px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .stat-card-5:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 
+                0 8px 24px rgba(239, 18, 24, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+            background: linear-gradient(145deg, #fff9f9, #f5f5f5);
+            border: 1px solid #ffcccc !important;
+        }
+
+        .stat-card-5 strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #EF1218;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-card-5 p {
+            font-size: 0.95rem;
+            color: #718096;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .stats-grid-1, .stats-grid-2, .stats-grid-3, .stats-grid-4, .stats-grid-5 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid-1, .stats-grid-2, .stats-grid-3, .stats-grid-4, .stats-grid-5 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .option h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        .code-snippet {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 5 Opciones de Diseño para Stats con Color Rojo</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 1</span> Hot Red - Gradiente Rojo Intenso</h2>
+            <div class="option-desc">
+                Gradiente rojo vibrante y moderno. Ideal para impacto visual máximo. Las tarjetas son completamente rojas con efecto hover elevado.
+            </div>
+            <div class="stats-grid-1">
+                <div class="stat-card-1">
+                    <strong>9</strong>
+                    <p>semestres de formación</p>
+                </div>
+                <div class="stat-card-1">
+                    <strong>18</strong>
+                    <p>meses de experiencia laboral</p>
+                </div>
+                <div class="stat-card-1">
+                    <strong>95%</strong>
+                    <p>tasa de empleabilidad</p>
+                </div>
+                <div class="stat-card-1">
+                    <strong>500+</strong>
+                    <p>egresados exitosos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 2</span> Pastel Rojo - Suave y Moderno</h2>
+            <div class="option-desc">
+                Fondo rojo pastel con texto rojo oscuro. Menos agresivo que la opción 1, mantiene elegancia. Perfecto para diseño sofisticado.
+            </div>
+            <div class="stats-grid-2">
+                <div class="stat-card-2">
+                    <strong>9</strong>
+                    <p>semestres de formación</p>
+                </div>
+                <div class="stat-card-2">
+                    <strong>18</strong>
+                    <p>meses de experiencia laboral</p>
+                </div>
+                <div class="stat-card-2">
+                    <strong>95%</strong>
+                    <p>tasa de empleabilidad</p>
+                </div>
+                <div class="stat-card-2">
+                    <strong>500+</strong>
+                    <p>egresados exitosos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 3</span> Minimalista - Rojo con Línea Superior</h2>
+            <div class="option-desc">
+                Diseño limpio con borde rojo en la parte superior. Combina blanco con acento rojo. Elegante y profesional.
+            </div>
+            <div class="stats-grid-3">
+                <div class="stat-card-3">
+                    <strong>9</strong>
+                    <p>semestres de formación</p>
+                </div>
+                <div class="stat-card-3">
+                    <strong>18</strong>
+                    <p>meses de experiencia laboral</p>
+                </div>
+                <div class="stat-card-3">
+                    <strong>95%</strong>
+                    <p>tasa de empleabilidad</p>
+                </div>
+                <div class="stat-card-3">
+                    <strong>500+</strong>
+                    <p>egresados exitosos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 4</span> Oscuro con Rojo - Contraste Fuerte</h2>
+            <div class="option-desc">
+                Fondo oscuro con números en gradiente rojo. Diseño moderno y premium. Muy impactante visualmente.
+            </div>
+            <div class="stats-grid-4">
+                <div class="stat-card-4">
+                    <strong>9</strong>
+                    <p>semestres de formación</p>
+                </div>
+                <div class="stat-card-4">
+                    <strong>18</strong>
+                    <p>meses de experiencia laboral</p>
+                </div>
+                <div class="stat-card-4">
+                    <strong>95%</strong>
+                    <p>tasa de empleabilidad</p>
+                </div>
+                <div class="stat-card-4">
+                    <strong>500+</strong>
+                    <p>egresados exitosos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="option">
+            <h2><span class="badge">OPCIÓN 5</span> Neomorphism - Rojo Sutil</h2>
+            <div class="option-desc">
+                Estilo neomórfico moderno con sombras suaves y relieve. Rojo solo aparece en los números y border en hover. Muy actual.
+            </div>
+            <div class="stats-grid-5">
+                <div class="stat-card-5">
+                    <strong>9</strong>
+                    <p>semestres de formación</p>
+                </div>
+                <div class="stat-card-5">
+                    <strong>18</strong>
+                    <p>meses de experiencia laboral</p>
+                </div>
+                <div class="stat-card-5">
+                    <strong>95%</strong>
+                    <p>tasa de empleabilidad</p>
+                </div>
+                <div class="stat-card-5">
+                    <strong>500+</strong>
+                    <p>egresados exitosos</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

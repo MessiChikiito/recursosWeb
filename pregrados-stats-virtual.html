@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregrados Virtuales - Stats</title>
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #067A2E;
+            --color-primary-light: #0B9C3D;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            padding: 40px 24px;
+        }
+
+        /* ========== CAJA STATS: NÚMEROS CLAVE ========== */
+        .pp-stats-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .pp-stats-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 0.9fr 0.9fr 0.9fr;
+            gap: 24px;
+        }
+
+        .pp-stat-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #067A2E;
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+            transition: none !important;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
+        }
+
+        /* Card especial de becas */
+        .pp-stat-card-becas {
+            border-top-color: #F59E0B;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .pp-card-becas-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .pp-card-becas-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pp-card-becas-svg {
+            width: 50px !important;
+            height: 50px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .pp-card-becas-title {
+            font-size: 1.7rem !important;
+            font-weight: 900 !important;
+            color: #F59E0B !important;
+            margin-bottom: 4px !important;
+        }
+
+        .pp-card-becas-subtitle {
+            color: var(--color-gray-700) !important;
+            font-size: 0.9rem !important;
+            margin-bottom: 8px !important;
+            font-weight: 500 !important;
+        }
+
+        .pp-becas-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pp-becas-list li {
+            padding: 2px 0;
+            color: var(--color-gray-700);
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .pp-becas-list li.highlight-blue {
+            color: #067A2E !important;
+            font-weight: 600 !important;
+        }
+
+        .pp-becas-list li:before {
+            content: "✓ ";
+            color: #F59E0B;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        /* Colores de bordes para stats (excluye becas) */
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) {
+            border-top-color: #0A943A;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) {
+            border-top-color: #0A943A;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) {
+            border-top-color: #0A943A;
+        }
+
+        .pp-stat-card strong {
+            display: block !important;
+            font-size: 2rem !important;
+            font-weight: 900;
+            color: #F59E0B !important;
+            margin-bottom: 8px !important;
+            letter-spacing: -0.5px !important;
+            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+            font-synthesis: weight !important;
+            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03) !important;
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02) !important;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) strong {
+            color: #1C1917 !important;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) strong {
+            color: #1C1917 !important;
+        }
+
+        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) strong {
+            color: #1C1917 !important;
+        }
+
+        .pp-stat-card p {
+            color: #0A943A;
+            font-size: 0.95rem !important;
+            margin: 0;
+            font-weight: 600 !important;
+            line-height: 1.4 !important;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        /* Tablet */
+        @media (max-width: 992px) {
+            .pp-stats-grid {
+                grid-template-columns: 1.5fr 1fr 1fr 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 768px) {
+            body {
+                padding: 32px 16px;
+            }
+
+            .pp-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .pp-stat-card {
+                padding: 24px 16px;
+            }
+
+            .pp-stat-card-becas {
+                padding: 16px;
+            }
+
+            .pp-card-becas-content {
+                gap: 16px;
+            }
+
+            .pp-card-becas-svg {
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .pp-card-becas-title {
+                font-size: 1.3rem !important;
+            }
+
+            .pp-stat-card strong {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* Mobile Extra Small */
+        @media (max-width: 480px) {
+            body {
+                padding: 24px 12px;
+            }
+
+            .pp-stat-card {
+                padding: 20px 12px;
+            }
+
+            .pp-card-becas-title {
+                font-size: 1.1rem !important;
+            }
+
+            .pp-stat-card strong {
+                font-size: 1.3rem !important;
+            }
+
+            .pp-stat-card p {
+                font-size: 0.85rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECCIÓN: STATS/NÚMEROS CLAVE -->
+    <section class="pp-stats-section" id="pp-caja-stats">
+        <div class="pp-stats-grid">
+            <div class="pp-stat-card pp-stat-card-becas">
+                <div class="pp-card-becas-content">
+                    <svg class="pp-card-becas-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="25" r="12" fill="none" stroke="#F59E0B" stroke-width="2"/>
+                        <path d="M18 25L30 15L42 25" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30 37 Q15 42 15 48 Q15 52 20 54 L40 54 Q45 52 45 48 Q45 42 30 37" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="30" cy="48" r="3" fill="#F59E0B"/>
+                    </svg>
+                    <div class="pp-card-becas-text">
+                        <h1 class="pp-card-becas-title">Becas y Financiamiento</h1>
+                        <a class="pp-card-becas-subtitle">Múltiples opciones para tu acceso</a>
+                        <ul class="pp-becas-list">
+                            <li class="highlight-blue">Becas con jóvenes a la E</li>
+                            <li>Opciones de financiación flexible</li>
+                            <li>Convenios institucionales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pp-stat-card">
+                <strong>$6.757.000</strong>
+                <p>Inversión por semestre</p>
+            </div>
+            <div class="pp-stat-card">
+                <strong>95%</strong>
+                <p>Tasa de empleabilidad</p>
+            </div>
+            <div class="pp-stat-card">
+                <strong>500+</strong>
+                <p>Empresas Aliadas</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
