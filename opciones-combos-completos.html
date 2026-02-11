@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Opciones Completas de Hero + Botón</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f3f4f6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a202c;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .combo-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .combo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .hero-demo {
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--hero-primary) 0%, var(--hero-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .demo-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            background-color: var(--button-color);
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .combo-info {
+            padding: 25px;
+        }
+
+        .combo-name {
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 16px;
+            font-size: 1.15rem;
+        }
+
+        .color-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .color-section {
+            text-align: center;
+        }
+
+        .color-section label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .color-codes {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .code-tag {
+            font-family: monospace;
+            background: #f7fafc;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .combo-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #E3F2FD;
+            color: #1976D2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 12px;
+            margin-right: 6px;
+        }
+
+        .recommendation-section {
+            background: linear-gradient(135deg, #E67E22 0%, #F39C12 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 60px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        .recommendation-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .rec-combo {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .rec-combo:last-child {
+            margin-bottom: 0;
+        }
+
+        .rec-colors {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .rec-color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .rec-content strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .rec-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 10 Combos Hero + Botón Completos</h1>
+        <p class="subtitle">Cada opción con su pareja de colores perfecta. Haz clic para copiar los códigos.</p>
+
+        <div class="combo-grid">
+            <!-- 1. Naranja Dorado + Verde Oscuro -->
+            <div class="combo-card" onclick="copiarCombo('#E67E22', '#F39C12', '#1B4332')">
+                <div class="hero-demo" style="--hero-primary: #E67E22; --hero-secondary: #F39C12; --button-color: #1B4332;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Naranja Dorado + Verde Oscuro</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#E67E22</div>
+                                <div class="code-tag">#F39C12</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#1B4332</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Cálido y dinámico con contraste natural. El verde oscuro complementa perfectamente el naranja. Muy educativo.
+                        <span class="badge">⭐ RECOMENDADO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Azul Eléctrico + Naranja -->
+            <div class="combo-card" onclick="copiarCombo('#0066FF', '#0099FF', '#F97316')">
+                <div class="hero-demo" style="--hero-primary: #0066FF; --hero-secondary: #0099FF; --button-color: #F97316;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Azul Eléctrico + Naranja</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#0066FF</div>
+                                <div class="code-tag">#0099FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#F97316</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Tech y moderno. Contraste complementario muy visual y llamativo. Perfecto para startups educativas.
+                        <span class="badge">MODERNO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Verde Esmeralda + Azul Marino -->
+            <div class="combo-card" onclick="copiarCombo('#10B981', '#34D399', '#0A2351')">
+                <div class="hero-demo" style="--hero-primary: #10B981; --hero-secondary: #34D399; --button-color: #0A2351;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Verde Esmeralda + Azul Marino</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#10B981</div>
+                                <div class="code-tag">#34D399</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#0A2351</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Crecimiento y confianza. Muy usado en universidades. El azul marino oscuro complementa el verde. Muy profesional.
+                        <span class="badge">CORPORATIVO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Índigo Profundo + Naranja Cálido -->
+            <div class="combo-card" onclick="copiarCombo('#4F46E5', '#6366F1', '#D97706')">
+                <div class="hero-demo" style="--hero-primary: #4F46E5; --hero-secondary: #6366F1; --button-color: #D97706;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Índigo Profundo + Naranja Cálido</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#4F46E5</div>
+                                <div class="code-tag">#6366F1</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#D97706</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Premium e intelectual. Muy sofisticado. El naranja rompe la frialdad del índigo. Excelente contraste lujo.
+                        <span class="badge">PREMIUM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Teal Refrescante + Burgundy -->
+            <div class="combo-card" onclick="copiarCombo('#06B6D4', '#15D8D8', '#722F37')">
+                <div class="hero-demo" style="--hero-primary: #06B6D4; --hero-secondary: #15D8D8; --button-color: #722F37;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Teal Refrescante + Burgundy</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#06B6D4</div>
+                                <div class="code-tag">#15D8D8</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#722F37</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Refrescante y elegante. Contraste sofisticado entre lo moderno (teal) y lo clásico (burgundy). Diferente.
+                        <span class="badge">ÚNICO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Púrpura Rosado + Verde Oscuro -->
+            <div class="combo-card" onclick="copiarCombo('#A855F7', '#EC4899', '#1B4332')">
+                <div class="hero-demo" style="--hero-primary: #A855F7; --hero-secondary: #EC4899; --button-color: #1B4332;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Púrpura Rosado + Verde Oscuro</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#A855F7</div>
+                                <div class="code-tag">#EC4899</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#1B4332</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Creativo y moderno. Los colores trending 2024-2025. El verde oscuro ancla la creatividad. Muy joven.
+                        <span class="badge">TRENDING</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Rojo Crimson + Verde Menta -->
+            <div class="combo-card" onclick="copiarCombo('#DC143C', '#E74C3C', '#14B8A6')">
+                <div class="hero-demo" style="--hero-primary: #DC143C; --hero-secondary: #E74C3C; --button-color: #14B8A6;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Rojo Crimson + Verde Menta</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#DC143C</div>
+                                <div class="code-tag">#E74C3C</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#14B8A6</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Tu rojo pero con un botón refreshante. El verde menta complementa bien. Más fresco que el azul marino.
+                        <span class="badge">FRESCO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Azul Profundo + Oro Cálido -->
+            <div class="combo-card" onclick="copiarCombo('#1A365D', '#2D5A8C', '#D4A574')">
+                <div class="hero-demo" style="--hero-primary: #1A365D; --hero-secondary: #2D5A8C; --button-color: #D4A574;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Azul Profundo + Oro Cálido</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#1A365D</div>
+                                <div class="code-tag">#2D5A8C</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#D4A574</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Corporativo y lujoso. El oro con azul profundo transmite elegancia y prestigio. Muy exclusivo.
+                        <span class="badge">EXCLUSIVO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Verde Azul + Coral -->
+            <div class="combo-card" onclick="copiarCombo('#0EA5E9', '#10B981', '#FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #0EA5E9; --hero-secondary: #10B981; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Verde Azul Sostenible + Coral</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#0EA5E9</div>
+                                <div class="code-tag">#10B981</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Ecológico y sostenible. El coral agrega calidez y energía. Muy trending ahora. Muy equilibrado.
+                        <span class="badge">ECO-FRIENDLY</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Rosa Magenta + Slate Oscuro -->
+            <div class="combo-card" onclick="copiarCombo('#BE185D', '#EC4899', '#1E293B')">
+                <div class="hero-demo" style="--hero-primary: #BE185D; --hero-secondary: #EC4899; --button-color: #1E293B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Pregrados</div>
+                        <div class="hero-subtitle">Formación que transforma</div>
+                        <button class="demo-button">Ver Programas →</button>
+                    </div>
+                </div>
+                <div class="combo-info">
+                    <div class="combo-name">Rosa Magenta + Slate Oscuro</div>
+                    <div class="color-pair">
+                        <div class="color-section">
+                            <label>Hero</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#BE185D</div>
+                                <div class="code-tag">#EC4899</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <label>Botón</label>
+                            <div class="color-codes">
+                                <div class="code-tag">#1E293B</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combo-description">
+                        Audaz y sofisticado. El rosa magenta con slate oscuro es muy minimalista. Perfecto para atraer millennials.
+                        <span class="badge">AUDAZ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendation-section">
+            <h3>⭐ Mi Top Pick: Naranja Dorado + Verde Oscuro</h3>
+            <div class="rec-combo">
+                <div class="rec-colors">
+                    <div class="rec-color-box" style="background: linear-gradient(135deg, #E67E22 0%, #F39C12 100%);"></div>
+                    <div class="rec-color-box" style="background-color: #1B4332;"></div>
+                </div>
+                <div class="rec-content">
+                    <strong>Hero: #E67E22 → #F39C12 | Botón: #1B4332</strong>
+                    <p>
+                        Esta combinación es la que MÁS te va a gustar. El naranja dorado es cálido, energético y dinámico sin ser agresivo. El verde oscuro complementa perfecto (son opuestos en la rueda de colores), creando un contraste natural muy armónico. Transmite educación, crecimiento y confianza.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copiarCombo(heroPrimary, heroSecondary, button) {
+            const combo = `Hero: ${heroPrimary} → ${heroSecondary}\nBotón: ${button}`;
+            navigator.clipboard.writeText(combo).then(() => {
+                alert(`Combo copiado:\n\n${combo}\n\n¡Úsalo en tu archivo!`);
+            }).catch(err => console.error('Error:', err));
+        }
+    </script>
+</body>
+</html>

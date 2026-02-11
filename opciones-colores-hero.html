@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Colores Diferentes para Hero</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f3f4f6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a202c;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .hero-preview {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+        }
+
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+        .color-details {
+            padding: 20px;
+        }
+
+        .palette-name {
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .color-codes {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .code-tag {
+            font-family: monospace;
+            background: #f7fafc;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .color-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e2e8f0;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 60px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .recommendation-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .rec-option {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .rec-option:last-child {
+            border-bottom: none;
+        }
+
+        .rec-color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .rec-content strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+
+        .trending {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Opciones de Colores para Hero</h1>
+        <p class="subtitle">Paletas de colores completamente diferentes para tu sección hero</p>
+
+        <!-- PALETAS CÁLIDAS -->
+        <div class="category-title">🔥 Paletas Cálidas</div>
+        <div class="color-grid">
+            <!-- Naranja-Dorado -->
+            <div class="hero-card" onclick="copiarPaleta('#E67E22', '#F39C12')">
+                <div class="hero-preview" style="--color-primary: #E67E22; --color-secondary: #F39C12;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Naranja Dorado Dinámico</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#E67E22</div>
+                        <div class="code-tag">#F39C12</div>
+                    </div>
+                    <div class="color-description">Energético, moderno, accesible. Transmite calor y entusiasmo. Muy dinámico.</div>
+                </div>
+            </div>
+
+            <!-- Salmón-Coral -->
+            <div class="hero-card" onclick="copiarPaleta('#FF6B6B', '#FF8C8C')">
+                <div class="hero-preview" style="--color-primary: #FF6B6B; --color-secondary: #FF8C8C;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Salmón Coral Moderno</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#FF6B6B</div>
+                        <div class="code-tag">#FF8C8C</div>
+                    </div>
+                    <div class="color-description">Suave pero vibrante. Menos agresivo que el rojo. Muy contemporáneo.</div>
+                </div>
+            </div>
+
+            <!-- Burgundy-Vino -->
+            <div class="hero-card" onclick="copiarPaleta('#722F37', '#8B3A3A')">
+                <div class="hero-preview" style="--color-primary: #722F37; --color-secondary: #8B3A3A;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Burgundy Oscuro Premium</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#722F37</div>
+                        <div class="code-tag">#8B3A3A</div>
+                    </div>
+                    <div class="color-description">Muy elegante y sofisticado. Profesional extremo. Transmite lujo.</div>
+                </div>
+            </div>
+
+            <!-- Tierra Cálida -->
+            <div class="hero-card" onclick="copiarPaleta('#A0522D', '#CD853F')">
+                <div class="hero-preview" style="--color-primary: #A0522D; --color-secondary: #CD853F;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Tierra Siena Orgánico</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#A0522D</div>
+                        <div class="code-tag">#CD853F</div>
+                    </div>
+                    <div class="color-description">Natural, orgánico, confiable. Sensación de solidez y experiencia.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PALETAS FRÍAS MODERNAS -->
+        <div class="category-title">❄️ Paletas Frías Modernas</div>
+        <div class="color-grid">
+            <!-- Azul Eléctrico -->
+            <div class="hero-card" onclick="copiarPaleta('#0066FF', '#0099FF')">
+                <div class="hero-preview" style="--color-primary: #0066FF; --color-secondary: #0099FF;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Azul Eléctrico Vibrante</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#0066FF</div>
+                        <div class="code-tag">#0099FF</div>
+                    </div>
+                    <div class="color-description">Moderno, tech, futurista. Muy usado en startups. Transmite innovación.</div>
+                </div>
+            </div>
+
+            <!-- Verde Esmeralda -->
+            <div class="hero-card" onclick="copiarPaleta('#10B981', '#34D399')">
+                <div class="hero-preview" style="--color-primary: #10B981; --color-secondary: #34D399;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Verde Esmeralda Fresco</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#10B981</div>
+                        <div class="code-tag">#34D399</div>
+                    </div>
+                    <div class="color-description">Crecimiento, sostenibilidad, salud. Muy positivo. Muy usado en educación.</div>
+                </div>
+            </div>
+
+            <!-- Teal-Cyan -->
+            <div class="hero-card" onclick="copiarPaleta('#06B6D4', '#15D8D8')">
+                <div class="hero-preview" style="--color-primary: #06B6D4; --color-secondary: #15D8D8;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Teal Cian Refrescante</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#06B6D4</div>
+                        <div class="code-tag">#15D8D8</div>
+                    </div>
+                    <div class="color-description">Digital, refrescante, profesional. Excelente contraste. Muy equilibrado.</div>
+                </div>
+            </div>
+
+            <!-- Índigo Profundo -->
+            <div class="hero-card" onclick="copiarPaleta('#4F46E5', '#6366F1')">
+                <div class="hero-preview" style="--color-primary: #4F46E5; --color-secondary: #6366F1;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Índigo Profundo Sofisticado</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#4F46E5</div>
+                        <div class="code-tag">#6366F1</div>
+                    </div>
+                    <div class="color-description">Premium, místico, intelectual. Muy sofisticado. Excelente para educación.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PALETAS MIXTAS/GRADIENTES -->
+        <div class="category-title">🎨 Paletas Mixtas y Gradientes</div>
+        <div class="color-grid">
+            <!-- Púrpura Rosado -->
+            <div class="hero-card" onclick="copiarPaleta('#A855F7', '#EC4899')">
+                <div class="hero-preview" style="--color-primary: #A855F7; --color-secondary: #EC4899;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Púrpura Rosado Creativo</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#A855F7</div>
+                        <div class="code-tag">#EC4899</div>
+                    </div>
+                    <div class="color-description">Creativo, moderno, joven. Muy popular en 2024-2025. Transforma bien.</div>
+                </div>
+            </div>
+
+            <!-- Azul Naranja -->
+            <div class="hero-card" onclick="copiarPaleta('#3B82F6', '#F97316')">
+                <div class="hero-preview" style="--color-primary: #3B82F6; --color-secondary: #F97316;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Azul Naranja Complementario</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#3B82F6</div>
+                        <div class="code-tag">#F97316</div>
+                    </div>
+                    <div class="color-description">Contraste complementario perfecto. Equilibrio cálido/frío. Muy visual.</div>
+                </div>
+            </div>
+
+            <!-- Verde Azul -->
+            <div class="hero-card" onclick="copiarPaleta('#0EA5E9', '#10B981')">
+                <div class="hero-preview" style="--color-primary: #0EA5E9; --color-secondary: #10B981;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Azul Cian Verde Sostenible</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#0EA5E9</div>
+                        <div class="code-tag">#10B981</div>
+                    </div>
+                    <div class="color-description">Ecológico, sostenible, confidente. Muy trending ahora. Excelente armonía.</div>
+                </div>
+            </div>
+
+            <!-- Rosa Magenta -->
+            <div class="hero-card" onclick="copiarPaleta('#BE185D', '#EC4899')">
+                <div class="hero-preview" style="--color-primary: #BE185D; --color-secondary: #EC4899;">
+                    <div class="hero-title">Tu Título</div>
+                    <div class="hero-subtitle">Formación que transforma</div>
+                </div>
+                <div class="color-details">
+                    <div class="palette-name">Rosa Magenta Audaz</div>
+                    <div class="color-codes">
+                        <div class="code-tag">#BE185D</div>
+                        <div class="code-tag">#EC4899</div>
+                    </div>
+                    <div class="color-description">Audaz, joven, atractivo. Perfecto para atraer millennials. Muy vibrante.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendation-box">
+            <h3>⭐ Top 3 Alternativas (Diferente al Rojo)</h3>
+            
+            <div class="rec-option">
+                <div class="rec-color-box" style="background: linear-gradient(135deg, #10B981 0%, #34D399 100%);"></div>
+                <div class="rec-content">
+                    <strong>1. Verde Esmeralda (#10B981 → #34D399) <span class="trending">RECOMENDADO</span></strong>
+                    Excelente para educación. Representa crecimiento sin ser agresivo. Transmite confianza. Muy profesional.
+                </div>
+            </div>
+
+            <div class="rec-option">
+                <div class="rec-color-box" style="background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);"></div>
+                <div class="rec-content">
+                    <strong>2. Índigo Profundo (#4F46E5 → #6366F1) <span class="trending">PREMIUM</span></strong>
+                    Muy sofisticado y educativo. Similar a universidades prestigiosas. Transmite academicismo.
+                </div>
+            </div>
+
+            <div class="rec-option">
+                <div class="rec-color-box" style="background: linear-gradient(135deg, #0066FF 0%, #0099FF 100%);"></div>
+                <div class="rec-content">
+                    <strong>3. Azul Eléctrico (#0066FF → #0099FF) <span class="trending">MODERNO</span></strong>
+                    Si quieres algo más moderno y tech. Muy digitalmente apropiado. Excelente contraste.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copiarPaleta(color1, color2) {
+            const paleta = `${color1}, ${color2}`;
+            navigator.clipboard.writeText(paleta).then(() => {
+                alert(`Paleta copiada: ${paleta}\n\nÚsalos en tus variables CSS.`);
+            }).catch(err => {
+                console.error('Error:', err);
+            });
+        }
+    </script>
+</body>
+</html>

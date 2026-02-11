@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Colores para Header Posgrados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f3f4f6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a202c;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .context-box {
+            background: white;
+            border-left: 4px solid #0132AF;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .context-box h3 {
+            color: #0132AF;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .context-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .context-color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .context-color-box::after {
+            content: attr(data-label);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            width: 90%;
+        }
+
+        .context-text {
+            flex: 1;
+        }
+
+        .context-text strong {
+            display: block;
+            color: #1a202c;
+            margin-bottom: 2px;
+        }
+
+        .context-text p {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .option-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .header-preview {
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            color: white;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.5;
+            max-width: 80%;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .demo-btn-primary {
+            background-color: var(--button-color);
+        }
+
+        .demo-btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .option-info {
+            padding: 25px;
+        }
+
+        .option-name {
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 16px;
+            font-size: 1.15rem;
+        }
+
+        .color-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .color-box {
+            text-align: center;
+        }
+
+        .color-box label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .code-tag {
+            font-family: monospace;
+            background: #f7fafc;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .option-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #E3F2FD;
+            color: #1976D2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 12px;
+            margin-right: 6px;
+        }
+
+        .comparison-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 60px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+        }
+
+        .comparison-section h2 {
+            color: #1a202c;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .comparison-item {
+            padding: 20px;
+            border-radius: 12px;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+        }
+
+        .comparison-title {
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .comparison-pro {
+            color: #10b981;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .comparison-pro::before {
+            content: "✓";
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .comparison-con {
+            color: #ef4444;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .comparison-con::before {
+            content: "✗";
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .recommendation-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .recommendation-box p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .rec-colors {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .rec-color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Opciones de Colores para Header Posgrados</h1>
+        <p class="subtitle">10 variaciones manteniendo coherencia con tu paleta existente</p>
+
+        <div class="context-box">
+            <h3>🎯 Contexto de tu Paleta Actual</h3>
+            <div class="context-grid">
+                <div class="context-item">
+                    <div class="context-color-box" style="background: linear-gradient(135deg, #DC143C 0%, #E74C3C 100%); border: 2px solid rgba(0,0,0,0.1);" data-label="Presencial"></div>
+                    <div class="context-text">
+                        <strong>Pregrados Presenciales</strong>
+                        <p>Rojo Crimson (#DC143C)</p>
+                    </div>
+                </div>
+                <div class="context-item">
+                    <div class="context-color-box" style="background: linear-gradient(135deg, #0A2351 0%, #1A365D 100%); border: 2px solid rgba(0,0,0,0.1);" data-label="Botón"></div>
+                    <div class="context-text">
+                        <strong>Botón/Complemento</strong>
+                        <p>Azul Marino (#0A2351)</p>
+                    </div>
+                </div>
+                <div class="context-item">
+                    <div class="context-color-box" style="background: linear-gradient(135deg, #067A2E 0%, #0B9C3D 100%); border: 2px solid rgba(0,0,0,0.1);" data-label="Virtual"></div>
+                    <div class="context-text">
+                        <strong>Pregrados Virtuales</strong>
+                        <p>Verde (#067A2E)</p>
+                    </div>
+                </div>
+            </div>
+            <p style="color: #4a5568; font-size: 0.95rem; line-height: 1.6;">
+                <strong>Desafío:</strong> Los posgrados necesitan diferenciarse visualmente sin romper la coherencia de marca. Puedes elegir un color completamente diferente o una variante del azul/rojo existente.
+            </p>
+        </div>
+
+        <div class="options-grid">
+            <!-- 1. Púrpura Premium -->
+            <div class="option-card" onclick="copiarColor('#6B21A8', '#9333EA', '#0A2351')">
+                <div class="header-preview" style="--color-primary: #6B21A8; --color-secondary: #9333EA; --button-color: #0A2351;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Púrpura Premium</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#6B21A8</span> → <span>#9333EA</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#0A2351</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Diferente al rojo y verde. Transmite lujo y sofisticación. El azul marino mantiene coherencia con presenciales.
+                        <span class="badge">⭐ MUY DIFERENTE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Naranja Oscuro Cálido -->
+            <div class="option-card" onclick="copiarColor('#B45309', '#D97706', '#0A2351')">
+                <div class="header-preview" style="--color-primary: #B45309; --color-secondary: #D97706; --button-color: #0A2351;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Naranja Oscuro Cálido</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#B45309</span> → <span>#D97706</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#0A2351</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Similar al rojo (cálido) pero completamente diferente. Muy profesional y dinámico. Mantiene la calidez de presenciales.
+                        <span class="badge">CÁLIDO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Azul Marino Oscuro Profundo -->
+            <div class="option-card" onclick="copiarColor('#0F172A', '#1E293B', '#E67E22')">
+                <div class="header-preview" style="--color-primary: #0F172A; --color-secondary: #1E293B; --button-color: #E67E22;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Azul Marino Ultra Oscuro</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#0F172A</span> → <span>#1E293B</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#E67E22</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Variante muy oscura del azul. Muy corporativo y académico. El naranja del botón crea contraste vibrante.
+                        <span class="badge">ACADÉMICO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Índigo Profundo -->
+            <div class="option-card" onclick="copiarColor('#4338CA', '#6366F1', '#D4A574')">
+                <div class="header-preview" style="--color-primary: #4338CA; --color-secondary: #6366F1; --button-color: #D4A574;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Índigo Profundo Premium</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#4338CA</span> → <span>#6366F1</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#D4A574</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Elegante y sofisticado. El oro del botón transmite exclusividad. Perfecto para masterías y especialización.
+                        <span class="badge">⭐ PREMIUM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Teal/Cian Sofisticado -->
+            <div class="option-card" onclick="copiarColor('#0D9488', '#14B8A6', '#6B21A8')">
+                <div class="header-preview" style="--color-primary: #0D9488; --color-secondary: #14B8A6; --button-color: #6B21A8;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Teal Sofisticado</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#0D9488</span> → <span>#14B8A6</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#6B21A8</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Moderno y refrescante. Diferente al verde pero similar. El púrpura del botón crea un contraste equilibrado.
+                        <span class="badge">MODERNO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Gris Oscuro Corporativo -->
+            <div class="option-card" onclick="copiarColor('#1F2937', '#374151', '#DC143C')">
+                <div class="header-preview" style="--color-primary: #1F2937; --color-secondary: #374151; --button-color: #DC143C;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Gris Oscuro Corporativo</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#1F2937</span> → <span>#374151</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#DC143C</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Muy profesional y neutralidad. Deja el foco en el contenido. El rojo del botón es el botón de presenciales.
+                        <span class="badge">CORPORATIVO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Rosa Magenta Moderno -->
+            <div class="option-card" onclick="copiarColor('#BE185D', '#EC4899', '#1E293B')">
+                <div class="header-preview" style="--color-primary: #BE185D; --color-secondary: #EC4899; --button-color: #1E293B;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Rosa Magenta Moderno</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#BE185D</span> → <span>#EC4899</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#1E293B</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Audaz, creativo y joven. Muy trending. Perfecto si buscas diferenciación total con presenciales y virtuales.
+                        <span class="badge">TRENDING</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Burgundy Elegante -->
+            <div class="option-card" onclick="copiarColor('#722F37', '#8B3A3A', '#0EA5E9')">
+                <div class="header-preview" style="--color-primary: #722F37; --color-secondary: #8B3A3A; --button-color: #0EA5E9;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Burgundy Elegante</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#722F37</span> → <span>#8B3A3A</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#0EA5E9</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Similar al rojo pero más oscuro y elegante. El azul cian del botón crea contraste muy sofisticado.
+                        <span class="badge">ELEGANTE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Azul Eléctrico Tech -->
+            <div class="option-card" onclick="copiarColor('#0066FF', '#0099FF', '#F97316')">
+                <div class="header-preview" style="--color-primary: #0066FF; --color-secondary: #0099FF; --button-color: #F97316;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Azul Eléctrico Tech</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#0066FF</span> → <span>#0099FF</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#F97316</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Moderno, tech y vibrante. Contraste complementario perfecto con naranja. Ideal para posgrados digitales.
+                        <span class="badge">TECH</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Oro Cálido Premium -->
+            <div class="option-card" onclick="copiarColor('#B8860B', '#DAA520', '#0A2351')">
+                <div class="header-preview" style="--color-primary: #B8860B; --color-secondary: #DAA520; --button-color: #0A2351;">
+                    <div class="header-content">
+                        <h2 class="header-title">Posgrados</h2>
+                        <p class="header-subtitle">Especialización y masterías para profesionales</p>
+                        <div class="button-group">
+                            <button class="demo-btn demo-btn-primary">Ver Programas →</button>
+                            <button class="demo-btn demo-btn-secondary">Solicitar Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-name">Oro Cálido Premium</div>
+                    <div class="color-pair">
+                        <div class="color-box">
+                            <label>Header</label>
+                            <div class="code-tag"><span>#B8860B</span> → <span>#DAA520</span></div>
+                        </div>
+                        <div class="color-box">
+                            <label>Botón</label>
+                            <div class="code-tag">#0A2351</div>
+                        </div>
+                    </div>
+                    <div class="option-description">
+                        Lujo y exclusividad pura. El oro transmite valor premium. El azul mantiene coherencia corporativa.
+                        <span class="badge">EXCLUSIVO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h2>📊 Comparativa Rápida</h2>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comparison-title">💜 Púrpura Premium</div>
+                    <div class="comparison-pro">Diferente del rojo y verde</div>
+                    <div class="comparison-pro">Muy sofisticado</div>
+                    <div class="comparison-con">Podría ser chillón si se usa mal</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">🟠 Naranja Oscuro</div>
+                    <div class="comparison-pro">Similar al rojo pero diferente</div>
+                    <div class="comparison-pro">Mantiene calidez</div>
+                    <div class="comparison-con">Muy similar al rojo presencial</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">🔵 Azul Marino Oscuro</div>
+                    <div class="comparison-pro">Muy corporativo</div>
+                    <div class="comparison-pro">Coherente con botones</div>
+                    <div class="comparison-con">Podría confundirse con azul presencial</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">✨ Índigo Profundo</div>
+                    <div class="comparison-pro">Premium y diferente</div>
+                    <div class="comparison-pro">Goldbutton de lujo</div>
+                    <div class="comparison-con">Requiere buen branding</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">🌊 Teal</div>
+                    <div class="comparison-pro">Moderno y diferente</div>
+                    <div class="comparison-pro">Sofisticado</div>
+                    <div class="comparison-con">Un poco similar al verde virtual</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">⚪ Gris Corporativo</div>
+                    <div class="comparison-pro">Muy profesional</div>
+                    <div class="comparison-pro">No compite con otros</div>
+                    <div class="comparison-con">Podría parecer aburrido</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">💗 Rosa Magenta</div>
+                    <div class="comparison-pro">Muy diferente</div>
+                    <div class="comparison-pro">Trending y moderno</div>
+                    <div class="comparison-con">Muy diferente del plan</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">🍷 Burgundy</div>
+                    <div class="comparison-pro">Elegante variante del rojo</div>
+                    <div class="comparison-pro">Sofisticado</div>
+                    <div class="comparison-con">Aún similar al rojo presencial</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">⚡ Azul Eléctrico</div>
+                    <div class="comparison-pro">Tech y moderno</div>
+                    <div class="comparison-pro">Muy diferente</div>
+                    <div class="comparison-con">Muy saturado</div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-title">👑 Oro Premium</div>
+                    <div class="comparison-pro">Exclusivo y lujoso</div>
+                    <div class="comparison-pro">Diferente al plan</div>
+                    <div class="comparison-con">Requiere diseño cuidadoso</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendation-box">
+            <h3>⭐ Mi Top 3 Recomendaciones para Posgrados</h3>
+            <p style="margin-bottom: 25px;">
+                Basado en mantener coherencia visual con presenciales/virtuales pero diferenciarse claramente
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="text-align: center;">
+                    <div class="rec-colors">
+                        <div class="rec-color-box" style="background: linear-gradient(135deg, #6B21A8 0%, #9333EA 100%);"></div>
+                        <div class="rec-color-box" style="background-color: #0A2351;"></div>
+                    </div>
+                    <strong style="display: block; margin: 15px 0; color: white;">1. Púrpura + Azul Marino</strong>
+                    <p style="font-size: 0.95rem; line-height: 1.5;">
+                        Diferente al rojo y verde. Sofisticado. Mantiene el azul marino (coherencia). Perfecto para mastería.
+                    </p>
+                </div>
+
+                <div style="text-align: center;">
+                    <div class="rec-colors">
+                        <div class="rec-color-box" style="background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);"></div>
+                        <div class="rec-color-box" style="background-color: #D4A574;"></div>
+                    </div>
+                    <strong style="display: block; margin: 15px 0; color: white;">2. Índigo + Oro</strong>
+                    <p style="font-size: 0.95rem; line-height: 1.5;">
+                        Premium extremo. El oro transmite lujo. Diferente de todo lo demás. Muy exclusivo.
+                    </p>
+                </div>
+
+                <div style="text-align: center;">
+                    <div class="rec-colors">
+                        <div class="rec-color-box" style="background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);"></div>
+                        <div class="rec-color-box" style="background-color: #6B21A8;"></div>
+                    </div>
+                    <strong style="display: block; margin: 15px 0; color: white;">3. Teal + Púrpura</strong>
+                    <p style="font-size: 0.95rem; line-height: 1.5;">
+                        Moderno y refrescante. Diferente pero coherente. Sofisticado equilibrio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copiarColor(color1, color2, button) {
+            const combo = `Header: ${color1} → ${color2}\nBotón: ${button}`;
+            navigator.clipboard.writeText(combo).then(() => {
+                alert(`Combo copiado:\n\n${combo}\n\n¡Úsalo en tu archivo!`);
+            }).catch(err => console.error('Error:', err));
+        }
+    </script>
+</body>
+</html>

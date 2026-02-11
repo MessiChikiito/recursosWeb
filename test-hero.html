@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test - Hero Section</title>
+
     <style>
         /* ========== RESET Y VARIABLES ========== */
         :root {
-            --color-primary: #0132AF;
-            --color-primary-light: #0052D6;
-            --color-accent: #EF1218;
+            --color-primary: #FF6B35;
+            --color-primary-light: #FFA500;
+            --color-accent: #0074FF;
             --color-accent-hover: #c50e13;
             --color-bg: #f7fafc;
             --color-white: #ffffff;
@@ -138,8 +133,8 @@
         }
 
         .pp-dual{
-            color: red !important;
-            background-color: white !important;
+            color: #0A2351 !important;
+            background-color: #ffffff !important;
             padding-bottom: 5px !important;
             margin-top: 2px !important;
             border-radius: 15px !important;
@@ -205,8 +200,8 @@
         }
 
         .pp-btn-verde {
-            background: #0BD926 !important;
-            border: 2px solid #0BD926 !important;
+            background: #0A2351 !important;
+            border: 2px solid #0A2351 !important;
             color: white !important;
             padding: 15px 24px !important;
             border-radius: 8px !important;
@@ -225,8 +220,8 @@
         }
 
         .pp-btn-verde:hover {
-            background: #08B81F !important;
-            border-color: #08B81F !important;
+            background: #081D3F !important;
+            border-color: #081D3F !important;
             transform: translateY(-2px) !important;
         }
 
@@ -264,46 +259,71 @@
             }
 
             .pp-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .pp-hero-right {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .pp-hero {
-                padding: 40px 16px;
-            }
-
-            .pp-hero h1 {
-                font-size: 2rem;
-            }
-
-            .pp-hero-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                max-width: 100%;
+                font-size: 2.2rem;
             }
 
             .pp-hero-subtitle {
                 font-size: 1rem;
             }
+        }
+
+        @media (max-width: 768px) {
+            .pp-hero {
+                padding: 60px 24px;
+            }
 
             .pp-hero-right {
                 grid-template-columns: 1fr;
-                gap: 16px;
             }
 
+            .pp-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+            }
+
+            .pp-hero-actions {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .pp-btn-verde,
             .pp-btn-asesoria {
-                padding: 12px 10px !important;
-                font-size: 0.85rem !important;
+                width: 100% !important;
+                justify-content: center;
             }
 
-            .pp-btn-verde {
-                padding: 12px 10px !important;
-                font-size: 0.85rem !important;
+            .pp-hero-info-card,
+            .pp-hero-info-card-dual {
+                padding: 20px !important;
+            }
+
+            .pp-hero-info-card strong,
+            .pp-hero-info-card-dual strong {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pp-hero {
+                padding: 40px 16px;
+            }
+
+            .pp-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .pp-btn-verde,
+            .pp-btn-asesoria {
+                padding: 12px 16px !important;
+                font-size: 0.9rem !important;
             }
         }
     </style>
@@ -315,12 +335,12 @@
             <div class="pp-hero-left">
                 <h1>Pregrados Presenciales</h1>
                 <p class="pp-hero-subtitle">
-                    Formación dual que conecta tu aprendizaje con el mundo empresarial real. Desarrolla competencias prácticas desde el primer semestre y sé parte de profesionales que transforman organizaciones.
+                    Especialización de excelencia para profesionales que desean avanzar en su carrera. Desarrolla competencias estratégicas y liderazgo transformacional con programas diseñados para impactar el mercado laboral.
                 </p>
                 <div class="pp-hero-actions">
-                    <button class="pp-btn-verde" onclick="alert('Ir a programas virtuales')" style="position: relative;">
-                        <span>Ver Pregrados Virtuales →</span>
-                        <span class="pp-badge-nuevo-button">Nuevo</span>
+                    <button class="pp-btn-verde" onclick="alert('Ir a programas presenciales')" style="position: relative;">
+                        <span>Explorar Programas →</span>
+                        <!-- <span class="pp-badge-nuevo-button">Nuevo</span> -->
                     </button>
                     <button class="pp-btn-asesoria" onclick="alert('Solicitar asesoría')">
                         <span>Solicitar una asesoría</span>
@@ -331,20 +351,20 @@
             <!-- Columna Derecha - Tarjetas Info -->
             <div class="pp-hero-right">
                 <div class="pp-hero-info-card">
-                    <strong>3.5</strong>
-                    <p>Años de duración / 7 Semestres</p>
+                    <strong>1</strong>
+                    <p>1 año de duración / 3 cuatrimestres</p>
                 </div>
                 <div class="pp-hero-info-card">
-                    <strong>18</strong>
-                    <p>Meses de experiencia laboral</p>
+                    <strong>$4.448.000</strong>
+                    <p>Por cuatrimestre</p>
                 </div>
                 <div class="pp-hero-info-card-dual">
-                    <strong>Modalidad <strong class="pp-dual">Dual</strong></strong>
-                    <p>Adquieres experiencia mientras estudias </p>
+                    <strong>Modalidad <strong class="pp-dual">Dual/Virtual</strong></strong>
+                    <p>Posibilidad de virtualidad dual</p>
                 </div>
                 <div class="pp-hero-info-card-dual">
-                    <strong>Enfoques Reales</strong>
-                    <p>programas acreditados</p>
+                    <strong>Conexiones Estratégicas</strong>
+                    <p>Red de contactos con la CCB</p>
                 </div>
             </div>
         </div>

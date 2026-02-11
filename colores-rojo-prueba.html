@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Colores Rojo - Hero Sección</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f3f4f6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a202c;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .color-preview {
+            height: 120px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .color-info {
+            padding: 16px;
+        }
+
+        .color-name {
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .color-code {
+            font-family: monospace;
+            background: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #0132AF;
+            font-size: 0.9rem;
+            word-break: break-all;
+            margin-bottom: 8px;
+        }
+
+        .color-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .hero-preview {
+            background: linear-gradient(135deg, #CC0000 0%, #FF4444 100%);
+            padding: 50px 24px;
+            border-radius: 12px;
+            color: white;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .hero-preview h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-preview p {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .hero-button {
+            background: #044DC2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        .selection-guide {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .selection-guide h3 {
+            color: #1a202c;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .guide-item {
+            padding: 12px 0;
+            color: #4a5568;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .guide-item:last-child {
+            border-bottom: none;
+        }
+
+        .guide-item strong {
+            color: #1a202c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Opciones de Color Rojo para Hero</h1>
+        <p class="subtitle">Selecciona el color que mejor se adapte a tu marca. Haz clic en el color para copiar el código HEX</p>
+
+        <div class="color-grid">
+            <!-- Rojo Muy Oscuro -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#8B0000')">
+                <div class="color-preview" style="background-color: #8B0000;">
+                    Rojo Muy Oscuro
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Muy Oscuro</div>
+                    <div class="color-code">#8B0000</div>
+                    <div class="color-description">Elegante y profesional, muy sobrio. Perfecto si buscas seriedad.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Oscuro Profundo -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#A72020')">
+                <div class="color-preview" style="background-color: #A72020;">
+                    Rojo Oscuro
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Oscuro Profundo</div>
+                    <div class="color-code">#A72020</div>
+                    <div class="color-description">Balance entre elegancia y energía. Muy versátil.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Wine -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#C41E3A')">
+                <div class="color-preview" style="background-color: #C41E3A;">
+                    Rojo Wine
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Wine</div>
+                    <div class="color-code">#C41E3A</div>
+                    <div class="color-description">Sofisticado y corporativo. Usado por marcas premium.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Crimson -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#DC143C')">
+                <div class="color-preview" style="background-color: #DC143C;">
+                    Rojo Crimson
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Crimson</div>
+                    <div class="color-code">#DC143C</div>
+                    <div class="color-description">Rojo clásico y energético. Equilibrio perfecto.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Medio Profundo -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#D32F2F')">
+                <div class="color-preview" style="background-color: #D32F2F;">
+                    Rojo Medio
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Medio Profundo</div>
+                    <div class="color-code">#D32F2F</div>
+                    <div class="color-description">Intenso pero no agresivo. Buena visibilidad.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Fuerte -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#E63946')">
+                <div class="color-preview" style="background-color: #E63946;">
+                    Rojo Fuerte
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Fuerte</div>
+                    <div class="color-code">#E63946</div>
+                    <div class="color-description">Moderno y vibrante. Muy llamativo sin ser chillón.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Vivid -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#E74C3C')">
+                <div class="color-preview" style="background-color: #E74C3C;">
+                    Rojo Vivid
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Vivid</div>
+                    <div class="color-code">#E74C3C</div>
+                    <div class="color-description">Dinámico y moderno. Atrae mucha atención.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Puro Brillante -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#FF0000')">
+                <div class="color-preview" style="background-color: #FF0000;">
+                    Rojo Puro
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Puro Brillante</div>
+                    <div class="color-code">#FF0000</div>
+                    <div class="color-description">Muy chillón y agresivo. No recomendado para educación.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Coral -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#F94C4C')">
+                <div class="color-preview" style="background-color: #F94C4C;">
+                    Rojo Coral
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Coral</div>
+                    <div class="color-code">#F94C4C</div>
+                    <div class="color-description">Moderno y cálido. Buena opción alternativa.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Tomato -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#FF6347')">
+                <div class="color-preview" style="background-color: #FF6347;">
+                    Rojo Tomato
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Rojo Tomato</div>
+                    <div class="color-code">#FF6347</div>
+                    <div class="color-description">Cálido y juvenil. Un poco brillante.</div>
+                </div>
+            </div>
+
+            <!-- Rojo Actual (Original) -->
+            <div class="color-card" onclick="copiarAlPortapapeles('#CC0000')">
+                <div class="color-preview" style="background-color: #CC0000;">
+                    Tu Rojo Actual
+                </div>
+                <div class="color-info">
+                    <div class="color-name">Tu Rojo Actual</div>
+                    <div class="color-code">#CC0000</div>
+                    <div class="color-description">El que usaste. Buena energía pero un poco chillón.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="selection-guide">
+            <h3>📋 Guía de Selección</h3>
+            <div class="guide-item">
+                <strong>Más formal/corporativo:</strong> Wine (#C41E3A) o Crimson (#DC143C)
+            </div>
+            <div class="guide-item">
+                <strong>Balance perfecto:</strong> Rojo Fuerte (#E63946) o Rojo Medio (#D32F2F)
+            </div>
+            <div class="guide-item">
+                <strong>Moderno/Dinámico:</strong> Rojo Vivid (#E74C3C) o Rojo Coral (#F94C4C)
+            </div>
+            <div class="guide-item">
+                <strong>Muy sobrio/elegante:</strong> Rojo Oscuro (#A72020) o Rojo Muy Oscuro (#8B0000)
+            </div>
+            <div class="guide-item">
+                <strong>Mi recomendación:</strong> <strong style="color: #DC143C;">Crimson (#DC143C)</strong> - Es el color por defecto de muchas universidades prestigiosas. No es chillón, transmite profesionalismo y energía a la vez.
+            </div>
+        </div>
+
+        <div class="hero-preview">
+            <h2>Previsualización del Hero</h2>
+            <p>Formación dual que conecta tu aprendizaje con el mundo empresarial real.</p>
+            <button class="hero-button">Ver Pregrados Virtuales →</button>
+            <p style="font-size: 0.85rem; margin-top: 30px; opacity: 0.8;">Nota: El color que ves aquí se actualiza según el color que hayas seleccionado</p>
+        </div>
+    </div>
+
+    <script>
+        function copiarAlPortapapeles(color) {
+            navigator.clipboard.writeText(color).then(() => {
+                alert(`Color ${color} copiado al portapapeles. ¡Úsalo en tu archivo!`);
+                // Actualizar preview del hero
+                const heroPreview = document.querySelector('.hero-preview');
+                const colorMasClaro = ajustarBrillo(color, 30);
+                heroPreview.style.background = `linear-gradient(135deg, ${color} 0%, ${colorMasClaro} 100%)`;
+            });
+        }
+
+        function ajustarBrillo(color, porcentaje) {
+            const num = parseInt(color.replace('#', ''), 16);
+            const amt = Math.round(2.55 * porcentaje);
+            const R = Math.min(255, (num >> 16) + amt);
+            const G = Math.min(255, (num >> 8 & 0x00FF) + amt);
+            const B = Math.min(255, (num & 0x0000FF) + amt);
+            return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+        }
+    </script>
+</body>
+</html>

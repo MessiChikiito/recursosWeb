@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Opciones Posgrados - Colores Alegres y Vibrantes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 100%);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: auto;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .header-section h1 {
+            color: #1a202c;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            font-weight: 900;
+        }
+
+        .header-section p {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .palette-info {
+            display: inline-flex;
+            gap: 40px;
+            background: linear-gradient(135deg, #f8fafc 0%, #fafafa 100%);
+            padding: 25px 45px;
+            border-radius: 12px;
+            border: 2px solid #e8edff;
+        }
+
+        .palette-item {
+            text-align: center;
+        }
+
+        .palette-item strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #1a202c;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .palette-boxes {
+            display: flex;
+            gap: 10px;
+        }
+
+        .palette-box {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 2px solid white;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 22px;
+            margin-bottom: 60px;
+        }
+
+        .option-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border-color: #e8edff;
+        }
+
+        .hero-demo {
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--hero-primary) 0%, var(--hero-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+            letter-spacing: -0.8px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.92;
+            line-height: 1.3;
+        }
+
+        .demo-button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background-color: var(--button-color);
+            margin-top: 8px;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .option-info {
+            padding: 18px;
+        }
+
+        .option-title {
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .color-pairs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .color-section {
+            text-align: center;
+        }
+
+        .color-section-header {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 7px;
+            display: block;
+        }
+
+        .color-swatches {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .color-swatch {
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .color-codes {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .code-tag {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f7fafc;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-divider {
+            margin: 55px 0 35px 0;
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .section-divider h2 {
+            font-size: 1.7rem;
+            color: #1a202c;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .section-divider p {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #0052D6 0%, #1e40af 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 60px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .recommendation-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .rec-option {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .rec-option:last-child {
+            border-bottom: none;
+        }
+
+        .rec-colors {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .rec-color {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .rec-content strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .rec-content p {
+            font-size: 0.93rem;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>🎨 50 Opciones Posgrados - Colores ALEGRES y VIBRANTES</h1>
+            <p>Todos con tonos brillantes y claros para mantener coherencia con tu verde y azul</p>
+            
+            <div class="palette-info">
+                <div class="palette-item">
+                    <strong>Presenciales Ref</strong>
+                    <div class="palette-boxes">
+                        <div class="palette-box" style="background: linear-gradient(135deg, #0132AF, #0052D6);"></div>
+                    </div>
+                </div>
+                <div class="palette-item">
+                    <strong>Virtuales Ref</strong>
+                    <div class="palette-boxes">
+                        <div class="palette-box" style="background: linear-gradient(135deg, #10B981, #34D399);"></div>
+                    </div>
+                </div>
+                <div class="palette-item">
+                    <strong>Posgrados (Tu Elección)</strong>
+                    <div class="palette-boxes">
+                        <div class="palette-box" style="background: linear-gradient(135deg, #ff6b6b, #ffa500);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Familia AZUL VIBRANTE (1-10)</h2>
+            <p>Azules brillantes y alegres - diferentes al presencial pero con la misma energía</p>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="copiarCombo('#0064FF', '#4B9FFF', '#FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #0064FF; --hero-secondary: #4B9FFF; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">1: Azul Vibrante + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0064FF;"></div>
+                                <div class="color-swatch" style="background: #4B9FFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0064FF</div>
+                                <div class="code-tag">#4B9FFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0070FF', '#5AA3FF', '#FFA500')">
+                <div class="hero-demo" style="--hero-primary: #0070FF; --hero-secondary: #5AA3FF; --button-color: #FFA500;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">2: Azul Puro + Naranja</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0070FF;"></div>
+                                <div class="color-swatch" style="background: #5AA3FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0070FF</div>
+                                <div class="code-tag">#5AA3FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFA500;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFA500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0074FF', '#60A7FF', '#FF1744')">
+                <div class="hero-demo" style="--hero-primary: #0074FF; --hero-secondary: #60A7FF; --button-color: #FF1744;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">3: Azul Claro + Rojo Vivo</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0074FF;"></div>
+                                <div class="color-swatch" style="background: #60A7FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0074FF</div>
+                                <div class="code-tag">#60A7FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF1744;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF1744</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0078FF', '#68ABFF', '#00D9FF')">
+                <div class="hero-demo" style="--hero-primary: #0078FF; --hero-secondary: #68ABFF; --button-color: #00D9FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">4: Azul + Cyan Brillo</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0078FF;"></div>
+                                <div class="color-swatch" style="background: #68ABFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0078FF</div>
+                                <div class="code-tag">#68ABFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D9FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D9FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#005CFF', '#3D8FFF', '#FFD700')">
+                <div class="hero-demo" style="--hero-primary: #005CFF; --hero-secondary: #3D8FFF; --button-color: #FFD700;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">5: Azul Real + Oro Puro</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #005CFF;"></div>
+                                <div class="color-swatch" style="background: #3D8FFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#005CFF</div>
+                                <div class="code-tag">#3D8FFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFD700;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFD700</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0048FF', '#2E7FFF', '#FF00FF')">
+                <div class="hero-demo" style="--hero-primary: #0048FF; --hero-secondary: #2E7FFF; --button-color: #FF00FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">6: Azul + Magenta Neón</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0048FF;"></div>
+                                <div class="color-swatch" style="background: #2E7FFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0048FF</div>
+                                <div class="code-tag">#2E7FFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF00FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF00FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0054FF', '#4D95FF', '#FF6B9D')">
+                <div class="hero-demo" style="--hero-primary: #0054FF; --hero-secondary: #4D95FF; --button-color: #FF6B9D;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">7: Azul Medio + Rosa Vibrante</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0054FF;"></div>
+                                <div class="color-swatch" style="background: #4D95FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0054FF</div>
+                                <div class="code-tag">#4D95FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B9D;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B9D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0060FF', #5699FF', #00FF88')">
+                <div class="hero-demo" style="--hero-primary: #0060FF; --hero-secondary: #5699FF; --button-color: #00FF88;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">8: Azul Brillante + Verde Neón</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0060FF;"></div>
+                                <div class="color-swatch" style="background: #5699FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0060FF</div>
+                                <div class="code-tag">#5699FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00FF88;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00FF88</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0040FF', #1E6FFF', #FFBC00')">
+                <div class="hero-demo" style="--hero-primary: #0040FF; --hero-secondary: #1E6FFF; --button-color: #FFBC00;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">9: Azul Eléctrico + Ámbar</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0040FF;"></div>
+                                <div class="color-swatch" style="background: #1E6FFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0040FF</div>
+                                <div class="code-tag">#1E6FFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFBC00;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFBC00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#008CFF', #62B4FF', #FF4757')">
+                <div class="hero-demo" style="--hero-primary: #008CFF; --hero-secondary: #62B4FF; --button-color: #FF4757;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">10: Azul Cielo + Rojo Intenso</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #008CFF;"></div>
+                                <div class="color-swatch" style="background: #62B4FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#008CFF</div>
+                                <div class="code-tag">#62B4FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF4757;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF4757</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Familia PÚRPURA VIBRANTE (11-20)</h2>
+            <p>Púrpuras brillantes y energéticos - diferenciador claro pero alegre</p>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="copiarCombo('#7C3AED', #A78BFA', #00D9FF')">
+                <div class="hero-demo" style="--hero-primary: #7C3AED; --hero-secondary: #A78BFA; --button-color: #00D9FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">11: Púrpura Brillante + Cyan</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #7C3AED;"></div>
+                                <div class="color-swatch" style="background: #A78BFA;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#7C3AED</div>
+                                <div class="code-tag">#A78BFA</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D9FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D9FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#8B5CF6', #C4B5FD', #FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #8B5CF6; --hero-secondary: #C4B5FD; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">12: Púrpura Suave + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #8B5CF6;"></div>
+                                <div class="color-swatch" style="background: #C4B5FD;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#8B5CF6</div>
+                                <div class="code-tag">#C4B5FD</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#9D4EDD', #E0AAFF', #00FF88')">
+                <div class="hero-demo" style="--hero-primary: #9D4EDD; --hero-secondary: #E0AAFF; --button-color: #00FF88;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">13: Púrpura Caliente + Verde Neón</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #9D4EDD;"></div>
+                                <div class="color-swatch" style="background: #E0AAFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#9D4EDD</div>
+                                <div class="code-tag">#E0AAFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00FF88;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00FF88</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#A855F7', #D8B4FE', #FFB81C')">
+                <div class="hero-demo" style="--hero-primary: #A855F7; --hero-secondary: #D8B4FE; --button-color: #FFB81C;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">14: Púrpura Vibrante + Ámbar</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #A855F7;"></div>
+                                <div class="color-swatch" style="background: #D8B4FE;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#A855F7</div>
+                                <div class="code-tag">#D8B4FE</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFB81C;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFB81C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#B366FF', #E5CCFF', #FF4757')">
+                <div class="hero-demo" style="--hero-primary: #B366FF; --hero-secondary: #E5CCFF; --button-color: #FF4757;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">15: Púrpura Claro + Rojo Vibrante</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #B366FF;"></div>
+                                <div class="color-swatch" style="background: #E5CCFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#B366FF</div>
+                                <div class="code-tag">#E5CCFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF4757;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF4757</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#9D44D5', #D99FF5', #00D4AA')">
+                <div class="hero-demo" style="--hero-primary: #9D44D5; --hero-secondary: #D99FF5; --button-color: #00D4AA;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">16: Púrpura Oscuro + Verde Caribeño</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #9D44D5;"></div>
+                                <div class="color-swatch" style="background: #D99FF5;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#9D44D5</div>
+                                <div class="code-tag">#D99FF5</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D4AA;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D4AA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#C77DFF', #E0AAFF', #FF5722')">
+                <div class="hero-demo" style="--hero-primary: #C77DFF; --hero-secondary: #E0AAFF; --button-color: #FF5722;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">17: Púrpura Pastel + Naranja Profundo</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #C77DFF;"></div>
+                                <div class="color-swatch" style="background: #E0AAFF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#C77DFF</div>
+                                <div class="code-tag">#E0AAFF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF5722;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF5722</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#D946EF', #F0ABFC', #FFA500')">
+                <div class="hero-demo" style="--hero-primary: #D946EF; --hero-secondary: #F0ABFC; --button-color: #FFA500;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">18: Púrpura Magenta + Naranja</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #D946EF;"></div>
+                                <div class="color-swatch" style="background: #F0ABFC;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#D946EF</div>
+                                <div class="code-tag">#F0ABFC</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFA500;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFA500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#A78BFA', #D8B4FE', #00D9FF')">
+                <div class="hero-demo" style="--hero-primary: #A78BFA; --hero-secondary: #D8B4FE; --button-color: #00D9FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">19: Púrpura Pastel Claro + Cyan</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #A78BFA;"></div>
+                                <div class="color-swatch" style="background: #D8B4FE;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#A78BFA</div>
+                                <div class="code-tag">#D8B4FE</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D9FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D9FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#BB86FC', #E5B0FF', #FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #BB86FC; --hero-secondary: #E5B0FF; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">20: Púrpura Material + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #BB86FC;"></div>
+                                <div class="color-swatch" style="background: #E5B0FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#BB86FC</div>
+                                <div class="code-tag">#E5B0FF</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Familia VERDES BRILLANTES (21-30)</h2>
+            <p>Verdes más claros y energéticos - diferenciados del virtual pero similares</p>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="copiarCombo('#00C853', #4ECDC4', #FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #00C853; --hero-secondary: #4ECDC4; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">21: Verde Lima + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00C853;"></div>
+                                <div class="color-swatch" style="background: #4ECDC4;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00C853</div>
+                                <div class="code-tag">#4ECDC4</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#1ABC9C', #2ECC71', #E74C3C')">
+                <div class="hero-demo" style="--hero-primary: #1ABC9C; --hero-secondary: #2ECC71; --button-color: #E74C3C;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">22: Verde Agua + Rojo Naranja</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #1ABC9C;"></div>
+                                <div class="color-swatch" style="background: #2ECC71;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#1ABC9C</div>
+                                <div class="code-tag">#2ECC71</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #E74C3C;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#E74C3C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#00E676', #69F0AE', #FF5722')">
+                <div class="hero-demo" style="--hero-primary: #00E676; --hero-secondary: #69F0AE; --button-color: #FF5722;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">23: Verde Neón + Naranja Profundo</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00E676;"></div>
+                                <div class="color-swatch" style="background: #69F0AE;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00E676</div>
+                                <div class="code-tag">#69F0AE</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF5722;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF5722</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#26A69A', #4DB8A8', #FF7043')">
+                <div class="hero-demo" style="--hero-primary: #26A69A; --hero-secondary: #4DB8A8; --button-color: #FF7043;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">24: Verde Azulado + Coral Oscuro</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #26A69A;"></div>
+                                <div class="color-swatch" style="background: #4DB8A8;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#26A69A</div>
+                                <div class="code-tag">#4DB8A8</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF7043;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF7043</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#00D084', #4EDFA7', #FFD93D')">
+                <div class="hero-demo" style="--hero-primary: #00D084; --hero-secondary: #4EDFA7; --button-color: #FFD93D;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">25: Verde + Limón</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D084;"></div>
+                                <div class="color-swatch" style="background: #4EDFA7;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D084</div>
+                                <div class="code-tag">#4EDFA7</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFD93D;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFD93D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#20C997', #51CF66', #FF6E7F')">
+                <div class="hero-demo" style="--hero-primary: #20C997; --hero-secondary: #51CF66; --button-color: #FF6E7F;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">26: Verde Vibrante + Rosa Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #20C997;"></div>
+                                <div class="color-swatch" style="background: #51CF66;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#20C997</div>
+                                <div class="code-tag">#51CF66</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6E7F;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6E7F</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#2ECC71', #82E0AA', #FF5252')">
+                <div class="hero-demo" style="--hero-primary: #2ECC71; --hero-secondary: #82E0AA; --button-color: #FF5252;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">27: Verde Kelly + Rojo Brillante</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #2ECC71;"></div>
+                                <div class="color-swatch" style="background: #82E0AA;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#2ECC71</div>
+                                <div class="code-tag">#82E0AA</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF5252;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF5252</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#16A34A', #4ADE80', #FFA500')">
+                <div class="hero-demo" style="--hero-primary: #16A34A; --hero-secondary: #4ADE80; --button-color: #FFA500;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">28: Verde Bosque Claro + Naranja</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #16A34A;"></div>
+                                <div class="color-swatch" style="background: #4ADE80;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#16A34A</div>
+                                <div class="code-tag">#4ADE80</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFA500;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFA500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#059669', #6EE7B7', #FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #059669; --hero-secondary: #6EE7B7; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">29: Verde Esmeralda + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #059669;"></div>
+                                <div class="color-swatch" style="background: #6EE7B7;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#059669</div>
+                                <div class="code-tag">#6EE7B7</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#12B981', #6EE7B7', #FFB81C')">
+                <div class="hero-demo" style="--hero-primary: #12B981; --hero-secondary: #6EE7B7; --button-color: #FFB81C;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">30: Verde Menta + Ámbar</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #12B981;"></div>
+                                <div class="color-swatch" style="background: #6EE7B7;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#12B981</div>
+                                <div class="code-tag">#6EE7B7</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFB81C;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFB81C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Familia COLORES CÁLIDOS (31-40)</h2>
+            <p>Naranjas, rosas y ámbar brillantes - divertidos y energéticos</p>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="copiarCombo('#FF6B35', #FFA500', #0074FF')">
+                <div class="hero-demo" style="--hero-primary: #FF6B35; --hero-secondary: #FFA500; --button-color: #0074FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">31: Naranja Vibrante + Azul</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B35;"></div>
+                                <div class="color-swatch" style="background: #FFA500;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B35</div>
+                                <div class="code-tag">#FFA500</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0074FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0074FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#F97316', #FDBA74', #7C3AED')">
+                <div class="hero-demo" style="--hero-primary: #F97316; --hero-secondary: #FDBA74; --button-color: #7C3AED;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">32: Naranja Claro + Púrpura</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #F97316;"></div>
+                                <div class="color-swatch" style="background: #FDBA74;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#F97316</div>
+                                <div class="code-tag">#FDBA74</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #7C3AED;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#7C3AED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FF8C42', #FFB563', #00D9FF')">
+                <div class="hero-demo" style="--hero-primary: #FF8C42; --hero-secondary: #FFB563; --button-color: #00D9FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">33: Naranja Cálido + Cyan</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF8C42;"></div>
+                                <div class="color-swatch" style="background: #FFB563;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF8C42</div>
+                                <div class="code-tag">#FFB563</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D9FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D9FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FF9933', #FFBB4D', #10B981')">
+                <div class="hero-demo" style="--hero-primary: #FF9933; --hero-secondary: #FFBB4D; --button-color: #10B981;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">34: Naranja Dorado + Verde</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF9933;"></div>
+                                <div class="color-swatch" style="background: #FFBB4D;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF9933</div>
+                                <div class="code-tag">#FFBB4D</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #10B981;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#10B981</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FB923C', #FCD34D', #0074FF')">
+                <div class="hero-demo" style="--hero-primary: #FB923C; --hero-secondary: #FCD34D; --button-color: #0074FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">35: Ámbar Brillante + Azul</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FB923C;"></div>
+                                <div class="color-swatch" style="background: #FCD34D;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FB923C</div>
+                                <div class="code-tag">#FCD34D</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0074FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0074FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FF7F5C', #FFB088', #00D9FF')">
+                <div class="hero-demo" style="--hero-primary: #FF7F5C; --hero-secondary: #FFB088; --button-color: #00D9FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">36: Coral Naranja + Cyan</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF7F5C;"></div>
+                                <div class="color-swatch" style="background: #FFB088;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF7F5C</div>
+                                <div class="code-tag">#FFB088</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D9FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D9FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FF6B9D', #FFB5D6', #0074FF')">
+                <div class="hero-demo" style="--hero-primary: #FF6B9D; --hero-secondary: #FFB5D6; --button-color: #0074FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">37: Rosa Coral Brillante + Azul</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B9D;"></div>
+                                <div class="color-swatch" style="background: #FFB5D6;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B9D</div>
+                                <div class="code-tag">#FFB5D6</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0074FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0074FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FFB347', #FFCC99', #10B981')">
+                <div class="hero-demo" style="--hero-primary: #FFB347; --hero-secondary: #FFCC99; --button-color: #10B981;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">38: Melocotón Suave + Verde</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFB347;"></div>
+                                <div class="color-swatch" style="background: #FFCC99;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFB347</div>
+                                <div class="code-tag">#FFCC99</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #10B981;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#10B981</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FF8A65', #FFAB91', #00D9FF')">
+                <div class="hero-demo" style="--hero-primary: #FF8A65; --hero-secondary: #FFAB91; --button-color: #00D9FF;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">39: Terracota Vibrante + Cyan</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF8A65;"></div>
+                                <div class="color-swatch" style="background: #FFAB91;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF8A65</div>
+                                <div class="code-tag">#FFAB91</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00D9FF;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00D9FF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#FF6F61', #FFB6B3', #7C3AED')">
+                <div class="hero-demo" style="--hero-primary: #FF6F61; --hero-secondary: #FFB6B3; --button-color: #7C3AED;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">40: Salmonado Vibrante + Púrpura</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6F61;"></div>
+                                <div class="color-swatch" style="background: #FFB6B3;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6F61</div>
+                                <div class="code-tag">#FFB6B3</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #7C3AED;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#7C3AED</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <h2>Familia TEALES Y TURQUESAS (41-50)</h2>
+            <p>Teales brillantes y turquesas modernas - frescos y diferenciadores</p>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="copiarCombo('#00BCD4', #4DD0E1', #FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #00BCD4; --hero-secondary: #4DD0E1; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">41: Cyan Cristalino + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00BCD4;"></div>
+                                <div class="color-swatch" style="background: #4DD0E1;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00BCD4</div>
+                                <div class="code-tag">#4DD0E1</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#20C997', #51D5B7', #FF6B9D')">
+                <div class="hero-demo" style="--hero-primary: #20C997; --hero-secondary: #51D5B7; --button-color: #FF6B9D;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">42: Teal Vibrante + Rosa</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #20C997;"></div>
+                                <div class="color-swatch" style="background: #51D5B7;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#20C997</div>
+                                <div class="code-tag">#51D5B7</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B9D;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B9D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0D7377', #3DBFAB', #FF8C42')">
+                <div class="hero-demo" style="--hero-primary: #0D7377; --hero-secondary: #3DBFAB; --button-color: #FF8C42;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">43: Teal Oscuro Claro + Naranja</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0D7377;"></div>
+                                <div class="color-swatch" style="background: #3DBFAB;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0D7377</div>
+                                <div class="code-tag">#3DBFAB</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF8C42;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF8C42</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#17919B', #4DB7C3', #FFB81C')">
+                <div class="hero-demo" style="--hero-primary: #17919B; --hero-secondary: #4DB7C3; --button-color: #FFB81C;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">44: Teal Profundo + Ámbar</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #17919B;"></div>
+                                <div class="color-swatch" style="background: #4DB7C3;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#17919B</div>
+                                <div class="code-tag">#4DB7C3</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFB81C;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFB81C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#00A896', #52BDB5', #FF4757')">
+                <div class="hero-demo" style="--hero-primary: #00A896; --hero-secondary: #52BDB5; --button-color: #FF4757;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">45: Verde Teal + Rojo Vivo</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00A896;"></div>
+                                <div class="color-swatch" style="background: #52BDB5;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00A896</div>
+                                <div class="code-tag">#52BDB5</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF4757;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF4757</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#00C4CC', #5FD3D3', #FFA500')">
+                <div class="hero-demo" style="--hero-primary: #00C4CC; --hero-secondary: #5FD3D3; --button-color: #FFA500;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">46: Turquesa Brillante + Naranja</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00C4CC;"></div>
+                                <div class="color-swatch" style="background: #5FD3D3;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00C4CC</div>
+                                <div class="code-tag">#5FD3D3</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFA500;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFA500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#00BBBF', #4FCDD4', #FF6B6B')">
+                <div class="hero-demo" style="--hero-primary: #00BBBF; --hero-secondary: #4FCDD4; --button-color: #FF6B6B;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">47: Cian Alegre + Coral</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #00BBBF;"></div>
+                                <div class="color-swatch" style="background: #4FCDD4;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#00BBBF</div>
+                                <div class="code-tag">#4FCDD4</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B6B;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B6B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0B9AA6', #3DB8B9', #FFD700')">
+                <div class="hero-demo" style="--hero-primary: #0B9AA6; --hero-secondary: #3DB8B9; --button-color: #FFD700;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">48: Teal Corporativo + Oro</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0B9AA6;"></div>
+                                <div class="color-swatch" style="background: #3DB8B9;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0B9AA6</div>
+                                <div class="code-tag">#3DB8B9</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FFD700;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FFD700</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#0D8E8E', #4D9FA0', #FF8A65')">
+                <div class="hero-demo" style="--hero-primary: #0D8E8E; --hero-secondary: #4D9FA0; --button-color: #FF8A65;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">49: Teal Clásico + Terracota</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #0D8E8E;"></div>
+                                <div class="color-swatch" style="background: #4D9FA0;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#0D8E8E</div>
+                                <div class="code-tag">#4D9FA0</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF8A65;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF8A65</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="copiarCombo('#06B6D4', #67E8F9', #FF6B9D')">
+                <div class="hero-demo" style="--hero-primary: #06B6D4; --hero-secondary: #67E8F9; --button-color: #FF6B9D;">
+                    <div class="hero-content">
+                        <div class="hero-title">Posgrados</div>
+                        <div class="hero-subtitle">Excelencia académica</div>
+                        <button class="demo-button">Explorar →</button>
+                    </div>
+                </div>
+                <div class="option-info">
+                    <div class="option-title">50: Cyan Puro + Rosa Vibrante</div>
+                    <div class="color-pairs">
+                        <div class="color-section">
+                            <span class="color-section-header">Hero</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #06B6D4;"></div>
+                                <div class="color-swatch" style="background: #67E8F9;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#06B6D4</div>
+                                <div class="code-tag">#67E8F9</div>
+                            </div>
+                        </div>
+                        <div class="color-section">
+                            <span class="color-section-header">Botón</span>
+                            <div class="color-swatches">
+                                <div class="color-swatch" style="background: #FF6B9D;"></div>
+                            </div>
+                            <div class="color-codes">
+                                <div class="code-tag">#FF6B9D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendation-box">
+            <h3>💡 Mi Top 3 Recomendaciones Finales</h3>
+            
+            <div class="rec-option">
+                <div class="rec-colors">
+                    <div class="rec-color" style="background: linear-gradient(135deg, #7C3AED, #A78BFA);"></div>
+                    <div class="rec-color" style="background: #00D9FF;"></div>
+                </div>
+                <div class="rec-content">
+                    <strong>🥇 Opción 11: Púrpura Brillante + Cyan</strong>
+                    <p>Mi favorita. Colores al100% alegres y brillantes. Llena de energía, diferencia perfecta del azul y verde. El púrpura es diferenciador pero vibrante, el cyan es puro brillo. ¡RECOMENDADO!</p>
+                </div>
+            </div>
+
+            <div class="rec-option">
+                <div class="rec-colors">
+                    <div class="rec-color" style="background: linear-gradient(135deg, #0074FF, #60A7FF);"></div>
+                    <div class="rec-color" style="background: #FFA500;"></div>
+                </div>
+                <div class="rec-content">
+                    <strong>🥈 Opción 2: Azul Claro + Naranja</strong>
+                    <p>Súper alegre y vibrante. Mantiene la familia azul pero con mucha más claridad. El naranja agrega dinamismo puro. Contraste perfecto.</p>
+                </div>
+            </div>
+
+            <div class="rec-option">
+                <div class="rec-colors">
+                    <div class="rec-color" style="background: linear-gradient(135deg, #00C853, #4ECDC4);"></div>
+                    <div class="rec-color" style="background: #FF6B6B;"></div>
+                </div>
+                <div class="rec-content">
+                    <strong>🥉 Opción 21: Verde Lima + Coral</strong>
+                    <p>Muy verde y vibrante pero diferente del virtual. Lima es más brillante. El coral hace contraste interesante. Opción muy fresca y alegre.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copiarCombo(heroPrimary, heroSecondary, button) {
+            const combo = `Hero Primary: ${heroPrimary}\nHero Secondary: ${heroSecondary}\nButton: ${button}`;
+            navigator.clipboard.writeText(combo).then(() => {
+                alert(`✅ Combo copiado:\n\n${combo}\n\n¡Úsalo en tu página de posgrados!`);
+            }).catch(err => console.error('Error:', err));
+        }
+    </script>
+</body>
+</html>

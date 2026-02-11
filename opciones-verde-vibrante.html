@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Opciones de Verde Vibrante - Posgrados Virtuales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f7fafc;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .option-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+        }
+
+        .hero-preview {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .color-info {
+            padding: 24px;
+        }
+
+        .option-number {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .option-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 16px;
+        }
+
+        .color-codes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .code-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #f7fafc;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .code-row span:first-child {
+            color: #718096;
+            font-weight: 600;
+        }
+
+        .code-row span:last-child {
+            color: #2d3748;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        /* Tabla comparativa */
+        .comparison {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .comparison h2 {
+            font-size: 1.8rem;
+            color: #1a202c;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #edf2f7;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #2d3748;
+            border-bottom: 2px solid #cbd5e0;
+        }
+
+        .comparison-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        .top-picks {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 2px solid #86efac;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+
+        .top-picks h3 {
+            color: #15803d;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .top-picks-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .top-pick-item {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .top-pick-item strong {
+            display: block;
+            color: #1a202c;
+            margin-bottom: 6px;
+        }
+
+        .top-pick-item p {
+            font-size: 0.9rem;
+            color: #718096;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🟢 10 Opciones de Verde Vibrante</h1>
+        <p class="subtitle">Verde con la misma energía y saturación del naranja #FF6B35. Perfecto para Pregrados Virtuales.</p>
+
+        <div class="grid">
+            <!-- Opción 1 -->
+            <div class="option-card" style="--color-primary: #00B86A; --color-primary-light: #00E686;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 1</div>
+                    <div class="option-name">Verde Esmeralda Vibrante</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#00B86A</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#00E686</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#00B86A', '#00E686')">Copiar Colores</button>
+                    <p class="description">Verde fresco y energético. Máxima saturación con un toque de cyan.</p>
+                </div>
+            </div>
+
+            <!-- Opción 2 -->
+            <div class="option-card" style="--color-primary: #009E4D; --color-primary-light: #00D966;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 2</div>
+                    <div class="option-name">Verde Jungle Vivo</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#009E4D</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#00D966</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#009E4D', '#00D966')">Copiar Colores</button>
+                    <p class="description">Verde selvático con energía pura. Saturación al máximo como el naranja.</p>
+                </div>
+            </div>
+
+            <!-- Opción 3 -->
+            <div class="option-card" style="--color-primary: #00A854; --color-primary-light: #00E680;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 3</div>
+                    <div class="option-name">Verde Spring Dinámico</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#00A854</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#00E680</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#00A854', '#00E680')">Copiar Colores</button>
+                    <p class="description">Verde primavera con saturación vibrante. Alegre y moderno.</p>
+                </div>
+            </div>
+
+            <!-- Opción 4 -->
+            <div class="option-card" style="--color-primary: #11B34F; --color-primary-light: #1CD46A;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 4</div>
+                    <div class="option-name">Verde Bosque Brillante</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#11B34F</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#1CD46A</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#11B34F', '#1CD46A')">Copiar Colores</button>
+                    <p class="description">Verde bosque con brillo intenso. Muy vibrante y profesional.</p>
+                </div>
+            </div>
+
+            <!-- Opción 5 -->
+            <div class="option-card" style="--color-primary: #00AA55; --color-primary-light: #00E87E;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 5</div>
+                    <div class="option-name">Verde Neon Saturado</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#00AA55</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#00E87E</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#00AA55', '#00E87E')">Copiar Colores</button>
+                    <p class="description">Verde neón puro. Máxima saturación y brillo. Muy jovial.</p>
+                </div>
+            </div>
+
+            <!-- Opción 6 -->
+            <div class="option-card" style="--color-primary: #1BAE43; --color-primary-light: #2ED573;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 6</div>
+                    <div class="option-name">Verde Menta Viva</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#1BAE43</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#2ED573</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#1BAE43', '#2ED573')">Copiar Colores</button>
+                    <p class="description">Verde menta fresco con energía. Saturado y luminoso como el naranja.</p>
+                </div>
+            </div>
+
+            <!-- Opción 7 -->
+            <div class="option-card" style="--color-primary: #009D3D; --color-primary-light: #00D962;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 7</div>
+                    <div class="option-name">Verde Tropical Intenso</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#009D3D</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#00D962</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#009D3D', '#00D962')">Copiar Colores</button>
+                    <p class="description">Verde tropical con saturación máxima. Fresco y dinámico.</p>
+                </div>
+            </div>
+
+            <!-- Opción 8 -->
+            <div class="option-card" style="--color-primary: #19B54F; --color-primary-light: #32D97B;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 8</div>
+                    <div class="option-name">Verde Lime Brillante</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#19B54F</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#32D97B</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#19B54F', '#32D97B')">Copiar Colores</button>
+                    <p class="description">Verde lime con brillo intenso. Muy moderno y alegre.</p>
+                </div>
+            </div>
+
+            <!-- Opción 9 -->
+            <div class="option-card" style="--color-primary: #00B560; --color-primary-light: #00E693;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 9</div>
+                    <div class="option-name">Verde Kelly Saturado</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#00B560</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#00E693</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#00B560', '#00E693')">Copiar Colores</button>
+                    <p class="description">Verde kelly puro. Saturado al máximo con brillo profesional.</p>
+                </div>
+            </div>
+
+            <!-- Opción 10 -->
+            <div class="option-card" style="--color-primary: #10A45C; --color-primary-light: #23D886;">
+                <div class="hero-preview">
+                    <div class="hero-text">Pregrados Virtuales</div>
+                </div>
+                <div class="color-info">
+                    <div class="option-number">Opción 10</div>
+                    <div class="option-name">Verde Esmeralda Energético</div>
+                    <div class="color-codes">
+                        <div class="code-row">
+                            <span>Primario:</span>
+                            <span>#10A45C</span>
+                        </div>
+                        <div class="code-row">
+                            <span>Secundario:</span>
+                            <span>#23D886</span>
+                        </div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColors('#10A45C', '#23D886')">Copiar Colores</button>
+                    <p class="description">Verde esmeralda con energía pura. Equilibrio perfecto de saturación.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Picks -->
+        <div class="top-picks">
+            <h3>🏆 Top 3 Recomendaciones</h3>
+            <div class="top-picks-list">
+                <div class="top-pick-item" style="border-left-color: #00B86A;">
+                    <strong>Opción 1: Verde Esmeralda Vibrante</strong>
+                    <p><strong>#00B86A</strong> → <strong>#00E686</strong><br>La más equilibrada. Saturación idéntica al naranja con un toque de frescura. Súper alegre y profesional al mismo tiempo.</p>
+                </div>
+                <div class="top-pick-item" style="border-left-color: #00AA55;">
+                    <strong>Opción 5: Verde Neon Saturado</strong>
+                    <p><strong>#00AA55</strong> → <strong>#00E87E</strong><br>La más vibrante de todas. Máxima saturación y brillo. Perfecta energía moderna.</p>
+                </div>
+                <div class="top-pick-item" style="border-left-color: #1BAE43;">
+                    <strong>Opción 6: Verde Menta Viva</strong>
+                    <p><strong>#1BAE43</strong> → <strong>#2ED573</strong><br>Punto medio perfecto. Fresco pero no demasiado neón. Muy versátil y agradable visualmente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla Comparativa -->
+        <div class="comparison">
+            <h2>📊 Comparativa de Colores</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Opción</th>
+                        <th>Primario</th>
+                        <th>Secundario</th>
+                        <th>Característica</th>
+                        <th>Saturación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td><span class="color-swatch" style="background: #00B86A;"></span> #00B86A</td>
+                        <td><span class="color-swatch" style="background: #00E686;"></span> #00E686</td>
+                        <td>Esmeralda Vibrante</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td><span class="color-swatch" style="background: #009E4D;"></span> #009E4D</td>
+                        <td><span class="color-swatch" style="background: #00D966;"></span> #00D966</td>
+                        <td>Jungle Vivo</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td><span class="color-swatch" style="background: #00A854;"></span> #00A854</td>
+                        <td><span class="color-swatch" style="background: #00E680;"></span> #00E680</td>
+                        <td>Spring Dinámico</td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td><span class="color-swatch" style="background: #11B34F;"></span> #11B34F</td>
+                        <td><span class="color-swatch" style="background: #1CD46A;"></span> #1CD46A</td>
+                        <td>Bosque Brillante</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td><span class="color-swatch" style="background: #00AA55;"></span> #00AA55</td>
+                        <td><span class="color-swatch" style="background: #00E87E;"></span> #00E87E</td>
+                        <td>Neon Saturado</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6</strong></td>
+                        <td><span class="color-swatch" style="background: #1BAE43;"></span> #1BAE43</td>
+                        <td><span class="color-swatch" style="background: #2ED573;"></span> #2ED573</td>
+                        <td>Menta Viva</td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7</strong></td>
+                        <td><span class="color-swatch" style="background: #009D3D;"></span> #009D3D</td>
+                        <td><span class="color-swatch" style="background: #00D962;"></span> #00D962</td>
+                        <td>Tropical Intenso</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8</strong></td>
+                        <td><span class="color-swatch" style="background: #19B54F;"></span> #19B54F</td>
+                        <td><span class="color-swatch" style="background: #32D97B;"></span> #32D97B</td>
+                        <td>Lime Brillante</td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9</strong></td>
+                        <td><span class="color-swatch" style="background: #00B560;"></span> #00B560</td>
+                        <td><span class="color-swatch" style="background: #00E693;"></span> #00E693</td>
+                        <td>Kelly Saturado</td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10</strong></td>
+                        <td><span class="color-swatch" style="background: #10A45C;"></span> #10A45C</td>
+                        <td><span class="color-swatch" style="background: #23D886;"></span> #23D886</td>
+                        <td>Esmeralda Energético</td>
+                        <td>★★★★★</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        function copyColors(primary, secondary) {
+            const text = `Primary: ${primary}\nSecondary: ${secondary}`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`✅ Colores copiados:\n${primary}\n${secondary}`);
+            });
+        }
+    </script>
+
+</body>
+</html>
