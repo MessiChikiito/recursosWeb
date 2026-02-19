@@ -1,0 +1,342 @@
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; background: #f5f5f5; }
+        
+        .docentes-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .docentes-header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .docentes-header h2 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 8px;
+        }
+
+        .docentes-header p {
+            font-size: 15px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .docentes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .docente-card {
+            background: white;
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease !important;
+        }
+
+        .docente-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 12px 24px rgba(1, 50, 175, 0.15) !important;
+        }
+
+        .docente-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #0132AF, #0076FF);
+            margin: -60px auto 16px;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .docente-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 200%;
+            background-position: center 38%;
+            background-repeat: no-repeat;
+            border-radius: 14px;
+        }
+
+        .avatar-docente-1::before {
+            background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/AdanBeltran.png');
+        }
+
+        .avatar-docente-2::before {
+            background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/KellynJohannaDelgado.png');
+        }
+
+        .avatar-docente-3::before {
+            background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/JuanCamiloHernandez.png');
+        }
+
+        .docente-nombre {
+            font-weight: 800;
+            font-size: 15px;
+            color: #0132AF;
+            margin-bottom: 4px;
+        }
+
+        .docente-rol {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .docente-toggle {
+            margin-top: 12px !important;
+            background: rgba(1, 50, 175, 0.05) !important;
+            border: none !important;
+            color: #0132AF !important;
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding: 6px 12px !important;
+            border-radius: 6px !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .docente-toggle:hover {
+            background: rgba(1, 50, 175, 0.1) !important;
+            color: #0132AF !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .docente-toggle:active,
+        .docente-toggle:focus {
+            background: rgba(1, 50, 175, 0.05) !important;
+            color: #0132AF !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .docente-toggle svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease !important;
+        }
+
+        .docente-toggle.active svg {
+            transform: rotate(180deg) !important;
+        }
+
+        .docente-description {
+            max-height: 0 !important;
+            overflow: hidden !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            margin-top: 0 !important;
+            opacity: 0 !important;
+        }
+
+        .docente-description.active {
+            max-height: 300px !important;
+            opacity: 1 !important;
+            margin-top: 16px !important;
+            padding-top: 16px !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+
+        .docente-description-text {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .docentes-section {
+                padding: 40px 20px;
+            }
+
+            .docentes-header h2 {
+                font-size: 22px;
+            }
+
+            .docentes-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 16px;
+            }
+
+            .docente-card {
+                padding: 16px;
+            }
+
+            .docente-avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 20px;
+                margin-top: -45px;
+                object-fit: cover;
+            }
+
+            .docente-nombre {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="docentes-section">
+        <div class="docentes-header">
+            <h2>Equipo Docente</h2>
+            <p>Profesionales con trayectoria en academia y empresa</p>
+        </div>
+
+        <div class="docentes-grid">
+            <article class="docente-card">
+                <div class="docente-avatar avatar-docente-1"></div>
+                <div class="docente-nombre">Adan Beltran Gomez</div>
+                <div class="docente-rol">Docente Principal</div>
+                <button class="docente-toggle" onclick="toggleDescription(this)">
+                    + Info
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="docente-description">
+                    <div class="docente-description-text">Magíster en Ciencias de la Información y las Comunicaciones y Magíster en Administración e Ingeniería de Sitios Web, con más de 25 años de experiencia empresarial en sistemas, analítica de datos e interoperabilidad TIC. Docente universitario en Ingeniería de Software, Inteligencia Artificial y Bases de Datos, con amplia trayectoria en investigación aplicada.</div>
+                </div>
+            </article>
+
+            <article class="docente-card">
+                <div class="docente-avatar avatar-docente-2"></div>
+                <div class="docente-nombre">Kellyn Johanna Delgado</div>
+                <div class="docente-rol">Docente Principal</div>
+                <button class="docente-toggle" onclick="toggleDescription(this)">
+                    + Info
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="docente-description">
+                    <div class="docente-description-text">Máster en Dirección e Ingeniería de Sitios Web (UNIR), con más de 16 años de experiencia en desarrollo de software y gestión académica en el área de ingeniería de software y sistemas; actualmente dicta las asignaturas en backend, frontend y Arquitectura de Software.</div>
+                </div>
+            </article>
+
+            <article class="docente-card">
+                <div class="docente-avatar avatar-docente-3"></div>
+                <div class="docente-nombre">Juan Camilo Hernandez</div>
+                <div class="docente-rol">Docente Principal</div>
+                <button class="docente-toggle" onclick="toggleDescription(this)">
+                    + Info
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="docente-description">
+                    <div class="docente-description-text">Ingeniero de Sistemas con 8 años de experiencia en desarrollo de software. Especialista en desarrollo de videojuegos 2D y 3D, realidad aumentada, virtual y mixta (AR/VR/MR). Experto en programación web, arquitectura de sistemas y metodologías ágiles de desarrollo.</div>
+                </div>
+            </article>
+            
+            
+            <!--
+            <article class="docente-card">
+                <div class="docente-avatar">CR</div>
+                <div class="docente-nombre">Carlos Ruiz</div>
+                <div class="docente-rol">Tecnología · 9 años experiencia</div>
+                <button class="docente-toggle" onclick="toggleDescription(this)">
+                    + Info
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="docente-description">
+                    <div class="docente-description-text">Desarrollador full-stack y arquitecto de sistemas. Experto en transformación digital y cloud computing.</div>
+                </div>
+            </article>
+
+            <article class="docente-card">
+                <div class="docente-avatar">SR</div>
+                <div class="docente-nombre">Sofía Ramírez</div>
+                <div class="docente-rol">Estadística · 7 años experiencia</div>
+                <button class="docente-toggle" onclick="toggleDescription(this)">
+                    + Info
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="docente-description">
+                    <div class="docente-description-text">Especialista en ciencia de datos e inteligencia artificial. Autora de 15 publicaciones en revistas internacionales.</div>
+                </div>
+            </article>
+
+            <article class="docente-card">
+                <div class="docente-avatar">DR</div>
+                <div class="docente-nombre">Diego Rodríguez</div>
+                <div class="docente-rol">Emprendimiento · 11 años experiencia</div>
+                <button class="docente-toggle" onclick="toggleDescription(this)">
+                    + Info
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="docente-description">
+                    <div class="docente-description-text">Fundador de 3 startups exitosas. Mentor de emprendedores y asesor en estrategia de negocios.</div>
+                </div>
+            </article> 
+            
+            -->
+            
+            
+        </div>
+    </section>
+
+    <script>
+        function toggleDescription(button) {
+            event.stopPropagation();
+            const card = button.closest('.docente-card');
+            const description = card.querySelector('.docente-description');
+            
+            // Cerrar otras descripciones
+            document.querySelectorAll('.docente-description.active').forEach(desc => {
+                if (desc !== description) {
+                    desc.classList.remove('active');
+                    desc.previousElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle descripción actual
+            description.classList.toggle('active');
+            button.classList.toggle('active');
+        }
+
+        // Cerrar descripción al hacer click fuera
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.docente-card')) {
+                document.querySelectorAll('.docente-description.active').forEach(desc => {
+                    desc.classList.remove('active');
+                });
+                document.querySelectorAll('.docente-toggle.active').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+

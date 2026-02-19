@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Opciones de Layout Mobile - Plan de Estudios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: #1a202c;
+        }
+
+        .opciones-container {
+            display: grid;
+            gap: 30px;
+        }
+
+        .opcion {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #0132AF;
+        }
+
+        .opcion.recomendada {
+            border-left-color: #FF6B35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.02) 0%, rgba(255, 107, 53, 0.05) 100%);
+        }
+
+        .opcion-numero {
+            display: inline-block;
+            background: #0132AF;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .opcion.recomendada .opcion-numero {
+            background: #FF6B35;
+        }
+
+        .opcion-titulo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .opcion-descripcion {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .opcion-ventajas {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #2d3748;
+        }
+
+        .opcion-ventajas strong {
+            color: #0132AF;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .opcion-ventaja {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .opcion-ventaja::before {
+            content: "✓";
+            color: #00897B;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .opcion-desventajas {
+            background: #fff5f5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #742a2a;
+        }
+
+        .opcion-desventajas strong {
+            color: #FF3B3B;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .opcion-desventaja {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .opcion-desventaja::before {
+            content: "⚠";
+            flex-shrink: 0;
+        }
+
+        .recomendacion-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .demo-visual {
+            background: #f0f4f8;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            border: 2px dashed #cbd5e0;
+            font-size: 0.85rem;
+            color: #4a5568;
+            max-height: 200px;
+            overflow: auto;
+        }
+
+        .demo-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tab-demo {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tab-item {
+            background: white;
+            border: 1px solid #cbd5e0;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .tab-item.active {
+            background: #0132AF;
+            color: white;
+            border-color: #0132AF;
+        }
+
+        .materias-display {
+            display: flex;
+            gap: 6px;
+            flex-direction: column;
+            margin-top: 8px;
+        }
+
+        .materia-item {
+            background: white;
+            padding: 6px 10px;
+            border-left: 3px solid #0132AF;
+            font-size: 0.75rem;
+            border-radius: 3px;
+        }
+
+        .disclaimer {
+            background: #fffaf0;
+            border-left: 4px solid #FF6B35;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #7c2d12;
+        }
+
+        .disclaimer strong {
+            color: #c05621;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 10 Opciones de Layout Mobile</h1>
+
+        <div class="disclaimer">
+            <strong>⚠️ Nota:</strong> Todas estas opciones mejoran la experiencia en celular. Elige la que mejor se adapte a tu marca y flujo de usuario.
+        </div>
+
+        <div class="opciones-container">
+
+            <!-- OPCIÓN 1 -->
+            <div class="opcion recomendada">
+                <div class="opcion-numero">OPCIÓN 1 - RECOMENDADA</div>
+                <div class="opcion-titulo">📋 Tabs Deslizables (Scroll Horizontal)</div>
+                <div class="opcion-descripcion">
+                    Los botones de semestres ocupan el ancho y se pueden deslizar horizontalmente si no caben todos.
+                </div>
+                <div class="demo-visual">
+                    <div class="demo-label">Vista mobile:</div>
+                    <div class="tab-demo" style="overflow-x: auto;">
+                        <div class="tab-item active">1º sem</div>
+                        <div class="tab-item">2º sem</div>
+                        <div class="tab-item">3º sem</div>
+                        <div class="tab-item">4º sem</div>
+                        <div class="tab-item">5º sem</div>
+                        <div class="tab-item">...</div>
+                    </div>
+                    <div style="font-size: 0.75rem; color: #718096;">↑ Se pueden deslizar con el dedo</div>
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Usa todo el espacio horizontal</div>
+                    <div class="opcion-ventaja">Muy intuitivo en mobile</div>
+                    <div class="opcion-ventaja">Materias y leyenda visibles abajo</div>
+                    <div class="opcion-ventaja">Scroll suave y natural</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Requiere CSS overflow-x</div>
+                </div>
+                <div class="recomendacion-badge">MI FAVORITA - Mejor experiencia</div>
+            </div>
+
+            <!-- OPCIÓN 2 -->
+            <div class="opcion recomendada">
+                <div class="opcion-numero">OPCIÓN 2 - RECOMENDADA</div>
+                <div class="opcion-titulo">🎯 Dropdown/Select HTML Nativo</div>
+                <div class="opcion-descripcion">
+                    Un selector <code>&lt;select&gt;</code> limpio. Al seleccionar, se despliega el contenido abajo.
+                </div>
+                <div class="demo-visual">
+                    <div class="demo-label">Vista mobile:</div>
+                    <select style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e0; margin-bottom: 10px;">
+                        <option>📚 Primer semestre</option>
+                        <option>Segundo semestre</option>
+                        <option>Tercer semestre</option>
+                    </select>
+                    <div style="font-size: 0.75rem; color: #718096;">↓ Se abre el selector nativo del teléfono</div>
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Muy compacto (ocupa poco espacio)</div>
+                    <div class="opcion-ventaja">Selector nativo = mejor entra experiencia</div>
+                    <div class="opcion-ventaja">Sin JavaScript complejo</div>
+                    <div class="opcion-ventaja">Accesible (WCAG)</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Menos visual que botones</div>
+                    <div class="opcion-desventaja">Styling limitado</div>
+                </div>
+                <div class="recomendacion-badge">SEGUNDA MEJOR - Muy práctica</div>
+            </div>
+
+            <!-- OPCIÓN 3 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 3</div>
+                <div class="opcion-titulo">🎠 Carrusel/Swiper de Semestres</div>
+                <div class="opcion-descripcion">
+                    Los semestres se comportan como un carrusel, puedes deslizar de uno a otro con transiciones suaves.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Animaciones suaves y modernas</div>
+                    <div class="opcion-ventaja">Cambio de semestre muy fluido</div>
+                    <div class="opcion-ventaja">Indicador visual claro</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Requiere librería (Swiper, Slick)</div>
+                    <div class="opcion-desventaja">Mayor consumo de JS</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 4 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 4</div>
+                <div class="opcion-titulo">🆙 Leyenda Arriba - Materias Debajo</div>
+                <div class="opcion-descripcion">
+                    Cambiar el orden: mostrar leyenda primero (pequeña y compacta), luego materias.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Leyenda visible antes de bajar</div>
+                    <div class="opcion-ventaja">Estructura clara</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Leyenda puede ser repetitiva</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 5 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 5</div>
+                <div class="opcion-titulo">📌 Leyenda Flotante (Sticky/Fixed)</div>
+                <div class="opcion-descripcion">
+                    La leyenda se queda fija en la parte baja de la pantalla mientras scrolleas materias.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Leyenda siempre visible</div>
+                    <div class="opcion-ventaja">No requiere scroll para ver referencia</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Ocupa espacio permanente</div>
+                    <div class="opcion-desventaja">Puede ocultar last materia</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 6 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 6</div>
+                <div class="opcion-titulo">🔘 Botones Pequeños - 3 por Fila</div>
+                <div class="opcion-descripcion">
+                    Los 7 botones de semestre en grid 3-3-1, más pequeños pero visibles todos a la vez.
+                </div>
+                <div class="demo-visual">
+                    <div class="tab-demo" style="justify-content: space-around;">
+                        <div class="tab-item active" style="flex: 1; text-align: center; max-width: 80px;">1</div>
+                        <div class="tab-item" style="flex: 1; text-align: center; max-width: 80px;">2</div>
+                        <div class="tab-item" style="flex: 1; text-align: center; max-width: 80px;">3</div>
+                    </div>
+                    <div class="tab-demo" style="justify-content: space-around;">
+                        <div class="tab-item" style="flex: 1; text-align: center; max-width: 80px;">4</div>
+                        <div class="tab-item" style="flex: 1; text-align: center; max-width: 80px;">5</div>
+                        <div class="tab-item" style="flex: 1; text-align: center; max-width: 80px;">6</div>
+                    </div>
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Todos los semestres visibles</div>
+                    <div class="opcion-ventaja">Sin scroll horizontal</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Botones muy pequeños</div>
+                    <div class="opcion-desventaja">Difícil de clickear en móvil</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 7 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 7</div>
+                <div class="opcion-titulo">🎚️ Según Leyenda - Toggle Tabs</div>
+                <div class="opcion-descripcion">
+                    Agrupar semestres por tipo de contenido: "Teóricos" (1,2,4,6) vs "Prácticas" (3,5,7) con tabs.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Agrupación lógica</div>
+                    <div class="opcion-ventaja">Menos botones visibles</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Requiere 2 clics para cambiar</div>
+                    <div class="opcion-desventaja">Puede confundir</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 8 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 8</div>
+                <div class="opcion-titulo">📱 Acordeón (Accordion)</div>
+                <div class="opcion-descripcion">
+                    Cada semestre es un acordeón que se expande/colapsa para mostrar materias. Leyenda expandible aparte.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Muy compacto inicialmente</div>
+                    <div class="opcion-ventaja">Fácil de navegar</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Solo ves un semestre a la vez</div>
+                    <div class="opcion-desventaja">Más clics para comparar</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 9 -->
+            <div class="opcion">
+                <div class="opcion-numero">OPCIÓN 9</div>
+                <div class="opcion-titulo">❓ Leyenda Modal/Info Flotante</div>
+                <div class="opcion-descripcion">
+                    Un ícono "i" que abre una ventana modal con la leyenda. Las materias ocupan toda la pantalla.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Máximo espacio para materias</div>
+                    <div class="opcion-ventaja">Leyenda sin desorden</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Requiere clic extra para ver leyenda</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 10 -->
+            <div class="opcion recomendada">
+                <div class="opcion-numero">OPCIÓN 10 - RECOMENDADA</div>
+                <div class="opcion-titulo">🎯 Híbrida: Select + Scroll Horizontal Compacto</div>
+                <div class="opcion-descripcion">
+                    Dropdown para cambiar + tabs scrollables pequeños como referencia visual. Leyenda colapsable abajo.
+                </div>
+                <div class="opcion-ventajas">
+                    <strong>✓ Ventajas:</strong>
+                    <div class="opcion-ventaja">Mejor de ambos mundos</div>
+                    <div class="opcion-ventaja">Compacto pero visual</div>
+                    <div class="opcion-ventaja">Leyenda no molesta</div>
+                    <div class="opcion-ventaja">Accesible y moderno</div>
+                </div>
+                <div class="opcion-desventajas">
+                    <strong>⚠ Desventajas:</strong>
+                    <div class="opcion-desventaja">Ligeramente más complejo</div>
+                </div>
+                <div class="recomendacion-badge">TERCERA MEJOR - Completa y balanceada</div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Resumen de recomendaciones:</strong></p>
+            <p>🥇 <strong>Opción 1:</strong> Tabs deslizables (mejor UX)</p>
+            <p>🥈 <strong>Opción 2:</strong> Select HTML (más simple)</p>
+            <p>🥉 <strong>Opción 10:</strong> Híbrida (mejor balance)</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!-- WhatsApp Sticky Section -->
+<style>
+  .whatsapp-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes fadeOutDown {
+    from { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+    to { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+  }
+
+  .whatsapp-sticky.active {
+    animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    pointer-events: all;
+  }
+
+  .whatsapp-sticky.leaving {
+    animation: fadeOutDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    pointer-events: none;
+  }
+
+  .whatsapp-sticky-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #57D100;
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+  }
+
+  .whatsapp-sticky-btn:hover {
+    box-shadow: 0 8px 20px rgba(1, 50, 175, 0.06);
+    transform: translateY(-4px);
+    background-color: #25D366;
+  }
+
+  .whatsapp-sticky-btn:active {
+    transform: translateY(-2px);
+  }
+
+  /* Ocultar en desktop */
+  @media (min-width: 981px) {
+    .whatsapp-sticky {
+      display: none !important;
+    }
+  }
+
+  .whatsapp-sticky-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 8px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+    }
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 640px) {
+    .whatsapp-sticky {
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .whatsapp-sticky-btn {
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    .whatsapp-sticky-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+
+<div class="whatsapp-sticky" id="whatsapp-sticky">
+  <a href="https://wa.me/573001234567?text=Hola,%20me%20gustaría%20más%20información%20sobre%20el%20programa%20de%20Administración%20de%20Empresas%20Virtual" class="whatsapp-sticky-btn" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+      <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
+    </svg>
+    <span>¡Escríbenos!</span>
+  </a>
+</div>
+
+<script>
+  // Script para activar/desactivar el sticky cuando se baja del hero-section
+  const heroSection = document.getElementById('hero-section');
+  const whatsappSticky = document.getElementById('whatsapp-sticky');
+
+  if (heroSection && whatsappSticky) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          // El hero-section está fuera de la vista, mostrar sticky
+          whatsappSticky.classList.remove('leaving');
+          whatsappSticky.classList.add('active');
+        } else {
+          // El hero-section está visible, ocultar sticky
+          whatsappSticky.classList.remove('active');
+          whatsappSticky.classList.add('leaving');
+          
+          // Remover la clase leaving después de que termina la animación
+          setTimeout(() => {
+            whatsappSticky.classList.remove('leaving');
+          }, 700);
+        }
+      });
+    }, {
+      threshold: 0,
+      rootMargin: '0px'
+    });
+
+    observer.observe(heroSection);
+  }
+</script>

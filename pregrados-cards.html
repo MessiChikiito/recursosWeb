@@ -116,9 +116,9 @@
 
         @media (max-width: 768px) {
             .pp-card-image-container {
-                width: 100%;
+                width: calc(100% + 56px);
                 height: 170px;
-                margin: 0;
+                margin: -28px -28px 20px -28px;
                 padding: 0;
             }
         }
@@ -663,28 +663,41 @@
         position:absolute !important;
         top:12px !important;
         right:12px !important;
-        background:#0BD926 !important;
-        color:#fff !important;
-        padding:6px 12px !important;
-        border-radius:16px !important;
-        font-size:.75rem !important;
+        background:#ffffff !important;
+        color:#1a202c !important;
+        padding:5px 8px !important;
+        border-radius:999px !important;
+        font-size:.70rem !important;
         font-weight:700 !important;
         font-family:'Segoe UI',system-ui,-apple-system,sans-serif !important;
-
-        text-transform:uppercase !important;
         text-align:center !important;
         white-space:nowrap !important;
         cursor:help !important;
-        display:inline-block !important;
+        display:inline-flex !important;
+        align-items:center !important;
+        gap:8px !important;
         overflow:visible !important;
-        box-shadow:
-            0 4px 15px rgba(11,217,38,.35),
-            0 0 0 4px rgba(11,217,38,.12),
-            inset 0 1px 0 rgba(255,255,255,.25);
-        animation: color-pulse 4s cubic-bezier(0.4,0,0.6,1) infinite !important;
+        border:1px solid rgba(0,0,0,0.08) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.587) !important;
         will-change: box-shadow;
+        flex-direction: row-reverse !important;
         }
 
+        /* Badge verde "VIRTUAL" */
+        .badge-virtual-custom::before {
+            content: 'VIRTUAL' !important;
+            background: #0BD926 !important;
+            color: #ffffff !important;
+            padding: 4px 10px !important;
+            border-radius: 999px !important;
+            font-size: 0.70rem !important;
+            font-weight: 950 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            display: inline-block !important;
+            box-shadow: 0 4px 15px rgba(11,217,38,.35), 0 0 0 4px rgba(11,217,38,.12), inset 0 1px 0 rgba(255,255,255,.25);
+            animation: color-pulse 4s cubic-bezier(0.4,0,0.6,1) infinite !important;
+        }
 
         /* Tooltip */
         .badge-virtual-custom::after {
@@ -711,6 +724,10 @@
         }
 
         .badge-virtual-custom:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
+        }
+        
+        .badge-virtual-custom:hover::before {
             animation-play-state: paused !important;
             background: #06f526 !important;
             box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4) !important;
@@ -765,6 +782,8 @@
         @media (max-width: 768px) {
             .pp-programs-section {
                 padding: 32px 0 40px;
+                margin-right: 20px;
+                margin-left: 20px;
             }
 
             .pp-programs-grid {
@@ -773,7 +792,7 @@
             }
 
             .pp-program-card {
-                padding: 20px;
+                padding: 25px !important;
             }
 
             .form-row {
@@ -784,6 +803,18 @@
             .modal {
                 max-width: calc(100% - 32px);
                 margin: 16px;
+            }
+
+            .badge-virtual-custom{
+                top: 5px !important;
+                right: 5px !important;
+                padding: 4px 8px !important;
+                font-size: 0.65rem !important;
+            }
+
+            .pp-card-header{
+                margin-bottom: 5px;
+                margin-top: 1px;
             }
         }
 
@@ -963,6 +994,7 @@
                 ],
                 descripcion: "Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.",
                 esNuevo: false,
+                tieneVirtual: true,
                 urlPrograma: "https://uniempresarial.edu.co/marketing/"
             },
             {
@@ -1028,6 +1060,7 @@
                 ],
                 descripcion: "Forma ingenieros capaces de optimizar procesos productivos y logísticos para mejorar la eficiencia organizacional.",
                 esNuevo: false,
+                tieneVirtual: true,
                 urlPrograma: "https://uniempresarial.edu.co/ingenieria-industrial/"
             }
         ];
@@ -1086,9 +1119,11 @@
                 card.setAttribute('tabindex', '0');
                 card.setAttribute('aria-label', `Ver detalles de ${programa.nombre}`);
 
+                /*Las fokin tarjetas de nuevo y virtual*/
+
                 card.innerHTML = `
                     ${programa.imagen ? `<div class="pp-card-image-container"><img src="${programa.imagen}" alt="${programa.nombre}" class="pp-card-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect fill=%27%232A449C%27 width=%27400%27 height=%27200%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27 font-family=%27Arial%27%3E${programa.nombre}%3C/text%3E%3C/svg%3E';"></div>` : ''}
-                    ${programa.tieneVirtual ? '<div class="badge-virtual-custom">VIRTUAL</div>' : ''}
+                    ${programa.tieneVirtual ? '<div class="badge-virtual-custom">También en</div>' : ''}
                     ${programa.esNuevo ? '<span class="pp-card-tag">Nuevo</span>' : ''}
                     <div class="pp-card-header">
                         <h3 class="pp-card-title">${programa.nombre}</h3>

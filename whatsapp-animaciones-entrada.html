@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20 Animaciones de Entrada - WhatsApp Sticky</title>
+  <style>
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .option-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .option-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .replay-btn {
+      background: #0132AF;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .replay-btn:hover {
+      background: #0142cf;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    .whatsapp-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Opción 1: Fade In Up */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .anim-1.show { 
+      animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 2: Zoom In */
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .anim-2.show { 
+      animation: zoomIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 3: Slide In Right */
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .anim-3.show { 
+      animation: slideInRight 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 4: Bounce In */
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { opacity: 1; transform: scale(1.1); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+    .anim-4.show { 
+      animation: bounceIn 0.7s ease-out forwards;
+    }
+
+    /* Opción 5: Rotate In */
+    @keyframes rotateIn {
+      from { opacity: 0; transform: rotate(-200deg) scale(0); }
+      to { opacity: 1; transform: rotate(0deg) scale(1); }
+    }
+    .anim-5.show { 
+      animation: rotateIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 6: Flip In X */
+    @keyframes flipInX {
+      from { opacity: 0; transform: perspective(400px) rotateX(90deg); }
+      to { opacity: 1; transform: perspective(400px) rotateX(0deg); }
+    }
+    .anim-6.show { 
+      animation: flipInX 0.7s ease-out forwards;
+    }
+
+    /* Opción 7: Slide In Up Bounce */
+    @keyframes slideInUpBounce {
+      0% { opacity: 0; transform: translateY(80px); }
+      60% { opacity: 1; transform: translateY(-10px); }
+      80% { transform: translateY(5px); }
+      100% { transform: translateY(0); }
+    }
+    .anim-7.show { 
+      animation: slideInUpBounce 0.7s ease-out forwards;
+    }
+
+    /* Opción 8: Back In Right */
+    @keyframes backInRight {
+      from { opacity: 0; transform: translateX(100px) scale(0.7); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+    .anim-8.show { 
+      animation: backInRight 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    }
+
+    /* Opción 9: Zoom Rotate In */
+    @keyframes zoomRotateIn {
+      from { opacity: 0; transform: scale(0) rotate(-180deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .anim-9.show { 
+      animation: zoomRotateIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 10: Elastic In */
+    @keyframes elasticIn {
+      0% { opacity: 0; transform: scale(0); }
+      50% { transform: scale(1.25); }
+      75% { transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .anim-10.show { 
+      animation: elasticIn 0.9s ease-out forwards;
+    }
+
+    /* Opción 11: Roll In */
+    @keyframes rollIn {
+      from { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
+      to { opacity: 1; transform: translateX(0) rotate(0deg); }
+    }
+    .anim-11.show { 
+      animation: rollIn 0.7s ease-out forwards;
+    }
+
+    /* Opción 12: Light Speed In Right */
+    @keyframes lightSpeedInRight {
+      from { opacity: 0; transform: translateX(100%) skewX(-30deg); }
+      60% { opacity: 1; transform: skewX(20deg); }
+      80% { transform: skewX(-5deg); }
+      to { transform: translateX(0) skewX(0); }
+    }
+    .anim-12.show { 
+      animation: lightSpeedInRight 0.7s ease-out forwards;
+    }
+
+    /* Opción 13: Swing In */
+    @keyframes swingIn {
+      0% { opacity: 0; transform: rotateZ(-100deg) scale(0); }
+      100% { opacity: 1; transform: rotateZ(0deg) scale(1); }
+    }
+    .anim-13.show { 
+      animation: swingIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      transform-origin: top center;
+    }
+
+    /* Opción 14: Pulse Zoom In */
+    @keyframes pulseZoomIn {
+      0% { opacity: 0; transform: scale(0); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+      50% { transform: scale(1.15); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6); }
+      100% { opacity: 1; transform: scale(1); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+    }
+    .anim-14.show { 
+      animation: pulseZoomIn 0.7s ease-out forwards;
+    }
+
+    /* Opción 15: Flip Scale In */
+    @keyframes flipScaleIn {
+      0% { opacity: 0; transform: perspective(400px) rotateY(90deg) scale(0.5); }
+      100% { opacity: 1; transform: perspective(400px) rotateY(0deg) scale(1); }
+    }
+    .anim-15.show { 
+      animation: flipScaleIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 16: Bounce In Down */
+    @keyframes bounceInDown {
+      0% { opacity: 0; transform: translateY(-60px); }
+      60% { opacity: 1; transform: translateY(15px); }
+      80% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+    .anim-16.show { 
+      animation: bounceInDown 0.7s ease-out forwards;
+    }
+
+    /* Opción 17: Fade In Right Big */
+    @keyframes fadeInRightBig {
+      from { opacity: 0; transform: translateX(150px) scale(0.8); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+    .anim-17.show { 
+      animation: fadeInRightBig 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 18: Jack In The Box */
+    @keyframes jackInTheBox {
+      from { opacity: 0; transform: scale(0.1) rotate(30deg); transform-origin: center bottom; }
+      50% { transform: rotate(-10deg); }
+      70% { transform: rotate(3deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .anim-18.show { 
+      animation: jackInTheBox 0.7s ease-out forwards;
+    }
+
+    /* Opción 19: Zoom In Rotate */
+    @keyframes zoomInRotate {
+      0% { opacity: 0; transform: scale(0) rotate(-45deg); }
+      50% { transform: scale(1.1) rotate(5deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .anim-19.show { 
+      animation: zoomInRotate 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Opción 20: Bounce Spin In */
+    @keyframes bounceSpinIn {
+      0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+      50% { transform: scale(1.2) rotate(20deg); }
+      70% { transform: scale(0.9) rotate(-10deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .anim-20.show { 
+      animation: bounceSpinIn 0.9s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 20 Animaciones de Entrada - WhatsApp Sticky</h1>
+    <p class="subtitle">Haz clic en "▶️ Ver" para reproducir cada animación</p>
+    
+    <div class="grid">
+      <!-- Opción 1 -->
+      <div class="option-card">
+        <div class="option-title">1. Fade In Up</div>
+        <button class="replay-btn" onclick="replay('btn1')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn1" class="whatsapp-btn anim-1">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 2 -->
+      <div class="option-card">
+        <div class="option-title">2. Zoom In</div>
+        <button class="replay-btn" onclick="replay('btn2')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn2" class="whatsapp-btn anim-2">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 3 -->
+      <div class="option-card">
+        <div class="option-title">3. Slide In Right</div>
+        <button class="replay-btn" onclick="replay('btn3')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn3" class="whatsapp-btn anim-3">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 4 -->
+      <div class="option-card">
+        <div class="option-title">4. Bounce In</div>
+        <button class="replay-btn" onclick="replay('btn4')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn4" class="whatsapp-btn anim-4">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 5 -->
+      <div class="option-card">
+        <div class="option-title">5. Rotate In</div>
+        <button class="replay-btn" onclick="replay('btn5')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn5" class="whatsapp-btn anim-5">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 6 -->
+      <div class="option-card">
+        <div class="option-title">6. Flip In X</div>
+        <button class="replay-btn" onclick="replay('btn6')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn6" class="whatsapp-btn anim-6">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 7 -->
+      <div class="option-card">
+        <div class="option-title">7. Slide In Up Bounce</div>
+        <button class="replay-btn" onclick="replay('btn7')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn7" class="whatsapp-btn anim-7">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 8 -->
+      <div class="option-card">
+        <div class="option-title">8. Back In Right</div>
+        <button class="replay-btn" onclick="replay('btn8')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn8" class="whatsapp-btn anim-8">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 9 -->
+      <div class="option-card">
+        <div class="option-title">9. Zoom Rotate In</div>
+        <button class="replay-btn" onclick="replay('btn9')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn9" class="whatsapp-btn anim-9">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 10 -->
+      <div class="option-card">
+        <div class="option-title">10. Elastic In</div>
+        <button class="replay-btn" onclick="replay('btn10')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn10" class="whatsapp-btn anim-10">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 11 -->
+      <div class="option-card">
+        <div class="option-title">11. Roll In</div>
+        <button class="replay-btn" onclick="replay('btn11')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn11" class="whatsapp-btn anim-11">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 12 -->
+      <div class="option-card">
+        <div class="option-title">12. Light Speed In Right</div>
+        <button class="replay-btn" onclick="replay('btn12')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn12" class="whatsapp-btn anim-12">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 13 -->
+      <div class="option-card">
+        <div class="option-title">13. Swing In</div>
+        <button class="replay-btn" onclick="replay('btn13')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn13" class="whatsapp-btn anim-13">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 14 -->
+      <div class="option-card">
+        <div class="option-title">14. Pulse Zoom In</div>
+        <button class="replay-btn" onclick="replay('btn14')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn14" class="whatsapp-btn anim-14">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 15 -->
+      <div class="option-card">
+        <div class="option-title">15. Flip Scale In</div>
+        <button class="replay-btn" onclick="replay('btn15')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn15" class="whatsapp-btn anim-15">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 16 -->
+      <div class="option-card">
+        <div class="option-title">16. Bounce In Down</div>
+        <button class="replay-btn" onclick="replay('btn16')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn16" class="whatsapp-btn anim-16">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 17 -->
+      <div class="option-card">
+        <div class="option-title">17. Fade In Right Big</div>
+        <button class="replay-btn" onclick="replay('btn17')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn17" class="whatsapp-btn anim-17">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 18 -->
+      <div class="option-card">
+        <div class="option-title">18. Jack In The Box</div>
+        <button class="replay-btn" onclick="replay('btn18')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn18" class="whatsapp-btn anim-18">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 19 -->
+      <div class="option-card">
+        <div class="option-title">19. Zoom In Rotate</div>
+        <button class="replay-btn" onclick="replay('btn19')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn19" class="whatsapp-btn anim-19">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción 20 -->
+      <div class="option-card">
+        <div class="option-title">20. Bounce Spin In</div>
+        <button class="replay-btn" onclick="replay('btn20')">▶️ Ver</button>
+        <div class="btn-container">
+          <div id="btn20" class="whatsapp-btn anim-20">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z"/>
+            </svg>
+            <span>¡Escríbenos!</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Función para replay de animación
+    function replay(btnId) {
+      const btn = document.getElementById(btnId);
+      btn.classList.remove('show');
+      
+      // Forzar reflow
+      void btn.offsetWidth;
+      
+      setTimeout(() => {
+        btn.classList.add('show');
+      }, 10);
+    }
+
+    // Iniciar todas las animaciones al cargar
+    window.addEventListener('load', () => {
+      for (let i = 1; i <= 20; i++) {
+        const btn = document.getElementById('btn' + i);
+        setTimeout(() => {
+          btn.classList.add('show');
+        }, i * 100);
+      }
+    });
+  </script>
+</body>
+</html>

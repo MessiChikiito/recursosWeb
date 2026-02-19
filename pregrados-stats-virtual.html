@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pregrados Virtuales - Stats</title>
+
     <style>
         /* ========== RESET Y VARIABLES ========== */
         :root {
@@ -110,7 +105,7 @@
 
         .pp-card-becas-title {
             font-size: 1.7rem !important;
-            font-weight: 900 !important;
+            font-weight: 700 !important;
             color: #F59E0B !important;
             margin-bottom: 4px !important;
         }
@@ -136,7 +131,7 @@
         }
 
         .pp-becas-list li.highlight-blue {
-            color: #067A2E !important;
+            color: #0132AF !important;
             font-weight: 600 !important;
         }
 
@@ -149,15 +144,15 @@
 
         /* Colores de bordes para stats (excluye becas) */
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) {
-            border-top-color: #0A943A;
+            border-top-color: #0BD926;
         }
 
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) {
-            border-top-color: #0A943A;
+            border-top-color: #0BD926;
         }
 
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) {
-            border-top-color: #0A943A;
+            border-top-color: #0BD926;
         }
 
         .pp-stat-card strong {
@@ -194,6 +189,73 @@
             margin: 0;
             font-weight: 600 !important;
             line-height: 1.4 !important;
+        }
+
+        /* ========== CARD INDEPENDIENTE: INVERSIÓN CON DESCUENTO ========== */
+        /* PARA DESACTIVAR: Comenta toda esta sección (.pp-stat-card-discount y sus clases hijas) */
+        /* Esto permitirá que la tarjeta vuelva al estilo normal con los otros stat-cards */
+        .pp-stat-card-discount {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #0BD926;
+            border-radius: 8px;
+            padding: 32px 20px;
+            padding-top: 15px;
+            text-align: center;
+            transition: none !important;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
+        }
+
+        /* PARA DESACTIVAR: Comenta esta clase */
+        .pp-discount-investment-badge {
+            background: #EF1218;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(239, 18, 24, 0.3);
+            display: inline-block;
+        }
+
+        /* PARA DESACTIVAR: Comenta esta clase */
+        .pp-discount-investment-old {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            margin-bottom: 0px;
+        }
+
+        /* PARA DESACTIVAR: Comenta esta clase */
+        .pp-discount-investment-new {
+            display: block;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 0px;
+            margin-top: -8px;
+            letter-spacing: -0.5px;
+            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-synthesis: weight;
+            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03);
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02);
+        }
+
+        /* PARA DESACTIVAR: Comenta esta clase */
+        .pp-stat-card-discount p {
+            color: #0A943A;
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
         }
 
         /* ========== RESPONSIVE ========== */
@@ -290,12 +352,20 @@
                     </div>
                 </div>
             </div>
-            <div class="pp-stat-card">
-                <strong>$6.757.000</strong>
+            <!-- TARJETA CON DESCUENTO: INVERSIÓN POR SEMESTRE -->
+            <!-- PARA VOLVER A NORMAL: Cambia "pp-stat-card-discount" por "pp-stat-card" en la línea siguiente -->
+            <!-- Y en el HTML de abajo, reemplaza todo con: <strong>$6.757.000</strong> -->
+            <div class="pp-stat-card-discount">
+                <!-- PARA VOLVER A NORMAL: Comenta o elimina la siguiente línea -->
+                <div class="pp-discount-investment-badge">-45% DESCUENTO</div>
+                <!-- PARA VOLVER A NORMAL: Comenta o elimina la siguiente línea -->
+                <div class="pp-discount-investment-old">$6.757.000</div>
+                <!-- PARA VOLVER A NORMAL: Comenta esta línea y descomenta: <strong>$6.757.000</strong> -->
+                <div class="pp-discount-investment-new">$3.716.350</div>
                 <p>Inversión por semestre</p>
             </div>
             <div class="pp-stat-card">
-                <strong>95%</strong>
+                <strong>87%</strong>
                 <p>Tasa de empleabilidad</p>
             </div>
             <div class="pp-stat-card">

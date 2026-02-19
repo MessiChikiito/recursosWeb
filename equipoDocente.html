@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo Docente</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        .docentes-section {
+            background: white;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .docentes-header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .docentes-header h2 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 8px;
+        }
+
+        .docentes-header p {
+            font-size: 15px;
+            color: #666;
+            font-weight: 600;
+            max-width: 500px;
+        }
+
+        .docentes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .docente-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .docente-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(1, 50, 175, 0.1);
+        }
+
+        .docente-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0132AF, #0076FF);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            margin: 0 auto 16px;
+        }
+
+        .docente-nombre {
+            font-weight: 800;
+            font-size: 16px;
+            color: #0132AF;
+            margin-bottom: 4px;
+        }
+
+        .docente-rol {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .docentes-section {
+                padding: 40px 20px;
+            }
+
+            .docentes-header h2 {
+                font-size: 22px;
+            }
+
+            .docentes-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 16px;
+            }
+
+            .docente-card {
+                padding: 16px;
+            }
+
+            .docente-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 20px;
+            }
+
+            .docente-nombre {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="docentes-section">
+        <div class="docentes-header">
+            <h2>Equipo Docente</h2>
+            <p>Profesionales con trayectoria en academia y empresa</p>
+        </div>
+
+        <div class="docentes-grid">
+            <article class="docente-card">
+                <div class="docente-avatar">MP</div>
+                <div class="docente-nombre">María Pérez</div>
+                <div class="docente-rol">Finanzas · 10 años experiencia</div>
+            </article>
+
+            <article class="docente-card">
+                <div class="docente-avatar">JL</div>
+                <div class="docente-nombre">Juan López</div>
+                <div class="docente-rol">Gestión · 8 años experiencia</div>
+            </article>
+
+            <article class="docente-card">
+                <div class="docente-avatar">AC</div>
+                <div class="docente-nombre">Ana Cárdenas</div>
+                <div class="docente-rol">Marketing · 12 años experiencia</div>
+            </article>
+        </div>
+    </section>
+</body>
+</html>
+

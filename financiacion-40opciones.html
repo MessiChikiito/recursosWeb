@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 Opciones de Inversión - Descuentos Especiales</title>
+    <style>
+        /* --- Financiación 40 Opciones --- */
+        .ue-section-financiacion {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf0 100%);
+        }
+        
+        .ue-h3 {
+            color: #0132AF !important;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .ue-headRow {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .ue-muted {
+            color: #7a8a99;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Grid de ofertas - 5 columnas */
+        .ue-ofertas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        /* Tarjeta base */
+        .ue-oferta-card {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            border: 3px solid transparent;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            overflow: visible;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .ue-oferta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-start) 0%, var(--color-end) 100%);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .ue-oferta-card:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18) !important;
+            border-color: var(--color-start);
+        }
+
+        /* Badges más llamativos - Estilo 1: Badge con animación de brillo */
+        .ue-oferta-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(135deg, var(--color-start) 0%, var(--color-end) 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-weight: 900;
+            font-size: 13px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+            z-index: 10;
+            animation: bounce-badge 3s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Badge estilo 2: Urgencia con pulso */
+        .ue-oferta-badge-urgencia {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(135deg, #FF1744 0%, #F50057 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 13px;
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.6);
+            z-index: 10;
+            animation: pulse-urgency 1.5s ease-in-out infinite;
+            text-transform: uppercase;
+        }
+
+        /* Badge estilo 3: Estrella/Premium */
+        .ue-oferta-badge-premium {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+            color: #1a202c;
+            padding: 8px 14px;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 13px;
+            box-shadow: 0 5px 18px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+            animation: rotate-badge 4s linear infinite;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Badge estilo 4: Etiqueta lateral */
+        .ue-oferta-ribbon {
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            background: linear-gradient(135deg, var(--color-start) 0%, var(--color-end) 100%);
+            color: white;
+            padding: 6px 20px 6px 14px;
+            font-weight: 900;
+            font-size: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
+        }
+
+        /* Badge estilo 5: Con icono de fuego */
+        .ue-oferta-badge-fire::before {
+            content: '🔥 ';
+        }
+
+        /* Badge estilo 6: Con estrella */
+        .ue-oferta-badge-star::before {
+            content: '⭐ ';
+        }
+
+        /* Badge estilo 7: Con relámpago */
+        .ue-oferta-badge-lightning::before {
+            content: '⚡ ';
+        }
+
+        @keyframes bounce-badge {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+            }
+            50% { 
+                transform: translateY(-5px) scale(1.08);
+            }
+        }
+
+        @keyframes pulse-urgency {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 23, 68, 0.6);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(255, 23, 68, 1);
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes rotate-badge {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* Título de oferta */
+        .ue-oferta-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #1a202c;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            min-height: 40px;
+        }
+
+        /* Valor destacado con gradiente */
+        .ue-oferta-value {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--color-start) 0%, var(--color-end) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        /* Valor anterior tachado */
+        .ue-oferta-value-old {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+
+        /* Descripción */
+        .ue-oferta-desc {
+            font-size: 13px;
+            color: #7a8a99;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        /* Botones con diferentes estilos */
+        
+        /* Botón estilo 1: Clásico con hover llamativo */
+        .ue-oferta-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--color-start) 0%, var(--color-end) 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ue-oferta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .ue-oferta-btn:hover {
+            transform: translateY(-3px) scale(1.05) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35) !important;
+        }
+
+        .ue-oferta-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Botón estilo 2: Con borde neón */
+        .ue-oferta-btn-neon {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--color-start);
+            border: 3px solid var(--color-start);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 15px var(--color-start);
+        }
+
+        .ue-oferta-btn-neon:hover {
+            background: var(--color-start);
+            color: white;
+            box-shadow: 0 0 30px var(--color-start) !important;
+            transform: scale(1.05) !important;
+        }
+
+        /* Botón estilo 3: Con icono */
+        .ue-oferta-btn-icon::after {
+            content: ' →';
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .ue-oferta-btn-icon:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Botón estilo 4: Pulsante */
+        .ue-oferta-btn-pulse {
+            animation: button-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes button-pulse {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 4px 25px var(--color-start);
+            }
+        }
+
+        /* Contador de tiempo limitado */
+        .ue-oferta-timer {
+            font-size: 11px;
+            color: #FF1744;
+            font-weight: 900;
+            margin-top: 8px;
+            animation: blink-timer 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink-timer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Indicador de popularidad */
+        .ue-oferta-popular {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FF6B35;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .ue-ofertas-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .ue-ofertas-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 980px) {
+            .ue-ofertas-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ue-ofertas-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .ue-oferta-card {
+                padding: 16px;
+            }
+
+            .ue-oferta-value {
+                font-size: 24px;
+            }
+
+            .ue-h3 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .ue-ofertas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="financiacion" class="ue-section-financiacion" aria-label="40 Opciones de Inversión con Descuentos">
+        <div class="ue-headRow">
+            <h3 class="ue-h3">🎓 40 Opciones de Inversión por Semestre</h3>
+            <div class="ue-muted">
+                Elige la mejor oferta para ti. ¡Descuentos de hasta 52%! 🎉
+            </div>
+        </div>
+
+        <div class="ue-ofertas-grid">
+            <!-- Opción 1 -->
+            <div class="ue-oferta-card" style="--color-start: #FF6A00; --color-end: #ff8a2e;">
+                <span class="ue-oferta-badge ue-oferta-badge-fire">OFERTA</span>
+                <div class="ue-oferta-title">Semestre Completo</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.743.000</div>
+                <div class="ue-oferta-desc">15% descuento · Pago único</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Elegir Plan</button>
+            </div>
+
+            <!-- Opción 2 -->
+            <div class="ue-oferta-card" style="--color-start: #00897b; --color-end: #00a89d;">
+                <span class="ue-oferta-badge-urgencia">SOLO HOY</span>
+                <div class="ue-oferta-title">Plan Trimestral Plus</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.405.600</div>
+                <div class="ue-oferta-desc">20% descuento · 3 cuotas</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">Ahorrar 20%</button>
+                <div class="ue-oferta-timer">⏰ Expira en 24h</div>
+            </div>
+
+            <!-- Opción 3 -->
+            <div class="ue-oferta-card" style="--color-start: #0132AF; --color-end: #1a5bcf;">
+                <span class="ue-oferta-badge-premium">⭐</span>
+                <div class="ue-oferta-title">Plan Financiado 0%</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.067.750</div>
+                <div class="ue-oferta-desc">25% descuento · Sin interés</div>
+                <button class="ue-oferta-btn">Solicitar Ahora</button>
+            </div>
+
+            <!-- Opción 4 -->
+            <div class="ue-oferta-card" style="--color-start: #E91E63; --color-end: #ff1744;">
+                <span class="ue-oferta-badge ue-oferta-badge-star">TOP</span>
+                <div class="ue-oferta-title">Plan Mensual 12x</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.730.900</div>
+                <div class="ue-oferta-desc">30% descuento · $394.240/mes</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Activar</button>
+            </div>
+
+            <!-- Opción 5 -->
+            <div class="ue-oferta-card" style="--color-start: #9C27B0; --color-end: #BA68C8;">
+                <div class="ue-oferta-popular">MÁS POPULAR</div>
+                <span class="ue-oferta-badge">PREMIUM</span>
+                <div class="ue-oferta-title">Plan Premium 18</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.729.900</div>
+                <div class="ue-oferta-desc">30% descuento · 18 cuotas</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡Lo Quiero!</button>
+            </div>
+
+            <!-- Opción 6 -->
+            <div class="ue-oferta-card" style="--color-start: #009688; --color-end: #26A69A;">
+                <span class="ue-oferta-ribbon">-18%</span>
+                <div class="ue-oferta-title">Plan Duo Empresarial</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.540.740</div>
+                <div class="ue-oferta-desc">18% descuento · 2 empleados</div>
+                <button class="ue-oferta-btn">Ver Detalles</button>
+            </div>
+
+            <!-- Opción 7 -->
+            <div class="ue-oferta-card" style="--color-start: #F57C00; --color-end: #FFAA5C;">
+                <span class="ue-oferta-badge ue-oferta-badge-fire">NUEVO</span>
+                <div class="ue-oferta-title">Plan Jóvenes UP</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.392.050</div>
+                <div class="ue-oferta-desc">35% descuento · Beca especial</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Aplicar Beca</button>
+            </div>
+
+            <!-- Opción 8 -->
+            <div class="ue-oferta-card" style="--color-start: #1976D2; --color-end: #2196F3;">
+                <span class="ue-oferta-badge">-22%</span>
+                <div class="ue-oferta-title">Plan Familiar Flex</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.270.460</div>
+                <div class="ue-oferta-desc">22% descuento · Hasta 3 cuotas</div>
+                <button class="ue-oferta-btn">Reservar</button>
+            </div>
+
+            <!-- Opción 9 -->
+            <div class="ue-oferta-card" style="--color-start: #C62828; --color-end: #E53935;">
+                <span class="ue-oferta-badge-urgencia">LÍMITADO</span>
+                <div class="ue-oferta-title">Corporativo Gold</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.392.050</div>
+                <div class="ue-oferta-desc">35% descuento · Convenio</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">Consultar</button>
+                <div class="ue-oferta-timer">⚡ Últimos cupos</div>
+            </div>
+
+            <!-- Opción 10 -->
+            <div class="ue-oferta-card" style="--color-start: #00796B; --color-end: #00897B;">
+                <span class="ue-oferta-badge ue-oferta-badge-star">AHORRO</span>
+                <div class="ue-oferta-title">Plan Anual 2026</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.865.040</div>
+                <div class="ue-oferta-desc">28% descuento · Pago anual</div>
+                <button class="ue-oferta-btn">Inscribirse</button>
+            </div>
+
+            <!-- Opción 11 -->
+            <div class="ue-oferta-card" style="--color-start: #F50057; --color-end: #FF4081;">
+                <span class="ue-oferta-badge ue-oferta-badge-lightning">FLASH</span>
+                <div class="ue-oferta-title">Express Rápido</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.606.340</div>
+                <div class="ue-oferta-desc">17% descuento · Inmediato</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">¡Empezar Ya!</button>
+            </div>
+
+            <!-- Opción 12 -->
+            <div class="ue-oferta-card" style="--color-start: #0091AD; --color-end: #00B0D1;">
+                <div class="ue-oferta-popular">MEJOR OFERTA</div>
+                <span class="ue-oferta-badge-premium">💎</span>
+                <div class="ue-oferta-title">Emprendedor Pro</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.054.200</div>
+                <div class="ue-oferta-desc">40% descuento · Startup</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">Acceder</button>
+            </div>
+
+            <!-- Opción 13 -->
+            <div class="ue-oferta-card" style="--color-start: #EF6C00; --color-end: #F57F17;">
+                <span class="ue-oferta-badge">-16%</span>
+                <div class="ue-oferta-title">Plan Plus Extendido</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.675.880</div>
+                <div class="ue-oferta-desc">16% descuento · Beneficios</div>
+                <button class="ue-oferta-btn">Activar Plus</button>
+            </div>
+
+            <!-- Opción 14 -->
+            <div class="ue-oferta-card" style="--color-start: #651FFF; --color-end: #7C4DFF;">
+                <span class="ue-oferta-badge ue-oferta-badge-star">ELITE</span>
+                <div class="ue-oferta-title">Plan Elite VIP</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.594.760</div>
+                <div class="ue-oferta-desc">32% descuento · Acceso VIP</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Ser Elite</button>
+            </div>
+
+            <!-- Opción 15 -->
+            <div class="ue-oferta-card" style="--color-start: #00BCD4; --color-end: #4DD0E1;">
+                <span class="ue-oferta-badge-urgencia">¡MÁXIMO!</span>
+                <div class="ue-oferta-title">Plan Máximo 52%</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.243.360</div>
+                <div class="ue-oferta-desc">52% descuento · ¡Increíble!</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡Aprovechar!</button>
+                <div class="ue-oferta-timer">🔥 Solo quedan 3</div>
+            </div>
+
+            <!-- Opción 16 -->
+            <div class="ue-oferta-card" style="--color-start: #D32F2F; --color-end: #F44336;">
+                <span class="ue-oferta-badge">ESTÁNDAR</span>
+                <div class="ue-oferta-title">Plan Estándar Flex</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.135.320</div>
+                <div class="ue-oferta-desc">24% descuento · Flexible</div>
+                <button class="ue-oferta-btn">Contratar</button>
+            </div>
+
+            <!-- Opción 17 -->
+            <div class="ue-oferta-card" style="--color-start: #388E3C; --color-end: #66BB6A;">
+                <span class="ue-oferta-ribbon">ECO 🌱</span>
+                <div class="ue-oferta-title">Plan Eco Verde</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.473.170</div>
+                <div class="ue-oferta-desc">19% descuento · Sostenible</div>
+                <button class="ue-oferta-btn">ir Eco</button>
+            </div>
+
+            <!-- Opción 18 -->
+            <div class="ue-oferta-card" style="--color-start: #0D47A1; --color-end: #1565C0;">
+                <span class="ue-oferta-badge ue-oferta-badge-fire">TOP</span>
+                <div class="ue-oferta-title">Plan Master Total</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.932.610</div>
+                <div class="ue-oferta-desc">27% descuento · Completo</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Ser Master</button>
+            </div>
+
+            <!-- Opción 19 -->
+            <div class="ue-oferta-card" style="--color-start: #BF360C; --color-end: #E64A19;">
+                <div class="ue-oferta-popular">IMPERDIBLE</div>
+                <span class="ue-oferta-badge-urgencia">HOT 🔥</span>
+                <div class="ue-oferta-title">Combo Ahorro Total</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.716.350</div>
+                <div class="ue-oferta-desc">45% descuento · Súper ahorro</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡Quiero Este!</button>
+            </div>
+
+            <!-- Opción 20 -->
+            <div class="ue-oferta-card" style="--color-start: #6A1B9A; --color-end: #8E24AA;">
+                <span class="ue-oferta-badge">INNOVADOR</span>
+                <div class="ue-oferta-title">Plan Tech Innova</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.797.970</div>
+                <div class="ue-oferta-desc">29% descuento · Tecnología</div>
+                <button class="ue-oferta-btn">Innovar</button>
+            </div>
+
+            <!-- Opción 21 -->
+            <div class="ue-oferta-card" style="--color-start: #00695C; --color-end: #00796B;">
+                <span class="ue-oferta-badge ue-oferta-badge-star">SMART</span>
+                <div class="ue-oferta-title">Smart Learning 24</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.460.620</div>
+                <div class="ue-oferta-desc">34% descuento · 24 meses</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Estudiar Smart</button>
+            </div>
+
+            <!-- Opción 22 -->
+            <div class="ue-oferta-card" style="--color-start: #FF6F00; --color-end: #FF8F00;">
+                <span class="ue-oferta-badge-urgencia">LIMITED</span>
+                <div class="ue-oferta-title">Edición Limitada 2026</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.189.340</div>
+                <div class="ue-oferta-desc">38% descuento · Exclusivo</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">Reservar Ya</button>
+                <div class="ue-oferta-timer">⏱️ Solo 48h</div>
+            </div>
+
+            <!-- Opción 23 -->
+            <div class="ue-oferta-card" style="--color-start: #4A148C; --color-end: #6A1B9A;">
+                <span class="ue-oferta-badge">NIGHT</span>
+                <div class="ue-oferta-title">Plan Nocturno Pro</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.338.460</div>
+                <div class="ue-oferta-desc">21% descuento · Horario noche</div>
+                <button class="ue-oferta-btn">Acceder</button>
+            </div>
+
+            <!-- Opción 24 -->
+            <div class="ue-oferta-card" style="--color-start: #00838F; --color-end: #00ACC1;">
+                <span class="ue-oferta-badge ue-oferta-badge-lightning">FLASH</span>
+                <div class="ue-oferta-title">Flash Deal Weekend</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.054.200</div>
+                <div class="ue-oferta-desc">40% descuento · Fin semana</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Aprovechar</button>
+            </div>
+
+            <!-- Opción 25 -->
+            <div class="ue-oferta-card" style="--color-start: #AD1457; --color-end: #C2185B;">
+                <div class="ue-oferta-popular">HOT SALE</div>
+                <span class="ue-oferta-badge-premium">🎯</span>
+                <div class="ue-oferta-title">Hot Sale Especial</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.378.500</div>
+                <div class="ue-oferta-desc">50% descuento · ¡Wow!</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡COMPRAR!</button>
+                <div class="ue-oferta-timer">🚨 Último día</div>
+            </div>
+
+            <!-- Opción 26 -->
+            <div class="ue-oferta-card" style="--color-start: #827717; --color-end: #9E9D24;">
+                <span class="ue-oferta-badge">BÁSICO</span>
+                <div class="ue-oferta-title">Plan Básico Start</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$6.081.300</div>
+                <div class="ue-oferta-desc">10% descuento · Inicio</div>
+                <button class="ue-oferta-btn">Comenzar</button>
+            </div>
+
+            <!-- Opción 27 -->
+            <div class="ue-oferta-card" style="--color-start: #00BFA5; --color-end: #1DE9B6;">
+                <span class="ue-oferta-badge ue-oferta-badge-fire">TURBO</span>
+                <div class="ue-oferta-title">Turbo Speed Plan</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.662.340</div>
+                <div class="ue-oferta-desc">31% descuento · Rápido</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Activar Turbo</button>
+            </div>
+
+            <!-- Opción 28 -->
+            <div class="ue-oferta-card" style="--color-start: #6200EA; --color-end: #7C4DFF;">
+                <span class="ue-oferta-ribbon">VIP</span>
+                <div class="ue-oferta-title">Mega VIP Ultimate</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.325.980</div>
+                <div class="ue-oferta-desc">36% descuento · Todo incluido</div>
+                <button class="ue-oferta-btn">Ser VIP</button>
+            </div>
+
+            <!-- Opción 29 -->
+            <div class="ue-oferta-card" style="--color-start: #DD2C00; --color-end: #FF3D00;">
+                <span class="ue-oferta-badge-urgencia">URGENTE</span>
+                <div class="ue-oferta-title">Urgente Last Minute</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.851.490</div>
+                <div class="ue-oferta-desc">43% descuento · Última hora</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡Última Chance!</button>
+                <div class="ue-oferta-timer">⚠ Expira HOY</div>
+            </div>
+
+            <!-- Opción 30 -->
+            <div class="ue-oferta-card" style="--color-start: #1B5E20; --color-end: #2E7D32;">
+                <span class="ue-oferta-badge ue-oferta-badge-star">NATURE</span>
+                <div class="ue-oferta-title">Nature Green Plus</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.067.750</div>
+                <div class="ue-oferta-desc">25% descuento · Eco-friendly</div>
+                <button class="ue-oferta-btn">Elegir Natural</button>
+            </div>
+
+            <!-- Opción 31 -->
+            <div class="ue-oferta-card" style="--color-start: #01579B; --color-end: #0277BD;">
+                <span class="ue-oferta-badge">OCEANO</span>
+                <div class="ue-oferta-title">Ocean Blue Elite</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.932.610</div>
+                <div class="ue-oferta-desc">27% descuento · Premium</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Navegar</button>
+            </div>
+
+            <!-- Opción 32 -->
+            <div class="ue-oferta-card" style="--color-start: #BF360C; --color-end: #D84315;">
+                <div class="ue-oferta-popular">SUPER OFERTA</div>
+                <span class="ue-oferta-badge-urgencia">MEGA</span>
+                <div class="ue-oferta-title">Mega Descuento 48%</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.513.640</div>
+                <div class="ue-oferta-desc">48% descuento · ¡Ofertón!</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡Quiero Mega!</button>
+            </div>
+
+            <!-- Opción 33 -->
+            <div class="ue-oferta-card" style="--color-start: #311B92; --color-end: #4527A0;">
+                <span class="ue-oferta-badge ue-oferta-badge-lightning">ULTRA</span>
+                <div class="ue-oferta-title">Ultra Premium Max</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.257.190</div>
+                <div class="ue-oferta-desc">37% descuento · Máximo nivel</div>
+                <button class="ue-oferta-btn">Ir Ultra</button>
+            </div>
+
+            <!-- Opción 34 -->
+            <div class="ue-oferta-card" style="--color-start: #00838F; --color-end: #00897B;">
+                <span class="ue-oferta-badge">INFINITE</span>
+                <div class="ue-oferta-title">Infinite Learning</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$5.270.460</div>
+                <div class="ue-oferta-desc">22% descuento · Ilimitado</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Sin Límites</button>
+            </div>
+
+            <!-- Opción 35 -->
+            <div class="ue-oferta-card" style="--color-start: #C51162; --color-end: #E91E63;">
+                <span class="ue-oferta-badge ue-oferta-badge-fire">BEST</span>
+                <div class="ue-oferta-title">Best Seller 2026</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.986.120</div>
+                <div class="ue-oferta-desc">41% descuento · Más vendido</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">Comprar Best</button>
+            </div>
+
+            <!-- Opción 36 -->
+            <div class="ue-oferta-card" style="--color-start: #F57F17; --color-end: #F9A825;">
+                <span class="ue-oferta-badge">GOLDEN</span>
+                <div class="ue-oferta-title">Golden Opportunity</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.527.190</div>
+                <div class="ue-oferta-desc">33% descuento · Oportunidad</div>
+                <button class="ue-oferta-btn">Brillar</button>
+            </div>
+
+            <!-- Opción 37 -->
+            <div class="ue-oferta-card" style="--color-start: #004D40; --color-end: #00695C;">
+                <span class="ue-oferta-ribbon">DIAMOND 💎</span>
+                <div class="ue-oferta-title">Diamond Exclusive</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.189.340</div>
+                <div class="ue-oferta-desc">38% descuento · Exclusivo</div>
+                <button class="ue-oferta-btn ue-oferta-btn-icon">Exclusivo</button>
+            </div>
+
+            <!-- Opción 38 -->
+            <div class="ue-oferta-card" style="--color-start: #AA00FF; --color-end: #D500F9;">
+                <span class="ue-oferta-badge-urgencia">POWER</span>
+                <div class="ue-oferta-title">Power Student Pro</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$4.054.200</div>
+                <div class="ue-oferta-desc">40% descuento · Estudiantes</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡Power Up!</button>
+            </div>
+
+            <!-- Opción 39 -->
+            <div class="ue-oferta-card" style="--color-start: #FF6D00; --color-end: #FF9100;">
+                <div class="ue-oferta-popular">RECOMENDADO</div>
+                <span class="ue-oferta-badge-premium">👑</span>
+                <div class="ue-oferta-title">Royal Master Plan</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.581.220</div>
+                <div class="ue-oferta-desc">47% descuento · Real</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">Ser Royal</button>
+            </div>
+
+            <!-- Opción 40 -->
+            <div class="ue-oferta-card" style="--color-start: #1A237E; --color-end: #283593;">
+                <span class="ue-oferta-badge-urgencia ue-oferta-badge-star">FINAL</span>
+                <div class="ue-oferta-title">Ultimate Final Deal</div>
+                <div class="ue-oferta-value-old">$6.757.000</div>
+                <div class="ue-oferta-value">$3.108.650</div>
+                <div class="ue-oferta-desc">54% descuento · ¡BRUTAL!</div>
+                <button class="ue-oferta-btn ue-oferta-btn-pulse">¡LO QUIERO YA!</button>
+                <div class="ue-oferta-timer">💥 ÚLTIMA OPORTUNIDAD</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

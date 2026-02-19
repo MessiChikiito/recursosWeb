@@ -73,15 +73,15 @@
         /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
         /* Grid responsive de cards */
         .pp-programs-section {
-            max-width: 1200px;
+            max-width: 1550px;
             margin: 0 auto;
-            padding: 48px 24px 64px;
+            padding: 48px 16px 64px;
         }
 
         .pp-programs-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
         }
 
         /* Card de programa */
@@ -160,11 +160,11 @@
         }
 
         .pp-card-title {
-            font-size: 1.8rem !important;
+            font-size: 1.5rem !important;
             font-weight: 900 !important;
             color: #1f2937 !important;
             margin-bottom: 8px !important;
-            line-height: 1 !important;
+            line-height: 1.2 !important;
             font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
             -webkit-font-smoothing: antialiased !important;
             -moz-osx-font-smoothing: grayscale !important;
@@ -727,7 +727,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) ;
             display: block !important;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            margin-top: -70px !important;
+            margin-top: -85px !important;
         }
 
         .badge-virtual-dual:hover {
@@ -737,6 +737,63 @@
         }
 
         .badge-virtual-dual:hover::after {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        /* Badge Presencial - Naranja */
+        .badge-presencial {
+        position: absolute !important;
+        top: 12px !important;
+        right: 12px !important;
+        background: #ff6016 !important;
+        color: #fff !important;
+        padding: 6px 12px !important;
+        border-radius: 16px !important;
+        font-size: .75rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        z-index: 3 !important;
+        cursor: help !important;
+        letter-spacing: 1px !important;
+        box-shadow:
+            0 4px 15px rgba(255, 107, 53, 0.5),
+            0 0 0 4px rgba(255, 107, 53, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        animation: pulse-badge-orange 4s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .badge-presencial::after {
+            content: 'Disponible en modalidad presencial' !important;
+            position: absolute !important;
+            top: 100% !important;
+            right: 50% !important;
+            transform: translateX(50%) !important;
+            background: #1a202c !important;
+            color: white !important;
+            padding: 10px 14px !important;
+            border-radius: 6px !important;
+            font-size: 0.75rem !important;
+            font-weight: 500 !important;
+            white-space: nowrap !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.8s ease !important;
+            z-index: 999 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) ;
+            display: block !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            margin-top: -85px !important;
+        }
+
+        .badge-presencial:hover {
+            animation-play-state: paused !important;
+            background: #ff733c !important;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4) !important;
+        }
+
+        .badge-presencial:hover::after {
             opacity: 1 !important;
             pointer-events: auto !important;
         }
@@ -762,7 +819,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
             display: block !important;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            margin-top: -70px !important;
+            margin-top: -85px !important;
         }
 
         .badge-virtual-custom:hover {
@@ -799,6 +856,18 @@
             }
             100% {
                 box-shadow: 0 0 8px rgba(0, 116, 255, 0.4), 0 0 16px rgba(0, 116, 255, 0.2);
+            }
+        }
+
+        @keyframes pulse-badge-orange {
+            0% {
+                box-shadow: 0 0 8px rgba(255, 107, 53, 0.4), 0 0 16px rgba(255, 107, 53, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 107, 53, 1), 0 0 20px rgba(255, 107, 53, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 8px rgba(255, 107, 53, 0.4), 0 0 16px rgba(255, 107, 53, 0.2);
             }
         }
 
@@ -1032,6 +1101,7 @@
                 esNuevo: false,
                 tieneVirtual: false,
                 tieneVirtualDual: false,
+                tienePresencial: true,
                 urlPrograma: "https://uniempresarial.edu.co/direccion-de-industrias-creativas/"
             },
             {
@@ -1040,7 +1110,7 @@
                 modalidad: "posgrado",
                 duracion: "4 Cuatrimestres",
                 jornada: "Flexible",
-                imagen: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop",
+                imagen: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/data-digital-technology-big-data-technologyscientists-complex-data-sets-computers.jpg",
                 bullets: [
                     "Ciberseguridad empresarial",
                     "Cumplimiento normativo TI",
@@ -1058,7 +1128,7 @@
                 modalidad: "posgrado",
                 duracion: "4 Cuatrimestres",
                 jornada: "Flexible",
-                imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop",
+                imagen: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/portrait-pleased-manager-utilizing-data-reports-tools-build-vision-focusing-performance-scaled-e1771463116466.jpg",
                 bullets: [
                     "Arquitectura empresarial moderna",
                     "Transformación digital estratégica",
@@ -1129,7 +1199,8 @@
                 card.innerHTML = `
                     ${programa.imagen ? `<div class="pp-card-image-container"><img src="${programa.imagen}" alt="${programa.nombre}" class="pp-card-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect fill=%27%23FF6B35%27 width=%27400%27 height=%27200%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2718%27 font-family=%27Arial%27%3E${programa.nombre}%3C/text%3E%3C/svg%3E';\"></div>` : ''}
                     ${programa.tieneVirtual ? '<div class="badge-virtual-custom">VIRTUAL</div>' : ''}
-                    ${programa.tieneVirtualDual ? '<div class="badge-virtual-dual">Virtual / Dual</div>' : ''}
+                    ${programa.tieneVirtualDual ? '<div class="badge-virtual-dual">Virtual Dual</div>' : ''}
+                    ${programa.tienePresencial ? '<div class="badge-presencial">PRESENCIAL</div>' : ''}
                     ${programa.esNuevo ? '<span class="pp-card-tag">Nuevo</span>' : ''}
                     <div class="pp-card-header">
                         <h3 class="pp-card-title">${programa.nombre}</h3>

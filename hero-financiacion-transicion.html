@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Financiación con Transición</title>
+</head>
+<body>
+
+<style>
+    /* Fonts loaded via link above */
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    *{box-sizing:border-box}
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+      outline:none;
+      box-shadow: 0 0 0 4px rgba(1,50,175,.08);
+      border-color: rgba(1,50,175,.35);
+    }
+
+    /* Helpers */
+    .ue-muted{color:rgba(1,50,175,0.72)}
+    .ue-grid{display:grid;gap:16px}
+    .ue-section{margin:28px 0}
+
+    /* Buttons */
+    .ue-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;border-radius:12px;border:1px solid transparent;
+      cursor:pointer;font-weight:600;text-decoration:none;user-select:none;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .ue-btn:active{transform:translateY(1px)}
+    .ue-btn-primary{background:linear-gradient(180deg,#1db954, #12a844);color:#fff}
+    .ue-btn-primary:hover{box-shadow: 0 8px 20px rgba(1,50,175,0.24)}
+    .ue-btn-outline{background:transparent;border-color: rgba(1,50,175,.18);color:#145aa3}
+    .ue-btn-outline:hover{border-color: rgba(1,50,175,.35); background:#f3f9ff}
+    .ue-btn-wa{background:#25d366;color:#062b1f}
+    .ue-btn-wa:hover{box-shadow: 0 8px 20px rgba(1,50,175,0.06)}
+    .ue-btn-block{width:100%}
+
+    .ue-hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .ue-hero-chip{
+      background: #f7faff;
+      color:#092b57;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:13px;
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid rgba(1,50,175,0.12);
+    }
+    .ue-hero-badge{
+      background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 950;
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ue-hero__h1{margin:6px 0 8px;font-size:40px;font-weight:950;color:#0132AF !important;line-height:1.1;letter-spacing:-0.5px}
+    .ue-hero__lead{color:#06325a;margin:0 0 14px;font-size:16px;line-height:1.6;font-weight:500}
+
+    .ue-hero-metaRow{
+      display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;
+    }
+    .ue-hero-meta{
+      background: #ffffff;
+      border:1px solid rgba(1,50,175,0.15);
+      border-radius:12px;
+      padding:12px 14px;
+      min-width:160px;
+      flex:1 1 160px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      color:#06325a;
+    }
+    .ue-hero-meta__k{font-size:12px;color:rgba(1,50,175,0.72);font-weight:700}
+    .ue-hero-meta__v{color:#06325a;font-weight:600}
+    .ue-hero-meta__v--big{font-size:18px;font-weight:900;color:#0132AF}
+
+    .hero-panel{
+      background:#ffffff;
+      border-radius:16px;
+      color:#06325a;
+      box-shadow:0 8px 20px rgba(1,50,175,0.06);
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:1.5fr 1fr;
+      gap:0;
+      align-items:stretch;
+    }
+    .hero-panel > .ue-hero__left{border-radius:16px 0 0 16px}
+    .hero-panel > .ue-hero__right{
+      padding:34px;
+      border-left:1px solid rgba(1,50,175,0.08);
+      border-top:1px solid rgba(1,50,175,0.08);
+    }
+
+    .ue-hero__cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+    .ue-hero__micro{font-size:13px;color:rgba(1,50,175,0.72);margin-top:12px;font-weight:600;line-height:1.5}
+    
+    .campus-institucional {
+      padding: 0 0px 0px;
+    }
+    
+    .campus-btn-institucional {
+      padding: 14px;
+      background: #57D100;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .campus-btn-institucional:hover {
+      background: #6AFF00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4);
+      color: #ffffff;
+    }
+    
+    .ue-hero-btn-outline{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 24px;
+      border-radius:8px;
+      background:transparent;
+      border:2px solid #0076FF;
+      color:#0076FF;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+      transition:all 0.3s ease !important;
+    }
+    .ue-hero-btn-outline:hover{
+      background:#0076FF !important;
+      color:#ffffff !important;
+      box-shadow:0 8px 20px rgba(0,118,255,0.3) !important;
+      transform:translateY(-2px) !important;
+    }
+    .ue-hero-btn-outline:active{
+      transform:translateY(0px) !important;
+    }
+
+    .ue-hero__left{
+      width:100%;
+      height:500px;
+      border-radius:14px;
+      overflow:hidden;
+      background: transparent;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .ue-hero__image{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    /* --- TRANSICIÓN ELEGANTE (Var 7) --- */
+    .transicion-divisor {
+      height: 4px;
+      background: linear-gradient(90deg, transparent 0%, rgba(1,50,175,0.2) 50%, transparent 100%);
+      margin: 40px 20px 0;
+    }
+
+    /* --- Financiación styles --- */
+    .ue-section-financiacion {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ue-headRow {
+      display: flex;
+      gap: 14px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .ue-finGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .ue-finCard {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e0e3e8;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      padding: 0;
+      transition: all 0.3s ease !important;
+      overflow: hidden;
+    }
+
+    .ue-finCard::before {
+      content: '';
+      display: block;
+      height: 6px;
+      width: 100%;
+    }
+
+    .ue-finCard:nth-child(1)::before {
+      background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+      box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+    }
+
+    .ue-finCard:nth-child(2)::before {
+      background: linear-gradient(90deg, #FF6A00 0%, #ff8a2e 100%);
+      box-shadow: 0 4px 12px rgba(255, 106, 0, 0.2);
+    }
+
+    .ue-finCard:nth-child(3)::before {
+      background: linear-gradient(90deg, #00897b 0%, #00a89d 100%);
+      box-shadow: 0 4px 12px rgba(0, 137, 123, 0.2);
+    }
+
+    .ue-finCard:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+      transform: translateY(-4px) !important;
+    }
+
+    .ue-finCard > div {
+      padding: 28px;
+    }
+
+    .ue-finK {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .ue-finCard:nth-child(1) .ue-finK {
+      color: #0132AF;
+    }
+
+    .ue-finCard:nth-child(2) .ue-finK {
+      color: #FF6A00;
+    }
+
+    .ue-finCard:nth-child(3) .ue-finK {
+      color: #00897b;
+    }
+
+    .ue-finV {
+      font-size: 32px;
+      color: #092b57;
+      font-weight: 900;
+      margin-top: 12px;
+      margin: 12px 0 0 0;
+    }
+
+    .ue-list {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: #333333;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .ue-list li {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    .ue-btn-fin {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.4s cubic-bezier(.4,0,.2,1) !important;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+      margin-top: 10px;
+    }
+
+    .ue-btn-orange {
+      background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+    }
+
+    .ue-btn-orange:hover {
+      background: linear-gradient(135deg, #ff8a2e 0%, #ffaa4e 100%) !important;
+      box-shadow: 0 8px 24px rgba(255, 106, 0, 0.5) !important;
+      transform: translateY(-2px) !important;
+      color: white !important;
+    }
+
+    .ue-btn-teal {
+      background: linear-gradient(135deg, #00897b 0%, #00a89d 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 137, 123, 0.3);
+    }
+
+    .ue-btn-teal:hover {
+      background: linear-gradient(135deg, #00a89d 0%, #00c9c0 100%) !important;
+      box-shadow: 0 8px 24px rgba(0, 137, 123, 0.5) !important;
+      transform: translateY(-2px) !important;
+      color: white !important;
+    }
+
+    h3.ue-h3 {
+      font-size: 24px;
+      font-weight: 900;
+      color: #06325a;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    @media (max-width: 980px) {
+      .finGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ue-finGrid {
+        grid-template-columns: 1fr;
+      }
+      .ue-section-financiacion {
+        padding: 30px 15px;
+      }
+    }
+
+</style>
+
+<!-- HERO SECTION -->
+<section class="hero-panel" aria-label="Presentación del programa">
+
+  <div class="ue-hero__left">
+    <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg" alt="Administración de Empresas" class="ue-hero__image">
+  </div>
+
+  <div class="ue-hero__right">
+    <div class="ue-hero-chips">
+      <span class="ue-hero-chip">Virtual <span class="ue-hero-badge">NUEVO</span></span>
+    </div>
+
+    <h1 class="ue-hero__h1">Administración de Empresas</h1>
+    <p class="ue-hero__lead" id="heroDesc">
+      Formación virtual orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación para facilitar tu ingreso al mercado laboral.
+    </p>
+
+    <div class="ue-hero-metaRow" role="list" aria-label="Datos clave del programa">
+      <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Duración</span>
+        <span class="ue-hero-meta__v" id="duracion">7 semestres intensivos</span>
+      </div>
+      <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Modalidad</span>
+        <span class="ue-hero-meta__v" id="modalidad">Virtual</span>
+      </div>
+      <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Valor por semestre</span>
+        <span class="ue-hero-meta__v ue-hero-meta__v--big">$ 6.757.00 <span></span>
+      </div>
+    </div>
+    
+    <div class="ue-hero__cta">
+      <div class="campus-institucional">
+        <a href="#" class="campus-btn-institucional"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:8px;flex-shrink:0">
+          <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#25D366"/>
+          <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#fff"/>
+        </svg>¡Inscríbete Ya!</a>
+      </div>
+      <a href="#" class="ue-hero-btn-outline">Ver plan de estudios</a>
+    </div>
+
+    <div class="ue-hero__micro" id="microCopy">Te contactamos por WhatsApp en horario hábil.</div>
+  </div>
+</section>
+
+<!-- TRANSICIÓN (Var 7 - Recomendada) -->
+<div class="transicion-divisor"></div>
+
+<!-- FINANCIACIÓN SECTION -->
+<section class="ue-section-financiacion" aria-label="Inversión, becas y financiación">
+  <div class="ue-headRow">
+    <div>
+      <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+      <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+        Valores de referencia. Pueden variar por convenios y convocatorias.
+      </div>
+    </div>
+  </div>
+
+  <div class="ue-finGrid">
+    <div class="ue-finCard">
+      <div>
+        <div class="ue-finK">Inversión por semestre</div>
+        <div class="ue-finV"><p>$6.757.000</p></div>
+        <div class="ue-muted" style="font-size:12px;font-weight:700;margin-top:8px">
+          Ajustable desde el JS (UE_CONFIG.precioSemestre)
+        </div>
+      </div>
+    </div>
+
+    <div class="ue-finCard">
+      <div>
+        <div class="ue-finK">Becas y convenios</div>
+        <ul class="ue-list">
+          <li style="color:#0132AF;font-weight:800">Jóvenes a la E — Beca diferencial</li>
+          <li>Cundinamarca+ (placeholder)</li>
+          <li>Convenios empresariales (ver sección)</li>
+        </ul>
+        <a href="#convenios" class="ue-btn-fin ue-btn-orange">Ver convenios</a>
+      </div>
+    </div>
+
+    <div class="ue-finCard">
+      <div>
+        <div class="ue-finK">Opciones de financiación</div>
+        <ul class="ue-list">
+          <li>ICETEX</li>
+          <li>Aliados bancarios</li>
+          <li>Planes de pago flexibles</li>
+        </ul>
+        <a href="#faq" class="ue-btn-fin ue-btn-teal">Ver preguntas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

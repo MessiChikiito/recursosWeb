@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Variaciones de Línea Divisora</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { text-align: center; margin-bottom: 40px; }
+        .opciones {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .opcion {
+            border: 2px solid #ddd;
+            padding: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .opcion-num {
+            background: #333;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .hero {
+            height: 200px;
+            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .financiacion {
+            padding: 30px;
+            display: flex;
+            gap: 15px;
+            background: #ffffff;
+        }
+        .card {
+            flex: 1;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .card-titulo { font-weight: 800; color: #333; }
+        .desc {
+            padding: 10px;
+            background: #fff;
+            font-size: 11px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>10 Variaciones de Línea Divisora (Base: Opción 4)</h1>
+    <div class="opciones">
+
+        <!-- VAR 1: Línea sólida simple -->
+        <div class="opcion">
+            <div class="opcion-num">Var 1: Línea Sólida Simple</div>
+            <div class="hero">HERO</div>
+            <div style="height: 1px; background: #ddd; margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Línea sólida gris oscuro. Clásica y limpia</div>
+        </div>
+
+        <!-- VAR 2: Línea con gradiente (más oscuro al centro) -->
+        <div class="opcion">
+            <div class="opcion-num">Var 2: Gradiente Centro Oscuro</div>
+            <div class="hero">HERO</div>
+            <div style="height: 2px; background: linear-gradient(90deg, transparent, #999, transparent); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Gradiente gris. Centro más oscuro. Elegante</div>
+        </div>
+
+        <!-- VAR 3: Línea punteada clásica -->
+        <div class="opcion">
+            <div class="opcion-num">Var 3: Punteada Clásica</div>
+            <div class="hero">HERO</div>
+            <div style="height: 1px; background: repeating-linear-gradient(90deg, #ccc 0px, #ccc 8px, transparent 8px, transparent 16px); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Patrón punteado. Tradicional</div>
+        </div>
+
+        <!-- VAR 4: Línea azul oscura (matching brand) -->
+        <div class="opcion">
+            <div class="opcion-num">Var 4: Azul Corporativo</div>
+            <div class="hero">HERO</div>
+            <div style="height: 2px; background: linear-gradient(90deg, transparent, #0132AF, transparent); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Línea azul matching brand. Coherente</div>
+        </div>
+
+        <!-- VAR 5: Línea más gruesa (3px) -->
+        <div class="opcion">
+            <div class="opcion-num">Var 5: Línea Más Gruesa</div>
+            <div class="hero">HERO</div>
+            <div style="height: 3px; background: linear-gradient(90deg, transparent, #bbb, transparent); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Línea más pronunciada. 3px de altura</div>
+        </div>
+
+        <!-- VAR 6: Línea punteada con puntos grandes -->
+        <div class="opcion">
+            <div class="opcion-num">Var 6: Punteada Espaciada</div>
+            <div class="hero">HERO</div>
+            <div style="height: 1px; background: repeating-linear-gradient(90deg, #bbb 0px, #bbb 12px, transparent 12px, transparent 24px); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Punteada espaciada. Más aireada</div>
+        </div>
+
+        <!-- VAR 7: Línea con efecto desvanecimiento (fade) -->
+        <div class="opcion">
+            <div class="opcion-num">Var 7: Doble Fade</div>
+            <div class="hero">HERO</div>
+            <div style="height: 4px; background: linear-gradient(90deg, transparent 0%, rgba(1,50,175,0.2) 50%, transparent 100%); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Gradiente sutil con desvanecimiento. Suave</div>
+        </div>
+
+        <!-- VAR 8: Rayado diagonal -->
+        <div class="opcion">
+            <div class="opcion-num">Var 8: Rayado Diagonal</div>
+            <div class="hero">HERO</div>
+            <div style="height: 2px; background: repeating-linear-gradient(45deg, #ddd 0px, #ddd 10px, transparent 10px, transparent 20px); margin: 40px 20px 0;"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Patrón diagonal. Dinámico</div>
+        </div>
+
+        <!-- VAR 9: Línea con sombra suave -->
+        <div class="opcion">
+            <div class="opcion-num">Var 9: Con Sombra Suave</div>
+            <div class="hero">HERO</div>
+            <div style="height: 6px; background: linear-gradient(180deg, #eee 0%, transparent 100%); margin: 40px 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"></div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Banda degradada con sombra. Depth</div>
+        </div>
+
+        <!-- VAR 10: Doble línea fina -->
+        <div class="opcion">
+            <div class="opcion-num">Var 10: Doble Línea (Premium)</div>
+            <div class="hero">HERO</div>
+            <div style="margin: 40px 20px 0;">
+                <div style="height: 1px; background: #999; margin-bottom: 6px;"></div>
+                <div style="height: 1px; background: #ddd;"></div>
+            </div>
+            <div class="financiacion">
+                <div class="card"><div class="card-titulo">Card 1</div></div>
+                <div class="card"><div class="card-titulo">Card 2</div></div>
+                <div class="card"><div class="card-titulo">Card 3</div></div>
+            </div>
+            <div class="desc">Doble línea. Premium y sofisticado</div>
+        </div>
+
+    </div>
+
+    <hr style="margin-top: 60px; border: none; border-top: 1px solid #ccc;">
+    <h2 style="text-align: center; margin-top: 40px;">Mi Recomendación: Opción 4 Original + Var 7 (Doble Fade)</h2>
+    <div style="max-width: 800px; margin: 20px auto; padding: 20px; background: #f0f4ff; border-radius: 8px; border-left: 4px solid #0132AF;">
+        <p><strong>Var 7 (Doble Fade)</strong> es la mejor porque:</p>
+        <ul>
+            <li>Tiene altura suficiente para dar presencia (4px)</li>
+            <li>Es elegante y moderna sin ser pesada</li>
+            <li>El gradiente crea profundidad</li>
+            <li>Se ve premium sin ser obvia</li>
+            <li>Combina bien con el azul corporativo (#0132AF)</li>
+        </ul>
+    </div>
+</body>
+</html>

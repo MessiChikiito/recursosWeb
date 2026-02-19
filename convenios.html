@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+    <style>
+        .convenios-section {
+            height: 440px !important;
+            background: linear-gradient(90deg, #0132AF 0%, #0132AF 70%, #2563b1 100%) !important;
+            padding: 10px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            overflow: hidden !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .convenios-header {
+            color: white;
+            text-align: center;
+            margin-bottom: 6px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .convenios-header-title {
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin-bottom: 2px;
+            margin-top: 25px;
+            color: #fff;
+        }
+
+        .convenios-header-subtitle {
+            font-size: 1rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .convenios-carousel-wrapper {
+            max-width: 1200px !important;
+            margin: 20px auto !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+
+        .convenios-carousel-container {
+            position: relative !important;
+            width: 100% !important;
+            height: 240px !important;
+            overflow: hidden !important;
+        }
+
+        .convenios-carousel-track {
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+            gap: 16px !important;
+        }
+
+        .convenios-carousel-slide {
+            position: absolute !important;
+            width: calc(33.333% - 8px) !important;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+            cursor: pointer;
+        }
+
+        .convenios-carousel-slide[data-pos="-2"],
+        .convenios-carousel-slide[data-pos="2"] {
+            transform: translateX(-50%) translateX(-240%) scale(0.8) !important;
+            filter: brightness(0.6) saturate(0.4) !important;
+            opacity: 0.5 !important;
+            z-index: 1;
+        }
+        .convenios-carousel-slide[data-pos="2"] {
+            transform: translateX(-50%) translateX(240%) scale(0.8) !important;
+        }
+
+        .convenios-carousel-slide[data-pos="-1"] {
+            transform: translateX(-50%) translateX(-125%) scale(0.9) !important;
+            filter: brightness(0.85) saturate(0.75) !important;
+            opacity: 0.9 !important;
+            z-index: 5;
+        }
+
+        .convenios-carousel-slide[data-pos="1"] {
+            transform: translateX(-50%) translateX(25%) scale(0.9) !important;
+            filter: brightness(0.85) saturate(0.75) !important;
+            opacity: 0.9 !important;
+            z-index: 5;
+        }
+
+        .convenios-carousel-slide[data-pos="0"] {
+            transform: translateX(-50%) scale(1) !important;
+            filter: brightness(1) saturate(1) !important;
+            opacity: 1 !important;
+            z-index: 10;
+        }
+
+        .convenios-carousel-slide[data-pos="hidden"] {
+            transform: translateX(-50%) translateX(-300%) scale(0.7) !important;
+            opacity: 0 !important;
+            z-index: 0;
+        }
+
+        .convenios-slide-card {
+            display: block !important;
+            background: white !important;
+            padding: 0 !important;
+            border-radius: 8px !important;
+            height: 100% !important;
+            max-height: 200px !important;
+            overflow: hidden !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+        }
+
+        .convenios-carousel-slide[data-pos="0"] .convenios-slide-card {
+            box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+        }
+
+        .convenios-slide-image {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            border-radius: 8px !important;
+            display: block !important;
+        }
+
+        .convenios-slide-content {
+            display: none !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .convenios-slide-content h3 {
+            font-size: 1.1rem !important;
+            font-weight: 800 !important;
+            color: #0132AF !important;
+            margin-bottom: 8px !important;
+            line-height: 1.2 !important;
+        }
+
+        .convenios-slide-content p {
+            color: #4a5568 !important;
+            font-size: 0.75rem !important;
+            line-height: 1.3 !important;
+            margin-bottom: 6px !important;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 2 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
+        }
+
+        .convenios-slide-content p:last-child {
+            margin-bottom: 0;
+            -webkit-line-clamp: 1;
+        }
+
+        .convenios-carousel-controls {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 16px !important;
+            margin-top: 12px !important;
+        }
+
+        .convenios-carousel-arrow {
+            background: rgba(255,255,255,0.2) !important;
+            color: white !important;
+            border: none !important;
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            font-size: 1rem !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            font-weight: 500 !important;
+            outline: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+        }
+
+        .convenios-carousel-arrow:hover {
+            background: rgba(255,255,255,0.45) !important;
+            transform: scale(1.1) !important;
+        }
+
+        .convenios-carousel-dots {
+            display: flex !important;
+            gap: 8px !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+
+        .convenios-carousel-dot {
+            width: 7px !important;
+            height: 7px !important;
+            border-radius: 50% !important;
+            background: rgba(255,255,255,0.35) !important;
+            border: none !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            outline: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .convenios-carousel-dot.active {
+            background: white !important;
+            width: 20px !important;
+            border-radius: 3px !important;
+        }
+
+        @media (max-width: 1024px) {
+            .convenios-carousel-container {
+                height: 280px !important;
+            }
+
+            .convenios-carousel-slide {
+                width: calc(45% - 10px) !important;
+            }
+
+            .convenios-carousel-slide[data-pos="-1"] {
+                transform: translateX(-50%) translateX(-110%) scale(0.88) !important;
+            }
+
+            .convenios-carousel-slide[data-pos="1"] {
+                transform: translateX(-50%) translateX(10%) scale(0.88) !important;
+            }
+
+            .convenios-slide-card {
+                display: block !important;
+                padding: 0 !important;
+                max-height: 260px !important;
+            }
+
+            .convenios-slide-image {
+                height: 100% !important;
+            }
+
+            .convenios-slide-content h3 {
+                font-size: 1rem !important;
+            }
+
+            .convenios-slide-content p {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .convenios-section {
+                height: auto !important;
+                padding: 15px !important;
+                min-height: auto !important;
+            }
+
+            .convenios-carousel-container {
+                height: 320px !important;
+            }
+
+            .convenios-carousel-slide {
+                width: calc(80% - 10px) !important;
+            }
+
+            .convenios-carousel-slide[data-pos="-2"],
+            .convenios-carousel-slide[data-pos="2"] {
+                opacity: 0 !important;
+            }
+
+            .convenios-carousel-slide[data-pos="-1"] {
+                transform: translateX(-50%) translateX(-85%) scale(0.85) !important;
+                opacity: 0.6 !important;
+            }
+
+            .convenios-carousel-slide[data-pos="1"] {
+                transform: translateX(-50%) translateX(35%) scale(0.85) !important;
+                opacity: 0.6 !important;
+            }
+
+            .convenios-slide-card {
+                display: block !important;
+                padding: 0 !important;
+                max-height: 300px !important;
+            }
+
+            .convenios-slide-image {
+                height: 100% !important;
+            }
+
+            .convenios-slide-content h3 {
+                font-size: 1.1rem !important;
+            }
+
+            .convenios-slide-content p {
+                font-size: 0.8rem !important;
+                -webkit-line-clamp: 3 !important;
+            }
+            }
+
+            .convenios-carousel-controls {
+                gap: 12px !important;
+                margin-top: 0px !important;
+            }
+
+            .convenios-carousel-arrow {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1.1rem !important;
+            }
+        }
+
+    </style>
+</head>
+
+    <section class="convenios-section">
+        <div class="convenios-header">
+            <h2 class="convenios-header-title">Convenios Empresariales para Marketing Virtual</h2>
+            <p class="convenios-header-subtitle">Estudia mientras creas valor en empresas reales y gradúate con experiencia certificada.</p>
+        </div>
+
+        <div class="convenios-carousel-wrapper">
+            <div class="convenios-carousel-container">
+                <div class="convenios-carousel-track" id="carouselTrack">
+                    <div class="convenios-carousel-slide" data-index="0" data-pos="0">
+                        <div class="convenios-slide-card">
+                            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/01/CamaraComercioBogota.png" alt="Convenio" class="convenios-slide-image">
+                        </div>
+                    </div>
+
+                    <div class="convenios-carousel-slide" data-index="1" data-pos="1">
+                        <div class="convenios-slide-card">
+                            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/01/espacioMercadeo.png" alt="Convenio" class="convenios-slide-image">
+                        </div>
+                    </div>
+
+                    <div class="convenios-carousel-slide" data-index="2" data-pos="2">
+                        <div class="convenios-slide-card">
+                            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/01/TMConsolidators.png" alt="Convenio" class="convenios-slide-image">
+                        </div>
+                    </div>
+
+                    <div class="convenios-carousel-slide" data-index="3" data-pos="-2">
+                        <div class="convenios-slide-card">
+                            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/01/IngenierosMarketing.png" alt="Convenio" class="convenios-slide-image">
+                        </div>
+                    </div>
+
+                    <div class="convenios-carousel-slide" data-index="4" data-pos="-1">
+                        <div class="convenios-slide-card">
+                            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/01/AlphaLogistic.png" alt="Convenio" class="convenios-slide-image">
+                        </div>
+                    </div>
+                    
+                    <div class="convenios-carousel-slide" data-index="5" data-pos="hidden">
+                        <div class="convenios-slide-card">
+                            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/01/activeProcess.png" alt="Convenio" class="convenios-slide-image">
+                        </div>
+                    </div>
+
+                    <!-- SLIDE PARA AGREGAR EN EL FUTURO
+                    <div class="convenios-carousel-slide" data-index="5" data-pos="">
+                        <div class="convenios-slide-card">
+                            <img src="AGREGAR_URL_AQUÍ.png" alt="Nuevo Convenio" class="convenios-slide-image">
+                            <div class="convenios-slide-content">
+                                <h3>Nuevo Convenio</h3>
+                                <p>Descripción línea 1.</p>
+                                <p>Descripción línea 2.</p>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    
+                    
+                </div>
+            </div>
+
+            <div class="convenios-carousel-controls">
+                <button class="convenios-carousel-arrow" onclick="prevSlide()">❮</button>
+                
+                <div class="convenios-carousel-dots">
+                    <button class="convenios-carousel-dot active" onclick="goToSlide(0)"></button>
+                    <button class="convenios-carousel-dot" onclick="goToSlide(1)"></button>
+                    <button class="convenios-carousel-dot" onclick="goToSlide(2)"></button>
+                    <button class="convenios-carousel-dot" onclick="goToSlide(3)"></button>
+                    <button class="convenios-carousel-dot" onclick="goToSlide(4)"></button>
+                    <button class="convenios-carousel-dot" onclick="goToSlide(5)"></button>
+                </div>
+
+                <button class="convenios-carousel-arrow" onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const TOTAL_SLIDES = 6;
+        const AUTO_ROTATE_INTERVAL = 10000;
+        let currentIndex = 0;
+        let autoRotateTimer = null;
+
+        function getPosition(slideIndex, current, total) {
+            // Calcular distancia circular (puede ser negativa o positiva)
+            let diff = slideIndex - current;
+            
+            // Ajustar para el camino más corto en el loop
+            if (diff > total / 2) diff -= total;
+            if (diff < -total / 2) diff += total;
+            
+            // Solo mostrar posiciones -2, -1, 0, 1, 2
+            if (diff >= -2 && diff <= 2) {
+                return diff.toString();
+            }
+            return 'hidden';
+        }
+
+        function updateCarousel() {
+            const slides = document.querySelectorAll('.convenios-carousel-slide');
+            
+            slides.forEach((slide, index) => {
+                const pos = getPosition(index, currentIndex, TOTAL_SLIDES);
+                slide.setAttribute('data-pos', pos);
+            });
+            
+            // Actualizar dots
+            document.querySelectorAll('.convenios-carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % TOTAL_SLIDES;
+            updateCarousel();
+            resetAutoRotate();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
+            updateCarousel();
+            resetAutoRotate();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            resetAutoRotate();
+        }
+
+        function startAutoRotate() {
+            autoRotateTimer = setInterval(() => {
+                nextSlide();
+            }, AUTO_ROTATE_INTERVAL);
+        }
+
+        function resetAutoRotate() {
+            clearInterval(autoRotateTimer);
+            startAutoRotate();
+        }
+
+        // Click en tarjetas laterales
+        document.querySelectorAll('.convenios-carousel-slide').forEach((slide) => {
+            slide.addEventListener('click', () => {
+                const pos = slide.getAttribute('data-pos');
+                if (pos === '1' || pos === '2') {
+                    nextSlide();
+                } else if (pos === '-1' || pos === '-2') {
+                    prevSlide();
+                }
+            });
+        });
+
+        // Inicializar
+        updateCarousel();
+        startAutoRotate();
+    </script>

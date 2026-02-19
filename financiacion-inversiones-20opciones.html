@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Opciones - Tarjeta Inversión por Semestre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #0132AF;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #0132AF;
+            font-size: 16px;
+            font-weight: 700;
+            opacity: 0.8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Tarjeta Base */
+        .card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .card::before {
+            content: '';
+            display: block;
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #0132AF 0%, #1a5bcf 100%);
+        }
+
+        .card-content {
+            padding: 28px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0132AF;
+            margin-bottom: 12px;
+        }
+
+        .card-price {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .card-period {
+            font-size: 11px;
+            color: #7a8a99;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #7a8a99;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 12px;
+            color: white;
+            z-index: 10;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Badges Distintos */
+        .badge-standard { background: linear-gradient(135deg, #7a8a99 0%, #5a6a79 100%); }
+        .badge-popular { background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%); }
+        .badge-hero { background: linear-gradient(135deg, #0BD926 0%, #08B81F 100%); }
+        .badge-premium { background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%); }
+        .badge-economy { background: linear-gradient(135deg, #00897b 0%, #00a89d 100%); }
+        .badge-exclusive { background: linear-gradient(135deg, #FF1744 0%, #D50000 100%); }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e0e3e8;
+            color: #7a8a99;
+        }
+
+        .info-label {
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: #0BD926;
+            font-weight: 700;
+        }
+
+        .price-highlight {
+            color: #FF6A00;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>20 Opciones - Inversión por Semestre</h1>
+            <p class="subtitle">Diferentes estilos y formatos para presentar la tarjeta</p>
+        </div>
+
+        <div class="grid">
+            <!-- OPCIÓN 1: Simple y Limpia -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Plan Estándar</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 2: Con Descripción -->
+            <div class="card">
+                <span class="badge badge-standard">Precio Regular</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title">Inversión Académica</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-desc">7 semestres de formación integral</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 3: Con Financiamiento -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Plan Regular</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre</div>
+                    <div class="info-row">
+                        <span class="info-label">Cuotas:</span>
+                        <span class="highlight">Desde $846/mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 4: Popular (Naranja) -->
+            <div class="card">
+                <span class="badge badge-popular">Mayormente Elegido</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #FF6A00;">Opción Popular</div>
+                    <div class="card-price" style="color: #FF6A00;">$6.757.000</div>
+                    <div class="card-desc">Plan más seleccionado por estudiantes</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 5: Con Beneficios Lista -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Plan Completo</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-desc">Incluye: clases presenciales, tutorías, certificación internacional</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 6: Minimalista con Info Extra -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Inversión Semestral</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre | 7 semestres totales</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 7: Con Comparativa -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Precio Base</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre</div>
+                    <div class="info-row">
+                        <span class="info-label">Inversión Total:</span>
+                        <span class="price-highlight">$47.299.000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 8: Opción Premium (Púrpura) -->
+            <div class="card">
+                <span class="badge badge-premium">Opción Premium</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #9C27B0;">Plan Avanzado</div>
+                    <div class="card-price" style="color: #9C27B0;">$6.757.000</div>
+                    <div class="card-desc">Acceso a mentorías exclusivas y networking</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 9: Dual Option (Verde) -->
+            <div class="card">
+                <span class="badge badge-hero">Formato Dual</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #0BD926;">Modalidad Dual</div>
+                    <div class="card-price" style="color: #0BD926;">$6.757.000</div>
+                    <div class="card-desc">Combinando teoría y práctica empresarial</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 10: Economía (Teal) -->
+            <div class="card">
+                <span class="badge badge-economy">Presupuesto Estándar</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #00897b;">Plan Económico</div>
+                    <div class="card-price" style="color: #00897b;">$6.757.000</div>
+                    <div class="card-desc">Formación de calidad sin compromisos</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 11: Con Desglose -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Desglose de Inversión</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre</div>
+                    <div class="card-desc" style="margin-top: 12px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                            <span>Matrículas y aranceles:</span>
+                            <span class="price-highlight">$5.200.000</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Servicios e infraestructura:</span>
+                            <span class="price-highlight">$1.557.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 12: Exclusiva -->
+            <div class="card">
+                <span class="badge badge-exclusive">Exclusiva</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #FF1744;">Plan Exclusivo</div>
+                    <div class="card-price" style="color: #FF1744;">$6.757.000</div>
+                    <div class="card-desc">Edición limitada con beneficios especiales</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 13: Flexible -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Plan Flexible</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre</div>
+                    <div class="card-desc">Opciones de pago personalizadas disponibles</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 14: Corporate -->
+            <div class="card">
+                <span class="badge badge-popular">Corporativo</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #FF6A00;">Plan Empresarial</div>
+                    <div class="card-price" style="color: #FF6A00;">$6.757.000</div>
+                    <div class="card-desc">Diseñado para profesionales y empresas</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 15: Con Timeline -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Cronograma de Pagos</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-desc">Distribuido en 7 semestres consecutivos sin intereses adicionales</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 16: Nacional -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Inversión Nacional</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre (COP)</div>
+                    <div class="info-row">
+                        <span class="info-label">Reconocimiento:</span>
+                        <span>Ministerio de Educación</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 17: Todas Inclusiones -->
+            <div class="card">
+                <span class="badge badge-hero">Todo Incluido</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #0BD926;">Paquete Integral</div>
+                    <div class="card-price" style="color: #0BD926;">$6.757.000</div>
+                    <div class="card-desc">Libros, materiales, plataformas y acceso a biblioteca digital incluidos</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 18: Transparencia -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Sin Costos Ocultos</div>
+                    <div class="card-price">$6.757.000</div>
+                    <div class="card-period">Por semestre</div>
+                    <div class="card-desc">Precio fijo y transparente. No incluye costos adicionales sorpresas</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 19: Becas disponibles -->
+            <div class="card">
+                <span class="badge badge-economy">Con Alternativas</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #00897b;">Inversión con Opciones</div>
+                    <div class="card-price" style="color: #00897b;">$6.757.000</div>
+                    <div class="card-desc">Disponibles becas, convenios y planes de financiación</div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 20: Eficiencia -->
+            <div class="card">
+                <span class="badge badge-premium">Mejor Valor</span>
+                <div class="card-content" style="padding-top: 40px;">
+                    <div class="card-title" style="color: #9C27B0;">Máximo Valor</div>
+                    <div class="card-price" style="color: #9C27B0;">$6.757.000</div>
+                    <div class="card-desc">Relación costo-beneficio más competitiva del mercado educativo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

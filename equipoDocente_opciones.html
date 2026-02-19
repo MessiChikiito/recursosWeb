@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo Docente - Opciones</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; background: #f5f5f5; }
+        .option-container { background: white; padding: 60px 20px; margin-bottom: 80px; }
+        .option-title { max-width: 1200px; margin: 0 auto 40px; font-size: 24px; font-weight: 900; color: #0132AF; }
+
+        /* ============= OPCIÓN 1: Grid Simple Horizontal ============= */
+        .team-1 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .team-1 .card { background: white; border-radius: 12px; padding: 24px; text-align: center; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .team-1 .avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #0132AF, #0076FF); color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px; }
+        .team-1 .name { font-weight: 800; font-size: 16px; color: #0132AF; margin-bottom: 4px; }
+        .team-1 .role { font-size: 13px; color: #666; }
+
+        /* ============= OPCIÓN 2: Horizontal Cards con Avatar Lado ============= */
+        .team-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; max-width: 1200px; margin: 0 auto; }
+        .team-2 .card { background: white; border-radius: 14px; padding: 16px; display: flex; gap: 16px; align-items: center; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .team-2 .avatar { width: 70px; height: 70px; border-radius: 12px; background: linear-gradient(135deg, #dfefff, #eaf4ff); color: #0132AF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; flex-shrink: 0; }
+        .team-2 .info { flex: 1; }
+        .team-2 .name { font-weight: 800; font-size: 15px; color: #0132AF; margin-bottom: 4px; }
+        .team-2 .role { font-size: 12px; color: #666; }
+
+        /* ============= OPCIÓN 3: Minimal List ============= */
+        .team-3 { max-width: 600px; margin: 0 auto; }
+        .team-3 .card { background: white; border-radius: 8px; padding: 16px; margin-bottom: 12px; display: flex; gap: 12px; align-items: center; border-left: 4px solid #0132AF; }
+        .team-3 .avatar { width: 56px; height: 56px; border-radius: 50%; background: #0132AF; color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+        .team-3 .info { flex: 1; }
+        .team-3 .name { font-weight: 700; font-size: 14px; color: #0132AF; }
+        .team-3 .role { font-size: 12px; color: #999; margin-top: 2px; }
+
+        /* ============= OPCIÓN 4: Card con Hover Efecto ============= */
+        .team-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .team-4 .card { background: white; border-radius: 16px; padding: 32px 24px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: all 0.3s ease; cursor: pointer; }
+        .team-4 .card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(1,50,175,0.15); }
+        .team-4 .avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #0132AF 0%, #0076FF 100%); color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 32px; margin: 0 auto 16px; }
+        .team-4 .name { font-weight: 900; font-size: 17px; color: #0132AF; margin-bottom: 6px; }
+        .team-4 .role { font-size: 13px; color: #888; line-height: 1.5; }
+
+        /* ============= OPCIÓN 5: Badges Estilo ============= */
+        .team-5 { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 1000px; margin: 0 auto; }
+        .team-5 .card { background: white; border-radius: 999px; padding: 12px 20px; display: inline-flex; align-items: center; gap: 12px; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .team-5 .avatar { width: 44px; height: 44px; border-radius: 50%; background: #0132AF; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; flex-shrink: 0; }
+        .team-5 .info { min-width: 180px; }
+        .team-5 .name { font-weight: 700; font-size: 13px; color: #0132AF; }
+        .team-5 .role { font-size: 11px; color: #999; }
+
+        /* ============= OPCIÓN 6: Cards con Colores Gradientes ============= */
+        .team-6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .team-6 .card { border-radius: 16px; padding: 24px; text-align: center; color: white; position: relative; overflow: hidden; }
+        .team-6 .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; z-index: 0; }
+        .team-6 .card-content { position: relative; z-index: 1; }
+        .team-6 .card:nth-child(1) { background: linear-gradient(135deg, #0132AF, #0076FF); }
+        .team-6 .card:nth-child(2) { background: linear-gradient(135deg, #1db954, #12a844); }
+        .team-6 .card:nth-child(3) { background: linear-gradient(135deg, #ff6b6b, #ff5252); }
+        .team-6 .card:nth-child(4) { background: linear-gradient(135deg, #9c27b0, #7b1fa2); }
+        .team-6 .card:nth-child(5) { background: linear-gradient(135deg, #ff9800, #f57c00); }
+        .team-6 .card:nth-child(6) { background: linear-gradient(135deg, #00bcd4, #0097a7); }
+        .team-6 .card:nth-child(7) { background: linear-gradient(135deg, #e91e63, #c2185b); }
+        .team-6 .card:nth-child(8) { background: linear-gradient(135deg, #673ab7, #512da8); }
+        .team-6 .card:nth-child(9) { background: linear-gradient(135deg, #3f51b5, #283593); }
+        .team-6 .card:nth-child(10) { background: linear-gradient(135deg, #4caf50, #388e3c); }
+        .team-6 .avatar { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.3); color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px; margin: 0 auto 16px; border: 2px solid rgba(255,255,255,0.6); }
+        .team-6 .name { font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+        .team-6 .role { font-size: 12px; opacity: 0.95; }
+
+        /* ============= OPCIÓN 7: Timeline Vertical ============= */
+        .team-7 { max-width: 500px; margin: 0 auto; position: relative; padding-left: 40px; }
+        .team-7::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #0132AF, transparent); }
+        .team-7 .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; position: relative; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .team-7 .card::before { content: ''; position: absolute; left: -28px; top: 24px; width: 16px; height: 16px; border-radius: 50%; background: white; border: 3px solid #0132AF; }
+        .team-7 .avatar { display: none; }
+        .team-7 .info { }
+        .team-7 .name { font-weight: 800; font-size: 15px; color: #0132AF; }
+        .team-7 .role { font-size: 13px; color: #666; margin-top: 4px; }
+
+        /* ============= OPCIÓN 8: Cards con Icono Superior ============= */
+        .team-8 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .team-8 .card { background: white; border-radius: 14px; padding: 24px; text-align: center; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: relative; }
+        .team-8 .avatar { width: 70px; height: 70px; border-radius: 14px; background: linear-gradient(135deg, #0132AF, #0076FF); color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: -35px auto 16px; border: 4px solid white; box-shadow: 0 4px 12px rgba(1,50,175,0.2); }
+        .team-8 .name { font-weight: 800; font-size: 15px; color: #0132AF; margin-bottom: 4px; }
+        .team-8 .role { font-size: 12px; color: #999; }
+
+        /* ============= OPCIÓN 9: Tabla Moderna ============= */
+        .team-9 { max-width: 900px; margin: 0 auto; overflow-x: auto; }
+        .team-9 table { width: 100%; border-collapse: collapse; }
+        .team-9 th { background: #f8f9fa; padding: 16px; text-align: left; font-weight: 700; font-size: 13px; color: #0132AF; border-bottom: 2px solid #e5e7eb; }
+        .team-9 td { padding: 16px; border-bottom: 1px solid #e5e7eb; }
+        .team-9 tr:hover { background: #f9f9f9; }
+        .team-9 .avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #0132AF, #0076FF); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+        .team-9 .name { font-weight: 700; color: #0132AF; }
+        .team-9 .role { color: #999; font-size: 13px; }
+
+        /* ============= OPCIÓN 10: Cards Minimalistas con Shadow Sutil ============= */
+        .team-10 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 1200px; margin: 0 auto; }
+        .team-10 .card { background: white; border-radius: 8px; padding: 20px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: box-shadow 0.2s ease; }
+        .team-10 .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .team-10 .avatar { width: 60px; height: 60px; border-radius: 8px; background: #f0f4ff; color: #0132AF; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; margin-bottom: 12px; }
+        .team-10 .name { font-weight: 700; font-size: 14px; color: #0132AF; margin-bottom: 2px; }
+        .team-10 .role { font-size: 12px; color: #999; line-height: 1.4; }
+
+        @media (max-width: 768px) {
+            .team-1, .team-2, .team-4, .team-6, .team-8, .team-10 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .team-6 .avatar { width: 70px; font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- OPCIÓN 1 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 1: Grid Simple Horizontal</h2>
+        <div class="team-1">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="name">María Pérez</div>
+                <div class="role">Finanzas · 10 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="name">Juan López</div>
+                <div class="role">Gestión · 8 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="name">Ana Cárdenas</div>
+                <div class="role">Marketing · 12 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="name">Carlos Ruiz</div>
+                <div class="role">Tecnología · 9 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="name">Sofía Ramírez</div>
+                <div class="role">Estadística · 7 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="name">Diego Rodrígez</div>
+                <div class="role">Emprendimiento · 11 años experiencia</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 2 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 2: Horizontal Cards con Avatar Lado</h2>
+        <div class="team-2">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="info">
+                    <div class="name">María Pérez</div>
+                    <div class="role">Finanzas · 10 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="info">
+                    <div class="name">Juan López</div>
+                    <div class="role">Gestión · 8 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="info">
+                    <div class="name">Ana Cárdenas</div>
+                    <div class="role">Marketing · 12 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="info">
+                    <div class="name">Carlos Ruiz</div>
+                    <div class="role">Tecnología · 9 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="info">
+                    <div class="name">Sofía Ramírez</div>
+                    <div class="role">Estadística · 7 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="info">
+                    <div class="name">Diego Rodríguez</div>
+                    <div class="role">Emprendimiento · 11 años experiencia</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 3 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 3: Minimal List</h2>
+        <div class="team-3">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="info">
+                    <div class="name">María Pérez</div>
+                    <div class="role">Finanzas · 10 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="info">
+                    <div class="name">Juan López</div>
+                    <div class="role">Gestión · 8 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="info">
+                    <div class="name">Ana Cárdenas</div>
+                    <div class="role">Marketing · 12 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="info">
+                    <div class="name">Carlos Ruiz</div>
+                    <div class="role">Tecnología · 9 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="info">
+                    <div class="name">Sofía Ramírez</div>
+                    <div class="role">Estadística · 7 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="info">
+                    <div class="name">Diego Rodríguez</div>
+                    <div class="role">Emprendimiento · 11 años experiencia</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 4 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 4: Cards con Hover Efecto</h2>
+        <div class="team-4">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="name">María Pérez</div>
+                <div class="role">Finanzas<br>10 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="name">Juan López</div>
+                <div class="role">Gestión<br>8 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="name">Ana Cárdenas</div>
+                <div class="role">Marketing<br>12 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="name">Carlos Ruiz</div>
+                <div class="role">Tecnología<br>9 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="name">Sofía Ramírez</div>
+                <div class="role">Estadística<br>7 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="name">Diego Rodríguez</div>
+                <div class="role">Emprendimiento<br>11 años experiencia</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 5 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 5: Badges Estilo</h2>
+        <div class="team-5">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="info">
+                    <div class="name">María Pérez</div>
+                    <div class="role">Finanzas · 10 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="info">
+                    <div class="name">Juan López</div>
+                    <div class="role">Gestión · 8 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="info">
+                    <div class="name">Ana Cárdenas</div>
+                    <div class="role">Marketing · 12 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="info">
+                    <div class="name">Carlos Ruiz</div>
+                    <div class="role">Tecnología · 9 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="info">
+                    <div class="name">Sofía Ramírez</div>
+                    <div class="role">Estadística · 7 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="info">
+                    <div class="name">Diego Rodríguez</div>
+                    <div class="role">Emprendimiento · 11 años</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 6 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 6: Cards con Gradientes Coloridos</h2>
+        <div class="team-6">
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">MP</div>
+                    <div class="name">María Pérez</div>
+                    <div class="role">Finanzas · 10 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">JL</div>
+                    <div class="name">Juan López</div>
+                    <div class="role">Gestión · 8 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">AC</div>
+                    <div class="name">Ana Cárdenas</div>
+                    <div class="role">Marketing · 12 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">CR</div>
+                    <div class="name">Carlos Ruiz</div>
+                    <div class="role">Tecnología · 9 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">SR</div>
+                    <div class="name">Sofía Ramírez</div>
+                    <div class="role">Estadística · 7 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">DR</div>
+                    <div class="name">Diego Rodríguez</div>
+                    <div class="role">Emprendimiento · 11 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">FM</div>
+                    <div class="name">Fabian Morales</div>
+                    <div class="role">Operaciones · 9 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">LS</div>
+                    <div class="name">Laura Sánchez</div>
+                    <div class="role">RRHH · 8 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">PG</div>
+                    <div class="name">Pablo García</div>
+                    <div class="role">Investigación · 13 años</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="avatar">EV</div>
+                    <div class="name">Estela Vargas</div>
+                    <div class="role">Docencia · 10 años</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 7 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 7: Timeline Vertical</h2>
+        <div class="team-7">
+            <div class="card">
+                <div class="info">
+                    <div class="name">María Pérez</div>
+                    <div class="role">Finanzas · 10 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="name">Juan López</div>
+                    <div class="role">Gestión · 8 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="name">Ana Cárdenas</div>
+                    <div class="role">Marketing · 12 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="name">Carlos Ruiz</div>
+                    <div class="role">Tecnología · 9 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="name">Sofía Ramírez</div>
+                    <div class="role">Estadística · 7 años experiencia</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="name">Diego Rodríguez</div>
+                    <div class="role">Emprendimiento · 11 años experiencia</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 8 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 8: Cards con Icono Superior</h2>
+        <div class="team-8">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="name">María Pérez</div>
+                <div class="role">Finanzas · 10 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="name">Juan López</div>
+                <div class="role">Gestión · 8 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="name">Ana Cárdenas</div>
+                <div class="role">Marketing · 12 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="name">Carlos Ruiz</div>
+                <div class="role">Tecnología · 9 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="name">Sofía Ramírez</div>
+                <div class="role">Estadística · 7 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="name">Diego Rodríguez</div>
+                <div class="role">Emprendimiento · 11 años experiencia</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 9 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 9: Tabla Moderna</h2>
+        <div class="team-9">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombre</th>
+                        <th>Especialidad</th>
+                        <th>Experiencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="avatar">MP</div></td>
+                        <td><div class="name">María Pérez</div></td>
+                        <td>Finanzas</td>
+                        <td><span class="role">10 años</span></td>
+                    </tr>
+                    <tr>
+                        <td><div class="avatar">JL</div></td>
+                        <td><div class="name">Juan López</div></td>
+                        <td>Gestión</td>
+                        <td><span class="role">8 años</span></td>
+                    </tr>
+                    <tr>
+                        <td><div class="avatar">AC</div></td>
+                        <td><div class="name">Ana Cárdenas</div></td>
+                        <td>Marketing</td>
+                        <td><span class="role">12 años</span></td>
+                    </tr>
+                    <tr>
+                        <td><div class="avatar">CR</div></td>
+                        <td><div class="name">Carlos Ruiz</div></td>
+                        <td>Tecnología</td>
+                        <td><span class="role">9 años</span></td>
+                    </tr>
+                    <tr>
+                        <td><div class="avatar">SR</div></td>
+                        <td><div class="name">Sofía Ramírez</div></td>
+                        <td>Estadística</td>
+                        <td><span class="role">7 años</span></td>
+                    </tr>
+                    <tr>
+                        <td><div class="avatar">DR</div></td>
+                        <td><div class="name">Diego Rodríguez</div></td>
+                        <td>Emprendimiento</td>
+                        <td><span class="role">11 años</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- OPCIÓN 10 -->
+    <div class="option-container">
+        <h2 class="option-title">Opción 10: Cards Minimalistas</h2>
+        <div class="team-10">
+            <div class="card">
+                <div class="avatar">MP</div>
+                <div class="name">María Pérez</div>
+                <div class="role">Finanzas · 10 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">JL</div>
+                <div class="name">Juan López</div>
+                <div class="role">Gestión · 8 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">AC</div>
+                <div class="name">Ana Cárdenas</div>
+                <div class="role">Marketing · 12 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">CR</div>
+                <div class="name">Carlos Ruiz</div>
+                <div class="role">Tecnología · 9 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">SR</div>
+                <div class="name">Sofía Ramírez</div>
+                <div class="role">Estadística · 7 años experiencia</div>
+            </div>
+            <div class="card">
+                <div class="avatar">DR</div>
+                <div class="name">Diego Rodríguez</div>
+                <div class="role">Emprendimiento · 11 años experiencia</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

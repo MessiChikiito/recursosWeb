@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Asesoría - Minimalista con SVG</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 44px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(1, 50, 175, 0.3);
+    }
+
+    .form-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .form-header h1 {
+      font-size: 1.8rem;
+      color: #0132AF;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .form-header p {
+      color: #718096;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .form-asesoria {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-icon {
+      width: 40px;
+      height: 40px;
+      background: #f0f4ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .form-input-wrapper {
+      flex: 1;
+    }
+
+    .form-asesoria input,
+    .form-asesoria select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background: #f9fafb;
+      color: #1a202c;
+    }
+
+    .form-asesoria input::placeholder {
+      color: #b8bcc6;
+    }
+
+    .form-asesoria input:hover,
+    .form-asesoria select:hover {
+      border-color: #0132AF;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(1, 50, 175, 0.08);
+    }
+
+    .form-asesoria input:focus,
+    .form-asesoria select:focus {
+      outline: none;
+      border-color: #0052D6;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(1, 50, 175, 0.15);
+    }
+
+    .form-button {
+      grid-column: 1 / -1;
+      padding: 15px 24px;
+      background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 6px 20px rgba(1, 50, 175, 0.3);
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(1, 50, 175, 0.45);
+    }
+
+    .form-button:active {
+      transform: translateY(-1px);
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    .form-footer a {
+      color: #0132AF;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 28px 20px;
+      }
+
+      .form-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .form-asesoria {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .form-group {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-header">
+      <h1>Solicita tu Asesoría</h1>
+      <p>Completa el formulario y un asesor se contactará contigo en breve</p>
+    </div>
+
+    <form class="form-asesoria" onsubmit="handleSubmit(event)">
+      <!-- Nombre -->
+      <div class="form-group">
+        <div class="form-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0132AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="form-input-wrapper">
+          <input type="text" placeholder="Nombre" required>
+        </div>
+      </div>
+
+      <!-- Apellido -->
+      <div class="form-group">
+        <div class="form-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0132AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="form-input-wrapper">
+          <input type="text" placeholder="Apellido" required>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <div class="form-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0132AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </div>
+        <div class="form-input-wrapper">
+          <input type="email" placeholder="Correo" required>
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="form-group">
+        <div class="form-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0132AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+        <div class="form-input-wrapper">
+          <input type="tel" placeholder="Teléfono" required>
+        </div>
+      </div>
+
+      <!-- Programa -->
+      <div class="form-group full-width">
+        <div class="form-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0132AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <div class="form-input-wrapper">
+          <select required>
+            <option value="">Selecciona un programa</option>
+            <option value="administracion">Administración de Empresas</option>
+            <option value="contaduria">Contaduría Pública</option>
+            <option value="finanzas">Finanzas y Comercio Exterior</option>
+            <option value="mercadeo">Mercadeo y Publicidad</option>
+            <option value="ingenieria">Ingeniería Industrial</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Botón Submit -->
+      <button type="submit" class="form-button">Solicitar Asesoría</button>
+    </form>
+
+    <div class="form-footer">
+      Al enviar aceptas nuestra <a href="#">Política de Privacidad</a> y <a href="#">Términos de Servicio</a>
+    </div>
+  </div>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
+      
+      console.log('Datos del formulario:', data);
+      
+      // Mostrar mensaje de éxito
+      alert('✓ ¡Gracias por tu solicitud!\nUn asesor te contactará pronto.');
+      
+      // Resetear formulario
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>

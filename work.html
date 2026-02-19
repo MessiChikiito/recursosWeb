@@ -1,0 +1,192 @@
+<style>
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .ue-work-title {
+        font-size: 35px;
+        font-weight: 600;
+        color: #000000 !important;
+        margin: 0 0 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .ue-work-subtitle {
+        color: #7a8a99;
+        font-weight: 600;
+        margin: 0 0 24px;
+        font-size: 15px;
+    }
+
+    .ue-work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ue-work-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ue-work-item {
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e0e3e8;
+        border-left: 4px solid;
+        padding: 14px 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+    }
+
+    .ue-work-item-content {
+        overflow: hidden;
+        max-height: 500px;
+        transition: max-height 0.3s ease;
+    }
+
+    .ue-work-item-content.collapsed {
+        max-height: 0;
+    }
+
+    .ue-work-expanded-text {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #e0e3e8;
+        font-size: 13px;
+        color: #7a8a99;
+        line-height: 1.6;
+    }
+
+    .ue-work-item:nth-child(odd) {
+        border-left-color: #0132AF;
+    }
+
+    .ue-work-item:nth-child(even) {
+        border-left-color: #FF3B3B;
+    }
+
+    .ue-work-item:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        transform: translateX(4px) !important;
+    }
+
+    .ue-work-title-item {
+        color: #06325a;
+        font-weight: 700;
+        font-size: 18px;
+        margin: 0 0 0px 0;
+    }
+
+    .ue-work-desc {
+        color: #0132AF;
+        font-weight: 500;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ue-work-desc::after {
+        content: '→';
+        transition: transform 0.3s ease;
+    }
+
+    .ue-work-item.expanded .ue-work-desc::after {
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 640px) {
+        .ue-work-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="ue-section" aria-label="Oportunidades laborales">
+    <h3 class="ue-work-title">Estudia y prepárate para estos roles con alta proyección laboral:</h3>
+    <p class="ue-work-subtitle">Roles frecuentes según perfil y experiencia.</p>
+
+    <div class="ue-work-grid">
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Gerente de proyectos</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Analista de negocios (Business Analyst)</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Consultor empresarial</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Analista financiero</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Fundador/a de startups o PYMES</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Especialista en marketing digital</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.ue-work-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const content = this.querySelector('.ue-work-item-content');
+            content.classList.toggle('collapsed');
+            this.classList.toggle('expanded');
+        });
+    });
+</script>

@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convenios - 10 Opciones de Diseño</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f7fafc;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #718096;
+        }
+
+        .option-tabs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .option-btn {
+            padding: 10px 20px;
+            border: 2px solid #cbd5e0;
+            background: white;
+            color: #4a5568;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .option-btn:hover {
+            border-color: #0132AF;
+            color: #0132AF;
+        }
+
+        .option-btn.active {
+            background: #0132AF;
+            border-color: #0132AF;
+            color: white;
+        }
+
+        .option {
+            display: none;
+        }
+
+        .option.active {
+            display: block;
+        }
+
+        /* ============================================
+           OPCIÓN 1: CARRUSEL DE IMÁGENES SIMPLES
+           ============================================ */
+        .conv-section-1 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conv-header-1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .conv-header-1 h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .conv-header-1 p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .carousel-container-1 {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-1 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .carousel-slide-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide-1.active {
+            opacity: 1;
+        }
+
+        .carousel-controls-1 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .carousel-btn-1 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-1.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-1 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-1:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-1 { left: 20px; }
+        .carousel-next-1 { right: 20px; }
+
+        /* ============================================
+           OPCIÓN 2: TARJETAS CON IMAGEN Y TEXTO DEBAJO
+           ============================================ */
+        .conv-section-2 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .conv-header-2,
+        .conv-header-3,
+        .conv-header-4,
+        .conv-header-5,
+        .conv-header-6,
+        .conv-header-7,
+        .conv-header-8,
+        .conv-header-9,
+        .conv-header-10 {
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .conv-header-2 h2,
+        .conv-header-3 h2,
+        .conv-header-4 h2,
+        .conv-header-5 h2,
+        .conv-header-6 h2,
+        .conv-header-7 h2,
+        .conv-header-8 h2,
+        .conv-header-9 h2,
+        .conv-header-10 h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .conv-header-2 p,
+        .conv-header-3 p,
+        .conv-header-4 p,
+        .conv-header-5 p,
+        .conv-header-6 p,
+        .conv-header-7 p,
+        .conv-header-8 p,
+        .conv-header-9 p,
+        .conv-header-10 p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .carousel-container-2 {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-2 {
+            position: relative;
+        }
+
+        .carousel-track-2 {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-card-2 {
+            flex: 1 0 100%;
+            min-width: 100%;
+        }
+
+        .card-image-2 {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card-text-2 {
+            background: white;
+            padding: 24px;
+            border-radius: 0 0 12px 12px;
+            text-align: center;
+        }
+
+        .card-text-2 h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .card-text-2 p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .carousel-controls-2 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .carousel-btn-2 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-2.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-2 {
+            position: absolute;
+            top: 200px;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-2:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-2 { left: 20px; }
+        .carousel-next-2 { right: 20px; }
+
+        /* ============================================
+           OPCIÓN 3: IMAGEN GRANDE + TEXTO LADO A LADO
+           ============================================ */
+        .conv-section-3 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-3 {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-3 {
+            position: relative;
+        }
+
+        .carousel-slide-3 {
+            display: none;
+        }
+
+        .carousel-slide-3.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            animation: slideIn 0.5s ease;
+        }
+
+        .slide-image-3 {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .slide-content-3 {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .slide-content-3 h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 20px;
+        }
+
+        .slide-content-3 p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .carousel-controls-3 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .carousel-btn-3 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-3.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-3 {
+            position: absolute;
+            top: 225px;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-3:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-3 { left: -30px; }
+        .carousel-next-3 { right: -30px; }
+
+        /* ============================================
+           OPCIÓN 4: GRID DE CARDS 2x2
+           ============================================ */
+        .conv-section-4 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-4 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .grid-card-4 {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .grid-card-4:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .grid-image-4 {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .grid-content-4 {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .grid-content-4 h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .grid-content-4 p {
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           OPCIÓN 5: IMAGEN CON OVERLAY DE TEXTO
+           ============================================ */
+        .conv-section-5 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-5 {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-5 {
+            position: relative;
+        }
+
+        .carousel-slide-5 {
+            position: absolute;
+            width: 100%;
+            height: 500px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .carousel-slide-5.active {
+            opacity: 1;
+        }
+
+        .slide-image-5 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-overlay-5 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(1,50,175,0.95) 0%, transparent 100%);
+            padding: 40px 30px;
+            color: white;
+        }
+
+        .slide-overlay-5 h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .slide-overlay-5 p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .carousel-controls-5 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .carousel-btn-5 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-5.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-5 {
+            position: absolute;
+            top: 250px;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-5:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-5 { left: 20px; }
+        .carousel-next-5 { right: 20px; }
+
+        /* ============================================
+           OPCIÓN 6: GRID 3 COLUMNAS
+           ============================================ */
+        .conv-section-6 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-6 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-card-6 {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .grid-card-6:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .grid-image-6 {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .grid-content-6 {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .grid-content-6 h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 8px;
+        }
+
+        .grid-content-6 p {
+            color: #718096;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-6 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-6 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           OPCIÓN 7: CARRUSEL CON THUMBS DEBAJO
+           ============================================ */
+        .conv-section-7 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-7 {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .carousel-main-7 {
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .carousel-image-7 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-thumbs-7 {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .carousel-thumb-7 {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .carousel-thumb-7:hover {
+            opacity: 1;
+        }
+
+        .carousel-thumb-7.active {
+            border-color: white;
+            opacity: 1;
+        }
+
+        .carousel-thumb-image-7 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-info-7 {
+            background: white;
+            margin-top: 20px;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .carousel-info-7 h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .carousel-info-7 p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           OPCIÓN 8: CARRUSEL ESTILO POLAROID
+           ============================================ */
+        .conv-section-8 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-8 {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-8 {
+            position: relative;
+        }
+
+        .polaroid-8 {
+            position: absolute;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: rotateZ(-5deg) scale(0.9);
+        }
+
+        .polaroid-8.active {
+            opacity: 1;
+            transform: rotateZ(0deg) scale(1);
+            transform: translateX(0);
+        }
+
+        .polaroid-8.prev {
+            transform: rotateZ(5deg) scale(0.9) translateX(-100%);
+        }
+
+        .polaroid-image-8 {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .polaroid-text-8 {
+            padding: 0 8px;
+            min-height: 100px;
+        }
+
+        .polaroid-text-8 h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .polaroid-text-8 p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .carousel-controls-8 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .carousel-btn-8 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-8.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-8 {
+            position: absolute;
+            bottom: -60px;
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-8:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-8 { left: 20px; }
+        .carousel-next-8 { right: 20px; }
+
+        /* ============================================
+           OPCIÓN 9: IMAGEN CON LÍNEA LATERAL (COMO MATERIAS)
+           ============================================ */
+        .conv-section-9 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-9 {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-slide-9 {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            display: none;
+        }
+
+        .carousel-slide-9.active {
+            opacity: 1;
+            display: block;
+        }
+
+        .slide-card-9 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 6px solid #0132AF;
+        }
+
+        .slide-image-9 {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .slide-content-9 h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 20px;
+        }
+
+        .slide-content-9 p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .carousel-controls-9 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .carousel-btn-9 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-9.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-9 {
+            position: absolute;
+            top: 175px;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-9:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-9 { left: -30px; }
+        .carousel-next-9 { right: -30px; }
+
+        /* ============================================
+           OPCIÓN 10: IMAGEN EN CÍRCULO
+           ============================================ */
+        .conv-section-10 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            padding: 60px 20px;
+        }
+
+        .carousel-container-10 {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .carousel-10 {
+            position: relative;
+        }
+
+        .carousel-image-circle-10 {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 8px solid white;
+        }
+
+        .carousel-info-circle-10 {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .carousel-info-circle-10 h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 15px;
+        }
+
+        .carousel-info-circle-10 p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .carousel-controls-10 {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .carousel-btn-10 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn-10.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow-10 {
+            position: absolute;
+            top: 200px;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-10:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .carousel-prev-10 { left: 20px; }
+        .carousel-next-10 { right: 20px; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .option-tabs {
+                flex-direction: column;
+            }
+
+            .option-btn {
+                width: 100%;
+            }
+
+            .carousel-arrow-2,
+            .carousel-arrow-3,
+            .carousel-arrow-5,
+            .carousel-arrow-9,
+            .carousel-arrow-10 {
+                display: none;
+            }
+
+            .slide-card-9 {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .carousel-image-circle-10 {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Convenios de la Universidad</h1>
+        <p>Elige tu diseño favorito</p>
+    </div>
+
+    <!-- Tabs de opciones -->
+    <div class="option-tabs">
+        <button class="option-btn active" onclick="showOption(1)">Opción 1</button>
+        <button class="option-btn" onclick="showOption(2)">Opción 2</button>
+        <button class="option-btn" onclick="showOption(3)">Opción 3</button>
+        <button class="option-btn" onclick="showOption(4)">Opción 4</button>
+        <button class="option-btn" onclick="showOption(5)">Opción 5</button>
+        <button class="option-btn" onclick="showOption(6)">Opción 6</button>
+        <button class="option-btn" onclick="showOption(7)">Opción 7</button>
+        <button class="option-btn" onclick="showOption(8)">Opción 8</button>
+        <button class="option-btn" onclick="showOption(9)">Opción 9</button>
+        <button class="option-btn" onclick="showOption(10)">Opción 10</button>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 1: CARRUSEL DE IMÁGENES SIMPLES
+         ============================================ -->
+    <div class="option active" id="option-1">
+        <section class="conv-section-1">
+            <div class="conv-header-1">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-1">
+                <div class="carousel-1" id="carousel1">
+                    <div class="carousel-slide-1 active" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80')"></div>
+                    <div class="carousel-slide-1" style="background-image: url('https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=1200&q=80')"></div>
+                    <div class="carousel-slide-1" style="background-image: url('https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=1200&q=80')"></div>
+                    <div class="carousel-slide-1" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80')"></div>
+                    <div class="carousel-slide-1" style="background-image: url('https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=1200&q=80')"></div>
+
+                    <button class="carousel-arrow-1 carousel-prev-1" onclick="carouselPrev(1)">❮</button>
+                    <button class="carousel-arrow-1 carousel-next-1" onclick="carouselNext(1)">❯</button>
+                </div>
+
+                <div class="carousel-controls-1">
+                    <button class="carousel-btn-1 active" onclick="goToSlide(1, 0)"></button>
+                    <button class="carousel-btn-1" onclick="goToSlide(1, 1)"></button>
+                    <button class="carousel-btn-1" onclick="goToSlide(1, 2)"></button>
+                    <button class="carousel-btn-1" onclick="goToSlide(1, 3)"></button>
+                    <button class="carousel-btn-1" onclick="goToSlide(1, 4)"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 2: TARJETAS CON IMAGEN Y TEXTO DEBAJO
+         ============================================ -->
+    <div class="option" id="option-2">
+        <section class="conv-section-2">
+            <div class="conv-header-2">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-2">
+                <div class="carousel-2">
+                    <div class="carousel-track-2" id="carouselTrack2">
+                        <div class="carousel-card-2">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="" class="card-image-2">
+                            <div class="card-text-2">
+                                <h3>Tecnológica Global</h3>
+                                <p>Líder en innovación digital y transformación empresarial</p>
+                            </div>
+                        </div>
+                        <div class="carousel-card-2">
+                            <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=600&q=80" alt="" class="card-image-2">
+                            <div class="card-text-2">
+                                <h3>Empresas Financieras</h3>
+                                <p>Especialista en soluciones financieras y gestión empresarial</p>
+                            </div>
+                        </div>
+                        <div class="carousel-card-2">
+                            <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=600&q=80" alt="" class="card-image-2">
+                            <div class="card-text-2">
+                                <h3>Consultoría Internacional</h3>
+                                <p>Asesoría estratégica a nivel global y regional</p>
+                            </div>
+                        </div>
+                        <div class="carousel-card-2">
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&q=80" alt="" class="card-image-2">
+                            <div class="card-text-2">
+                                <h3>Manufactura Avanzada</h3>
+                                <p>Innovación en procesos de producción industrial</p>
+                            </div>
+                        </div>
+                        <div class="carousel-card-2">
+                            <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=600&q=80" alt="" class="card-image-2">
+                            <div class="card-text-2">
+                                <h3>Retail & E-commerce</h3>
+                                <p>Estrategias de comercio digital y experiencia del cliente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-arrow-2 carousel-prev-2" onclick="carouselPrev(2)">❮</button>
+                    <button class="carousel-arrow-2 carousel-next-2" onclick="carouselNext(2)">❯</button>
+                </div>
+
+                <div class="carousel-controls-2">
+                    <button class="carousel-btn-2 active" onclick="goToSlide(2, 0)"></button>
+                    <button class="carousel-btn-2" onclick="goToSlide(2, 1)"></button>
+                    <button class="carousel-btn-2" onclick="goToSlide(2, 2)"></button>
+                    <button class="carousel-btn-2" onclick="goToSlide(2, 3)"></button>
+                    <button class="carousel-btn-2" onclick="goToSlide(2, 4)"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 3: IMAGEN GRANDE + TEXTO LADO A LADO
+         ============================================ -->
+    <div class="option" id="option-3">
+        <section class="conv-section-3">
+            <div class="conv-header-3">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-3">
+                <div class="carousel-3">
+                    <div class="carousel-slide-3 active">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="" class="slide-image-3">
+                        <div class="slide-content-3">
+                            <h3>Tecnológica Global</h3>
+                            <p>Somos una alianza estratégica con empresas líderes en innovación digital. Nuestro convenio permite a los estudiantes acceder a experiencias prácticas en los segmentos más dinámicos del mercado.</p>
+                            <p>Con presencia en 50 países y más de 100,000 empleados, ofrecemos oportunidades de práctica y empleo a nuestros graduados.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-3">
+                        <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=800&q=80" alt="" class="slide-image-3">
+                        <div class="slide-content-3">
+                            <h3>Empresas Financieras</h3>
+                            <p>Especialista en soluciones financieras con presencia en toda América Latina. Nuestro programa de pasantías permite a los estudiantes desarrollar habilidades en trading, riesgo y gestión de portafolios.</p>
+                            <p>Hemos capacitado a más de 500 profesionales en los últimos 5 años.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-3">
+                        <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=800&q=80" alt="" class="slide-image-3">
+                        <div class="slide-content-3">
+                            <h3>Consultoría Internacional</h3>
+                            <p>Asesoría estratégica a empresas Fortune 500. Nuestro convenio incluye proyectos de consultoría real para los estudiantes de semestres avanzados.</p>
+                            <p>Trabajarás en casos auténticos de transformación digital y optimización de procesos.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-3">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=800&q=80" alt="" class="slide-image-3">
+                        <div class="slide-content-3">
+                            <h3>Manufactura Avanzada</h3>
+                            <p>Líder en automatización y manufactura inteligente. Acceso a facilidades de Industry 4.0 para proyectos académicos y prácticas profesionales.</p>
+                            <p>Nuestros estudiantes trabajan con tecnología de vanguardia en robotización y IoT.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-3">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=800&q=80" alt="" class="slide-image-3">
+                        <div class="slide-content-3">
+                            <h3>Retail & E-commerce</h3>
+                            <p>Plataforma de comercio electrónico con millones de transacciones diarias. Nuestro programa te prepara para gestionar operaciones de escala global.</p>
+                            <p>Internacionaliza tu carrera con experiencia en múltiples mercados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow-3 carousel-prev-3" onclick="carouselPrev(3)">❮</button>
+                <button class="carousel-arrow-3 carousel-next-3" onclick="carouselNext(3)">❯</button>
+
+                <div class="carousel-controls-3">
+                    <button class="carousel-btn-3 active" onclick="goToSlide(3, 0)"></button>
+                    <button class="carousel-btn-3" onclick="goToSlide(3, 1)"></button>
+                    <button class="carousel-btn-3" onclick="goToSlide(3, 2)"></button>
+                    <button class="carousel-btn-3" onclick="goToSlide(3, 3)"></button>
+                    <button class="carousel-btn-3" onclick="goToSlide(3, 4)"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 4: GRID DE CARDS 2x2
+         ============================================ -->
+    <div class="option" id="option-4">
+        <section class="conv-section-4">
+            <div class="conv-header-4">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-4">
+                <div class="grid-4">
+                    <div class="grid-card-4">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="" class="grid-image-4">
+                        <div class="grid-content-4">
+                            <h3>Tecnológica Global</h3>
+                            <p>Líder en innovación digital y transformación empresarial</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-4">
+                        <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=600&q=80" alt="" class="grid-image-4">
+                        <div class="grid-content-4">
+                            <h3>Empresas Financieras</h3>
+                            <p>Especialista en soluciones financieras y gestión empresarial</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-4">
+                        <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=600&q=80" alt="" class="grid-image-4">
+                        <div class="grid-content-4">
+                            <h3>Consultoría Internacional</h3>
+                            <p>Asesoría estratégica a nivel global y regional</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-4">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&q=80" alt="" class="grid-image-4">
+                        <div class="grid-content-4">
+                            <h3>Manufactura Avanzada</h3>
+                            <p>Innovación en procesos de producción industrial</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-4">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=600&q=80" alt="" class="grid-image-4">
+                        <div class="grid-content-4">
+                            <h3>Retail & E-commerce</h3>
+                            <p>Estrategias de comercio digital y experiencia del cliente</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-4">
+                        <img src="https://images.unsplash.com/photo-1556740725-b2f8b385f8c9?w=600&q=80" alt="" class="grid-image-4">
+                        <div class="grid-content-4">
+                            <h3>Logística 4.0</h3>
+                            <p>Optimización de cadenas de suministro globales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 5: IMAGEN CON OVERLAY DE TEXTO
+         ============================================ -->
+    <div class="option" id="option-5">
+        <section class="conv-section-5">
+            <div class="conv-header-5">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-5">
+                <div class="carousel-5" id="carousel5">
+                    <div class="carousel-slide-5 active">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&q=80" alt="" class="slide-image-5">
+                        <div class="slide-overlay-5">
+                            <h3>Tecnológica Global</h3>
+                            <p>Líder en innovación digital con presencia en 50 países</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-5">
+                        <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=1000&q=80" alt="" class="slide-image-5">
+                        <div class="slide-overlay-5">
+                            <h3>Empresas Financieras</h3>
+                            <p>Especialista en soluciones financieras y banca digital</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-5">
+                        <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=1000&q=80" alt="" class="slide-image-5">
+                        <div class="slide-overlay-5">
+                            <h3>Consultoría Internacional</h3>
+                            <p>Asesoría estratégica para empresas Fortune 500</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-5">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1000&q=80" alt="" class="slide-image-5">
+                        <div class="slide-overlay-5">
+                            <h3>Manufactura Avanzada</h3>
+                            <p>Líderes en automatización e Industry 4.0</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-5">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=1000&q=80" alt="" class="slide-image-5">
+                        <div class="slide-overlay-5">
+                            <h3>Retail & E-commerce</h3>
+                            <p>Plataforma de comercio digital líder en América Latina</p>
+                        </div>
+                    </div>
+
+                    <button class="carousel-arrow-5 carousel-prev-5" onclick="carouselPrev(5)">❮</button>
+                    <button class="carousel-arrow-5 carousel-next-5" onclick="carouselNext(5)">❯</button>
+                </div>
+
+                <div class="carousel-controls-5">
+                    <button class="carousel-btn-5 active" onclick="goToSlide(5, 0)"></button>
+                    <button class="carousel-btn-5" onclick="goToSlide(5, 1)"></button>
+                    <button class="carousel-btn-5" onclick="goToSlide(5, 2)"></button>
+                    <button class="carousel-btn-5" onclick="goToSlide(5, 3)"></button>
+                    <button class="carousel-btn-5" onclick="goToSlide(5, 4)"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 6: GRID 3 COLUMNAS
+         ============================================ -->
+    <div class="option" id="option-6">
+        <section class="conv-section-6">
+            <div class="conv-header-6">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-6">
+                <div class="grid-6">
+                    <div class="grid-card-6">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="" class="grid-image-6">
+                        <div class="grid-content-6">
+                            <h3>Tecnológica Global</h3>
+                            <p>Innovación digital y transformación empresarial</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-6">
+                        <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=500&q=80" alt="" class="grid-image-6">
+                        <div class="grid-content-6">
+                            <h3>Empresas Financieras</h3>
+                            <p>Soluciones financieras y gestión empresarial</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-6">
+                        <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=500&q=80" alt="" class="grid-image-6">
+                        <div class="grid-content-6">
+                            <h3>Consultoría Internacional</h3>
+                            <p>Asesoría estratégica global y regional</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-6">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=500&q=80" alt="" class="grid-image-6">
+                        <div class="grid-content-6">
+                            <h3>Manufactura Avanzada</h3>
+                            <p>Procesos de producción industrial avanzada</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-6">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=500&q=80" alt="" class="grid-image-6">
+                        <div class="grid-content-6">
+                            <h3>Retail & E-commerce</h3>
+                            <p>Comercio digital y experiencia del cliente</p>
+                        </div>
+                    </div>
+                    <div class="grid-card-6">
+                        <img src="https://images.unsplash.com/photo-1556740725-b2f8b385f8c9?w=500&q=80" alt="" class="grid-image-6">
+                        <div class="grid-content-6">
+                            <h3>Logística 4.0</h3>
+                            <p>Cadenas de suministro inteligentes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 7: CARRUSEL CON THUMBS DEBAJO
+         ============================================ -->
+    <div class="option" id="option-7">
+        <section class="conv-section-7">
+            <div class="conv-header-7">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-7">
+                <div class="carousel-main-7">
+                    <img id="mainImage7" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80" alt="" class="carousel-image-7">
+                </div>
+
+                <div class="carousel-thumbs-7">
+                    <div class="carousel-thumb-7 active" onclick="switchImage(0, 7)">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&q=80" alt="" class="carousel-thumb-image-7">
+                    </div>
+                    <div class="carousel-thumb-7" onclick="switchImage(1, 7)">
+                        <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=150&q=80" alt="" class="carousel-thumb-image-7">
+                    </div>
+                    <div class="carousel-thumb-7" onclick="switchImage(2, 7)">
+                        <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=150&q=80" alt="" class="carousel-thumb-image-7">
+                    </div>
+                    <div class="carousel-thumb-7" onclick="switchImage(3, 7)">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=150&q=80" alt="" class="carousel-thumb-image-7">
+                    </div>
+                    <div class="carousel-thumb-7" onclick="switchImage(4, 7)">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=150&q=80" alt="" class="carousel-thumb-image-7">
+                    </div>
+                </div>
+
+                <div class="carousel-info-7">
+                    <h3 id="infoTitle7">Tecnológica Global</h3>
+                    <p id="infoText7">Líder en innovación digital con presencia en 50 países. Somos una alianza estratégica que permite a los estudiantes acceder a experiencias prácticas en los segmentos más dinámicos del mercado.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 8: CARRUSEL ESTILO POLAROID
+         ============================================ -->
+    <div class="option" id="option-8">
+        <section class="conv-section-8">
+            <div class="conv-header-8">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-8">
+                <div class="carousel-8">
+                    <div class="polaroid-8 active">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="" class="polaroid-image-8">
+                        <div class="polaroid-text-8">
+                            <h3>Tecnológica Global</h3>
+                            <p>Líder en innovación digital con presencia en 50 países</p>
+                        </div>
+                    </div>
+                    <div class="polaroid-8">
+                        <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=600&q=80" alt="" class="polaroid-image-8">
+                        <div class="polaroid-text-8">
+                            <h3>Empresas Financieras</h3>
+                            <p>Especialista en soluciones financieras y banca digital</p>
+                        </div>
+                    </div>
+                    <div class="polaroid-8">
+                        <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=600&q=80" alt="" class="polaroid-image-8">
+                        <div class="polaroid-text-8">
+                            <h3>Consultoría Internacional</h3>
+                            <p>Asesoría estratégica para empresas Fortune 500</p>
+                        </div>
+                    </div>
+                    <div class="polaroid-8">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&q=80" alt="" class="polaroid-image-8">
+                        <div class="polaroid-text-8">
+                            <h3>Manufactura Avanzada</h3>
+                            <p>Líderes en automatización e Industry 4.0</p>
+                        </div>
+                    </div>
+                    <div class="polaroid-8">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=600&q=80" alt="" class="polaroid-image-8">
+                        <div class="polaroid-text-8">
+                            <h3>Retail & E-commerce</h3>
+                            <p>Plataforma de comercio digital líder en América Latina</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls-8">
+                    <button class="carousel-btn-8 active" onclick="goToSlide(8, 0)"></button>
+                    <button class="carousel-btn-8" onclick="goToSlide(8, 1)"></button>
+                    <button class="carousel-btn-8" onclick="goToSlide(8, 2)"></button>
+                    <button class="carousel-btn-8" onclick="goToSlide(8, 3)"></button>
+                    <button class="carousel-btn-8" onclick="goToSlide(8, 4)"></button>
+                </div>
+
+                <button class="carousel-arrow-8 carousel-prev-8" onclick="carouselPrev(8)">❮</button>
+                <button class="carousel-arrow-8 carousel-next-8" onclick="carouselNext(8)">❯</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 9: IMAGEN CON LÍNEA LATERAL
+         ============================================ -->
+    <div class="option" id="option-9">
+        <section class="conv-section-9">
+            <div class="conv-header-9">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-9">
+                <div class="carousel-9">
+                    <div class="carousel-slide-9 active">
+                        <div class="slide-card-9">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="" class="slide-image-9">
+                            <div class="slide-content-9">
+                                <h3>Tecnológica Global</h3>
+                                <p>Líder en innovación digital con presencia en 50 países. Somos aliados estratégicos comprometidos con la formación de profesionales con habilidades digitales.</p>
+                                <p>Únete a nuestra misión de transformar el mundo a través de la tecnología.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-9">
+                        <div class="slide-card-9">
+                            <img src="https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=600&q=80" alt="" class="slide-image-9">
+                            <div class="slide-content-9">
+                                <h3>Empresas Financieras</h3>
+                                <p>Especialista en soluciones financieras con presencia en toda América Latina. Nuestro programa de pasantías permite desarrollar habilidades en trading y gestión de portafolios.</p>
+                                <p>Hemos capacitado a más de 500 profesionales en los últimos 5 años.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-9">
+                        <div class="slide-card-9">
+                            <img src="https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=600&q=80" alt="" class="slide-image-9">
+                            <div class="slide-content-9">
+                                <h3>Consultoría Internacional</h3>
+                                <p>Asesoría estratégica a empresas Fortune 500. Nuestro convenio incluye proyectos de consultoría real para estudiantes de semestres avanzados.</p>
+                                <p>Trabajarás en casos auténticos de transformación digital y optimización.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-9">
+                        <div class="slide-card-9">
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&q=80" alt="" class="slide-image-9">
+                            <div class="slide-content-9">
+                                <h3>Manufactura Avanzada</h3>
+                                <p>Líder en automatización y manufactura inteligente. Acceso a facilidades de Industry 4.0 para proyectos académicos y prácticas profesionales.</p>
+                                <p>Trabaja con tecnología de vanguardia en robotización e IoT.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-9">
+                        <div class="slide-card-9">
+                            <img src="https://images.unsplash.com/photo-1554224311-beee415c15c7?w=600&q=80" alt="" class="slide-image-9">
+                            <div class="slide-content-9">
+                                <h3>Retail & E-commerce</h3>
+                                <p>Plataforma de comercio electrónico con millones de transacciones diarias. Acceso a operaciones de escala global.</p>
+                                <p>Internacionaliza tu carrera con experiencia en múltiples mercados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow-9 carousel-prev-9" onclick="carouselPrev(9)">❮</button>
+                <button class="carousel-arrow-9 carousel-next-9" onclick="carouselNext(9)">❯</button>
+
+                <div class="carousel-controls-9">
+                    <button class="carousel-btn-9 active" onclick="goToSlide(9, 0)"></button>
+                    <button class="carousel-btn-9" onclick="goToSlide(9, 1)"></button>
+                    <button class="carousel-btn-9" onclick="goToSlide(9, 2)"></button>
+                    <button class="carousel-btn-9" onclick="goToSlide(9, 3)"></button>
+                    <button class="carousel-btn-9" onclick="goToSlide(9, 4)"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         OPCIÓN 10: IMAGEN EN CÍRCULO
+         ============================================ -->
+    <div class="option" id="option-10">
+        <section class="conv-section-10">
+            <div class="conv-header-10">
+                <h2>Nuestros Convenios</h2>
+                <p>Alianzas estratégicas con empresas líderes</p>
+            </div>
+
+            <div class="carousel-container-10">
+                <div class="carousel-10">
+                    <img id="carouselImageCircle" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="" class="carousel-image-circle-10">
+
+                    <div class="carousel-info-circle-10">
+                        <h3 id="carouselTitleCircle">Tecnológica Global</h3>
+                        <p id="carouselTextCircle">Líder en innovación digital con presencia en 50 países. Somos aliados estratégicos comprometidos con la formación de profesionales con habilidades digitales de clase mundial.</p>
+                    </div>
+
+                    <button class="carousel-arrow-10 carousel-prev-10" onclick="carouselPrev(10)">❮</button>
+                    <button class="carousel-arrow-10 carousel-next-10" onclick="carouselNext(10)">❯</button>
+                </div>
+
+                <div class="carousel-controls-10">
+                    <button class="carousel-btn-10 active" onclick="goToSlide(10, 0)"></button>
+                    <button class="carousel-btn-10" onclick="goToSlide(10, 1)"></button>
+                    <button class="carousel-btn-10" onclick="goToSlide(10, 2)"></button>
+                    <button class="carousel-btn-10" onclick="goToSlide(10, 3)"></button>
+                    <button class="carousel-btn-10" onclick="goToSlide(10, 4)"></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const convenios = [
+            {
+                title: "Tecnológica Global",
+                text: "Líder en innovación digital con presencia en 50 países",
+                images: ["https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80", "https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=900&q=80", "https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=900&q=80", "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80", "https://images.unsplash.com/photo-1554224311-beee415c15c7?w=900&q=80"]
+            },
+            {
+                title: "Empresas Financieras",
+                text: "Especialista en soluciones financieras y banca digital",
+                images: ["https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=900&q=80", "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80", "https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=900&q=80", "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80", "https://images.unsplash.com/photo-1554224311-beee415c15c7?w=900&q=80"]
+            },
+            {
+                title: "Consultoría Internacional",
+                text: "Asesoría estratégica para empresas Fortune 500",
+                images: ["https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=900&q=80", "https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=900&q=80", "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80", "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80", "https://images.unsplash.com/photo-1554224311-beee415c15c7?w=900&q=80"]
+            },
+            {
+                title: "Manufactura Avanzada",
+                text: "Líderes en automatización e Industry 4.0",
+                images: ["https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80", "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80", "https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=900&q=80", "https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=900&q=80", "https://images.unsplash.com/photo-1554224311-beee415c15c7?w=900&q=80"]
+            },
+            {
+                title: "Retail & E-commerce",
+                text: "Plataforma de comercio digital líder en América Latina",
+                images: ["https://images.unsplash.com/photo-1554224311-beee415c15c7?w=900&q=80", "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80", "https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=900&q=80", "https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=900&q=80", "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80"]
+            }
+        ];
+
+        const carouselState = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            7: 0,
+            8: 0,
+            9: 0,
+            10: 0
+        };
+
+        function showOption(num) {
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('active'));
+            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(`option-${num}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function carouselNext(carousel) {
+            carouselState[carousel] = (carouselState[carousel] + 1) % 5;
+            updateCarousel(carousel);
+        }
+
+        function carouselPrev(carousel) {
+            carouselState[carousel] = (carouselState[carousel] - 1 + 5) % 5;
+            updateCarousel(carousel);
+        }
+
+        function goToSlide(carousel, index) {
+            carouselState[carousel] = index;
+            updateCarousel(carousel);
+        }
+
+        function updateCarousel(carousel) {
+            if (carousel === 1) {
+                const slides = document.querySelectorAll(`#carousel${carousel} .carousel-slide-${carousel}`);
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === carouselState[carousel]);
+                });
+                const buttons = document.querySelectorAll(`.carousel-btn-${carousel}`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === carouselState[carousel]);
+                });
+            } else if (carousel === 2) {
+                document.getElementById('carouselTrack2').style.transform = `translateX(-${carouselState[2] * 100}%)`;
+                const buttons = document.querySelectorAll(`.carousel-btn-${carousel}`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === carouselState[carousel]);
+                });
+            } else if (carousel === 3 || carousel === 9) {
+                const slides = document.querySelectorAll(`#option-${carousel} .carousel-slide-${carousel}`);
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === carouselState[carousel]);
+                });
+                const buttons = document.querySelectorAll(`.carousel-btn-${carousel}`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === carouselState[carousel]);
+                });
+            } else if (carousel === 5) {
+                const slides = document.querySelectorAll(`#carousel${carousel} .carousel-slide-${carousel}`);
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === carouselState[carousel]);
+                });
+                const buttons = document.querySelectorAll(`.carousel-btn-${carousel}`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === carouselState[carousel]);
+                });
+            } else if (carousel === 8) {
+                const polaroids = document.querySelectorAll(`.polaroid-${carousel}`);
+                polaroids.forEach((polaroid, i) => {
+                    polaroid.classList.remove('active', 'prev');
+                    if (i === carouselState[carousel]) {
+                        polaroid.classList.add('active');
+                    } else if (i < carouselState[carousel]) {
+                        polaroid.classList.add('prev');
+                    }
+                });
+                const buttons = document.querySelectorAll(`.carousel-btn-${carousel}`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === carouselState[carousel]);
+                });
+            } else if (carousel === 10) {
+                document.getElementById('carouselImageCircle').src = convenios[carouselState[10]].images[0];
+                document.getElementById('carouselTitleCircle').textContent = convenios[carouselState[10]].title;
+                document.getElementById('carouselTextCircle').textContent = convenios[carouselState[10]].text;
+                const buttons = document.querySelectorAll(`.carousel-btn-${carousel}`);
+                buttons.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === carouselState[carousel]);
+                });
+            }
+        }
+
+        function switchImage(index, carousel) {
+            carouselState[carousel] = index;
+            const images = [
+                "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80",
+                "https://images.unsplash.com/photo-1552308995-cb4abb6a4c4f?w=900&q=80",
+                "https://images.unsplash.com/photo-1552664693-9e7c26c0ed64?w=900&q=80",
+                "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=900&q=80",
+                "https://images.unsplash.com/photo-1554224311-beee415c15c7?w=900&q=80"
+            ];
+            const titles = ["Tecnológica Global", "Empresas Financieras", "Consultoría Internacional", "Manufactura Avanzada", "Retail & E-commerce"];
+            const descriptions = [
+                "Líder en innovación digital con presencia en 50 países. Somos aliados estratégicos comprometidos con la formación de profesionales con habilidades digitales.",
+                "Especialista en soluciones financieras con presencia en toda América Latina. Nuestro programa de pasantías permite desarrollar habilidades en trading y gestión de portafolios.",
+                "Asesoría estratégica a empresas Fortune 500. Nuestro convenio incluye proyectos de consultoría real para estudiantes de semestres avanzados.",
+                "Líder en automatización y manufactura inteligente. Acceso a facilidades de Industry 4.0 para proyectos académicos y prácticas profesionales.",
+                "Plataforma de comercio electrónico con millones de transacciones diarias. Acceso a operaciones de escala global."
+            ];
+            document.getElementById('mainImage7').src = images[index];
+            document.getElementById('infoTitle7').textContent = titles[index];
+            document.getElementById('infoText7').textContent = descriptions[index];
+            
+            const thumbs = document.querySelectorAll('.carousel-thumb-7');
+            thumbs.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+    </script>
+</body>
+</html>

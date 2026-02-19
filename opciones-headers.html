@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opciones de Header – Uniempresarial</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f0f0; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-height: 54px; width: auto; }
+
+    /* ─── SECTION LABELS ────────────────────────────────────── */
+    .section-label {
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-left: 4px solid #e02020;
+    }
+    .spacer { height: 48px; }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 1 — Top bar con redes + links utilitarios
+    ══════════════════════════════════════════════════════════ */
+
+    /* TOP BAR */
+    .h1-topbar {
+      background: #1a1a2e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 38px;
+      font-size: 12.5px;
+    }
+    .h1-topbar .social-icons { display: flex; gap: 14px; }
+    .h1-topbar .social-icons a {
+      color: #aab0c0;
+      font-size: 14px;
+      transition: color .2s;
+    }
+    .h1-topbar .social-icons a:hover { color: #fff; }
+    .h1-topbar .top-links { display: flex; align-items: center; gap: 4px; }
+    .h1-topbar .top-links a {
+      color: #c8cedd;
+      padding: 0 12px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      transition: background .2s, color .2s;
+      position: relative;
+    }
+    .h1-topbar .top-links a:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .h1-topbar .top-links i { font-size: 11px; }
+
+    /* MAIN NAV */
+    .h1-nav {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 72px;
+      gap: 32px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    .h1-nav .logo-area { display: flex; align-items: center; }
+    .h1-nav .logo-area img { max-height: 46px; }
+
+    /* ── GENERIC DROPDOWN ENGINE (reused by all options) ── */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .nav-item { position: relative; }
+    .nav-item > a, .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 14px;
+      height: 72px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #2d2d3e;
+      border: none;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .2s, background .2s;
+    }
+    .nav-item > a:hover, .nav-item > button:hover { color: #e02020; background: #fef5f5; }
+    .nav-item .chevron { font-size: 9px; opacity: .6; transition: transform .25s; }
+    .nav-item.open .chevron { transform: rotate(180deg); }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      min-width: 200px;
+      border-top: 3px solid #e02020;
+      box-shadow: 0 8px 28px rgba(0,0,0,.12);
+      z-index: 1000;
+      border-radius: 0 0 6px 6px;
+    }
+    .nav-item.open .dropdown { display: block; }
+    .dropdown li a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 18px;
+      font-size: 13px;
+      color: #3a3a4e;
+      transition: background .15s, color .15s;
+    }
+    .dropdown li a:hover { background: #fef5f5; color: #e02020; padding-left: 23px; }
+    .dropdown li a i { width: 14px; color: #e02020; font-size: 11px; }
+
+    /* CTA button (red) */
+    .btn-red {
+      background: #e02020;
+      color: #fff !important;
+      border-radius: 5px;
+      padding: 0 20px !important;
+      height: 40px !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      margin-left: 8px;
+      letter-spacing: .02em;
+      transition: background .2s, transform .15s !important;
+      white-space: nowrap;
+    }
+    .btn-red:hover { background: #c01818 !important; transform: translateY(-1px); }
+
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 2 — Sin top bar, nav completa + campus virtual
+    ══════════════════════════════════════════════════════════ */
+    .h2-nav {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 74px;
+      gap: 0;
+      box-shadow: 0 2px 14px rgba(0,0,0,.09);
+    }
+    .h2-nav .logo-area img { max-height: 48px; }
+    .h2-nav .nav-menu { gap: 2px; }
+    .h2-nav .nav-item > a,
+    .h2-nav .nav-item > button { height: 74px; font-size: 13px; padding: 0 13px; }
+
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 3 — Estructura simplificada
+    ══════════════════════════════════════════════════════════ */
+    .h3-nav {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 72px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    .h3-nav .logo-area img { max-height: 46px; }
+    .h3-nav .nav-menu { gap: 2px; }
+    .h3-nav .nav-item > a,
+    .h3-nav .nav-item > button { height: 72px; font-size: 13px; padding: 0 12px; }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 4 — Top bar texto + header limpio + campus virtual
+    ══════════════════════════════════════════════════════════ */
+    .h4-topbar {
+      background: #e02020;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 40px;
+      height: 36px;
+    }
+    .h4-topbar .top-links { display: flex; gap: 0; }
+    .h4-topbar .top-links a {
+      color: rgba(255,255,255,.88);
+      font-size: 12px;
+      padding: 0 14px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      border-right: 1px solid rgba(255,255,255,.25);
+      transition: background .2s, color .2s;
+    }
+    .h4-topbar .top-links a:last-child { border-right: none; }
+    .h4-topbar .top-links a:hover { background: rgba(0,0,0,.15); color: #fff; }
+
+    .h4-nav {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 74px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+    .h4-nav .logo-area img { max-height: 48px; }
+    .h4-nav .nav-menu { gap: 2px; }
+    .h4-nav .nav-item > a,
+    .h4-nav .nav-item > button { height: 74px; font-size: 13.5px; padding: 0 14px; }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 5 — Dark premium con acento rojo
+    ══════════════════════════════════════════════════════════ */
+    .h5-topbar {
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 36px;
+    }
+    .h5-topbar .social-icons { display: flex; gap: 12px; }
+    .h5-topbar .social-icons a { color: #6b7280; font-size: 13px; transition: color .2s; }
+    .h5-topbar .social-icons a:hover { color: #e02020; }
+    .h5-topbar .right { display: flex; gap: 0; }
+    .h5-topbar .right a {
+      color: #9ca3af;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 0 14px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-right: 1px solid #1f2937;
+      transition: color .2s, background .2s;
+    }
+    .h5-topbar .right a:last-child { border-right: none; }
+    .h5-topbar .right a:hover { color: #fff; background: rgba(255,255,255,.04); }
+
+    .h5-nav {
+      background: #1a1a2e;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 70px;
+    }
+    .h5-nav .logo-area img { max-height: 44px; filter: brightness(0) invert(1); }
+    .h5-nav .nav-menu { gap: 2px; }
+    .h5-nav .nav-item > a,
+    .h5-nav .nav-item > button {
+      height: 70px;
+      font-size: 13px;
+      padding: 0 14px;
+      color: #c9d1e0;
+    }
+    .h5-nav .nav-item > a:hover,
+    .h5-nav .nav-item > button:hover { color: #fff; background: rgba(255,255,255,.06); }
+    .h5-nav .nav-item > a.active { color: #fff; border-bottom: 2px solid #e02020; }
+    .h5-nav .dropdown {
+      background: #1f2937;
+      border-top-color: #e02020;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .h5-nav .dropdown li a { color: #d1d5db; }
+    .h5-nav .dropdown li a:hover { background: rgba(255,255,255,.05); color: #fff; }
+    .h5-nav .btn-red { height: 38px !important; }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 6 — Minimalista con border inferior rojo
+    ══════════════════════════════════════════════════════════ */
+    .h6-wrap {
+      background: #fff;
+      border-bottom: 3px solid #e02020;
+    }
+    .h6-nav {
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 70px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .h6-nav .logo-area img { max-height: 46px; }
+    .h6-nav .nav-menu { gap: 0; }
+    .h6-nav .nav-item > a,
+    .h6-nav .nav-item > button {
+      height: 70px;
+      font-size: 13px;
+      padding: 0 15px;
+      color: #374151;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+    }
+    .h6-nav .nav-item > a:hover,
+    .h6-nav .nav-item > button:hover {
+      background: none;
+      color: #e02020;
+      border-bottom-color: #e02020;
+    }
+    .h6-nav .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #6b7280;
+      font-size: 16px;
+      padding: 0 10px;
+      margin-left: 6px;
+      transition: color .2s;
+    }
+    .h6-nav .search-btn:hover { color: #e02020; }
+    .h6-topbar {
+      background: #f8f9fa;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 40px;
+      height: 34px;
+    }
+    .h6-topbar .top-links { display: flex; gap: 0; }
+    .h6-topbar .top-links a {
+      color: #6b7280;
+      font-size: 11.5px;
+      padding: 0 12px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-right: 1px solid #dee2e6;
+      transition: color .2s;
+    }
+    .h6-topbar .top-links a:last-child { border-right: none; }
+    .h6-topbar .top-links a:hover { color: #e02020; }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 7 — Logo centrado, nav dividida
+    ══════════════════════════════════════════════════════════ */
+    .h7-wrap { background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.09); }
+    .h7-topbar {
+      background: #f1f3f5;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 40px;
+      height: 34px;
+      gap: 0;
+    }
+    .h7-topbar .social-icons { display: flex; gap: 10px; margin-right: auto; }
+    .h7-topbar .social-icons a { color: #6b7280; font-size: 13px; transition: color .2s; }
+    .h7-topbar .social-icons a:hover { color: #e02020; }
+    .h7-topbar .top-links { display: flex; gap: 0; }
+    .h7-topbar .top-links a {
+      color: #6b7280;
+      font-size: 11.5px;
+      padding: 0 12px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-left: 1px solid #ddd;
+      transition: color .2s;
+    }
+    .h7-topbar .top-links a:hover { color: #e02020; }
+    .h7-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      height: 74px;
+      position: relative;
+    }
+    .h7-nav .logo-area {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .h7-nav .logo-area img { max-height: 46px; }
+    .h7-nav .nav-left { display: flex; align-items: center; margin-right: auto; gap: 2px; }
+    .h7-nav .nav-right { display: flex; align-items: center; margin-left: auto; gap: 2px; }
+    .h7-nav .nav-item > a,
+    .h7-nav .nav-item > button { height: 74px; font-size: 13px; padding: 0 13px; color: #2d2d3e; }
+    .h7-nav .nav-item > a:hover,
+    .h7-nav .nav-item > button:hover { color: #e02020; background: #fef5f5; }
+    .h7-divider {
+      width: 140px; /* logo space */
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 8 — Mega menu con íconos por sección
+    ══════════════════════════════════════════════════════════ */
+    .h8-topbar {
+      background: #e02020;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 36px;
+    }
+    .h8-topbar .tag { color: rgba(255,255,255,.85); font-size: 11.5px; font-weight: 500; }
+    .h8-topbar .right { display: flex; gap: 0; }
+    .h8-topbar .right a {
+      color: rgba(255,255,255,.85);
+      font-size: 11.5px;
+      padding: 0 14px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-right: 1px solid rgba(255,255,255,.2);
+      transition: background .2s, color .2s;
+    }
+    .h8-topbar .right a:last-child { border-right: none; }
+    .h8-topbar .right a:hover { background: rgba(0,0,0,.15); color: #fff; }
+
+    .h8-nav {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 76px;
+      gap: 0;
+      position: relative;
+      box-shadow: 0 3px 16px rgba(0,0,0,.1);
+    }
+    .h8-nav .logo-area img { max-height: 50px; }
+    .h8-nav .nav-menu { gap: 0; }
+    .h8-nav .nav-item > a,
+    .h8-nav .nav-item > button { height: 76px; font-size: 13.5px; padding: 0 15px; }
+    .h8-nav .nav-item > a:hover,
+    .h8-nav .nav-item > button:hover { color: #e02020; background: #fef5f5; }
+
+    .mega-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 3px solid #e02020;
+      box-shadow: 0 12px 32px rgba(0,0,0,.13);
+      z-index: 1000;
+      padding: 28px 40px;
+    }
+    .nav-item.open .mega-dropdown { display: flex; gap: 40px; }
+    .mega-col { flex: 1; }
+    .mega-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: #e02020;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .mega-col ul li a {
+      font-size: 13px;
+      color: #374151;
+      padding: 7px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: none;
+      transition: color .15s, padding-left .15s;
+    }
+    .mega-col ul li a:hover { color: #e02020; padding-left: 4px; background: none !important; }
+    .mega-col ul li a i { color: #e02020; font-size: 11px; width: 14px; }
+
+    /* ══════════════════════════════════════════════════════════
+       OPCIÓN 9 — Sticky glassmorphism / frosted
+    ══════════════════════════════════════════════════════════ */
+    .h9-demo-bg {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      padding-top: 0;
+    }
+    .h9-nav {
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 72px;
+      gap: 0;
+    }
+    .h9-nav .logo-area img { max-height: 44px; filter: brightness(0) invert(1); }
+    .h9-nav .nav-menu { gap: 0; }
+    .h9-nav .nav-item > a,
+    .h9-nav .nav-item > button {
+      height: 72px;
+      font-size: 13px;
+      padding: 0 14px;
+      color: rgba(255,255,255,.8);
+    }
+    .h9-nav .nav-item > a:hover,
+    .h9-nav .nav-item > button:hover {
+      color: #fff;
+      background: rgba(255,255,255,.08);
+    }
+    .h9-nav .dropdown {
+      background: rgba(15,20,40,.95);
+      backdrop-filter: blur(16px);
+      border-top-color: #e02020;
+      box-shadow: 0 12px 32px rgba(0,0,0,.4);
+    }
+    .h9-nav .dropdown li a { color: rgba(255,255,255,.75); }
+    .h9-nav .dropdown li a:hover { background: rgba(255,255,255,.06); color: #fff; }
+    .h9-preview {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.4);
+      font-size: 13px;
+      letter-spacing: .05em;
+    }
+
+    /* ─── SHARED UTILITY ──────────────────────────────────── */
+    .nav-sep {
+      width: 1px;
+      height: 22px;
+      background: #e0e0e0;
+      margin: 0 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 1 — Top bar con redes + links utilitarios
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">OPCIÓN 1 — Top bar: redes sociales + utilidades (biblioteca/soporte con menú)</div>
+
+<div class="h1-topbar">
+  <!-- Redes a la izquierda -->
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="#" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <!-- Links utilitarios a la derecha -->
+  <div class="top-links">
+    <a href="#">Admisiones</a>
+    <a href="#">Pagos</a>
+
+    <!-- Biblioteca -->
+    <div class="nav-item" id="tb-biblioteca">
+      <button onclick="toggleMenu('tb-biblioteca')">
+        Biblioteca <i class="fas fa-chevron-down chevron"></i>
+      </button>
+      <ul class="dropdown" style="min-width:200px;top:38px;">
+        <li><a href="#"><i class="fas fa-database"></i>Bases de datos</a></li>
+        <li><a href="#"><i class="fas fa-book"></i>Colecciones físicas</a></li>
+        <li><a href="#"><i class="fas fa-laptop"></i>Biblioteca digital</a></li>
+      </ul>
+    </div>
+
+    <!-- Soporte -->
+    <div class="nav-item" id="tb-soporte">
+      <button onclick="toggleMenu('tb-soporte')">
+        Soporte <i class="fas fa-chevron-down chevron"></i>
+      </button>
+      <ul class="dropdown" style="top:38px;right:0;left:auto;">
+        <li><a href="#"><i class="fas fa-headset"></i>Mesa de ayuda</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i>Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<nav class="h1-nav">
+  <div class="logo-area">
+    <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+  </div>
+</nav>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 2 — Sin top bar, nav completa + Campus Virtual
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">OPCIÓN 2 — Sin top bar · Navegación completa + botón Campus Virtual</div>
+
+<nav class="h2-nav">
+  <div class="logo-area">
+    <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+  </div>
+
+  <ul class="nav-menu">
+    <!-- Inicio -->
+    <li class="nav-item"><a href="#">Inicio</a></li>
+
+    <!-- Programas -->
+    <li class="nav-item" id="h2-programas">
+      <button onclick="toggleMenu('h2-programas')">Programas <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-graduation-cap"></i>Pregrados</a></li>
+        <li><a href="#"><i class="fas fa-user-graduate"></i>Posgrados</a></li>
+        <li><a href="#"><i class="fas fa-flask"></i>Doctorados</a></li>
+        <li><a href="#"><i class="fas fa-laptop-code"></i>Virtuales</a></li>
+      </ul>
+    </li>
+
+    <!-- Educación Continua -->
+    <li class="nav-item" id="h2-edcont">
+      <button onclick="toggleMenu('h2-edcont')">Educación continua <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+        <li><a href="#"><i class="fas fa-briefcase"></i>Cursos corporativos</a></li>
+        <li><a href="#"><i class="fas fa-award"></i>Certificaciones</a></li>
+      </ul>
+    </li>
+
+    <!-- Fábrica de soluciones -->
+    <li class="nav-item"><a href="#">Fábrica de soluciones</a></li>
+
+    <!-- Soporte -->
+    <li class="nav-item" id="h2-soporte">
+      <button onclick="toggleMenu('h2-soporte')">Soporte <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-book-open"></i>Biblioteca</a></li>
+        <li><a href="#"><i class="fas fa-comment-alt"></i>PQR</a></li>
+        <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i>Contacto</a></li>
+      </ul>
+    </li>
+
+    <!-- Estudiantes -->
+    <li class="nav-item" id="h2-estudiantes">
+      <button onclick="toggleMenu('h2-estudiantes')">Estudiantes <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-credit-card"></i>Pagos</a></li>
+        <li><a href="#"><i class="fas fa-tasks"></i>Gestión académica</a></li>
+        <li><a href="#"><i class="fas fa-wallet"></i>Financiación</a></li>
+      </ul>
+    </li>
+
+    <!-- CTA -->
+    <li class="nav-item" style="display:flex;align-items:center;padding:0 8px;">
+      <a href="#" class="btn-red" style="height:40px;border-radius:5px;display:flex;align-items:center;">
+        <i class="fas fa-desktop" style="margin-right:7px;"></i>Campus virtual
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 3 — Estructura simplificada + ayuda desplegable
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">OPCIÓN 3 — Nav simplificada: Inicio · Programas · Ed. Continua · Fábrica · Pagos · Nosotros · Ayuda</div>
+
+<nav class="h3-nav">
+  <div class="logo-area">
+    <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+  </div>
+
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="#">Inicio</a></li>
+
+    <li class="nav-item" id="h3-programas">
+      <button onclick="toggleMenu('h3-programas')">Programas <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-graduation-cap"></i>Pregrados</a></li>
+        <li><a href="#"><i class="fas fa-user-graduate"></i>Posgrados</a></li>
+        <li><a href="#"><i class="fas fa-laptop-code"></i>Virtuales</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item" id="h3-edcont">
+      <button onclick="toggleMenu('h3-edcont')">Educación continua <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+        <li><a href="#"><i class="fas fa-briefcase"></i>Cursos corporativos</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item"><a href="#">Fábrica</a></li>
+    <li class="nav-item"><a href="#">Pagos</a></li>
+    <li class="nav-item"><a href="#">Nosotros</a></li>
+
+    <li class="nav-item" id="h3-ayuda">
+      <button onclick="toggleMenu('h3-ayuda')">Ayuda <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown" style="right:0;left:auto;">
+        <li><a href="#"><i class="fas fa-book-open"></i>Biblioteca</a></li>
+        <li><a href="#"><i class="fas fa-comment-alt"></i>PQR</a></li>
+        <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i>Contacto</a></li>
+        <li><a href="#"><i class="fas fa-headset"></i>Soporte técnico</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 4 — Top bar rojo texto + nav con Campus Virtual
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">OPCIÓN 4 — Top bar rojo (texto) + nav completa + botón Campus Virtual</div>
+
+<div class="h4-topbar">
+  <div class="top-links">
+    <a href="#">Estudiantes</a>
+    <a href="#">Egresados</a>
+    <a href="#">Biblioteca</a>
+    <a href="#">Colaboradores</a>
+    <a href="#"><i class="fas fa-question-circle"></i>Ayuda</a>
+  </div>
+</div>
+
+<nav class="h4-nav">
+  <div class="logo-area">
+    <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+  </div>
+
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="#">Inicio</a></li>
+
+    <li class="nav-item" id="h4-programas">
+      <button onclick="toggleMenu('h4-programas')">Programas <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-graduation-cap"></i>Pregrados</a></li>
+        <li><a href="#"><i class="fas fa-user-graduate"></i>Posgrados</a></li>
+        <li><a href="#"><i class="fas fa-laptop-code"></i>Virtuales</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item" id="h4-edcont">
+      <button onclick="toggleMenu('h4-edcont')">Educación continua <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+        <li><a href="#"><i class="fas fa-briefcase"></i>Cursos corporativos</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item"><a href="#">Convenios</a></li>
+    <li class="nav-item"><a href="#">Soluciones</a></li>
+    <li class="nav-item"><a href="#">Financiación</a></li>
+
+    <li class="nav-item" style="display:flex;align-items:center;padding:0 8px;">
+      <a href="#" class="btn-red" style="height:40px;border-radius:5px;display:flex;align-items:center;">
+        <i class="fas fa-desktop" style="margin-right:7px;"></i>Campus virtual
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 5 (RECOMENDADA) — Dark premium con redes + utilidades
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">★ OPCIÓN 5 (REC.) — Dark premium: top bar oscura + nav oscura + botón rojo</div>
+
+<div class="h5-topbar">
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+  <div class="right">
+    <a href="#"><i class="fas fa-phone-alt"></i>Admisiones</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Pagos</a>
+    <a href="#"><i class="fas fa-globe"></i>Campus virtual</a>
+  </div>
+</div>
+
+<nav class="h5-nav">
+  <div class="logo-area">
+    <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+  </div>
+
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="#" class="active">Inicio</a></li>
+
+    <li class="nav-item" id="h5-programas">
+      <button onclick="toggleMenu('h5-programas')">Programas <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-graduation-cap"></i>Pregrados</a></li>
+        <li><a href="#"><i class="fas fa-user-graduate"></i>Posgrados</a></li>
+        <li><a href="#"><i class="fas fa-laptop-code"></i>Virtuales</a></li>
+        <li><a href="#"><i class="fas fa-flask"></i>Doctorados</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item" id="h5-edcont">
+      <button onclick="toggleMenu('h5-edcont')">Educación continua <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+        <li><a href="#"><i class="fas fa-briefcase"></i>Cursos empresa</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item"><a href="#">Fábrica de soluciones</a></li>
+    <li class="nav-item"><a href="#">Convenios</a></li>
+
+    <li class="nav-item" id="h5-nosotros">
+      <button onclick="toggleMenu('h5-nosotros')">Nosotros <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown" style="right:0;left:auto;">
+        <li><a href="#"><i class="fas fa-university"></i>Quiénes somos</a></li>
+        <li><a href="#"><i class="fas fa-bullseye"></i>Misión y visión</a></li>
+        <li><a href="#"><i class="fas fa-award"></i>Acreditaciones</a></li>
+      </ul>
+    </li>
+
+    <!-- CTA -->
+    <li class="nav-item" style="display:flex;align-items:center;padding:0 8px;">
+      <a href="#" class="btn-red" style="height:38px;border-radius:5px;display:flex;align-items:center;">
+        <i class="fas fa-sign-in-alt" style="margin-right:7px;"></i>Campus virtual
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 6 (RECOMENDADA) — Minimalista con border rojo + búsqueda
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">★ OPCIÓN 6 (REC.) — Minimalista, borde inferior rojo + buscador + top bar sutil</div>
+
+<div class="h6-topbar">
+  <div class="top-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fas fa-credit-card"></i> Pagos</a>
+    <a href="#"><i class="fas fa-phone"></i> Admisiones</a>
+    <div class="nav-sep" style="height:20px;"></div>
+    <a href="#"><i class="fas fa-globe"></i> Campus virtual</a>
+  </div>
+</div>
+
+<div class="h6-wrap">
+  <nav class="h6-nav">
+    <div class="logo-area">
+      <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#" style="border-bottom:3px solid #e02020;color:#e02020;">Inicio</a></li>
+
+      <li class="nav-item" id="h6-programas">
+        <button onclick="toggleMenu('h6-programas')">Programas <i class="fas fa-chevron-down chevron"></i></button>
+        <ul class="dropdown">
+          <li><a href="#"><i class="fas fa-graduation-cap"></i>Pregrados</a></li>
+          <li><a href="#"><i class="fas fa-user-graduate"></i>Posgrados</a></li>
+          <li><a href="#"><i class="fas fa-laptop-code"></i>Virtuales</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item" id="h6-edcont">
+        <button onclick="toggleMenu('h6-edcont')">Educación continua <i class="fas fa-chevron-down chevron"></i></button>
+        <ul class="dropdown">
+          <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+          <li><a href="#"><i class="fas fa-briefcase"></i>Cursos empresa</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item"><a href="#">Convenios</a></li>
+      <li class="nav-item"><a href="#">Soluciones</a></li>
+
+      <li class="nav-item" id="h6-soporte">
+        <button onclick="toggleMenu('h6-soporte')">Soporte <i class="fas fa-chevron-down chevron"></i></button>
+        <ul class="dropdown" style="right:60px;left:auto;">
+          <li><a href="#"><i class="fas fa-book-open"></i>Biblioteca</a></li>
+          <li><a href="#"><i class="fas fa-comment-alt"></i>PQR</a></li>
+          <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <button class="search-btn" aria-label="Buscar">
+      <i class="fas fa-search"></i>
+    </button>
+  </nav>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 7 (RECOMENDADA) — Logo centrado, nav dividida
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">★ OPCIÓN 7 (REC.) — Logo centrado, nav dividida en dos lados</div>
+
+<div class="h7-wrap">
+  <div class="h7-topbar">
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="top-links">
+      <a href="#"><i class="fas fa-credit-card"></i> Pagos</a>
+      <a href="#"><i class="fas fa-user"></i> Estudiantes</a>
+      <a href="#"><i class="fas fa-user-tie"></i> Egresados</a>
+      <a href="#"><i class="fas fa-globe"></i> Campus virtual</a>
+    </div>
+  </div>
+
+  <nav class="h7-nav">
+    <!-- Nav izquierda -->
+    <div class="nav-left">
+      <div class="nav-item"><a href="#" style="color:#2d2d3e;font-size:13px;padding:0 13px;height:74px;display:flex;align-items:center;">Inicio</a></div>
+
+      <div class="nav-item" id="h7-programas">
+        <button onclick="toggleMenu('h7-programas')" style="height:74px;font-size:13px;padding:0 13px;color:#2d2d3e;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:5px;">
+          Programas <i class="fas fa-chevron-down chevron" style="font-size:9px;opacity:.6;"></i>
+        </button>
+        <ul class="dropdown">
+          <li><a href="#"><i class="fas fa-graduation-cap"></i>Pregrados</a></li>
+          <li><a href="#"><i class="fas fa-user-graduate"></i>Posgrados</a></li>
+          <li><a href="#"><i class="fas fa-laptop-code"></i>Virtuales</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-item" id="h7-edcont">
+        <button onclick="toggleMenu('h7-edcont')" style="height:74px;font-size:13px;padding:0 13px;color:#2d2d3e;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:5px;">
+          Educación continua <i class="fas fa-chevron-down chevron" style="font-size:9px;opacity:.6;"></i>
+        </button>
+        <ul class="dropdown">
+          <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+          <li><a href="#"><i class="fas fa-briefcase"></i>Cursos empresa</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Logo centrado -->
+    <div class="logo-area">
+      <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+    </div>
+
+    <!-- Nav derecha -->
+    <div class="nav-right">
+      <div class="nav-item"><a href="#" style="color:#2d2d3e;font-size:13px;padding:0 13px;height:74px;display:flex;align-items:center;">Convenios</a></div>
+      <div class="nav-item"><a href="#" style="color:#2d2d3e;font-size:13px;padding:0 13px;height:74px;display:flex;align-items:center;">Soluciones</a></div>
+
+      <div class="nav-item" id="h7-soporte">
+        <button onclick="toggleMenu('h7-soporte')" style="height:74px;font-size:13px;padding:0 13px;color:#2d2d3e;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:5px;">
+          Soporte <i class="fas fa-chevron-down chevron" style="font-size:9px;opacity:.6;"></i>
+        </button>
+        <ul class="dropdown" style="right:60px;left:auto;">
+          <li><a href="#"><i class="fas fa-book-open"></i>Biblioteca</a></li>
+          <li><a href="#"><i class="fas fa-comment-alt"></i>PQR</a></li>
+          <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-item" style="display:flex;align-items:center;padding:0 8px;">
+        <a href="#" class="btn-red" style="height:38px;border-radius:5px;display:flex;align-items:center;color:#fff;font-weight:600;font-size:13px;padding:0 18px;background:#e02020;white-space:nowrap;">
+          <i class="fas fa-desktop" style="margin-right:7px;"></i>Campus virtual
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 8 (RECOMENDADA) — Top bar rojo + mega menú
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">★ OPCIÓN 8 (REC.) — Top bar roja institucional + mega menú Programas</div>
+
+<div class="h8-topbar">
+  <span class="tag"><i class="fas fa-map-marker-alt" style="margin-right:5px;"></i>Bogotá D.C. · NIT 800.131.739-3 · Vigilada Mineducación</span>
+  <div class="right">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <div style="width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 4px;"></div>
+    <a href="#"><i class="fas fa-credit-card"></i> Pagos</a>
+    <a href="#"><i class="fas fa-phone-alt"></i> Admisiones</a>
+    <a href="#"><i class="fas fa-globe"></i> Campus virtual</a>
+  </div>
+</div>
+
+<nav class="h8-nav">
+  <div class="logo-area">
+    <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+  </div>
+
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="#" style="color:#e02020;border-bottom:3px solid #e02020;margin-bottom:-3px;">Inicio</a></li>
+
+    <!-- MEGA MENÚ PROGRAMAS -->
+    <li class="nav-item" id="h8-programas">
+      <button onclick="toggleMenu('h8-programas')">Programas <i class="fas fa-chevron-down chevron"></i></button>
+      <div class="mega-dropdown">
+        <div class="mega-col">
+          <h4>Pregrados</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Administración</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Contaduría</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Ingeniería Industrial</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Mercadeo</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Posgrados</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i>MBA</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Finanzas</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Gestión Humana</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Virtuales</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Administración virtual</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Contaduría virtual</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Ed. Continua</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Diplomados</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Cursos corporativos</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i>Certificaciones</a></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+
+    <li class="nav-item"><a href="#">Educación continua</a></li>
+    <li class="nav-item"><a href="#">Convenios</a></li>
+    <li class="nav-item"><a href="#">Soluciones</a></li>
+
+    <li class="nav-item" id="h8-nosotros">
+      <button onclick="toggleMenu('h8-nosotros')">Nosotros <i class="fas fa-chevron-down chevron"></i></button>
+      <ul class="dropdown" style="right:80px;left:auto;">
+        <li><a href="#"><i class="fas fa-university"></i>Quiénes somos</a></li>
+        <li><a href="#"><i class="fas fa-award"></i>Acreditaciones</a></li>
+        <li><a href="#"><i class="fas fa-chart-bar"></i>Transparencia</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item" style="display:flex;align-items:center;padding:0 8px;">
+      <a href="#" class="btn-red" style="height:40px;border-radius:5px;display:flex;align-items:center;">
+        <i class="fas fa-sign-in-alt" style="margin-right:7px;"></i>Campus virtual
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     OPCIÓN 9 (RECOMENDADA) — Glassmorphism / transparente sobre fondo oscuro
+══════════════════════════════════════════════════════════ -->
+<div class="section-label">★ OPCIÓN 9 (REC.) — Glassmorphism: frosted glass sobre fondo degradado oscuro</div>
+
+<div class="h9-demo-bg">
+  <nav class="h9-nav">
+    <div class="logo-area">
+      <a href="#"><img src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png" alt="Uniempresarial" /></a>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#" style="color:#fff;">Inicio</a></li>
+
+      <li class="nav-item" id="h9-programas">
+        <button onclick="toggleMenu('h9-programas')" style="color:rgba(255,255,255,.8);">
+          Programas <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="dropdown" style="background:rgba(15,20,40,.95);border-top-color:#e02020;">
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-graduation-cap" style="color:#e02020;"></i>Pregrados</a></li>
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-user-graduate" style="color:#e02020;"></i>Posgrados</a></li>
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-laptop-code" style="color:#e02020;"></i>Virtuales</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item" id="h9-edcont">
+        <button onclick="toggleMenu('h9-edcont')" style="color:rgba(255,255,255,.8);">
+          Educación continua <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="dropdown" style="background:rgba(15,20,40,.95);border-top-color:#e02020;">
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-certificate" style="color:#e02020;"></i>Diplomados</a></li>
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-briefcase" style="color:#e02020;"></i>Cursos empresa</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item"><a href="#" style="color:rgba(255,255,255,.8);">Convenios</a></li>
+      <li class="nav-item"><a href="#" style="color:rgba(255,255,255,.8);">Soluciones</a></li>
+
+      <li class="nav-item" id="h9-nosotros">
+        <button onclick="toggleMenu('h9-nosotros')" style="color:rgba(255,255,255,.8);">
+          Nosotros <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="dropdown" style="background:rgba(15,20,40,.95);border-top-color:#e02020;right:80px;left:auto;">
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-university" style="color:#e02020;"></i>Quiénes somos</a></li>
+          <li><a href="#" style="color:rgba(255,255,255,.75);"><i class="fas fa-award" style="color:#e02020;"></i>Acreditaciones</a></li>
+        </ul>
+      </li>
+
+      <!-- Social icons en nav -->
+      <li style="display:flex;align-items:center;gap:10px;padding:0 10px;margin-left:4px;">
+        <a href="#" style="color:rgba(255,255,255,.5);font-size:13px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><i class="fab fa-instagram"></i></a>
+        <a href="#" style="color:rgba(255,255,255,.5);font-size:13px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" style="color:rgba(255,255,255,.5);font-size:13px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><i class="fab fa-youtube"></i></a>
+      </li>
+
+      <!-- CTA -->
+      <li class="nav-item" style="display:flex;align-items:center;padding:0 4px;">
+        <a href="#" class="btn-red" style="height:38px;border-radius:5px;display:flex;align-items:center;">
+          <i class="fas fa-sign-in-alt" style="margin-right:7px;"></i>Campus virtual
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="h9-preview">↑ Este header se vería sobre un hero con imagen de fondo oscura</div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     JS — Dropdown toggle
+══════════════════════════════════════════════════════════ -->
+<script>
+  function toggleMenu(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.nav-item.open').forEach(item => item.classList.remove('open'));
+    // Toggle clicked
+    if (!isOpen) el.classList.add('open');
+  }
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      document.querySelectorAll('.nav-item.open').forEach(item => item.classList.remove('open'));
+    }
+  });
+</script>
+
+</body>
+</html>

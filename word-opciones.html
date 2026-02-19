@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Opciones - En Qué Puedes Trabajar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: #f5f7fa;
+            color: #06325a;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .option-header {
+            background: #0132AF;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 40px 0 20px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .preview-section {
+            background: white;
+            border-radius: 12px;
+            padding: 28px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* ===== OPCIÓN 1: Accordion Clásico ===== */
+        .option-1 .ue-accordion {
+            border: 1px solid #e0e3e8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .option-1 .acc-item {
+            border-bottom: 1px solid #e0e3e8;
+        }
+        .option-1 .acc-item:last-child {
+            border-bottom: none;
+        }
+        .option-1 .acc-btn {
+            background: white;
+            padding: 16px 16px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+        .option-1 .acc-btn:hover {
+            background: #f3f9ff;
+        }
+        .option-1 .acc-btn[data-expanded="true"] {
+            background: #e8f1ff;
+        }
+        .option-1 .acc-icon {
+            color: #0132AF;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .option-1 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-1 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .option-1 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-1 .acc-content {
+            padding: 16px;
+            color: #7a8a99;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .option-1 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-1 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 2: Con Borde Izquierdo Colorido ===== */
+        .option-2 .acc-btn {
+            background: white;
+            padding: 16px 16px 16px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #06325a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: all 0.3s ease;
+            border-left: 4px solid #0132AF;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+        .option-2 .acc-btn:hover {
+            background: #f3f9ff;
+            transform: translateX(4px);
+        }
+        .option-2 .acc-btn[data-expanded="true"] {
+            background: linear-gradient(90deg, #e8f1ff 0%, white 100%);
+            border-left-color: #FF3B3B;
+        }
+        .option-2 .acc-icon {
+            color: #0132AF;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        .option-2 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(45deg);
+            color: #FF3B3B;
+        }
+        .option-2 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-bottom: 8px;
+        }
+        .option-2 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-2 .acc-content {
+            background: linear-gradient(90deg, #f9fbfd 0%, white 100%);
+            padding: 16px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+            border-radius: 0 0 6px 6px;
+            border: 1px solid #e0e3e8;
+            border-left: none;
+        }
+        .option-2 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-2 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 3: Card Style con Shadow ===== */
+        .option-3 .acc-item {
+            margin-bottom: 12px;
+        }
+        .option-3 .acc-btn {
+            background: white;
+            padding: 16px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(1, 50, 175, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-3 .acc-btn:hover {
+            box-shadow: 0 6px 16px rgba(1, 50, 175, 0.12);
+            transform: translateY(-2px);
+        }
+        .option-3 .acc-btn[data-expanded="true"] {
+            box-shadow: 0 8px 20px rgba(1, 50, 175, 0.15);
+            background: linear-gradient(135deg, #f3f9ff 0%, white 100%);
+        }
+        .option-3 .acc-icon {
+            color: #0132AF;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .option-3 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-3 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: -12px;
+        }
+        .option-3 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-3 .acc-content {
+            background: white;
+            padding: 16px;
+            color: #7a8a99;
+            font-size: 14px;
+            line-height: 1.6;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.08);
+            margin-bottom: 12px;
+        }
+        .option-3 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-3 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 4: Con Gradient Background ===== */
+        .option-4 .ue-accordion {
+            background: linear-gradient(135deg, #f3f9ff 0%, white 100%);
+            border-radius: 12px;
+            padding: 8px;
+            border: 1px solid rgba(1, 50, 175, 0.1);
+        }
+        .option-4 .acc-item {
+            margin-bottom: 8px;
+        }
+        .option-4 .acc-item:last-child {
+            margin-bottom: 0;
+        }
+        .option-4 .acc-btn {
+            background: white;
+            padding: 14px 16px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .option-4 .acc-btn:hover {
+            background: linear-gradient(90deg, #e8f1ff 0%, white 100%);
+        }
+        .option-4 .acc-btn[data-expanded="true"] {
+            background: linear-gradient(90deg, #e8f1ff 0%, white 100%);
+        }
+        .option-4 .acc-icon {
+            color: #0132AF;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .option-4 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-4 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .option-4 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-4 .acc-content {
+            padding: 12px 16px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .option-4 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-4 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 5: Con Icon Efecto ===== */
+        .option-5 .ue-accordion {
+            border: 1px solid #e0e3e8;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .option-5 .acc-item-wrap {
+            border-bottom: 1px solid #e0e3e8;
+        }
+        .option-5 .acc-item-wrap:last-child {
+            border-bottom: none;
+        }
+        .option-5 .acc-btn {
+            background: white;
+            padding: 18px 16px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .option-5 .acc-btn:hover {
+            background: #f9fbfd;
+        }
+        .option-5 .acc-icon {
+            width: 28px;
+            height: 28px;
+            border: 2px solid #0132AF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #0132AF;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .option-5 .acc-btn[data-expanded="true"] .acc-icon {
+            background: #0132AF;
+            color: white;
+            transform: rotate(90deg);
+        }
+        .option-5 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .option-5 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-5 .acc-content {
+            padding: 16px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #f9fbfd;
+        }
+        .option-5 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-5 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 6: Rojo como Color Secundario ===== */
+        .option-6 .acc-btn {
+            background: white;
+            padding: 16px 16px 16px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #06325a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: all 0.3s ease;
+            border-left: 4px solid #0132AF;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+        .option-6 .acc-btn:nth-child(odd) {
+            border-left-color: #0132AF;
+        }
+        .option-6 .acc-btn:nth-child(even) {
+            border-left-color: #FF3B3B;
+        }
+        .option-6 .acc-btn:hover {
+            background: #f3f9ff;
+            transform: translateX(4px);
+        }
+        .option-6 .acc-btn[data-expanded="true"] {
+            background: #e8f1ff;
+        }
+        .option-6 .acc-icon {
+            color: #0132AF;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .option-6 .acc-btn:nth-child(even) .acc-icon {
+            color: #FF3B3B;
+        }
+        .option-6 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-6 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-bottom: 8px;
+        }
+        .option-6 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-6 .acc-content {
+            padding: 16px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #f9fbfd;
+            border: 1px solid #e0e3e8;
+            border-left: none;
+            margin-bottom: 8px;
+        }
+        .option-6 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-6 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 7: Pill Buttons ===== */
+        .option-7 .acc-btn {
+            background: white;
+            padding: 12px 16px;
+            border: 2px solid #e0e3e8;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+            border-radius: 20px;
+        }
+        .option-7 .acc-btn:hover {
+            border-color: #0132AF;
+            background: #f3f9ff;
+        }
+        .option-7 .acc-btn[data-expanded="true"] {
+            border-color: #0132AF;
+            background: linear-gradient(90deg, #e8f1ff 0%, white 100%);
+        }
+        .option-7 .acc-icon {
+            color: #0132AF;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .option-7 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-7 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .option-7 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-7 .acc-content {
+            padding: 14px 16px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #f9fbfd;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+        }
+        .option-7 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-7 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 8: Minimal ===== */
+        .option-8 .acc-btn {
+            background: transparent;
+            padding: 14px 0;
+            border: none;
+            border-bottom: 1px solid #e0e3e8;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        .option-8 .acc-btn:hover {
+            color: #FF3B3B;
+        }
+        .option-8 .acc-btn[data-expanded="true"] {
+            color: #FF3B3B;
+            border-bottom-color: #FF3B3B;
+        }
+        .option-8 .acc-icon {
+            color: inherit;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .option-8 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-8 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .option-8 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-8 .acc-content {
+            padding: 14px 0;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .option-8 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-8 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 9: Step Indicator ===== */
+        .option-9 .acc-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .option-9 .acc-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #0132AF;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .option-9 .acc-btn {
+            background: white;
+            padding: 12px 14px;
+            border: 1px solid #e0e3e8;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        .option-9 .acc-btn:hover {
+            border-color: #0132AF;
+            background: #f3f9ff;
+        }
+        .option-9 .acc-btn[data-expanded="true"] {
+            background: #e8f1ff;
+            border-color: #0132AF;
+        }
+        .option-9 .acc-icon {
+            color: #0132AF;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .option-9 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-9 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-left: 56px;
+            margin-bottom: 12px;
+        }
+        .option-9 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-9 .acc-content {
+            padding: 12px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #f9fbfd;
+            border-radius: 6px;
+        }
+        .option-9 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-9 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 24px;
+            font-size: 14px;
+        }
+
+        /* ===== OPCIÓN 10: Gradient Border ===== */
+        .option-10 .acc-btn {
+            background: white;
+            padding: 16px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: #0132AF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .option-10 .acc-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            padding: 2px;
+            background: linear-gradient(135deg, #0132AF 0%, #FF3B3B 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .option-10 .acc-btn:hover::before,
+        .option-10 .acc-btn[data-expanded="true"]::before {
+            opacity: 1;
+        }
+        .option-10 .acc-btn:hover {
+            background: #f3f9ff;
+        }
+        .option-10 .acc-btn[data-expanded="true"] {
+            background: linear-gradient(90deg, #e8f1ff 0%, white 100%);
+        }
+        .option-10 .acc-icon {
+            color: #0132AF;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .option-10 .acc-btn[data-expanded="true"] .acc-icon {
+            transform: rotate(180deg);
+        }
+        .option-10 .acc-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .option-10 .acc-btn[data-expanded="true"] ~ .acc-panel {
+            max-height: 200px;
+        }
+        .option-10 .acc-content {
+            padding: 16px;
+            color: #7a8a99;
+            font-size: 13px;
+            line-height: 1.6;
+            background: white;
+            border: 2px solid #e0e3e8;
+            border-radius: 8px;
+        }
+        .option-10 .acc-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0 0 8px;
+        }
+        .option-10 .acc-subtitle {
+            color: #7a8a99;
+            margin: 0 0 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive para todas las opciones */
+        @media (max-width: 640px) {
+            .preview-section {
+                padding: 20px 16px;
+            }
+            .option-1 .acc-section-title,
+            .option-2 .acc-section-title,
+            .option-3 .acc-section-title,
+            .option-4 .acc-section-title,
+            .option-5 .acc-section-title,
+            .option-6 .acc-section-title,
+            .option-7 .acc-section-title,
+            .option-8 .acc-section-title,
+            .option-9 .acc-section-title,
+            .option-10 .acc-section-title {
+                font-size: 22px;
+            }
+            .option-9 .acc-step {
+                flex-direction: column;
+            }
+            .option-9 .acc-panel {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 10px; color: #0132AF;">En Qué Puedes Trabajar</h1>
+        <p style="text-align: center; color: #7a8a99; margin-bottom: 40px;">20 Variaciones de Diseño</p>
+
+        <!-- OPCIÓN 1 -->
+        <div class="option-header">Opción 1: Accordion Clásico</div>
+        <div class="preview-section option-1">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="option-header">Opción 2: Con Borde Izquierdo Colorido</div>
+        <div class="preview-section option-2">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="option-header">Opción 3: Card Style con Shadow</div>
+        <div class="preview-section option-3">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="option-header">Opción 4: Con Gradient Background</div>
+        <div class="preview-section option-4">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                    <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="option-header">Opción 5: Con Icon Efecto</div>
+        <div class="preview-section option-5">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <div class="acc-item-wrap">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                </div>
+                <div class="acc-item-wrap">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                </div>
+                <div class="acc-item-wrap">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                </div>
+                <div class="acc-item-wrap">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                </div>
+                <div class="acc-item-wrap">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                </div>
+                <div class="acc-item-wrap">
+                    <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">+</span></button>
+                    <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 6 -->
+        <div class="option-header">Opción 6: Rojo como Color Secundario</div>
+        <div class="preview-section option-6">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 7 -->
+        <div class="option-header">Opción 7: Pill Buttons</div>
+        <div class="preview-section option-7">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 8 -->
+        <div class="option-header">Opción 8: Minimal</div>
+        <div class="preview-section option-8">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 9 -->
+        <div class="option-header">Opción 9: Step Indicator</div>
+        <div class="preview-section option-9">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <div class="acc-step">
+                    <div class="acc-number">1</div>
+                    <div style="flex: 1;">
+                        <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                        <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                    </div>
+                </div>
+                <div class="acc-step">
+                    <div class="acc-number">2</div>
+                    <div style="flex: 1;">
+                        <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                        <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                    </div>
+                </div>
+                <div class="acc-step">
+                    <div class="acc-number">3</div>
+                    <div style="flex: 1;">
+                        <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                        <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                    </div>
+                </div>
+                <div class="acc-step">
+                    <div class="acc-number">4</div>
+                    <div style="flex: 1;">
+                        <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                        <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                    </div>
+                </div>
+                <div class="acc-step">
+                    <div class="acc-number">5</div>
+                    <div style="flex: 1;">
+                        <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                        <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                    </div>
+                </div>
+                <div class="acc-step">
+                    <div class="acc-number">6</div>
+                    <div style="flex: 1;">
+                        <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                        <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 10 -->
+        <div class="option-header">Opción 10: Gradient Border</div>
+        <div class="preview-section option-10">
+            <h2 class="acc-section-title">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p class="acc-subtitle">Roles frecuentes según perfil y experiencia.</p>
+            <div class="ue-accordion">
+                <button class="acc-btn" onclick="toggleAcc(this)">Gerente de proyectos <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista de negocios (Business Analyst) <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Consultor empresarial <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Especialista en marketing digital <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Analista financiero <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                <button class="acc-btn" onclick="toggleAcc(this)">Fundador/a de startups o PYMES <span class="acc-icon">▼</span></button>
+                <div class="acc-panel"><div class="acc-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+            </div>
+        </div>
+    </div>
+
+        <!-- OPCIÓN 11: Con Números Circulares -->
+        <div class="option-header">Opción 11: Con Números Circulares</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt11-btn { background: white; padding: 16px; border: 1px solid #e0e3e8; cursor: pointer; text-align: left; font-weight: 600; color: #0132AF; display: flex; justify-content: space-between; align-items: center; width: 100%; border-radius: 8px; margin-bottom: 10px; transition: all 0.3s ease; }
+                .opt11-btn:hover { background: #f3f9ff; border-color: #0132AF; }
+                .opt11-btn[data-expanded="true"] { background: #e8f1ff; border-color: #0132AF; }
+                .opt11-icon { width: 28px; height: 28px; background: #0132AF; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+                .opt11-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-bottom: 10px; }
+                .opt11-btn[data-expanded="true"] ~ .opt11-panel { max-height: 200px; }
+                .opt11-content { padding: 16px; color: #7a8a99; font-size: 13px; line-height: 1.6; background: #f9fbfd; border: 1px solid #e0e3e8; border-radius: 0 0 8px 8px; }
+            </style>
+            <div>
+                <button class="opt11-btn" onclick="toggleOpt11(this)">Gerente de proyectos <span class="opt11-icon">1</span></button>
+                <div class="opt11-panel"><div class="opt11-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                <button class="opt11-btn" onclick="toggleOpt11(this)">Analista de negocios (Business Analyst) <span class="opt11-icon">2</span></button>
+                <div class="opt11-panel"><div class="opt11-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                <button class="opt11-btn" onclick="toggleOpt11(this)">Consultor empresarial <span class="opt11-icon">3</span></button>
+                <div class="opt11-panel"><div class="opt11-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                <button class="opt11-btn" onclick="toggleOpt11(this)">Especialista en marketing digital <span class="opt11-icon">4</span></button>
+                <div class="opt11-panel"><div class="opt11-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                <button class="opt11-btn" onclick="toggleOpt11(this)">Analista financiero <span class="opt11-icon">5</span></button>
+                <div class="opt11-panel"><div class="opt11-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                <button class="opt11-btn" onclick="toggleOpt11(this)">Fundador/a de startups o PYMES <span class="opt11-icon">6</span></button>
+                <div class="opt11-panel"><div class="opt11-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 12: Card Grid Compact -->
+        <div class="option-header">Opción 12: Card Grid Compact</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt12-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+                .opt12-btn { background: white; padding: 14px; border: 1px solid #e0e3e8; border-radius: 8px; cursor: pointer; text-align: left; font-weight: 600; color: #0132AF; font-size: 14px; transition: all 0.3s ease; }
+                .opt12-btn:hover { box-shadow: 0 4px 12px rgba(1, 50, 175, 0.1); }
+                .opt12-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; grid-column: 1/-1; }
+                .opt12-btn[data-expanded="true"] ~ .opt12-panel { max-height: 150px; }
+                .opt12-content { padding: 12px; color: #7a8a99; font-size: 12px; line-height: 1.5; background: #f9fbfd; border-radius: 6px; }
+                @media (max-width: 640px) { .opt12-grid { grid-template-columns: 1fr; } }
+            </style>
+            <div class="opt12-grid">
+                <button class="opt12-btn" onclick="toggleOpt12(this)">Gerente de proyectos</button>
+                <button class="opt12-btn" onclick="toggleOpt12(this)">Analista de negocios</button>
+                <button class="opt12-btn" onclick="toggleOpt12(this)">Consultor empresarial</button>
+                <button class="opt12-btn" onclick="toggleOpt12(this)">Especialista marketing</button>
+                <button class="opt12-btn" onclick="toggleOpt12(this)">Analista financiero</button>
+                <button class="opt12-btn" onclick="toggleOpt12(this)">Fundador/a startups</button>
+                <div class="opt12-panel" style="grid-column: 1/-1;"><div class="opt12-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 13: Tabbed Style -->
+        <div class="option-header">Opción 13: Tabbed Style</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt13-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+                .opt13-tab { padding: 10px 16px; background: white; border: 2px solid #e0e3e8; border-radius: 6px; cursor: pointer; font-weight: 600; color: #0132AF; transition: all 0.3s ease; font-size: 13px; }
+                .opt13-tab:hover { border-color: #0132AF; }
+                .opt13-tab[data-active="true"] { background: #0132AF; color: white; border-color: #0132AF; }
+                .opt13-content { padding: 16px; background: #f9fbfd; border-radius: 8px; color: #7a8a99; line-height: 1.6; min-height: 60px; }
+            </style>
+            <div class="opt13-tabs">
+                <button class="opt13-tab" data-active="true" onclick="switchTab(this)">Gerente</button>
+                <button class="opt13-tab" onclick="switchTab(this)">Analista BA</button>
+                <button class="opt13-tab" onclick="switchTab(this)">Consultor</button>
+                <button class="opt13-tab" onclick="switchTab(this)">Marketing</button>
+                <button class="opt13-tab" onclick="switchTab(this)">Financiero</button>
+                <button class="opt13-tab" onclick="switchTab(this)">Startups</button>
+            </div>
+            <div class="opt13-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+        </div>
+
+        <!-- OPCIÓN 14: Left Accent Bar -->
+        <div class="option-header">Opción 14: Left Accent Bar Premium</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt14-item { border-left: 6px solid #0132AF; padding: 16px; padding-left: 20px; background: white; margin-bottom: 12px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.3s ease; }
+                .opt14-item:hover { box-shadow: 0 6px 16px rgba(1, 50, 175, 0.1); transform: translateX(4px); }
+                .opt14-item:nth-child(even) { border-left-color: #FF3B3B; }
+                .opt14-title { font-weight: 700; color: #0132AF; margin: 0 0 4px; }
+                .opt14-desc { color: #7a8a99; font-size: 13px; margin: 0; }
+            </style>
+            <div>
+                <div class="opt14-item">
+                    <div class="opt14-title">Gerente de proyectos</div>
+                    <div class="opt14-desc">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                </div>
+                <div class="opt14-item">
+                    <div class="opt14-title">Analista de negocios (Business Analyst)</div>
+                    <div class="opt14-desc">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                </div>
+                <div class="opt14-item">
+                    <div class="opt14-title">Consultor empresarial</div>
+                    <div class="opt14-desc">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                </div>
+                <div class="opt14-item">
+                    <div class="opt14-title">Especialista en marketing digital</div>
+                    <div class="opt14-desc">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                </div>
+                <div class="opt14-item">
+                    <div class="opt14-title">Analista financiero</div>
+                    <div class="opt14-desc">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                </div>
+                <div class="opt14-item">
+                    <div class="opt14-title">Fundador/a de startups o PYMES</div>
+                    <div class="opt14-desc">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 15: Badge Counter -->
+        <div class="option-header">Opción 15: Badge Counter</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt15-item { display: flex; gap: 12px; padding: 16px; background: white; border: 1px solid #e0e3e8; border-radius: 8px; margin-bottom: 12px; align-items: flex-start; }
+                .opt15-badge { width: 36px; height: 36px; background: linear-gradient(135deg, #0132AF 0%, #0854d1 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+                .opt15-content { flex: 1; }
+                .opt15-title { font-weight: 700; color: #0132AF; margin: 0 0 4px; }
+                .opt15-desc { color: #7a8a99; font-size: 13px; margin: 0; line-height: 1.5; }
+            </style>
+            <div>
+                <div class="opt15-item">
+                    <div class="opt15-badge">1</div>
+                    <div class="opt15-content">
+                        <div class="opt15-title">Gerente de proyectos</div>
+                        <div class="opt15-desc">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                    </div>
+                </div>
+                <div class="opt15-item">
+                    <div class="opt15-badge">2</div>
+                    <div class="opt15-content">
+                        <div class="opt15-title">Analista de negocios (Business Analyst)</div>
+                        <div class="opt15-desc">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                    </div>
+                </div>
+                <div class="opt15-item">
+                    <div class="opt15-badge">3</div>
+                    <div class="opt15-content">
+                        <div class="opt15-title">Consultor empresarial</div>
+                        <div class="opt15-desc">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                    </div>
+                </div>
+                <div class="opt15-item">
+                    <div class="opt15-badge">4</div>
+                    <div class="opt15-content">
+                        <div class="opt15-title">Especialista en marketing digital</div>
+                        <div class="opt15-desc">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                    </div>
+                </div>
+                <div class="opt15-item">
+                    <div class="opt15-badge">5</div>
+                    <div class="opt15-content">
+                        <div class="opt15-title">Analista financiero</div>
+                        <div class="opt15-desc">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                    </div>
+                </div>
+                <div class="opt15-item">
+                    <div class="opt15-badge">6</div>
+                    <div class="opt15-content">
+                        <div class="opt15-title">Fundador/a de startups o PYMES</div>
+                        <div class="opt15-desc">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 16: Colored Accordion -->
+        <div class="option-header">Opción 16: Colored Accordion</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt16-btn { background: white; padding: 16px; border: none; cursor: pointer; text-align: left; font-weight: 600; color: white; display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 8px; border-radius: 8px; transition: all 0.3s ease; }
+                .opt16-btn:nth-child(3n+1) { background: linear-gradient(135deg, #0132AF 0%, #0854d1 100%); }
+                .opt16-btn:nth-child(3n+2) { background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%); }
+                .opt16-btn:nth-child(3n) { background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%); }
+                .opt16-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+                .opt16-icon { font-size: 18px; transition: transform 0.3s ease; }
+                .opt16-btn[data-expanded="true"] .opt16-icon { transform: rotate(180deg); }
+                .opt16-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-bottom: 8px; }
+                .opt16-btn[data-expanded="true"] ~ .opt16-panel { max-height: 200px; }
+                .opt16-content { padding: 16px; color: #7a8a99; font-size: 13px; line-height: 1.6; background: white; border: 1px solid #e0e3e8; border-top: none; border-radius: 0 0 8px 8px; }
+            </style>
+            <div>
+                <button class="opt16-btn" onclick="toggleOpt16(this)">Gerente de proyectos <span class="opt16-icon">▼</span></button>
+                <div class="opt16-panel"><div class="opt16-content">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div></div>
+                <button class="opt16-btn" onclick="toggleOpt16(this)">Analista de negocios (Business Analyst) <span class="opt16-icon">▼</span></button>
+                <div class="opt16-panel"><div class="opt16-content">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div></div>
+                <button class="opt16-btn" onclick="toggleOpt16(this)">Consultor empresarial <span class="opt16-icon">▼</span></button>
+                <div class="opt16-panel"><div class="opt16-content">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div></div>
+                <button class="opt16-btn" onclick="toggleOpt16(this)">Especialista en marketing digital <span class="opt16-icon">▼</span></button>
+                <div class="opt16-panel"><div class="opt16-content">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div></div>
+                <button class="opt16-btn" onclick="toggleOpt16(this)">Analista financiero <span class="opt16-icon">▼</span></button>
+                <div class="opt16-panel"><div class="opt16-content">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div></div>
+                <button class="opt16-btn" onclick="toggleOpt16(this)">Fundador/a de startups o PYMES <span class="opt16-icon">▼</span></button>
+                <div class="opt16-panel"><div class="opt16-content">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div></div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 17: Simple List View -->
+        <div class="option-header">Opción 17: Simple List View</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt17-list { list-style: none; padding: 0; margin: 0; }
+                .opt17-item { padding: 14px 0; border-bottom: 1px solid #e0e3e8; display: flex; justify-content: space-between; align-items: flex-start; }
+                .opt17-item:last-child { border-bottom: none; }
+                .opt17-title { font-weight: 700; color: #0132AF; }
+                .opt17-desc { color: #7a8a99; font-size: 13px; line-height: 1.5; margin-top: 4px; }
+                .opt17-content { flex: 1; }
+                .opt17-arrow { color: #0132AF; font-size: 18px; margin-left: 12px; }
+            </style>
+            <ul class="opt17-list">
+                <li class="opt17-item">
+                    <div class="opt17-content">
+                        <div class="opt17-title">Gerente de proyectos</div>
+                        <div class="opt17-desc">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                    </div>
+                    <span class="opt17-arrow">→</span>
+                </li>
+                <li class="opt17-item">
+                    <div class="opt17-content">
+                        <div class="opt17-title">Analista de negocios (Business Analyst)</div>
+                        <div class="opt17-desc">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                    </div>
+                    <span class="opt17-arrow">→</span>
+                </li>
+                <li class="opt17-item">
+                    <div class="opt17-content">
+                        <div class="opt17-title">Consultor empresarial</div>
+                        <div class="opt17-desc">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                    </div>
+                    <span class="opt17-arrow">→</span>
+                </li>
+                <li class="opt17-item">
+                    <div class="opt17-content">
+                        <div class="opt17-title">Especialista en marketing digital</div>
+                        <div class="opt17-desc">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                    </div>
+                    <span class="opt17-arrow">→</span>
+                </li>
+                <li class="opt17-item">
+                    <div class="opt17-content">
+                        <div class="opt17-title">Analista financiero</div>
+                        <div class="opt17-desc">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                    </div>
+                    <span class="opt17-arrow">→</span>
+                </li>
+                <li class="opt17-item">
+                    <div class="opt17-content">
+                        <div class="opt17-title">Fundador/a de startups o PYMES</div>
+                        <div class="opt17-desc">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                    </div>
+                    <span class="opt17-arrow">→</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- OPCIÓN 18: Card Grid 2 Columnas Expandible -->
+        <div class="option-header">Opción 18: Card Grid Expandible</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt18-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+                .opt18-card { background: white; border: 2px solid #e0e3e8; border-radius: 8px; padding: 16px; cursor: pointer; transition: all 0.3s ease; }
+                .opt18-card:hover { border-color: #0132AF; box-shadow: 0 4px 12px rgba(1, 50, 175, 0.1); }
+                .opt18-title { font-weight: 700; color: #0132AF; margin: 0 0 8px; font-size: 14px; }
+                .opt18-icon { float: right; color: #0132AF; font-size: 18px; }
+                .opt18-desc { color: #7a8a99; font-size: 12px; margin: 0; line-height: 1.4; clear: both; }
+                @media (max-width: 640px) { .opt18-grid { grid-template-columns: 1fr; } }
+            </style>
+            <div class="opt18-grid">
+                <div class="opt18-card" onclick="expandCard(this)">
+                    <div class="opt18-title">Gerente de proyectos <span class="opt18-icon">+</span></div>
+                    <div class="opt18-desc">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                </div>
+                <div class="opt18-card" onclick="expandCard(this)">
+                    <div class="opt18-title">Analista de negocios (Business Analyst) <span class="opt18-icon">+</span></div>
+                    <div class="opt18-desc">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                </div>
+                <div class="opt18-card" onclick="expandCard(this)">
+                    <div class="opt18-title">Consultor empresarial <span class="opt18-icon">+</span></div>
+                    <div class="opt18-desc">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                </div>
+                <div class="opt18-card" onclick="expandCard(this)">
+                    <div class="opt18-title">Especialista en marketing digital <span class="opt18-icon">+</span></div>
+                    <div class="opt18-desc">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                </div>
+                <div class="opt18-card" onclick="expandCard(this)">
+                    <div class="opt18-title">Analista financiero <span class="opt18-icon">+</span></div>
+                    <div class="opt18-desc">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                </div>
+                <div class="opt18-card" onclick="expandCard(this)">
+                    <div class="opt18-title">Fundador/a de startups o PYMES <span class="opt18-icon">+</span></div>
+                    <div class="opt18-desc">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 19: Timeline Style -->
+        <div class="option-header">Opción 19: Timeline Style Profesional</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt19-timeline { position: relative; padding: 0; }
+                .opt19-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #0132AF 0%, #FF3B3B 100%); }
+                .opt19-item { margin-bottom: 20px; padding-left: 60px; position: relative; }
+                .opt19-dot { position: absolute; left: 8px; top: 4px; width: 24px; height: 24px; background: white; border: 3px solid #0132AF; border-radius: 50%; }
+                .opt19-item:nth-child(even) .opt19-dot { border-color: #FF3B3B; }
+                .opt19-title { font-weight: 700; color: #0132AF; margin: 0 0 4px; }
+                .opt19-desc { color: #7a8a99; font-size: 12px; margin: 0; line-height: 1.5; }
+            </style>
+            <div class="opt19-timeline">
+                <div class="opt19-item">
+                    <div class="opt19-dot"></div>
+                    <div class="opt19-title">Gerente de proyectos</div>
+                    <div class="opt19-desc">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                </div>
+                <div class="opt19-item">
+                    <div class="opt19-dot"></div>
+                    <div class="opt19-title">Analista de negocios (Business Analyst)</div>
+                    <div class="opt19-desc">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                </div>
+                <div class="opt19-item">
+                    <div class="opt19-dot"></div>
+                    <div class="opt19-title">Consultor empresarial</div>
+                    <div class="opt19-desc">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                </div>
+                <div class="opt19-item">
+                    <div class="opt19-dot"></div>
+                    <div class="opt19-title">Especialista en marketing digital</div>
+                    <div class="opt19-desc">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                </div>
+                <div class="opt19-item">
+                    <div class="opt19-dot"></div>
+                    <div class="opt19-title">Analista financiero</div>
+                    <div class="opt19-desc">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                </div>
+                <div class="opt19-item">
+                    <div class="opt19-dot"></div>
+                    <div class="opt19-title">Fundador/a de startups o PYMES</div>
+                    <div class="opt19-desc">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 20: Icon + Text Card -->
+        <div class="option-header">Opción 20: Icon + Text Card Elegante</div>
+        <div class="preview-section" style="padding: 28px 20px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0132AF; margin: 0 0 8px;">Estudia y prepárate para estos roles con alta proyección laboral</h2>
+            <p style="color: #7a8a99; margin: 0 0 20px; font-size: 14px;">Roles frecuentes según perfil y experiencia.</p>
+            <style>
+                .opt20-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+                .opt20-card { background: linear-gradient(135deg, #f3f9ff 0%, white 100%); border: 1px solid #e0e3e8; border-radius: 12px; padding: 20px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+                .opt20-card:hover { box-shadow: 0 8px 24px rgba(1, 50, 175, 0.12); transform: translateY(-4px); }
+                .opt20-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #0132AF 0%, #0854d1 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; margin-bottom: 12px; }
+                .opt20-title { font-weight: 700; color: #0132AF; margin: 0 0 6px; font-size: 15px; }
+                .opt20-desc { color: #7a8a99; font-size: 12px; margin: 0; line-height: 1.5; }
+                @media (max-width: 640px) { .opt20-grid { grid-template-columns: 1fr; } }
+            </style>
+            <div class="opt20-grid">
+                <div class="opt20-card">
+                    <div class="opt20-icon">📊</div>
+                    <div class="opt20-title">Gerente de proyectos</div>
+                    <div class="opt20-desc">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
+                </div>
+                <div class="opt20-card">
+                    <div class="opt20-icon">💹</div>
+                    <div class="opt20-title">Analista de negocios (Business Analyst)</div>
+                    <div class="opt20-desc">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
+                </div>
+                <div class="opt20-card">
+                    <div class="opt20-icon">🎯</div>
+                    <div class="opt20-title">Consultor empresarial</div>
+                    <div class="opt20-desc">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                </div>
+                <div class="opt20-card">
+                    <div class="opt20-icon">📱</div>
+                    <div class="opt20-title">Especialista en marketing digital</div>
+                    <div class="opt20-desc">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
+                </div>
+                <div class="opt20-card">
+                    <div class="opt20-icon">💰</div>
+                    <div class="opt20-title">Analista financiero</div>
+                    <div class="opt20-desc">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
+                </div>
+                <div class="opt20-card">
+                    <div class="opt20-icon">🚀</div>
+                    <div class="opt20-title">Fundador/a de startups o PYMES</div>
+                    <div class="opt20-desc">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAcc(btn) {
+            const isExpanded = btn.getAttribute('data-expanded') === 'true';
+            btn.setAttribute('data-expanded', !isExpanded);
+        }
+        function toggleOpt11(btn) {
+            const isExpanded = btn.getAttribute('data-expanded') === 'true';
+            btn.setAttribute('data-expanded', !isExpanded);
+        }
+        function toggleOpt12(btn) {
+            const isExpanded = btn.getAttribute('data-expanded') === 'true';
+            btn.setAttribute('data-expanded', !isExpanded);
+        }
+        function switchTab(tab) {
+            const tabs = tab.parentElement.querySelectorAll('.opt13-tab');
+            tabs.forEach(t => t.setAttribute('data-active', 'false'));
+            tab.setAttribute('data-active', 'true');
+        }
+        function toggleOpt16(btn) {
+            const isExpanded = btn.getAttribute('data-expanded') === 'true';
+            btn.setAttribute('data-expanded', !isExpanded);
+        }
+        function expandCard(card) {
+            card.style.borderColor = '#0132AF';
+        }
+    </script>
+</body>
+</html>

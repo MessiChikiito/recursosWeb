@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Interactiva - 10 Opciones Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .selector-opciones {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .btn-opcion {
+            padding: 10px 16px;
+            border: 2px solid #cbd5e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: #4a5568;
+        }
+
+        .btn-opcion:hover {
+            border-color: #0132AF;
+            color: #0132AF;
+        }
+
+        .btn-opcion.active {
+            background: #0132AF;
+            border-color: #0132AF;
+            color: white;
+        }
+
+        .btn-opcion.recomendada {
+            background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+            border-color: transparent;
+            color: white;
+        }
+
+        .btn-opcion.recomendada.active {
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+
+        /* CONTENEDOR MOBILE PREVIEW */
+        .preview-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .preview-header {
+            background: linear-gradient(135deg, #0132AF 0%, #005a9c 100%);
+            color: white;
+            padding: 16px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .preview-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .mobile-frame {
+            background: #f7fafc;
+            border: 2px solid #cbd5e0;
+            border-radius: 16px;
+            padding: 12px;
+            aspect-ratio: 9/16;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .mobile-content {
+            flex: 1;
+            overflow-y: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .opcion-content {
+            display: none;
+        }
+
+        .opcion-content.active {
+            display: contents;
+        }
+
+        .info-box {
+            background: #fffaf0;
+            border-left: 4px solid #FF6B35;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #7c2d12;
+            margin-bottom: 16px;
+        }
+
+        /* Opción 1: Tabs Deslizables */
+        .tabs-scroll {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+            scroll-behavior: smooth;
+        }
+
+        .tab-btn {
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            color: #4a5568;
+        }
+
+        .tab-btn.active {
+            background: #0132AF;
+            border-color: #0132AF;
+            color: white;
+        }
+
+        .tab-btn.gradient {
+            background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+            border-color: transparent;
+            color: white;
+        }
+
+        /* Opción 2: Select Nativo */
+        .select-wrapper {
+            margin-bottom: 12px;
+        }
+
+        .select-wrapper select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Lista de Materias */
+        .materias-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .materia-card {
+            padding: 10px;
+            border-left: 4px solid;
+            border-radius: 4px;
+            background: #f7fafc;
+            font-size: 0.85rem;
+        }
+
+        .materia-card.nucleo {
+            border-left-color: #0132AF;
+            background: rgba(1, 50, 175, 0.05);
+        }
+
+        .materia-card.prof {
+            border-left-color: #FF3B3B;
+            background: rgba(255, 59, 59, 0.05);
+        }
+
+        .materia-card.electiva {
+            border-left-color: #00897B;
+            background: rgba(0, 137, 123, 0.05);
+        }
+
+        .materia-card.transv {
+            border-left-color: #D946EF;
+            background: rgba(217, 70, 239, 0.05);
+        }
+
+        .materia-card.practica {
+            border-left-color: #FF6B35;
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .materia-nombre {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 2px;
+        }
+
+        .materia-creditos {
+            font-size: 0.75rem;
+            color: #718096;
+        }
+
+        /* Leyenda */
+        .leyenda {
+            background: #f0f4f8;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        .leyenda-titulo {
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+        }
+
+        .leyenda-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .leyenda-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .leyenda-label {
+            font-size: 0.75rem;
+            color: #4a5568;
+        }
+
+        /* Opción Flotante */
+        .flotante-btn {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #0132AF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Acordeón */
+        .accordion-item {
+            margin-bottom: 8px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 10px;
+            background: #f7fafc;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1a202c;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #edf2f7;
+        }
+
+        .accordion-content {
+            padding: 10px;
+            background: white;
+            display: none;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        /* Descripción */
+        .descripcion {
+            background: #fff5f5;
+            border-left: 3px solid #FF3B3B;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #742a2a;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .preview-body {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-frame {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .selector-opciones {
+                flex-direction: column;
+            }
+
+            .btn-opcion {
+                width: 100%;
+            }
+
+            .mobile-frame {
+                aspect-ratio: auto;
+                min-height: 500px;
+            }
+        }
+
+        .tabs-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .tabs-scroll::-webkit-scrollbar-track {
+            background: #f0f4f8;
+        }
+
+        .tabs-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 2px;
+        }
+
+        .mobile-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .mobile-content::-webkit-scrollbar-track {
+            background: #f7fafc;
+        }
+
+        .mobile-content::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>🧪 Prueba Interactiva - 10 Opciones Mobile</h1>
+        <p class="subtitle">Elige una opción para verla funcionando con datos reales. Simula la experiencia en celular.</p>
+
+        <div class="selector-opciones" id="selectorOpciones"></div>
+
+        <div class="preview-container">
+            <div class="preview-header">📱 Preview - Simula un celular (375px)</div>
+            <div class="preview-body">
+                <div style="display: flex; justify-content: center;">
+                    <div class="mobile-frame">
+                        <div class="mobile-content" id="previewContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // DATOS DEL PLAN DE ESTUDIOS
+        // ============================================
+        const semestreData = {
+            1: [
+                { nombre: "Fundamentos de Administración", creditos: "3", tipo: "nucleo" },
+                { nombre: "Legislación Comercial y Tributaria", creditos: "3", tipo: "nucleo" },
+                { nombre: "Análisis Microeconómico", creditos: "3", tipo: "nucleo" },
+                { nombre: "Matemática Financiera", creditos: "3", tipo: "prof" },
+                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
+            ],
+            2: [
+                { nombre: "Proceso Administrativo", creditos: "2", tipo: "prof" },
+                { nombre: "Capital Humano", creditos: "3", tipo: "nucleo" },
+                { nombre: "Marketing y cadena de Suministro", creditos: "3", tipo: "nucleo" },
+                { nombre: "Gerencia de Marketing y de marca", creditos: "2", tipo: "prof" },
+                { nombre: "Basic English", creditos: "2", tipo: "transv" },
+            ],
+            3: [
+                { nombre: "Práctica empresarial en Capital humano", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Marketing y Cadena de Suministro", creditos: "10", tipo: "practica" },
+            ],
+            4: [
+                { nombre: "Direccionamiento Estratégico", creditos: "2", tipo: "prof" },
+                { nombre: "Finanzas", creditos: "3", tipo: "nucleo" },
+                { nombre: "Gestión de la Innovación", creditos: "3", tipo: "nucleo" },
+                { nombre: "Costos", creditos: "2", tipo: "prof" },
+                { nombre: "Preintermediate English", creditos: "2", tipo: "transv" },
+            ],
+            5: [
+                { nombre: "Práctica Empresarial en Finanzas", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Gestión de la Innovación", creditos: "10", tipo: "practica" },
+            ],
+            6: [
+                { nombre: "Formulación y Evaluación de Proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "Dirección y Gestión de Proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+            ],
+            7: [
+                { nombre: "Práctica Empresarial en Electiva de Profundización 1", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Electiva de Profundización 2", creditos: "10", tipo: "practica" },
+            ],
+        };
+
+        const leyenda = [
+            { tipo: "nucleo", label: "Materia Núcleo", color: "#0132AF" },
+            { tipo: "prof", label: "Materia Profesional", color: "#FF3B3B" },
+            { tipo: "electiva", label: "Materia Electiva", color: "#00897B" },
+            { tipo: "transv", label: "Materia Transversal", color: "#D946EF" },
+            { tipo: "practica", label: "Práctica Empresarial", color: "#FF6B35" },
+        ];
+
+        const semestreLabels = {
+            1: "Primer semestre",
+            2: "Segundo semestre",
+            3: "Tercer semestre",
+            4: "Cuarto semestre",
+            5: "Quinto semestre",
+            6: "Sexto semestre",
+            7: "Séptimo semestre",
+        };
+
+        // ============================================
+        // RENDERIZAR MATERIAS
+        // ============================================
+        function renderMaterias(semestre) {
+            const materias = semestreData[semestre] || [];
+            return materias.map(m => `
+                <div class="materia-card ${m.tipo}">
+                    <div class="materia-nombre">${m.nombre}</div>
+                    <div class="materia-creditos">${m.creditos} créditos</div>
+                </div>
+            `).join('');
+        }
+
+        function renderLeyenda() {
+            return `
+                <div class="leyenda">
+                    <div class="leyenda-titulo">Tipo de materia</div>
+                    ${leyenda.map(l => `
+                        <div class="leyenda-item">
+                            <div class="leyenda-dot" style="background: ${l.color};"></div>
+                            <div class="leyenda-label">${l.label}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // ============================================
+        // OPCIONES DE LAYOUT
+        // ============================================
+        const opciones = [
+            {
+                id: 1,
+                nombre: "Tabs Deslizables",
+                recomendada: true,
+                html: function() {
+                    return `
+                        <div class="info-box">Desliza los botones horizontalmente para cambiar semestre</div>
+                        <div class="tabs-scroll" id="tabsScroll">
+                            ${[1,2,3,4,5,6,7].map(s => `
+                                <button class="tab-btn ${s === 1 ? 'active' : ''} ${[3,5,7].includes(s) ? 'gradient' : ''}" onclick="cambiarSemestreOpcion1(${s})">${semestreLabels[s].split(' ')[0]} sem</button>
+                            `).join('')}
+                        </div>
+                        <div class="materias-list" id="materiasOpcion1">${renderMaterias(1)}</div>
+                        ${renderLeyenda()}
+                    `;
+                }
+            },
+            {
+                id: 2,
+                nombre: "Select Nativo",
+                recomendada: true,
+                html: function() {
+                    return `
+                        <div class="info-box">Usa el selector del teléfono para cambiar</div>
+                        <div class="select-wrapper">
+                            <select onchange="cambiarSemestreOpcion2(this.value)">
+                                ${[1,2,3,4,5,6,7].map(s => `
+                                    <option value="${s}" ${s === 1 ? 'selected' : ''}>${semestreLabels[s]}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="materias-list" id="materiasOpcion2">${renderMaterias(1)}</div>
+                        ${renderLeyenda()}
+                    `;
+                }
+            },
+            {
+                id: 3,
+                nombre: "Carrusel/Swiper",
+                recomendada: false,
+                html: function() {
+                    return `
+                        <div class="info-box">Desliza las tarjetas de semestre como un carrusel</div>
+                        <div style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 12px; scroll-behavior: smooth;">
+                            ${[1,2,3,4,5,6,7].map(s => `
+                                <div onclick="cambiarSemestreOpcion3(${s})" style="cursor: pointer; padding: 10px 14px; background: ${s === 1 ? '#0132AF' : 'white'}; color: ${s === 1 ? 'white' : '#4a5568'}; border: 1px solid #cbd5e0; border-radius: 8px; white-space: nowrap; font-weight: 600; font-size: 0.85rem; flex-shrink: 0; transition: all 0.3s ease;" class="swiper-item" id="swiper${s}">
+                                    ${semestreLabels[s].split(' ')[0]}
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="materias-list" id="materiasOpcion3">${renderMaterias(1)}</div>
+                        ${renderLeyenda()}
+                    `;
+                }
+            },
+            {
+                id: 4,
+                nombre: "Leyenda Arriba",
+                recomendada: false,
+                html: function() {
+                    return `
+                        <div class="info-box">Leyenda primero, luego materias</div>
+                        ${renderLeyenda()}
+                        <hr style="margin: 12px 0; border: none; border-top: 1px solid #e2e8f0;">
+                        <div class="select-wrapper">
+                            <select onchange="cambiarSemestreOpcion4(this.value)">
+                                ${[1,2,3,4,5,6,7].map(s => `
+                                    <option value="${s}" ${s === 1 ? 'selected' : ''}>${semestreLabels[s]}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="materias-list" id="materiasOpcion4">${renderMaterias(1)}</div>
+                    `;
+                }
+            },
+            {
+                id: 5,
+                nombre: "Leyenda Flotante",
+                recomendada: false,
+                html: function() {
+                    return `
+                        <div class="info-box">Leyenda se queda visible mientras scrolleas</div>
+                        <div class="select-wrapper">
+                            <select onchange="cambiarSemestreOpcion5(this.value)">
+                                ${[1,2,3,4,5,6,7].map(s => `
+                                    <option value="${s}" ${s === 1 ? 'selected' : ''}>${semestreLabels[s]}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="materias-list" id="materiasOpcion5">${renderMaterias(1)}</div>
+                        <div style="position: sticky; bottom: 0; padding-top: 12px; border-top: 1px solid #e2e8f0; margin-top: 12px; background: white;">
+                            ${renderLeyenda()}
+                        </div>
+                    `;
+                }
+            },
+            {
+                id: 6,
+                nombre: "Botones 3x2",
+                recomendada: false,
+                html: function() {
+                    return `
+                        <div class="info-box">Todos los botones visibles en grid pequeño</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 12px;">
+                            ${[1,2,3,4,5,6,7].map(s => `
+                                <button class="tab-btn ${s === 1 ? 'active' : ''}" style="padding: 8px 4px; font-size: 0.8rem;" onclick="cambiarSemestreOpcion6(${s})">${s}º</button>
+                            `).join('')}
+                        </div>
+                        <div class="materias-list" id="materiasOpcion6">${renderMaterias(1)}</div>
+                        ${renderLeyenda()}
+                    `;
+                }
+            },
+            {
+                id: 7,
+                nombre: "Acordeón",
+                recomendada: false,
+                html: function() {
+                    return `
+                        <div class="info-box">Expande cada semestre para ver sus materias</div>
+                        ${[1,2,3,4,5,6,7].map(s => `
+                            <div class="accordion-item">
+                                <button class="accordion-header" onclick="toggleAccordion(this)">
+                                    ${semestreLabels[s]} ${[3,5,7].includes(s) ? '🎓' : ''}
+                                </button>
+                                <div class="accordion-content ${s === 1 ? 'active' : ''}">
+                                    <div class="materias-list">${renderMaterias(s)}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                        ${renderLeyenda()}
+                    `;
+                }
+            },
+            {
+                id: 8,
+                nombre: "Modal Leyenda",
+                recomendada: false,
+                html: function() {
+                    return `
+                        <div class="info-box">Click en ℹ️ para ver leyenda</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <select onchange="cambiarSemestreOpcion8(this.value)" style="flex: 1;">
+                                ${[1,2,3,4,5,6,7].map(s => `
+                                    <option value="${s}" ${s === 1 ? 'selected' : ''}>${semestreLabels[s]}</option>
+                                `).join('')}
+                            </select>
+                            <button class="flotante-btn" style="position: static; margin-left: 8px;" onclick="alert('Leyenda Modal:\\n' + ${JSON.stringify(leyenda.map(l => l.label).join('\\n'))})">ℹ️</button>
+                        </div>
+                        <div class="materias-list" id="materiasOpcion8">${renderMaterias(1)}</div>
+                    `;
+                }
+            },
+            {
+                id: 9,
+                nombre: "Tabs + Leyenda Collapse",
+                recomendada: true,
+                html: function() {
+                    return `
+                        <div class="info-box">Tabs deslizables + leyenda colapsable</div>
+                        <div class="tabs-scroll" id="tabsScroll9">
+                            ${[1,2,3,4,5,6,7].map(s => `
+                                <button class="tab-btn ${s === 1 ? 'active' : ''} ${[3,5,7].includes(s) ? 'gradient' : ''}" onclick="cambiarSemestreOpcion9(${s})">${s}º</button>
+                            `).join('')}
+                        </div>
+                        <div class="materias-list" id="materiasOpcion9">${renderMaterias(1)}</div>
+                        <details style="margin-top: 12px; padding: 10px; background: #f0f4f8; border-radius: 6px;">
+                            <summary style="cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #1a202c;">Ver leyenda de colores</summary>
+                            <div style="margin-top: 10px;">
+                                ${renderLeyenda()}
+                            </div>
+                        </details>
+                    `;
+                }
+            },
+        ];
+
+        // ============================================
+        // CAMBIOS DE SEMESTRE POR OPCIÓN
+        // ============================================
+        window.cambiarSemestreOpcion1 = function(s) {
+            document.querySelectorAll("#tabsScroll .tab-btn").forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('materiasOpcion1').innerHTML = renderMaterias(s);
+        };
+
+        window.cambiarSemestreOpcion2 = function(s) {
+            document.getElementById('materiasOpcion2').innerHTML = renderMaterias(parseInt(s));
+        };
+
+        window.cambiarSemestreOpcion3 = function(s) {
+            document.querySelectorAll(".swiper-item").forEach((el, i) => {
+                el.style.background = (i + 1) === s ? '#0132AF' : 'white';
+                el.style.color = (i + 1) === s ? 'white' : '#4a5568';
+            });
+            document.getElementById('materiasOpcion3').innerHTML = renderMaterias(s);
+        };
+
+        window.cambiarSemestreOpcion4 = function(s) {
+            document.getElementById('materiasOpcion4').innerHTML = renderMaterias(parseInt(s));
+        };
+
+        window.cambiarSemestreOpcion5 = function(s) {
+            document.getElementById('materiasOpcion5').innerHTML = renderMaterias(parseInt(s));
+        };
+
+        window.cambiarSemestreOpcion6 = function(s) {
+            document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('materiasOpcion6').innerHTML = renderMaterias(s);
+        };
+
+        window.toggleAccordion = function(el) {
+            const content = el.nextElementSibling;
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+            content.classList.add('active');
+        };
+
+        window.cambiarSemestreOpcion8 = function(s) {
+            document.getElementById('materiasOpcion8').innerHTML = renderMaterias(parseInt(s));
+        };
+
+        window.cambiarSemestreOpcion9 = function(s) {
+            document.querySelectorAll("#tabsScroll9 .tab-btn").forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('materiasOpcion9').innerHTML = renderMaterias(s);
+        };
+
+        // ============================================
+        // INICIALIZAR
+        // ============================================
+        function inicializar() {
+            // Crear botones de opciones
+            const selectorOpciones = document.getElementById('selectorOpciones');
+            opciones.forEach((opcion, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-opcion ${opcion.recomendada ? 'recomendada' : ''} ${idx === 0 ? 'active' : ''}`;
+                btn.textContent = `${opcion.id}. ${opcion.nombre}`;
+                btn.onclick = () => mostrarOpcion(idx);
+                selectorOpciones.appendChild(btn);
+            });
+
+            // Mostrar primera opción
+            mostrarOpcion(0);
+        }
+
+        function mostrarOpcion(idx) {
+            const previewContent = document.getElementById('previewContent');
+            previewContent.innerHTML = opciones[idx].html();
+
+            // Actualizar botones activos
+            document.querySelectorAll('.btn-opcion').forEach((btn, i) => {
+                btn.classList.toggle('active', i === idx);
+            });
+        }
+
+        inicializar();
+    </script>
+</body>
+</html>

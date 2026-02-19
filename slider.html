@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Slider con Links</title>
+
+<style>
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 75vh; /* Puedes ajustarlo */
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Flechas */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    padding: 8px 8px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 6px;
+  }
+
+  .arrow:hover {
+    background: rgba(0,0,0,0.9);
+  }
+
+  .arrow-left { left: 2px; }
+  .arrow-right { right: 2px; }
+
+  /* Responsive altura */
+  @media (max-width: 768px) {
+    .slide {
+      height: 35vh;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="slider-container">
+  <button class="arrow arrow-left">&#10094;</button>
+  <button class="arrow arrow-right">&#10095;</button>
+
+  <div class="slider" id="slider">
+    <!-- SLIDE 1 -->
+    <a href="https://forms.gle/zjfvkMkjhVNvNuzJ9" target="_blank" class="slide">
+      <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/diplomado_web22.jpg" alt="Lanzamiento de diplomado">
+    </a>
+
+    <!-- SLIDE 2 -->
+    <a href="#abrirPopup" target="_blank" class="slide">
+      <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/Banner-Pagina-Web-Invitacion-foro-nacional-2026-1920-x-670-px-1.png" alt="Invitación foro nacional">
+    </a>
+    
+    
+    <!-- SLIDE 3 -->
+    <a href="https://fabricasoluciones.uniempresarial.edu.co/?_gl=1*7npbbg*_gcl_au*MTIyMjUwNzAyNy4xNzYyMjYyODI1*_ga*MjQ3MTQ1MjI2LjE3MzA5MjIwMDU.*_ga_GRRFL9KFYX*czE3NjQ2OTMwOTckbzczMiRnMSR0MTc2NDY5NDM5NyRqNTckbDAkaDE1MjM4Mzc3MTc." target="_blank" class="slide">
+      <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/05/shared-image-1.jpeg" alt="Fábrica de soluciones">
+    </a>
+    
+    <!-- SLIDE 4 -->
+    <a href="https://uniempresarial.edu.co/financiacion/" target="_blank" class="slide">
+      <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/07/banner-pagina-financiacion_-scaled.jpg" alt="Opciones de financiación">
+    </a>
+    
+    <!-- SLIDE 5 -->
+    <a href="#" target="_blank" class="slide">
+      <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/salud-mental.jpg" alt="Salud mental">
+    </a>
+    
+  </div>
+</div>
+
+<script>
+  const slider = document.getElementById("slider");
+  const slides = document.querySelectorAll(".slide");
+  const totalSlides = slides.length;
+
+  let index = 0;
+
+  function showSlide(i) {
+    slider.style.transform = `translateX(${-i * 100}%)`;
+  }
+
+  // Flecha derecha
+  document.querySelector(".arrow-right").onclick = () => {
+    index = (index + 1) % totalSlides;
+    showSlide(index);
+    resetAutoplay();
+  };
+
+  // Flecha izquierda
+  document.querySelector(".arrow-left").onclick = () => {
+    index = (index - 1 + totalSlides) % totalSlides;
+    showSlide(index);
+    resetAutoplay();
+  };
+
+  // Autoplay 5 segundos
+  let autoplay = setInterval(() => {
+    index = (index + 1) % totalSlides;
+    showSlide(index);
+  }, 5000);
+
+  function resetAutoplay() {
+    clearInterval(autoplay);
+    autoplay = setInterval(() => {
+      index = (index + 1) % totalSlides;
+      showSlide(index);
+    }, 5000);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header – Uniempresarial</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+
+    /* ─── ANIMACIONES ───────────────────────────────────────── */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDownCentered {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @keyframes fadeOutUp {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fadeOutUpCentered {
+      from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ════════════════════════════════════════════════════════
+       TOP BAR
+    ════════════════════════════════════════════════════════ */
+    .topbar {
+      background: #e02020;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 36px;
+      position: relative;
+      z-index: 200;
+    }
+
+    /* Redes — izquierda */
+    .topbar__social {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .topbar__social a {
+      color: rgba(255,255,255,.75);
+      font-size: 13px;
+      transition: color .2s, transform .2s !important;
+      line-height: 1;
+    }
+    .topbar__social a:hover { color: #fff; transform: scale(1.15) !important; }
+
+    /* Links — derecha */
+    .topbar__links {
+      display: flex;
+      align-items: center;
+      height: 36px;
+      flex: 1;
+      justify-content: flex-end;
+      gap: 0;
+    }
+    .topbar__links > a,
+    .topbar__links .tb-item > button {
+      color: rgba(255,255,255,.88);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 0 14px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-right: 1px solid rgba(255,255,255,.2);
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-bottom: none;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background .2s, color .2s !important;
+    }
+    .topbar__links > a:last-child,
+    .topbar__links .tb-item:last-child > button { border-right: none; }
+    .topbar__links > a:hover,
+    .topbar__links .tb-item > button:hover {
+      background: rgba(0,0,0,.15);
+      color: #fff;
+    }
+
+    /* Estado abierto (click) en top bar — mantener hover */
+    .topbar__links .tb-item.open > button {
+      background: rgba(0,0,0,.15);
+      color: #fff;
+    }
+
+    /* TOP BAR dropdown */
+    .tb-item {
+      position: relative;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .tb-item > button { border-right: 1px solid rgba(255,255,255,.2); }
+    .tb-item:last-child > button { border-right: none; }
+    .tb-item .chevron { font-size: 9px; opacity: .7; transition: transform .25s !important; }
+    .tb-item.open .chevron { transform: rotate(180deg) !important; }
+    .tb-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 190px;
+      background: #fff !important;
+      background-color: #fff !important;
+      box-shadow: 0 8px 28px rgba(0,0,0,.14) !important;
+      border-radius: 0 0 6px 6px;
+      z-index: 9999 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(-8px);
+      transition: opacity .3s ease, visibility .3s ease, transform .3s ease !important;
+      list-style: none !important;
+      padding: 0px 0 !important;
+      margin: 0 !important;
+      color: #333 !important;
+    }
+    .topbar .tb-item.open .tb-dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateY(0) !important;
+      display: block !important;
+      background: #fff !important;
+      background-color: #fff !important;
+      color: #333 !important;
+    }
+    #tb-biblioteca.open .tb-dropdown,
+    #tb-soporte.open .tb-dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateY(0) !important;
+      display: block !important;
+      background: #fff !important;
+      background-color: #fff !important;
+      z-index: 9999 !important;
+      filter: none !important;
+      color: #333 !important;
+    }
+    .tb-dropdown li {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .tb-dropdown li a {
+      display: flex !important;
+      align-items: center !important;
+      gap: 9px !important;
+      padding: 10px 16px !important;
+      font-size: 12.5px !important;
+      color: #3a3a4e !important;
+      background: #fff !important;
+      background-color: #fff !important;
+      transition: background .15s, color .15s, padding-left .15s !important;
+      text-decoration: none !important;
+      border: none !important;
+      opacity: 1 !important;
+      filter: none !important;
+    }
+    .tb-dropdown li a:hover {
+      background: #e8e8e8 !important;
+      background-color: #e8e8e8 !important;
+      color: #e02020 !important;
+      padding-left: 20px !important;
+    }
+    .tb-dropdown li a i { color: #e02020; font-size: 11px; width: 14px; }
+
+    /* ════════════════════════════════════════════════════════
+       MAIN HEADER
+    ════════════════════════════════════════════════════════ */
+    .header {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      height: 76px;
+      position: relative;
+      box-shadow: 0 3px 16px rgba(0,0,0,.1);
+      z-index: 100;
+    }
+
+    /* Logo */
+    .header__logo a { display: flex; align-items: center; }
+    .header__logo img { max-height: 50px; width: auto; display: block; }
+
+    /* Nav */
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-left: auto;
+    }
+
+    /* Nav items */
+    .nav-item {
+      position: relative;
+      height: 76px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-item > a,
+    .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 15px;
+      height: 76px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #2d2d3e;
+      border: none;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      position: relative;
+
+      /* Border bottom animado */
+      border-bottom: 2px solid transparent;
+      transition: color .22s;
+    }
+    .nav-item > a::after,
+    .nav-item > button::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #e02020;
+      transition: width .4s ease;
+    }
+    .nav-item > a:hover::after,
+    .nav-item > button:hover::after {
+      width: 100%;
+      transition: width .4s ease;
+    }
+    .nav-item > a.active::after {
+      width: 100%;
+    }
+
+    /* Estado activo */
+    .nav-item > a.active {
+      color: #e02020;
+    }
+
+    /* Hover — solo color rojo, sin background */
+    .nav-item > a:hover,
+    .nav-item > button:hover {
+      color: #e02020;
+      background: none;
+    }
+
+    /* Estado abierto (click) — mantener hover */
+    .nav-item.open > a,
+    .nav-item.open > button {
+      color: #e02020;
+    }
+
+    .nav-item.open > a::after,
+    .nav-item.open > button::after {
+      width: 100%;
+    }
+
+    .nav-item .chevron { font-size: 9px; opacity: .6; transition: transform .25s; }
+    .nav-item.open .chevron { transform: rotate(180deg); }
+
+    /* Dropdown normal */
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 0;
+      right: auto;
+      background: #fff;
+      min-width: 210px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      border-radius: 0 0 6px 6px;
+      z-index: 1000;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(-8px);
+      transition: opacity .3s ease, visibility .3s ease, transform .3s ease !important;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-item.open .dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateY(0) !important;
+    }
+
+    .dropdown li a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 18px;
+      font-size: 13px;
+      color: #3a3a4e;
+      border-bottom: none;
+      transition: background .15s, color .15s, padding-left .15s !important;
+      margin: 0;
+    }
+    .dropdown li a:hover {
+      background: #e8e8e8 !important;
+      color: #e02020 !important;
+      padding-left: 23px !important;
+      border-bottom: none !important;
+            transition: background .15s, color .15s, padding-left .15s !important;
+    }
+    .dropdown li a i { color: #e02020; font-size: 11px; width: 14px; }
+
+    /* MEGA DROPDOWN */
+    .mega-dropdown {
+      display: flex;
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      min-width: 680px;
+      background: #fff;
+      box-shadow: 0 12px 36px rgba(0,0,0,.13);
+      border-radius: 0 0 8px 8px;
+      z-index: 1000;
+      padding: 28px 32px;
+      gap: 32px;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transition: opacity .3s ease, visibility .3s ease, transform .3s ease !important;
+    }
+    .nav-item.open .mega-dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+    .mega-col { flex: 1; }
+    .mega-col ul {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .mega-col ul li {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .mega-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: #e02020;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .mega-col ul li a {
+      font-size: 13px;
+      color: #374151;
+      padding: 7px 0 !important;
+      padding-left: 0 !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .15s, padding-left .15s !important;
+      margin: 0 !important;
+    }
+    .mega-col ul li a:hover {
+      color: #e02020 !important;
+      padding-left: 10px !important;
+      background: #f5f5f5 !important;
+      border-left: 3px solid #e02020 !important;
+      padding-left: 7px !important;
+    }
+    .mega-col ul li a i { color: #e02020; font-size: 11px; width: 14px; }
+
+    /* CTA */
+    .btn-campus {
+      background: linear-gradient(135deg, #003D99 0%, #0052CC 100%);
+      color: #fff !important;
+      border-radius: 5px;
+      padding: 0 20px;
+      height: 40px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: .02em;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 1s ease, transform .15s !important;
+      border-bottom: 2px solid transparent;
+    }
+    .btn-campus:hover {
+      background: linear-gradient(135deg, #0052E5 0%, #0087D9 100%) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       HAMBURGER — Mobile
+    ════════════════════════════════════════════════════════ */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin-left: auto;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 1001;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #2d2d3e;
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s, width .3s !important;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+    .hamburger.active span:nth-child(2) { opacity: 0 !important; width: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
+
+    /* ════════════════════════════════════════════════════════
+       DESKTOP vs MOBILE VERSION CONTROL
+    ════════════════════════════════════════════════════════ */
+    #nav-programas-desktop {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      position: relative;
+    }
+    #nav-programas-mobile {
+      display: none;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       COLLAPSIBLE SECTIONS (Mobile Programs)
+    ════════════════════════════════════════════════════════ */
+    .dropdown-section-wrapper {
+      padding: 0 !important;
+      background: #f0f0f0;
+      border-bottom: 1px solid #e0e0e0;
+      margin: 0 !important;
+    }
+    .section-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 14px 24px 14px 32px;
+      background: #f0f0f0;
+      border: none;
+      font-weight: 500;
+      font-size: 14px;
+      color: #2d2d3e;
+      cursor: pointer;
+      transition: background .15s !important;
+      gap: 12px;
+    }
+    .section-toggle:hover {
+      background: #e8e8e8;
+    }
+    .section-toggle i:first-child {
+      width: 16px;
+      flex-shrink: 0;
+      font-size: 14px;
+      color: #e02020;
+    }
+    .section-toggle .chevron-section {
+      margin-left: auto;
+    }
+    .section-toggle .chevron-section {
+      font-size: 9px;
+      transition: transform .25s ease !important;
+    }
+    .dropdown-section-wrapper.open .chevron-section {
+      transform: rotate(180deg) !important;
+    }
+    .section-items {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .25s ease-out !important;
+      background: #f8f8f8;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .dropdown-section-wrapper.open .section-items {
+      max-height: 500px;
+      transition: max-height .3s ease-in !important;
+    }
+    .section-items li {
+      padding: 0 !important;
+      margin: 0 !important;
+      padding-left: 30px !important;
+    }
+    .section-items li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px 14px 48px;
+      font-size: 14px;
+      color: #444;
+      background: #f8f8f8;
+      border-bottom: 1px solid #eaeaea;
+      transition: background .15s, color .15s, padding-left .15s !important;
+      font-family: 'Segoe UI', system-ui, sans-serif !important;
+      font-weight: 400 !important;
+    }
+    .section-items li a:hover {
+      background: #fff;
+      color: #e02020;
+      padding-left: 54px;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .header { padding: 0 24px; }
+      .topbar { padding: 0 24px; }
+      .nav-item > a, .nav-item > button { padding: 0 11px; font-size: 13px; }
+    }
+
+    @media (max-width: 860px) {
+
+      /* ═══════════════════════════════════════════════════════
+         TOP BAR MOBILE
+      ═══════════════════════════════════════════════════════ */
+      .topbar {
+        height: 38px;
+        padding: 0 15px;
+      }
+      .topbar__social {
+        display: none;
+      }
+      .topbar__links {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        height: 38px;
+        gap: 0;
+        position: relative;
+      }
+      .topbar__links .tb-item {
+        position: relative;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+      .topbar__links > a {
+        flex: 1;
+        text-align: center;
+      }
+      .topbar__links > a,
+      .topbar__links .tb-item > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px !important;
+        padding: 0 8px;
+        height: 38px;
+        border-right: 1px solid rgba(255,255,255,.15);
+        gap: 4px;
+      }
+      .topbar__links > a i,
+      .topbar__links .tb-item > button i:first-child {
+        display: inline;
+        font-size: 11px;
+      }
+      .topbar__links .tb-item > button .chevron {
+        display: inline;
+        font-size: 11px;
+        margin-left: 2px;
+      }
+      .topbar__links .tb-item:last-child > button,
+      .topbar__links > a:last-child {
+        border-right: none;
+      }
+      /* Dropdowns de topbar en móvil - con z-index alto para que salga del menú */
+      .tb-item {
+        position: relative;
+      }
+      /* Estado abierto (click) en top bar móvil — mantener hover */
+      .topbar__links .tb-item.open > button {
+        background: rgba(0,0,0,.15) !important;
+        color: #fff !important;
+      }
+      .tb-dropdown {
+        display: block !important;
+        position: absolute !important;
+        top: 100% !important;
+        background: #fff !important;
+        box-shadow: 0 8px 28px rgba(0,0,0,.14) !important;
+        border-radius: 0 0 4px 4px !important;
+        z-index: 10000 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-8px) !important;
+        transition: opacity .3s ease, visibility .3s ease, transform .3s ease !important;
+        min-width: 160px !important;
+        list-style: none !important;
+        padding: 8px 0 !important;
+        margin: 0 !important;
+      }
+      /* Posicionar el dropdown según cuál sea */
+      #tb-biblioteca .tb-dropdown {
+        left: 0;
+      }
+      #tb-soporte .tb-dropdown {
+        right: 0;
+        left: auto;
+      }
+      .tb-item.open .tb-dropdown {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+        display: block !important;
+        background: #fff !important;
+        background-color: white !important;
+        z-index: 10000 !important;
+        color: #333 !important;
+      }
+    .tb-dropdown li a {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 9px 14px !important;
+      font-size: 11px !important;
+      color: #3a3a4e !important;
+      background: #fff !important;
+      background-color: white !important;
+      transition: background .15s, color .15s !important;
+    }
+      .tb-dropdown li a:hover {
+        background: #e8e8e8 !important;
+        background-color: #e8e8e8 !important;
+        color: #e02020 !important;
+        padding-left: 20px !important;
+      }
+      .tb-dropdown li a i {
+        color: #e02020;
+        font-size: 10px;
+        width: 12px;
+      }
+
+      /* ═══════════════════════════════════════════════════════
+         HEADER MOBILE
+      ═══════════════════════════════════════════════════════ */
+      .header {
+        padding: 0 16px;
+        height: 60px;
+        z-index: 100;
+      }
+      .header__logo img {
+        max-height: 38px;
+      }
+
+      /* Hamburger visible */
+      .hamburger {
+        display: flex;
+      }
+
+      .header__nav {
+        display: none;
+      }
+
+      /* ═══════════════════════════════════════════════════════
+         MENÚ MÓVIL ABIERTO
+      ═══════════════════════════════════════════════════════ */
+      .header__nav.open {
+        display: block !important;
+        position: fixed !important;
+        top: 140px; /* 38px topbar + 60px header */
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: #fff !important;
+        overflow-y: auto;
+        z-index: 999 !important;
+        padding: 0 !important;
+        animation: slideInMenu 1s ease-out !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+      }
+
+      @keyframes slideInMenu {
+        from { opacity: 0 !important; transform: translateY(-10px) !important; }
+        to { opacity: 1 !important; transform: translateY(0) !important; }
+      }
+
+      /* ═══════════════════════════════════════════════════════
+         NAV ITEMS MOBILE
+      ═══════════════════════════════════════════════════════ */
+      .nav-item {
+        display: block !important;
+        height: auto !important;
+        border-bottom: 1px solid #eee !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .nav-item > a,
+      .nav-item > button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        height: 52px !important;
+        padding: 0 20px !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        color: #2d2d3e !important;
+        background: #fff !important;
+        border: none !important;
+        border-left: 4px solid transparent !important;
+        transition: background .2s, border-color .2s, color .2s !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .nav-item > a:hover,
+      .nav-item > button:hover,
+      .nav-item.open > button {
+        background: #fafafa;
+        border-left-color: #e02020;
+        color: #e02020;
+      }
+      /* Quitar animación de barra inferior en móvil */
+      .nav-item > a::after,
+      .nav-item > button::after {
+        display: none;
+      }
+      .nav-item .chevron {
+        font-size: 10px;
+        transition: transform .25s ease !important;
+      }
+      .nav-item.open .chevron {
+        transform: rotate(180deg) !important;
+      }
+
+      /* ═══════════════════════════════════════════════════════
+         DESKTOP vs MOBILE VERSION CONTROL — MOBILE
+      ═══════════════════════════════════════════════════════ */
+      #nav-programas-desktop {
+        display: none !important;
+      }
+      #nav-programas-mobile {
+        display: block;
+        height: auto;
+        position: relative;
+      }
+
+      /* Collapsible sections inherit mobile styles */
+      .dropdown-section-wrapper {
+        padding: 0 !important;
+      }
+      .section-items {
+        background: #f8f8f8;
+      }
+
+      /* ═══════════════════════════════════════════════════════
+         DROPDOWNS MOBILE (Acordeón)
+      ═══════════════════════════════════════════════════════ */
+      .dropdown,
+      .mega-dropdown {
+        position: static !important;
+        display: block !important;
+        width: 100% !important;
+        min-width: unset !important;
+        max-height: 0;
+        overflow: hidden;
+        background: #f8f8f8 !important;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,.05);
+        border-top: none !important;
+        border-radius: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        padding: 0 !important;
+        transition: max-height .25s ease-out !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .nav-item.open > .dropdown,
+      .nav-item.open > .mega-dropdown {
+        max-height: 1200px;
+        transition: max-height .3s ease-in !important;
+      }
+
+      /* Items del dropdown */
+      .dropdown li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 24px 14px 32px !important;
+        font-size: 14px !important;
+        color: #444 !important;
+        background: #f8f8f8 !important;
+        border-bottom: 1px solid #eaeaea !important;
+        margin: 0 !important;
+        font-family: 'Segoe UI', system-ui, sans-serif !important;
+        font-weight: 400 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+      }
+      .dropdown li:last-child a {
+        border-bottom: none !important;
+      }
+
+      .dropdown li a i {
+        color: #e02020;
+        font-size: 12px;
+        width: 16px;
+        flex-shrink: 0;
+      }
+      
+      /* Secciones en dropdown (Pregrados, Posgrados, etc.) */
+      .dropdown-section {
+        padding: 10px 32px !important;
+        margin: 6px 0 0 0 !important;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        color: #e02020;
+        background: #f0f0f0;
+        border-bottom: 1px solid #e0e0e0 !important;
+      }
+      .dropdown-section strong {
+        font-weight: 700;
+      }
+
+
+      /* ═══════════════════════════════════════════════════════
+         CTA MOBILE
+      ═══════════════════════════════════════════════════════ */
+      .btn-campus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+        height: 50px;
+        font-size: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(1, 50, 175, .25);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar__links > a,
+      .topbar__links .tb-item > button {
+        font-size: 8px;
+        padding: 0 4px;
+        gap: 3px;
+      }
+      .topbar__links > a i,
+      .topbar__links .tb-item > button i {
+        font-size: 10px;
+      }
+      .topbar__links .tb-item > button .chevron {
+        display: inline;
+        font-size: 7px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       TOP BAR
+  ══════════════════════════════════════════════════════ -->
+  <div class="topbar">
+
+    <!-- Izquierda — Redes sociales -->
+    <div class="topbar__social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <!-- Derecha — Links utilitarios -->
+    <div class="topbar__links">
+
+      <!-- Biblioteca (dropdown) -->
+      <div class="tb-item" id="tb-biblioteca">
+        <button onclick="toggleTb('tb-biblioteca')">
+          <i class="fas fa-book-open"></i> Biblioteca
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="tb-dropdown">
+          <li><a href="#"><i class="fas fa-database"></i>Bases de datos</a></li>
+          <li><a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e02020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;margin-right:5px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="7" x2="16" y2="7"></line><line x1="8" y1="11" x2="16" y2="11"></line></svg>Colecciones físicas</a></li>
+          <li><a href="#"><i class="fas fa-laptop"></i>Biblioteca digital</a></li>
+        </ul>
+      </div>
+
+      <!-- Estudiantes -->
+      <a href="#"><i class="fas fa-user-graduate"></i> Estudiantes</a>
+
+      <!-- Egresados -->
+      <a href="#"><i class="fas fa-user-tie"></i> Egresados</a>
+
+      <!-- Colaboradores -->
+      <a href="#"><i class="fas fa-users"></i> Colaboradores</a>
+
+      <!-- Soporte (dropdown) -->
+      <div class="tb-item" id="tb-soporte">
+        <button onclick="toggleTb('tb-soporte')">
+          <i class="fas fa-headset"></i> Soporte
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="tb-dropdown">
+          <li><a href="#"><i class="fas fa-comment-alt"></i>PQR</a></li>
+          <li><a href="#"><i class="fas fa-question-circle"></i>FAQs</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i>Contacto</a></li>
+          <li><a href="#"><i class="fas fa-tools"></i>Soporte técnico</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       HEADER PRINCIPAL
+  ══════════════════════════════════════════════════════ -->
+  <header class="header">
+
+    <!-- Logo -->
+    <div class="header__logo">
+      <a href="#">
+        <img
+          src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124.png"
+          alt="Uniempresarial"
+        />
+      </a>
+    </div>
+
+    <!-- Hamburger (solo mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Nav principal -->
+    <nav class="header__nav" id="headerNav">
+
+      <!-- Inicio -->
+      <div class="nav-item">
+        <a href="#">Inicio</a>
+      </div>
+
+      <!-- Programas (mega menú) - DESKTOP VERSION -->
+      <div class="nav-item" id="nav-programas-desktop">
+        <button onclick="toggleNav('nav-programas-desktop')">
+          Programas <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="mega-dropdown">
+          <div class="mega-col">
+            <h4>Pregrados</h4>
+            <ul>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Administración de empresas</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Contaduría pública</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Ingeniería industrial</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Mercadeo y publicidad</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Negocios internacionales</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Posgrados</h4>
+            <ul>
+              <li><a href="#"><i class="fas fa-angle-right"></i>MBA</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Especialización en Finanzas</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Gestión Humana</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Gerencia de proyectos</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Virtuales</h4>
+            <ul>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Administración virtual</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Contaduría virtual</a></li>
+              <li><a href="#"><i class="fas fa-angle-right"></i>Posgrados en línea</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Programas (dropdown simple) - MOBILE VERSION -->
+      <div class="nav-item" id="nav-programas-mobile">
+        <button onclick="toggleNav('nav-programas-mobile')">
+          Programas <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="dropdown">
+          <!-- Pregrados Section -->
+          <li class="dropdown-section-wrapper">
+            <button class="section-toggle" onclick="toggleSection(this)">
+              <i class="fas fa-book"></i> Pregrados
+              <i class="fas fa-chevron-down chevron-section"></i>
+            </button>
+            <ul class="section-items">
+              <li><a href="#">Administración de empresas</a></li>
+              <li><a href="#">Contaduría pública</a></li>
+              <li><a href="#">Ingeniería industrial</a></li>
+              <li><a href="#">Mercadeo y publicidad</a></li>
+              <li><a href="#">Negocios internacionales</a></li>
+            </ul>
+          </li>
+          
+          <!-- Posgrados Section -->
+          <li class="dropdown-section-wrapper">
+            <button class="section-toggle" onclick="toggleSection(this)">
+              <i class="fas fa-graduation-cap"></i> Posgrados
+              <i class="fas fa-chevron-down chevron-section"></i>
+            </button>
+            <ul class="section-items">
+              <li><a href="#">MBA</a></li>
+              <li><a href="#">Especialización en Finanzas</a></li>
+              <li><a href="#">Gestión Humana</a></li>
+              <li><a href="#">Gerencia de proyectos</a></li>
+            </ul>
+          </li>
+          
+          <!-- Virtuales Section -->
+          <li class="dropdown-section-wrapper">
+            <button class="section-toggle" onclick="toggleSection(this)">
+              <i class="fas fa-laptop"></i> Virtuales
+              <i class="fas fa-chevron-down chevron-section"></i>
+            </button>
+            <ul class="section-items">
+              <li><a href="#">Administración virtual</a></li>
+              <li><a href="#">Contaduría virtual</a></li>
+              <li><a href="#">Posgrados en línea</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Educación continua -->
+      <div class="nav-item" id="nav-edcont">
+        <button onclick="toggleNav('nav-edcont')">
+          Educación continua <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="dropdown">
+          <li><a href="#"><i class="fas fa-certificate"></i>Diplomados</a></li>
+          <li><a href="#"><i class="fas fa-briefcase"></i>Cursos corporativos</a></li>
+          <li><a href="#"><i class="fas fa-award"></i>Certificaciones</a></li>
+          <li><a href="#"><i class="fas fa-chalkboard-teacher"></i>Talleres y seminarios</a></li>
+        </ul>
+      </div>
+
+      <!-- Convenios -->
+      <div class="nav-item">
+        <a href="#">Convenios</a>
+      </div>
+
+      <!-- Soluciones -->
+      <div class="nav-item">
+        <a href="#">Soluciones</a>
+      </div>
+
+      <!-- Nosotros -->
+      <div class="nav-item" id="nav-nosotros">
+        <button onclick="toggleNav('nav-nosotros')">
+          Nosotros <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <ul class="dropdown" style="right:0;left:auto;">
+          <li><a href="#"><i class="fas fa-university"></i>Quiénes somos</a></li>
+          <li><a href="#"><i class="fas fa-bullseye"></i>Misión y visión</a></li>
+          <li><a href="#"><i class="fas fa-award"></i>Acreditaciones</a></li>
+          <li><a href="#"><i class="fas fa-chart-bar"></i>Transparencia</a></li>
+        </ul>
+      </div>
+
+      <!-- CTA Campus Virtual -->
+      <a href="#" class="btn-campus">
+        <i class="fas fa-sign-in-alt"></i> Campus virtual
+      </a>
+
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       JS
+  ══════════════════════════════════════════════════════ -->
+  <script>
+    /* ── Topbar dropdowns (desktop y móvil) ── */
+    function toggleTb(id) {
+      const el = document.getElementById(id);
+      const isOpen = el.classList.contains('open');
+      document.querySelectorAll('.tb-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) el.classList.add('open');
+    }
+
+    /* ── Header nav dropdowns ── */
+    function toggleNav(id) {
+      const el = document.getElementById(id);
+      const isOpen = el.classList.contains('open');
+      const isMobile = window.innerWidth <= 860;
+      
+      // En desktop, cerrar otros; en móvil, permitir múltiples abiertos
+      if (!isMobile) {
+        document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+      }
+      
+      if (!isOpen) {
+        el.classList.add('open');
+      } else {
+        el.classList.remove('open');
+        // Si se cierra este nav-item, cerrar todos sus mega-cols y secciones
+        el.querySelectorAll('.mega-col.expanded').forEach(col => col.classList.remove('expanded'));
+        el.querySelectorAll('.dropdown-section-wrapper.open').forEach(sec => sec.classList.remove('open'));
+      }
+    }
+
+    /* ── Toggle collapsible sections ── */
+    function toggleSection(button) {
+      const wrapper = button.closest('.dropdown-section-wrapper');
+      wrapper.classList.toggle('open');
+    }
+
+    /* ── Mobile hamburger ── */
+    function toggleMobileMenu() {
+      const nav = document.getElementById('headerNav');
+      const ham = document.getElementById('hamburger');
+      const isOpen = nav.classList.contains('open');
+      
+      nav.classList.toggle('open');
+      ham.classList.toggle('active');
+      
+      // Si se cierra el menú, cerrar todos los submenús
+      if (isOpen) {
+        document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+        document.querySelectorAll('.mega-col.expanded').forEach(i => i.classList.remove('expanded'));
+        document.querySelectorAll('.tb-item.open').forEach(i => i.classList.remove('open'));
+      }
+    }
+
+    /* ── Toggle mega-col (categorías de programas) ── */
+    function toggleMegaCol(el) {
+      if (window.innerWidth > 860) return; // Solo en móvil
+      el.classList.toggle('expanded');
+    }
+
+    /* ── Cerrar al hacer click fuera ── */
+    document.addEventListener('click', function(e) {
+      // Cerrar dropdowns de topbar
+      if (!e.target.closest('.tb-item')) {
+        document.querySelectorAll('.tb-item.open').forEach(i => i.classList.remove('open'));
+      }
+      // En desktop, cerrar nav dropdowns al hacer click fuera
+      if (window.innerWidth > 860) {
+        if (!e.target.closest('.nav-item') && !e.target.closest('.hamburger')) {
+          document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+        }
+      }
+    });
+
+    /* ── Cerrar mobile nav al hacer resize a desktop ── */
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 860) {
+        document.getElementById('headerNav').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('active');
+        document.querySelectorAll('.mega-col.expanded').forEach(i => i.classList.remove('expanded'));
+      }
+    });
+  </script>
+
+</body>
+</html>

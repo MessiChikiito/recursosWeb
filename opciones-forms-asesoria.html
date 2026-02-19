@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Opciones de Forms - Solicitar Asesoría</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f5f7fa;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #1a202c;
+      font-size: 2.5rem;
+    }
+
+    .opciones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .opcion {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e5e7eb;
+    }
+
+    .opcion h2 {
+      color: #0132AF;
+      margin-bottom: 6px;
+      font-size: 1.3rem;
+    }
+
+    .opcion-label {
+      display: inline-block;
+      background: #0132AF;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .opcion-description {
+      color: #718096;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .form-preview {
+      border-top: 2px solid #e5e7eb;
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+
+    /* ========== OPCIÓN 1: FORM MINIMALISTA ========== */
+    .form-minimalista {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-minimalista input {
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .form-minimalista input:focus {
+      outline: none;
+      border-color: #0132AF;
+      box-shadow: 0 0 0 3px rgba(1, 50, 175, 0.1);
+    }
+
+    .form-minimalista button {
+      padding: 12px;
+      background: #0132AF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-minimalista button:hover {
+      background: #0052D6;
+      transform: translateY(-2px);
+    }
+
+    /* ========== OPCIÓN 2: FORM CON PASOS ========== */
+    .form-pasos {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .paso {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .paso.active {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .paso-numero {
+      font-size: 0.85rem;
+      color: #718096;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .paso input, .paso select {
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .paso input:focus, .paso select:focus {
+      outline: none;
+      border-color: #0132AF;
+      box-shadow: 0 0 0 3px rgba(1, 50, 175, 0.1);
+    }
+
+    .botones-pasos {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .botones-pasos button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+      background: white;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .botones-pasos button.siguiente {
+      background: #0132AF;
+      color: white;
+      border-color: #0132AF;
+    }
+
+    .botones-pasos button.siguiente:hover {
+      background: #0052D6;
+    }
+
+    /* ========== OPCIÓN 3: FORM CON ICONOS ========== */
+    .form-iconos {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-grupo {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .form-icono {
+      width: 40px;
+      height: 40px;
+      background: #e5e7eb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .form-input-wrapper {
+      flex: 1;
+    }
+
+    .form-iconos input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .form-iconos input:focus {
+      outline: none;
+      border-color: #0132AF;
+      box-shadow: 0 0 0 3px rgba(1, 50, 175, 0.1);
+    }
+
+    .form-iconos button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-iconos button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(1, 50, 175, 0.3);
+    }
+
+    /* ========== OPCIÓN 4: FORM COMPACTO (2 COLUMNAS) ========== */
+    .form-compacto {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-compacto input, .form-compacto select {
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .form-compacto input:focus, .form-compacto select:focus {
+      outline: none;
+      border-color: #0132AF;
+      box-shadow: 0 0 0 3px rgba(1, 50, 175, 0.1);
+    }
+
+    .form-compacto .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-compacto button {
+      grid-column: 1 / -1;
+      padding: 12px;
+      background: #EF1218;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .form-compacto button:hover {
+      background: #c50e13;
+      transform: translateY(-2px);
+    }
+
+    /* ========== OPCIÓN 5: FORM INTERACTIVO (TOGGLE) ========== */
+    .form-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .toggle-group {
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .toggle-button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: white;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 600;
+      color: #0132AF;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toggle-button:hover {
+      background: #f7fafc;
+    }
+
+    .toggle-button.active {
+      background: #0132AF;
+      color: white;
+    }
+
+    .toggle-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-button.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .toggle-content {
+      display: none;
+      padding: 16px;
+      background: #f9fafb;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .toggle-content.active {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        max-height: 0;
+      }
+      to {
+        opacity: 1;
+        max-height: 500px;
+      }
+    }
+
+    .toggle-content input, .toggle-content select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .toggle-content input:focus, .toggle-content select:focus {
+      outline: none;
+      border-color: #0132AF;
+      box-shadow: 0 0 0 3px rgba(1, 50, 175, 0.1);
+    }
+
+    .form-toggle .btn-final {
+      padding: 12px;
+      background: #0BD926;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-toggle .btn-final:hover {
+      background: #08B81F;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .opcion {
+        padding: 20px;
+      }
+
+      .form-compacto {
+        grid-template-columns: 1fr;
+      }
+
+      .form-compacto .full-width {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>5 Opciones de Forms - Solicitar Asesoría</h1>
+
+    <div class="opciones-grid">
+      <!-- ========== OPCIÓN 1: MINIMALISTA ========== -->
+      <div class="opcion">
+        <h2>Opción 1</h2>
+        <span class="opcion-label">Minimalista</span>
+        <p class="opcion-description">Diseño limpio y directo. Ideal para cuando necesitas información básica rápidamente.</p>
+        
+        <div class="form-preview">
+          <form class="form-minimalista" onsubmit="submitForm(event)">
+            <input type="text" placeholder="Tu nombre completo" required>
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <input type="tel" placeholder="Tu teléfono" required>
+            <button type="submit">Solicitar Asesoría</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ========== OPCIÓN 2: CON PASOS ========== -->
+      <div class="opcion">
+        <h2>Opción 2</h2>
+        <span class="opcion-label">Multi Paso</span>
+        <p class="opcion-description">Divide el formulario en pasos para una mejor experiencia. Menos abrumador.</p>
+        
+        <div class="form-preview">
+          <form class="form-pasos" onsubmit="submitForm(event)">
+            <!-- Paso 1 -->
+            <div class="paso active" data-paso="1">
+              <p class="paso-numero">Paso 1 de 3: Datos Personales</p>
+              <input type="text" placeholder="Nombre completo" required>
+              <input type="email" placeholder="Correo electrónico" required>
+              <div class="botones-pasos">
+                <button type="button" class="siguiente" onclick="cambiarPaso(2)">Siguiente →</button>
+              </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="paso" data-paso="2">
+              <p class="paso-numero">Paso 2 de 3: Contacto</p>
+              <input type="tel" placeholder="Teléfono" required>
+              <input type="text" placeholder="Ciudad" required>
+              <div class="botones-pasos">
+                <button type="button" onclick="cambiarPaso(1)">← Atrás</button>
+                <button type="button" class="siguiente" onclick="cambiarPaso(3)">Siguiente →</button>
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="paso" data-paso="3">
+              <p class="paso-numero">Paso 3 de 3: Programa</p>
+              <select required>
+                <option value="">Selecciona un programa</option>
+                <option value="administracion">Administración de Empresas</option>
+                <option value="contaduria">Contaduría Pública</option>
+                <option value="finanzas">Finanzas y Comercio Exterior</option>
+              </select>
+              <div class="botones-pasos">
+                <button type="button" onclick="cambiarPaso(2)">← Atrás</button>
+                <button type="submit" class="siguiente">Enviar Solicitud</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ========== OPCIÓN 3: CON ICONOS ========== -->
+      <div class="opcion">
+        <h2>Opción 3</h2>
+        <span class="opcion-label">Con Iconos</span>
+        <p class="opcion-description">Formulario visual con iconos que identifican cada campo fácilmente.</p>
+        
+        <div class="form-preview">
+          <form class="form-iconos" onsubmit="submitForm(event)">
+            <div class="form-grupo">
+              <div class="form-icono">👤</div>
+              <div class="form-input-wrapper">
+                <input type="text" placeholder="Nombre completo" required>
+              </div>
+            </div>
+
+            <div class="form-grupo">
+              <div class="form-icono">✉️</div>
+              <div class="form-input-wrapper">
+                <input type="email" placeholder="Correo electrónico" required>
+              </div>
+            </div>
+
+            <div class="form-grupo">
+              <div class="form-icono">📱</div>
+              <div class="form-input-wrapper">
+                <input type="tel" placeholder="Teléfono" required>
+              </div>
+            </div>
+
+            <button type="submit">Solicitar Asesoría</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ========== OPCIÓN 4: COMPACTO (2 COLUMNAS) ========== -->
+      <div class="opcion">
+        <h2>Opción 4</h2>
+        <span class="opcion-label">Compacto 2Col</span>
+        <p class="opcion-description">Distribuye campos en 2 columnas para ocupar menos espacio vertical.</p>
+        
+        <div class="form-preview">
+          <form class="form-compacto" onsubmit="submitForm(event)">
+            <input type="text" placeholder="Nombre *" required>
+            <input type="text" placeholder="Apellido *" required>
+            <input type="email" placeholder="Correo *" required>
+            <input type="tel" placeholder="Teléfono *" required>
+            <input type="text" class="full-width" placeholder="Ciudad" required>
+            <select class="full-width" required>
+              <option value="">Programa de interés *</option>
+              <option value="administracion">Administración</option>
+              <option value="contaduria">Contaduría</option>
+            </select>
+            <button type="submit" class="full-width">Enviar Solicitud</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ========== OPCIÓN 5: TOGGLE/ACORDEÓN ========== -->
+      <div class="opcion">
+        <h2>Opción 5</h2>
+        <span class="opcion-label">Acordeón</span>
+        <p class="opcion-description">Campos organizados en secciones expandibles. Muy intuitivo y moderno.</p>
+        
+        <div class="form-preview">
+          <form class="form-toggle" onsubmit="submitForm(event)">
+            <div class="toggle-group">
+              <button type="button" class="toggle-button active" onclick="toggleSeccion(this)">
+                <span>📋 Información Personal</span>
+                <span class="toggle-icon">▼</span>
+              </button>
+              <div class="toggle-content active">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+              </div>
+            </div>
+
+            <div class="toggle-group">
+              <button type="button" class="toggle-button" onclick="toggleSeccion(this)">
+                <span>📞 Datos de Contacto</span>
+                <span class="toggle-icon">▼</span>
+              </button>
+              <div class="toggle-content">
+                <input type="tel" placeholder="Teléfono" required>
+                <input type="text" placeholder="Ciudad" required>
+              </div>
+            </div>
+
+            <div class="toggle-group">
+              <button type="button" class="toggle-button" onclick="toggleSeccion(this)">
+                <span>🎓 Programa de Interés</span>
+                <span class="toggle-icon">▼</span>
+              </button>
+              <div class="toggle-content">
+                <select required>
+                  <option value="">Selecciona un programa</option>
+                  <option value="administracion">Administración de Empresas</option>
+                  <option value="contaduria">Contaduría Pública</option>
+                  <option value="finanzas">Finanzas y Comercio Exterior</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-final">Enviar Solicitud de Asesoría</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      alert('✓ Formulario enviado correctamente!');
+      event.target.reset();
+    }
+
+    // Para formulario con pasos
+    function cambiarPaso(numeroPaso) {
+      const pasos = document.querySelectorAll('.paso');
+      pasos.forEach(paso => paso.classList.remove('active'));
+      document.querySelector(`[data-paso="${numeroPaso}"]`).classList.add('active');
+    }
+
+    // Para acordeón
+    function toggleSeccion(button) {
+      const content = button.nextElementSibling;
+      
+      // Cerrar todas las secciones
+      document.querySelectorAll('.toggle-content').forEach(c => {
+        if (c !== content) {
+          c.classList.remove('active');
+          c.previousElementSibling.classList.remove('active');
+        }
+      });
+
+      // Toggle la sección actual
+      button.classList.toggle('active');
+      content.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

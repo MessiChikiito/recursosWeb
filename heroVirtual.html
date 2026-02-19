@@ -344,14 +344,6 @@
             }
         }
     </style>
-    <script>
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    </script>
 </head>
 <body>
 
@@ -368,7 +360,7 @@
                     <button class="pp-btn-verde" onclick="alert('Ir a programas presenciales')" style="position: relative;">
                         <span>Ver Pregrados Presenciales →</span>
                     </button>
-                    <button class="pp-btn-asesoria" onclick="scrollToSection('caja-info')">
+                    <button class="pp-btn-asesoria" onclick="location.hash = 'caja-info'">
                         <span>Solicitar una asesoría</span>
                     </button>
                 </div>

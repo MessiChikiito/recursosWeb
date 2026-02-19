@@ -1,24 +1,16 @@
 <style>
-        body {
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #ffffff;
-            color: #06325a;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            padding: 0;
-            margin: 0;
-        }
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-        h1, h2, h3 {
-            font-family: inherit;
-            margin: 0;
-            color: #0132AF;
-        }
 
-        h3.ue-h3 {
-            font-size: 24px;
-            font-weight: 900;
-            color: #06325a;
+        .ue-h3 {
+            font-size: 30px;
+            color: #ffffff;
             margin: 0 0 28px;
             letter-spacing: -0.5px;
         }
@@ -62,27 +54,20 @@
         }
 
         .ue-why-benefit-card:nth-child(1)::before {
-            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
-            box-shadow: 0 6px 16px rgba(1, 50, 175, 0.35);
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+            box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
         }
 
         .ue-why-benefit-card:nth-child(2)::before {
             background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
-            box-shadow: 0 6px 16px rgba(255, 106, 0, 0.35);
         }
 
         .ue-why-benefit-card:nth-child(3)::before {
             background: linear-gradient(135deg, #00897b 0%, #00a89d 100%);
-            box-shadow: 0 6px 16px rgba(0, 137, 123, 0.35);
         }
 
         .ue-why-benefit-card:nth-child(4)::before {
             background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
-            box-shadow: 0 6px 16px rgba(217, 70, 239, 0.35);
-        }
-
-        .ue-why-benefit-card:hover {
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
         }
 
         .ue-why-benefit-title {
@@ -125,36 +110,56 @@
             margin-top: 4px;
         }
 
-        .ue-why-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.4s cubic-bezier(.4,0,.2,1) !important;
-            border: none;
-            cursor: pointer;
-            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.3);
+        @media (max-width: 980px) {
+          .ue-why-benefits-grid {
+            grid-template-columns: 1fr; 
+          }
+        
+          .ue-why-metrics {
+            gap: 10px;
+          }
         }
 
-        .ue-why-btn:hover {
-            background: linear-gradient(135deg, #1a5bcf 0%, #2471e0 100%) !important;
-            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.5) !important;
-            transform: translateY(-2px) !important;
+        .ue-card {
+            background: linear-gradient(180deg, #0132AF 0%, #0854d1 100%);
+            padding: 40px;
+            border-radius: 16px;
         }
 
-        .ue-why-btn:active {
-            transform: translateY(0px) !important;
+        .ue-card .ue-h3 {
+            color: white !important;
         }
-
+        
         @media (max-width: 640px) {
-            .ue-why-benefits-grid {
-                grid-template-columns: 1fr;
-            }
+          .ue-card {
+            padding: 20px 15px;
+          }
+        
+          .ue-why-benefits-grid {
+            gap: 14px;
+          }
+        
+          .ue-why-benefit-card {
+            padding: 18px;
+            padding-top: 44px;
+          }
+        
+          h3.ue-h3 {
+            font-size: 20px;
+            margin-bottom: 18px;
+          }
+        
+          .ue-why-metric {
+            min-width: 0;     
+            flex: 1 1 100%;   
+          }
+        
+          .ue-why-btn {
+            width: 100%;
+            text-align: center;
+          }
         }
+
 
 </style>
 
@@ -163,30 +168,26 @@
     
     <div class="ue-why-benefits-grid">
       <div class="ue-why-benefit-card">
-        <div class="ue-why-benefit-title">Enfoque práctico</div>
-        <div class="ue-why-benefit-desc">Proyectos reales y casos empresariales</div>
+        <div class="ue-why-benefit-title">Modelo Dual</div>
+        <div class="ue-why-benefit-desc">50% clases + 50% prácticas en empresas aliadas.</div>
       </div>
       <div class="ue-why-benefit-card">
-        <div class="ue-why-benefit-title">Docentes activos</div>
-        <div class="ue-why-benefit-desc">Experiencia real en industria</div>
+        <div class="ue-why-benefit-title">Internacionalización</div>
+        <div class="ue-why-benefit-desc">Convenios de intercambio y doble titulación.</div>
       </div>
       <div class="ue-why-benefit-card">
-        <div class="ue-why-benefit-title">Soporte virtual</div>
-        <div class="ue-why-benefit-desc">Acompañamiento en horarios hábiles</div>
+        <div class="ue-why-benefit-title">Alta Empleabilidad</div>
+        <div class="ue-why-benefit-desc">Más del 87% de egresados con empleo en su campo.</div>
       </div>
       <div class="ue-why-benefit-card">
-        <div class="ue-why-benefit-title">Red de aliados</div>
-        <div class="ue-why-benefit-desc">Convenios y oportunidades</div>
+        <div class="ue-why-benefit-title">Currículo actualizado</div>
+        <div class="ue-why-benefit-desc">Estrategia, finanzas, marketing digital, analítica y e commerce.</div>
       </div>
     </div>
 
     <div class="ue-why-metrics">
-      <div class="ue-why-metric">+ <span id="metricAllies">--</span><span class="ue-why-metric__sub">empresas aliadas</span></div>
-      <div class="ue-why-metric"><span id="metricPractice">--</span><span class="ue-why-metric__sub">meses de práctica</span></div>
-    </div>
-
-    <div style="margin-top:12px">
-      <a href="#convenios" class="ue-why-btn">Ver convenios</a>
+      <div class="ue-why-metric"><span>284</span><span class="ue-why-metric__sub">Empresas aliadas con conexión directa.</span></div>
+      <div class="ue-why-metric"><span>18</span><span class="ue-why-metric__sub">Meses de práctica profesional certificada.</span></div>
     </div>
 
   </div>

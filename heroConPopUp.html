@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregrados Virtuales - Hero</title>
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #009E4D;
+            --color-primary-light: #00FF70;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ========== CAJA 1: HERO SECTION ========== */
+        /* Sección principal 2 columnas */
+        .pp-hero {
+            background: linear-gradient(135deg, #067A2E 0%, #0B9C3D 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pp-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .pp-hero-content {
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .pp-hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pp-hero-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pp-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .pp-hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .pp-hero-info-card {
+            background: rgba(255,255,255,0.1) !important;
+            backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-hero-info-card-dual {
+            background: rgba(255,255,255,0.1) !important;
+            backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            border-radius: 12px !important;
+            padding: 24px !important;
+            line-height: 1.3;
+            color: white !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .pp-hero-info-card-dual strong {
+            display: block !important;
+            font-size: 2rem !important;
+            font-weight: 900 !important;
+            text-align: center !important;
+            margin-bottom: 8px !important;
+            letter-spacing: -0.5px !important;
+        }
+
+        .pp-hero-info-card-dual p {
+            font-size: 0.93rem !important;
+            opacity: 0.95 !important;
+            margin: 0 !important;
+            text-align: center !important;
+        }
+
+        .pp-dual {
+            color: red !important;
+            background-color: white !important;
+            padding-bottom: 5px !important;
+            margin-top: 2px !important;
+            border-radius: 15px !important;
+            text-align: center !important;
+        }
+
+        .pp-hero-info-card strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .pp-hero-info-card p {
+            font-size: 0.93rem;
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .pp-badge-nuevo-button {
+            position: absolute !important;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%) !important;
+            color: white !important;
+            padding: 6px 12px !important;
+            border-radius: 50px !important;
+            font-size: 0.7rem !important;
+            font-weight: 700 !important;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            height: 24px;
+            box-shadow: 0 3px 12px rgba(239, 18, 24, 0.6);
+            animation: breathing-badge 4s cubic-bezier(0.2, 0.2, 0.4, 0.4) infinite !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            transform-origin: center;
+        }
+
+        /* Contenedor acciones hero (botones) */
+        .pp-hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .pp-btn-verde {
+            background: #0748ed !important;
+            border: 2px solid #0748ed !important;
+            color: white !important;
+            padding: 15px 24px !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            width: fit-content !important;
+            height: auto !important;
+            white-space: nowrap !important;
+        }
+
+        .pp-btn-verde:hover {
+            background: #044dc2 !important;
+            border-color: #044dc2 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .pp-btn-asesoria {
+            background: transparent !important;
+            border: 2px solid white !important;
+            color: white !important;
+            padding: 15px 24px !important;
+            border-radius: 8px !important;
+            text-decoration: none !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            width: fit-content !important;
+            height: auto !important;
+            white-space: nowrap !important;
+        }
+
+        .pp-btn-asesoria:hover {
+            background: #ffffff53 !important;
+            border-color: #ffffff !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Animaciones */
+        @keyframes breathing-badge {
+            0% {
+                box-shadow: 0 2px 8px rgba(239, 18, 24, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 4px 16px rgba(239, 18, 24, 0.8);
+                transform: scale(1.09);
+            }
+            100% {
+                box-shadow: 0 2px 8px rgba(239, 18, 24, 0.5);
+                transform: scale(1);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        /* Tablet */
+        @media (max-width: 992px) {
+            .pp-hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .pp-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 768px) {
+            .pp-hero {
+                padding: 60px 24px;
+            }
+
+            .pp-hero-right {
+                grid-template-columns: 1fr;
+            }
+
+            .pp-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+            }
+
+            .pp-hero-actions {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .pp-btn-verde,
+            .pp-btn-asesoria {
+                width: 100% !important;
+                justify-content: center;
+            }
+
+            .pp-hero-info-card,
+            .pp-hero-info-card-dual {
+                padding: 20px !important;
+            }
+
+            .pp-hero-info-card strong,
+            .pp-hero-info-card-dual strong {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* Mobile Extra Small */
+        @media (max-width: 480px) {
+            .pp-hero {
+                padding: 40px 16px;
+            }
+
+            .pp-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .pp-btn-verde,
+            .pp-btn-asesoria {
+                padding: 12px 16px !important;
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* ========== MODAL POPUP ASESORÍA ========== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .pp-modal-overlay {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            z-index: 9999 !important;
+            display: none !important;
+            opacity: 0 !important;
+            padding: 10px !important;
+            width: fit-content !important;
+            max-width: calc(100vw - 40px) !important;
+            height: auto !important;
+            box-sizing: border-box !important;
+        }
+
+        .pp-modal-overlay.active {
+            display: block !important;
+            opacity: 1 !important;
+        }
+
+        .pp-modal {
+            background: white !important;
+            border-radius: 16px !important;
+            padding: 44px !important;
+            max-width: 800px !important;
+            width: auto !important;
+            min-width: 800px !important;
+            box-shadow: 0 20px 60px rgba(0, 158, 77, 0.3) !important;
+            border: none !important;
+            position: relative !important;
+            margin: 0 auto !important;
+            box-sizing: border-box !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            animation: fadeUp 0.4s ease forwards !important;
+        }
+
+        .pp-modal.closing {
+            animation: fadeDown 0.4s ease forwards !important;
+        }
+
+        /* RESETEAR HIJOS DEL MODAL */
+        .pp-modal * {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        /* RE-APLICAR ESTILOS AL MODAL */
+        .pp-modal {
+            background: white !important;
+        }
+        
+        .pp-modal-header h2 {
+            font-weight: 700 !important;
+            font-size: 1.5rem !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .pp-modal-header p {
+            font-size: 0.9rem !important;
+            color: #718096 !important;
+        }
+        
+        .form-asesoria-pp {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 18px !important;
+        }
+        
+        .form-group-pp {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 12px !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .form-group-pp.full-width {
+            grid-column: 1 / -1 !important;
+        }
+        
+        .form-icon-pp {
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            max-width: 40px !important;
+            background: #e8f5e9 !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            flex-grow: 0 !important;
+            order: 0 !important;
+            position: relative !important;
+            left: auto !important;
+            right: auto !important;
+            float: none !important;
+        }
+
+        .form-icon-pp svg {
+            width: 20px !important;
+            height: 20px !important;
+            stroke: #009E4D !important;
+            fill: none !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+            float: none !important;
+        }
+        
+        .form-input-wrapper-pp {
+            flex: 1 !important;
+            flex-grow: 1 !important;
+            min-width: 0 !important;
+            order: 1 !important;
+            width: auto !important;
+            float: none !important;
+        }
+        
+        .form-asesoria-pp input,
+        .form-asesoria-pp select {
+            width: 100% !important;
+            padding: 12px 14px !important;
+            border: 2px solid #e5e7eb !important;
+            border-radius: 8px !important;
+            background: #f9fafb !important;
+            color: #1a202c !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            display: block !important;
+            font-size: 0.9rem !important;
+        }
+
+        .form-asesoria-pp input::placeholder {
+            color: #b8bcc6 !important;
+        }
+
+        .form-asesoria-pp input:hover,
+        .form-asesoria-pp select:hover {
+            border-color: #009E4D !important;
+            background: #ffffff !important;
+            box-shadow: 0 2px 8px rgba(0, 158, 77, 0.08) !important;
+        }
+
+        .form-asesoria-pp input:focus,
+        .form-asesoria-pp select:focus {
+            outline: none !important;
+            border-color: #0B9C3D !important;
+            background: #ffffff !important;
+            box-shadow: 0 0 0 4px rgba(0, 158, 77, 0.15) !important;
+        }
+        
+        .form-button-pp {
+            grid-column: 1 / -1 !important;
+            width: 100% !important;
+            padding: 15px 24px !important;
+            background: linear-gradient(135deg, #009E4D 0%, #0B9C3D 100%) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            box-shadow: 0 6px 20px rgba(0, 158, 77, 0.3) !important;
+            margin-top: 12px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .form-button-pp:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 35px rgba(0, 158, 77, 0.45) !important;
+        }
+
+        .form-button-pp:active {
+            transform: translateY(-1px) !important;
+        }
+        
+        .form-footer-pp {
+            margin-top: 20px !important;
+            text-align: center !important;
+            font-size: 0.7rem !important;
+        }
+
+        .pp-modal-close {
+            position: absolute !important;
+            top: 20px !important;
+            right: 14px !important;
+            width: 40px !important;
+            height: 40px !important;
+            border: none !important;
+            background: rgba(0, 158, 77, 0.08) !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: background 0.3s ease, color 0.3s ease !important;
+            color: #009E4D !important;
+            font-size: 1.3rem !important;
+            font-weight: 300 !important;
+            z-index: 10 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .pp-modal-close:hover {
+            background: #EF1218 !important;
+            color: white !important;
+        }
+
+        .pp-modal-header {
+            margin-bottom: 24px !important;
+            text-align: center !important;
+        }
+
+        .pp-modal-header h2 {
+            font-size: 1.6rem !important;
+            color: #009E4D !important;
+            margin-bottom: 6px !important;
+            font-weight: 700 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .pp-modal-header p {
+            color: #718096 !important;
+            font-size: 0.85rem !important;
+            line-height: 1.5 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+        }
+
+        .form-footer-pp {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .form-footer-pp a {
+            color: #009E4D !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+        }
+
+        .form-footer-pp a:hover {
+            text-decoration: underline !important;
+        }
+
+        @media (max-width: 480px) {
+            .pp-modal-overlay {
+                padding: 2px !important;
+                max-width: 100vw !important;
+                width: 100vw !important;
+            }
+
+            .pp-modal {
+                padding: 16px 12px !important;
+                min-width: auto !important;
+                max-width: 100% !important;
+                width: 80% !important;
+                min-height: auto !important;
+                border-radius: 12px !important;
+                margin-right: 60px !important;
+                margin-left: 40px !important;
+            }
+
+            .pp-modal-close {
+                top: 10px !important;
+                right: 10px !important;
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 1rem !important;
+                background: rgba(0, 158, 77, 0.08) !important;
+                color: #009E4D !important;
+                transition: background 0.3s ease, color 0.3s ease !important;
+            }
+
+            .pp-modal-close:hover {
+                background: #EF1218 !important;
+                color: white !important;
+            }
+
+            .pp-modal-header {
+                margin-bottom: 16px !important;
+            }
+
+            .pp-modal-header h2 {
+                font-size: 1.2rem !important;
+                margin-bottom: 4px !important;
+                font-weight: 700 !important;
+            }
+
+            .pp-modal-header p {
+                font-size: 0.75rem !important;
+                line-height: 1.2 !important;
+                color: #718096 !important;
+            }
+
+            .form-asesoria-pp {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+
+            .form-group-pp {
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                flex-wrap: nowrap !important;
+                grid-column: auto !important;
+                flex-direction: row !important;
+                position: static !important;
+            }
+
+            .form-icon-pp {
+                width: 32px !important;
+                height: 32px !important;
+                min-width: 32px !important;
+                flex-shrink: 0 !important;
+                background: #e8f5e9 !important;
+                border-radius: 8px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .form-icon-pp svg {
+                width: 18px !important;
+                height: 18px !important;
+                stroke: #009E4D !important;
+                fill: none !important;
+                display: block !important;
+                flex-shrink: 0 !important;
+            }
+
+            .form-input-wrapper-pp {
+                flex: 1 !important;
+                min-width: 0 !important;
+            }
+
+            .form-input-wrapper-pp input,
+            .form-input-wrapper-pp select,
+            .form-asesoria-pp input,
+            .form-asesoria-pp select {
+                font-size: 10px !important;
+                padding: 8px 10px !important;
+                width: 100% !important;
+                border: 2px solid #e5e7eb !important;
+                border-radius: 6px !important;
+                background: #f9fafb !important;
+                color: #1a202c !important;
+                height: auto !important;
+            }
+
+            .form-button-pp {
+                font-size: 0.65rem !important;
+                padding: 10px 16px !important;
+                margin-top: 8px !important;
+                width: 100% !important;
+                background: linear-gradient(135deg, #009E4D 0%, #0B9C3D 100%) !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 8px !important;
+            }
+
+            .form-footer-pp {
+                font-size: 0.65rem !important;
+                margin-top: 12px !important;
+                text-align: center !important;
+                color: #718096 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAJA 1: HERO -->
+    <section class="pp-hero" id="pp-caja-hero">
+        <div class="pp-hero-content">
+            <!-- Columna Izquierda -->
+            <div class="pp-hero-left">
+                <h1>Pregrados Virtuales</h1>
+                <p class="pp-hero-subtitle">
+                    Aprende con la calidad de nuestros programas desde cualquier lugar. Modalidad 100% virtual con tutorías en vivo, plataforma interactiva 24/7 y prácticas en empresas de tu ciudad.
+                </p>
+                <div class="pp-hero-actions">
+                    <button class="pp-btn-verde" onclick="alert('Ir a programas presenciales')" style="position: relative;">
+                        <span>Ver Pregrados Presenciales →</span>
+                    </button>
+                    <button class="pp-btn-asesoria" onclick="openModalAsesoria()">
+                        <span>Solicitar una asesoría</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Columna Derecha - Tarjetas Info -->
+            <div class="pp-hero-right">
+                <div class="pp-hero-info-card">
+                    <strong>3.5 Años</strong>
+                    <p>Solo en 7 Semestres</p>
+                </div>
+                <div class="pp-hero-info-card">
+                    <strong>18 Meses</strong>
+                    <p>De experiencia laboral certificada</p>
+                </div>
+                <div class="pp-hero-info-card-dual">
+                    <strong>Modalidad <strong class="pp-dual">Dual</strong></strong>
+                    <p>Adquieres experiencia mientras estudias </p>
+                </div>
+                <div class="pp-hero-info-card-dual">
+                    <strong>Enfoques Reales</strong>
+                    <p>En el mercado actual</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Popup Asesoría -->
+    <div class="pp-modal-overlay" id="modalAsesoria">
+        <div class="pp-modal">
+            <button class="pp-modal-close" onclick="closeModalAsesoria()">✕</button>
+            <div class="pp-modal-header">
+                <h2>Solicita tu Asesoría</h2>
+                <p>Completa el formulario y un asesor se contactará contigo en breve</p>
+            </div>
+            <form class="form-asesoria-pp" id="formAsesoria" onsubmit="submitFormAsesoria(event)">
+                <!-- Nombre -->
+                <div class="form-group-pp">
+                    <div class="form-icon-pp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#009E4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="form-input-wrapper-pp">
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
+                </div>
+
+                <!-- Apellido -->
+                <div class="form-group-pp">
+                    <div class="form-icon-pp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#009E4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="form-input-wrapper-pp">
+                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group-pp">
+                    <div class="form-icon-pp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#009E4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                    </div>
+                    <div class="form-input-wrapper-pp">
+                        <input type="email" id="email" name="email" placeholder="Correo" required>
+                    </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="form-group-pp">
+                    <div class="form-icon-pp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#009E4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="form-input-wrapper-pp">
+                        <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                    </div>
+                </div>
+
+                <!-- Programa -->
+                <div class="form-group-pp full-width">
+                    <div class="form-icon-pp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#009E4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="form-input-wrapper-pp">
+                        <select id="programa" name="programa" required>
+                            <option value="">Selecciona un programa</option>
+                            <option value="administracion">Administración de Empresas</option>
+                            <option value="contaduria">Contaduría Pública</option>
+                            <option value="finanzas">Finanzas y Comercio Exterior</option>
+                            <option value="mercadeo">Mercadeo y Publicidad</option>
+                            <option value="ingenieria">Ingeniería Industrial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Botón Submit -->
+                <button type="submit" class="form-button-pp">Solicitar Asesoría</button>
+            </form>
+
+            <div class="form-footer-pp">
+                Al enviar aceptas nuestra <a href="#">Política de Privacidad</a> y <a href="#">Términos de Servicio</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones para el modal de asesoría
+        function openModalAsesoria() {
+            const modal = document.getElementById('modalAsesoria');
+            modal.style.display = 'block';
+            // Pequeño delay para la animación
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        function closeModalAsesoria() {
+            const modal = document.querySelector('.pp-modal');
+            modal.classList.add('closing');
+            // Esperar a que termine la animación
+            setTimeout(() => {
+                const modalOverlay = document.getElementById('modalAsesoria');
+                modalOverlay.classList.remove('active');
+                modal.classList.remove('closing');
+                modalOverlay.style.display = 'none';
+            }, 400);
+        }
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('modalAsesoria');
+                if (modal.classList.contains('active')) {
+                    closeModalAsesoria();
+                }
+            }
+        });
+
+        // Función para enviar el formulario
+        function submitFormAsesoria(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Datos del formulario:', data);
+            
+            // Mostrar mensaje de éxito
+            alert('✓ ¡Gracias por tu solicitud!\nUn asesor te contactará pronto.');
+            
+            // Cerrar modal y resetear formulario
+            closeModalAsesoria();
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

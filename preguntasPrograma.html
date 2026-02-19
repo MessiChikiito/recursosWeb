@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<style>
+  /* FAQ Section Styles */
+  .ue-faq-section {
+    background: white;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ue-faq-section .ue-headRow {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .ue-h3-faq {
+    color: #0132AF;
+    font-weight: 900;
+    margin: 0;
+    font-size: 32px;
+  }
+
+  /* FAQ Answer Text */
+  .ue-faq-answer {
+    color: #7a8a99;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* FAQ Accordion */
+  .ue-faq-accordion {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ue-faq-acc-item {
+    border-bottom: 1px solid #e0e3e8;
+  }
+
+  .ue-faq-acc-item:first-child {
+    border-top: 1px solid #e0e3e8;
+  }
+
+  .ue-faq-acc-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #092b57;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    cursor: pointer;
+    transition: color 0.4s ease !important;
+  }
+
+  .ue-faq-acc-btn:hover {
+    color: #0132AF !important;
+  }
+
+  .ue-faq-acc-icon {
+    font-size: 20px;
+    font-weight: 300;
+    transition: transform 0.4s ease !important;
+  }
+
+  .ue-faq-acc-btn[aria-expanded="true"] .ue-faq-acc-icon {
+    transform: rotate(180deg) !important;
+  }
+
+  .ue-faq-acc-panel {
+    overflow: hidden;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .ue-faq-acc-panel-inner {
+    padding: 0 0 16px 0;
+  }
+
+  /* FAQ Buttons Container */
+  .ue-faq-buttons {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ue-faq-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .ue-faq-btn-primary {
+    background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(1, 50, 175, 0.3) !important;
+  }
+
+  .ue-faq-btn-primary:hover {
+    background: linear-gradient(135deg, #1a5bcf 0%, #2a6bdf 100%) !important;
+    box-shadow: 0 8px 24px rgba(1, 50, 175, 0.5) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .ue-faq-btn-outline {
+    background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3) !important;
+  }
+
+  .ue-faq-btn-outline:hover {
+    background: linear-gradient(135deg, #ff8a2e 0%, #ffaa4e 100%) !important;
+    box-shadow: 0 8px 24px rgba(255, 106, 0, 0.5) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  @media (max-width: 640px) {
+    .ue-faq-section {
+      padding: 24px 16px;
+    }
+
+    .ue-faq-buttons {
+      flex-direction: column;
+    }
+
+    .ue-faq-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<section id="faq" class="ue-section ue-card ue-faq-section" aria-label="Preguntas frecuentes">
+  <div class="ue-faq-headRow ue-headRow">
+    <div>
+      <h3 class="ue-h3-faq">Preguntas frecuentes</h3>
+      <div class="ue-muted" style="font-weight:700;margin-top:6px">Respuestas rápidas antes de hablar con admisiones.</div>
+    </div>
+  </div>
+
+  <div class="ue-faq-accordion" id="faqAcc" aria-label="FAQ">
+    <div class="ue-faq-acc-item">
+      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-1">
+        <span>¿Cuáles son los requisitos de admisión?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="ue-faq-acc-panel" id="faq-1" role="region" aria-label="Respuesta 1">
+        <div class="ue-faq-acc-panel-inner ue-faq-answer">
+          Documento de identidad, formulario de inscripción y datos académicos. Puede variar por convocatoria.
+        </div>
+      </div>
+    </div>
+
+    <div class="ue-faq-acc-item">
+      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-2">
+        <span>¿Cómo es el proceso de admisión?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="ue-faq-acc-panel" id="faq-2" role="region" aria-label="Respuesta 2">
+        <div class="ue-faq-acc-panel-inner ue-faq-answer">
+          Registro, entrega de documentos, validación y orientación con admisiones.
+        </div>
+      </div>
+    </div>
+
+    <div class="ue-faq-acc-item">
+      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-3">
+        <span>¿Qué opciones de financiación hay?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="ue-faq-acc-panel" id="faq-3" role="region" aria-label="Respuesta 3">
+        <div class="ue-faq-acc-panel-inner ue-faq-answer">
+          ICETEX, convenios y planes con aliados. Te asesoramos según tu caso.
+        </div>
+      </div>
+    </div>
+
+    <div class="ue-faq-acc-item">
+      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-4">
+        <span>¿Cómo funciona el campus virtual?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="ue-faq-acc-panel" id="faq-4" role="region" aria-label="Respuesta 4">
+        <div class="ue-faq-acc-panel-inner ue-faq-answer">
+          Aulas virtuales, recursos asincrónicos, evaluaciones y tutorías en línea.
+        </div>
+      </div>
+    </div>
+
+    <div class="ue-faq-acc-item">
+      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-5">
+        <span>¿Puedo homologar materias?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="ue-faq-acc-panel" id="faq-5" role="region" aria-label="Respuesta 5">
+        <div class="ue-faq-acc-panel-inner ue-faq-answer">
+          Se revisa caso a caso según normativa y soportes académicos.
+        </div>
+      </div>
+    </div>
+
+    <div class="ue-faq-acc-item">
+      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-6">
+        <span>¿Qué soporte ofrecen?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="ue-faq-acc-panel" id="faq-6" role="region" aria-label="Respuesta 6">
+        <div class="ue-faq-acc-panel-inner ue-faq-answer">
+          Soporte técnico y orientación al estudiante en horarios hábiles.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ue-faq-buttons">
+    <a href="#whyUs" class="ue-faq-btn ue-faq-btn-primary">Solicitar información</a>
+    <a href="#financiacion" class="ue-faq-btn ue-faq-btn-outline">Ver financiación</a>
+  </div>
+</section>
+
+<script>
+  // FAQ accordion with self-contained height management
+  const faqAcc = document.getElementById('faqAcc');
+  
+  // Helper function to set panel height
+  function setPanelHeightFaq(panel, shouldExpand) {
+    if (shouldExpand) {
+      panel.style.height = panel.scrollHeight + 'px';
+    } else {
+      panel.style.height = '0px';
+    }
+  }
+
+  if (faqAcc) {
+    faqAcc.querySelectorAll('.ue-faq-acc-item').forEach((item) => {
+      const btn = item.querySelector('.ue-faq-acc-btn');
+      const panel = item.querySelector('.ue-faq-acc-panel');
+      if (!btn || !panel) return;
+
+      // Initialize panel height
+      panel.style.height = '0px';
+      btn.setAttribute('aria-expanded', 'false');
+
+      // Click handler
+      btn.addEventListener('click', () => {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        const newState = !isExpanded;
+        
+        btn.setAttribute('aria-expanded', String(newState));
+        setPanelHeightFaq(panel, newState);
+      });
+
+      // Resize handler
+      window.addEventListener('resize', () => {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          setPanelHeightFaq(panel, true);
+        }
+      });
+    });
+  }
+</script>

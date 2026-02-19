@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Virtual Button Variants</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+
+    .variants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .variant-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: box-shadow .3s ease;
+    }
+
+    .variant-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #0132AF 0%, #5b9fd8 100%);
+      color: #fff;
+      border-radius: 5px;
+      padding: 0 20px;
+      height: 40px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: .02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .3s ease !important;
+      border-bottom: 2px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+
+    /* VARIANTE 1 — Azul claro suave */
+    .btn-1 {
+      background: linear-gradient(135deg, #5B9FD8 0%, #8CB8E0 100%);
+    }
+
+    /* VARIANTE 2 — Azul claro medio */
+    .btn-2 {
+      background: linear-gradient(135deg, #4A8AC8 0%, #7BA8D8 100%);
+    }
+
+    /* VARIANTE 3 — Azul medio claro */
+    .btn-3 {
+      background: linear-gradient(135deg, #3975B8 0%, #6B98D0 100%);
+    }
+
+    /* VARIANTE 4 — Azul medio */
+    .btn-4 {
+      background: linear-gradient(135deg, #2860A8 0%, #5B8AC8 100%);
+    }
+
+    /* VARIANTE 5 — Azul medio oscuro */
+    .btn-5 {
+      background: linear-gradient(135deg, #1E5BA0 0%, #5080C0 100%);
+    }
+
+    /* VARIANTE 6 — Original propuesto */
+    .btn-6 {
+      background: linear-gradient(135deg, #0132AF 0%, #5b9fd8 100%);
+    }
+
+    /* VARIANTE 7 — Azul más intenso */
+    .btn-7 {
+      background: linear-gradient(135deg, #0052CC 0%, #4A7BA7 100%);
+    }
+
+    /* VARIANTE 8 — Azul intenso frío */
+    .btn-8 {
+      background: linear-gradient(135deg, #004FD9 0%, #0066FF 100%);
+    }
+
+    /* VARIANTE 9 — Azul eléctrico suave */
+    .btn-9 {
+      background: linear-gradient(135deg, #0052E5 0%, #00A8FF 100%);
+    }
+
+    /* VARIANTE 10 — Azul profundo */
+    .btn-10 {
+      background: linear-gradient(135deg, #003D99 0%, #0052CC 100%);
+    }
+
+    /* VARIANTE 11 — Azul real */
+    .btn-11 {
+      background: linear-gradient(135deg, #0E4FA8 0%, #4E7BA7 100%);
+    }
+
+    /* VARIANTE 12 — Azul marino claro */
+    .btn-12 {
+      background: linear-gradient(135deg, #15619A 0%, #5B8CC0 100%);
+    }
+
+    /* VARIANTE 13 — Azul marino oscuro */
+    .btn-13 {
+      background: linear-gradient(135deg, #0D4A89 0%, #1E5FA8 100%);
+    }
+
+    /* VARIANTE 14 — Azul oscuro puro */
+    .btn-14 {
+      background: linear-gradient(135deg, #003D99 0%, #0D4A89 100%);
+    }
+
+    /* VARIANTE 15 — Azul muy oscuro */
+    .btn-15 {
+      background: linear-gradient(135deg, #002B6D 0%, #003D99 100%);
+    }
+
+    /* VARIANTE 16 — Azul casi negro */
+    .btn-16 {
+      background: linear-gradient(135deg, #001B4D 0%, #002B6D 100%);
+    }
+
+    /* VARIANTE 17 — Azul corporativo premium */
+    .btn-17 {
+      background: linear-gradient(135deg, #1A4D7A 0%, #2E6FA8 100%);
+    }
+
+    /* VARIANTE 18 — Azul moderno */
+    .btn-18 {
+      background: linear-gradient(135deg, #0066FF 0%, #0099FF 100%);
+    }
+
+    /* VARIANTE 19 — Azul tecnológico */
+    .btn-19 {
+      background: linear-gradient(135deg, #003DB3 0%, #0052E5 100%);
+    }
+
+    /* VARIANTE 20 — Azul atlántico */
+    .btn-20 {
+      background: linear-gradient(135deg, #1B4778 0%, #2E6FA8 100%);
+    }
+
+    .code {
+      background: #f9f9f9;
+      border-left: 3px solid #0132AF;
+      padding: 12px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #333;
+      word-break: break-all;
+      line-height: 1.4;
+    }
+
+    .variant-label {
+      font-weight: 600;
+      color: #333;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Campus Virtual Button — Variantes Azul</h1>
+    <p class="subtitle">20 variantes de gradientes azules con animación suave al hover</p>
+
+    <div class="variants-grid">
+      <!-- VARIANTE 1 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Claro Suave</div>
+        <button class="btn btn-1">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#5B9FD8 0%, #8CB8E0 100%)</div>
+      </div>
+
+      <!-- VARIANTE 2 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Claro Medio</div>
+        <button class="btn btn-2">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#4A8AC8 0%, #7BA8D8 100%)</div>
+      </div>
+
+      <!-- VARIANTE 3 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Medio Claro</div>
+        <button class="btn btn-3">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#3975B8 0%, #6B98D0 100%)</div>
+      </div>
+
+      <!-- VARIANTE 4 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Medio</div>
+        <button class="btn btn-4">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#2860A8 0%, #5B8AC8 100%)</div>
+      </div>
+
+      <!-- VARIANTE 5 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Medio Oscuro</div>
+        <button class="btn btn-5">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#1E5BA0 0%, #5080C0 100%)</div>
+      </div>
+
+      <!-- VARIANTE 6 -->
+      <div class="variant-card">
+        <div class="variant-label">Original Propuesto ⭐</div>
+        <button class="btn btn-6">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#0132AF 0%, #5b9fd8 100%)</div>
+      </div>
+
+      <!-- VARIANTE 7 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Intenso</div>
+        <button class="btn btn-7">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#0052CC 0%, #4A7BA7 100%)</div>
+      </div>
+
+      <!-- VARIANTE 8 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Frío</div>
+        <button class="btn btn-8">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#004FD9 0%, #0066FF 100%)</div>
+      </div>
+
+      <!-- VARIANTE 9 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Eléctrico</div>
+        <button class="btn btn-9">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#0052E5 0%, #00A8FF 100%)</div>
+      </div>
+
+      <!-- VARIANTE 10 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Profundo</div>
+        <button class="btn btn-10">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#003D99 0%, #0052CC 100%)</div>
+      </div>
+
+      <!-- VARIANTE 11 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Real</div>
+        <button class="btn btn-11">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#0E4FA8 0%, #4E7BA7 100%)</div>
+      </div>
+
+      <!-- VARIANTE 12 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Marino Claro</div>
+        <button class="btn btn-12">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#15619A 0%, #5B8CC0 100%)</div>
+      </div>
+
+      <!-- VARIANTE 13 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Marino Oscuro</div>
+        <button class="btn btn-13">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#0D4A89 0%, #1E5FA8 100%)</div>
+      </div>
+
+      <!-- VARIANTE 14 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Oscuro Puro</div>
+        <button class="btn btn-14">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#003D99 0%, #0D4A89 100%)</div>
+      </div>
+
+      <!-- VARIANTE 15 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Muy Oscuro</div>
+        <button class="btn btn-15">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#002B6D 0%, #003D99 100%)</div>
+      </div>
+
+      <!-- VARIANTE 16 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Casi Negro</div>
+        <button class="btn btn-16">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#001B4D 0%, #002B6D 100%)</div>
+      </div>
+
+      <!-- VARIANTE 17 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Corporativo</div>
+        <button class="btn btn-17">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#1A4D7A 0%, #2E6FA8 100%)</div>
+      </div>
+
+      <!-- VARIANTE 18 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Moderno</div>
+        <button class="btn btn-18">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#0066FF 0%, #0099FF 100%)</div>
+      </div>
+
+      <!-- VARIANTE 19 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Tecnológico</div>
+        <button class="btn btn-19">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#003DB3 0%, #0052E5 100%)</div>
+      </div>
+
+      <!-- VARIANTE 20 -->
+      <div class="variant-card">
+        <div class="variant-label">Azul Atlántico</div>
+        <button class="btn btn-20">Campus Virtual</button>
+        <div class="code">linear-gradient(135deg,<br>#1B4778 0%, #2E6FA8 100%)</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>💡 Hover sobre los botones para ver la animación. Elige la variante que más te guste.</p>
+      <p>Una vez selecciones, reemplaza el gradient en header.html</p>
+    </div>
+  </div>
+</body>
+</html>

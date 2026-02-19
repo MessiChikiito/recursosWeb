@@ -1,4 +1,15 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
 <style>
     /* Fonts loaded via link above */
     body{
@@ -7,24 +18,21 @@
       color: #06325a;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
+      margin: 0 !important;
+      padding: 0 !important;
     }
     *{box-sizing:border-box}
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
       outline:none;
       box-shadow: 0 0 0 4px rgba(1,50,175,.08);
       border-color: rgba(1,50,175,.35);
+ 
     }
 
     /* Helpers */
-    .ue-card{
-      background:#ffffff;
-      border-radius:14px;
-      box-shadow:0 6px 16px rgba(1,50,175,0.04);
-      padding:18px;
-    }
+
     .ue-muted{color:rgba(1,50,175,0.72)}
     .ue-grid{display:grid;gap:16px}
-    .ue-section{margin:28px 0}
 
     /* Buttons */
     .ue-btn{
@@ -125,7 +133,7 @@
     }
     .ue-hero-meta{
       background: #ffffff;
-      border:1px solid rgba(1,50,175,0.04);
+      border:1px solid rgba(1,50,175,0.15);
       border-radius:12px;
       padding:12px 14px;
       min-width:160px;
@@ -135,11 +143,35 @@
       gap:4px;
       color:#06325a;
     }
+    .ue-hero-metaRow .ue-hero-meta:nth-child(3){
+      flex:0.5 1 80px;
+      min-width:80px;
+    }
     .ue-hero-meta__k{font-size:12px;color:rgba(1,50,175,0.72);font-weight:700}
-    .ue-hero-meta__v{color:#06325a;font-weight:600}
-    .ue-hero-meta__v--big{font-size:18px;font-weight:900;color:#0132AF}
+    .ue-hero-meta__v{color:#06325a;font-weight:700}
+    .ue-hero-meta__v--big{font-size:18px;font-weight:800;color:#0132AF}
 
-    .ue-section.hero-panel{background:#ffffff;padding:34px;border-radius:16px;color:#06325a;box-shadow:0 8px 20px rgba(1,50,175,0.06)}
+    .hero-panel{
+      background:#ffffff;
+      border-radius:16px;
+      color:#06325a;
+      box-shadow:0 8px 20px rgba(1,50,175,0.06);
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:0;
+      align-items:stretch;
+    }
+    .hero-panel > .ue-hero__left{border-radius:16px 0 0 16px}
+    .hero-panel > .ue-hero__right{
+      padding:70px;
+      border-left:1px solid rgba(1,50,175,0.08);
+      border-top:1px solid rgba(1,50,175,0.08);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
 
     .ue-hero__cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
     .ue-hero__micro{font-size:13px;color:rgba(1,50,175,0.72);margin-top:12px;font-weight:600;line-height:1.5}
@@ -183,7 +215,7 @@
     body a.campus-btn,
     body a.campus-btn-institucional {
   -webkit-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out !important;
-  transition: t
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out !important;
     }
 
     @media (max-width:980px){
@@ -216,53 +248,197 @@
     .ue-hero-btn-outline:active{
       transform:translateY(0px) !important;
     }
+
+    .ue-hero__left{
+      width:100% !important;
+      height:600px !important;
+      border-radius:14px !important;
+      overflow:hidden !important;
+      background: transparent !important;
+    }
+    .ue-hero__image{
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            display: block !important;
+    }
     
-    
+    .hero-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+    /* Responsive para mobile */
+    @media (max-width:980px){
+      .hero-panel{
+        grid-template-columns:1fr;
+        border-radius:16px;
+      }
+      .hero-panel > .ue-hero__right{
+        border-left:none;
+        border-top:1px solid rgba(1,50,175,0.08);
+        padding:28px 24px;
+      }
+    }
+    @media (max-width:640px){
+      .hero-panel{
+        box-shadow:0 4px 12px rgba(1,50,175,0.04);
+      }
+      .hero-panel > .ue-hero__left{
+        height:200px !important;
+        border-radius:16px 16px 0 0;
+      }
+      .ue-hero__image{
+        height:100% !important;
+        width:100% !important;
+        content: '';
+        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg?w=800&q=75');
+        background-size: 180%;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+      }
+      .hero-panel > .ue-hero__right{
+        padding:24px 24px;
+      }
+      .ue-hero__h1{
+        font-size:28px;
+      }
+      .ue-hero__lead{
+        font-size:14px;
+      }
+      .ue-hero-metaRow{
+        gap:8px;
+        flex-direction:column;
+      }
+      .ue-hero-meta{
+        min-width:100% !important;
+        padding:10px 12px;
+        flex:1 1 auto !important;
+      }
+      .ue-hero-metaRow .ue-hero-meta:nth-child(3){
+        flex:1 1 auto !important;
+        min-width:100% !important;
+      }
+      .ue-hero-meta__v--big{
+        font-size:16px;
+      }
+      .campus-institucional{
+        width:100%;
+      }
+      .campus-btn-institucional{
+        width:100%;
+      }
+      .ue-hero__cta{
+        flex-direction:column;
+        gap:8px;
+      }
+      .ue-hero-btn-outline{
+        width:100%;
+      }
+    }
+    @media (max-width:480px){
+      .hero-panel > .ue-hero__left{
+        height:200px !important;
+      }
+      .ue-hero__image{
+        height:100% !important;
+        width:100% !important;
+        content: '';
+        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg?w=800&q=75');
+        background-size: 200%;
+        background-position: center 35%;
+        background-repeat: no-repeat;
+      }
+      .hero-panel > .ue-hero__right{
+        padding:16px 16px;
+      }
+      .ue-hero__h1{
+        font-size:24px;
+        margin:4px 0 6px;
+      }
+      .ue-hero-chips{
+        margin-bottom:8px;
+      }
+      .ue-hero__cta{
+        flex-direction:column;
+        gap:8px;
+      }
+      .ue-hero-btn-outline{
+        width:100%;
+      }
+      .campus-btn-institucional{
+        width:100%;
+      }
+    }
+
+    /* Transición elegante */
+    .transicion-divisor {
+      height: 2px;
+      background: linear-gradient(90deg, transparent 5%, rgb(1, 50, 175) 50%, transparent 95%);
+      margin: 40px 20px 0;
+    }
 
 </style>
 
-<section class="ue-section ue-hero hero-panel" aria-label="Presentación del programa">
+<section class="hero-panel" id="hero-section" aria-label="Presentación del programa">
+
+  <div class="ue-hero__left">
+    <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg?w=800&q=75" alt="Administración de Empresas" class="ue-hero__image" loading="lazy">
+  </div>
 
   <div class="ue-hero__right">
     <div class="ue-hero-chips">
-      <span class="ue-hero-chip">Virtual <span class="ue-hero-badge">NUEVO</span></span>
+      <span class="ue-hero-chip">Pregrados<span class="ue-hero-badge">NUEVO</span></span>
     </div>
 
-    <h1 class="ue-hero__h1">Administración de Empresas</h1>
+    <h1 class="ue-hero__h1">Administración de Empresas Virtual</h1>
     <p class="ue-hero__lead" id="heroDesc">
       Formación virtual orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación para facilitar tu ingreso al mercado laboral.
     </p>
 
     <div class="ue-hero-metaRow" role="list" aria-label="Datos clave del programa">
+        <div class="ue-hero-meta" role="listitem">
+        <span class="ue-hero-meta__k">Valor por semestre</span>
+        <div style="display:flex;align-items:baseline;gap:12px">
+          <span style="text-decoration:line-through;color:rgba(1,50,175,0.5);font-size:14px">$ 12.280.00</span>
+          <span class="ue-hero-meta__v ue-hero-meta__v--big">$ 6.757.00</span>
+          <span style="background:#FF3B3B;color:white;padding:2px 8px;border-radius:4px;font-size:14px;font-weight:700;">-45%</span>
+        </div>
+      </div>
       <div class="ue-hero-meta" role="listitem">
         <span class="ue-hero-meta__k">Duración</span>
-        <span class="ue-hero-meta__v" id="duracion">8 semestres</span>
+        <span class="ue-hero-meta__v" id="duracion">7 semestres intensivos</span>
       </div>
       <div class="ue-hero-meta" role="listitem">
         <span class="ue-hero-meta__k">Modalidad</span>
         <span class="ue-hero-meta__v" id="modalidad">Virtual</span>
       </div>
-      <div class="ue-hero-meta" role="listitem">
-        <span class="ue-hero-meta__k">Valor por semestre</span>
-        <span class="ue-hero-meta__v ue-hero-meta__v--big">$ 6.757.00 <span id="precioSemestre"></span></span>
-      </div>
+
     </div>
     
 
     <div class="ue-hero__cta">
             <div class="campus-institucional">
   <a href="#" class="campus-btn-institucional"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:8px;flex-shrink:0">
-          <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#25D366"/>
-          <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#fff"/>
+          <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#fff"/>
+          <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
         </svg>
         ¡Inscríbete Ya!
   </a>
     </div>
     
-  <a href="#" class="ue-hero-btn-outline">Ver plan de estudios</a>
+  <a href="#pensum" class="ue-hero-btn-outline">Ver plan de estudios</a>
   
     </div>
 
     <div class="ue-hero__micro" id="microCopy">Te contactamos por WhatsApp en horario hábil.</div>
   </div>
 </section>
+
+<!-- Transición elegante hacia siguiente sección -->
+<div class="transicion-divisor"></div>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Estilos de Descripciones Atractivas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px 20px;
+        }
+        
+        .showcase-grid { max-width: 1400px; margin: 0 auto; }
+        .showcase-title { font-size: 2em; font-weight: 900; color: #0132AF; margin-bottom: 40px; text-align: center; }
+        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        
+        .option-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0132AF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        /* ============= OPCIÓN 1: Slide Suave ============= */
+        .style-1 .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-1 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; border: none; width: 100%; transition: background 0.3s; }
+        .style-1 .toggle:hover { background: #f0f4ff; }
+        .style-1 .description { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .style-1.active .description { max-height: 200px; }
+        .style-1 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; }
+        .style-1 .icon { transition: transform 0.3s; }
+        .style-1.active .icon { transform: rotate(180deg); }
+
+        /* ============= OPCIÓN 2: Fade In Suave ============= */
+        .style-2 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-2 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 100%); border: 1px solid #e5e7eb; width: 100%; border: none; transition: all 0.3s; }
+        .style-2 .toggle:hover { background: linear-gradient(90deg, #f0f4ff 0%, #f8f9ff 100%); }
+        .style-2 .description { opacity: 0; transition: all 0.4s ease; max-height: 0; overflow: hidden; }
+        .style-2.active .description { max-height: 200px; opacity: 1; }
+        .style-2 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; border-top: 1px solid #e5e7eb; }
+
+        /* ============= OPCIÓN 3: Expand Icon ============= */
+        .style-3 .card { background: white; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-3 .toggle { padding: 18px; cursor: pointer; font-weight: 700; color: white; background: linear-gradient(135deg, #0132AF, #0076FF); border: none; width: 100%; border-radius: 14px 14px 0 0; transition: all 0.3s; position: relative; }
+        .style-3 .toggle:hover { background: linear-gradient(135deg, #0132AF, #0076FF); filter: brightness(1.1); }
+        .style-3 .description { max-height: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .style-3.active .description { max-height: 200px; }
+        .style-3 .text { padding: 18px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; }
+        .style-3 .icon { display: inline-block; margin-left: 8px; transition: transform 0.3s; }
+        .style-3.active .icon { transform: rotate(180deg); }
+
+        /* ============= OPCIÓN 4: Accordion Elegante ============= */
+        .style-4 .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; }
+        .style-4 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; transition: all 0.3s; }
+        .style-4 .toggle:hover { background: #f8f9fa; }
+        .style-4 .toggle::before { content: ''; display: inline-block; width: 20px; height: 20px; background: #e5e7eb; border-radius: 50%; margin-right: 12px; transition: all 0.3s; line-height: 20px; text-align: center; }
+        .style-4.active .toggle::before { background: #0132AF; }
+        .style-4 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .style-4.active .description { max-height: 200px; }
+        .style-4 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #fafbfc; border-top: 1px solid #e5e7eb; }
+
+        /* ============= OPCIÓN 5: Popup Modal ============= */
+        .style-5 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-5 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: 1px solid #0132AF; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-5 .toggle:hover { background: #f0f4ff; }
+        .style-5 .description { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0); display: none; align-items: center; justify-content: center; z-index: 1000; transition: background 0.3s; }
+        .style-5.active .description { display: flex; background: rgba(0,0,0,0.4); }
+        .style-5 .modal { background: white; border-radius: 16px; padding: 24px; max-width: 400px; width: 90%; box-shadow: 0 12px 32px rgba(0,0,0,0.15); transform: scale(0.9); opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .style-5.active .modal { transform: scale(1); opacity: 1; }
+        .style-5 .close { position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 24px; cursor: pointer; color: #999; }
+
+        /* ============= OPCIÓN 6: Expandible Cascada ============= */
+        .style-6 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-6 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: linear-gradient(90deg, #0132AF 0%, #0076FF 100%); border: none; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-6 .toggle:hover { box-shadow: 0 8px 16px rgba(1,50,175,0.3); }
+        .style-6 .description { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+        .style-6.active .description { max-height: 200px; opacity: 1; }
+        .style-6 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; border-radius: 0 0 12px 12px; margin-top: 8px; }
+
+        /* ============= OPCIÓN 7: Deslizante Diagonal ============= */
+        .style-7 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+        .style-7 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; transition: all 0.3s; }
+        .style-7 .toggle:hover { background: #f8f9fa; }
+        .style-7 .description { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); transform: translateX(20px); opacity: 0; }
+        .style-7.active .description { max-height: 200px; transform: translateX(0); opacity: 1; }
+        .style-7 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: linear-gradient(to right, #f8f9fa, #ffffff); border-top: 1px solid #e5e7eb; }
+
+        /* ============= OPCIÓN 8: Spotlight ============= */
+        .style-8 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative; }
+        .style-8 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; transition: all 0.3s; position: relative; z-index: 1; }
+        .style-8 .toggle:hover { background: #f8f9fa; }
+        .style-8 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .style-8.active .description { max-height: 200px; }
+        .style-8 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: linear-gradient(135deg, rgba(1,50,175,0.03), rgba(0,118,255,0.03)); border-top: 2px solid #0132AF; }
+
+        /* ============= OPCIÓN 9: Blur Reveal ============= */
+        .style-9 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-9 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: 2px solid #0132AF; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-9 .toggle:hover { background: #f0f4ff; }
+        .style-9 .description { max-height: 0; overflow: hidden; opacity: 0; filter: blur(10px); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .style-9.active .description { max-height: 200px; opacity: 1; filter: blur(0); }
+        .style-9 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: white; border-radius: 0 0 12px 12px; border: 2px solid #0132AF; border-top: none; }
+
+        /* ============= OPCIÓN 10: Bounce In ============= */
+        .style-10 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-10 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: #0132AF; border: none; width: 100%; border-radius: 12px 12px 0 0; transition: all 0.3s; }
+        .style-10 .toggle:hover { background: #0076FF; }
+        .style-10 .description { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+        .style-10.active .description { max-height: 200px; }
+        .style-10 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; border-radius: 0 0 12px 12px; animation: bounceIn 0.5s ease-out; }
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ============= OPCIÓN 11: Liquid Swipe ============= */
+        .style-11 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+        .style-11 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; position: relative; }
+        .style-11 .toggle::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #0132AF; transition: width 0.3s ease; }
+        .style-11 .toggle:hover::after { width: 100%; }
+        .style-11 .description { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+        .style-11.active .description { max-height: 200px; }
+        .style-11 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: white; border-top: 2px solid #0132AF; position: relative; }
+        .style-11 .text::before { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: rgba(1,50,175,0.03); animation: liquidSwipe 0.6s ease-out; }
+        .style-11.active .text::before { animation: liquidSwipe 0.6s ease-out 0.1s; }
+        @keyframes liquidSwipe {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* ============= OPCIÓN 12: Stagger Text ============= */
+        .style-12 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-12 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: linear-gradient(135deg, #0132AF, #0076FF); border: none; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-12 .toggle:hover { box-shadow: 0 8px 16px rgba(1,50,175,0.3); }
+        .style-12 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .style-12.active .description { max-height: 200px; }
+        .style-12 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; word-spacing: 0.1em; }
+        .style-12.active .text { animation: staggerText 0.6s ease-out; }
+        @keyframes staggerText {
+            0% { opacity: 0; letter-spacing: 0.2em; }
+            100% { opacity: 1; letter-spacing: normal; }
+        }
+
+        /* ============= OPCIÓN 13: Flip Card ============= */
+        .style-13 { perspective: 1000px; }
+        .style-13 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative; height: auto; }
+        .style-13 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; transition: all 0.3s; }
+        .style-13 .toggle:hover { background: #f8f9fa; }
+        .style-13 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .style-13.active .description { max-height: 200px; }
+        .style-13 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; border-top: 1px solid #e5e7eb; animation: flipIn 0.5s ease-out; }
+        @keyframes flipIn {
+            0% { transform: rotateX(90deg); opacity: 0; }
+            100% { transform: rotateX(0); opacity: 1; }
+        }
+
+        /* ============= OPCIÓN 14: Glow Effect ============= */
+        .style-14 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-14 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; position: relative; }
+        .style-14 .toggle:hover { background: #f0f4ff; }
+        .style-14 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; position: relative; }
+        .style-14.active .description { max-height: 200px; }
+        .style-14 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: white; border-top: 1px solid #e5e7eb; position: relative; }
+        .style-14.active .text { box-shadow: inset 0 0 20px rgba(1,50,175,0.1); animation: glow 1s ease-out; }
+        @keyframes glow {
+            0% { box-shadow: inset 0 0 0 rgba(1,50,175,0.3); }
+            100% { box-shadow: inset 0 0 20px rgba(1,50,175,0.1); }
+        }
+
+        /* ============= OPCIÓN 15: Slide Panel ============= */
+        .style-15 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+        .style-15 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: #0132AF; border: none; width: 100%; text-align: left; transition: all 0.3s; }
+        .style-15 .toggle:hover { background: #0076FF; }
+        .style-15 .description { max-height: 0; overflow: hidden; transform: translateY(-20px); opacity: 0; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .style-15.active .description { max-height: 200px; transform: translateY(0); opacity: 1; }
+        .style-15 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; }
+
+        /* ============= OPCIÓN 16: Ripple Effect ============= */
+        .style-16 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-16 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: none; width: 100%; text-align: left; position: relative; overflow: hidden; }
+        .style-16 .toggle:hover { background: #f8f9fa; }
+        .style-16 .toggle::after { content: ''; position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background: rgba(1,50,175,0.5); border-radius: 50%; transform: translate(-50%, -50%); opacity: 0; animation: ripple 0.6s ease-out; }
+        .style-16 .toggle:active::after { animation: ripple 0.6s ease-out; }
+        @keyframes ripple {
+            0% { width: 10px; height: 10px; opacity: 1; }
+            100% { width: 150px; height: 150px; opacity: 0; }
+        }
+        .style-16 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .style-16.active .description { max-height: 200px; }
+        .style-16 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-top: 1px solid #e5e7eb; }
+
+        /* ============= OPCIÓN 17: Gradient Reveal ============= */
+        .style-17 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-17 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: linear-gradient(90deg, #0132AF, #0076FF); border: none; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-17 .toggle:hover { background: linear-gradient(90deg, #0076FF, #0132AF); }
+        .style-17 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; background: linear-gradient(135deg, rgba(1,50,175,0.05), rgba(0,118,255,0.05)); }
+        .style-17.active .description { max-height: 200px; }
+        .style-17 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; }
+
+        /* ============= OPCIÓN 18: Pulse Animation ============= */
+        .style-18 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-18 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: #0132AF; background: white; border: 2px solid #0132AF; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-18 .toggle:hover { animation: pulse 0.6s ease-out; }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(1,50,175,0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(1,50,175,0); }
+        }
+        .style-18 .description { max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .style-18.active .description { max-height: 200px; }
+        .style-18 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f0f4ff; }
+
+        /* ============= OPCIÓN 19: Drawer Smooth ============= */
+        .style-19 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-19 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: #0132AF; border: none; width: 100%; display: flex; justify-content: space-between; align-items: center; border-radius: 12px 12px 0 0; transition: all 0.3s; }
+        .style-19 .toggle:hover { background: #0076FF; }
+        .style-19 .description { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4,0,0.6,1); }
+        .style-19.active .description { max-height: 200px; }
+        .style-19 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: white; border-radius: 0 0 12px 12px; border-top: 1px solid #e5e7eb; }
+        .style-19 .icon { transition: transform 0.4s cubic-bezier(0.4,0,0.6,1); }
+        .style-19.active .icon { transform: rotate(180deg); }
+
+        /* ============= OPCIÓN 20: Floating Pop ============= */
+        .style-20 .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .style-20 .toggle { padding: 16px; cursor: pointer; font-weight: 700; color: white; background: linear-gradient(135deg, #0132AF, #0076FF); border: none; width: 100%; border-radius: 12px; transition: all 0.3s; }
+        .style-20 .toggle:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(1,50,175,0.3); }
+        .style-20 .description { max-height: 0; overflow: hidden; opacity: 0; transform: scale(0.95); transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+        .style-20.active .description { max-height: 200px; opacity: 1; transform: scale(1); }
+        .style-20 .text { padding: 16px; font-size: 13px; color: #666; line-height: 1.6; background: #f8f9fa; border-radius: 0 0 12px 12px; border-top: 2px solid #0132AF; }
+
+        @media (max-width: 768px) {
+            .options-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase-grid">
+        <h1 class="showcase-title">20 Estilos Atractivos de Descripciones</h1>
+        <div class="options-grid">
+
+            <!-- OPCIÓN 1 -->
+            <div>
+                <div class="option-label">Opción 1: Slide Suave</div>
+                <div class="style-1 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 2 -->
+            <div>
+                <div class="option-label">Opción 2: Fade In Suave</div>
+                <div class="style-2 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 3 -->
+            <div>
+                <div class="option-label">Opción 3: Expand Icon Color</div>
+                <div class="style-3 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción<span class="icon">▼</span>
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 4 -->
+            <div>
+                <div class="option-label">Opción 4: Accordion Elegante</div>
+                <div class="style-4 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 5 -->
+            <div>
+                <div class="option-label">Opción 5: Popup Modal</div>
+                <div class="style-5 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description" onclick="if(event.target === this) this.parentElement.classList.remove('active')">
+                        <div class="modal">
+                            <button class="close" onclick="this.closest('.style-5').classList.remove('active')">×</button>
+                            <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 6 -->
+            <div>
+                <div class="option-label">Opción 6: Cascada Expandible</div>
+                <div class="style-6 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 7 -->
+            <div>
+                <div class="option-label">Opción 7: Deslizante Diagonal</div>
+                <div class="style-7 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 8 -->
+            <div>
+                <div class="option-label">Opción 8: Spotlight</div>
+                <div class="style-8 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 9 -->
+            <div>
+                <div class="option-label">Opción 9: Blur Reveal</div>
+                <div class="style-9 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 10 -->
+            <div>
+                <div class="option-label">Opción 10: Bounce In</div>
+                <div class="style-10 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 11 -->
+            <div>
+                <div class="option-label">Opción 11: Liquid Swipe</div>
+                <div class="style-11 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 12 -->
+            <div>
+                <div class="option-label">Opción 12: Stagger Text</div>
+                <div class="style-12 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 13 -->
+            <div>
+                <div class="option-label">Opción 13: Flip Card</div>
+                <div class="style-13 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 14 -->
+            <div>
+                <div class="option-label">Opción 14: Glow Effect</div>
+                <div class="style-14 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 15 -->
+            <div>
+                <div class="option-label">Opción 15: Slide Panel</div>
+                <div class="style-15 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 16 -->
+            <div>
+                <div class="option-label">Opción 16: Ripple Effect</div>
+                <div class="style-16 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 17 -->
+            <div>
+                <div class="option-label">Opción 17: Gradient Reveal</div>
+                <div class="style-17 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 18 -->
+            <div>
+                <div class="option-label">Opción 18: Pulse Animation</div>
+                <div class="style-18 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 19 -->
+            <div>
+                <div class="option-label">Opción 19: Drawer Smooth</div>
+                <div class="style-19 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN 20 -->
+            <div>
+                <div class="option-label">Opción 20: Floating Pop</div>
+                <div class="style-20 card">
+                    <button class="toggle" onclick="this.parentElement.classList.toggle('active')">
+                        Ver descripción
+                    </button>
+                    <div class="description">
+                        <div class="text">Especialista en planificación financiera y análisis de inversiones con más de 10 años de experiencia en empresas Fortune 500.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

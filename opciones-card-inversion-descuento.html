@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones Card Inversión con Descuento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f7fafc;
+            padding: 40px 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .option-label {
+            text-align: center;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        /* Card base */
+        .pp-stat-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #0BD926;
+            border-radius: 8px;
+            padding: 32px 20px;
+            text-align: center;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
+        }
+
+        .pp-stat-card p {
+            color: #0A943A;
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* ============ OPCIÓN 1: Badge rojo arriba ============ */
+        .option-1 .discount-badge {
+            background: #EF1218;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .option-1 .old-price {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-1 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 2: Porcentaje grande al lado ============ */
+        .option-2 .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .option-2 .discount-percent {
+            background: #EF1218;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .option-2 .price-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .option-2 .old-price {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            text-decoration: line-through;
+            line-height: 1;
+        }
+
+        .option-2 .new-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #1C1917;
+            line-height: 1;
+        }
+
+        /* ============ OPCIÓN 3: Texto "AHORRA" ============ */
+        .option-3 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 2px;
+        }
+
+        .option-3 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 6px;
+        }
+
+        .option-3 .discount-text {
+            color: #EF1218;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* ============ OPCIÓN 4: Badge esquina superior ============ */
+        .option-4 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-4 .corner-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #EF1218;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .option-4 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-4 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 5: Línea divisoria ============ */
+        .option-5 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 6px;
+        }
+
+        .option-5 .divider {
+            width: 40px;
+            height: 2px;
+            background: #EF1218;
+            margin: 0 auto 6px;
+        }
+
+        .option-5 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 4px;
+        }
+
+        .option-5 .discount-text {
+            color: #EF1218;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* ============ OPCIÓN 6: Badge con flecha ============ */
+        .option-6 .discount-badge {
+            background: #EF1218;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .option-6 .discount-badge::after {
+            content: ' ↓';
+        }
+
+        .option-6 .prices {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .option-6 .old-price {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+        }
+
+        .option-6 .new-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+        }
+
+        /* ============ OPCIÓN 7: Compacto minimalista ============ */
+        .option-7 .price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .option-7 .old-price {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            text-decoration: line-through;
+        }
+
+        .option-7 .new-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+        }
+
+        .option-7 .discount-tag {
+            background: #EF1218;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* ============ OPCIÓN 8: Con ícono de etiqueta ============ */
+        .option-8 .discount-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .option-8 .tag-icon {
+            color: #EF1218;
+            font-size: 1rem;
+        }
+
+        .option-8 .discount-text {
+            color: #EF1218;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .option-8 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-8 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 9: Descuento destacado arriba ============ */
+        .option-9 .discount-highlight {
+            background: #EF1218;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(239, 18, 24, 0.3);
+        }
+
+        .option-9 .old-price {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-9 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 10: Layout horizontal compacto ============ */
+        .option-10 .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-10 .price-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .option-10 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+        }
+
+        .option-10 .arrow {
+            color: #EF1218;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .option-10 .new-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #1C1917;
+        }
+
+        .option-10 .discount-badge {
+            background: #EF1218;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* ============ OPCIÓN 11: Badge "PROMO" ============ */
+        .option-11 .promo-badge {
+            background: #EF1218;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .option-11 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-11 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 12: Precio tachado grande ============ */
+        .option-12 .old-price {
+            color: #cbd5e0;
+            font-size: 1.3rem;
+            text-decoration: line-through;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .option-12 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 6px;
+        }
+
+        .option-12 .discount-label {
+            color: #EF1218;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: #fee2e2;
+            padding: 3px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* ============ OPCIÓN 13: Estilo "ANTES/AHORA" ============ */
+        .option-13 .price-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .option-13 .price-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .option-13 .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .option-13 .before-label {
+            color: #9ca3af;
+        }
+
+        .option-13 .after-label {
+            color: #EF1218;
+        }
+
+        .option-13 .before-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .option-13 .after-price {
+            color: #1C1917;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+
+        /* ============ OPCIÓN 14: Badge circular ============ */
+        .option-14 .circular-badge {
+            width: 50px;
+            height: 50px;
+            background: #EF1218;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        .option-14 .old-price {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-14 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 15: Con subrayado rojo ============ */
+        .option-15 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 6px;
+        }
+
+        .option-15 .new-price-wrapper {
+            margin-bottom: 8px;
+        }
+
+        .option-15 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            border-bottom: 3px solid #EF1218;
+            padding-bottom: 4px;
+            display: inline-block;
+        }
+
+        .option-15 .discount-note {
+            color: #EF1218;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* ============ OPCIÓN 16: Stripe diagonal ============ */
+        .option-16 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-16::before {
+            content: '45% OFF';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #EF1218;
+            color: white;
+            padding: 4px 40px;
+            transform: rotate(45deg);
+            font-size: 0.65rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .option-16 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-16 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 17: Formato inline ============ */
+        .option-17 .price-inline {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .option-17 .old-price {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            text-decoration: line-through;
+        }
+
+        .option-17 .new-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+        }
+
+        .option-17 .savings {
+            color: white;
+            background: #EF1218;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* ============ OPCIÓN 18: Con flecha apuntando ============ */
+        .option-18 .discount-arrow {
+            color: #EF1218;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .option-18 .discount-percent {
+            color: #EF1218;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .option-18 .old-price {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-18 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 19: Badge con borde ============ */
+        .option-19 .discount-badge-outline {
+            border: 2px solid #EF1218;
+            color: #EF1218;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .option-19 .old-price {
+            color: #9ca3af;
+            font-size: 1rem;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .option-19 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 8px;
+        }
+
+        /* ============ OPCIÓN 20: Minimalista con asterisco ============ */
+        .option-20 .new-price {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1C1917;
+            margin-bottom: 4px;
+        }
+
+        .option-20 .new-price::after {
+            content: '*';
+            color: #EF1218;
+            font-size: 1.5rem;
+            margin-left: 4px;
+        }
+
+        .option-20 .discount-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .option-20 .old-price {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            text-decoration: line-through;
+        }
+
+        .option-20 .discount-text {
+            color: #EF1218;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>20 Opciones para Card de Inversión con Descuento</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="option-label">Opción 1: Badge rojo arriba</div>
+        <div class="grid">
+            <div class="pp-stat-card option-1">
+                <div class="discount-badge">45% OFF</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="option-label">Opción 2: Porcentaje grande al lado</div>
+        <div class="grid">
+            <div class="pp-stat-card option-2">
+                <div class="price-container">
+                    <div class="discount-percent">-45%</div>
+                    <div class="price-info">
+                        <div class="old-price">$6.757.000</div>
+                        <strong class="new-price">$3.716.350</strong>
+                    </div>
+                </div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="option-label">Opción 3: Texto "AHORRA"</div>
+        <div class="grid">
+            <div class="pp-stat-card option-3">
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <div class="discount-text">¡Ahorra $3.040.650!</div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="option-label">Opción 4: Badge esquina superior</div>
+        <div class="grid">
+            <div class="pp-stat-card option-4">
+                <div class="corner-badge">-45%</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="option-label">Opción 5: Con línea divisoria</div>
+        <div class="grid">
+            <div class="pp-stat-card option-5">
+                <div class="old-price">$6.757.000</div>
+                <div class="divider"></div>
+                <strong class="new-price">$3.716.350</strong>
+                <div class="discount-text">45% descuento</div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 6 -->
+        <div class="option-label">Opción 6: Badge con flecha</div>
+        <div class="grid">
+            <div class="pp-stat-card option-6">
+                <div class="discount-badge">DESCUENTO 45%</div>
+                <div class="prices">
+                    <div class="old-price">$6.757.000</div>
+                    <strong class="new-price">$3.716.350</strong>
+                </div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 7 -->
+        <div class="option-label">Opción 7: Compacto minimalista</div>
+        <div class="grid">
+            <div class="pp-stat-card option-7">
+                <div class="price-row">
+                    <span class="old-price">$6.757.000</span>
+                    <strong class="new-price">$3.716.350</strong>
+                </div>
+                <div class="discount-tag">-45%</div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 8 -->
+        <div class="option-label">Opción 8: Con ícono de etiqueta</div>
+        <div class="grid">
+            <div class="pp-stat-card option-8">
+                <div class="discount-header">
+                    <span class="tag-icon">🏷️</span>
+                    <span class="discount-text">45% de descuento</span>
+                </div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 9 -->
+        <div class="option-label">Opción 9: Descuento destacado con gradiente</div>
+        <div class="grid">
+            <div class="pp-stat-card option-9">
+                <div class="discount-highlight">-45% DESCUENTO</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 10 -->
+        <div class="option-label">Opción 10: Layout horizontal compacto</div>
+        <div class="grid">
+            <div class="pp-stat-card option-10">
+                <div class="content-wrapper">
+                    <div class="price-section">
+                        <span class="old-price">$6.757.000</span>
+                        <span class="arrow">→</span>
+                        <strong class="new-price">$3.716.350</strong>
+                    </div>
+                    <div class="discount-badge">45% OFF</div>
+                </div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 11 -->
+        <div class="option-label">Opción 11: Badge "PROMO"</div>
+        <div class="grid">
+            <div class="pp-stat-card option-11">
+                <div class="promo-badge">PROMOCIÓN</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 12 -->
+        <div class="option-label">Opción 12: Precio tachado grande</div>
+        <div class="grid">
+            <div class="pp-stat-card option-12">
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <div class="discount-label">45% menos</div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 13 -->
+        <div class="option-label">Opción 13: Estilo "ANTES/AHORA"</div>
+        <div class="grid">
+            <div class="pp-stat-card option-13">
+                <div class="price-comparison">
+                    <div class="price-block">
+                        <div class="label before-label">Antes</div>
+                        <div class="before-price">$6.757.000</div>
+                    </div>
+                    <div class="price-block">
+                        <div class="label after-label">Ahora</div>
+                        <strong class="after-price">$3.716.350</strong>
+                    </div>
+                </div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 14 -->
+        <div class="option-label">Opción 14: Badge circular</div>
+        <div class="grid">
+            <div class="pp-stat-card option-14">
+                <div class="circular-badge">-45%</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 15 -->
+        <div class="option-label">Opción 15: Con subrayado rojo</div>
+        <div class="grid">
+            <div class="pp-stat-card option-15">
+                <div class="old-price">$6.757.000</div>
+                <div class="new-price-wrapper">
+                    <strong class="new-price">$3.716.350</strong>
+                </div>
+                <div class="discount-note">Ahorra 45%</div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 16 -->
+        <div class="option-label">Opción 16: Stripe diagonal (esquina)</div>
+        <div class="grid">
+            <div class="pp-stat-card option-16">
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 17 -->
+        <div class="option-label">Opción 17: Formato inline</div>
+        <div class="grid">
+            <div class="pp-stat-card option-17">
+                <div class="price-inline">
+                    <span class="old-price">$6.757.000</span>
+                    <strong class="new-price">$3.716.350</strong>
+                    <span class="savings">-45%</span>
+                </div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 18 -->
+        <div class="option-label">Opción 18: Con flecha apuntando</div>
+        <div class="grid">
+            <div class="pp-stat-card option-18">
+                <div class="discount-arrow">▼</div>
+                <div class="discount-percent">45% de descuento</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 19 -->
+        <div class="option-label">Opción 19: Badge con borde</div>
+        <div class="grid">
+            <div class="pp-stat-card option-19">
+                <div class="discount-badge-outline">45% DESCUENTO</div>
+                <div class="old-price">$6.757.000</div>
+                <strong class="new-price">$3.716.350</strong>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 20 -->
+        <div class="option-label">Opción 20: Minimalista con asterisco</div>
+        <div class="grid">
+            <div class="pp-stat-card option-20">
+                <strong class="new-price">$3.716.350</strong>
+                <div class="discount-info">
+                    <span class="old-price">$6.757.000</span>
+                    <span>•</span>
+                    <span class="discount-text">45% OFF</span>
+                </div>
+                <p>Inversión por semestre</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
