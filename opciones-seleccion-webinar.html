@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Diseño - Selección de Webinar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F5F7FA;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .section h2 {
+            color: #0132AF;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+        .section p {
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        /* === OPCIÓN 1: BORDE CON CHECKMARK === */
+        .opcion1-card {
+            border: 3px solid #E0E5EB;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            background: white;
+        }
+        .opcion1-card:hover {
+            border-color: #0132AF;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.15);
+        }
+        .opcion1-card.seleccionado {
+            border-color: #EA0A2A;
+            background: linear-gradient(135deg, #FFE8ED 0%, #FFF5F7 100%);
+        }
+        .opcion1-card.seleccionado::before {
+            content: '✓';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: #EA0A2A;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .opcion1-titulo { color: #0132AF; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+
+        /* === OPCIÓN 2: CARD ELEVADO CON SOMBRA === */
+        .opcion2-card {
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .opcion2-card:hover {
+            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.2);
+            transform: translateY(-4px);
+        }
+        .opcion2-card.seleccionado {
+            border-color: #EA0A2A;
+            box-shadow: 0 12px 40px rgba(234, 10, 42, 0.25);
+            transform: translateY(-6px) scale(1.02);
+        }
+        .opcion2-badge {
+            display: none;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #EA0A2A;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .opcion2-card.seleccionado .opcion2-badge { display: block; }
+        .opcion2-card { position: relative; }
+
+        /* === OPCIÓN 3: OVERLAY CON ICONO === */
+        .opcion3-card {
+            border: 2px solid #E0E5EB;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .opcion3-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(234, 10, 42, 0.9) 0%, rgba(201, 8, 32, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .opcion3-card.seleccionado::after { opacity: 1; }
+        .opcion3-checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 64px;
+            height: 64px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        .opcion3-card.seleccionado .opcion3-checkmark {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .opcion3-checkmark svg {
+            width: 32px;
+            height: 32px;
+            stroke: #EA0A2A;
+            stroke-width: 3;
+        }
+
+        /* === OPCIÓN 4: BORDE SUPERIOR GRUESO === */
+        .opcion4-card {
+            border: 2px solid #E0E5EB;
+            border-top: 4px solid #E0E5EB;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+        .opcion4-card:hover {
+            border-color: #0132AF;
+            border-top-color: #0132AF;
+        }
+        .opcion4-card.seleccionado {
+            border-color: #EA0A2A;
+            border-top-width: 6px;
+            border-top-color: #EA0A2A;
+            background: #FFF5F7;
+        }
+        .opcion4-indicator {
+            display: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: #EA0A2A;
+            margin-bottom: 8px;
+        }
+        .opcion4-card.seleccionado .opcion4-indicator { display: block; }
+
+        /* === OPCIÓN 5: CHECKBOX PERSONALIZADO === */
+        .opcion5-card {
+            border: 2px solid #E0E5EB;
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .opcion5-checkbox {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border: 2px solid #E0E5EB;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .opcion5-card:hover .opcion5-checkbox { border-color: #0132AF; }
+        .opcion5-card.seleccionado {
+            border-color: #EA0A2A;
+            background: #FFF5F7;
+        }
+        .opcion5-card.seleccionado .opcion5-checkbox {
+            background: #EA0A2A;
+            border-color: #EA0A2A;
+        }
+        .opcion5-checkbox svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+            stroke-width: 3;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .opcion5-card.seleccionado .opcion5-checkbox svg { opacity: 1; }
+        .opcion5-content { flex: 1; }
+
+        /* Grid de demostración */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .demo-grid { grid-template-columns: 1fr; }
+        }
+
+        .card-content {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #0132AF; margin-bottom: 40px; font-size: 32px;">5 Opciones de Diseño - Selección de Webinar</h1>
+
+        <!-- OPCIÓN 1 -->
+        <div class="section">
+            <h2>Opción 1: Borde con Checkmark Flotante</h2>
+            <p>El checkmark aparece en la parte superior derecha. La card cambia de color de fondo.</p>
+            <div class="demo-grid">
+                <div class="opcion1-card">
+                    <h3 class="opcion1-titulo">Webinar de IA</h3>
+                    <div class="card-content">
+                        <p>• Herramientas gratuitas de IA<br>• Automatización de tareas<br>• 90 minutos online</p>
+                    </div>
+                </div>
+                <div class="opcion1-card seleccionado">
+                    <h3 class="opcion1-titulo">Marketing Digital</h3>
+                    <div class="card-content">
+                        <p>• Estrategias de bajo presupuesto<br>• Google & Meta Ads<br>• 90 minutos online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 2 -->
+        <div class="section">
+            <h2>Opción 2: Elevación con Badge</h2>
+            <p>La card se eleva con mayor sombra y aparece un badge "SELECCIONADO".</p>
+            <div class="demo-grid">
+                <div class="opcion2-card">
+                    <h3 class="opcion1-titulo">Finanzas para Pymes</h3>
+                    <div class="card-content">
+                        <p>• Flujo de caja y liquidez<br>• Márgenes y costos<br>• 90 minutos online</p>
+                    </div>
+                </div>
+                <div class="opcion2-card seleccionado">
+                    <span class="opcion2-badge">✓ SELECCIONADO</span>
+                    <h3 class="opcion1-titulo">E-commerce</h3>
+                    <div class="card-content">
+                        <p>• Tienda online sin inversión alta<br>• Instagram Shopping<br>• 90 minutos online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 3 -->
+        <div class="section">
+            <h2>Opción 3: Overlay con Icono Central</h2>
+            <p>Un overlay rojo cubre la card y aparece un checkmark grande en el centro.</p>
+            <div class="demo-grid">
+                <div class="opcion3-card">
+                    <h3 class="opcion1-titulo">Webinar de IA</h3>
+                    <div class="card-content">
+                        <p>• Herramientas gratuitas de IA<br>• Automatización de tareas<br>• 90 minutos online</p>
+                    </div>
+                </div>
+                <div class="opcion3-card seleccionado">
+                    <div class="opcion3-checkmark">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="opcion1-titulo">Marketing Digital</h3>
+                    <div class="card-content">
+                        <p>• Estrategias de bajo presupuesto<br>• Google & Meta Ads<br>• 90 minutos online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 4 -->
+        <div class="section">
+            <h2>Opción 4: Borde Superior Grueso</h2>
+            <p>El borde superior se hace más grueso y cambia de color. Aparece texto indicador.</p>
+            <div class="demo-grid">
+                <div class="opcion4-card">
+                    <<h3 class="opcion1-titulo">Finanzas para Pymes</h3>
+                    <div class="card-content">
+                        <p>• Flujo de caja y liquidez<br>• Márgenes y costos<br>• 90 minutos online</p>
+                    </div>
+                </div>
+                <div class="opcion4-card seleccionado">
+                    <div class="opcion4-indicator">✓ WEBINAR SELECCIONADO</div>
+                    <h3 class="opcion1-titulo">E-commerce</h3>
+                    <div class="card-content">
+                        <p>• Tienda online sin inversión alta<br>• Instagram Shopping<br>• 90 minutos online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPCIÓN 5 -->
+        <div class="section">
+            <h2>Opción 5: Checkbox Estilo Formulario</h2>
+            <p>Un checkbox grande a la izquierda que se marca al seleccionar.</p>
+            <div class="demo-grid">
+                <div class="opcion5-card">
+                    <div class="opcion5-checkbox">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <div class="opcion5-content">
+                        <h3 class="opcion1-titulo">Webinar de IA</h3>
+                        <div class="card-content">
+                            <p>• Herramientas gratuitas de IA<br>• Automatización de tareas<br>• 90 minutos online</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="opcion5-card seleccionado">
+                    <div class="opcion5-checkbox">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <div class="opcion5-content">
+                        <h3 class="opcion1-titulo">Marketing Digital</h3>
+                        <div class="card-content">
+                            <p>• Estrategias de bajo presupuesto<br>• Google & Meta Ads<br>• 90 minutos online</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #E3EFFE; padding: 24px; border-radius: 12px; margin-top: 40px;">
+            <h3 style="color: #0132AF; margin-bottom: 12px;">💡 Recomendación</h3>
+            <p style="color: #666; line-height: 1.7;">
+                <strong>Opción 1 o Opción 4</strong> son las más claras visualmente sin saturar el diseño.<br>
+                <strong>Opción 3</strong> es muy llamativa pero puede ser demasiado dramática para el contexto profesional.<br>
+                <strong>Opción 5</strong> es la más familiar por su parecido a formularios estándar.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

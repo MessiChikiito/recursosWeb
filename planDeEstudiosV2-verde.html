@@ -7,7 +7,7 @@
     <style>
         :root {
             --color-primary: #FF6B35;
-            --color-accent: #0132AF;
+            --color-accent: #009E4D;
             --color-accent-hover: #c50e13;
             --color-bg: #f7fafc;
             --color-white: #ffffff;
@@ -109,14 +109,14 @@
         .pd-semester-btn:hover {
             border-color: var(--color-accent);
             color: var(--color-accent);
-            box-shadow: 0 2px 8px rgba(1, 50, 175, 0.1) !important;
+            box-shadow: 0 2px 8px rgba(0, 158, 77, 0.1) !important;
         }
 
         .pd-semester-btn.active {
             background: var(--color-accent);
             border-color: var(--color-accent);
             color: var(--color-white);
-            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(0, 158, 77, 0.3) !important;
         }
 
         /* SEMESTRES 3, 5, 7 CON GRADIENTE */
@@ -160,8 +160,8 @@
 
         /* Total de créditos */
         .pd-credits-box {
-            background: linear-gradient(135deg, rgba(1, 50, 175, 0.05) 0%, rgba(1, 50, 175, 0.02) 100%);
-            border: 2px solid #0132AF;
+            background: linear-gradient(135deg, rgba(0, 158, 77, 0.05) 0%, rgba(0, 158, 77, 0.02) 100%);
+            border: 2px solid #009E4D;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -182,7 +182,7 @@
         .pd-credits-value {
             font-size: 2rem;
             font-weight: 900;
-            color: #0132AF;
+            color: #009E4D;
         }
 
         .pd-credits-unit {
@@ -204,12 +204,12 @@
         .pd-total-carrera {
             position: sticky;
             top: 20px;
-            background: linear-gradient(135deg, #0132AF 0%, #5b9fd8 100%);
+            background: linear-gradient(135deg, #009E4D 0%, #00D687 100%);
             border-radius: 12px;
             padding: 24px;
             text-align: center;
             color: white;
-            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 158, 77, 0.3);
         }
 
         .pd-total-carrera-label {
@@ -522,7 +522,7 @@
     <div class="pd-container" id="pensum">
         <!-- HEADER -->
         <div class="pd-header">
-            <h1>Pénsum de Marketing</h1>
+            <h1>Pénsum de Administración de Empresas</h1>
             <p>Modalidad Dual Virtual - Explora las materias de cada semestre</p>
         </div>
 
@@ -637,10 +637,10 @@
         const semestreData = {
             // PRIMER SEMESTRE
             1: [
-                { nombre: "Fundamentos de Marketing", creditos: "3", tipo: "prof" },
-                { nombre: "Green Marketing y Valor Compartido", creditos: "3", tipo: "prof" },
+                { nombre: "Fundamentos de Administración", creditos: "3", tipo: "prof" },
                 { nombre: "Legislación Comercial y Tributaria", creditos: "3", tipo: "prof" },
                 { nombre: "Análisis Microeconómico", creditos: "3", tipo: "prof" },
+                { nombre: "Matemática Financiera", creditos: "3", tipo: "prof" },
                 { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
                 { nombre: "Cátedra Uniempresarial", creditos: "2", tipo: "electiva" },
                 { nombre: "Entorno colombiano", creditos: "2", tipo: "transv" },
@@ -650,17 +650,17 @@
 
             // SEGUNDO SEMESTRE
             2: [
-                { nombre: "Investigación de Mercados y Estudio del Consumidor", creditos: "2", tipo: "prof" },
+                { nombre: "Proceso Administrativo", creditos: "2", tipo: "prof" },
                 { nombre: "Análisis Macroeconómico", creditos: "2", tipo: "prof" },
                 { nombre: "Legislación Laboral", creditos: "2", tipo: "prof" },
-                { nombre: "Marketing Digital (Núcleo)", creditos: "4", tipo: "nucleo" },
-                { nombre: "Estrategia Digital", creditos: "2", tipo: "prof" },
-                { nombre: "Desarrollo de Contenidos", creditos: "1", tipo: "prof" },
-                { nombre: "Ecommerce y Diseño WEB", creditos: "1", tipo: "prof" },
-                { nombre: "Marketing Internacional (Núcleo)", creditos: "4", tipo: "nucleo" },
-                { nombre: "Estrategias de Internacionalización y Franquicias", creditos: "2", tipo: "prof" },
-                { nombre: "Ferias Internacionales", creditos: "1", tipo: "prof" },
-                { nombre: "Rueda de Negocios", creditos: "1", tipo: "prof" },
+                { nombre: "Capital Humano (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gestión de la cultura empresarial", creditos: "2", tipo: "prof" },
+                { nombre: "Coaching y habilidades gerenciales", creditos: "1", tipo: "prof" },
+                { nombre: "Gestión del Talento Humano", creditos: "1", tipo: "prof" },
+                { nombre: "Marketing y cadena de Suministro (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gerencia de Marketing y de marca", creditos: "2", tipo: "prof" },
+                { nombre: "Ventas", creditos: "1", tipo: "prof" },
+                { nombre: "Producción y Cadena de suministro", creditos: "1", tipo: "prof" },
                 { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
                 { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "transv" },
                 { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
@@ -670,23 +670,23 @@
 
             // TERCER SEMESTRE (PRÁCTICAS)
             3: [
-                { nombre: "Práctica empresarial en Marketing digital", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Marketing Internacional", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Capital humano", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Marketing y Cadena de Suministro", creditos: "10", tipo: "practica" },
             ],
 
             // CUARTO SEMESTRE
             4: [
-                { nombre: "Estrategia de producto y precio", creditos: "2", tipo: "prof" },
-                { nombre: "Marketing channels", creditos: "3", tipo: "prof" },
-                { nombre: "Contabilidad Financiera", creditos: "2", tipo: "prof" },
-                { nombre: "Producción y Cadena de Suministro (Núcleo)", creditos: "4", tipo: "nucleo" },
-                { nombre: "Supply chain management", creditos: "2", tipo: "prof" },
-                { nombre: "Producción y Planeación de la Producción", creditos: "1", tipo: "prof" },
-                { nombre: "Canales de distribución logística", creditos: "1", tipo: "prof" },
-                { nombre: "Gestión de la innovación (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Direccionamiento Estratégico", creditos: "2", tipo: "prof" },
+                { nombre: "Contabilidad Financiera y de Costos", creditos: "2", tipo: "prof" },
+                { nombre: "Digital Transformation", creditos: "3", tipo: "prof" },
+                { nombre: "Finanzas (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Costos", creditos: "2", tipo: "prof" },
+                { nombre: "Planeación Financiera – Presupuestos", creditos: "1", tipo: "prof" },
+                { nombre: "Análisis financiero", creditos: "1", tipo: "prof" },
+                { nombre: "Gestión de la Innovación (Núcleo)", creditos: "4", tipo: "nucleo" },
                 { nombre: "Gestión de la innovación", creditos: "2", tipo: "prof" },
                 { nombre: "Coolhunting", creditos: "1", tipo: "prof" },
-                { nombre: "Innovación en productos y procesos", creditos: "1", tipo: "prof" },
+                { nombre: "Innovación en Productos y Procesos", creditos: "1", tipo: "prof" },
                 { nombre: "Innovación", creditos: "2", tipo: "prof" },
                 { nombre: "Preintermediate English", creditos: "2", tipo: "transv" },
                 { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
@@ -695,16 +695,16 @@
 
             // QUINTO SEMESTRE (PRÁCTICAS)
             5: [
-                { nombre: "Práctica empresarial en Producción y cadena de suministro", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Gestión de la innovación", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Finanzas", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Gestión de la Innovación", creditos: "10", tipo: "practica" },
             ],
 
             // SEXTO SEMESTRE
             6: [
-                { nombre: "CIM", creditos: "3", tipo: "prof" },
-                { nombre: "Gerencia Estratégica de Mercadeo", creditos: "3", tipo: "prof" },
+                { nombre: "Formulación y Evaluación de Proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "Dirección y Gestión de Proyectos", creditos: "3", tipo: "prof" },
                 { nombre: "ERP & Database Management", creditos: "2", tipo: "prof" },
-                { nombre: "Analytics & artificial intelligence", creditos: "2", tipo: "prof" },
+                { nombre: "Analitycs & Artificial Intelligence", creditos: "2", tipo: "prof" },
                 { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
                 { nombre: "Electiva de profundización 2", creditos: "4", tipo: "electiva" },
                 { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
@@ -713,8 +713,8 @@
 
             // SÉPTIMO SEMESTRE (PRÁCTICAS)
             7: [
-                { nombre: "Práctica empresarial en Electiva de Profundización", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Electiva de Profundización", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Electiva de Profundización 1", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Electiva de Profundización 2", creditos: "10", tipo: "practica" },
             ],
         };
 
