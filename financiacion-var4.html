@@ -19,6 +19,95 @@
             margin: 0 auto;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
+
+        /* --- Modal Styles --- */
+        .ue-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .ue-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .ue-modal-content {
+            background-color: #ffffff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .ue-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e0e3e8;
+            padding-bottom: 16px;
+        }
+
+        .ue-modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: #0132AF;
+        }
+
+        .ue-modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .ue-modal-close:hover {
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .ue-modal-body {
+            min-height: 300px;
+        }
         
         .ue-h3{
             color: #0132AF !important;
@@ -578,7 +667,7 @@
                         <li>Fincomercio</li>
                         <li>Cooperativa Minuto de Dios</li>
                     </ul>
-                    <a href="https://uniempresarial.edu.co/financiacion/" class="ue-btn ue-btn-teal" style="margin-top:10px">Ver opciones</a>
+                    <button onclick="openFinancingModal()" class="ue-btn ue-btn-teal" style="margin-top:10px; border: none; cursor: pointer;">Ver opciones</button>
                 </div>
             </div>
 
@@ -608,9 +697,88 @@
                         <li>Libros y materiales incluidos</li>
                     </ul>
                 </div>
-            </div> 
+            </div>  
             -->
 
         </div>
     </section>
+
+    <!-- Modal de Opciones de Financiación -->
+    <div id="financingModal" class="ue-modal">
+        <div class="ue-modal-content">
+            <div class="ue-modal-header">
+                <h2>Opciones de Financiación</h2>
+                <button class="ue-modal-close" onclick="closeFinancingModal()">&times;</button>
+            </div>
+            <div class="ue-modal-body">
+                <!-- Aquí va tu formulario embebido -->
+                <p style="color: #06325a; margin: 0 0 20px; line-height: 1.6;">Selecciona la opción de financiación que mejor se ajuste a tus necesidades:</p>
+                
+                <!-- Formulario embebido o iFrame -->
+                <iframe src="" style="width: 100%; height: 500px; border: none; border-radius: 8px;"></iframe>
+                
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir el modal
+        function openFinancingModal() {
+            const modal = document.getElementById('financingModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+            
+            // Agregar query param a la URL
+            const url = new URL(window.location);
+            url.searchParams.set('financiacion', 'true');
+            window.history.pushState({modal: true}, '', url);
+        }
+
+        // Función para cerrar el modal
+        function closeFinancingModal() {
+            const modal = document.getElementById('financingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+            
+            // Remover query param de la URL
+            const url = new URL(window.location);
+            url.searchParams.delete('financiacion');
+            window.history.pushState({modal: false}, '', url);
+        }
+
+        // Cerrar modal al hacer click fuera del contenido
+        window.onclick = function(event) {
+            const modal = document.getElementById('financingModal');
+            if (event.target == modal) {
+                closeFinancingModal();
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFinancingModal();
+            }
+        });
+
+        // Abrir modal automáticamente si viene con query param
+        window.addEventListener('load', function() {
+            const url = new URL(window.location);
+            if (url.searchParams.get('financiacion') === 'true') {
+                const modal = document.getElementById('financingModal');
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Manejar botón atrás del navegador
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.modal) {
+                openFinancingModal();
+            } else {
+                closeFinancingModal();
+            }
+        });
+    </script>
 </body>

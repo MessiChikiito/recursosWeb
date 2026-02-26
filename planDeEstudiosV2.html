@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Estudios v2 - Administración de Empresas Virtual</title>
+    <title>Plan de Estudios v2 - Administración de Empresas</title>
     <style>
         :root {
             --color-primary: #FF6B35;
@@ -25,10 +25,10 @@
             --radius-lg: 16px;
 
             /* COLORES DE MATERIAS - EDITAR AQUÍ */
-            --color-nucleo: #0132AF;
             --color-prof: #FF3B3B;
-            --color-electiva: #00897B;
-            --color-transv: #D946EF;
+            --color-nucleo: #0132AF;
+            --color-formacion: #00897B;
+            --color-electiva: #D946EF;
             --color-practica: #FF6B35;
         }
 
@@ -329,12 +329,12 @@
             background: var(--color-prof);
         }
 
-        .pd-legend-dot.electiva {
-            background: var(--color-electiva);
+        .pd-legend-dot.formacion {
+            background: var(--color-formacion);
         }
 
-        .pd-legend-dot.transv {
-            background: var(--color-transv);
+        .pd-legend-dot.electiva {
+            background: var(--color-electiva);
         }
 
         .pd-legend-label {
@@ -370,23 +370,23 @@
             flex: 1;
         }
 
-        .pd-materia.nucleo {
-            border-left-color: var(--color-nucleo);
-            background: rgba(1, 50, 175, 0.05);
-        }
-
         .pd-materia.prof {
             border-left-color: var(--color-prof);
             background: rgba(255, 59, 59, 0.05);
         }
 
-        .pd-materia.electiva {
-            border-left-color: var(--color-electiva);
+        .pd-materia.nucleo {
+            border-left-color: var(--color-nucleo);
+            background: rgba(1, 50, 175, 0.05);
+        }
+
+        .pd-materia.formacion {
+            border-left-color: var(--color-formacion);
             background: rgba(0, 137, 123, 0.05);
         }
 
-        .pd-materia.transv {
-            border-left-color: var(--color-transv);
+        .pd-materia.electiva {
+            border-left-color: var(--color-electiva);
             background: rgba(217, 70, 239, 0.05);
         }
 
@@ -521,7 +521,7 @@
     <div class="pd-container" id="pensum">
         <!-- HEADER -->
         <div class="pd-header">
-            <h1>Pénsum de Ingeniería Industrial Modalidad Dual Virtual</h1>
+            <h1>Pénsum de Administración de Empresas</h1>
             <p>Explora las materias de cada semestre</p>
         </div>
 
@@ -529,20 +529,20 @@
         <div class="pd-legend-mobile">
             <div class="pd-legend-title">Tipo de materia</div>
             <div class="pd-legend-item">
-                <div class="pd-legend-dot nucleo"></div>
-                <span class="pd-legend-label">Materia Núcleo</span>
+                <div class="pd-legend-dot prof"></div>
+                <span class="pd-legend-label">Profesional General</span>
             </div>
             <div class="pd-legend-item">
-                <div class="pd-legend-dot prof"></div>
-                <span class="pd-legend-label">Materia Profesional</span>
+                <div class="pd-legend-dot nucleo"></div>
+                <span class="pd-legend-label">Núcleo</span>
+            </div>
+            <div class="pd-legend-item">
+                <div class="pd-legend-dot formacion"></div>
+                <span class="pd-legend-label">Formación Integral</span>
             </div>
             <div class="pd-legend-item">
                 <div class="pd-legend-dot electiva"></div>
-                <span class="pd-legend-label">Materia Electiva</span>
-            </div>
-            <div class="pd-legend-item">
-                <div class="pd-legend-dot transv"></div>
-                <span class="pd-legend-label">Materia Transversal</span>
+                <span class="pd-legend-label">Electiva Libre</span>
             </div>
             <div class="pd-legend-item">
                 <div class="pd-legend-dot" style="background: var(--color-practica);"></div>
@@ -590,20 +590,20 @@
                     <div class="pd-legend" style="margin-top: 30px;">
                     <div class="pd-legend-title">Tipo de materia</div>
                     <div class="pd-legend-item">
-                        <div class="pd-legend-dot nucleo"></div>
-                        <span class="pd-legend-label">Materia Núcleo</span>
+                        <div class="pd-legend-dot prof"></div>
+                        <span class="pd-legend-label">Profesional General</span>
                     </div>
                     <div class="pd-legend-item">
-                        <div class="pd-legend-dot prof"></div>
-                        <span class="pd-legend-label">Materia Profesional</span>
+                        <div class="pd-legend-dot nucleo"></div>
+                        <span class="pd-legend-label">Núcleo</span>
+                    </div>
+                    <div class="pd-legend-item">
+                        <div class="pd-legend-dot formacion"></div>
+                        <span class="pd-legend-label">Formación Integral</span>
                     </div>
                     <div class="pd-legend-item">
                         <div class="pd-legend-dot electiva"></div>
-                        <span class="pd-legend-label">Materia Electiva</span>
-                    </div>
-                    <div class="pd-legend-item">
-                        <div class="pd-legend-dot transv"></div>
-                        <span class="pd-legend-label">Materia Transversal</span>
+                        <span class="pd-legend-label">Electiva Libre</span>
                     </div>
                     <div class="pd-legend-item">
                         <div class="pd-legend-dot" style="background: var(--color-practica);"></div>
@@ -630,86 +630,78 @@
         // CONFIGURACIÓN DE SEMESTRES Y MATERIAS
         // ⚠️ EDITAR FÁCILMENTE AQUÍ ⚠️
         // Estructura: { nombre: "...", creditos: "X", tipo: "..." }
-        // Tipos disponibles: nucleo, prof, electiva, transv, practica
+        // Tipos disponibles: prof, nucleo, formacion, electiva, practica
         // ============================================
 
         const semestreData = {
             // PRIMER SEMESTRE
             1: [
-                { nombre: "Álgebra y programación lineal", creditos: "3", tipo: "nucleo" },
-                { nombre: "Cálculo I", creditos: "3", tipo: "nucleo" },
-                { nombre: "Físicoquímica", creditos: "3", tipo: "nucleo" },
-                { nombre: "Introducción a la Ingeniería y estudio de métodos", creditos: "3", tipo: "prof" },
-                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
-                { nombre: "Cátedra Uniempresarial", creditos: "2", tipo: "electiva" },
-                { nombre: "Entorno colombiano", creditos: "2", tipo: "transv" },
-                { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "English Beginners", creditos: "2", tipo: "transv" },
+                { nombre: "Fundamentos de administración", creditos: "3", tipo: "prof" },
+                { nombre: "Legislación comercial y tributaria", creditos: "3", tipo: "prof" },
+                { nombre: "Análisis microeconómico", creditos: "3", tipo: "prof" },
+                { nombre: "Matemática financiera", creditos: "3", tipo: "prof" },
+                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "nucleo" },
+                { nombre: "Cátedra Uniempresarial", creditos: "2", tipo: "formacion" },
+                { nombre: "Entorno colombiano", creditos: "2", tipo: "formacion" },
+                { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "formacion" },
+                { nombre: "English Beginners", creditos: "2", tipo: "formacion" },
             ],
 
             // SEGUNDO SEMESTRE
             2: [
-                { nombre: "Cálculo II", creditos: "2", tipo: "nucleo" },
-                { nombre: "Cálculo III", creditos: "2", tipo: "nucleo" },
-                { nombre: "Informática y Programación", creditos: "2", tipo: "prof" },
-                { nombre: "Gestión de la cultura empresarial", creditos: "2", tipo: "prof" },
-                { nombre: "Coaching y Habilidades Gerenciales", creditos: "1", tipo: "prof" },
-                { nombre: "Gestión del Talento Humano", creditos: "1", tipo: "prof" },
-                { nombre: "Quality management", creditos: "2", tipo: "prof" },
-                { nombre: "Sistemas Integrados de gestión", creditos: "1", tipo: "prof" },
-                { nombre: "Auditoría de Calidad", creditos: "1", tipo: "prof" },
-                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
-                { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "Basic English", creditos: "2", tipo: "transv" },
-                { nombre: "Elementary English", creditos: "2", tipo: "transv" },
+                { nombre: "Proceso administrativo", creditos: "2", tipo: "prof" },
+                { nombre: "Legislación laboral", creditos: "2", tipo: "prof" },
+                { nombre: "Análisis macroeconómico", creditos: "2", tipo: "prof" },
+                { nombre: "Capital humano", creditos: "4", tipo: "nucleo" },
+                { nombre: "Marketing y cadena de suministro", creditos: "4", tipo: "nucleo" },
+                { nombre: "Creatividad prospectiva emprendedora", creditos: "2", tipo: "formacion" },
+                { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "formacion" },
+                { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "formacion" },
+                { nombre: "Basic English", creditos: "2", tipo: "formacion" },
+                { nombre: "Elementary English", creditos: "2", tipo: "formacion" },
             ],
 
             // TERCER SEMESTRE (PRÁCTICAS)
             3: [
-                { nombre: "Práctica empresarial en Capital Humano", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Gestión y Control de Calidad", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en capital humano", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en marketing y cadena de suministro", creditos: "4", tipo: "practica" },
             ],
 
             // CUARTO SEMESTRE
             4: [
-                { nombre: "Probabilidad, Estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Fabricación digital", creditos: "3", tipo: "prof" },
-                { nombre: "Contabilidad Financiera", creditos: "2", tipo: "prof" },
-                { nombre: "Comercio Exterior y DFI", creditos: "2", tipo: "prof" },
-                { nombre: "Compras e inventarios", creditos: "1", tipo: "prof" },
-                { nombre: "Logística y operaciones", creditos: "1", tipo: "prof" },
-                { nombre: "Marketing y CRM", creditos: "2", tipo: "prof" },
-                { nombre: "Investigación de mercados", creditos: "1", tipo: "prof" },
-                { nombre: "Desarrollo de productos y servicios", creditos: "1", tipo: "prof" },
-                { nombre: "Innovación", creditos: "2", tipo: "prof" },
-                { nombre: "Preintermediate English", creditos: "2", tipo: "transv" },
-                { nombre: "Electiva libre 1", creditos: "2", tipo: "electiva" },
-                { nombre: "Electiva libre 2", creditos: "3", tipo: "electiva" },
+                { nombre: "Direccionamiento estratégico", creditos: "2", tipo: "prof" },
+                { nombre: "Transformación digital", creditos: "3", tipo: "prof" },
+                { nombre: "Contabilidad financiera", creditos: "2", tipo: "prof" },
+                { nombre: "Finanzas", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gestión de la innovación", creditos: "10", tipo: "nucleo" },
+                { nombre: "Innovación", creditos: "4", tipo: "formacion" },
+                { nombre: "Preintermediate English", creditos: "2", tipo: "formacion" },
+                { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
             ],
 
             // QUINTO SEMESTRE (PRÁCTICAS)
             5: [
-                { nombre: "Práctica empresarial en Logística y Operaciones", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Gestión del Marketing", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en finanzas", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en innovación", creditos: "10", tipo: "practica" },
             ],
 
             // SEXTO SEMESTRE
             6: [
-                { nombre: "Producción", creditos: "3", tipo: "prof" },
-                { nombre: "Gerencia de Planta", creditos: "3", tipo: "prof" },
-                { nombre: "Project Management", creditos: "2", tipo: "prof" },
-                { nombre: "Industrial maintenance", creditos: "2", tipo: "prof" },
-                { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
-                { nombre: "Electiva de profundización 2", creditos: "4", tipo: "electiva" },
-                { nombre: "Electiva libre 1", creditos: "3", tipo: "electiva" },
-                { nombre: "Electiva libre 2", creditos: "3", tipo: "electiva" },
+                { nombre: "Formulación y evaluación de proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "Dirección y gestión de proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "ERP y data base management", creditos: "2", tipo: "prof" },
+                { nombre: "Analytics y artificial intelligence", creditos: "2", tipo: "prof" },
+                { nombre: "Electiva de profundización 1", creditos: "4", tipo: "nucleo" },
+                { nombre: "Electiva de profundización 2", creditos: "4", tipo: "nucleo" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
             ],
 
             // SÉPTIMO SEMESTRE (PRÁCTICAS)
             7: [
-                { nombre: "Práctica empresarial en Electiva de Profundización 1", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Electiva de Profundización 2", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial de profundización 1", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial de profundización 2", creditos: "10", tipo: "practica" },
             ],
         };
 

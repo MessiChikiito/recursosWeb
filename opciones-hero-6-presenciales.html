@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Variantes Hero 6 - Con Información Completa</title>
+  <style>
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f7fa;
+      color: #06325a;
+      margin: 0;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    * { box-sizing: border-box; }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0132AF;
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+
+    .opcion-hero {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(1, 50, 175, 0.08);
+      border: 1px solid rgba(1, 50, 175, 0.06);
+    }
+
+    .opcion-titulo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0132AF;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .opcion-badge {
+      display: inline-block;
+      background: #E3F2FD;
+      color: #0132AF;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .opcion-desc {
+      font-size: 14px;
+      color: rgba(1, 50, 175, 0.72);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Estilos compartidos */
+    .ue-hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .ue-hero-chip {
+      background: #f7faff;
+      color: #092b57;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(1, 50, 175, 0.12);
+    }
+
+    .ue-hero-badge {
+      background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 950;
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ue-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: #57D100;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .ue-btn-primary:hover {
+      background: #6AFF00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4);
+    }
+
+    .ue-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 2px solid #0076FF;
+      color: #0076FF;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .ue-btn-outline:hover {
+      background: #0076FF;
+      color: white;
+      box-shadow: 0 8px 20px rgba(0, 118, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .ue-hero-meta {
+      background: #ffffff;
+      border: 1px solid rgba(1, 50, 175, 0.15);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #06325a;
+    }
+
+    .ue-hero-meta__k {
+      font-size: 12px;
+      color: rgba(1, 50, 175, 0.72);
+      font-weight: 700;
+    }
+
+    .ue-hero-meta__v {
+      color: #06325a;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .ue-hero-meta__v--big {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0132AF;
+    }
+
+    .ue-hero__lead {
+      color: #06325a;
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .ue-hero__micro {
+      font-size: 13px;
+      color: rgba(1, 50, 175, 0.72);
+      margin-top: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* ========================
+    OPCIÓN 6A: Metadatos en fila horizontal abajo
+    ======================== */
+    .hero-6a {
+      position: relative;
+      height: auto;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');
+      background-size: cover;
+      background-position: center right;
+      padding-bottom: 30px;
+    }
+
+    .hero-6a__bg {
+      display: none;
+    }
+
+    .hero-6a__content {
+      position: relative;
+      z-index: 2;
+      padding: 60px;
+      max-width: 600px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-6a h2 {
+      font-size: 44px;
+      margin: 0 0 16px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .hero-6a p {
+      font-size: 16px;
+      margin: 0 0 24px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .hero-6a__meta-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-6a__meta {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 16px;
+      min-width: 140px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-6a__meta-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-6a__meta-value {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .hero-6a__cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    /* ========================
+    OPCIÓN 6B: Metadatos en columna derecha flotante
+    ======================== */
+    .hero-6b {
+      position: relative;
+      min-height: 500px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');
+      background-size: cover;
+      background-position: center right;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .hero-6b__bg {
+      display: none;
+    }
+
+    .hero-6b__content {
+      position: relative;
+      z-index: 2;
+      padding: 60px;
+      color: white;
+      max-width: 500px;
+    }
+
+    .hero-6b h2 {
+      font-size: 44px;
+      margin: 0 0 16px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .hero-6b p {
+      font-size: 16px;
+      margin: 0 0 24px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .hero-6b__features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-6b__feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .hero-6b__cta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-6b__sidebar {
+      position: relative;
+      z-index: 2;
+      padding: 40px 30px 60px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-6b__card {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      min-width: 160px;
+    }
+
+    .hero-6b__card-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-6b__card-value {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    /* ========================
+    OPCIÓN 6C: Metadatos compactos en badges + descripción expandida
+    ======================== */
+    .hero-6c {
+      position: relative;
+      min-height: 450px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');
+      background-size: cover;
+      background-position: center right;
+    }
+
+    .hero-6c__bg {
+      display: none;
+    }
+
+    .hero-6c__content {
+      position: relative;
+      z-index: 2;
+      padding: 50px 60px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 700px;
+    }
+
+    .hero-6c__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 999px;
+      padding: 6px 12px;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .hero-6c h2 {
+      font-size: 44px;
+      margin: 0 0 16px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .hero-6c p {
+      font-size: 16px;
+      margin: 0 0 24px;
+      line-height: 1.6;
+      opacity: 0.95;
+      max-width: 600px;
+    }
+
+    .hero-6c__meta-inline {
+      display: flex;
+      gap: 20px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .hero-6c__meta-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .hero-6c__meta-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 600;
+    }
+
+    .hero-6c__meta-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .hero-6c__features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .hero-6c__feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .hero-6c__cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    /* ========================
+    OPCIÓN 6D: Metadatos en tabla/grid compacta
+    ======================== */
+    .hero-6d {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');
+      background-size: cover;
+      background-position: center right;
+      padding: 60px;
+      color: white;
+    }
+
+    .hero-6d__bg {
+      display: none;
+    }
+
+    .hero-6d__wrapper {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .hero-6d__left {
+      max-width: 500px;
+    }
+
+    .hero-6d h2 {
+      font-size: 44px;
+      margin: 0 0 16px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .hero-6d p {
+      font-size: 16px;
+      margin: 0 0 24px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .hero-6d__cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .hero-6d__right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-6d__meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      min-width: 300px;
+    }
+
+    .hero-6d__meta-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-6d__meta-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-6d__meta-value {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    /* ========================
+    OPCIÓN 6E: Full ancho con metadatos en overlay inferior
+    ======================== */
+    .hero-6e {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');
+      background-size: cover;
+      background-position: center right;
+      min-height: 550px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-6e__bg {
+      display: none;
+    }
+
+    .hero-6e__content {
+      position: relative;
+      z-index: 2;
+      padding: 60px;
+      color: white;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 700px;
+    }
+
+    .hero-6e h2 {
+      font-size: 44px;
+      margin: 0 0 16px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .hero-6e p {
+      font-size: 16px;
+      margin: 0 0 20px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .hero-6e__features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-6e__feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .hero-6e__cta {
+      display: flex;
+      gap: 12px;
+    }
+
+    .hero-6e__footer {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      padding: 30px 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-6e__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-6e__meta-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .hero-6e__meta-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-6a,
+      .hero-6b,
+      .hero-6c,
+      .hero-6d,
+      .hero-6e {
+        padding: 30px;
+      }
+
+      .hero-6a__content,
+      .hero-6c__content,
+      .hero-6d__left,
+      .hero-6e__content {
+        padding: 30px 0;
+      }
+
+      .hero-6b {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-6b__sidebar {
+        padding: 0 0 30px 0;
+      }
+
+      .hero-6b__card {
+        min-width: 100%;
+      }
+
+      .hero-6d__wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-6e__footer {
+        grid-template-columns: 1fr;
+        padding: 30px 0;
+        gap: 20px;
+      }
+
+      .hero-6a h2,
+      .hero-6b h2,
+      .hero-6c h2,
+      .hero-6d h2,
+      .hero-6e h2 {
+        font-size: 32px;
+      }
+
+      .hero-6a__cta,
+      .hero-6b__cta,
+      .hero-6c__cta,
+      .hero-6d__cta,
+      .hero-6e__cta {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>5 Variantes Hero 6 - Con Información Completa</h1>
+
+    <!-- OPCIÓN 6A: Metadatos en Fila Horizontal Abajo -->
+    <div class="opcion-hero">
+      <div class="opcion-titulo">
+        <span class="opcion-badge">6A</span>
+        Metadatos en Fila Horizontal (Abajo)
+      </div>
+      <p class="opcion-desc">Los datos clave (valor, duración, modalidad) en fila horizontal en la parte inferior del hero. Mantiene la información accesible sin sobrecargar.</p>
+      <div class="hero-6a">
+        <div class="hero-6a__bg"></div>
+        <div class="hero-6a__content">
+          <div class="ue-hero-chips">
+            <span class="ue-hero-chip">Pregrados<span class="ue-hero-badge">NUEVO</span></span>
+          </div>
+          <h2>Administración de Empresas Presencial</h2>
+          <p>Formación presencial orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación.</p>
+
+          <div class="hero-6a__cta">
+            <button class="ue-btn-primary" style="background: #57D100; color: #ffffff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+                <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+              </svg>
+              ¡Inscríbete Ya!
+            </button>
+            <a href="#" class="ue-btn-outline" style="border-color: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.9);">Ver plan de estudios</a>
+          </div>
+          <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8); margin-top: 12px;">Te contactamos por WhatsApp en horario hábil.</div>
+        </div>
+
+        <!-- Metadatos en fila -->
+        <div class="hero-6a__meta-row" style="padding: 0 60px;">
+          <div class="hero-6a__meta">
+            <div class="hero-6a__meta-label">Valor por Semestre</div>
+            <div class="hero-6a__meta-value">$6.757.000</div>
+            <div style="font-size: 11px; color: rgba(255, 255, 255, 0.7); margin-top: 4px;"><span style="text-decoration: line-through;">$12.280.000</span> -45%</div>
+          </div>
+          <div class="hero-6a__meta">
+            <div class="hero-6a__meta-label">Duración</div>
+            <div class="hero-6a__meta-value">7 Semestres</div>
+          </div>
+          <div class="hero-6a__meta">
+            <div class="hero-6a__meta-label">Modalidad</div>
+            <div class="hero-6a__meta-value">Presencial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 6B: Metadatos en Columna Derecha Flotante -->
+    <div class="opcion-hero">
+      <div class="opcion-titulo">
+        <span class="opcion-badge">6B</span>
+        Metadatos en Columna Derecha (Sidebar Flotante)
+      </div>
+      <p class="opcion-desc">Información distribuida: contenido principal a la izquierda, 3 cards de metadata en columna a la derecha. Muy visual y ordenado.</p>
+      <div class="hero-6b">
+        <div class="hero-6b__bg"></div>
+        <div class="hero-6b__content">
+          <div class="ue-hero-chips">
+            <span class="ue-hero-chip" style="background: rgba(255, 255, 255, 0.2); color: white; border-color: rgba(255, 255, 255, 0.3);">
+              Pregrados<span class="ue-hero-badge">NUEVO</span>
+            </span>
+          </div>
+          <h2>Administración de Empresas Presencial</h2>
+          <p>Formación presencial orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación.</p>
+
+          <div class="hero-6b__cta">
+            <button class="ue-btn-primary" style="background: #57D100; color: #ffffff; justify-content: flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+                <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+              </svg>
+              ¡Inscríbete Ya!
+            </button>
+            <a href="#" class="ue-btn-outline" style="border-color: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.9);">Ver plan de estudios</a>
+          </div>
+          <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8);">Te contactamos por WhatsApp en horario hábil.</div>
+        </div>
+
+        <!-- Sidebar con metadata -->
+        <div class="hero-6b__sidebar">
+          <div class="hero-6b__card">
+            <div class="hero-6b__card-label">Valor por Semestre</div>
+            <div class="hero-6b__card-value">$6.757.000</div>
+            <div style="font-size: 10px; color: rgba(255, 255, 255, 0.7); margin-top: 4px;"><span style="text-decoration: line-through;">$12.280.000</span> -45%</div>
+          </div>
+          <div class="hero-6b__card">
+            <div class="hero-6b__card-label">Duración</div>
+            <div class="hero-6b__card-value">7 Semestres Intensivos</div>
+          </div>
+          <div class="hero-6b__card">
+            <div class="hero-6b__card-label">Modalidad</div>
+            <div class="hero-6b__card-value">Presencial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 6C: Metadatos Compactos Inline -->
+    <div class="opcion-hero">
+      <div class="opcion-titulo">
+        <span class="opcion-badge">6C</span>
+        Metadatos Compactos Inline (Entre Título y Descripción)
+      </div>
+      <p class="opcion-desc">Datos clave integrados como línea horizontal entre el título y la descripción. Muy limpio y minimalista.</p>
+      <div class="hero-6c">
+        <div class="hero-6c__bg"></div>
+        <div class="hero-6c__content">
+          <span class="hero-6c__badge">
+            Pregrados<span class="ue-hero-badge">NUEVO</span>
+          </span>
+          <h2>Administración de Empresas Presencial</h2>
+
+          <div class="hero-6c__meta-inline">
+            <div class="hero-6c__meta-item">
+              <span class="hero-6c__meta-label">Valor:</span>
+              <span class="hero-6c__meta-value">$6.757.000</span>
+            </div>
+            <div class="hero-6c__meta-item">
+              <span class="hero-6c__meta-label">Duración:</span>
+              <span class="hero-6c__meta-value">7 Semestres</span>
+            </div>
+            <div class="hero-6c__meta-item">
+              <span class="hero-6c__meta-label">Modalidad:</span>
+              <span class="hero-6c__meta-value">Presencial</span>
+            </div>
+          </div>
+
+          <p>Formación presencial orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación para facilitar tu ingreso al mercado laboral.</p>
+
+          <div class="hero-6c__cta">
+            <button class="ue-btn-primary" style="background: #57D100; color: #ffffff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+                <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+              </svg>
+              ¡Inscríbete Ya!
+            </button>
+            <a href="#" class="ue-btn-outline" style="border-color: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.9);">Ver plan de estudios</a>
+          </div>
+          <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8); margin-top: 12px;">Te contactamos por WhatsApp en horario hábil.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 6D: Contenido + Metadata Grid a la Derecha -->
+    <div class="opcion-hero">
+      <div class="opcion-titulo">
+        <span class="opcion-badge">6D</span>
+        Contenido Izquierda + Grid Metadata Derecha
+      </div>
+      <p class="opcion-desc">Layout de dos columnas: contenido a la izquierda, grid de 2x2 con metadata a la derecha. Espacioso y equilibrado.</p>
+      <div class="hero-6d">
+        <div class="hero-6d__bg"></div>
+        <div class="hero-6d__wrapper">
+          <div class="hero-6d__left">
+            <div class="ue-hero-chips">
+              <span class="ue-hero-chip" style="background: rgba(255, 255, 255, 0.2); color: white; border-color: rgba(255, 255, 255, 0.3);">
+                Pregrados<span class="ue-hero-badge">NUEVO</span>
+              </span>
+            </div>
+            <h2>Administración de Empresas Presencial</h2>
+            <p>Formación presencial orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación.</p>
+
+            <div class="hero-6d__cta">
+              <button class="ue-btn-primary" style="background: #57D100; color: #ffffff;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+                  <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+                </svg>
+                ¡Inscríbete Ya!
+              </button>
+              <a href="#" class="ue-btn-outline" style="border-color: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.9); flex: 1;">Ver plan de estudios</a>
+            </div>
+            <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8); margin-top: 12px;">Te contactamos por WhatsApp en horario hábil.</div>
+          </div>
+
+          <!-- Grid metadata -->
+          <div class="hero-6d__right">
+            <div class="hero-6d__meta-grid">
+              <div class="hero-6d__meta-box">
+                <div class="hero-6d__meta-label">Valor por Semestre</div>
+                <div class="hero-6d__meta-value">$6.757.000</div>
+                <div style="font-size: 10px; color: rgba(255, 255, 255, 0.7); margin-top: 4px;"><span style="text-decoration: line-through;">$12.280</span> -45%</div>
+              </div>
+              <div class="hero-6d__meta-box">
+                <div class="hero-6d__meta-label">Duración</div>
+                <div class="hero-6d__meta-value">7 Semestres</div>
+              </div>
+              <div class="hero-6d__meta-box">
+                <div class="hero-6d__meta-label">Modalidad</div>
+                <div class="hero-6d__meta-value">Presencial</div>
+              </div>
+              <div class="hero-6d__meta-box">
+                <div class="hero-6d__meta-label">Formato</div>
+                <div class="hero-6d__meta-value">Intensivo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPCIÓN 6E: Full Ancho con Metadata en Footer Interior -->
+    <div class="opcion-hero">
+      <div class="opcion-titulo">
+        <span class="opcion-badge">6E</span>
+        Full Ancho + Metadata en Footer Interior
+      </div>
+      <p class="opcion-desc">Hero de ancho completo con contenido arriba y metadata en una fila divisora inferior. Crea jerarquía visual clara.</p>
+      <div class="hero-6e">
+        <div class="hero-6e__bg"></div>
+        <div class="hero-6e__content">
+          <div class="ue-hero-chips">
+            <span class="ue-hero-chip" style="background: rgba(255, 255, 255, 0.2); color: white; border-color: rgba(255, 255, 255, 0.3);">
+              Pregrados<span class="ue-hero-badge">NUEVO</span>
+            </span>
+          </div>
+          <h2>Administración de Empresas Presencial</h2>
+          <p>Formación presencial orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación para facilitar tu ingreso al mercado laboral.</p>
+
+          <div class="hero-6e__cta">
+            <button class="ue-btn-primary" style="background: #57D100; color: #ffffff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+                <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+              </svg>
+              ¡Inscríbete Ya!
+            </button>
+            <a href="#" class="ue-btn-outline" style="border-color: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.9);">Ver plan de estudios</a>
+          </div>
+          <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8); margin-top: 12px;">Te contactamos por WhatsApp en horario hábil.</div>
+        </div>
+
+        <!-- Footer con metadata -->
+        <div class="hero-6e__footer">
+          <div class="hero-6e__meta">
+            <div class="hero-6e__meta-label">Valor por Semestre</div>
+            <div class="hero-6e__meta-value">$6.757.000</div>
+            <div style="font-size: 11px; color: rgba(255, 255, 255, 0.7); margin-top: 2px;"><span style="text-decoration: line-through;">$12.280.000</span> -45%</div>
+          </div>
+          <div class="hero-6e__meta">
+            <div class="hero-6e__meta-label">Duración</div>
+            <div class="hero-6e__meta-value">7 Semestres Intensivos</div>
+          </div>
+          <div class="hero-6e__meta">
+            <div class="hero-6e__meta-label">Modalidad</div>
+            <div class="hero-6e__meta-value">Presencial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
