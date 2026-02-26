@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones Jornada - Plan de Estudios</title>
+    <style>
+        :root {
+            --color-accent: #0132AF;
+            --color-white: #ffffff;
+            --color-gray-200: #edf2f7;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --color-day: #F59E0B;
+            --color-day-bg: #FFFBEB;
+            --color-day-border: #FDE68A;
+            --color-night: #6366F1;
+            --color-night-bg: #EEF2FF;
+            --color-night-border: #C7D2FE;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f0f4f8;
+            color: var(--color-gray-900);
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        h1 { text-align: center; font-size: 1.8rem; margin-bottom: 8px; }
+        .subtitle { text-align: center; color: var(--color-gray-500); margin-bottom: 48px; font-size: 1rem; }
+
+        .option-block { max-width: 700px; margin: 0 auto 56px; }
+        .option-label {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--color-gray-500); margin-bottom: 6px;
+        }
+        .option-title { font-size: 1.1rem; font-weight: 800; color: var(--color-gray-900); margin-bottom: 16px; }
+        .divider { border: none; border-top: 1px solid var(--color-gray-200); margin: 0 auto; max-width: 700px; }
+
+        /* ===================== OPCIÓN 1: Dos filas con icono sol/luna ===================== */
+        .op1 { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .op1-title { padding: 16px 20px 0; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-gray-500); }
+        .op1-row { display: flex; align-items: center; gap: 14px; padding: 14px 20px; }
+        .op1-row + .op1-row { border-top: 1px solid #f0f0f0; }
+        .op1-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .op1-icon--day { background: var(--color-day-bg); }
+        .op1-icon--night { background: var(--color-night-bg); }
+        .op1-label { font-size: 0.95rem; font-weight: 700; color: var(--color-gray-900); }
+        .op1-desc { font-size: 0.8rem; color: var(--color-gray-500); }
+
+        /* ===================== OPCIÓN 2: Dos pills lado a lado ===================== */
+        .op2 { display: flex; gap: 12px; flex-wrap: wrap; }
+        .op2-pill { flex: 1; min-width: 200px; display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 999px; }
+        .op2-pill--day { background: var(--color-day-bg); border: 2px solid var(--color-day-border); }
+        .op2-pill--night { background: var(--color-night-bg); border: 2px solid var(--color-night-border); }
+        .op2-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .op2-icon--day { background: var(--color-day); }
+        .op2-icon--night { background: var(--color-night); }
+        .op2-text { font-weight: 700; font-size: 0.9rem; }
+
+        /* ===================== OPCIÓN 3: Split card mitad y mitad ===================== */
+        .op3 { display: flex; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .op3-half { flex: 1; padding: 20px 24px; display: flex; align-items: center; gap: 14px; }
+        .op3-half--day { background: linear-gradient(135deg, #FEF3C7, #FFFBEB); }
+        .op3-half--night { background: linear-gradient(135deg, #E0E7FF, #EEF2FF); }
+        .op3-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: var(--color-gray-500); }
+        .op3-value { font-size: 1rem; font-weight: 800; color: var(--color-gray-900); }
+
+        /* ===================== OPCIÓN 4: Card con borde superior degradado ===================== */
+        .op4 { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .op4-gradient { height: 4px; background: linear-gradient(90deg, var(--color-day) 50%, var(--color-night) 50%); }
+        .op4-body { padding: 20px; display: flex; gap: 16px; }
+        .op4-item { flex: 1; display: flex; align-items: center; gap: 10px; }
+        .op4-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .op4-dot--day { background: var(--color-day); }
+        .op4-dot--night { background: var(--color-night); }
+        .op4-name { font-weight: 700; font-size: 0.9rem; }
+        .op4-sub { font-size: 0.78rem; color: var(--color-gray-500); }
+
+        /* ===================== OPCIÓN 5: Glassmorphism sobre fondo azul ===================== */
+        .op5-wrap { background: linear-gradient(135deg, #0132AF, #0052D6); border-radius: 12px; padding: 20px; display: flex; gap: 12px; }
+        .op5-card { flex: 1; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 16px; display: flex; align-items: center; gap: 12px; color: white; }
+        .op5-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .op5-label { font-size: 0.75rem; opacity: 0.75; font-weight: 600; text-transform: uppercase; }
+        .op5-value { font-size: 0.95rem; font-weight: 800; }
+
+        /* ===================== OPCIÓN 6: Filas con borde izquierdo coloreado ===================== */
+        .op6 { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .op6-header { padding: 14px 20px 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-gray-500); }
+        .op6-row { display: flex; align-items: center; gap: 14px; padding: 12px 20px; margin: 0 12px; border-radius: 8px; margin-bottom: 8px; }
+        .op6-row--day { border-left: 4px solid var(--color-day); background: var(--color-day-bg); }
+        .op6-row--night { border-left: 4px solid var(--color-night); background: var(--color-night-bg); }
+        .op6-name { font-weight: 700; font-size: 0.9rem; }
+        .op6-time { font-size: 0.8rem; color: var(--color-gray-500); }
+
+        /* ===================== OPCIÓN 7: Tarjetas con ilustración de horizonte ===================== */
+        .op7 { display: flex; gap: 12px; }
+        .op7-card { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: relative; }
+        .op7-scene { height: 60px; position: relative; }
+        .op7-scene--day { background: linear-gradient(180deg, #87CEEB 0%, #FDE68A 100%); }
+        .op7-scene--night { background: linear-gradient(180deg, #1E1B4B 0%, #4338CA 100%); }
+        .op7-sun { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 28px; height: 28px; border-radius: 50%; background: #FBBF24; box-shadow: 0 0 20px rgba(251,191,36,0.6); }
+        .op7-moon { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: #E0E7FF; box-shadow: 0 0 12px rgba(224,231,255,0.5); }
+        .op7-star { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; }
+        .op7-body { background: white; padding: 14px 16px; text-align: center; }
+        .op7-name { font-weight: 800; font-size: 0.95rem; color: var(--color-gray-900); }
+        .op7-time { font-size: 0.78rem; color: var(--color-gray-500); margin-top: 2px; }
+
+        /* ===================== OPCIÓN 8: Badge compacto ===================== */
+        .op8 { display: inline-flex; align-items: center; gap: 0; background: #fff; border-radius: 999px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--color-gray-200); }
+        .op8-label { padding: 10px 16px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: var(--color-gray-500); }
+        .op8-tag { padding: 10px 16px; display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem; }
+        .op8-tag--day { background: var(--color-day-bg); color: #B45309; }
+        .op8-tag--night { background: var(--color-night-bg); color: #4338CA; }
+        .op8-sep { width: 1px; height: 20px; background: var(--color-gray-200); }
+
+        /* ===================== OPCIÓN 9: Cards con emoji grande ===================== */
+        .op9 { display: flex; gap: 12px; }
+        .op9-card { flex: 1; background: #fff; border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.2s; }
+        .op9-card--day { border-color: var(--color-day-border); }
+        .op9-card--night { border-color: var(--color-night-border); }
+        .op9-emoji { font-size: 2.2rem; margin-bottom: 8px; }
+        .op9-name { font-weight: 800; font-size: 1rem; }
+        .op9-desc { font-size: 0.8rem; color: var(--color-gray-500); margin-top: 4px; }
+
+        /* ===================== OPCIÓN 10: Toggle visual ===================== */
+        .op10 { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px; }
+        .op10-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--color-gray-500); letter-spacing: 0.5px; }
+        .op10-options { display: flex; gap: 8px; flex: 1; }
+        .op10-opt { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: default; }
+        .op10-opt--day { background: var(--color-day); color: white; }
+        .op10-opt--night { background: var(--color-night); color: white; }
+
+        /* ===================== OPCIÓN 11: Columnas con gradiente ===================== */
+        .op11 { display: flex; gap: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .op11-col { flex: 1; padding: 22px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .op11-col--day { background: linear-gradient(135deg, #FBBF24, #F59E0B); color: white; }
+        .op11-col--night { background: linear-gradient(135deg, #6366F1, #4F46E5); color: white; }
+        .op11-name { font-weight: 800; font-size: 1rem; }
+        .op11-sub { font-size: 0.8rem; opacity: 0.85; }
+
+        /* ===================== OPCIÓN 12: Info strip minimal ===================== */
+        .op12 { background: #fff; border-radius: 10px; padding: 14px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 16px; border: 1px solid var(--color-gray-200); }
+        .op12-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--color-gray-500); white-space: nowrap; }
+        .op12-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+        .op12-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.82rem; }
+        .op12-chip--day { background: var(--color-day-bg); color: #92400E; border: 1px solid var(--color-day-border); }
+        .op12-chip--night { background: var(--color-night-bg); color: #3730A3; border: 1px solid var(--color-night-border); }
+
+        /* ===================== OPCIÓN 13: Card con timeline vertical ===================== */
+        .op13 { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .op13-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-gray-500); margin-bottom: 16px; }
+        .op13-timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 24px; }
+        .op13-timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--color-gray-200); }
+        .op13-item { display: flex; align-items: center; gap: 14px; padding: 10px 0; position: relative; }
+        .op13-dot { width: 16px; height: 16px; border-radius: 50%; position: absolute; left: -24px; top: 50%; transform: translateY(-50%); border: 3px solid #fff; box-shadow: 0 0 0 2px; }
+        .op13-dot--day { background: var(--color-day); box-shadow: 0 0 0 2px var(--color-day); }
+        .op13-dot--night { background: var(--color-night); box-shadow: 0 0 0 2px var(--color-night); }
+        .op13-name { font-weight: 700; font-size: 0.9rem; }
+        .op13-time { font-size: 0.78rem; color: var(--color-gray-500); }
+
+        /* ===================== OPCIÓN 14: Cards con fondo oscuro/claro ===================== */
+        .op14 { display: flex; gap: 12px; }
+        .op14-card { flex: 1; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 14px; }
+        .op14-card--day { background: #FFFBEB; border: 1px solid var(--color-day-border); }
+        .op14-card--night { background: #1E1B4B; color: white; }
+        .op14-icon-wrap { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .op14-icon-wrap--day { background: rgba(245,158,11,0.2); }
+        .op14-icon-wrap--night { background: rgba(255,255,255,0.15); }
+        .op14-name { font-weight: 800; font-size: 0.95rem; }
+        .op14-desc { font-size: 0.78rem; opacity: 0.7; margin-top: 2px; }
+
+        /* ===================== OPCIÓN 15: Banner horizontal con iconos ===================== */
+        .op15 { background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%); border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+        .op15-title { color: white; font-weight: 800; font-size: 1rem; }
+        .op15-badges { display: flex; gap: 10px; }
+        .op15-badge { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
+        .op15-badge--day { background: var(--color-day); color: white; }
+        .op15-badge--night { background: var(--color-night); color: white; }
+
+        /* ===================== OPCIÓN 16: Dos mini-cards apiladas ===================== */
+        .op16 { display: flex; flex-direction: column; gap: 8px; max-width: 320px; }
+        .op16-card { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; }
+        .op16-card--day { background: linear-gradient(90deg, var(--color-day-bg) 0%, #fff 100%); border: 1px solid var(--color-day-border); }
+        .op16-card--night { background: linear-gradient(90deg, var(--color-night-bg) 0%, #fff 100%); border: 1px solid var(--color-night-border); }
+        .op16-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .op16-icon--day { background: var(--color-day); }
+        .op16-icon--night { background: var(--color-night); }
+        .op16-name { font-weight: 700; font-size: 0.88rem; }
+        .op16-time { font-size: 0.75rem; color: var(--color-gray-500); }
+
+        /* ===================== OPCIÓN 17: Card con separador diagonal ===================== */
+        .op17 { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: relative; display: flex; height: 90px; }
+        .op17-half { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; font-size: 0.95rem; }
+        .op17-half--day { background: linear-gradient(135deg, #FDE68A, #FBBF24); color: #92400E; }
+        .op17-half--night { background: linear-gradient(135deg, #4338CA, #1E1B4B); color: white; }
+        .op17-divider { position: absolute; left: 50%; top: 0; bottom: 0; width: 40px; transform: translateX(-50%); overflow: hidden; z-index: 2; }
+        .op17-divider::before { content: ''; position: absolute; top: -10px; bottom: -10px; left: -20px; right: -20px; background: white; transform: rotate(10deg); }
+
+        /* ===================== OPCIÓN 18: Radar/status card ===================== */
+        .op18 { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .op18-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .op18-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--color-gray-500); }
+        .op18-status { font-size: 0.72rem; font-weight: 700; color: #10B981; background: #D1FAE5; padding: 3px 10px; border-radius: 999px; }
+        .op18-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+        .op18-row + .op18-row { border-top: 1px solid #f5f5f5; }
+        .op18-indicator { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .op18-indicator--day { background: var(--color-day); box-shadow: 0 0 6px rgba(245,158,11,0.4); }
+        .op18-indicator--night { background: var(--color-night); box-shadow: 0 0 6px rgba(99,102,241,0.4); }
+        .op18-name { font-weight: 700; font-size: 0.88rem; flex: 1; }
+        .op18-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+        .op18-tag--day { background: var(--color-day-bg); color: #92400E; }
+        .op18-tag--night { background: var(--color-night-bg); color: #3730A3; }
+
+        /* ===================== OPCIÓN 19: Iconos grandes centrados ===================== */
+        .op19 { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); text-align: center; }
+        .op19-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--color-gray-500); margin-bottom: 16px; }
+        .op19-icons { display: flex; gap: 32px; justify-content: center; align-items: flex-end; }
+        .op19-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .op19-circle { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .op19-circle--day { background: linear-gradient(135deg, #FDE68A, #FBBF24); box-shadow: 0 4px 16px rgba(251,191,36,0.3); }
+        .op19-circle--night { background: linear-gradient(135deg, #818CF8, #4338CA); box-shadow: 0 4px 16px rgba(99,102,241,0.3); }
+        .op19-label { font-weight: 800; font-size: 0.85rem; }
+        .op19-plus { font-size: 1.4rem; font-weight: 300; color: var(--color-gray-500); align-self: center; margin-bottom: 14px; }
+
+        /* ===================== OPCIÓN 20: Estilo materia (como las del plan de estudios) ===================== */
+        .op20 { display: flex; flex-direction: column; gap: 8px; }
+        .op20-item { padding: 12px 16px; border-radius: 8px; border-left: 4px solid; display: flex; align-items: center; justify-content: space-between; }
+        .op20-item--day { border-left-color: var(--color-day); background: var(--color-day-bg); }
+        .op20-item--night { border-left-color: var(--color-night); background: var(--color-night-bg); }
+        .op20-left { display: flex; align-items: center; gap: 10px; }
+        .op20-name { font-weight: 700; font-size: 0.9rem; color: var(--color-gray-900); }
+        .op20-badge { font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+        .op20-badge--day { background: var(--color-day); color: white; }
+        .op20-badge--night { background: var(--color-night); color: white; }
+    </style>
+</head>
+<body>
+
+<h1>Opciones — Banner de Jornada</h1>
+<p class="subtitle">20 diseños para mostrar jornada diurna/nocturna dentro del plan de estudios</p>
+
+<!-- OPCIÓN 1 -->
+<div class="option-block">
+    <div class="option-label">Opción 1</div>
+    <div class="option-title">Filas con ícono sol/luna en cuadro de color</div>
+    <div class="op1">
+        <div class="op1-title">Jornadas disponibles</div>
+        <div class="op1-row">
+            <div class="op1-icon op1-icon--day">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#F59E0B"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+                <div class="op1-label">Jornada Diurna</div>
+                <div class="op1-desc">Clases en horario de la mañana</div>
+            </div>
+        </div>
+        <div class="op1-row">
+            <div class="op1-icon op1-icon--night">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#6366F1"/></svg>
+            </div>
+            <div>
+                <div class="op1-label">Jornada Nocturna</div>
+                <div class="op1-desc">Clases en horario de la noche</div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 2 -->
+<div class="option-block">
+    <div class="option-label">Opción 2</div>
+    <div class="option-title">Dos pills lado a lado con borde de color</div>
+    <div class="op2">
+        <div class="op2-pill op2-pill--day">
+            <div class="op2-icon op2-icon--day"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <span class="op2-text" style="color:#92400E">Jornada Diurna</span>
+        </div>
+        <div class="op2-pill op2-pill--night">
+            <div class="op2-icon op2-icon--night"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg></div>
+            <span class="op2-text" style="color:#3730A3">Jornada Nocturna</span>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 3 -->
+<div class="option-block">
+    <div class="option-label">Opción 3</div>
+    <div class="option-title">Split card — mitad día, mitad noche con gradientes</div>
+    <div class="op3">
+        <div class="op3-half op3-half--day">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#F59E0B"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/></svg>
+            <div><div class="op3-label">Jornada</div><div class="op3-value">Diurna</div></div>
+        </div>
+        <div class="op3-half op3-half--night">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#6366F1"/></svg>
+            <div><div class="op3-label">Jornada</div><div class="op3-value">Nocturna</div></div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 4 -->
+<div class="option-block">
+    <div class="option-label">Opción 4</div>
+    <div class="option-title">Card con borde superior degradado sol→luna</div>
+    <div class="op4">
+        <div class="op4-gradient"></div>
+        <div class="op4-body">
+            <div class="op4-item">
+                <div class="op4-dot op4-dot--day"></div>
+                <div><div class="op4-name">Diurna</div><div class="op4-sub">Horario mañana</div></div>
+            </div>
+            <div class="op4-item">
+                <div class="op4-dot op4-dot--night"></div>
+                <div><div class="op4-name">Nocturna</div><div class="op4-sub">Horario noche</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 5 -->
+<div class="option-block">
+    <div class="option-label">Opción 5</div>
+    <div class="option-title">Glassmorphism sobre fondo azul institucional</div>
+    <div class="op5-wrap">
+        <div class="op5-card">
+            <div class="op5-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><div class="op5-label">Jornada</div><div class="op5-value">Diurna</div></div>
+        </div>
+        <div class="op5-card">
+            <div class="op5-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg></div>
+            <div><div class="op5-label">Jornada</div><div class="op5-value">Nocturna</div></div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 6 -->
+<div class="option-block">
+    <div class="option-label">Opción 6</div>
+    <div class="option-title">Filas con borde izquierdo estilo materias</div>
+    <div class="op6">
+        <div class="op6-header">Jornadas disponibles</div>
+        <div class="op6-row op6-row--day">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#F59E0B"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/></svg>
+            <div><div class="op6-name">Jornada Diurna</div><div class="op6-time">Horario mañana</div></div>
+        </div>
+        <div class="op6-row op6-row--night">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#6366F1"/></svg>
+            <div><div class="op6-name">Jornada Nocturna</div><div class="op6-time">Horario noche</div></div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 7 -->
+<div class="option-block">
+    <div class="option-label">Opción 7</div>
+    <div class="option-title">Cards con ilustración de horizonte (cielo día/noche)</div>
+    <div class="op7" style="display:flex;gap:12px;">
+        <div class="op7-card">
+            <div class="op7-scene op7-scene--day"><div class="op7-sun"></div></div>
+            <div class="op7-body"><div class="op7-name">Diurna</div><div class="op7-time">Horario mañana</div></div>
+        </div>
+        <div class="op7-card">
+            <div class="op7-scene op7-scene--night">
+                <div class="op7-moon"></div>
+                <div class="op7-star" style="top:8px;left:20%"></div>
+                <div class="op7-star" style="top:18px;left:70%"></div>
+                <div class="op7-star" style="top:30px;left:35%"></div>
+                <div class="op7-star" style="top:12px;left:85%"></div>
+            </div>
+            <div class="op7-body"><div class="op7-name">Nocturna</div><div class="op7-time">Horario noche</div></div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 8 -->
+<div class="option-block">
+    <div class="option-label">Opción 8</div>
+    <div class="option-title">Badge compacto horizontal con tags</div>
+    <div class="op8">
+        <div class="op8-label">Jornada</div>
+        <div class="op8-tag op8-tag--day">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#B45309"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#B45309" stroke-width="2" stroke-linecap="round"/></svg>
+            Diurna
+        </div>
+        <div class="op8-sep"></div>
+        <div class="op8-tag op8-tag--night">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#4338CA"/></svg>
+            Nocturna
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 9 -->
+<div class="option-block">
+    <div class="option-label">Opción 9</div>
+    <div class="option-title">Cards con emoji grande centrado</div>
+    <div class="op9">
+        <div class="op9-card op9-card--day">
+            <div class="op9-emoji">☀️</div>
+            <div class="op9-name">Diurna</div>
+            <div class="op9-desc">Clases en la mañana</div>
+        </div>
+        <div class="op9-card op9-card--night">
+            <div class="op9-emoji">🌙</div>
+            <div class="op9-name">Nocturna</div>
+            <div class="op9-desc">Clases en la noche</div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 10 -->
+<div class="option-block">
+    <div class="option-label">Opción 10</div>
+    <div class="option-title">Selector visual tipo toggle con colores sólidos</div>
+    <div class="op10">
+        <div class="op10-title">Jornada</div>
+        <div class="op10-options">
+            <div class="op10-opt op10-opt--day">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                Diurna
+            </div>
+            <div class="op10-opt op10-opt--night">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg>
+                Nocturna
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 11 -->
+<div class="option-block">
+    <div class="option-label">Opción 11</div>
+    <div class="option-title">Columnas con gradientes fuertes lado a lado</div>
+    <div class="op11">
+        <div class="op11-col op11-col--day">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="op11-name">Diurna</div>
+            <div class="op11-sub">Horario mañana</div>
+        </div>
+        <div class="op11-col op11-col--night">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg>
+            <div class="op11-name">Nocturna</div>
+            <div class="op11-sub">Horario noche</div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 12 -->
+<div class="option-block">
+    <div class="option-label">Opción 12</div>
+    <div class="option-title">Strip minimal con chips de color</div>
+    <div class="op12">
+        <span class="op12-label">Jornada</span>
+        <div class="op12-chips">
+            <span class="op12-chip op12-chip--day">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#92400E"/></svg>
+                Diurna
+            </span>
+            <span class="op12-chip op12-chip--night">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#3730A3"/></svg>
+                Nocturna
+            </span>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 13 -->
+<div class="option-block">
+    <div class="option-label">Opción 13</div>
+    <div class="option-title">Timeline vertical con dots</div>
+    <div class="op13">
+        <div class="op13-title">Jornadas disponibles</div>
+        <div class="op13-timeline">
+            <div class="op13-item">
+                <div class="op13-dot op13-dot--day"></div>
+                <div><div class="op13-name">Jornada Diurna</div><div class="op13-time">Horario mañana</div></div>
+            </div>
+            <div class="op13-item">
+                <div class="op13-dot op13-dot--night"></div>
+                <div><div class="op13-name">Jornada Nocturna</div><div class="op13-time">Horario noche</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 14 -->
+<div class="option-block">
+    <div class="option-label">Opción 14</div>
+    <div class="option-title">Card clara (día) vs card oscura (noche)</div>
+    <div class="op14">
+        <div class="op14-card op14-card--day">
+            <div class="op14-icon-wrap op14-icon-wrap--day"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#F59E0B"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><div class="op14-name">Diurna</div><div class="op14-desc" style="color:#92400E">Horario mañana</div></div>
+        </div>
+        <div class="op14-card op14-card--night">
+            <div class="op14-icon-wrap op14-icon-wrap--night"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg></div>
+            <div><div class="op14-name">Nocturna</div><div class="op14-desc">Horario noche</div></div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 15 -->
+<div class="option-block">
+    <div class="option-label">Opción 15</div>
+    <div class="option-title">Banner azul institucional con badges</div>
+    <div class="op15">
+        <div class="op15-title">Jornadas disponibles</div>
+        <div class="op15-badges">
+            <div class="op15-badge op15-badge--day">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                Diurna
+            </div>
+            <div class="op15-badge op15-badge--night">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg>
+                Nocturna
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 16 -->
+<div class="option-block">
+    <div class="option-label">Opción 16</div>
+    <div class="option-title">Mini-cards apiladas con gradiente lateral</div>
+    <div class="op16">
+        <div class="op16-card op16-card--day">
+            <div class="op16-icon op16-icon--day"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><div class="op16-name">Jornada Diurna</div><div class="op16-time">Horario mañana</div></div>
+        </div>
+        <div class="op16-card op16-card--night">
+            <div class="op16-icon op16-icon--night"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg></div>
+            <div><div class="op16-name">Jornada Nocturna</div><div class="op16-time">Horario noche</div></div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 17 -->
+<div class="option-block">
+    <div class="option-label">Opción 17</div>
+    <div class="option-title">Split con separador diagonal y gradientes fuertes</div>
+    <div class="op17">
+        <div class="op17-half op17-half--day">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#92400E"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#92400E" stroke-width="2" stroke-linecap="round"/></svg>
+            Diurna
+        </div>
+        <div class="op17-divider"></div>
+        <div class="op17-half op17-half--night">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg>
+            Nocturna
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 18 -->
+<div class="option-block">
+    <div class="option-label">Opción 18</div>
+    <div class="option-title">Status card estilo dashboard con indicadores</div>
+    <div class="op18">
+        <div class="op18-header">
+            <div class="op18-title">Jornadas</div>
+            <div class="op18-status">● Disponibles</div>
+        </div>
+        <div class="op18-row">
+            <div class="op18-indicator op18-indicator--day"></div>
+            <div class="op18-name">Jornada Diurna</div>
+            <div class="op18-tag op18-tag--day">Mañana</div>
+        </div>
+        <div class="op18-row">
+            <div class="op18-indicator op18-indicator--night"></div>
+            <div class="op18-name">Jornada Nocturna</div>
+            <div class="op18-tag op18-tag--night">Noche</div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 19 -->
+<div class="option-block">
+    <div class="option-label">Opción 19</div>
+    <div class="option-title">Círculos grandes centrados con signo más</div>
+    <div class="op19">
+        <div class="op19-title">Jornadas disponibles</div>
+        <div class="op19-icons">
+            <div class="op19-item">
+                <div class="op19-circle op19-circle--day">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="white"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="op19-label">Diurna</div>
+            </div>
+            <div class="op19-plus">+</div>
+            <div class="op19-item">
+                <div class="op19-circle op19-circle--night">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="white"/></svg>
+                </div>
+                <div class="op19-label">Nocturna</div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider">
+
+<!-- OPCIÓN 20 -->
+<div class="option-block">
+    <div class="option-label">Opción 20</div>
+    <div class="option-title">Estilo materia — consistente con las materias del plan</div>
+    <div class="op20">
+        <div class="op20-item op20-item--day">
+            <div class="op20-left">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#F59E0B"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/></svg>
+                <span class="op20-name">Jornada Diurna</span>
+            </div>
+            <span class="op20-badge op20-badge--day">Mañana</span>
+        </div>
+        <div class="op20-item op20-item--night">
+            <div class="op20-left">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#6366F1"/></svg>
+                <span class="op20-name">Jornada Nocturna</span>
+            </div>
+            <span class="op20-badge op20-badge--night">Noche</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

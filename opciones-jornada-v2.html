@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones Jornada v2 — 30 diseños</title>
+    <style>
+        :root {
+            --day: #F59E0B;
+            --day-bg: #FFFBEB;
+            --day-border: #FDE68A;
+            --day-text: #92400E;
+            --night: #312E81;
+            --night-mid: #1E1B4B;
+            --night-dark: #0F0E2A;
+            --night-bg: #E0E7FF;
+            --night-border: #A5B4FC;
+            --night-text: #C7D2FE;
+            --accent: #0132AF;
+            --g200: #edf2f7;
+            --g500: #718096;
+            --g700: #4a5568;
+            --g900: #1a202c;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f4f8; color: var(--g900); padding: 40px 16px; margin: 0; }
+        h1 { text-align: center; font-size: 1.6rem; margin-bottom: 6px; }
+        .sub { text-align: center; color: var(--g500); margin-bottom: 12px; font-size: 0.9rem; }
+        .note { text-align: center; color: #059669; background: #D1FAE5; padding: 10px 16px; border-radius: 8px; max-width: 700px; margin: 0 auto 40px; font-size: 0.82rem; font-weight: 600; }
+        .ob { max-width: 720px; margin: 0 auto 52px; }
+        .ol { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--g500); margin-bottom: 5px; }
+        .ot { font-size: 1.05rem; font-weight: 800; color: var(--g900); margin-bottom: 14px; }
+        .dv { border: none; border-top: 1px solid var(--g200); margin: 0 auto; max-width: 720px; }
+        /* Toggle button */
+        .toggle-row { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+        .toggle-btn { background: none; border: 1px solid var(--g200); border-radius: 6px; padding: 5px 12px; font-size: 0.72rem; font-weight: 600; cursor: pointer; color: var(--g500); font-family: inherit; transition: all 0.2s; }
+        .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .toggle-btn .icon { margin-right: 4px; }
+
+        /* === Shared SVGs === */
+        /* Sun & Moon are inline */
+
+        /* ====== OPTION 1 ====== */
+        .o1 { display: flex; gap: 10px; }
+        .o1-c { flex: 1; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 10px; transition: all 0.3s; }
+        .o1-day { background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o1-night { background: var(--night-dark); border: 1px solid var(--night); }
+        .o1-ic { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .o1-ic-d { background: var(--day); }
+        .o1-ic-n { background: var(--night); }
+        .o1-lb { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+        .o1-lb-d { color: var(--day-text); }
+        .o1-lb-n { color: rgba(255,255,255,0.5); }
+        .o1-vl { font-size: 0.9rem; font-weight: 800; }
+        .o1-vl-d { color: var(--g900); }
+        .o1-vl-n { color: #fff; }
+        .o1-c.hidden { display: none; }
+
+        /* ====== OPTION 2 ====== */
+        .o2 { display: flex; gap: 0; border-radius: 10px; overflow: hidden; }
+        .o2-h { flex: 1; padding: 16px 18px; display: flex; align-items: center; gap: 12px; transition: all 0.3s; }
+        .o2-d { background: linear-gradient(135deg, #FDE68A, #FBBF24); }
+        .o2-n { background: linear-gradient(135deg, var(--night), var(--night-dark)); }
+        .o2-nm { font-weight: 800; font-size: 0.9rem; }
+        .o2-nm-d { color: var(--day-text); }
+        .o2-nm-n { color: #fff; }
+        .o2-h.hidden { display: none; }
+
+        /* ====== OPTION 3 ====== */
+        .o3 { display: flex; gap: 10px; }
+        .o3-p { flex: 1; display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; font-weight: 700; font-size: 0.82rem; transition: all 0.3s; }
+        .o3-pd { background: var(--day); color: #fff; }
+        .o3-pn { background: var(--night-dark); color: var(--night-text); border: 1px solid var(--night); }
+        .o3-p.hidden { display: none; }
+
+        /* ====== OPTION 4 ====== */
+        .o4 { background: #fff; border-radius: 10px; padding: 14px 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 14px; }
+        .o4-lb { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--g500); white-space: nowrap; }
+        .o4-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .o4-t { padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; transition: all 0.3s; }
+        .o4-td { background: var(--day-bg); color: var(--day-text); border: 1px solid var(--day-border); }
+        .o4-tn { background: var(--night-dark); color: var(--night-text); border: 1px solid var(--night); }
+        .o4-t.hidden { display: none; }
+
+        /* ====== OPTION 5 ====== */
+        .o5 { display: flex; gap: 10px; }
+        .o5-c { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .o5-sc { height: 50px; position: relative; }
+        .o5-sd { background: linear-gradient(180deg, #87CEEB 0%, #FDE68A 100%); }
+        .o5-sn { background: linear-gradient(180deg, var(--night-dark) 0%, var(--night) 100%); }
+        .o5-sun { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: #FBBF24; box-shadow: 0 0 14px rgba(251,191,36,0.5); }
+        .o5-moon { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background: #C7D2FE; box-shadow: 0 0 8px rgba(199,210,254,0.4); }
+        .o5-star { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; }
+        .o5-bd { background: #fff; padding: 10px; text-align: center; }
+        .o5-nm { font-weight: 800; font-size: 0.88rem; }
+        .o5-c.hidden { display: none; }
+
+        /* ====== OPTION 6 ====== */
+        .o6 { display: flex; gap: 10px; }
+        .o6-c { flex: 1; padding: 14px 16px; border-radius: 10px; border-left: 4px solid; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .o6-cd { border-left-color: var(--day); background: var(--day-bg); }
+        .o6-cn { border-left-color: var(--night); background: var(--night-dark); }
+        .o6-nm { font-weight: 700; font-size: 0.88rem; }
+        .o6-nm-n { color: #fff; }
+        .o6-sb { font-size: 0.72rem; }
+        .o6-sb-d { color: var(--day-text); }
+        .o6-sb-n { color: var(--night-text); }
+        .o6-c.hidden { display: none; }
+
+        /* ====== OPTION 7 ====== */
+        .o7 { display: flex; gap: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .o7-h { flex: 1; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: all 0.3s; }
+        .o7-hd { background: linear-gradient(135deg, #FBBF24, #F59E0B); color: #fff; }
+        .o7-hn { background: linear-gradient(135deg, var(--night), var(--night-dark)); color: #fff; }
+        .o7-nm { font-weight: 800; font-size: 0.92rem; }
+        .o7-sb { font-size: 0.75rem; opacity: 0.8; }
+        .o7-h.hidden { display: none; }
+
+        /* ====== OPTION 8 ====== */
+        .o8 { background: var(--night-dark); border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .o8-lb { color: var(--night-text); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .o8-chips { display: flex; gap: 8px; }
+        .o8-ch { padding: 7px 14px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 6px; transition: all 0.3s; }
+        .o8-chd { background: var(--day); color: #fff; }
+        .o8-chn { background: var(--night); color: var(--night-text); border: 1px solid rgba(165,180,252,0.3); }
+        .o8-ch.hidden { display: none; }
+
+        /* ====== OPTION 9 ====== */
+        .o9 { display: flex; gap: 10px; }
+        .o9-c { flex: 1; background: #fff; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 1px 6px rgba(0,0,0,0.06); transition: all 0.3s; }
+        .o9-cd { border: 2px solid var(--day-border); }
+        .o9-cn { border: 2px solid var(--night); background: var(--night-dark); }
+        .o9-em { font-size: 1.8rem; margin-bottom: 6px; }
+        .o9-nm { font-weight: 800; font-size: 0.92rem; }
+        .o9-nm-n { color: #fff; }
+        .o9-ds { font-size: 0.72rem; color: var(--g500); margin-top: 2px; }
+        .o9-ds-n { color: var(--night-text); }
+        .o9-c.hidden { display: none; }
+
+        /* ====== OPTION 10 ====== */
+        .o10 { background: #fff; border-radius: 10px; padding: 14px 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 14px; }
+        .o10-lb { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--g500); }
+        .o10-opts { display: flex; gap: 6px; flex: 1; }
+        .o10-o { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; transition: all 0.3s; }
+        .o10-od { background: var(--day); color: #fff; }
+        .o10-on { background: var(--night-dark); color: var(--night-text); border: 1px solid var(--night); }
+        .o10-o.hidden { display: none; }
+
+        /* ====== OPTION 11 ====== */
+        .o11 { display: flex; gap: 10px; }
+        .o11-c { flex: 1; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all 0.3s; }
+        .o11-cd { background: #FFFBEB; border: 1px solid var(--day-border); }
+        .o11-cn { background: var(--night-dark); }
+        .o11-iw { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .o11-iwd { background: rgba(245,158,11,0.2); }
+        .o11-iwn { background: rgba(165,180,252,0.15); }
+        .o11-nm { font-weight: 800; font-size: 0.88rem; }
+        .o11-nm-n { color: #fff; }
+        .o11-ds { font-size: 0.72rem; margin-top: 1px; }
+        .o11-ds-d { color: var(--day-text); }
+        .o11-ds-n { color: var(--night-text); }
+        .o11-c.hidden { display: none; }
+
+        /* ====== OPTION 12 ====== */
+        .o12 { background: linear-gradient(135deg, var(--accent), #0052D6); border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .o12-lb { color: #fff; font-weight: 800; font-size: 0.95rem; }
+        .o12-bg { display: flex; gap: 8px; }
+        .o12-b { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; transition: all 0.3s; }
+        .o12-bd { background: var(--day); color: #fff; }
+        .o12-bn { background: var(--night-dark); color: var(--night-text); border: 1px solid var(--night); }
+        .o12-b.hidden { display: none; }
+
+        /* ====== OPTION 13 ====== */
+        .o13 { display: flex; gap: 10px; }
+        .o13-c { flex: 1; position: relative; border-radius: 10px; overflow: hidden; padding: 16px; display: flex; align-items: center; gap: 12px; transition: all 0.3s; }
+        .o13-cd { background: var(--day-bg); border-top: 3px solid var(--day); }
+        .o13-cn { background: var(--night-dark); border-top: 3px solid var(--night); }
+        .o13-nm { font-weight: 800; font-size: 0.88rem; }
+        .o13-nm-n { color: #fff; }
+        .o13-c.hidden { display: none; }
+
+        /* ====== OPTION 14 ====== */
+        .o14 { display: flex; gap: 10px; }
+        .o14-c { flex: 1; border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all 0.3s; }
+        .o14-cd { background: linear-gradient(90deg, var(--day-bg) 0%, #fff 100%); border: 1px solid var(--day-border); }
+        .o14-cn { background: linear-gradient(90deg, var(--night-dark) 0%, var(--night) 100%); }
+        .o14-ic { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .o14-icd { background: var(--day); }
+        .o14-icn { background: var(--night); }
+        .o14-nm { font-weight: 700; font-size: 0.85rem; }
+        .o14-nm-n { color: #fff; }
+        .o14-c.hidden { display: none; }
+
+        /* ====== OPTION 15 ====== */
+        .o15 { display: flex; gap: 10px; position: relative; height: 70px; }
+        .o15-h { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; font-weight: 800; font-size: 0.88rem; transition: all 0.3s; }
+        .o15-hd { background: linear-gradient(135deg, #FDE68A, #FBBF24); color: var(--day-text); }
+        .o15-hn { background: linear-gradient(135deg, var(--night), var(--night-dark)); color: #fff; }
+        .o15-h.hidden { display: none; }
+
+        /* ====== OPTION 16 ====== */
+        .o16 { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .o16-hd { padding: 10px 18px 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--g500); letter-spacing: 0.5px; }
+        .o16-rw { display: flex; gap: 10px; padding: 10px 14px 14px; }
+        .o16-r { flex: 1; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; transition: all 0.3s; }
+        .o16-rd { background: var(--day-bg); border-left: 3px solid var(--day); }
+        .o16-rn { background: var(--night-dark); border-left: 3px solid var(--night); }
+        .o16-nm { font-weight: 700; font-size: 0.85rem; }
+        .o16-nm-n { color: #fff; }
+        .o16-r.hidden { display: none; }
+
+        /* ====== OPTION 17 ====== */
+        .o17 { background: var(--night-dark); border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+        .o17-lb { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+        .o17-items { display: flex; gap: 8px; flex: 1; }
+        .o17-i { flex: 1; padding: 10px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.82rem; transition: all 0.3s; }
+        .o17-id { background: rgba(245,158,11,0.15); color: var(--day); border: 1px solid rgba(245,158,11,0.3); }
+        .o17-in { background: rgba(165,180,252,0.1); color: var(--night-text); border: 1px solid rgba(165,180,252,0.2); }
+        .o17-i.hidden { display: none; }
+
+        /* ====== OPTION 18 ====== */
+        .o18 { display: flex; gap: 10px; }
+        .o18-c { flex: 1; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: all 0.3s; }
+        .o18-cd { background: #fff; border: 2px solid var(--day-border); }
+        .o18-cn { background: var(--night-dark); border: 2px solid var(--night); }
+        .o18-circ { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .o18-circd { background: linear-gradient(135deg, #FDE68A, #FBBF24); box-shadow: 0 4px 12px rgba(251,191,36,0.25); }
+        .o18-circn { background: linear-gradient(135deg, #818CF8, var(--night)); box-shadow: 0 4px 12px rgba(99,102,241,0.25); }
+        .o18-nm { font-weight: 800; font-size: 0.88rem; }
+        .o18-nm-n { color: #fff; }
+        .o18-c.hidden { display: none; }
+
+        /* ====== OPTION 19 ====== */
+        .o19 { display: flex; gap: 10px; }
+        .o19-c { flex: 1; padding: 12px 16px; border-radius: 8px; border-left: 4px solid; display: flex; align-items: center; justify-content: space-between; transition: all 0.3s; }
+        .o19-cd { border-left-color: var(--day); background: var(--day-bg); }
+        .o19-cn { border-left-color: var(--night-text); background: var(--night-dark); }
+        .o19-left { display: flex; align-items: center; gap: 8px; }
+        .o19-nm { font-weight: 700; font-size: 0.85rem; }
+        .o19-nm-n { color: #fff; }
+        .o19-bg { font-size: 0.68rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
+        .o19-bgd { background: var(--day); color: #fff; }
+        .o19-bgn { background: var(--night); color: var(--night-text); }
+        .o19-c.hidden { display: none; }
+
+        /* ====== OPTION 20 ====== */
+        .o20 { background: #fff; border-radius: 10px; padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .o20-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .o20-lb { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--g500); }
+        .o20-st { font-size: 0.68rem; font-weight: 700; color: #059669; background: #D1FAE5; padding: 3px 8px; border-radius: 999px; }
+        .o20-rw { display: flex; gap: 8px; }
+        .o20-r { flex: 1; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; transition: all 0.3s; }
+        .o20-rd { background: var(--day-bg); }
+        .o20-rn { background: var(--night-dark); }
+        .o20-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .o20-dotd { background: var(--day); box-shadow: 0 0 6px rgba(245,158,11,0.4); }
+        .o20-dotn { background: #818CF8; box-shadow: 0 0 6px rgba(129,140,248,0.4); }
+        .o20-nm { font-weight: 700; font-size: 0.82rem; flex: 1; }
+        .o20-nm-n { color: #fff; }
+        .o20-tg { font-size: 0.68rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
+        .o20-tgd { background: var(--day-bg); color: var(--day-text); border: 1px solid var(--day-border); }
+        .o20-tgn { background: var(--night); color: var(--night-text); }
+        .o20-r.hidden { display: none; }
+
+        /* ====== OPTION 21 ====== */
+        .o21 { display: flex; gap: 10px; }
+        .o21-c { flex: 1; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; position: relative; overflow: hidden; transition: all 0.3s; }
+        .o21-cd { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+        .o21-cn { background: linear-gradient(135deg, var(--night-dark), var(--night)); }
+        .o21-bg-icon { position: absolute; right: -8px; bottom: -8px; opacity: 0.08; }
+        .o21-nm { font-weight: 800; font-size: 0.9rem; position: relative; z-index: 1; }
+        .o21-nm-d { color: var(--day-text); }
+        .o21-nm-n { color: #fff; }
+        .o21-c.hidden { display: none; }
+
+        /* ====== OPTION 22 ====== */
+        .o22 { display: flex; gap: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .o22-s { flex: 0 0 44px; display: flex; align-items: center; justify-content: center; }
+        .o22-sd { background: var(--day); }
+        .o22-sn { background: var(--night-dark); }
+        .o22-b { flex: 1; padding: 14px 16px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .o22-bd { background: #fff; }
+        .o22-bn { background: var(--night); }
+        .o22-nm { font-weight: 700; font-size: 0.85rem; }
+        .o22-nm-n { color: #fff; }
+        .o22-pair { display: flex; gap: 0; flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .o22-wrap { display: flex; gap: 10px; }
+        .o22-pair.hidden { display: none; }
+
+        /* ====== OPTION 23 ====== */
+        .o23 { display: flex; gap: 10px; }
+        .o23-c { flex: 1; padding: 14px 16px; border-radius: 10px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .o23-cd { background: rgba(245,158,11,0.08); border: 2px dashed var(--day); }
+        .o23-cn { background: rgba(49,46,129,0.08); border: 2px dashed var(--night); }
+        .o23-nm { font-weight: 700; font-size: 0.85rem; }
+        .o23-nm-n { color: var(--night); }
+        .o23-c.hidden { display: none; }
+
+        /* ====== OPTION 24 ====== */
+        .o24 { display: inline-flex; align-items: center; background: var(--night-dark); border-radius: 999px; overflow: hidden; }
+        .o24-seg { padding: 10px 18px; display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.82rem; transition: all 0.3s; }
+        .o24-sd { background: var(--day); color: #fff; }
+        .o24-sn { background: transparent; color: var(--night-text); }
+        .o24-seg.hidden { display: none; }
+
+        /* ====== OPTION 25 ====== */
+        .o25 { display: flex; gap: 10px; }
+        .o25-c { flex: 1; border-radius: 12px; padding: 16px; position: relative; overflow: hidden; transition: all 0.3s; }
+        .o25-cd { background: #fff; border: 1px solid var(--day-border); }
+        .o25-cn { background: var(--night-dark); border: 1px solid var(--night); }
+        .o25-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .o25-lb { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; }
+        .o25-lb-d { color: var(--day-text); }
+        .o25-lb-n { color: var(--night-text); }
+        .o25-bar { height: 3px; border-radius: 2px; }
+        .o25-bard { background: var(--day); }
+        .o25-barn { background: var(--night-text); }
+        .o25-nm { font-weight: 800; font-size: 0.92rem; }
+        .o25-nm-n { color: #fff; }
+        .o25-c.hidden { display: none; }
+
+        /* ====== OPTION 26 ====== */
+        .o26 { display: flex; gap: 10px; }
+        .o26-c { flex: 1; border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; }
+        .o26-cd { background: linear-gradient(135deg, #fff 0%, var(--day-bg) 100%); }
+        .o26-cn { background: linear-gradient(135deg, var(--night) 0%, var(--night-dark) 100%); }
+        .o26-line { width: 3px; height: 32px; border-radius: 2px; flex-shrink: 0; }
+        .o26-ld { background: var(--day); }
+        .o26-ln { background: var(--night-text); }
+        .o26-nm { font-weight: 700; font-size: 0.88rem; }
+        .o26-nm-n { color: #fff; }
+        .o26-sb { font-size: 0.72rem; }
+        .o26-sb-d { color: var(--day-text); }
+        .o26-sb-n { color: var(--night-text); }
+        .o26-c.hidden { display: none; }
+
+        /* ====== OPTION 27 ====== */
+        .o27 { display: flex; gap: 10px; }
+        .o27-c { flex: 1; border-radius: 14px; padding: 18px; text-align: center; transition: all 0.3s; }
+        .o27-cd { background: linear-gradient(135deg, #FDE68A 0%, #FBBF24 100%); box-shadow: 0 4px 16px rgba(251,191,36,0.2); }
+        .o27-cn { background: linear-gradient(135deg, var(--night) 0%, var(--night-dark) 100%); box-shadow: 0 4px 16px rgba(49,46,129,0.3); }
+        .o27-nm { font-weight: 900; font-size: 1rem; }
+        .o27-nm-d { color: var(--day-text); }
+        .o27-nm-n { color: #fff; }
+        .o27-sub { font-size: 0.72rem; margin-top: 4px; }
+        .o27-sub-d { color: rgba(146,64,14,0.7); }
+        .o27-sub-n { color: var(--night-text); }
+        .o27-c.hidden { display: none; }
+
+        /* ====== OPTION 28 ====== */
+        .o28 { background: linear-gradient(90deg, var(--day-bg) 50%, var(--night-dark) 50%); border-radius: 12px; overflow: hidden; display: flex; }
+        .o28-h { flex: 1; padding: 16px 20px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .o28-hd { }
+        .o28-hn { }
+        .o28-nm { font-weight: 800; font-size: 0.88rem; }
+        .o28-nm-d { color: var(--day-text); }
+        .o28-nm-n { color: #fff; }
+        .o28-h.hidden { display: none; }
+        .o28.solo-day { background: var(--day-bg); }
+
+        /* ====== OPTION 29 ====== */
+        .o29 { display: flex; gap: 10px; }
+        .o29-c { flex: 1; border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; }
+        .o29-cd { background: #fff; box-shadow: inset 0 0 0 2px var(--day), 0 2px 8px rgba(245,158,11,0.12); }
+        .o29-cn { background: var(--night-dark); box-shadow: inset 0 0 0 2px var(--night), 0 2px 8px rgba(49,46,129,0.2); }
+        .o29-nm { font-weight: 700; font-size: 0.85rem; }
+        .o29-nm-n { color: #fff; }
+        .o29-c.hidden { display: none; }
+
+        /* ====== OPTION 30 ====== */
+        .o30 { display: flex; gap: 10px; }
+        .o30-c { flex: 1; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .o30-top { padding: 6px; text-align: center; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .o30-td { background: var(--day); color: #fff; }
+        .o30-tn { background: var(--night-dark); color: var(--night-text); }
+        .o30-bot { padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+        .o30-bd { background: var(--day-bg); }
+        .o30-bn { background: var(--night); }
+        .o30-nm { font-weight: 800; font-size: 0.88rem; }
+        .o30-nm-n { color: #fff; }
+        .o30-c.hidden { display: none; }
+
+        /* Responsive */
+        @media(max-width:500px) {
+            .o1,.o3,.o5,.o6,.o7,.o9,.o11,.o13,.o14,.o15,.o18,.o19,.o21,.o22-wrap,.o23,.o25,.o26,.o27,.o29,.o30 { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Opciones Jornada v2 — 30 diseños</h1>
+<p class="sub">Todas en una fila, tono midnight para nocturna, con botón para mostrar/ocultar</p>
+<div class="note">Usa el botón "± Nocturna" en cada opción para simular cuando solo hay jornada diurna</div>
+
+<div id="opts"></div>
+
+<script>
+const SUN = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
+const MOON = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="currentColor"/></svg>`;
+const SUN_W = SUN.replace(/currentColor/g,'white');
+const MOON_W = MOON.replace(/currentColor/g,'white');
+const SUN_D = SUN.replace(/currentColor/g,'#F59E0B');
+const MOON_N = MOON.replace(/currentColor/g,'#6366F1');
+const SUN_DT = SUN.replace(/currentColor/g,'#92400E');
+const MOON_NT = MOON.replace(/currentColor/g,'#C7D2FE');
+
+function toggleNight(btn) {
+    const block = btn.closest('.ob');
+    const els = block.querySelectorAll('[data-night]');
+    els.forEach(el => el.classList.toggle('hidden'));
+    btn.textContent = els[0]?.classList.contains('hidden') ? '+ Nocturna' : '− Nocturna';
+}
+
+function renderOptions() {
+    const container = document.getElementById('opts');
+    const options = [
+        { n:1, t:'Cards con ícono en cuadro de color', html:`<div class="o1"><div class="o1-c o1-day"><div class="o1-ic o1-ic-d">${SUN_W}</div><div><div class="o1-lb o1-lb-d">Jornada</div><div class="o1-vl o1-vl-d">Diurna</div></div></div><div class="o1-c o1-night" data-night><div class="o1-ic o1-ic-n">${MOON_W}</div><div><div class="o1-lb o1-lb-n">Jornada</div><div class="o1-vl o1-vl-n">Nocturna</div></div></div></div>` },
+        { n:2, t:'Split gradientes lado a lado', html:`<div class="o2"><div class="o2-h o2-d">${SUN_W} <span class="o2-nm o2-nm-d">Diurna</span></div><div class="o2-h o2-n" data-night>${MOON_W} <span class="o2-nm o2-nm-n">Nocturna</span></div></div>` },
+        { n:3, t:'Pills redondeadas con fondo sólido', html:`<div class="o3"><div class="o3-p o3-pd">${SUN_W} Diurna</div><div class="o3-p o3-pn" data-night>${MOON_W} Nocturna</div></div>` },
+        { n:4, t:'Strip con label + tags de color', html:`<div class="o4"><span class="o4-lb">Jornada</span><div class="o4-tags"><span class="o4-t o4-td">${SUN_DT} Diurna</span><span class="o4-t o4-tn" data-night>${MOON_NT} Nocturna</span></div></div>` },
+        { n:5, t:'Cards con mini-horizonte día/noche', html:`<div class="o5"><div class="o5-c"><div class="o5-sc o5-sd"><div class="o5-sun"></div></div><div class="o5-bd"><div class="o5-nm">Diurna</div></div></div><div class="o5-c" data-night><div class="o5-sc o5-sn"><div class="o5-moon"></div><div class="o5-star" style="top:6px;left:18%"></div><div class="o5-star" style="top:16px;left:72%"></div><div class="o5-star" style="top:28px;left:40%"></div></div><div class="o5-bd" style="background:var(--night-dark)"><div class="o5-nm" style="color:#fff">Nocturna</div></div></div></div>` },
+        { n:6, t:'Borde izquierdo estilo materias', html:`<div class="o6"><div class="o6-c o6-cd">${SUN_D}<div><div class="o6-nm">Jornada Diurna</div><div class="o6-sb o6-sb-d">Horario mañana</div></div></div><div class="o6-c o6-cn" data-night>${MOON_NT}<div><div class="o6-nm o6-nm-n">Jornada Nocturna</div><div class="o6-sb o6-sb-n">Horario noche</div></div></div></div>` },
+        { n:7, t:'Columnas con gradiente fuerte', html:`<div class="o7"><div class="o7-h o7-hd">${SUN_W}<div class="o7-nm">Diurna</div><div class="o7-sb">Mañana</div></div><div class="o7-h o7-hn" data-night>${MOON_W}<div class="o7-nm">Nocturna</div><div class="o7-sb">Noche</div></div></div>` },
+        { n:8, t:'Fondo midnight con chips internos', html:`<div class="o8"><span class="o8-lb">Jornada</span><div class="o8-chips"><span class="o8-ch o8-chd">${SUN_W} Diurna</span><span class="o8-ch o8-chn" data-night>${MOON_W} Nocturna</span></div></div>` },
+        { n:9, t:'Cards con emoji y borde contraste', html:`<div class="o9"><div class="o9-c o9-cd"><div class="o9-em">☀️</div><div class="o9-nm">Diurna</div><div class="o9-ds">Horario mañana</div></div><div class="o9-c o9-cn" data-night><div class="o9-em">🌙</div><div class="o9-nm o9-nm-n">Nocturna</div><div class="o9-ds o9-ds-n">Horario noche</div></div></div>` },
+        { n:10, t:'Toggle visual con bloques sólidos', html:`<div class="o10"><span class="o10-lb">Jornada</span><div class="o10-opts"><div class="o10-o o10-od">${SUN_W} Diurna</div><div class="o10-o o10-on" data-night>${MOON_W} Nocturna</div></div></div>` },
+        { n:11, t:'Card clara vs card midnight con ícono en wrap', html:`<div class="o11"><div class="o11-c o11-cd"><div class="o11-iw o11-iwd">${SUN_D}</div><div><div class="o11-nm">Diurna</div><div class="o11-ds o11-ds-d">Mañana</div></div></div><div class="o11-c o11-cn" data-night><div class="o11-iw o11-iwn">${MOON_NT}</div><div><div class="o11-nm o11-nm-n">Nocturna</div><div class="o11-ds o11-ds-n">Noche</div></div></div></div>` },
+        { n:12, t:'Banner azul institucional + badges', html:`<div class="o12"><span class="o12-lb">Jornadas disponibles</span><div class="o12-bg"><div class="o12-b o12-bd">${SUN_W} Diurna</div><div class="o12-b o12-bn" data-night>${MOON_W} Nocturna</div></div></div>` },
+        { n:13, t:'Borde superior de acento', html:`<div class="o13"><div class="o13-c o13-cd">${SUN_D}<span class="o13-nm">Jornada Diurna</span></div><div class="o13-c o13-cn" data-night>${MOON_NT}<span class="o13-nm o13-nm-n">Jornada Nocturna</span></div></div>` },
+        { n:14, t:'Mini-cards con gradiente lateral', html:`<div class="o14"><div class="o14-c o14-cd"><div class="o14-ic o14-icd">${SUN_W}</div><span class="o14-nm">Diurna</span></div><div class="o14-c o14-cn" data-night><div class="o14-ic o14-icn">${MOON_W}</div><span class="o14-nm o14-nm-n">Nocturna</span></div></div>` },
+        { n:15, t:'Bloques grandes redondeados', html:`<div class="o15"><div class="o15-h o15-hd">${SUN_DT} Diurna</div><div class="o15-h o15-hn" data-night>${MOON_W} Nocturna</div></div>` },
+        { n:16, t:'Card blanca con filas internas lado a lado', html:`<div class="o16"><div class="o16-hd">Jornadas disponibles</div><div class="o16-rw"><div class="o16-r o16-rd">${SUN_D}<span class="o16-nm">Diurna</span></div><div class="o16-r o16-rn" data-night>${MOON_NT}<span class="o16-nm o16-nm-n">Nocturna</span></div></div></div>` },
+        { n:17, t:'Fondo midnight completo con items outline', html:`<div class="o17"><span class="o17-lb">Jornada</span><div class="o17-items"><div class="o17-i o17-id">${SUN_D} Diurna</div><div class="o17-i o17-in" data-night>${MOON_NT} Nocturna</div></div></div>` },
+        { n:18, t:'Círculos centrados con gradiente', html:`<div class="o18"><div class="o18-c o18-cd"><div class="o18-circ o18-circd">${SUN_W}</div><div class="o18-nm">Diurna</div></div><div class="o18-c o18-cn" data-night><div class="o18-circ o18-circn">${MOON_W}</div><div class="o18-nm o18-nm-n">Nocturna</div></div></div>` },
+        { n:19, t:'Estilo materia con badge de horario', html:`<div class="o19"><div class="o19-c o19-cd"><div class="o19-left">${SUN_D}<span class="o19-nm">Jornada Diurna</span></div><span class="o19-bg o19-bgd">Mañana</span></div><div class="o19-c o19-cn" data-night><div class="o19-left">${MOON_NT}<span class="o19-nm o19-nm-n">Jornada Nocturna</span></div><span class="o19-bg o19-bgn">Noche</span></div></div>` },
+        { n:20, t:'Status card con indicadores y tags', html:`<div class="o20"><div class="o20-hd"><span class="o20-lb">Jornadas</span><span class="o20-st">● Disponibles</span></div><div class="o20-rw"><div class="o20-r o20-rd"><div class="o20-dot o20-dotd"></div><span class="o20-nm">Diurna</span><span class="o20-tg o20-tgd">Mañana</span></div><div class="o20-r o20-rn" data-night><div class="o20-dot o20-dotn"></div><span class="o20-nm o20-nm-n">Nocturna</span><span class="o20-tg o20-tgn">Noche</span></div></div></div>` },
+        { n:21, t:'Cards con ícono fantasma de fondo', html:`<div class="o21"><div class="o21-c o21-cd"><svg class="o21-bg-icon" width="60" height="60" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#F59E0B"/></svg>${SUN_D}<span class="o21-nm o21-nm-d">Jornada Diurna</span></div><div class="o21-c o21-cn" data-night><svg class="o21-bg-icon" width="60" height="60" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#C7D2FE"/></svg>${MOON_NT}<span class="o21-nm o21-nm-n">Jornada Nocturna</span></div></div>` },
+        { n:22, t:'Split card con franja lateral de color', html:`<div class="o22-wrap"><div class="o22-pair"><div class="o22-s o22-sd">${SUN_W}</div><div class="o22-b o22-bd"><span class="o22-nm">Jornada Diurna</span></div></div><div class="o22-pair" data-night><div class="o22-s o22-sn">${MOON_W}</div><div class="o22-b o22-bn"><span class="o22-nm o22-nm-n">Jornada Nocturna</span></div></div></div>` },
+        { n:23, t:'Cards con borde discontinuo (dashed)', html:`<div class="o23"><div class="o23-c o23-cd">${SUN_D}<span class="o23-nm">Diurna</span></div><div class="o23-c o23-cn" data-night>${MOON_N}<span class="o23-nm o23-nm-n">Nocturna</span></div></div>` },
+        { n:24, t:'Pastilla segmentada (pill compacto)', html:`<div class="o24"><div class="o24-seg o24-sd">${SUN_W} Diurna</div><div class="o24-seg o24-sn" data-night>${MOON_NT} Nocturna</div></div>` },
+        { n:25, t:'Cards con barra de acento inferior', html:`<div class="o25"><div class="o25-c o25-cd"><div class="o25-top">${SUN_D}<span class="o25-lb o25-lb-d">Jornada</span></div><div class="o25-nm">Diurna</div><div class="o25-bar o25-bard" style="width:100%"></div></div><div class="o25-c o25-cn" data-night><div class="o25-top">${MOON_NT}<span class="o25-lb o25-lb-n">Jornada</span></div><div class="o25-nm o25-nm-n">Nocturna</div><div class="o25-bar o25-barn" style="width:100%"></div></div></div>` },
+        { n:26, t:'Cards con línea vertical lateral', html:`<div class="o26"><div class="o26-c o26-cd"><div class="o26-line o26-ld"></div><div>${SUN_D}<div class="o26-nm">Diurna</div><div class="o26-sb o26-sb-d">Mañana</div></div></div><div class="o26-c o26-cn" data-night><div class="o26-line o26-ln"></div><div>${MOON_NT}<div class="o26-nm o26-nm-n">Nocturna</div><div class="o26-sb o26-sb-n">Noche</div></div></div></div>` },
+        { n:27, t:'Cards bold con gradiente fuerte y sombra', html:`<div class="o27"><div class="o27-c o27-cd">${SUN_DT}<div class="o27-nm o27-nm-d">Diurna</div><div class="o27-sub o27-sub-d">Horario mañana</div></div><div class="o27-c o27-cn" data-night>${MOON_W}<div class="o27-nm o27-nm-n">Nocturna</div><div class="o27-sub o27-sub-n">Horario noche</div></div></div>` },
+        { n:28, t:'Mitad y mitad con fondo continuo', html:`<div class="o28"><div class="o28-h o28-hd">${SUN_D}<span class="o28-nm o28-nm-d">Diurna</span></div><div class="o28-h o28-hn" data-night>${MOON_W}<span class="o28-nm o28-nm-n">Nocturna</span></div></div>` },
+        { n:29, t:'Cards con box-shadow inset de color', html:`<div class="o29"><div class="o29-c o29-cd">${SUN_D}<span class="o29-nm">Diurna</span></div><div class="o29-c o29-cn" data-night>${MOON_NT}<span class="o29-nm o29-nm-n">Nocturna</span></div></div>` },
+        { n:30, t:'Cards con header de color y body debajo', html:`<div class="o30"><div class="o30-c"><div class="o30-top o30-td">Diurna</div><div class="o30-bot o30-bd">${SUN_D}<span class="o30-nm">Jornada Diurna</span></div></div><div class="o30-c" data-night><div class="o30-top o30-tn">Nocturna</div><div class="o30-bot o30-bn">${MOON_W}<span class="o30-nm o30-nm-n">Jornada Nocturna</span></div></div></div>` },
+    ];
+
+    container.innerHTML = options.map(o => `
+        <div class="ob">
+            <div class="ol">Opción ${o.n}</div>
+            <div class="ot">${o.t}</div>
+            <div class="toggle-row"><button class="toggle-btn" onclick="toggleNight(this)">− Nocturna</button></div>
+            ${o.html}
+        </div>
+        <hr class="dv">
+    `).join('');
+}
+renderOptions();
+</script>
+
+</body>
+</html>

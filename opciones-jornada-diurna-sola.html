@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones Card Diurna Sola</title>
+    <style>
+        :root {
+            --day: #F59E0B;
+            --day-bg: #FFFBEB;
+            --day-border: #FDE68A;
+            --day-text: #92400E;
+            --accent: #0132AF;
+            --g200: #edf2f7;
+            --g500: #718096;
+            --g700: #4a5568;
+            --g900: #1a202c;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f4f8; color: var(--g900); padding: 40px 16px; margin: 0; }
+        h1 { text-align: center; font-size: 1.6rem; margin-bottom: 6px; }
+        .sub { text-align: center; color: var(--g500); margin-bottom: 12px; font-size: 0.9rem; }
+        .note { text-align: center; color: #059669; background: #D1FAE5; padding: 10px 16px; border-radius: 8px; max-width: 700px; margin: 0 auto 40px; font-size: 0.82rem; font-weight: 600; }
+        .ob { max-width: 600px; margin: 0 auto 52px; }
+        .ol { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--g500); margin-bottom: 5px; }
+        .ot { font-size: 1.05rem; font-weight: 800; color: var(--g900); margin-bottom: 14px; }
+        .dv { border: none; border-top: 1px solid var(--g200); margin: 0 auto; max-width: 600px; }
+
+        /* ====== OPTION 1 ====== Badge "Disponible" */
+        .o1 { position: relative; }
+        .o1-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o1-badge { position: absolute; top: 10px; right: 10px; background: var(--day); color: #fff; padding: 4px 12px; border-radius: 999px; font-size: 0.65rem; font-weight: 700; }
+        .o1-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o1-icon { color: var(--day); width: 20px; height: 20px; }
+        .o1-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o1-body { padding: 14px; }
+        .o1-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 12px; }
+        .o1-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 8px; }
+        .o1-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; }
+
+        /* ====== OPTION 2 ====== Subtítulo descriptivo */
+        .o2-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o2-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o2-icon { color: var(--day); width: 20px; height: 20px; }
+        .o2-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o2-body { padding: 14px; }
+        .o2-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 4px; }
+        .o2-sub { font-size: 0.75rem; color: var(--g500); margin-bottom: 12px; font-style: italic; }
+        .o2-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 8px; }
+        .o2-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; }
+
+        /* ====== OPTION 3 ====== Icono grande con info */
+        .o3-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); padding: 20px; text-align: center; }
+        .o3-big-icon { width: 60px; height: 60px; margin: 0 auto 12px; background: linear-gradient(135deg, var(--day), #FBBF24); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .o3-big-icon svg { width: 32px; height: 32px; color: #fff; }
+        .o3-nm { font-weight: 800; font-size: 1rem; color: var(--g900); margin-bottom: 4px; }
+        .o3-sub { font-size: 0.75rem; color: var(--g500); margin-bottom: 12px; }
+        .o3-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 12px; }
+        .o3-bar { height: 3px; border-radius: 2px; background: var(--day); width: 60%; margin: 0 auto; }
+
+        /* ====== OPTION 4 ====== Botón "Ver más" */
+        .o4-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o4-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o4-icon { color: var(--day); width: 20px; height: 20px; }
+        .o4-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o4-body { padding: 14px; }
+        .o4-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 12px; }
+        .o4-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 12px; }
+        .o4-btn { display: inline-block; background: var(--day); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+        .o4-btn:hover { opacity: 0.9; transform: scale(1.05); }
+        .o4-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; margin-top: 12px; }
+
+        /* ====== OPTION 5 ====== Altura aumentada + padding */
+        .o5-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); min-height: 180px; display: flex; flex-direction: column; }
+        .o5-top { display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-bottom: 1px solid var(--day-border); }
+        .o5-icon { color: var(--day); width: 20px; height: 20px; }
+        .o5-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o5-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+        .o5-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); }
+        .o5-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); }
+        .o5-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; margin-top: auto; }
+
+        /* ====== OPTION 6 ====== Borde izquierdo ancho */
+        .o6-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); border-left: 6px solid var(--day); }
+        .o6-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o6-icon { color: var(--day); width: 20px; height: 20px; }
+        .o6-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o6-body { padding: 14px; }
+        .o6-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 6px; }
+        .o6-desc { font-size: 0.75rem; color: var(--g500); margin-bottom: 10px; }
+        .o6-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); }
+
+        /* ====== OPTION 7 ====== Gradiente progresivo */
+        .o7-c { border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, var(--day-bg) 0%, #FEF3C7 100%); border: 1px solid var(--day-border); }
+        .o7-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o7-icon { color: var(--day); width: 20px; height: 20px; }
+        .o7-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o7-body { padding: 14px; }
+        .o7-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 6px; }
+        .o7-info { display: flex; gap: 16px; margin-bottom: 8px; }
+        .o7-inf-item { font-size: 0.75rem; }
+        .o7-inf-key { font-weight: 700; color: var(--day-text); }
+        .o7-inf-val { color: var(--g700); }
+        .o7-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 8px; }
+        .o7-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; }
+
+        /* ====== OPTION 8 ====== Info adicional con tags */
+        .o8-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o8-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o8-icon { color: var(--day); width: 20px; height: 20px; }
+        .o8-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o8-body { padding: 14px; }
+        .o8-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 8px; }
+        .o8-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 10px; }
+        .o8-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+        .o8-tag { background: rgba(245,158,11,0.15); color: var(--day-text); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+        .o8-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; }
+
+        /* ====== OPTION 9 ====== Línea decorativa arriba */
+        .o9-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o9-dec { height: 4px; background: linear-gradient(90deg, var(--day), #FBBF24, transparent); }
+        .o9-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o9-icon { color: var(--day); width: 20px; height: 20px; }
+        .o9-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o9-body { padding: 14px; }
+        .o9-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 6px; }
+        .o9-desc { font-size: 0.75rem; color: var(--g500); margin-bottom: 10px; }
+        .o9-hs { font-size: 0.8rem; font-weight: 600; color: var(--g700); margin-bottom: 8px; }
+        .o9-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; }
+
+        /* ====== OPTION 10 ====== Información expandida con múltiples detalles */
+        .o10-c { border-radius: 10px; overflow: hidden; background: var(--day-bg); border: 1px solid var(--day-border); }
+        .o10-top { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--day-border); }
+        .o10-icon { color: var(--day); width: 20px; height: 20px; }
+        .o10-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o10-body { padding: 14px; }
+        .o10-nm { font-weight: 800; font-size: 0.95rem; color: var(--g900); margin-bottom: 10px; }
+        .o10-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .o10-item { }
+        .o10-item-k { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--day-text); }
+        .o10-item-v { font-size: 0.8rem; font-weight: 600; color: var(--g700); }
+        .o10-bar { height: 3px; border-radius: 2px; background: var(--day); width: 100%; }
+    </style>
+</head>
+<body>
+
+<h1>10 opciones — Card Diurna cuando está sola</h1>
+<p class="sub">Soluciones para llenar el espacio vacío cuando no hay nocturna</p>
+<div class="note">Elige una versión que te guste para reemplazar la estructura actual</div>
+
+<div class="ob">
+    <div class="ol">Opción 1</div>
+    <div class="ot">Badge "Disponible" en la esquina</div>
+    <div class="o1">
+        <div class="o1-c">
+            <div class="o1-badge">Disponible</div>
+            <div class="o1-top">
+                <svg class="o1-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <div class="o1-label">Jornada</div>
+            </div>
+            <div class="o1-body">
+                <div class="o1-nm">Diurna</div>
+                <div class="o1-hs">7:00 am - 6:00 pm</div>
+                <div class="o1-bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 2</div>
+    <div class="ot">Subtítulo descriptivo (italizado)</div>
+    <div class="o2-c">
+        <div class="o2-top">
+            <svg class="o2-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o2-label">Jornada</div>
+        </div>
+        <div class="o2-body">
+            <div class="o2-nm">Diurna</div>
+            <div class="o2-sub">Jornada convencional — Horario tradicional de mañana a tarde</div>
+            <div class="o2-hs">7:00 am - 6:00 pm</div>
+            <div class="o2-bar"></div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 3</div>
+    <div class="ot">Icono grande centrado con gradiente</div>
+    <div class="o3-c">
+        <div class="o3-big-icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="o3-nm">Diurna</div>
+        <div class="o3-sub">Jornada matutina y vespertina</div>
+        <div class="o3-hs">7:00 am - 6:00 pm</div>
+        <div class="o3-bar"></div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 4</div>
+    <div class="ot">Botón "Ver más" o CTA</div>
+    <div class="o4-c">
+        <div class="o4-top">
+            <svg class="o4-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o4-label">Jornada</div>
+        </div>
+        <div class="o4-body">
+            <div class="o4-nm">Diurna</div>
+            <div class="o4-hs">7:00 am - 6:00 pm</div>
+            <button class="o4-btn">Más información</button>
+            <div class="o4-bar"></div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 5</div>
+    <div class="ot">Altura mínima aumentada (más espaciada)</div>
+    <div class="o5-c">
+        <div class="o5-top">
+            <svg class="o5-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o5-label">Jornada</div>
+        </div>
+        <div class="o5-body">
+            <div class="o5-nm">Diurna</div>
+            <div class="o5-hs">7:00 am - 6:00 pm</div>
+            <div class="o5-bar"></div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 6</div>
+    <div class="ot">Borde izquierdo más ancho (6px) + descripción</div>
+    <div class="o6-c">
+        <div class="o6-top">
+            <svg class="o6-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o6-label">Jornada</div>
+        </div>
+        <div class="o6-body">
+            <div class="o6-nm">Diurna</div>
+            <div class="o6-desc">La modalidad estándar con horarios de mañana y tarde</div>
+            <div class="o6-hs">7:00 am - 6:00 pm</div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 7</div>
+    <div class="ot">Gradiente progresivo + información adicional (duración)</div>
+    <div class="o7-c">
+        <div class="o7-top">
+            <svg class="o7-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o7-label">Jornada</div>
+        </div>
+        <div class="o7-body">
+            <div class="o7-nm">Diurna</div>
+            <div class="o7-info">
+                <div class="o7-inf-item"><span class="o7-inf-key">Duración:</span> <span class="o7-inf-val">11 horas</span></div>
+                <div class="o7-inf-item"><span class="o7-inf-key">Tipo:</span> <span class="o7-inf-val">Estándar</span></div>
+            </div>
+            <div class="o7-hs">7:00 am - 6:00 pm</div>
+            <div class="o7-bar"></div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 8</div>
+    <div class="ot">Tags con características (ideal para, modalidad, etc)</div>
+    <div class="o8-c">
+        <div class="o8-top">
+            <svg class="o8-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o8-label">Jornada</div>
+        </div>
+        <div class="o8-body">
+            <div class="o8-nm">Diurna</div>
+            <div class="o8-hs">7:00 am - 6:00 pm</div>
+            <div class="o8-tags">
+                <span class="o8-tag">Presencial</span>
+                <span class="o8-tag">Full-time</span>
+                <span class="o8-tag">Estándar</span>
+            </div>
+            <div class="o8-bar"></div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 9</div>
+    <div class="ot">Línea decorativa gradient en la parte superior</div>
+    <div class="o9-c">
+        <div class="o9-dec"></div>
+        <div class="o9-top">
+            <svg class="o9-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o9-label">Jornada</div>
+        </div>
+        <div class="o9-body">
+            <div class="o9-nm">Diurna</div>
+            <div class="o9-desc">Jornada tradicional con máxima disponibilidad de recursos</div>
+            <div class="o9-hs">7:00 am - 6:00 pm</div>
+            <div class="o9-bar"></div>
+        </div>
+    </div>
+</div>
+<hr class="dv">
+
+<div class="ob">
+    <div class="ol">Opción 10</div>
+    <div class="ot">Grid de información expandida (Horario, Duración, Capacidad, etc)</div>
+    <div class="o10-c">
+        <div class="o10-top">
+            <svg class="o10-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="o10-label">Jornada</div>
+        </div>
+        <div class="o10-body">
+            <div class="o10-nm">Diurna</div>
+            <div class="o10-grid">
+                <div class="o10-item">
+                    <div class="o10-item-k">Horario</div>
+                    <div class="o10-item-v">7:00 am - 6:00 pm</div>
+                </div>
+                <div class="o10-item">
+                    <div class="o10-item-k">Duración</div>
+                    <div class="o10-item-v">11 horas</div>
+                </div>
+                <div class="o10-item">
+                    <div class="o10-item-k">Modalidad</div>
+                    <div class="o10-item-v">Presencial</div>
+                </div>
+                <div class="o10-item">
+                    <div class="o10-item-k">Disponibilidad</div>
+                    <div class="o10-item-v">Abierta</div>
+                </div>
+            </div>
+            <div class="o10-bar"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

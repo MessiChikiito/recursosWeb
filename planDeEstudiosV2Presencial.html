@@ -44,6 +44,7 @@
             max-width: 1000px;
             margin: 0 auto 20px;
             padding: 40px 20px;
+                        padding-bottom: 20px;
             position: relative;
             background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
             border-radius: 12px;
@@ -154,7 +155,6 @@
             background: var(--color-white);
             padding: 30px;
             border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
             animation: slideIn 0.4s ease;
         }
 
@@ -516,6 +516,174 @@
                 flex: 0 1 calc(33.33% - 4px);
             }
         }
+
+        /* ===== JORNADA COMPONENT ===== */
+        .pd-jornada {
+            padding: 24px 30px;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            margin-top: 20px;
+        }
+
+        .pd-jornada-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .pd-jornada-lb {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-gray-700);
+        }
+
+        .pd-jornada-toggle-btn {
+            padding: 6px 12px;
+            border: 2px solid var(--color-gray-300);
+            border-radius: 8px;
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            font-family: inherit;
+        }
+
+        .pd-jornada-opts {
+            display: flex;
+            gap: 16px;
+        }
+
+        .pd-jornada-card {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pd-jornada-card.diurna {
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+        }
+
+        .pd-jornada-card.nocturna {
+            background: #0F0E2A;
+            border: 1px solid #312E81;
+        }
+
+        .pd-jornada-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-icon {
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #fff;
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-icon {
+            background: linear-gradient(135deg, #6366F1, #818CF8);
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #fff;
+        }
+
+        .pd-jornada-label {
+            display: none;
+        }
+
+        .pd-jornada-nm {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: px;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-nm {
+            color: var(--color-gray-900);
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-nm {
+            color: #fff;
+        }
+
+        .pd-jornada-sub {
+            font-size: 0.8rem;
+            color: var(--color-gray-500);
+            margin-bottom: 2px;
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-sub {
+            color: #e0e6ff;
+        }
+
+        .pd-jornada-hs {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-hs {
+            color: var(--color-gray-700);
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-hs {
+            color: #92a6f7;
+        }
+
+        .pd-jornada-bar {
+            height: 3px;
+            border-radius: 2px;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-bar {
+            background: #F59E0B;
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-bar {
+            background: #6366F1;
+        }
+
+        .pd-jornada-card.hidden {
+            display: none;
+        }
+
+
+        @media(max-width: 768px) {
+            .pd-jornada {
+                padding: 16px;
+            }
+
+            .pd-jornada-opts {
+                gap: 12px;
+                flex-direction: column;
+            }
+
+            .pd-jornada-card {
+                padding: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -619,6 +787,33 @@
                             <div class="pd-credits-value pd-creditos-semestre-value">0</div>
                             <div class="pd-credits-unit">créditos</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JORNADA COMPONENT -->
+            <div class="pd-jornada">
+                <div class="pd-jornada-header">
+                    <div class="pd-jornada-lb">Jornadas disponibles en este programa</div>
+                </div>
+                <div class="pd-jornada-opts">
+                    <div class="pd-jornada-card diurna">
+                        <div class="pd-jornada-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="pd-jornada-nm">Diurna</div>
+                        <div class="pd-jornada-sub">Lunes a Viernes</div>
+                        <div class="pd-jornada-hs">7:00 am - 6:00 pm</div>
+                        <div class="pd-jornada-bar"></div>
+                    </div>
+                    <div class="pd-jornada-card nocturna" data-night>
+                        <div class="pd-jornada-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="currentColor"/></svg>
+                        </div>
+                        <div class="pd-jornada-nm">Nocturna</div>
+                        <div class="pd-jornada-sub">Lunes a Viernes</div>
+                        <div class="pd-jornada-hs">6:00 pm - 10:00 pm</div>
+                        <div class="pd-jornada-bar"></div>
                     </div>
                 </div>
             </div>
