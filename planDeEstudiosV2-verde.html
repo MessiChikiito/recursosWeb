@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios v2 - Administración de Empresas Virtual</title>
+    <style>
+        :root {
+            --color-primary: #FF6B35;
+            --color-accent: #009E4D;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+
+            /* COLORES DE MATERIAS - EDITAR AQUÍ */
+            --color-nucleo: #0132AF;
+            --color-prof: #FF3B3B;
+            --color-electiva: #00897B;
+            --color-transv: #D946EF;
+            --color-practica: #FF6B35;
+        }
+
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .pd-container {
+            max-width: 1000px;
+            margin: 0 auto 20px;
+            padding: 40px 20px;
+            position: relative;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
+            border-radius: 12px;
+        }
+
+        .pd-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pd-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-gray-900);
+            margin-bottom: 0px;
+            letter-spacing: -0.5px;
+        }
+
+        .pd-header p {
+            font-size: 1.1rem;
+            color: var(--color-gray-500);
+            margin-bottom: 30px;
+            margin-top: 6px;
+        }
+
+        /* LEYENDA MOBILE - Entre header y semestres */
+        .pd-legend-mobile {
+            display: none;
+        }
+
+        /* Practica empresarial ocupa 2 columnas en mobile */
+        .pd-legend-mobile > .pd-legend-item:nth-child(6) {
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+
+        /* SEMESTRES TABS */
+        .pd-semesters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 0 20px 0;
+            border-bottom: 2px solid var(--color-gray-200);
+        }
+
+        .pd-semester-btn {
+            padding: 12px 20px;
+            border: 2px solid var(--color-gray-300);
+            border-radius: 8px;
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            font-family: inherit;
+            white-space: nowrap;
+            flex: 0 0 auto;
+        }
+
+        .pd-semester-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            box-shadow: 0 2px 8px rgba(0, 158, 77, 0.1) !important;
+        }
+
+        .pd-semester-btn.active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-white);
+            box-shadow: 0 4px 12px rgba(0, 158, 77, 0.3) !important;
+        }
+
+        /* SEMESTRES 3, 5, 7 CON GRADIENTE */
+        .pd-semester-btn.gradient {
+            background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+            border: none;
+            color: var(--color-white);
+        }
+
+        .pd-semester-btn.gradient:hover {
+            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .pd-semester-btn.gradient.active {
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5) !important;
+        }
+
+        /* CONTENIDO EXPANDIBLE */
+        .pd-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-bottom: 24px;
+        }
+
+        .pd-content.expanded {
+            max-height: 2000px;
+        }
+
+        .pd-content-inner {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            animation: slideIn 0.4s ease;
+        }
+
+        /* Total de créditos */
+        .pd-credits-box {
+            background: linear-gradient(135deg, rgba(0, 158, 77, 0.05) 0%, rgba(0, 158, 77, 0.02) 100%);
+            border: 2px solid #009E4D;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pd-credits-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pd-credits-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #009E4D;
+        }
+
+        .pd-credits-unit {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            font-weight: 600;
+        }
+
+        /* Ocultar/Mostrar según viewport */
+        .pd-credits-box-mobile {
+            display: none;
+        }
+
+        .pd-credits-box-desktop {
+            display: block;
+        }
+
+        /* Total carrera (derecha destacada) */
+        .pd-total-carrera {
+            position: sticky;
+            top: 20px;
+            background: linear-gradient(135deg, #009E4D 0%, #00D687 100%);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 24px rgba(0, 158, 77, 0.3);
+        }
+
+        .pd-total-carrera-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .pd-total-carrera-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .pd-total-carrera-unit {
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInStaggered {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pd-materias.fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        .pd-materia {
+            animation: fadeInStaggered 0.5s ease forwards;
+        }
+
+        .pd-materia:nth-child(1) { animation-delay: 0.1s; }
+        .pd-materia:nth-child(2) { animation-delay: 0.15s; }
+        .pd-materia:nth-child(3) { animation-delay: 0.2s; }
+        .pd-materia:nth-child(4) { animation-delay: 0.25s; }
+        .pd-materia:nth-child(5) { animation-delay: 0.3s; }
+        .pd-materia:nth-child(6) { animation-delay: 0.35s; }
+        .pd-materia:nth-child(7) { animation-delay: 0.4s; }
+        .pd-materia:nth-child(8) { animation-delay: 0.45s; }
+        .pd-materia:nth-child(9) { animation-delay: 0.5s; }
+        .pd-materia:nth-child(10) { animation-delay: 0.55s; }
+        .pd-materia:nth-child(11) { animation-delay: 0.6s; }
+        .pd-materia:nth-child(12) { animation-delay: 0.65s; }
+        .pd-materia:nth-child(13) { animation-delay: 0.7s; }
+        .pd-materia:nth-child(14) { animation-delay: 0.75s; }
+        .pd-materia:nth-child(15) { animation-delay: 0.8s; }
+        .pd-materia:nth-child(16) { animation-delay: 0.85s; }
+
+        /* LEYENDA - PC: 2 COLUMNAS, MOBILE: 1 COLUMNA */
+        .pd-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-content: start;
+        }
+
+        .pd-legend-title {
+            grid-column: 1 / -1;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .pd-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pd-legend-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .pd-legend-dot.nucleo {
+            background: var(--color-nucleo);
+        }
+
+        .pd-legend-dot.prof {
+            background: var(--color-prof);
+        }
+
+        .pd-legend-dot.electiva {
+            background: var(--color-electiva);
+        }
+
+        .pd-legend-dot.transv {
+            background: var(--color-transv);
+        }
+
+        .pd-legend-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-gray-700);
+        }
+
+        /* MATERIAS */
+        .pd-materias {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pd-materia {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            cursor: default;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pd-materia:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .pd-materia-info {
+            flex: 1;
+        }
+
+        .pd-materia.nucleo {
+            border-left-color: var(--color-nucleo);
+            background: rgba(1, 50, 175, 0.05);
+        }
+
+        .pd-materia.prof {
+            border-left-color: var(--color-prof);
+            background: rgba(255, 59, 59, 0.05);
+        }
+
+        .pd-materia.electiva {
+            border-left-color: var(--color-electiva);
+            background: rgba(0, 137, 123, 0.05);
+        }
+
+        .pd-materia.transv {
+            border-left-color: var(--color-transv);
+            background: rgba(217, 70, 239, 0.05);
+        }
+
+        .pd-materia.practica {
+            border-left-color: var(--color-practica);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .pd-materia-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-gray-900);
+            margin-bottom: 0;
+        }
+
+        .pd-materia-credit {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-left: 12px;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .pd-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .pd-semesters {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .pd-semester-btn {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+                flex: 0 1 auto;
+            }
+
+            .pd-content-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            /* Mostrar credits-box en mobile (lado izquierdo) */
+            .pd-credits-box-mobile {
+                display: block;
+            }
+
+            .pd-credits-box-desktop {
+                display: none;
+            }
+
+            /* Mostrar leyenda mobile en tablet */
+            .pd-legend-mobile {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 24px;
+                background: #f7fafc;
+                padding: 16px;
+                border-radius: 8px;
+            }
+
+            /* Ocultar leyenda en content-inner */
+            .pd-content-inner .pd-legend {
+                display: none;
+            }
+
+            .pd-legend {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pd-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .pd-container {
+                padding: 20px 16px;
+            }
+
+            /* Mostrar leyenda mobile */
+            .pd-legend-mobile {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 24px;
+                background: #f7fafc;
+                padding: 16px;
+                border-radius: 8px;
+            }
+
+            /* Ocultar leyenda en content-inner */
+            .pd-content-inner .pd-legend {
+                display: none;
+            }
+
+            /* Mostrar credits-box en mobile (lado izquierdo) */
+            .pd-credits-box-mobile {
+                display: block;
+            }
+
+            .pd-credits-box-desktop {
+                display: none;
+            }
+
+            .pd-content-inner {
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .pd-semesters {
+                gap: 6px;
+                margin-bottom: 24px;
+            }
+            
+            .pd-semester-btn {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+                flex: 0 1 calc(33.33% - 4px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pd-container" id="pensum">
+        <!-- HEADER -->
+        <div class="pd-header">
+            <h1>Pénsum de Administración de Empresas</h1>
+            <p>Modalidad Dual Virtual - Explora las materias de cada semestre</p>
+        </div>
+
+        <!-- LEYENDA MOBILE (solo visible en móvil) -->
+        <div class="pd-legend-mobile">
+            <div class="pd-legend-title">Tipo de materia</div>
+            <div class="pd-legend-item">
+                <div class="pd-legend-dot nucleo"></div>
+                <span class="pd-legend-label">Materia Núcleo</span>
+            </div>
+            <div class="pd-legend-item">
+                <div class="pd-legend-dot prof"></div>
+                <span class="pd-legend-label">Materia Profesional</span>
+            </div>
+            <div class="pd-legend-item">
+                <div class="pd-legend-dot electiva"></div>
+                <span class="pd-legend-label">Materia Electiva</span>
+            </div>
+            <div class="pd-legend-item">
+                <div class="pd-legend-dot transv"></div>
+                <span class="pd-legend-label">Materia Transversal</span>
+            </div>
+            <div class="pd-legend-item">
+                <div class="pd-legend-dot" style="background: var(--color-practica);"></div>
+                <span class="pd-legend-label">Práctica Empresarial</span>
+            </div>
+        </div>
+
+        <!-- SEMESTRES BOTONES -->
+        <div class="pd-semesters" id="semestresContainer">
+            <button class="pd-semester-btn active" data-semestre="1">Primer semestre</button>
+            <button class="pd-semester-btn" data-semestre="2">Segundo semestre</button>
+            <button class="pd-semester-btn gradient" data-semestre="3">Tercer semestre</button>
+            <button class="pd-semester-btn" data-semestre="4">Cuarto semestre</button>
+            <button class="pd-semester-btn gradient" data-semestre="5">Quinto semestre</button>
+            <button class="pd-semester-btn" data-semestre="6">Sexto semestre</button>
+            <button class="pd-semester-btn gradient" data-semestre="7">Séptimo semestre</button>
+        </div>
+
+        <!-- CONTENIDO EXPANDIBLE -->
+        <div class="pd-content expanded" id="contentContainer">
+            <div class="pd-content-inner">
+                <!-- MATERIAS -->
+                <div>
+                    <div class="pd-materias" id="materiasContainer"></div>
+                    
+                    <!-- TOTAL CRÉDITOS SEMESTRE (MOBILE) -->
+                    <div class="pd-credits-box pd-credits-box-mobile">
+                        <div class="pd-credits-label">Total créditos semestre</div>
+                        <div>
+                            <div class="pd-credits-value pd-creditos-semestre-value">0</div>
+                            <div class="pd-credits-unit">créditos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEYENDA -->
+                <div>
+                    <!-- TOTAL CARRERA -->
+                    <div class="pd-total-carrera">
+                        <div class="pd-total-carrera-label">Total carrera</div>
+                        <div class="pd-total-carrera-value" id="creditosCarrera">160</div>
+                        <div class="pd-total-carrera-unit">créditos para graduarte</div>
+                    </div>
+
+                    <div class="pd-legend" style="margin-top: 30px;">
+                    <div class="pd-legend-title">Tipo de materia</div>
+                    <div class="pd-legend-item">
+                        <div class="pd-legend-dot nucleo"></div>
+                        <span class="pd-legend-label">Materia Núcleo</span>
+                    </div>
+                    <div class="pd-legend-item">
+                        <div class="pd-legend-dot prof"></div>
+                        <span class="pd-legend-label">Materia Profesional</span>
+                    </div>
+                    <div class="pd-legend-item">
+                        <div class="pd-legend-dot electiva"></div>
+                        <span class="pd-legend-label">Materia Electiva</span>
+                    </div>
+                    <div class="pd-legend-item">
+                        <div class="pd-legend-dot transv"></div>
+                        <span class="pd-legend-label">Materia Transversal</span>
+                    </div>
+                    <div class="pd-legend-item">
+                        <div class="pd-legend-dot" style="background: var(--color-practica);"></div>
+                        <span class="pd-legend-label">Práctica Empresarial</span>
+                    </div>
+                    </div>
+
+                    <!-- TOTAL CRÉDITOS SEMESTRE (DESKTOP) -->
+                    <div class="pd-credits-box pd-credits-box-desktop" style="margin-top: 24px;">
+                        <div class="pd-credits-label">Total créditos semestre</div>
+                        <div>
+                            <div class="pd-credits-value pd-creditos-semestre-value">0</div>
+                            <div class="pd-credits-unit">créditos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DATA DE SEMESTRES -->
+    <script>
+        // ============================================
+        // CONFIGURACIÓN DE SEMESTRES Y MATERIAS
+        // ⚠️ EDITAR FÁCILMENTE AQUÍ ⚠️
+        // Estructura: { nombre: "...", creditos: "X", tipo: "..." }
+        // Tipos disponibles: nucleo, prof, electiva, transv, practica
+        // ============================================
+
+        const semestreData = {
+            // PRIMER SEMESTRE
+            1: [
+                { nombre: "Fundamentos de Administración", creditos: "3", tipo: "prof" },
+                { nombre: "Legislación Comercial y Tributaria", creditos: "3", tipo: "prof" },
+                { nombre: "Análisis Microeconómico", creditos: "3", tipo: "prof" },
+                { nombre: "Matemática Financiera", creditos: "3", tipo: "prof" },
+                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
+                { nombre: "Cátedra Uniempresarial", creditos: "2", tipo: "electiva" },
+                { nombre: "Entorno colombiano", creditos: "2", tipo: "transv" },
+                { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "transv" },
+                { nombre: "English Beginners", creditos: "2", tipo: "transv" },
+            ],
+
+            // SEGUNDO SEMESTRE
+            2: [
+                { nombre: "Proceso Administrativo", creditos: "2", tipo: "prof" },
+                { nombre: "Análisis Macroeconómico", creditos: "2", tipo: "prof" },
+                { nombre: "Legislación Laboral", creditos: "2", tipo: "prof" },
+                { nombre: "Capital Humano (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gestión de la cultura empresarial", creditos: "2", tipo: "prof" },
+                { nombre: "Coaching y habilidades gerenciales", creditos: "1", tipo: "prof" },
+                { nombre: "Gestión del Talento Humano", creditos: "1", tipo: "prof" },
+                { nombre: "Marketing y cadena de Suministro (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gerencia de Marketing y de marca", creditos: "2", tipo: "prof" },
+                { nombre: "Ventas", creditos: "1", tipo: "prof" },
+                { nombre: "Producción y Cadena de suministro", creditos: "1", tipo: "prof" },
+                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
+                { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "transv" },
+                { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
+                { nombre: "Basic English", creditos: "2", tipo: "transv" },
+                { nombre: "Elementary English", creditos: "2", tipo: "transv" },
+            ],
+
+            // TERCER SEMESTRE (PRÁCTICAS)
+            3: [
+                { nombre: "Práctica empresarial en Capital humano", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Marketing y Cadena de Suministro", creditos: "10", tipo: "practica" },
+            ],
+
+            // CUARTO SEMESTRE
+            4: [
+                { nombre: "Direccionamiento Estratégico", creditos: "2", tipo: "prof" },
+                { nombre: "Contabilidad Financiera y de Costos", creditos: "2", tipo: "prof" },
+                { nombre: "Digital Transformation", creditos: "3", tipo: "prof" },
+                { nombre: "Finanzas (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Costos", creditos: "2", tipo: "prof" },
+                { nombre: "Planeación Financiera – Presupuestos", creditos: "1", tipo: "prof" },
+                { nombre: "Análisis financiero", creditos: "1", tipo: "prof" },
+                { nombre: "Gestión de la Innovación (Núcleo)", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gestión de la innovación", creditos: "2", tipo: "prof" },
+                { nombre: "Coolhunting", creditos: "1", tipo: "prof" },
+                { nombre: "Innovación en Productos y Procesos", creditos: "1", tipo: "prof" },
+                { nombre: "Innovación", creditos: "2", tipo: "prof" },
+                { nombre: "Preintermediate English", creditos: "2", tipo: "transv" },
+                { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+            ],
+
+            // QUINTO SEMESTRE (PRÁCTICAS)
+            5: [
+                { nombre: "Práctica Empresarial en Finanzas", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Gestión de la Innovación", creditos: "10", tipo: "practica" },
+            ],
+
+            // SEXTO SEMESTRE
+            6: [
+                { nombre: "Formulación y Evaluación de Proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "Dirección y Gestión de Proyectos", creditos: "3", tipo: "prof" },
+                { nombre: "ERP & Database Management", creditos: "2", tipo: "prof" },
+                { nombre: "Analitycs & Artificial Intelligence", creditos: "2", tipo: "prof" },
+                { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
+                { nombre: "Electiva de profundización 2", creditos: "4", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+            ],
+
+            // SÉPTIMO SEMESTRE (PRÁCTICAS)
+            7: [
+                { nombre: "Práctica Empresarial en Electiva de Profundización 1", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica Empresarial en Electiva de Profundización 2", creditos: "10", tipo: "practica" },
+            ],
+        };
+
+        function renderMaterias(semestre) {
+            const container = document.getElementById('materiasContainer');
+            const materias = semestreData[semestre];
+            
+            container.innerHTML = materias.map(materia => `
+                <div class="pd-materia ${materia.tipo}">
+                    <div class="pd-materia-info">
+                        <div class="pd-materia-title">${materia.nombre}</div>
+                    </div>
+                    <div class="pd-materia-credit">${materia.creditos} cr.</div>
+                </div>
+            `).join('');
+
+            // Calcular créditos del semestre
+            const creditosSemestre = materias.reduce((total, materia) => total + parseInt(materia.creditos), 0);
+            // Actualizar ambos elementos (mobile y desktop)
+            document.querySelectorAll('.pd-creditos-semestre-value').forEach(el => {
+                el.textContent = creditosSemestre;
+            });
+        }
+
+        function setupSemestres() {
+            const botones = document.querySelectorAll('.pd-semester-btn');
+            
+            botones.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const semestre = this.dataset.semestre;
+                    const materiasContainer = document.getElementById('materiasContainer');
+                    
+                    // Actualizar clase active en botones
+                    botones.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Agregar clase fade-out
+                    materiasContainer.classList.add('fade-out');
+                    
+                    // Esperar a que termine la animación de salida
+                    setTimeout(() => {
+                        // Remover clase fade-out
+                        materiasContainer.classList.remove('fade-out');
+                        
+                        // Renderizar materias (aquí se aplica fadeInStaggered automáticamente)
+                        renderMaterias(parseInt(semestre));
+                        
+                        // Forzar reflow para que se vean las animaciones
+                        materiasContainer.offsetHeight;
+                    }, 300);
+                    
+                    // Expandir si no estaba ya
+                    const contentContainer = document.getElementById('contentContainer');
+                    if (!contentContainer.classList.contains('expanded')) {
+                        contentContainer.classList.add('expanded');
+                    }
+                });
+            });
+        }
+
+        // Calcular total de créditos de la carrera
+        function calcularTotalCarrera() {
+            let totalCreditos = 0;
+            for (let semestre in semestreData) {
+                const creditosSemestre = semestreData[semestre].reduce((total, materia) => total + parseInt(materia.creditos), 0);
+                totalCreditos += creditosSemestre;
+            }
+            document.getElementById('creditosCarrera').textContent = totalCreditos;
+        }
+
+        // Inicializar
+        renderMaterias(1);
+        setupSemestres();
+        calcularTotalCarrera();
+    </script>
+</body>
+</html>

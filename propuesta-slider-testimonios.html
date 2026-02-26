@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Slider - Testimonios Empresarios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F5F7FA;
+        }
+
+        /* === SLIDER TESTIMONIOS === */
+        .testimonios-slider {
+            padding: 80px 0;
+            background: white;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .slider-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .slider-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #EA0A2A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .slider-titulo {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 16px;
+        }
+
+        .slider-subtitulo {
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Slide wrapper */
+        .slider-wrapper {
+            position: relative;
+            padding: 0 60px;
+        }
+
+        .slider-track {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .slider-item {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slider-item.active {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: center;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E3EFFE 100%);
+            padding: 48px;
+            border-radius: 16px;
+            border: 2px solid #E0E5EB;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Contenido del testimonio */
+        .slider-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .slider-nombre {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            line-height: 1.2;
+        }
+
+        .slider-cargo {
+            font-size: 16px;
+            font-weight: 600;
+            color: #EA0A2A;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .slider-quote {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.8;
+            font-style: italic;
+            border-left: 4px solid #EA0A2A;
+            padding-left: 20px;
+        }
+
+        .slider-historia {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0132AF;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .slider-historia:hover {
+            color: #EA0A2A;
+            gap: 12px;
+        }
+
+        .slider-historia svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Video */
+        .slider-video {
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #E3EFFE 0%, #C8DEFF 100%);
+            border-radius: 16px;
+            border: 3px solid #0132AF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(1, 50, 175, 0.2);
+            position: relative;
+            max-height: 450px;
+        }
+
+        .slider-video img,
+        .slider-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-video-play {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            background: #EA0A2A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-video-play:hover {
+            background: #C90820;
+            transform: scale(1.1);
+        }
+
+        .slider-video-play svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+            fill: currentColor;
+            margin-left: 4px;
+        }
+
+        /* Controles */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .slider-btn {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 2px solid #0132AF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: #0132AF;
+            transform: scale(1.1);
+        }
+
+        .slider-btn:hover svg {
+            color: white;
+        }
+
+        .slider-btn svg {
+            width: 20px;
+            height: 20px;
+            color: #0132AF;
+            transition: color 0.3s ease;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 12px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #E0E5EB;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #EA0A2A;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        .slider-indicator {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slider-item.active {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 32px;
+            }
+
+            .slider-video {
+                max-height: 400px;
+                margin: 0 auto;
+                max-width: 280px;
+            }
+
+            .slider-content {
+                text-align: center;
+            }
+
+            .slider-quote {
+                border-left: none;
+                border-top: 4px solid #EA0A2A;
+                padding-left: 0;
+                padding-top: 16px;
+            }
+
+            .slider-wrapper {
+                padding: 0 20px;
+            }
+        }
+
+        /* Información adicional */
+        .info-box {
+            background: #FFF5F7;
+            border: 2px solid #EA0A2A;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 60px auto 0;
+            max-width: 900px;
+        }
+
+        .info-box h3 {
+            color: #EA0A2A;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-box li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .info-box li::before {
+            content: '✓';
+            color: #EA0A2A;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .vs-box {
+            background: #E3EFFE;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 60px auto 0;
+            max-width: 900px;
+        }
+
+        .vs-box h3 {
+            color: #0132AF;
+            margin-bottom: 24px;
+            font-size: 20px;
+        }
+
+        .vs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .vs-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .vs-item h4 {
+            color: #0132AF;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .vs-item ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .vs-item li::before {
+            content: '• ';
+            color: #EA0A2A;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .vs-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <section class="testimonios-slider">
+        <div class="slider-container">
+            <header class="slider-header">
+                <p class="slider-eyebrow">Conoce a quiénes confían en nosotros</p>
+                <h2 class="slider-titulo">Empresarios que ya crecieron</h2>
+                <p class="slider-subtitulo">
+                    Mira cómo otros empresarios como tú han aprovechado la renovación virtual para acceder a formación que impulsa sus negocios.
+                </p>
+            </header>
+
+            <div class="slider-wrapper">
+                <!-- Slider Track -->
+                <div class="slider-track" id="sliderTrack">
+                    
+                    <!-- Slide 1 -->
+                    <div class="slider-item active">
+                        <div class="slider-content">
+                            <h3 class="slider-nombre">María García López</h3>
+                            <p class="slider-cargo">Emprendedora | E-Commerce</p>
+                            <blockquote class="slider-quote">
+                                "Renové mi matrícula en línea y accedí a los webinars de e-commerce y marketing digital. Fueron clave para llevar mis ventas a redes sociales y triplicar mis ingresos en 6 meses."
+                            </blockquote>
+                            <a href="#" class="slider-historia">
+                                Ver su historia completa
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="slider-video">
+                            <div class="slider-video-play">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slider-item">
+                        <div class="slider-content">
+                            <h3 class="slider-nombre">Carlos Rodríguez Pérez</h3>
+                            <p class="slider-cargo">Gerente | Servicios Empresariales</p>
+                            <blockquote class="slider-quote">
+                                "Como renovante virtual, pude acceder del webinar de finanzas que me permitió optimizar mi flujo de caja. Ahora tengo mejor control de costos y márgenes en mi negocio."
+                            </blockquote>
+                            <a href="#" class="slider-historia">
+                                Ver su historia completa
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="slider-video">
+                            <div class="slider-video-play">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slider-item">
+                        <div class="slider-content">
+                            <h3 class="slider-nombre">Alejandra Martínez Díaz</h3>
+                            <p class="slider-cargo">Fundadora | Agencia Digital</p>
+                            <blockquote class="slider-quote">
+                                "El webinar de Inteligencia Artificial cambió mi perspectiva. Implementé herramientas de IA en mis servicios de agencia y ahora ofrezco soluciones más innovadoras a mis clientes."
+                            </blockquote>
+                            <a href="#" class="slider-historia">
+                                Ver su historia completa
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="slider-video">
+                            <div class="slider-video-play">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slider-item">
+                        <div class="slider-content">
+                            <h3 class="slider-nombre">Diego Ruiz Gómez</h3>
+                            <p class="slider-cargo">Empresario | Retail</p>
+                            <blockquote class="slider-quote">
+                                "Gracias a los webinars de finanzas y e-commerce, pude optimizar mi estrategia de ventas en línea y mejorar márgenes. Mi negocio ahora trasciende más allá del local físico."
+                            </blockquote>
+                            <a href="#" class="slider-historia">
+                                Ver su historia completa
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="slider-video">
+                            <div class="slider-video-play">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Controles -->
+                <div class="slider-controls">
+                    <button class="slider-btn slider-prev">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+
+                    <div class="slider-dots">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+
+                    <span class="slider-indicator">
+                        <span id="currentSlide">1</span> / 4
+                    </span>
+
+                    <button class="slider-btn slider-next">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <h3>✨ Ventajas del Slider</h3>
+                <ul>
+                    <li><strong>Menos scroll:</strong> El usuario solo ve un testimonio a la vez, reduciendo la fatiga visual</li>
+                    <li><strong>Mayor enfoque:</strong> Toda la atención en una historia, sin distracciones</li>
+                    <li><strong>Experiencia moderna:</strong> Navegación intuitiva con botones y dots</li>
+                    <li><strong>Auto-play opcional:</strong> Puede configurarse para cambiar automáticamente cada 5-7 segundos</li>
+                    <li><strong>Video destacado:</strong> El formato vertical se ve más prominente</li>
+                    <li><strong>Indicador de progreso:</strong> El usuario sabe cuántos testimonios hay y en cuál está</li>
+                </ul>
+            </div>
+
+            <!-- Comparación -->
+            <div class="vs-box">
+                <h3>📊 Slider vs. Grid (Comparación)</h3>
+                <div class="vs-grid">
+                    <div class="vs-item">
+                        <h4>🎯 Slider (Propuesta)</h4>
+                        <ul>
+                            <li>Un testimonio a la vez</li>
+                            <li>Mayor protagonismo del video</li>
+                            <li>Menos carga visual inicial</li>
+                            <li>Navegación activa (engagement)</li>
+                            <li>Mejor en móvil</li>
+                            <li>Control del usuario sobre ritmo</li>
+                        </ul>
+                    </div>
+                    <div class="vs-item">
+                        <h4>📱 Grid (Actual)</h4>
+                        <ul>
+                            <li>Todos visibles simultáneamente</li>
+                            <li>Vista completa sin interacción</li>
+                            <li>Más scroll requerido</li>
+                            <li>Menos engagement interactivo</li>
+                            <li>Puede saturar en móvil</li>
+                            <li>Comparación directa fácil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-item');
+        const dots = document.querySelectorAll('.slider-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            if (index >= totalSlides) currentSlide = 0;
+            if (index < 0) currentSlide = totalSlides - 1;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+        }
+
+        document.querySelector('.slider-next').addEventListener('click', () => {
+            currentSlide++;
+            showSlide(currentSlide);
+        });
+
+        document.querySelector('.slider-prev').addEventListener('click', () => {
+            currentSlide--;
+            showSlide(currentSlide);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Auto-play opcional (descomentarlo si se desea)
+        // setInterval(() => {
+        //     currentSlide++;
+        //     showSlide(currentSlide);
+        // }, 6000);
+    </script>
+</body>
+</html>
