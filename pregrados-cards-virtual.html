@@ -73,14 +73,14 @@
         /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
         /* Grid responsive de cards */
         .pp-programs-section {
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 48px 24px 64px;
+            padding: 48px 16px 64px;
         }
 
         .pp-programs-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
@@ -737,13 +737,13 @@
 
         @keyframes pulse-badge {
             0% {
-                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
+                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 10px rgba(239, 18, 24, 0.2);
             }
             50% {
-                box-shadow: 0 0 24px rgba(239, 18, 24, 1), 0 0 32px rgba(239, 18, 24, 0.5);
+                box-shadow: 0 0 12px rgba(239, 18, 24, 1), 0 0 18px rgba(239, 18, 24, 0.5);
             }
             100% {
-                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
+                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 10px rgba(239, 18, 24, 0.2);
             }
         }
 
@@ -759,6 +759,8 @@
         @media (max-width: 768px) {
             .pp-programs-section {
                 padding: 32px 0 40px;
+                margin-right: 20px;
+                margin-left: 20px;
             }
 
             .pp-programs-grid {
@@ -767,7 +769,7 @@
             }
 
             .pp-program-card {
-                padding: 20px;
+                padding: 25px !important;
             }
 
             .form-row {
@@ -778,6 +780,18 @@
             .modal {
                 max-width: calc(100% - 32px);
                 margin: 16px;
+            }
+
+            .badge-virtual-custom{
+                top: 5px !important;
+                right: 5px !important;
+                padding: 4px 8px !important;
+                font-size: 0.65rem !important;
+            }
+
+            .pp-card-header{
+                margin-bottom: 5px;
+                margin-top: 1px;
             }
         }
 

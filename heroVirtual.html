@@ -32,6 +32,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
         }
 
         html {
@@ -104,7 +105,7 @@
         .pp-hero-subtitle {
             font-size: 1.1rem;
             color: rgba(255,255,255,0.95);
-            margin-bottom: 32px;
+            margin-bottom: 15px;
             line-height: 1.7;
         }
 
@@ -209,7 +210,6 @@
             font-size: 1rem !important;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             cursor: pointer !important;
-            display: inline-flex !important;
             align-items: center !important;
             gap: 8px !important;
             width: fit-content !important;
@@ -235,7 +235,6 @@
             font-size: 1rem !important;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             cursor: pointer !important;
-            display: inline-flex !important;
             align-items: center !important;
             gap: 8px !important;
             width: fit-content !important;
@@ -285,31 +284,58 @@
         /* Móvil */
         @media (max-width: 768px) {
             .pp-hero {
-                padding: 60px 24px;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            }
+
+            .pp-hero-content {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                padding: 40px 15px;
+            }
+
+            .pp-hero h1 {
+                font-size: 2.5rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 700 !important;
+            }
+
+            .pp-hero-subtitle {
+                font-size: 1.05rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 400 !important;
             }
 
             .pp-hero-right {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
-            .pp-hero h1 {
-                font-size: 1.8rem;
+            .pp-btn-asesoria {
+                padding: 12px 10px !important;
+                font-size: 0.95em !important;
+                text-align: center !important;
             }
 
-            .pp-hero-subtitle {
-                font-size: 0.95rem;
-                margin-bottom: 24px;
+            .pp-btn-verde {
+                padding: 12px 10px !important;
+                font-size: 0.95em !important;
+                text-align: center !important;
             }
 
             .pp-hero-actions {
                 flex-direction: column;
+                width: 100%;
                 gap: 12px;
             }
 
-            .pp-btn-verde,
+            .pp-btn-verde {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
             .pp-btn-asesoria {
                 width: 100% !important;
-                justify-content: center;
+                white-space: normal !important;
             }
 
             .pp-hero-info-card,
@@ -320,27 +346,83 @@
             .pp-hero-info-card strong,
             .pp-hero-info-card-dual strong {
                 font-size: 1.5rem !important;
+                font-weight: 900 !important;
+                display: block !important;
+                margin-bottom: 8px !important;
+                letter-spacing: -0.5px !important;
             }
         }
 
         /* Mobile Extra Small */
         @media (max-width: 480px) {
             .pp-hero {
-                padding: 40px 16px;
+                padding: 20px 10px !important;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            }
+
+            .pp-hero-content {
+                grid-template-columns: 1fr;
+                max-width: 100%;
             }
 
             .pp-hero h1 {
-                font-size: 1.5rem;
+                font-size: 2.5rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 700 !important;
             }
 
             .pp-hero-subtitle {
-                font-size: 0.9rem;
+                font-size: 1.05rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 400 !important;
             }
 
-            .pp-btn-verde,
+            .pp-hero-right {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
             .pp-btn-asesoria {
-                padding: 12px 16px !important;
-                font-size: 0.9rem !important;
+                padding: 12px 10px !important;
+                font-size: 0.95rem !important;
+                text-align: center !important;
+            }
+
+            .pp-btn-verde {
+                padding: 12px 10px !important;
+                font-size: 0.95rem !important;
+                align-items: center !important;
+            }
+
+            .pp-hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                align-items: center !important;
+            }
+
+            .pp-btn-verde {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            .pp-btn-asesoria {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            .pp-hero-info-card,
+            .pp-hero-info-card-dual {
+                padding: 20px !important;
+            }
+
+            .pp-hero-info-card strong,
+            .pp-hero-info-card-dual strong {
+                font-size: 1.5rem !important;
+                font-weight: 900 !important;
+                display: block !important;
+                margin-bottom: 8px !important;
+                letter-spacing: -0.5px !important;
             }
         }
     </style>

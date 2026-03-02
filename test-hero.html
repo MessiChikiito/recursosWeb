@@ -1,67 +1,74 @@
-
-    <style>
-        /* ========== RESET Y VARIABLES ========== */
-        :root {
-            --color-primary: #0132AF;
-            --color-primary-light: #0052D6;
-            --color-accent: #EF1218;
-            --color-accent-hover: #c50e13;
-            --color-bg: #f7fafc;
-            --color-white: #ffffff;
-            --color-gray-100: #f7fafc;
-            --color-gray-200: #edf2f7;
-            --color-gray-300: #e2e8f0;
-            --color-gray-500: #718096;
-            --color-gray-700: #4a5568;
-            --color-gray-900: #1a202c;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --transition: all 0.3s ease !important;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+        /* ========== RESET GLOBAL ========== */
+        html, body {
+            margin: 0;
+            padding: 0;
         }
 
-        * {
+        /* ========== HERO VIRTUAL BASE - SCOPED STYLES ========== */
+        .hvb-hero {
+            --hvb-color-primary: #0132AF;
+            --hvb-color-primary-light: #0052D6;
+            --hvb-color-accent: #EF1218;
+            --hvb-color-accent-hover: #c50e13;
+            --hvb-color-bg: #f7fafc;
+            --hvb-color-white: #ffffff;
+            --hvb-color-gray-100: #f7fafc;
+            --hvb-color-gray-200: #edf2f7;
+            --hvb-color-gray-300: #e2e8f0;
+            --hvb-color-gray-500: #718096;
+            --hvb-color-gray-700: #4a5568;
+            --hvb-color-gray-900: #1a202c;
+            --hvb-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --hvb-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --hvb-shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --hvb-radius-sm: 8px;
+            --hvb-radius-md: 12px;
+            --hvb-radius-lg: 16px;
+            --hvb-transition: all 0.3s ease !important;
+        }
+
+        .hvb-hero * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        .hvb-hero {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-gray-900);
+            color: var(--hvb-color-gray-900);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* ========== CAJA 1: HERO SECTION ========== */
-        .pp-hero {
-
+        /* ========== HERO SECTION ========== */
+        .hvb-hero {
+            background: linear-gradient(135deg, var(--hvb-color-primary) 0%, var(--hvb-color-primary-light) 100%);
             padding: 0;
             position: relative;
             overflow: hidden;
         }
 
-        .pp-hero::before {
+        .hvb-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            margin: 0;
+            padding: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.5;
-        } 
+        }
 
-        .hero-img {
+        .hvb-img {
             position: relative;
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             min-height: 500px;
-            background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/close-up-blurry-students-university-scaled.jpg'); /* ← EDITA AQUÍ */
+            background-image: url(''); /* ← EDITA AQUÍ */
             background-size: 120%; /* ← cover, contain, 100% 100%, 80%, etc */
             background-position: 90% 10%; /* ← Edita aquí: center center, center left, center right, 50% 30%, etc */
             background-repeat: no-repeat;
@@ -71,7 +78,19 @@
             border-radius: 16px;
         }
 
-        .pp-hero-content {
+        /* Overlay oscuro - OPACIDAD AUMENTADA */
+        .hvb-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+           background: linear-gradient(135deg, rgba(1, 50, 175, 0.7) 0%, rgba(0, 82, 214, 0.6) 100%);
+            z-index: 0;
+        }
+
+        .hvb-hero-content {
             max-width: 1200px;
             margin: auto;
             position: relative;
@@ -80,46 +99,43 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            padding: 80px 24px;
+            padding: 80px 0px;
         }
 
-        .pp-hero-left {
+        .hvb-hero-left {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            
-
-            background: rgba(255,255,255,0.15) !important;
-            backdrop-filter: blur(16px) !important;
-            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 12px;
-            padding: 25px;
-            
+
         }
 
-        .pp-hero-right {
+        .hvb-hero-right {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
 
-        .pp-hero h1 {
+        .hvb-hero h1 {
             font-size: 2.8rem;
-            font-weight: 900;
-            color: var(--color-white);
+            font-weight: 700;
+            color: var(--hvb-color-white);
             margin-bottom: 20px;
             letter-spacing: -1px;
             line-height: 1.2;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
         }
 
-        .pp-hero-subtitle {
+        .hvb-hero-subtitle {
             font-size: 1.1rem;
             color: rgba(255,255,255,0.95);
             margin-bottom: 32px;
             line-height: 1.7;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-weight: 400 !important;
         }
 
-        .pp-hero-info-card {
+        .hvb-hero-info-card {
             background: rgba(255,255,255,0.15) !important;
             backdrop-filter: blur(16px) !important;
             border: 1px solid rgba(255,255,255,0.2);
@@ -129,7 +145,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
-        .pp-hero-info-card-dual {
+        .hvb-hero-info-card-dual {
             background: rgba(255,255,255,0.15) !important;
             backdrop-filter: blur(16px) !important;
             border: 1px solid rgba(255,255,255,0.2) !important;
@@ -140,7 +156,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
-        .pp-hero-info-card-dual strong {
+        .hvb-hero-info-card-dual strong {
             display: block !important;
             font-size: 2rem !important;
             font-weight: 900 !important;
@@ -149,14 +165,14 @@
             letter-spacing: -0.5px !important;
         }
 
-        .pp-hero-info-card-dual p {
+        .hvb-hero-info-card-dual p {
             font-size: 0.93rem !important;
             opacity: 0.95 !important;
             margin: 0 !important;
             text-align: center !important;
         }
 
-        .pp-dual{
+        .hvb-dual{
             color: red !important;
             background-color: white !important;
             padding-bottom: 5px !important;
@@ -165,7 +181,7 @@
             text-align: center !important;
         }
 
-        .pp-hero-info-card strong {
+        .hvb-hero-info-card strong {
             display: block;
             font-size: 2rem;
             font-weight: 900;
@@ -173,13 +189,13 @@
             letter-spacing: -0.5px;
         }
 
-        .pp-hero-info-card p {
+        .hvb-hero-info-card p {
             font-size: 0.93rem;
             opacity: 0.95;
             margin: 0;
         }
 
-        .pp-badge-nuevo-button {
+        .hvb-badge-nuevo-button {
             position: absolute !important;
             top: -10px;
             right: -10px;
@@ -215,15 +231,17 @@
         }
 
         /* Contenedor acciones hero (botones) */
-        .pp-hero-actions {
+        .hvb-hero-actions {
             display: flex;
+            flex-direction: row;
             gap: 16px;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 20px;
+            width: fit-content;
         }
 
-        .pp-btn-verde {
+        .hvb-btn-verde {
             background: #0BD926 !important;
             border: 2px solid #0BD926 !important;
             color: white !important;
@@ -237,19 +255,21 @@
             cursor: pointer !important;
             display: inline-flex !important;
             align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
             gap: 8px !important;
             width: fit-content !important;
             height: auto !important;
             white-space: nowrap !important;
         }
 
-        .pp-btn-verde:hover {
+        .hvb-btn-verde:hover {
             background: #08B81F !important;
             border-color: #08B81F !important;
             transform: translateY(-2px) !important;
         }
 
-        .pp-btn-asesoria {
+        .hvb-btn-asesoria {
             background: transparent !important;
             border: 2px solid white !important;
             color: white !important;
@@ -263,13 +283,15 @@
             cursor: pointer !important;
             display: inline-flex !important;
             align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
             gap: 8px !important;
             width: fit-content !important;
             height: auto !important;
             white-space: nowrap !important;
         }
 
-        .pp-btn-asesoria:hover {
+        .hvb-btn-asesoria:hover {
             background: #ffffff53 !important;
             border-color: #ffffff !important;
             transform: translateY(-2px) !important;
@@ -277,92 +299,222 @@
 
         /* RESPONSIVE */
         @media (max-width: 992px) {
-            .pp-hero-content {
+            .hvb-hero-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            padding: 24px 16px;
             }
 
-            .pp-hero h1 {
+            .hvb-hero h1 {
                 font-size: 2.5rem;
             }
 
-            .pp-hero-right {
+            .hvb-hero-right {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .pp-hero {
-                padding: 40px 16px;
+            .hvb-img {
+                background-image: none !important;
+                min-height: auto;
             }
 
-            .pp-hero h1 {
-                font-size: 2rem;
+            .hvb-hero {
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
             }
 
-            .pp-hero-content {
+            .hvb-hero-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
                 max-width: 100%;
+                padding: 40px 15px 30px 15px;
             }
 
-            .pp-hero-subtitle {
-                font-size: 1rem;
+            .hvb-hero h1 {
+                font-size: 2.3rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 700 !important;
             }
 
-            .pp-hero-right {
+            .hvb-hero-subtitle {
+                font-size: 1.05rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 400 !important;
+            }
+
+            .hvb-hero-right {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
 
-            .pp-btn-asesoria {
+            .hvb-btn-asesoria {
                 padding: 12px 10px !important;
-                font-size: 0.85rem !important;
+                font-size: 0.95em !important;
+                text-align: center !important;
             }
 
-            .pp-btn-verde {
+            .hvb-btn-verde {
                 padding: 12px 10px !important;
-                font-size: 0.85rem !important;
+                font-size: 0.95em !important;
+                text-align: center !important;
+            }
+
+            .hvb-hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+            }
+
+            .hvb-btn-verde {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            .hvb-btn-asesoria {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            .hvb-hero-info-card,
+            .hvb-hero-info-card-dual {
+                padding: 20px !important;
+            }
+
+            .hvb-hero-info-card strong,
+            .hvb-hero-info-card-dual strong {
+                font-size: 1.5rem !important;
+                font-weight: 900 !important;
+                display: block !important;
+                margin-bottom: 8px !important;
+                letter-spacing: -0.5px !important;
+            }
+        }
+
+        /* Mobile Extra Small */
+        @media (max-width: 480px) {
+            .hvb-img {
+                background-image: none !important;
+                min-height: auto;
+            }
+
+            .hvb-hero {
+                padding: 40px 10px 20px 10px !important;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            }
+
+            .hvb-hero-content {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                padding: 20px 10px;
+                padding-bottom: 40px;
+            }
+
+            .hvb-hero h1 {
+                font-size: 2.3rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 700 !important;
+            }
+
+            .hvb-hero-subtitle {
+                font-size: 1.05rem;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+                font-weight: 400 !important;
+            }
+
+            .hvb-hero-right {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .hvb-btn-asesoria {
+                padding: 12px 10px !important;
+                font-size: 0.95rem !important;
+                text-align: center !important;
+            }
+
+            .hvb-btn-verde {
+                padding: 12px 10px !important;
+                font-size: 0.95rem !important;
+                align-items: center !important;
+            }
+
+            .hvb-hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                align-items: center !important;
+            }
+
+            .hvb-btn-verde {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            .hvb-btn-asesoria {
+                width: 100% !important;
+                white-space: normal !important;
+            }
+
+            .hvb-hero-info-card,
+            .hvb-hero-info-card-dual {
+                padding: 20px !important;
+            }
+
+            .hvb-hero-info-card strong,
+            .hvb-hero-info-card-dual strong {
+                font-size: 1.5rem !important;
+                font-weight: 900 !important;
+                display: block !important;
+                margin-bottom: 8px !important;
+                letter-spacing: -0.5px !important;
             }
         }
     </style>
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
 </head>
 <body>
-    <section class="pp-hero" id="pp-caja-hero">
-        <section class="hero-img">
-        <div class="pp-hero-content">
+    <section class="hvb-hero" id="hvb-caja-hero">
+        <section class="hvb-img">
+        <div class="hvb-hero-content">
             <!-- Columna Izquierda -->
-            <div class="pp-hero-left">
+            <div class="hvb-hero-left">
                 <h1>Pregrados Presenciales</h1>
-                <p class="pp-hero-subtitle">
+                <p class="hvb-hero-subtitle">
                     Formación dual que conecta tu aprendizaje con el mundo empresarial real. Desarrolla competencias prácticas desde el primer semestre y sé parte de profesionales que transforman organizaciones.
                 </p>
-                <div class="pp-hero-actions">
-                    <button class="pp-btn-verde" onclick="alert('Ir a programas virtuales')" style="position: relative;">
+                <div class="hvb-hero-actions">
+                    <button class="hvb-btn-verde" onclick="alert('Ir a programas virtuales')" style="position: relative;">
                         <span>Ver Pregrados Virtuales →</span>
-                        <span class="pp-badge-nuevo-button">Nuevo</span>
+                        <span class="hvb-badge-nuevo-button">Nuevo</span>
                     </button>
-                    <button class="pp-btn-asesoria" onclick="alert('Solicitar asesoría')">
+                    <button class="hvb-btn-asesoria" onclick="scrollToSection('caja-info')">
                         <span>Solicitar una asesoría</span>
                     </button>
                 </div>
             </div>
 
             <!-- Columna Derecha - Tarjetas Info -->
-            <div class="pp-hero-right">
-                <div class="pp-hero-info-card">
+            <div class="hvb-hero-right">
+                <div class="hvb-hero-info-card">
                     <strong>3.5 Años</strong>
                     <p>Solo en 7 Semestres</p>
                 </div>
-                <div class="pp-hero-info-card">
+                <div class="hvb-hero-info-card">
                     <strong>18 Meses</strong>
                     <p>De experiencia laboral certificada</p>
                 </div>
-                <div class="pp-hero-info-card-dual">
-                    <strong>Modalidad <strong class="pp-dual">Dual</strong></strong>
+                <div class="hvb-hero-info-card-dual">
+                    <strong>Modalidad <strong class="hvb-dual">Dual</strong></strong>
                     <p>Adquieres experiencia mientras estudias </p>
                 </div>
-                <div class="pp-hero-info-card-dual">
+                <div class="hvb-hero-info-card-dual">
                     <strong>Enfoques Reales</strong>
                     <p>En el mercado actual</p>
                 </div>
@@ -370,5 +522,6 @@
         </div>
         </section>
     </section>
+
 </body>
 </html>

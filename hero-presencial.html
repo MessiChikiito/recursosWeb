@@ -153,8 +153,8 @@
       justify-content: center;
     }
 
-    .hp-hero h2 {
-      font-size: 44px !important;
+    .hp-hero h1 {
+      font-size: 40px !important;
       margin: 0 0 16px !important;
       line-height: 1.2 !important;
       font-weight: 950 !important;
@@ -287,111 +287,443 @@
       flex-shrink: 0;
     }
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 980px) {
       .hp-hero {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
       }
 
-      .hp-hero::before,
-      .hp-hero::after {
+      .hp-hero::before {
+        position: relative;
         width: 100%;
+        height: 160px;
+        background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80') center / cover no-repeat;
+        display: block;
+        z-index: 3;
+        order: 1;
+      }
+
+      .hp-hero::after {
+        display: none;
       }
 
       .hp-content {
-        padding: 40px 30px;
+        position: relative;
+        z-index: 3;
+        padding: 40px 36px;
+        color: white;
+        background: transparent;
+        border: none;
+        order: 2;
+      }
+
+      .hp-hero h1 {
+        font-size: 32px !important;
+        color: white !important;
+        margin: 0 0 12px !important;
+      }
+
+      .hp-hero p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 0 0 28px;
+        line-height: 1.6;
+        opacity: 1;
+      }
+
+      .hp-hero-chips {
+        margin-bottom: 16px;
+      }
+
+      .hp-hero-chip {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
       }
 
       .hp-sidebar {
-        padding: 0;
-        flex-wrap: wrap;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 0;
+        width: 100%;
+        padding: 0 0px 36px 0px;
+        background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
       }
 
       .hp-card {
-        flex: 1 1 160px;
-        min-width: 160px;
-        width: auto;
+        background: #ffffff !important;
+        border: 1px solid rgba(1, 50, 175, 0.15) !important;
+        border-radius: 12px;
+        padding: 16px 18px !important;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        color: #06325a;
+        min-width: auto;
+        width: 100%;
       }
 
       .hp-card:nth-child(1) {
-        flex: 0 0 auto;
-        width: fit-content;
+        flex: none;
+        width: 100%;
+        min-width: auto;
+        border: 1px solid rgba(1, 50, 175, 0.15) !important;
+        padding: 16px 18px !important;
+      }
+
+      .hp-card:nth-child(2) {
+        flex: none;
+        width: 100%;
         min-width: auto;
       }
 
       .hp-card:nth-child(3) {
-        flex: 0 0 auto;
-        width: fit-content;
+        flex: none;
+        width: 100%;
         min-width: auto;
       }
 
       .hp-card:nth-child(4) {
-        flex: 0.5 1 80px;
-        width: auto;
+        flex: none;
+        width: 100%;
+        min-width: auto;
       }
 
-      .hp-hero h2 {
-        font-size: 32px;
+      .hp-card-label {
+        font-size: 10px;
+        color: rgba(1, 50, 175, 0.7);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+
+      .hp-card-value {
+        font-size: 15px;
+        font-weight: 800;
+        color: #06325a;
+      }
+
+      .hp-card-value--big {
+        font-size: 18px;
+        font-weight: 900;
+        color: #0132AF;
+      }
+
+      .hp-hero-cta {
+        flex-direction: row;
+        gap: 12px;
+        margin-top: 0;
+      }
+
+      .hp-hero-btn-inscribete {
+        flex: 1;
+      }
+
+      .hp-hero-btn-pensum {
+        flex: 1;
+        border-color: rgba(255, 255, 255, 0.6) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        background: transparent !important;
+      }
+
+      .hp-hero-btn-pensum:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+      }
+
+      div[style*="font-size: 13px"] {
+        color: rgba(255, 255, 255, 0.8) !important;
+        margin-top: 14px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hp-hero {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+      }
+
+      .hp-hero::before {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80') center / cover no-repeat;
+        display: block;
+        z-index: 3;
+        order: 1;
+
+      }
+
+      .hp-hero::after {
+        display: none;
+      }
+
+      .hp-content {
+        position: relative;
+        z-index: 3;
+        padding: 28px 24px;
+        color: white;
+        background: transparent;
+        border: none;
+        order: 2;
+      }
+
+      .hp-hero h1 {
+        font-size: 32px !important;
+        color: white !important;
+        margin: 0 0 12px !important;
       }
 
       .hp-hero p {
         font-size: 14px;
+        color: rgba(255, 255, 255, 0.95);
+        opacity: 1;
+        margin: 0 0 20px;
       }
 
-      .hp-btn-primary,
-      .hp-btn-outline {
+      .hp-hero-chips {
+        margin-bottom: 10px;
+        gap: 8px;
+      }
+
+      .hp-hero-chip {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+      }
+
+      .hp-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
         width: 100%;
+        padding: 0 24px 24px 24px;
+        background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+      }
+
+      .hp-card {
+        background: #ffffff !important;
+        border: 1px solid rgba(1, 50, 175, 0.15) !important;
+        border-radius: 10px;
+        padding: 12px 14px !important;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: #06325a;
+        min-width: auto;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(1) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(2) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(3) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(4) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card-label {
+        font-size: 10px;
+      }
+
+      .hp-card-value {
+        font-size: 13px;
+      }
+
+      .hp-hero-cta {
+        flex-direction: row;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .hp-hero-btn-inscribete,
+      .hp-hero-btn-pensum {
+        flex: 1;
+        padding: 10px 14px !important;
+        font-size: 13px !important;
+      }
+
+      .hp-hero-btn-pensum {
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        background: transparent !important;
+      }
+
+      .hp-hero-btn-pensum:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+      }
+
+      div[style*="font-size: 13px"] {
+        color: rgba(255, 255, 255, 0.7) !important;
+        margin-top: 14px;
       }
     }
 
     @media (max-width: 480px) {
       .hp-hero {
-        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+      }
+
+      .hp-hero::before {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80') center / cover no-repeat;
+        display: block;
+        z-index: 3;
+        order: 1;
+
+      }
+
+      .hp-hero::after {
+        display: none;
       }
 
       .hp-content {
-        padding: 30px 20px;
+        position: relative;
+        z-index: 3;
+        padding: 20px 16px;
+        color: white;
+        background: transparent;
+        border: none;
+        order: 2;
+      }
+
+      .hp-hero h1 {
+        font-size: 32px !important;
+        color: white !important;
+        margin: 0 0 8px !important;
+      }
+
+      .hp-hero p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.95);
+        opacity: 1;
+        margin: 0 0 16px;
+        line-height: 1.5;
+      }
+
+      .hp-hero-chips {
+        margin-bottom: 8px;
+        gap: 6px;
+      }
+
+      .hp-hero-chip {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        padding: 5px 8px;
+        font-size: 13px;
       }
 
       .hp-sidebar {
-        padding: 0;
-        flex-direction: column;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 0;
+        width: 100%;
+        padding: 0 0px 10px 0px;
+        background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
       }
 
       .hp-card {
-        flex: 1 1 auto;
-        min-width: 100%;
-      }
-
-      .hp-card:nth-child(1) {
-        flex: 0 0 auto;
-        width: fit-content;
-        min-width: auto;
-      }
-
-      .hp-card:nth-child(3) {
-        flex: 0 0 auto;
-        width: fit-content;
-        min-width: auto;
-      }
-
-      .hp-card:nth-child(4) {
-        flex: 1 1 auto;
-        min-width: 100%;
-      }
-
-      .hp-cta {
+        background: #ffffff !important;
+        border: 1px solid rgba(1, 50, 175, 0.15) !important;
+        border-radius: 10px;
+        padding: 14px 18px !important;
+        flex: none;
+        display: flex;
         flex-direction: column;
-      }
-
-      .hp-btn-primary,
-      .hp-btn-outline {
+        gap: 4px;
+        color: #06325a;
         width: 100%;
       }
 
-      .hp-hero h2 {
-        font-size: 24px;
+      .hp-card:nth-child(1) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(2) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(3) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(4) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card-label {
+        font-size: 9px;
+      }
+
+      .hp-card-value {
+        font-size: 13px;
+      }
+
+      .hp-card-value--big {
+        font-size: 18px;
+        margin-bottom: -8px;
+      }
+
+      .hp-hero-cta {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .hp-hero-btn-inscribete,
+      .hp-hero-btn-pensum {
+        width: 100% !important;
+        padding: 13px 12px !important;
+        font-size: 14px !important;
+      }
+
+      .hp-hero-btn-pensum {
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        background: transparent !important;
+      }
+
+      .hp-hero-btn-pensum:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+      }
+
+      div[style*="font-size: 13px"] {
+        color: rgba(255, 255, 255, 0.7) !important;
+        margin-top: 10px;
+        font-size: 11px !important;
       }
     }
   </style>
@@ -405,9 +737,9 @@
           </span>
         </div>
 
-        <h2>Administración de Empresas Presencial</h2>
+        <h1>Ingeniería de Software Presencial</h1>
         
-        <p>Formación presencial orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación.</p>
+        <p>Ingeniería de Software es una de las carreras con mayor demanda en el campo laboral y una de las de mayor déficit de profesionales en la era de la tecnología. Esta carrera desarrolla, entre otras competencias, la innovación, la capacidad de análisis y el pensamiento lógico y matemático aplicados al desarrollo de software y videojuegos.</p>
 
         <!-- Cards de metadata -->
         <div class="hp-sidebar" role="list" aria-label="Datos clave del programa">

@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes</title>
 <style>
     :root {
       --accent: #0132AF !important;
@@ -71,7 +77,7 @@
       max-height: 0 !important;
       overflow: hidden !important;
       padding: 0 20px !important;
-      transition: max-height .32s ease, padding .32s ease !important;
+      transition: max-height .60s ease !important;
       background: transparent !important;
     }
     .faq-answer p {
@@ -82,26 +88,26 @@
     }
     /* Open state helper */
     .faq-item.open .faq-answer {
-      padding: 12px 20px 18px !important;
       max-height: 420px !important;
     }
     /* Responsive */
     @media (max-width:600px) {
       .faq-wrap {
-        padding: 16px !important;
-        margin: 20px !important;
+        padding: 8px !important;
+        margin: 10px !important;
       }
       .faq-question {
-        padding: 14px !important;
+        padding: 7px !important;
       }
       .faq-answer {
-        padding: 0 14px !important;
-        color: #0da822;
-            background: #c6c5c553 !important;
+        padding: 0 7px !important;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 520px !important;
       }
     }
   </style>
-</head>
+
 <body>
   <main class="faq-wrap">
     <header class="faq-header">
@@ -190,20 +196,17 @@
 
       function toggle(item, btn, panel){
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        // close all to behave like an accordion (optional)
-        items.forEach(i => {
-          i.classList.remove('open');
-          i.querySelector('.faq-question').setAttribute('aria-expanded','false');
-          i.querySelector('.faq-answer').style.maxHeight = null;
-        });
         if (!isOpen) {
           item.classList.add('open');
           btn.setAttribute('aria-expanded','true');
           panel.style.maxHeight = panel.scrollHeight + 'px';
         } else {
+          item.classList.remove('open');
           btn.setAttribute('aria-expanded','false');
           panel.style.maxHeight = null;
         }
       }
     })();
 </script>
+</body>
+</html>

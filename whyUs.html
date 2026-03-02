@@ -1,18 +1,19 @@
 <style>
     body{
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #ffffff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       color: #06325a;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
 
 
-        .ue-h3 {
-            font-size: 30px;
+        .why-ue-h3 {
+            font-size: 28px;
+            font-weight: 700;
             color: #ffffff;
             margin: 0 0 28px;
             letter-spacing: -0.5px;
+
         }
 
         * {
@@ -59,15 +60,15 @@
         }
 
         .ue-why-benefit-card:nth-child(2)::before {
-            background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%);
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
         }
 
         .ue-why-benefit-card:nth-child(3)::before {
-            background: linear-gradient(135deg, #00897b 0%, #00a89d 100%);
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
         }
 
         .ue-why-benefit-card:nth-child(4)::before {
-            background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%);
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
         }
 
         .ue-why-benefit-title {
@@ -133,6 +134,8 @@
         @media (max-width: 640px) {
           .ue-card {
             padding: 20px 15px;
+            margin-left: 15px;
+            margin-right: 15px;
           }
         
           .ue-why-benefits-grid {
@@ -163,13 +166,13 @@
 
 </style>
 
-  <div class="ue-card">
-    <h3 class="ue-h3">¿Por qué elegirnos?</h3>
+  <div class="ue-card" id="whyUs">
+    <h3 class="why-ue-h3">¿Por qué elegirnos?</h3>
     
     <div class="ue-why-benefits-grid">
       <div class="ue-why-benefit-card">
         <div class="ue-why-benefit-title">Modelo Dual</div>
-        <div class="ue-why-benefit-desc">50% clases + 50% prácticas en empresas aliadas.</div>
+        <div class="ue-why-benefit-desc">60% Clases + 40% prácticas en empresas aliadas.</div>
       </div>
       <div class="ue-why-benefit-card">
         <div class="ue-why-benefit-title">Internacionalización</div>
@@ -186,8 +189,8 @@
     </div>
 
     <div class="ue-why-metrics">
-      <div class="ue-why-metric"><span>284</span><span class="ue-why-metric__sub">Empresas aliadas con conexión directa.</span></div>
-      <div class="ue-why-metric"><span>18</span><span class="ue-why-metric__sub">Meses de práctica profesional certificada.</span></div>
+      <div class="ue-why-metric"><span>Empresas Coformadoras</span><span class="ue-why-metric__sub">+350 empresas aliadas con conexión directa.</span></div>
+      <div class="ue-why-metric"><span>Experiencia Certificada</span><span class="ue-why-metric__sub">18 meses de práctica profesional certificada.</span></div>
     </div>
 
   </div>

@@ -1,8 +1,25 @@
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En qué puedes trabajar - Uniempresarial</title>
+    <style>
+    body{
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    
+    .ue-section-work{
+        margin-top: 0px !important;
+    }
+
     .ue-work-title {
-        font-size: 24px;
-        font-weight: 900;
-        color: #06325a;
+        font-size: 33px;
+        font-weight: 700;
+        color: #0132AF !important;
         margin: 0 0 8px;
         letter-spacing: -0.5px;
     }
@@ -11,12 +28,18 @@
         color: #7a8a99;
         font-weight: 600;
         margin: 0 0 24px;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .ue-work-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ue-work-column {
+        display: flex;
+        flex-direction: column;
         gap: 12px;
     }
 
@@ -27,6 +50,29 @@
         border-left: 4px solid;
         padding: 14px 14px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+    }
+
+    .ue-work-item-content {
+        overflow: hidden;
+        max-height: 500px;
+        transition: max-height 0.3s ease;
+    }
+
+    .ue-work-item-content.collapsed {
+        max-height: 0;
+    }
+
+    .ue-work-expanded-text {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #e0e3e8;
+        font-size: 13px;
+        color: #7a8a99;
+        line-height: 1.6;
     }
 
     .ue-work-item:nth-child(odd) {
@@ -45,38 +91,104 @@
     .ue-work-title-item {
         color: #06325a;
         font-weight: 700;
-        font-size: 14px;
-        margin: 0 0 4px 0;
+        font-size: 18px;
+        margin: 0 0 0px 0;
     }
 
     .ue-work-desc {
-        color: #7a8a99;
+        color: #0132AF;
         font-weight: 500;
         font-size: 12px;
         margin: 0;
         line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ue-work-desc::after {
+        content: '→';
+        transition: transform 0.3s ease;
+    }
+
+    .ue-work-item.expanded .ue-work-desc::after {
+        transform: rotate(90deg);
     }
 
     @media (max-width: 640px) {
         .ue-work-grid {
             grid-template-columns: 1fr;
         }
+        
+        .ue-section-work{
+            margin-top: -40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 30px;
+        }
     }
 </style>
+</head>
+<body>
 
-<section class="ue-section" aria-label="Oportunidades laborales">
-    <h3 class="ue-work-title">¿En qué puedes trabajar?</h3>
+<section class="ue-section-work" aria-label="Oportunidades laborales">
+    <h3 class="ue-work-title">Estudia y prepárate para estos roles con alta proyección laboral:</h3>
     <p class="ue-work-subtitle">Roles frecuentes según perfil y experiencia.</p>
 
     <div class="ue-work-grid">
-        <div class="ue-work-item"><p class="ue-work-title-item">Analista de procesos</p><p class="ue-work-desc">Optimiza y mejora procesos empresariales</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Gestor administrativo</p><p class="ue-work-desc">Coordina operaciones y recursos administrativos</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Coordinador comercial</p><p class="ue-work-desc">Gestiona relaciones comerciales y ventas</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Asesor de ventas</p><p class="ue-work-desc">Identifica oportunidades y cierra negocios</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Analista financiero</p><p class="ue-work-desc">Analiza datos financieros y presupuestos</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Gestor de operaciones</p><p class="ue-work-desc">Supervisa la eficiencia operativa</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Director de proyectos</p><p class="ue-work-desc">Lidera equipos y gestiona proyectos</p></div>
-        <div class="ue-work-item"><p class="ue-work-title-item">Emprendimiento</p><p class="ue-work-desc">Crea y desarrolla nuevas iniciativas</p></div>
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Analista Financiero Corporativo</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Evalúa indicadores financieros para apoyar decisiones estratégicas que mejoren rentabilidad y sostenibilidad empresarial.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Trader o Analista de Mercados</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Analiza tendencias económicas y de mercado para optimizar inversiones y portafolios financieros.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Coordinador de Planeación Financiera</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Diseña presupuestos y proyecciones que alinean la estrategia empresarial con metas de crecimiento.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Especialista en Gestión de Riesgos</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Identifica y mitiga riesgos financieros mediante análisis cuantitativos y estrategias de cobertura.</div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
+<script>
+    document.querySelectorAll('.ue-work-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const content = this.querySelector('.ue-work-item-content');
+            content.classList.toggle('collapsed');
+            this.classList.toggle('expanded');
+        });
+    });
+</script>
+
+</body>
+</html>

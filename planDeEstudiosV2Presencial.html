@@ -691,7 +691,7 @@
     <div class="pd-container" id="pensum">
         <!-- HEADER -->
         <div class="pd-header">
-            <h1>Pénsum de Ingeniería de Software</h1>
+            <h1>Pénsum de Negocios Internacionales</h1>
             <p>Modalidad Dual Presencial - Explora las materias de cada semestre</p>
         </div>
 
@@ -807,6 +807,7 @@
                         <div class="pd-jornada-hs">7:00 am - 6:00 pm</div>
                         <div class="pd-jornada-bar"></div>
                     </div>
+                    <!--
                     <div class="pd-jornada-card nocturna" data-night>
                         <div class="pd-jornada-icon">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="currentColor"/></svg>
@@ -817,6 +818,7 @@
                         <div class="pd-jornada-bar"></div>
                         <div class="pd-jornada-sub">*Algunos sábados de 9 AM a 1 PM</div>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -834,70 +836,62 @@
         const semestreData = {
             // PRIMER SEMESTRE
             1: [
-                { nombre: "Álgebra y programación lineal", creditos: "3", tipo: "nucleo" },
-                { nombre: "Cálculo I", creditos: "3", tipo: "nucleo" },
-                { nombre: "Física", creditos: "3", tipo: "nucleo" },
-                { nombre: "Lenguajes de programación", creditos: "2", tipo: "prof" },
-                { nombre: "Introducción a la Programación", creditos: "3", tipo: "prof" },
-                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
-                { nombre: "Cátedra Uniempresarial (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Fundamentos de negocios internacionales", creditos: "3", tipo: "prof" },
+                { nombre: "Geopolítica y relaciones internacionales", creditos: "3", tipo: "prof" },
+                { nombre: "Análisis microeconómico", creditos: "3", tipo: "prof" },
+                { nombre: "Matemática financiera", creditos: "3", tipo: "prof" },
+                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "nucleo" },
+                { nombre: "Cátedra uniempresarial (virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Entorno colombiano (virtual)", creditos: "2", tipo: "transv" },
                 { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "English Beginners (Blended)", creditos: "2", tipo: "transv" },
+                { nombre: "English beginners (blended)", creditos: "2", tipo: "transv" },
             ],
 
             // SEGUNDO SEMESTRE
             2: [
-                { nombre: "Cálculo II", creditos: "2", tipo: "nucleo" },
-                { nombre: "Cálculo III", creditos: "2", tipo: "nucleo" },
-                { nombre: "Infraestructura TI Y Cloud computing", creditos: "2", tipo: "prof" },
-                { nombre: "Programación Orientada a Objetos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Metodologías y Requerimientos de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Pruebas de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación Web – FrontEnd", creditos: "2", tipo: "nucleo" },
-                { nombre: "Diseño UI/UX", creditos: "1", tipo: "nucleo" },
-                { nombre: "Bases de datos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
-                { nombre: "Ética y responsabilidad social empresarial (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Política comercial y acuerdos internacionales", creditos: "2", tipo: "prof" },
+                { nombre: "Estudio de área Europa/Estados Unidos", creditos: "2", tipo: "prof" },
+                { nombre: "Análisis macroeconómico", creditos: "2", tipo: "prof" },
+                { nombre: "Importaciones y exportaciones", creditos: "4", tipo: "nucleo" },
+                { nombre: "Globalización y orden mundial", creditos: "4", tipo: "nucleo" },
+                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "transv" },
+                { nombre: "Ética y responsabilidad social empresarial (virtual)", creditos: "2", tipo: "transv" },
                 { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "Basic English (Blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Elementary English (Blended)", creditos: "2", tipo: "transv" },
+                { nombre: "Basic English (blended)", creditos: "2", tipo: "transv" },
+                { nombre: "Elementary English (blended)", creditos: "2", tipo: "transv" },
             ],
 
             // TERCER SEMESTRE (PRÁCTICAS)
             3: [
-                { nombre: "Práctica empresarial en Fundamentos de Ingeniería de Software y Programación", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Desarrollo fronted", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en importación y exportación", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en globalización y orden mundial", creditos: "10", tipo: "practica" },
             ],
 
             // CUARTO SEMESTRE
             4: [
-                { nombre: "Probabilidad, estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Arquitectura de software", creditos: "2", tipo: "prof" },
-                { nombre: "Big data y analítica", creditos: "3", tipo: "prof" },
-                { nombre: "Programación Framewok's Backend", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo con Framework's Frontend", creditos: "1", tipo: "nucleo" },
-                { nombre: "Aplicaciones Cloud Nativas", creditos: "1", tipo: "nucleo" },
-                { nombre: "Desarrollo de Videojuegos 2D y 3D", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo Conceptual de videojuegos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación gráfica 2D y 3D", creditos: "1", tipo: "nucleo" },
-                { nombre: "Innovación", creditos: "2", tipo: "prof" },
-                { nombre: "Preintermediate English(Blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Logística y DFI", creditos: "2", tipo: "prof" },
+                { nombre: "International legislation and sanctioning regime", creditos: "3", tipo: "prof" },
+                { nombre: "Contabilidad financiera (blended)", creditos: "2", tipo: "prof" },
+                { nombre: "Marketing internacional", creditos: "4", tipo: "nucleo" },
+                { nombre: "Planeación estratégica internacional", creditos: "4", tipo: "nucleo" },
+                { nombre: "Innovación", creditos: "4", tipo: "transv" },
+                { nombre: "Preintermediate English (blended)", creditos: "2", tipo: "transv" },
                 { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
+                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
             ],
 
             // QUINTO SEMESTRE (PRÁCTICAS)
             5: [
-                { nombre: "Práctica empresarial en Desarrollo Full Stack", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Diseño y desarrollo de videojuegos", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en marketing internacional", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en planeación estratégica internacional", creditos: "10", tipo: "practica" },
             ],
 
             // SEXTO SEMESTRE
             6: [
-                { nombre: "Aplicaciones móviles", creditos: "2", tipo: "prof" },
-                { nombre: "Métricas de calidad de software", creditos: "2", tipo: "prof" },
-                { nombre: "Gerencia de proyectos", creditos: "2", tipo: "prof" },
-                { nombre: "Inteligencia artificial", creditos: "4", tipo: "prof" },
+                { nombre: "Negotiation techniques and conflict resolution", creditos: "3", tipo: "prof" },
+                { nombre: "Estudio de área América Latina/Asia", creditos: "2", tipo: "prof" },
+                { nombre: "International business management", creditos: "3", tipo: "prof" },
+                { nombre: "Analytics & artificial intelligence", creditos: "2", tipo: "prof" },
                 { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
                 { nombre: "Electiva de profundización 2", creditos: "4", tipo: "electiva" },
                 { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
@@ -906,8 +900,8 @@
 
             // SÉPTIMO SEMESTRE (PRÁCTICAS)
             7: [
-                { nombre: "Práctica empresarial en Electiva de Profundización 1", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Electiva de Profundización 2", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en electiva de profundización 1", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en electiva de profundización 2", creditos: "10", tipo: "practica" },
             ],
         };
 
