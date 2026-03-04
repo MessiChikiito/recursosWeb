@@ -692,7 +692,7 @@
     <div class="pd-container" id="pensum">
         <!-- HEADER -->
         <div class="pd-header">
-            <h1>Pénsum de Finanzas y Comercio Exterior Presencial</h1>
+            <h1>Pénsum de Ingeniería Industrial Presencial</h1>
             <p>Modalidad Presencial - Explora las materias de cada semestre</p>
         </div>
 
@@ -808,7 +808,7 @@
                         <div class="pd-jornada-hs">7:00 am - 6:00 pm</div>
                         <div class="pd-jornada-bar"></div>
                     </div>
-                    <!--
+                    <!--                    -->
                     <div class="pd-jornada-card nocturna" data-night>
                         <div class="pd-jornada-icon">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="currentColor"/></svg>
@@ -817,9 +817,9 @@
                         <div class="pd-jornada-sub">Lunes a Viernes</div>
                         <div class="pd-jornada-hs">6:00 pm - 10:00 pm</div>
                         <div class="pd-jornada-bar"></div>
-                        <div class="pd-jornada-sub">*Algunos sábados de 9 AM a 1 PM</div>
+                        <div class="pd-jornada-sub">*Algunos sábados de 9:00 AM a 1:00 PM</div>
                     </div>
-                    -->
+
                 </div>
             </div>
         </div>
@@ -837,70 +837,80 @@
         const semestreData = {
             // PRIMER SEMESTRE
             1: [
-                { nombre: "Fundamentos de comercio exterior", creditos: "3", tipo: "prof" },
-                { nombre: "Análisis microeconómico", creditos: "3", tipo: "prof" },
-                { nombre: "Matemática financiera", creditos: "3", tipo: "prof" },
-                { nombre: "Legislación comercial y tributaria", creditos: "3", tipo: "prof" },
-                { nombre: "Herramientas de diagnóstico empresarial (blended)", creditos: "3", tipo: "nucleo" },
-                { nombre: "Cátedra uniempresarial (virtual)", creditos: "2", tipo: "transv" },
-                { nombre: "Entorno colombiano (virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Álgebra y programación lineal", creditos: "3", tipo: "nucleo" },
+                { nombre: "Cálculo I", creditos: "3", tipo: "nucleo" },
+                { nombre: "Físicoquímica", creditos: "3", tipo: "nucleo" },
+                { nombre: "Introducción a la Ingeniería y estudio de métodos", creditos: "3", tipo: "prof" },
+                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
+                { nombre: "Cátedra Uniempresarial", creditos: "2", tipo: "transv" },
+                { nombre: "Entorno colombiano", creditos: "2", tipo: "transv" },
                 { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "English beginners (blended)", creditos: "2", tipo: "transv" },
+                { nombre: "English Beginners", creditos: "2", tipo: "transv" },
             ],
 
             // SEGUNDO SEMESTRE
             2: [
-                { nombre: "Política comercial y acuerdos internacionales", creditos: "2", tipo: "prof" },
-                { nombre: "Aranceles", creditos: "2", tipo: "prof" },
-                { nombre: "Análisis macroeconómico", creditos: "2", tipo: "prof" },
-                { nombre: "Importaciones y exportaciones", creditos: "4", tipo: "nucleo" },
-                { nombre: "Gestión de la cadena de abastecimiento", creditos: "10", tipo: "nucleo" },
-                { nombre: "Creatividad prospectiva emprendedora", creditos: "2", tipo: "transv" },
-                { nombre: "Ética y responsabilidad social empresarial (virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Cálculo II", creditos: "2", tipo: "nucleo" },
+                { nombre: "Cálculo III", creditos: "2", tipo: "nucleo" },
+                { nombre: "Informática y Programación", creditos: "2", tipo: "prof" },
+                { nombre: "Gestión de la cultura empresarial", creditos: "2", tipo: "prof" },
+                { nombre: "Coaching y Habilidades Gerenciales", creditos: "1", tipo: "prof" },
+                { nombre: "Gestión del Talento Humano", creditos: "1", tipo: "prof" },
+                { nombre: "Quality management", creditos: "2", tipo: "prof" },
+                { nombre: "Sistemas Integrados de gestión", creditos: "1", tipo: "prof" },
+                { nombre: "Auditoría de Calidad", creditos: "1", tipo: "prof" },
+                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
+                { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "transv" },
                 { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "Basic English (blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Elementary English (blended)", creditos: "2", tipo: "transv" },
+                { nombre: "Basic English", creditos: "2", tipo: "transv" },
+                { nombre: "Elementary English", creditos: "2", tipo: "transv" },
             ],
 
             // TERCER SEMESTRE (PRÁCTICAS)
             3: [
-                { nombre: "Práctica empresarial importación y exportación", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial gestión de cadena de abastecimiento", creditos: "4", tipo: "practica" },
+                { nombre: "Práctica empresarial en Capital Humano", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Gestión y Control de Calidad", creditos: "10", tipo: "practica" },
             ],
 
             // CUARTO SEMESTRE
             4: [
-                { nombre: "Contabilidad financiera (blended)", creditos: "2", tipo: "prof" },
-                { nombre: "Financial reporting and management", creditos: "3", tipo: "prof" },
-                { nombre: "Legislación laboral", creditos: "2", tipo: "prof" },
-                { nombre: "Bolsa y portafolio", creditos: "4", tipo: "nucleo" },
-                { nombre: "Trading y mercado de capitales", creditos: "10", tipo: "nucleo" },
-                { nombre: "Innovación", creditos: "4", tipo: "transv" },
-                { nombre: "Preintermediate English (blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Probabilidad, Estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
+                { nombre: "Fabricación digital", creditos: "3", tipo: "prof" },
+                { nombre: "Contabilidad Financiera", creditos: "2", tipo: "prof" },
+                { nombre: "Comercio Exterior y DFI", creditos: "2", tipo: "prof" },
+                { nombre: "Compras e inventarios", creditos: "1", tipo: "prof" },
+                { nombre: "Logística y operaciones", creditos: "1", tipo: "prof" },
+                { nombre: "Marketing y CRM", creditos: "2", tipo: "prof" },
+                { nombre: "Investigación de mercados", creditos: "1", tipo: "prof" },
+                { nombre: "Desarrollo de productos y servicios", creditos: "1", tipo: "prof" },
+                { nombre: "Innovación", creditos: "2", tipo: "prof" },
+                { nombre: "Preintermediate English", creditos: "2", tipo: "transv" },
+                { nombre: "Electiva libre 1", creditos: "2", tipo: "electiva" },
+                { nombre: "Electiva libre 2", creditos: "3", tipo: "electiva" },
             ],
 
             // QUINTO SEMESTRE (PRÁCTICAS)
             5: [
-                { nombre: "Práctica bolsa y portafolio", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial trading de mercado de capitales", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Logística y Operaciones", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Gestión del Marketing", creditos: "10", tipo: "practica" },
             ],
 
             // SEXTO SEMESTRE
             6: [
-                { nombre: "Internationalization strategies", creditos: "3", tipo: "prof" },
-                { nombre: "International corporate finance", creditos: "3", tipo: "prof" },
-                { nombre: "Electiva de profundización 1", creditos: "4", tipo: "nucleo" },
-                { nombre: "Electiva de profundización 2", creditos: "4", tipo: "nucleo" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Producción", creditos: "3", tipo: "prof" },
+                { nombre: "Gerencia de Planta", creditos: "3", tipo: "prof" },
+                { nombre: "Project Management", creditos: "2", tipo: "prof" },
+                { nombre: "Industrial maintenance", creditos: "2", tipo: "prof" },
+                { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
+                { nombre: "Electiva de profundización 2", creditos: "4", tipo: "electiva" },
+                { nombre: "Electiva libre 1", creditos: "3", tipo: "electiva" },
+                { nombre: "Electiva libre 2", creditos: "3", tipo: "electiva" },
             ],
 
             // SÉPTIMO SEMESTRE (PRÁCTICAS)
             7: [
-                { nombre: "Práctica empresarial electiva de profundización 1", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica electiva de profundización 2", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Electiva de Profundización 1", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Electiva de Profundización 2", creditos: "10", tipo: "practica" },
             ],
         };
 

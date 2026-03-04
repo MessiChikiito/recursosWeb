@@ -106,7 +106,64 @@
         }
 
         .ue-modal-body {
-            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ue-partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .ue-partner-card {
+            border: 1px solid #e0e3e8;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafbfc;
+            transition: all 0.25s ease;
+        }
+
+        .ue-partner-card:hover {
+            border-color: #0132AF;
+            box-shadow: 0 4px 14px rgba(1, 50, 175, 0.1);
+            background: #fff;
+        }
+
+        .ue-partner-card img {
+            max-width: 100%;
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+        .ue-modal-cta {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(1, 50, 175, 0.3);
+            box-sizing: border-box;
+        }
+
+        .ue-modal-cta:hover {
+            background: linear-gradient(135deg, #1a5bcf 0%, #2a6bdf 100%);
+            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.45);
+            transform: translateY(-2px);
+            color: white;
         }
         
         .ue-h3{
@@ -651,7 +708,7 @@
                     <div class="ue-finK">Becas disponibles y convenios</div>
                     <ul class="ue-list">
                         <li class="jovenes">Jóvenes a la E — Beca diferencial</li>
-                        <li>Cundinamarca</li>
+                        <li>Cundinamarca más Profesional</li>
                         <li>Convenios empresariales</li>
                     </ul>
                     <a href="https://uniempresarial.edu.co/convenios-uniempresarial/" class="ue-btn ue-btn-outline" style="margin-top:10px">Ver convenios</a>
@@ -665,7 +722,7 @@
                         <li>JFK Cooperativa Financiera</li>
                         <li>Finky</li>
                         <li>Fincomercio</li>
-                        <li>Cooperativa Minuto de Dios</li>
+                        <li>Canapro</li>
                     </ul>
                     <button onclick="openFinancingModal()" class="ue-btn ue-btn-teal" style="margin-top:10px; border: none; cursor: pointer;">Ver opciones</button>
                 </div>
@@ -711,13 +768,24 @@
                 <button class="ue-modal-close" onclick="closeFinancingModal()">&times;</button>
             </div>
             <div class="ue-modal-body">
-                <!-- Aquí va tu formulario embebido -->
-                <p style="color: #06325a; margin: 0 0 20px; line-height: 1.6;">Selecciona la opción de financiación que mejor se ajuste a tus necesidades:</p>
-                
-                <!-- Formulario embebido o iFrame -->
-                <iframe src="" style="width: 100%; height: 500px; border: none; border-radius: 8px;"></iframe>
-                
+                <p style="color: #06325a; margin: 0 0 20px; line-height: 1.6; font-weight: 600;">Contamos con aliados financieros para que puedas financiar tu carrera con facilidad:</p>
 
+                <div class="ue-partners-grid">
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/logo-jfkCooperativa-JFK.png" alt="JFK Cooperativa Financiera">
+                    </div>
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/Logo-Finky-768x432.png" alt="Finky">
+                    </div>
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/06/Fincomercio-100.jpg" alt="Fincomercio">
+                    </div>
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/logo-25-pag-web-01.webp" alt="Aliado financiero">
+                    </div>
+                </div>
+
+                <a href="https://uniempresarial.edu.co/financiacion/" target="_blank" class="ue-modal-cta">Conoce todas las opciones de financiación</a>
             </div>
         </div>
     </div>

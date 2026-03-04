@@ -273,30 +273,32 @@
 
         /* Slider de testimonios */
         .rmm-testimonios__slider-wrapper {
-            position: relative;
-            padding: 0 60px;
-            margin-bottom: 40px;
+            position: relative !important;
+            padding: 0 60px !important;
+            margin-bottom: 40px !important;
+            z-index: 50 !important;
         }
 
         .rmm-testimonios__slider-track {
-            overflow: hidden;
-            border-radius: 16px;
+            overflow: hidden !important;
+            border-radius: 16px !important;
         }
 
         .rmm-testimonio-slider-item {
-            display: none;
-            animation: rmm-slider-fadeIn 0.5s ease;
+            display: none !important;
+            animation: rmm-slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
         .rmm-testimonio-slider-item.active {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 48px;
-            align-items: center;
-            background: linear-gradient(135deg, #F8F9FA 0%, var(--rmm-azul-claro) 100%);
-            padding: 48px;
-            border-radius: 16px;
-            border: 2px solid #E0E5EB;
+            display: grid !important;
+            grid-template-columns: 1fr 280px !important;
+            gap: 48px !important;
+            align-items: center !important;
+            background: linear-gradient(135deg, #F8F9FA 0%, var(--rmm-azul-claro) 100%) !important;
+            padding: 48px !important;
+            border-radius: 16px !important;
+            border: 2px solid #E0E5EB !important;
+            animation: rmm-slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
         @keyframes rmm-slider-fadeIn {
@@ -404,223 +406,82 @@
 
         /* Controles del slider */
         .rmm-testimonios__slider-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 24px;
-            margin-top: 40px;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 24px !important;
+            margin-top: 40px !important;
+            position: relative !important;
+            z-index: 100 !important;
         }
 
         .rmm-testimonios__slider-btn {
-            width: 48px;
-            height: 48px;
-            background: var(--rmm-blanco);
-            border: 2px solid var(--rmm-azul-primario);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--rmm-transicion);
+            width: 48px !important;
+            height: 48px !important;
+            background: var(--rmm-blanco) !important;
+            border: 2px solid var(--rmm-azul-primario) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            z-index: 101 !important;
+            padding: 0 !important;
+            min-width: 48px !important;
+            min-height: 48px !important;
         }
 
         .rmm-testimonios__slider-btn:hover {
-            background: var(--rmm-azul-primario);
-            transform: scale(1.1);
+            background: var(--rmm-azul-primario) !important;
+            transform: scale(1.1) !important;
+            box-shadow: 0 4px 16px rgba(1, 50, 175, 0.3) !important;
         }
 
         .rmm-testimonios__slider-btn:hover svg {
-            color: var(--rmm-blanco);
+            color: var(--rmm-blanco) !important;
         }
 
         .rmm-testimonios__slider-btn svg {
-            width: 20px;
-            height: 20px;
-            color: var(--rmm-azul-primario);
-            transition: var(--rmm-transicion);
+            width: 20px !important;
+            height: 20px !important;
+            color: var(--rmm-azul-primario) !important;
+            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            pointer-events: none !important;
         }
 
         .rmm-testimonios__slider-dots {
-            display: flex;
-            gap: 12px;
+            display: flex !important;
+            gap: 12px !important;
+            position: relative !important;
+            z-index: 100 !important;
         }
 
         .rmm-testimonios__slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #E0E5EB;
-            cursor: pointer;
-            transition: var(--rmm-transicion);
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+            background: #E0E5EB !important;
+            cursor: pointer !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
         .rmm-testimonios__slider-dot.active {
-            background: var(--rmm-rojo-primario);
-            width: 32px;
-            border-radius: 6px;
+            background: var(--rmm-rojo-primario) !important;
+            width: 32px !important;
+            border-radius: 6px !important;
         }
 
         .rmm-testimonios__slider-indicator {
-            font-size: 14px;
-            color: var(--rmm-gris-secundario);
-            font-weight: 600;
+            font-size: 14px !important;
+            color: var(--rmm-gris-secundario) !important;
+            font-weight: 600 !important;
+            position: relative !important;
+            z-index: 100 !important;
         }
 
-        /* Grid de testimonios - deprecated */
-        .rmm-testimonios__grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            align-items: center;
-            justify-items: center;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 1024px) {
-            .rmm-testimonios__grid {
-                grid-template-columns: 1fr;
-                gap: 0;
-                justify-items: stretch;
-            }
-        }
-
-        /* Card de testimonio - solo para compatibilidad */
-        .rmm-testimonio-card {
-            display: none;
-        }
-
-        @media (max-width: 1024px) {
-            .rmm-testimonio-card {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-                max-width: 100%;
-            }
-        }
-
-        /* Contenido del testimonio */
-        .rmm-testimonio-card__contenido {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rmm-testimonio-card__nombre {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--rmm-azul-primario);
-            line-height: 1.2;
-        }
-
-        .rmm-testimonio-card__cargo {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--rmm-rojo-primario);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .rmm-testimonio-card__descripcion {
-            font-size: 15px;
-            color: var(--rmm-gris-secundario);
-            line-height: 1.7;
-        }
-
-        .rmm-testimonio-card__cta {
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--rmm-azul-secundario);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: var(--rmm-transicion);
-        }
-
-        .rmm-testimonio-card__cta:hover {
-            color: var(--rmm-rojo-primario);
-            gap: 12px;
-        }
-
-        @media (max-width: 1024px) {
-            .rmm-testimonio-card__cta {
-                align-self: center;
-            }
-        }
-
-        /* Video placeholder */
-        .rmm-testimonio-card__video {
-            aspect-ratio: 9 / 16;
-            background: linear-gradient(135deg, var(--rmm-azul-claro) 0%, #E3F0FF 100%);
-            border-radius: 16px;
-            border: 2px solid var(--rmm-azul-primario);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: var(--rmm-sombra);
-            position: relative;
-            max-width: 200px;
-        }
-
-        @media (max-width: 1024px) {
-            .rmm-testimonio-card__video {
-                max-width: 100%;
-                max-height: 360px;
-            }
-        }
-
-        .rmm-testimonio-card__video img,
-        .rmm-testimonio-card__video video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .rmm-testimonio-card__video-icono {
-            position: absolute;
-            width: 56px;
-            height: 56px;
-            background: var(--rmm-rojo-primario);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--rmm-transicion);
-            z-index: 10;
-        }
-
-        .rmm-testimonio-card__video-icono:hover {
-            background: var(--rmm-rojo-hover);
-            transform: scale(1.1);
-        }
-
-        .rmm-testimonio-card__video-icono svg {
-            width: 24px;
-            height: 24px;
-            color: var(--rmm-blanco);
-            fill: currentColor;
-        }
-
-        /* Separador entre testimonios */
-        .rmm-testimonio-card:not(:last-child) {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 1024px) {
-            .rmm-testimonio-card:not(:last-child) {
-                border-bottom: 1px solid #E0E5EB;
-                padding-bottom: 30px;
-                margin-bottom: 30px;
-            }
-        }
-
-        /* === SECCIÓN VALIDACIÓN === */
+        /* === SECCIÓN FAQ === */
         .rmm-validacion {
             padding: 80px 0;
             background: var(--rmm-gris-claro);
@@ -725,663 +586,6 @@
             margin-top: 16px;
         }
 
-        /* === RESULTADO VALIDACIÓN === */
-        .rmm-resultado {
-            display: none;
-            padding: 24px;
-            border-radius: var(--rmm-radio);
-            margin-top: 24px;
-            text-align: center;
-        }
-
-        .rmm-resultado--elegible-4 {
-            display: block;
-            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
-            border: 2px solid var(--rmm-verde-exito);
-        }
-
-        .rmm-resultado--elegible-1 {
-            display: block;
-            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
-            border: 2px solid var(--rmm-amarillo-alerta);
-        }
-
-        .rmm-resultado--no-elegible {
-            display: block;
-            background: var(--rmm-rojo-claro);
-            border: 2px solid var(--rmm-rojo-primario);
-        }
-
-        .rmm-resultado__icono {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 16px;
-        }
-
-        .rmm-resultado__titulo {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .rmm-resultado--elegible-4 .rmm-resultado__titulo,
-        .rmm-resultado--elegible-1 .rmm-resultado__titulo {
-            color: var(--rmm-azul-primario);
-        }
-
-        .rmm-resultado--no-elegible .rmm-resultado__titulo {
-            color: var(--rmm-rojo-primario);
-        }
-
-        .rmm-resultado__mensaje {
-            font-size: 15px;
-            color: var(--rmm-gris-secundario);
-            margin-bottom: 16px;
-        }
-
-        .rmm-resultado__cupo {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--rmm-blanco);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            color: var(--rmm-azul-primario);
-            font-size: 14px;
-        }
-
-        .rmm-resultado__cupo-numero {
-            font-size: 20px;
-            color: var(--rmm-rojo-primario);
-        }
-
-        .rmm-resultado__link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            padding: 14px 28px;
-            background: var(--rmm-rojo-primario);
-            color: var(--rmm-blanco);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--rmm-transicion);
-            box-shadow: 0 4px 12px rgba(234, 10, 42, 0.2);
-        }
-
-        .rmm-resultado__link:hover {
-            background: var(--rmm-rojo-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(234, 10, 42, 0.3);
-        }
-
-        .rmm-resultado__link svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* === SECCIÓN WEBINARS === */
-        .rmm-webinars {
-            padding: 80px 0;
-            background: var(--rmm-blanco);
-        }
-
-        .rmm-webinars__header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .rmm-webinars__eyebrow {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--rmm-rojo-primario);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .rmm-webinars__titulo {
-            font-size: clamp(28px, 5vw, 40px);
-            font-weight: 700;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 16px;
-        }
-
-        .rmm-webinars__subtitulo {
-            font-size: 16px;
-            color: var(--rmm-gris-secundario);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Contador de selección */
-        .rmm-webinars__contador {
-            display: none;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .rmm-webinars__contador.rmm-webinars__contador--visible {
-            display: flex;
-        }
-
-        .rmm-webinars__contador-inner {
-            background: var(--rmm-azul-claro);
-            padding: 16px 32px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .rmm-webinars__contador-texto {
-            font-size: 15px;
-            color: var(--rmm-azul-primario);
-        }
-
-        .rmm-webinars__contador-numero {
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .rmm-webinars__contador-numero--actual {
-            color: var(--rmm-rojo-primario);
-        }
-
-        /* Grid de cards */
-        .rmm-webinars__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 1200px) {
-            .rmm-webinars__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .rmm-webinars__grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Card individual */
-        .rmm-webinar-card {
-            background: var(--rmm-blanco);
-            border: 2px solid transparent;
-            border-radius: var(--rmm-radio);
-            padding: 28px;
-            transition: var(--rmm-transicion);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .rmm-webinar-card:hover {
-            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.2);
-            transform: translateY(-4px);
-        }
-
-        .rmm-webinar-card--seleccionado {
-            border-color: var(--rmm-rojo-primario);
-            background: var(--rmm-blanco);
-            box-shadow: 0 12px 40px rgba(234, 10, 42, 0.25);
-            transform: translateY(-6px) scale(1.02);
-        }
-
-        .rmm-webinar-card--seleccionado::before {
-            display: none;
-        }
-
-        .rmm-webinar-card--deshabilitado {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        .rmm-webinar-card__badge {
-            display: none;
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--rmm-rojo-primario);
-            color: var(--rmm-blanco);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .rmm-webinar-card--seleccionado .rmm-webinar-card__badge {
-            display: block;
-        }
-
-        .rmm-webinar-card__icono {
-            width: 56px;
-            height: 56px;
-            background: var(--rmm-azul-claro);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .rmm-webinar-card--seleccionado .rmm-webinar-card__icono {
-            background: var(--rmm-azul-primario);
-        }
-
-        .rmm-webinar-card__icono svg {
-            width: 28px;
-            height: 28px;
-            color: var(--rmm-azul-primario);
-        }
-
-        .rmm-webinar-card--seleccionado .rmm-webinar-card__icono svg {
-            color: var(--rmm-blanco);
-        }
-
-        .rmm-webinar-card__titulo {
-            font-size: 19px;
-            font-weight: 700;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .rmm-webinar-card__lista {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .rmm-webinar-card__lista li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
-            color: var(--rmm-gris-secundario);
-            margin-bottom: 8px;
-        }
-
-        .rmm-webinar-card__lista li::before {
-            content: '✓';
-            color: var(--rmm-verde-exito);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .rmm-webinar-card__meta {
-            display: flex;
-            gap: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #E0E5EB;
-            margin-bottom: 20px;
-        }
-
-        .rmm-webinar-card__meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            color: var(--rmm-gris-secundario);
-        }
-
-        .rmm-webinar-card__meta-item svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .rmm-webinar-card__btn {
-            width: 100%;
-            padding: 12px 20px;
-            border: 2px solid var(--rmm-azul-primario);
-            background: transparent;
-            color: var(--rmm-azul-primario);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            font-family: var(--rmm-font);
-            cursor: pointer;
-            transition: var(--rmm-transicion);
-        }
-
-        .rmm-webinar-card__btn:hover {
-            background: var(--rmm-azul-primario);
-            color: var(--rmm-blanco);
-        }
-
-        .rmm-webinar-card--seleccionado .rmm-webinar-card__btn {
-            background: var(--rmm-rojo-primario);
-            border-color: var(--rmm-rojo-primario);
-            color: var(--rmm-blanco);
-        }
-
-        .rmm-webinar-card--seleccionado .rmm-webinar-card__btn:hover {
-            background: var(--rmm-rojo-hover);
-            border-color: var(--rmm-rojo-hover);
-        }
-
-        /* Alerta de cupo */
-        .rmm-webinars__alerta {
-            display: none;
-            max-width: 600px;
-            margin: 32px auto 0;
-            padding: 16px 24px;
-            background: var(--rmm-rojo-claro);
-            border: 1px solid var(--rmm-rojo-primario);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .rmm-webinars__alerta.rmm-webinars__alerta--visible {
-            display: block;
-        }
-
-        .rmm-webinars__alerta-texto {
-            font-size: 14px;
-            color: var(--rmm-rojo-primario);
-            font-weight: 500;
-        }
-
-        /* === SECCIÓN FORMULARIO === */
-        .rmm-formulario {
-            padding: 80px 0;
-            background: var(--rmm-gris-claro);
-            display: none;
-        }
-
-        .rmm-formulario--visible {
-            display: block;
-        }
-
-        .rmm-formulario__card {
-            background: var(--rmm-blanco);
-            border-radius: var(--rmm-radio);
-            box-shadow: var(--rmm-sombra);
-            padding: 48px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .rmm-formulario__header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .rmm-formulario__titulo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 12px;
-        }
-
-        .rmm-formulario__subtitulo {
-            color: var(--rmm-gris-secundario);
-            font-size: 15px;
-        }
-
-        /* Resumen de selección */
-        .rmm-formulario__resumen {
-            background: var(--rmm-azul-claro);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 32px;
-        }
-
-        .rmm-formulario__resumen-titulo {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 12px;
-        }
-
-        .rmm-formulario__resumen-lista {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .rmm-formulario__resumen-item {
-            background: var(--rmm-blanco);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--rmm-azul-primario);
-        }
-
-        /* Campos del formulario */
-        .rmm-formulario__grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .rmm-formulario__grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .rmm-formulario__campo {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .rmm-formulario__campo--full {
-            grid-column: 1 / -1;
-        }
-
-        .rmm-formulario__label {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--rmm-gris-texto);
-        }
-
-        .rmm-formulario__label-opcional {
-            font-weight: 400;
-            color: var(--rmm-gris-secundario);
-        }
-
-        .rmm-formulario__input {
-            padding: 14px 16px;
-            border: 2px solid #E0E5EB;
-            border-radius: 8px;
-            font-size: 15px;
-            font-family: var(--rmm-font);
-            transition: var(--rmm-transicion);
-        }
-
-        .rmm-formulario__input:focus {
-            outline: none;
-            border-color: var(--rmm-azul-secundario);
-            box-shadow: 0 0 0 4px rgba(1, 50, 175, 0.1);
-        }
-
-        .rmm-formulario__input--error {
-            border-color: var(--rmm-rojo-primario);
-        }
-
-        .rmm-formulario__error {
-            font-size: 12px;
-            color: var(--rmm-rojo-primario);
-            display: none;
-        }
-
-        .rmm-formulario__error--visible {
-            display: block;
-        }
-
-        /* Checkbox términos */
-        .rmm-formulario__terminos {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #E0E5EB;
-        }
-
-        .rmm-formulario__checkbox-wrapper {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .rmm-formulario__checkbox {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            margin-top: 2px;
-            accent-color: var(--rmm-azul-primario);
-        }
-
-        .rmm-formulario__checkbox-texto {
-            font-size: 14px;
-            color: var(--rmm-gris-secundario);
-            line-height: 1.5;
-        }
-
-        .rmm-formulario__checkbox-link {
-            color: var(--rmm-azul-secundario);
-            text-decoration: underline;
-        }
-
-        /* Botón submit */
-        .rmm-formulario__submit {
-            width: 100%;
-            margin-top: 32px;
-            padding: 18px 32px;
-            background: var(--rmm-rojo-primario);
-            color: var(--rmm-blanco);
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            font-family: var(--rmm-font);
-            cursor: pointer;
-            transition: var(--rmm-transicion);
-        }
-
-        .rmm-formulario__submit:hover {
-            background: var(--rmm-rojo-hover);
-        }
-
-        .rmm-formulario__submit:disabled {
-            background: #CCC;
-            cursor: not-allowed;
-        }
-
-        /* === PANTALLA DE CONFIRMACIÓN === */
-        .rmm-confirmacion {
-            padding: 80px 0;
-            background: var(--rmm-gris-claro);
-            display: none;
-            min-height: 60vh;
-        }
-
-        .rmm-confirmacion--visible {
-            display: flex;
-            align-items: center;
-        }
-
-        .rmm-confirmacion__card {
-            background: var(--rmm-blanco);
-            border-radius: var(--rmm-radio);
-            box-shadow: var(--rmm-sombra);
-            padding: 60px 48px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .rmm-confirmacion__icono {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-
-        .rmm-confirmacion__icono svg {
-            width: 40px;
-            height: 40px;
-            color: var(--rmm-verde-exito);
-        }
-
-        .rmm-confirmacion__titulo {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 16px;
-        }
-
-        .rmm-confirmacion__mensaje {
-            font-size: 16px;
-            color: var(--rmm-gris-secundario);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .rmm-confirmacion__resumen {
-            background: var(--rmm-azul-claro);
-            padding: 24px;
-            border-radius: 12px;
-            margin-bottom: 32px;
-        }
-
-        .rmm-confirmacion__resumen-titulo {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 16px;
-        }
-
-        .rmm-confirmacion__resumen-lista {
-            list-style: none;
-        }
-
-        .rmm-confirmacion__resumen-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(1, 50, 175, 0.1);
-            font-size: 15px;
-            color: var(--rmm-gris-texto);
-        }
-
-        .rmm-confirmacion__resumen-item:last-child {
-            border-bottom: none;
-        }
-
-        .rmm-confirmacion__resumen-item::before {
-            content: '✓';
-            color: var(--rmm-verde-exito);
-            font-weight: 700;
-        }
-
-        .rmm-confirmacion__info {
-            background: #FFF8E1;
-            padding: 16px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #856404;
-        }
-
-        .rmm-confirmacion__info strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-
         /* === FAQ === */
         .rmm-faq {
             padding: 80px 0;
@@ -1435,7 +639,7 @@
         }
 
         .rmm-faq__pregunta:hover {
-            background: var(--rmm-gris-claro);
+            background: #d2e8ff;
         }
 
         .rmm-faq__item--abierto .rmm-faq__pregunta {
@@ -1464,64 +668,10 @@
         }
 
         .rmm-faq__respuesta-inner {
-            padding: 0 24px 20px;
+            padding: 15px 24px 20px;
             font-size: 15px;
             color: var(--rmm-gris-secundario);
             line-height: 1.7;
-        }
-
-        /* === FOOTER === */
-        .rmm-footer {
-            background: var(--rmm-azul-primario);
-            padding: 40px 0;
-        }
-
-        .rmm-footer__inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .rmm-footer__logos {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .rmm-footer__logo {
-            height: 40px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
-        }
-
-        .rmm-footer__divider {
-            width: 1px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .rmm-footer__texto {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        .rmm-footer__alianza {
-            color: var(--rmm-blanco);
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        /* === ESTADOS OCULTOS === */
-        .rmm-oculto {
-            display: none !important;
         }
 
         /* === RESPONSIVE === */
@@ -1535,60 +685,10 @@
                 gap: 16px;
             }
 
-            .rmm-validacion,
-            .rmm-webinars,
-            .rmm-formulario,
+            .rmm-testimonios,
             .rmm-faq {
                 padding: 60px 0;
             }
-
-            .rmm-validacion__card,
-            .rmm-formulario__card {
-                padding: 28px 20px;
-            }
-
-            .rmm-header__badge {
-                display: none;
-            }
-
-            .rmm-webinars__grid {
-                grid-template-columns: 1fr;
-            }
-
-            .rmm-footer__logos {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .rmm-footer__divider {
-                width: 60px;
-                height: 1px;
-            }
-        }
-
-        /* === ANIMACIONES === */
-        @keyframes rmm-fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .rmm-animate-in {
-            animation: rmm-fadeIn 0.5s ease forwards;
-        }
-
-        /* === LOADER === */
-        .rmm-loader {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--rmm-blanco);
-            animation: rmm-spin 0.8s linear infinite;
-        }
-
-        @keyframes rmm-spin {
-            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1607,19 +707,13 @@
 
                 <h1 class="rmm-hero__title">
                     Renovaste tu matrícula mercantil en línea.
-                    <span class="rmm-hero__title-accent">Ahora crece con nosotros.</span>
+                    <span class="rmm-hero__title-accent">Ahora disfruta de tus beneficios.</span>
                 </h1>
 
                 <p class="rmm-hero__subtitle">
-                    Por renovar de forma virtual en 2026, accede a webinars gratuitos de IA, Marketing Digital, Finanzas y E-commerce para impulsar tu negocio.
+                    Por renovar de forma virtual en 2026, accede a webinars gratuitos de <strong> IA, Marketing Digital, Finanzas y E-commerce</strong> para impulsar tu negocio.
                 </p>
 
-                <a href="#rmm-validacion" class="rmm-hero__cta">
-                    Validar mi beneficio
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                </a>
 
                 <div class="rmm-hero__benefits">
                     <div class="rmm-hero__benefit">
@@ -1648,10 +742,10 @@
         <section class="rmm-testimonios" id="rmm-testimonios">
             <div class="rmm-container">
                 <header class="rmm-testimonios__header">
-                    <p class="rmm-testimonios__eyebrow">Conoce a quiénes confían en nosotros</p>
-                    <h2 class="rmm-testimonios__titulo">Empresarios que ya crecieron</h2>
+                    <p class="rmm-testimonios__eyebrow">Conoce a nuestros referentes empresariales</p>
+                    <h2 class="rmm-testimonios__titulo">Voces expertas del ecosistema empresarial</h2>
                     <p class="rmm-testimonios__subtitulo">
-                        Mira cómo otros empresarios como tú han aprovechado la renovación virtual para acceder a formación que impulsa sus negocios.
+    Adquiere conocimientos en las áreas más importantes en el crecimiento de estructuras empresariales. Su trayectoria convierte la teoría en decisiones estratégicas con impacto comprobado.
                     </p>
                 </header>
 
@@ -1662,10 +756,10 @@
                         <!-- Slide 1 -->
                         <div class="rmm-testimonio-slider-item active">
                             <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">María García López</h3>
-                                <p class="rmm-testimonio-slider-cargo">Emprendedora | E-Commerce</p>
+                                <h3 class="rmm-testimonio-slider-nombre">Paula Amado Kattah</h3>
+                                <p class="rmm-testimonio-slider-cargo">Head of Marketing I Global Brand Manager</p>
                                 <blockquote class="rmm-testimonio-slider-quote">
-                                    "Renové mi matrícula en línea y accedí a los webinars de e-commerce y marketing digital. Fueron clave para llevar mis ventas a redes sociales y triplicar mis ingresos en 6 meses."
+   Marketing & Communications leader con +20 años en LATAM, especializada en brand building, crecimiento e innovación para: bebidas, educación y salud/OTC. 
                                 </blockquote>
                                 <a href="#" class="rmm-testimonio-slider-historia">
                                     Ver su historia completa
@@ -1686,10 +780,10 @@
                         <!-- Slide 2 -->
                         <div class="rmm-testimonio-slider-item">
                             <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Carlos Rodríguez Pérez</h3>
-                                <p class="rmm-testimonio-slider-cargo">Gerente | Servicios Empresariales</p>
+                                <h3 class="rmm-testimonio-slider-nombre">Jose Fabricio Gómez</h3>
+                                <p class="rmm-testimonio-slider-cargo">Brand Manager I Estratega Digital</p>
                                 <blockquote class="rmm-testimonio-slider-quote">
-                                    "Como renovante virtual, pude acceder del webinar de finanzas que me permitió optimizar mi flujo de caja. Ahora tengo mejor control de costos y márgenes en mi negocio."
+                              Marketing Leader con +10 años liderando marcas a nivel internacional y nacional. Especializado en marketing digital, brand power y marketing estratégico.
                                 </blockquote>
                                 <a href="#" class="rmm-testimonio-slider-historia">
                                     Ver su historia completa
@@ -1710,10 +804,10 @@
                         <!-- Slide 3 -->
                         <div class="rmm-testimonio-slider-item">
                             <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Alejandra Martínez Díaz</h3>
-                                <p class="rmm-testimonio-slider-cargo">Fundadora | Agencia Digital</p>
+                                <h3 class="rmm-testimonio-slider-nombre">Alejandro Duque</h3>
+                                <p class="rmm-testimonio-slider-cargo">CEO sector Agroindustrial</p>
                                 <blockquote class="rmm-testimonio-slider-quote">
-                                    "El webinar de Inteligencia Artificial cambió mi perspectiva. Implementé herramientas de IA en mis servicios de agencia y ahora ofrezco soluciones más innovadoras a mis clientes."
+Líder empresarial en el sector agroindustrial, partiendo de la administración de recursos, construcción de empresas sostenibles y fortalecimiento de las dinámicas comerciales nacionales e internacionales.
                                 </blockquote>
                                 <a href="#" class="rmm-testimonio-slider-historia">
                                     Ver su historia completa
@@ -1734,10 +828,10 @@
                         <!-- Slide 4 -->
                         <div class="rmm-testimonio-slider-item">
                             <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Diego Ruiz Gómez</h3>
-                                <p class="rmm-testimonio-slider-cargo">Empresario | Retail</p>
+                                <h3 class="rmm-testimonio-slider-nombre">Daniel Zárate</h3>
+                                <p class="rmm-testimonio-slider-cargo">Experto en Inteligencia Artificial (AI)</p>
                                 <blockquote class="rmm-testimonio-slider-quote">
-                                    "Gracias a los webinars de finanzas y e-commerce, pude optimizar mi estrategia de ventas en línea y mejorar márgenes. Mi negocio ahora trasciende más allá del local físico."
+Líder empresarial y experto en aplicación de Inteligencia Artificial generativo, operativo, business y administrativo.
                                 </blockquote>
                                 <a href="#" class="rmm-testimonio-slider-historia">
                                     Ver su historia completa
@@ -1786,390 +880,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN VALIDACIÓN -->
-        <section class="rmm-validacion" id="rmm-validacion">
-            <div class="rmm-container">
-                <div class="rmm-validacion__card">
-                    <div class="rmm-validacion__icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h2 class="rmm-validacion__titulo">Valida tu beneficio</h2>
-                    <p class="rmm-validacion__descripcion">
-                        Ingresa la fecha en que realizaste la renovación de tu matrícula mercantil de forma virtual y conoce a cuántos webinars puedes acceder.
-                    </p>
-
-                    <form class="rmm-validacion__form" id="rmm-form-validacion">
-                        <div class="rmm-validacion__campo">
-                            <label class="rmm-validacion__label" for="rmm-fecha-renovacion">
-                                Fecha de renovación virtual
-                            </label>
-                            <input 
-                                type="date" 
-                                id="rmm-fecha-renovacion" 
-                                class="rmm-validacion__input"
-                                min="2026-01-01"
-                                max="2026-12-31"
-                                required
-                            >
-                        </div>
-                        <button type="submit" class="rmm-validacion__btn">
-                            Ver mi acceso
-                        </button>
-                    </form>
-
-                    <p class="rmm-validacion__ayuda">
-                        ¿Dónde encuentro mi fecha de renovación? Consulta tu correo de confirmación de la CCB o tu recibo de pago.
-                    </p>
-
-                    <!-- Resultado: Elegible 4 webinars -->
-                    <div class="rmm-resultado" id="rmm-resultado-4">
-                        <div class="rmm-resultado__icono">
-                            <svg fill="none" stroke="#28A745" viewBox="0 0 24 24" width="48" height="48">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-resultado__titulo">¡Felicidades! Eres elegible</h3>
-                        <p class="rmm-resultado__mensaje">
-                            Por renovar tu matrícula entre el 1 de enero y el 15 de marzo de 2026, tienes acceso a:
-                        </p>
-                        <div class="rmm-resultado__cupo">
-                            <span class="rmm-resultado__cupo-numero">4</span> webinars disponibles
-                        </div>
-                        <a class="rmm-resultado__link" href="#rmm-webinars">
-                            Seleccionar mis webinars
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                            </svg>
-                        </a>
-                    </div>
-
-                    <!-- Resultado: Elegible 1 webinar -->
-                    <div class="rmm-resultado" id="rmm-resultado-1">
-                        <div class="rmm-resultado__icono">
-                            <svg fill="none" stroke="#28A745" viewBox="0 0 24 24" width="48" height="48">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-resultado__titulo">¡Tienes acceso!</h3>
-                        <p class="rmm-resultado__mensaje">
-                            Por renovar tu matrícula entre el 16 y 31 de marzo de 2026, tienes acceso a:
-                        </p>
-                        <div class="rmm-resultado__cupo">
-                            <span class="rmm-resultado__cupo-numero">1</span> webinar disponible
-                        </div>
-                        <p style="font-size: 13px; color: #EA0A2A; font-weight: 600; margin-top: 12px;">
-                            💡 Renueva más temprano para obtener acceso a 4 webinars
-                        </p>
-                        <a class="rmm-resultado__link" href="#rmm-webinars">
-                            Seleccionar mi webinar
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                            </svg>
-                        </a>
-                    </div>
-
-                    <!-- Resultado: No elegible -->
-                    <div class="rmm-resultado" id="rmm-resultado-no">
-                        <div class="rmm-resultado__icono">
-                            <svg fill="none" stroke="#EA0A2A" viewBox="0 0 24 24" width="48" height="48">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-resultado__titulo">Tu fecha no aplica para este beneficio</h3>
-                        <p class="rmm-resultado__mensaje">
-                            Este beneficio está disponible únicamente para quienes renovaron su matrícula de forma virtual entre el 1 de enero y el 31 de marzo de 2026. Sin embargo, queremos seguir acompañándote.
-                        </p>
-                        <a class="rmm-resultado__link" href="#rmm-faq">Conocer próximos eventos →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN WEBINARS -->
-        <section class="rmm-webinars rmm-oculto" id="rmm-webinars">
-            <div class="rmm-container">
-                <header class="rmm-webinars__header">
-                    <p class="rmm-webinars__eyebrow">Formación gratuita</p>
-                    <h2 class="rmm-webinars__titulo">Elige los webinars que impulsarán tu negocio</h2>
-                    <p class="rmm-webinars__subtitulo">
-                        Contenido práctico diseñado para Pymes. Selecciona los temas que más necesitas.
-                    </p>
-                </header>
-
-                <!-- Contador de selección -->
-                <div class="rmm-webinars__contador" id="rmm-contador">
-                    <div class="rmm-webinars__contador-inner">
-                        <span class="rmm-webinars__contador-texto">Webinars seleccionados:</span>
-                        <span class="rmm-webinars__contador-numero">
-                            <span class="rmm-webinars__contador-numero--actual" id="rmm-contador-actual">0</span> / <span id="rmm-contador-max">4</span>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Grid de webinars -->
-                <div class="rmm-webinars__grid">
-                    
-                    <!-- Card 1: IA para Pymes -->
-                    <article class="rmm-webinar-card" data-webinar="ia">
-                        <span class="rmm-webinar-card__badge">✓ SELECCIONADO</span>
-                        <div class="rmm-webinar-card__icono">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-webinar-card__titulo">Inteligencia Artificial para Pymes</h3>
-                        <ul class="rmm-webinar-card__lista">
-                            <li>Herramientas de IA gratuitas para tu negocio</li>
-                            <li>Automatización de tareas repetitivas</li>
-                            <li>Chatbots y atención al cliente con IA</li>
-                            <li>Casos prácticos en ventas y marketing</li>
-                        </ul>
-                        <div class="rmm-webinar-card__meta">
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                90 min
-                            </span>
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                </svg>
-                                Online en vivo
-                            </span>
-                        </div>
-                        <button type="button" class="rmm-webinar-card__btn" data-action="seleccionar">
-                            Seleccionar
-                        </button>
-                    </article>
-
-                    <!-- Card 2: Marketing Digital -->
-                    <article class="rmm-webinar-card" data-webinar="marketing">
-                        <span class="rmm-webinar-card__badge">✓ SELECCIONADO</span>
-                        <div class="rmm-webinar-card__icono">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-webinar-card__titulo">Marketing Digital</h3>
-                        <ul class="rmm-webinar-card__lista">
-                            <li>Estrategias de bajo presupuesto con alto impacto</li>
-                            <li>Google Ads y Meta Ads para principiantes</li>
-                            <li>Email marketing que convierte</li>
-                            <li>Métricas clave para medir resultados</li>
-                        </ul>
-                        <div class="rmm-webinar-card__meta">
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                90 min
-                            </span>
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                </svg>
-                                Online en vivo
-                            </span>
-                        </div>
-                        <button type="button" class="rmm-webinar-card__btn" data-action="seleccionar">
-                            Seleccionar
-                        </button>
-                    </article>
-
-                    <!-- Card 3: Finanzas para Pymes -->
-                    <article class="rmm-webinar-card" data-webinar="finanzas">
-                        <span class="rmm-webinar-card__badge">✓ SELECCIONADO</span>
-                        <div class="rmm-webinar-card__icono">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-webinar-card__titulo">Finanzas para Pymes</h3>
-                        <ul class="rmm-webinar-card__lista">
-                            <li>Flujo de caja: cómo no quedarte sin liquidez</li>
-                            <li>Costos, márgenes y punto de equilibrio</li>
-                            <li>Acceso a crédito y financiación inteligente</li>
-                            <li>Herramientas gratuitas de gestión financiera</li>
-                        </ul>
-                        <div class="rmm-webinar-card__meta">
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                90 min
-                            </span>
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                </svg>
-                                Online en vivo
-                            </span>
-                        </div>
-                        <button type="button" class="rmm-webinar-card__btn" data-action="seleccionar">
-                            Seleccionar
-                        </button>
-                    </article>
-
-                    <!-- Card 4: E-commerce / RR.SS -->
-                    <article class="rmm-webinar-card" data-webinar="ecommerce">
-                        <span class="rmm-webinar-card__badge">✓ SELECCIONADO</span>
-                        <div class="rmm-webinar-card__icono">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                            </svg>
-                        </div>
-                        <h3 class="rmm-webinar-card__titulo">E-commerce y Redes Sociales como canal de venta</h3>
-                        <ul class="rmm-webinar-card__lista">
-                            <li>Cómo montar tu tienda online sin inversión alta</li>
-                            <li>Instagram Shopping y catálogo en WhatsApp</li>
-                            <li>Logística y pagos para vender en línea</li>
-                            <li>Contenido que vende: fotos, videos y textos</li>
-                        </ul>
-                        <div class="rmm-webinar-card__meta">
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                90 min
-                            </span>
-                            <span class="rmm-webinar-card__meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                </svg>
-                                Online en vivo
-                            </span>
-                        </div>
-                        <button type="button" class="rmm-webinar-card__btn" data-action="seleccionar">
-                            Seleccionar
-                        </button>
-                    </article>
-                </div>
-
-                <!-- Alerta de cupo agotado -->
-                <div class="rmm-webinars__alerta" id="rmm-alerta-cupo">
-                    <p class="rmm-webinars__alerta-texto">
-                        Has alcanzado el máximo de webinars disponibles. Para cambiar tu selección, primero deselecciona alguno.
-                    </p>
-                </div>
-
-                <!-- Botón continuar -->
-                <div style="text-align: center; margin-top: 40px;">
-                    <button type="button" class="rmm-hero__cta rmm-oculto" id="rmm-btn-continuar" style="background: var(--rmm-azul-primario);">
-                        Continuar al registro
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN FORMULARIO -->
-        <section class="rmm-formulario" id="rmm-formulario">
-            <div class="rmm-container">
-                <div class="rmm-formulario__card">
-                    <header class="rmm-formulario__header">
-                        <h2 class="rmm-formulario__titulo">Confirma tu registro</h2>
-                        <p class="rmm-formulario__subtitulo">
-                            Solo necesitamos unos datos para enviarte la confirmación y los enlaces de acceso.
-                        </p>
-                    </header>
-
-                    <!-- Resumen de webinars seleccionados -->
-                    <div class="rmm-formulario__resumen">
-                        <p class="rmm-formulario__resumen-titulo">Webinars seleccionados:</p>
-                        <ul class="rmm-formulario__resumen-lista" id="rmm-resumen-webinars">
-                            <!-- Se llena dinámicamente -->
-                        </ul>
-                    </div>
-
-                    <form id="rmm-form-registro">
-                        <div class="rmm-formulario__grid">
-                            <div class="rmm-formulario__campo">
-                                <label class="rmm-formulario__label" for="rmm-nombre">Nombre completo *</label>
-                                <input type="text" id="rmm-nombre" class="rmm-formulario__input" required placeholder="Ej: María García López">
-                                <span class="rmm-formulario__error" id="rmm-error-nombre">Por favor ingresa tu nombre completo</span>
-                            </div>
-
-                            <div class="rmm-formulario__campo">
-                                <label class="rmm-formulario__label" for="rmm-correo">Correo electrónico *</label>
-                                <input type="email" id="rmm-correo" class="rmm-formulario__input" required placeholder="correo@empresa.com">
-                                <span class="rmm-formulario__error" id="rmm-error-correo">Ingresa un correo válido</span>
-                            </div>
-
-                            <div class="rmm-formulario__campo">
-                                <label class="rmm-formulario__label" for="rmm-celular">Celular *</label>
-                                <input type="tel" id="rmm-celular" class="rmm-formulario__input" required placeholder="300 123 4567">
-                                <span class="rmm-formulario__error" id="rmm-error-celular">Ingresa un número de celular válido</span>
-                            </div>
-
-                            <div class="rmm-formulario__campo">
-                                <label class="rmm-formulario__label" for="rmm-empresa">Nombre de la empresa *</label>
-                                <input type="text" id="rmm-empresa" class="rmm-formulario__input" required placeholder="Mi Empresa S.A.S.">
-                                <span class="rmm-formulario__error" id="rmm-error-empresa">Por favor ingresa el nombre de tu empresa</span>
-                            </div>
-
-                            <div class="rmm-formulario__campo rmm-formulario__campo--full">
-                                <label class="rmm-formulario__label" for="rmm-nit">
-                                    NIT <span class="rmm-formulario__label-opcional">(opcional)</span>
-                                </label>
-                                <input type="text" id="rmm-nit" class="rmm-formulario__input" placeholder="900.123.456-7">
-                            </div>
-                        </div>
-
-                        <div class="rmm-formulario__terminos">
-                            <div class="rmm-formulario__checkbox-wrapper">
-                                <input type="checkbox" id="rmm-terminos" class="rmm-formulario__checkbox" required>
-                                <label for="rmm-terminos" class="rmm-formulario__checkbox-texto">
-                                    Autorizo el tratamiento de mis datos personales según la 
-                                    <a href="#" class="rmm-formulario__checkbox-link">política de privacidad</a> 
-                                    de CCB y Uniempresarial, y acepto recibir información sobre este y otros programas de formación.
-                                </label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="rmm-formulario__submit" id="rmm-btn-enviar">
-                            Confirmar mi cupo
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- PANTALLA DE CONFIRMACIÓN -->
-        <section class="rmm-confirmacion" id="rmm-confirmacion">
-            <div class="rmm-container">
-                <div class="rmm-confirmacion__card">
-                    <div class="rmm-confirmacion__icono">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-
-                    <h2 class="rmm-confirmacion__titulo">¡Tu cupo está confirmado!</h2>
-                    
-                    <p class="rmm-confirmacion__mensaje">
-                        Gracias por registrarte. En los próximos minutos recibirás un correo con la confirmación y los detalles de acceso a tus webinars.
-                    </p>
-
-                    <div class="rmm-confirmacion__resumen">
-                        <p class="rmm-confirmacion__resumen-titulo">Webinars a los que te inscribiste:</p>
-                        <ul class="rmm-confirmacion__resumen-lista" id="rmm-confirmacion-lista">
-                            <!-- Se llena dinámicamente -->
-                        </ul>
-                    </div>
-
-                    <div class="rmm-confirmacion__info">
-                        <strong>¿Qué sigue?</strong>
-                        Revisa tu bandeja de entrada (y spam) para el correo con los enlaces de acceso. Te recordaremos 24 horas antes de cada sesión.
-                    </div>
-                </div>
-            </div>
-        </section>
+ 
 
         <!-- FAQ -->
         <section class="rmm-faq" id="rmm-faq">
@@ -2182,7 +893,7 @@
                 <div class="rmm-faq__lista">
                     <div class="rmm-faq__item">
                         <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
-                            ¿Cómo valido mi fecha de renovación?
+                            ¿Cómo valido la fecha de renovación?
                             <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
@@ -2196,20 +907,6 @@
 
                     <div class="rmm-faq__item">
                         <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
-                            ¿Qué pasa si renové después del 31 de marzo?
-                            <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-                        <div class="rmm-faq__respuesta">
-                            <div class="rmm-faq__respuesta-inner">
-                                Este beneficio específico aplica únicamente para renovaciones virtuales realizadas entre el 1 de enero y el 31 de marzo de 2026. Sin embargo, la CCB y Uniempresarial tienen otros programas de formación que podrían interesarte. Déjanos tus datos y te mantendremos informado sobre futuras oportunidades.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rmm-faq__item">
-                        <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
                             ¿Puedo cambiar mi selección de webinars?
                             <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -2217,14 +914,14 @@
                         </button>
                         <div class="rmm-faq__respuesta">
                             <div class="rmm-faq__respuesta-inner">
-                                Sí, puedes cambiar tu selección antes de enviar el formulario de registro. Una vez confirmado tu cupo, si necesitas hacer cambios, escríbenos a <strong>formacion@uniempresarial.edu.co</strong> indicando tu nombre, correo registrado y los webinars que deseas cambiar. Ten en cuenta que los cambios están sujetos a disponibilidad.
+                                Este beneficio específico aplica únicamente para renovaciones virtuales realizadas entre el <strong>1 de enero y el 31 de marzo de 2026.</strong> Sin embargo, la CCB y Uniempresarial tienen otros programas de formación que podrían interesarte. Déjanos tus datos y te mantendremos informado sobre futuras oportunidades.
                             </div>
                         </div>
                     </div>
 
                     <div class="rmm-faq__item">
                         <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
-                            ¿Cuándo me llegan los enlaces de acceso?
+                            ¿Cuándo llegan los enlaces de conexión?
                             <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
@@ -2238,7 +935,7 @@
 
                     <div class="rmm-faq__item">
                         <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
-                            ¿Los webinars tienen certificado?
+                            ¿Los webinars tienen certificación?
                             <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
@@ -2249,6 +946,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -2257,233 +955,11 @@
     <!-- JAVASCRIPT -->
     <script>
         (function() {
-            'use strict';
-
             // ========================================
-            // ESTADO DE LA APLICACIÓN
+            // FUNCIONES AUXILIARES
             // ========================================
-            const rmmState = {
-                cupoMaximo: 0,
-                webinarsSeleccionados: [],
-                fechaRenovacion: null,
-                elegibilidad: null, // '4', '1', 'no'
-                nombresWebinars: {
-                    'ia': 'Inteligencia Artificial para Pymes',
-                    'marketing': 'Marketing Digital',
-                    'finanzas': 'Finanzas para Pymes',
-                    'ecommerce': 'E-commerce y Redes Sociales'
-                }
-            };
-
-            // ========================================
-            // UTILIDADES DOM
-            // ========================================
-            const $ = (selector) => document.querySelector(selector);
-            const $$ = (selector) => document.querySelectorAll(selector);
-
-            // ========================================
-            // LÓGICA DE VALIDACIÓN DE FECHA
-            // ========================================
-            function validarFechaRenovacion(fecha) {
-                const fechaObj = new Date(fecha + 'T00:00:00');
-                const inicio4 = new Date('2026-01-01T00:00:00');
-                const fin4 = new Date('2026-03-15T23:59:59');
-                const inicio1 = new Date('2026-03-16T00:00:00');
-                const fin1 = new Date('2026-03-31T23:59:59');
-
-                if (fechaObj >= inicio4 && fechaObj <= fin4) {
-                    return { elegible: true, cupo: 4 };
-                } else if (fechaObj >= inicio1 && fechaObj <= fin1) {
-                    return { elegible: true, cupo: 1 };
-                } else {
-                    return { elegible: false, cupo: 0 };
-                }
-            }
-
-            function mostrarResultadoValidacion(resultado) {
-                // Ocultar todos los resultados
-                $('#rmm-resultado-4').classList.remove('rmm-resultado--elegible-4');
-                $('#rmm-resultado-1').classList.remove('rmm-resultado--elegible-1');
-                $('#rmm-resultado-no').classList.remove('rmm-resultado--no-elegible');
-
-                if (resultado.elegible && resultado.cupo === 4) {
-                    $('#rmm-resultado-4').classList.add('rmm-resultado--elegible-4');
-                    rmmState.elegibilidad = '4';
-                    rmmState.cupoMaximo = 4;
-                } else if (resultado.elegible && resultado.cupo === 1) {
-                    $('#rmm-resultado-1').classList.add('rmm-resultado--elegible-1');
-                    rmmState.elegibilidad = '1';
-                    rmmState.cupoMaximo = 1;
-                } else {
-                    $('#rmm-resultado-no').classList.add('rmm-resultado--no-elegible');
-                    rmmState.elegibilidad = 'no';
-                    rmmState.cupoMaximo = 0;
-                }
-
-                // Mostrar sección de webinars si es elegible
-                if (resultado.elegible) {
-                    $('#rmm-webinars').classList.remove('rmm-oculto');
-                    $('#rmm-contador').classList.add('rmm-webinars__contador--visible');
-                    $('#rmm-contador-max').textContent = resultado.cupo;
-                } else {
-                    $('#rmm-webinars').classList.add('rmm-oculto');
-                }
-            }
-
-            // ========================================
-            // LÓGICA DE SELECCIÓN DE WEBINARS
-            // ========================================
-            function toggleWebinar(card) {
-                const webinarId = card.dataset.webinar;
-                const isSeleccionado = card.classList.contains('rmm-webinar-card--seleccionado');
-                const btn = card.querySelector('.rmm-webinar-card__btn');
-
-                if (isSeleccionado) {
-                    // Deseleccionar
-                    card.classList.remove('rmm-webinar-card--seleccionado');
-                    btn.textContent = 'Seleccionar';
-                    rmmState.webinarsSeleccionados = rmmState.webinarsSeleccionados.filter(w => w !== webinarId);
-                } else {
-                    // Verificar cupo
-                    if (rmmState.webinarsSeleccionados.length >= rmmState.cupoMaximo) {
-                        mostrarAlertaCupo();
-                        return;
-                    }
-                    // Seleccionar
-                    card.classList.add('rmm-webinar-card--seleccionado');
-                    btn.textContent = 'Seleccionado ✓';
-                    rmmState.webinarsSeleccionados.push(webinarId);
-                }
-
-                actualizarContador();
-                actualizarEstadoCards();
-                actualizarBotonContinuar();
-                ocultarAlertaCupo();
-            }
-
-            function actualizarContador() {
-                $('#rmm-contador-actual').textContent = rmmState.webinarsSeleccionados.length;
-            }
-
-            function actualizarEstadoCards() {
-                const cards = $$('.rmm-webinar-card');
-                const cupoAgotado = rmmState.webinarsSeleccionados.length >= rmmState.cupoMaximo;
-
-                cards.forEach(card => {
-                    const isSeleccionado = card.classList.contains('rmm-webinar-card--seleccionado');
-                    if (cupoAgotado && !isSeleccionado) {
-                        card.classList.add('rmm-webinar-card--deshabilitado');
-                    } else {
-                        card.classList.remove('rmm-webinar-card--deshabilitado');
-                    }
-                });
-            }
-
-            function actualizarBotonContinuar() {
-                const btn = $('#rmm-btn-continuar');
-                if (rmmState.webinarsSeleccionados.length > 0) {
-                    btn.classList.remove('rmm-oculto');
-                } else {
-                    btn.classList.add('rmm-oculto');
-                }
-            }
-
-            function mostrarAlertaCupo() {
-                $('#rmm-alerta-cupo').classList.add('rmm-webinars__alerta--visible');
-            }
-
-            function ocultarAlertaCupo() {
-                $('#rmm-alerta-cupo').classList.remove('rmm-webinars__alerta--visible');
-            }
-
-            // ========================================
-            // LÓGICA DEL FORMULARIO
-            // ========================================
-            function mostrarFormulario() {
-                // Actualizar resumen de webinars
-                const listaResumen = $('#rmm-resumen-webinars');
-                listaResumen.innerHTML = rmmState.webinarsSeleccionados.map(id => 
-                    `<li class="rmm-formulario__resumen-item">${rmmState.nombresWebinars[id]}</li>`
-                ).join('');
-
-                // Mostrar sección
-                $('#rmm-formulario').classList.add('rmm-formulario--visible');
-                
-                // Scroll suave
-                setTimeout(() => {
-                    $('#rmm-formulario').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            }
-
-            function validarFormulario(form) {
-                let esValido = true;
-                const campos = ['nombre', 'correo', 'celular', 'empresa'];
-
-                campos.forEach(campo => {
-                    const input = $(`#rmm-${campo}`);
-                    const error = $(`#rmm-error-${campo}`);
-                    
-                    if (!input.value.trim()) {
-                        input.classList.add('rmm-formulario__input--error');
-                        error.classList.add('rmm-formulario__error--visible');
-                        esValido = false;
-                    } else {
-                        input.classList.remove('rmm-formulario__input--error');
-                        error.classList.remove('rmm-formulario__error--visible');
-                    }
-                });
-
-                // Validar email
-                const correo = $('#rmm-correo');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(correo.value)) {
-                    correo.classList.add('rmm-formulario__input--error');
-                    $('#rmm-error-correo').classList.add('rmm-formulario__error--visible');
-                    esValido = false;
-                }
-
-                // Validar términos
-                if (!$('#rmm-terminos').checked) {
-                    esValido = false;
-                    alert('Debes aceptar el tratamiento de datos para continuar.');
-                }
-
-                return esValido;
-            }
-
-            function enviarFormulario(form) {
-                if (!validarFormulario(form)) return;
-
-                const btn = $('#rmm-btn-enviar');
-                btn.disabled = true;
-                btn.innerHTML = '<span class="rmm-loader"></span> Procesando...';
-
-                // Simular envío (reemplazar con llamada real al servidor)
-                setTimeout(() => {
-                    mostrarConfirmacion();
-                }, 1500);
-            }
-
-            function mostrarConfirmacion() {
-                // Ocultar formulario y webinars
-                $('#rmm-formulario').classList.remove('rmm-formulario--visible');
-                $('#rmm-webinars').classList.add('rmm-oculto');
-                $('#rmm-validacion').classList.add('rmm-oculto');
-
-                // Llenar lista de confirmación
-                const listaConfirmacion = $('#rmm-confirmacion-lista');
-                listaConfirmacion.innerHTML = rmmState.webinarsSeleccionados.map(id => 
-                    `<li class="rmm-confirmacion__resumen-item">${rmmState.nombresWebinars[id]}</li>`
-                ).join('');
-
-                // Mostrar confirmación
-                $('#rmm-confirmacion').classList.add('rmm-confirmacion--visible');
-                
-                // Scroll a la sección de confirmación
-                setTimeout(() => {
-                    $('#rmm-confirmacion').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            }
+            const $ = (sel) => document.querySelector(sel);
+            const $$ = (sel) => document.querySelectorAll(sel);
 
             // ========================================
             // FAQ ACCORDION
@@ -2526,15 +1002,19 @@
                     $('#rmm-testimonios-current').textContent = rmmTestimoniosCurrentSlide + 1;
                 }
                 
-                // Botones prev/next
-                $('.rmm-testimonios__slider-next').addEventListener('click', () => {
-                    rmmTestimoniosCurrentSlide++;
-                    showTestimoniosSlide(rmmTestimoniosCurrentSlide);
+                // Botones prev/next - Usar $$ para agarrar todos los elementos
+                $$('.rmm-testimonios__slider-next').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        rmmTestimoniosCurrentSlide++;
+                        showTestimoniosSlide(rmmTestimoniosCurrentSlide);
+                    });
                 });
                 
-                $('.rmm-testimonios__slider-prev').addEventListener('click', () => {
-                    rmmTestimoniosCurrentSlide--;
-                    showTestimoniosSlide(rmmTestimoniosCurrentSlide);
+                $$('.rmm-testimonios__slider-prev').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        rmmTestimoniosCurrentSlide--;
+                        showTestimoniosSlide(rmmTestimoniosCurrentSlide);
+                    });
                 });
                 
                 // Dots clicables
@@ -2547,77 +1027,21 @@
             }
 
             // ========================================
+            // FUNCIONES DE FORMULARIO Y WEBINARS
+            // ========================================
+
+            // ========================================
             // EVENT LISTENERS
             // ========================================
             function initEventListeners() {
                 // Inicializar slider de testimonios
                 initTestimoniosSlider();
-                
-                // Formulario de validación
-                $('#rmm-form-validacion').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const fecha = $('#rmm-fecha-renovacion').value;
-                    if (fecha) {
-                        rmmState.fechaRenovacion = fecha;
-                        const resultado = validarFechaRenovacion(fecha);
-                        mostrarResultadoValidacion(resultado);
-                    }
-                });
-
-                // Links de resultado para scroll a webinars (sin delay innecesario)
-                $$('.rmm-resultado__link').forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const target = this.getAttribute('href');
-                        if (target === '#rmm-webinars') {
-                            // Scroll inmediato
-                            $(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        } else if (target === '#rmm-faq') {
-                            $(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                    });
-                });
-
-                // Botones de webinars
-                $$('.rmm-webinar-card__btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const card = this.closest('.rmm-webinar-card');
-                        if (!card.classList.contains('rmm-webinar-card--deshabilitado')) {
-                            toggleWebinar(card);
-                        }
-                    });
-                });
-
-                // Botón continuar al formulario
-                $('#rmm-btn-continuar').addEventListener('click', mostrarFormulario);
-
-                // Formulario de registro
-                $('#rmm-form-registro').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    enviarFormulario(this);
-                });
-
-                // Limpiar errores al escribir
-                $$('.rmm-formulario__input').forEach(input => {
-                    input.addEventListener('input', function() {
-                        this.classList.remove('rmm-formulario__input--error');
-                        const errorId = `rmm-error-${this.id.replace('rmm-', '')}`;
-                        const error = document.getElementById(errorId);
-                        if (error) error.classList.remove('rmm-formulario__error--visible');
-                    });
-                });
 
                 // FAQ accordion
                 $$('.rmm-faq__pregunta').forEach(pregunta => {
                     pregunta.addEventListener('click', function() {
                         toggleFaq(this);
                     });
-                });
-
-                // CTA Hero scroll suave
-                $('.rmm-hero__cta').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    $('#rmm-validacion').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
 

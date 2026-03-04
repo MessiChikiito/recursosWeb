@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Estudios v2</title>
+    <title>Plan de Estudios v2 - Administración de Empresas Virtual</title>
     <style>
         :root {
             --color-primary: #FF6B35;
@@ -42,9 +42,8 @@
 
         .pd-container {
             max-width: 1000px;
-            margin: 0 auto 20px;
+            margin: 0 auto 0px;
             padding: 40px 20px;
-            padding-bottom: 10px;
             position: relative;
             background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
             border-radius: 12px;
@@ -59,15 +58,16 @@
             font-size: 2.5rem;
             font-weight: 900;
             color: var(--color-gray-900);
-            margin-bottom: 0px;
+            margin-bottom: 12px;
             letter-spacing: -0.5px;
+            line-height: 1.3;
+            padding: 0px 120px;
         }
 
         .pd-header p {
             font-size: 1.1rem;
             color: var(--color-gray-500);
-            margin-bottom: 30px;
-            margin-top: 12px;
+            margin-bottom: 0;
         }
 
         /* LEYENDA MOBILE - Entre header y semestres */
@@ -87,7 +87,7 @@
             gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             padding: 0 0 20px 0;
             border-bottom: 2px solid var(--color-gray-200);
         }
@@ -417,7 +417,7 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .pd-header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .pd-semesters {
@@ -469,11 +469,12 @@
 
         @media (max-width: 480px) {
             .pd-header h1 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             .pd-container {
                 padding: 20px 16px;
+                padding-top: 40px;
             }
 
             /* Mostrar leyenda mobile */
@@ -523,7 +524,7 @@
     <div class="pd-container" id="pensum">
         <!-- HEADER -->
         <div class="pd-header">
-            <h1>Pénsum de Ingeniería de Software Virtual</h1>
+            <h1>Pénsum de Ingeniería Industrial Virtual</h1>
             <p>Explora las materias de cada semestre</p>
         </div>
 
@@ -585,7 +586,7 @@
                     <!-- TOTAL CARRERA -->
                     <div class="pd-total-carrera">
                         <div class="pd-total-carrera-label">Total carrera</div>
-                        <div class="pd-total-carrera-value" id="creditosCarrera">0</div>
+                        <div class="pd-total-carrera-value" id="creditosCarrera">160</div>
                         <div class="pd-total-carrera-unit">créditos para graduarte</div>
                     </div>
 
@@ -640,72 +641,72 @@
             1: [
                 { nombre: "Álgebra y programación lineal", creditos: "3", tipo: "nucleo" },
                 { nombre: "Cálculo I", creditos: "3", tipo: "nucleo" },
-                { nombre: "Física", creditos: "3", tipo: "nucleo" },
-                { nombre: "Lenguajes de programación", creditos: "2", tipo: "prof" },
-                { nombre: "Introducción a la Programación", creditos: "3", tipo: "prof" },
+                { nombre: "Físicoquímica", creditos: "3", tipo: "nucleo" },
+                { nombre: "Introducción a la Ingeniería y estudio de métodos", creditos: "3", tipo: "prof" },
                 { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
-                { nombre: "Cátedra Uniempresarial (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Cátedra Uniempresarial", creditos: "2", tipo: "transv" },
+                { nombre: "Entorno colombiano", creditos: "2", tipo: "transv" },
                 { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "English Beginners (Blended)", creditos: "2", tipo: "transv" },
+                { nombre: "English Beginners", creditos: "2", tipo: "transv" },
             ],
 
             // SEGUNDO SEMESTRE
             2: [
                 { nombre: "Cálculo II", creditos: "2", tipo: "nucleo" },
                 { nombre: "Cálculo III", creditos: "2", tipo: "nucleo" },
-                { nombre: "Infraestructura TI Y Cloud computing", creditos: "2", tipo: "prof" },
-                { nombre: "Programación Orientada a Objetos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Metodologías y Requerimientos de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Pruebas de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación Web – FrontEnd", creditos: "2", tipo: "nucleo" },
-                { nombre: "Diseño UI/UX", creditos: "1", tipo: "nucleo" },
-                { nombre: "Bases de datos", creditos: "1", tipo: "nucleo" },
+                { nombre: "Informática y Programación", creditos: "2", tipo: "prof" },
+                { nombre: "Gestión de la cultura empresarial", creditos: "2", tipo: "prof" },
+                { nombre: "Coaching y Habilidades Gerenciales", creditos: "1", tipo: "prof" },
+                { nombre: "Gestión del Talento Humano", creditos: "1", tipo: "prof" },
+                { nombre: "Quality management", creditos: "2", tipo: "prof" },
+                { nombre: "Sistemas Integrados de gestión", creditos: "1", tipo: "prof" },
+                { nombre: "Auditoría de Calidad", creditos: "1", tipo: "prof" },
                 { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
-                { nombre: "Ética y responsabilidad social empresarial (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "transv" },
                 { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "Basic English (Blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Elementary English (Blended)", creditos: "2", tipo: "transv" },
+                { nombre: "Basic English", creditos: "2", tipo: "transv" },
+                { nombre: "Elementary English", creditos: "2", tipo: "transv" },
             ],
 
             // TERCER SEMESTRE (PRÁCTICAS)
             3: [
-                { nombre: "Práctica empresarial en Fundamentos de Ingeniería de Software y Programación", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Desarrollo fronted", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Capital Humano", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Gestión y Control de Calidad", creditos: "10", tipo: "practica" },
             ],
 
             // CUARTO SEMESTRE
             4: [
-                { nombre: "Probabilidad, estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Arquitectura de software", creditos: "2", tipo: "prof" },
-                { nombre: "Big data y analítica", creditos: "3", tipo: "prof" },
-                { nombre: "Programación Framewok's Backend", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo con Framework's Frontend", creditos: "1", tipo: "nucleo" },
-                { nombre: "Aplicaciones Cloud Nativas", creditos: "1", tipo: "nucleo" },
-                { nombre: "Desarrollo de Videojuegos 2D y 3D", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo Conceptual de videojuegos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación gráfica 2D y 3D", creditos: "1", tipo: "nucleo" },
+                { nombre: "Probabilidad, Estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
+                { nombre: "Fabricación digital", creditos: "3", tipo: "prof" },
+                { nombre: "Contabilidad Financiera", creditos: "2", tipo: "prof" },
+                { nombre: "Comercio Exterior y DFI", creditos: "2", tipo: "prof" },
+                { nombre: "Compras e inventarios", creditos: "1", tipo: "prof" },
+                { nombre: "Logística y operaciones", creditos: "1", tipo: "prof" },
+                { nombre: "Marketing y CRM", creditos: "2", tipo: "prof" },
+                { nombre: "Investigación de mercados", creditos: "1", tipo: "prof" },
+                { nombre: "Desarrollo de productos y servicios", creditos: "1", tipo: "prof" },
                 { nombre: "Innovación", creditos: "2", tipo: "prof" },
-                { nombre: "Preintermediate English(Blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
-                { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
+                { nombre: "Preintermediate English", creditos: "2", tipo: "transv" },
+                { nombre: "Electiva libre 1", creditos: "2", tipo: "electiva" },
+                { nombre: "Electiva libre 2", creditos: "3", tipo: "electiva" },
             ],
 
             // QUINTO SEMESTRE (PRÁCTICAS)
             5: [
-                { nombre: "Práctica empresarial en Desarrollo Full Stack", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Diseño y desarrollo de videojuegos", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Logística y Operaciones", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Gestión del Marketing", creditos: "10", tipo: "practica" },
             ],
 
             // SEXTO SEMESTRE
             6: [
-                { nombre: "Aplicaciones móviles", creditos: "2", tipo: "prof" },
-                { nombre: "Métricas de calidad de software", creditos: "2", tipo: "prof" },
-                { nombre: "Gerencia de proyectos", creditos: "2", tipo: "prof" },
-                { nombre: "Inteligencia artificial", creditos: "4", tipo: "prof" },
+                { nombre: "Producción", creditos: "3", tipo: "prof" },
+                { nombre: "Gerencia de Planta", creditos: "3", tipo: "prof" },
+                { nombre: "Project Management", creditos: "2", tipo: "prof" },
+                { nombre: "Industrial maintenance", creditos: "2", tipo: "prof" },
                 { nombre: "Electiva de profundización 1", creditos: "4", tipo: "electiva" },
                 { nombre: "Electiva de profundización 2", creditos: "4", tipo: "electiva" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Electiva libre 1", creditos: "3", tipo: "electiva" },
+                { nombre: "Electiva libre 2", creditos: "3", tipo: "electiva" },
             ],
 
             // SÉPTIMO SEMESTRE (PRÁCTICAS)
