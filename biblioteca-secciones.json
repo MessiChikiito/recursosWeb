@@ -1,0 +1,604 @@
+{
+  "colecciones": [
+    {
+      "id": "col-1",
+      "slug": "coleccion-digital",
+      "titulo": "COLECCIÓN DIGITAL",
+      "descripcion": "Accede a miles de recursos académicos digitales: e-books, artículos científicos y material multimedia disponibles 24/7 a través de nuestro proxy institucional.",
+      "keywords": ["e-books", "recursos digitales", "articulos cientificos", "multimedia", "acceso remoto", "ezproxy"],
+      "imagen": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=200&fit=crop",
+      "href": "https://ezproxy.uniempresarial.edu.co:2059/",
+      "externo": true
+    },
+    {
+      "id": "col-2",
+      "slug": "bases-de-datos",
+      "titulo": "BASES DE DATOS ESPECIALIZADAS",
+      "descripcion": "Consulta bases de datos con publicaciones científicas, académicas y empresariales. Acceso a recursos de la Cámara de Comercio y bibliotecas aliadas.",
+      "keywords": ["bases de datos", "publicaciones", "articulos academicos", "especializadas", "empresariales", "investigacion", "camara de comercio"],
+      "imagen": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=200&fit=crop",
+      "href": "/biblioteca/bases-de-datos",
+      "externo": false
+    },
+    {
+      "id": "col-3",
+      "slug": "repositorio-institucional",
+      "titulo": "REPOSITORIO INSTITUCIONAL",
+      "descripcion": "Explora trabajos de grado, investigaciones y producción académica de la comunidad Uniempresarial. Consulta tesis y memorias institucionales.",
+      "keywords": ["repositorio", "trabajos de grado", "investigacion", "tesis", "produccion academica", "memoria institucional", "monografias", "proyectos de grado"],
+      "imagen": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=200&fit=crop",
+      "href": "/biblioteca/repositorio",
+      "externo": false
+    },
+    {
+      "id": "col-4",
+      "slug": "catalogo-bibliografico",
+      "titulo": "CATÁLOGO BIBLIOGRÁFICO",
+      "descripcion": "Busca y reserva libros físicos en nuestra biblioteca y en más de 40 instituciones aliadas. Accede también al catálogo del Banco de la República (Luis Ángel Arango) con más de 2 millones de recursos bibliográficos disponibles para consulta presencial.",
+      "keywords": ["catalogo", "libros", "busqueda", "reserva", "disponibilidad", "coleccion fisica", "literatura", "banco de la republica", "luis angel arango", "blaa", "patrimonio"],
+      "imagen": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=200&fit=crop",
+      "href": "/biblioteca/catalogo",
+      "externo": false
+    }
+  ],
+  "servicios": [
+    {
+      "id": "ser-1",
+      "slug": "prestamo-interbibliotecario",
+      "titulo": "PRÉSTAMO INTERBIBLIOTECARIO",
+      "descripcion": "Accede a material de 40+ bibliotecas aliadas: Javeriana, EAN, Nacional, Libre, Santo Tomás, Militar y más. Genera tu carta de autorización y presenta tu carné vigente. Requisito obligatorio para acceder al préstamo interbibliotecario.",
+      "keywords": ["prestamo", "interbibliotecario", "material", "bibliotecas aliadas", "convenio", "solicitud", "carta", "autorizacion", "javeriana", "ean", "nacional"],
+      "imagen": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=400&h=200&fit=crop",
+      "href": "/biblioteca/prestamo-interbibliotecario",
+      "externo": false,
+      "condiciones": [
+        "Presentar carné vigente y carta con firmas autorizadas",
+        "Cumplir reglamento de la institución aliada",
+        "Devolver material a tiempo y en buen estado",
+        "Multas por entrega tardía generan sanción administrativa",
+        "Material perdido o dañado debe reponerse"
+      ]
+    },
+    {
+      "id": "ser-2",
+      "slug": "consulta-en-sala",
+      "titulo": "CONSULTA EN SALA",
+      "descripcion": "Espacios de estudio individual y grupal con acceso a computadores, internet y material de consulta. Disponible también en instituciones aliadas.",
+      "keywords": ["estudio", "espacios", "computadores", "internet", "salas", "instalaciones", "wifi"],
+      "imagen": "https://images.unsplash.com/photo-1568667256549-094345857637?w=400&h=200&fit=crop",
+      "href": "/biblioteca/espacios",
+      "externo": false
+    },
+    {
+      "id": "ser-3",
+      "slug": "asesoria-bibliografica",
+      "titulo": "ASESORÍA BIBLIOGRÁFICA",
+      "descripcion": "Orientación profesional en búsqueda de información, estrategias de investigación y uso de bases de datos especializadas.",
+      "keywords": ["asesoria", "orientacion", "busqueda", "investigacion", "informacion", "bases de datos", "estrategias"],
+      "imagen": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop",
+      "href": "/biblioteca/asesoria",
+      "externo": false
+    },
+    {
+      "id": "ser-4",
+      "slug": "prestamo-externo",
+      "titulo": "PRÉSTAMO EXTERNO",
+      "descripcion": "Lleva hasta 2 libros a domicilio con tu carné vigente. Renovaciones disponibles en línea. Aplica en Uniempresarial e instituciones aliadas.",
+      "keywords": ["prestamo", "libros", "domicilio", "renovacion", "carnet", "devolucion"],
+      "imagen": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=200&fit=crop",
+      "href": "/biblioteca/prestamo-externo",
+      "externo": false
+    }
+  ],
+  "capacitaciones": [
+    {
+      "id": "cap-1",
+      "slug": "guias-tutoriales",
+      "titulo": "GUÍAS Y TUTORIALES",
+      "descripcion": "Aprende paso a paso cómo usar bases de datos, catálogos, gestores bibliográficos (Mendeley, Zotero) y herramientas digitales.",
+      "keywords": ["guias", "tutoriales", "herramientas", "gestores", "aprender", "mendeley", "zotero"],
+      "imagen": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop",
+      "href": "/biblioteca/guias",
+      "externo": false
+    },
+    {
+      "id": "cap-2",
+      "slug": "talleres-virtuales",
+      "titulo": "TALLERES VIRTUALES",
+      "descripcion": "Sesiones en vivo sobre búsqueda de información, citación APA/IEEE, alfabetización informacional y búsquedas inteligentes.",
+      "keywords": ["talleres", "virtuales", "sesiones", "APA", "IEEE", "citacion", "alfabetizacion informacional"],
+      "imagen": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop",
+      "href": "/biblioteca/talleres",
+      "externo": false
+    },
+    {
+      "id": "cap-3",
+      "slug": "normas-citacion",
+      "titulo": "NORMAS DE CITACIÓN",
+      "descripcion": "Domina las normas APA 7ma edición, IEEE y otras. Recursos y ejemplos para citar correctamente en tus trabajos académicos.",
+      "keywords": ["normas", "citacion", "APA", "IEEE", "referencias", "bibliografia"],
+      "imagen": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop",
+      "href": "/biblioteca/normas-citacion",
+      "externo": false
+    },
+    {
+      "id": "cap-4",
+      "slug": "agenda-capacitacion",
+      "titulo": "AGENDA TU CAPACITACIÓN",
+      "descripcion": "Solicita una capacitación personalizada para ti o tu grupo de estudio. Horarios flexibles. Temas: bases de datos, catálogos, búsquedas.",
+      "keywords": ["capacitacion", "personalizada", "grupo estudio", "horarios", "solicitud", "reservar"],
+      "imagen": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=200&fit=crop",
+      "href": "https://forms.office.com/biblioteca-capacitacion",
+      "externo": true
+    }
+  ],
+  "bibliotecas_aliadas": [
+    {
+      "id": "bib-01",
+      "nombre": "ANDI - Biblioteca Digital",
+      "tipo": "Especializada",
+      "direccion": "Carrera 43 A # 1 - 50 Torre 2 Piso 9",
+      "telefono": "601 - 3265100",
+      "horario": "Lunes a viernes 8:30 am a 4:30 pm (virtual)",
+      "url": "https://www.andi.com.co/Home/Pagina/1050-biblioteca-digital",
+      "servicios": ["Consulta virtual", "Información bibliográfica", "Repositorio institucional", "Bases de datos", "Formación"],
+      "keywords": ["andi", "empresarial", "industria", "digital", "virtual"]
+    },
+    {
+      "id": "bib-02",
+      "nombre": "Universidad Antonio Nariño",
+      "tipo": "Universitaria",
+      "direccion": "Calle 58a bis #37-94 (Federmán) / Calle 22 Sur #12d-81 (Sur)",
+      "telefono": "",
+      "horario": "Consultar en sede",
+      "correo": "biblioteca.federman@uan.edu.co",
+      "url": "https://www.uan.edu.co/biblioteca",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["antonio narino", "uan", "federman", "sur"]
+    },
+    {
+      "id": "bib-03",
+      "nombre": "Universidad Autónoma de Colombia",
+      "tipo": "Universitaria",
+      "direccion": "Calle 12 #4-30",
+      "telefono": "3529950",
+      "horario": "Lunes a viernes 7:00 am a 8:00 pm",
+      "correo": "biblos@fuac.edu.co",
+      "url": "https://www.fuac.edu.co/biblioteca",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["autonoma", "fuac", "colombia"]
+    },
+    {
+      "id": "bib-04",
+      "nombre": "Banco de la República - Luis Ángel Arango",
+      "tipo": "Pública",
+      "direccion": "Calle 11 # 4-14, La Candelaria, Bogotá",
+      "telefono": "+57 (601) 484-9980 ext. 1224",
+      "horario": "Lunes a sábado 8:00 am a 7:00 pm, domingos 9:00 am a 4:00 pm",
+      "url": "https://descubridor.banrepcultural.org/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores", "Colecciones especiales"],
+      "keywords": ["banco republica", "luis angel arango", "blaa", "candelaria", "publica"]
+    },
+    {
+      "id": "bib-05",
+      "nombre": "Biblioteca Especializada ICANH",
+      "tipo": "Especializada",
+      "direccion": "Calle 12 N. 2-41",
+      "telefono": "601 - 4440544 ext. 1142",
+      "horario": "Lunes a viernes 8:30 am a 4:30 pm",
+      "url": "http://biblioteca.icanh.gov.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico"],
+      "keywords": ["icanh", "antropologia", "historia", "arqueologia", "patrimonio"]
+    },
+    {
+      "id": "bib-06",
+      "nombre": "Cámara de Comercio de Bogotá",
+      "tipo": "Especializada",
+      "direccion": "Salitre: Av. El Dorado #68D-35 piso 2 / Chapinero: Calle 67 #8-32 piso 1",
+      "telefono": "+57 (1) 594 1000 ext. 2211/4425",
+      "horario": "Lunes a viernes 8:00 am a 5:00 pm",
+      "correo": "infobibliotecas@ccb.org.co",
+      "url": "https://ezproxy.uniempresarial.edu.co:2059/",
+      "servicios": ["Consulta en sala", "Bases de datos", "Información empresarial", "Capacitaciones", "Préstamo interbibliotecario"],
+      "keywords": ["camara comercio", "ccb", "empresarial", "negocios", "salitre", "chapinero"]
+    },
+    {
+      "id": "bib-07",
+      "nombre": "Centro de Información Palmero (Fedepalma)",
+      "tipo": "Especializada",
+      "direccion": "Cra. 10a No. 69a - 44",
+      "telefono": "601 - 3138600 ext. 170-171",
+      "horario": "Lunes a viernes 9:00 am a 5:00 pm",
+      "url": "https://cidpalmero.fedepalma.org/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["fedepalma", "palmero", "agroindustria", "palma"]
+    },
+    {
+      "id": "bib-08",
+      "nombre": "CESA",
+      "tipo": "Universitaria",
+      "direccion": "Diagonal 34a N. 5a 23",
+      "telefono": "601 - 3395300 ext. 1122-1141",
+      "horario": "Lunes a viernes 6:00 am a 8:00 pm, sábados 7:30 am a 2:00 pm",
+      "url": "https://catalogo.cesa.edu.co",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["cesa", "administracion", "negocios", "alta direccion"]
+    },
+    {
+      "id": "bib-09",
+      "nombre": "Colegio Mayor de Cundinamarca",
+      "tipo": "Universitaria",
+      "direccion": "Calle 28 No. 5B-02, Bogotá",
+      "telefono": "57 601 282 5716",
+      "horario": "Lunes a viernes 8:00 am a 9:00 pm",
+      "url": "https://www.universidadmayor.edu.co/universidad/dependencias/vicerrectoria-academica/areas/area-biblioteca",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["colegio mayor", "cundinamarca", "publica"]
+    },
+    {
+      "id": "bib-10",
+      "nombre": "Corporación Universitaria Taller 5",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 14 # 79 – 80, Bogotá",
+      "telefono": "(601) 7561410",
+      "horario": "Lunes a viernes 8:00 am a 5:00 pm, sábados 8:00 am a 12:00 m",
+      "url": "https://institucional.taller5.edu.co/biblioteca-alejandro-alvarez-revuelta/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["taller 5", "diseno", "arquitectura", "artes"]
+    },
+    {
+      "id": "bib-11",
+      "nombre": "CUN - Corporación Unificada Nacional",
+      "tipo": "Universitaria",
+      "direccion": "Calle 12b N. 4-72",
+      "telefono": "601 - 3813222 ext. 1260-1078",
+      "horario": "Lunes a viernes 7:00 am a 9:00 pm, sábados 9:00 am a 4:00 pm",
+      "url": "https://biblioteca.cun.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["cun", "unificada", "nacional"]
+    },
+    {
+      "id": "bib-12",
+      "nombre": "Universidad EAN",
+      "tipo": "Universitaria",
+      "direccion": "Carrera 11 No.78-47, Edificio Fundadores",
+      "telefono": "(601) 22 22800",
+      "horario": "Lunes a viernes 7:00 am a 10:00 pm, sábados 7:00 am a 6:00 pm",
+      "correo": "biblioteca@universidadean.edu.co",
+      "url": "https://bibliotecaean.primo.exlibrisgroup.com/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["ean", "emprendimiento", "negocios", "nogal"]
+    },
+    {
+      "id": "bib-13",
+      "nombre": "Escuela Colombiana de Ingeniería Julio Garavito",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 45 N. 205-59 - Autonorte",
+      "telefono": "601 - 6683600 ext. 222",
+      "horario": "Lunes a viernes 6:30 am a 7:30 pm, sábados 8:00 am a 2:00 pm",
+      "url": "https://catalogo.escuelaing.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["escuela ingenieria", "julio garavito", "ingenieria", "tecnico"]
+    },
+    {
+      "id": "bib-14",
+      "nombre": "Escuela Colombiana de Rehabilitación",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 15 No. 151-68",
+      "telefono": "601 - 4321530 ext. 1031",
+      "horario": "Lunes a viernes 7:00 am a 7:00 pm, sábados 9:00 am a 12:00 pm",
+      "url": "https://catalogo.ecr.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["ecr", "rehabilitacion", "fisioterapia", "salud"]
+    },
+    {
+      "id": "bib-15",
+      "nombre": "Fundación Tecnológica Autónoma de Bogotá (FABA)",
+      "tipo": "Universitaria",
+      "direccion": "Consultar",
+      "telefono": "333 6025492 ext. 136",
+      "horario": "Lunes a viernes 8:00 am a 8:00 pm",
+      "url": "https://www.faba.edu.co/biblioteca/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["faba", "tecnologica", "autonoma"]
+    },
+    {
+      "id": "bib-16",
+      "nombre": "Fundación Universitaria Juan N. Corpas",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 111 N. 159a - 61 (Av. Corpas Km. 3 Suba)",
+      "telefono": "601 - 662 2222 ext. 221",
+      "horario": "Lunes a viernes 7:00 am a 5:00 pm, sábados 8:00 am a 12:00 m",
+      "url": "http://www.juanncorpas.edu.co/biblioteca/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["corpas", "medicina", "salud", "suba"]
+    },
+    {
+      "id": "bib-17",
+      "nombre": "Fundación Universitaria Konrad Lorenz",
+      "tipo": "Universitaria",
+      "direccion": "Carrera 9° bis # 62-43",
+      "telefono": "601 - 3472311 ext. 122",
+      "horario": "Lunes a viernes 8:00 am a 9:00 pm, sábados 8:00 am a 5:00 pm",
+      "url": "https://biblioteca.konradlorenz.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["konrad lorenz", "psicologia", "matematicas", "ingenieria"]
+    },
+    {
+      "id": "bib-18",
+      "nombre": "Fundación Universitaria San Martín",
+      "tipo": "Universitaria",
+      "direccion": "CRA 18 # 80/25",
+      "telefono": "601 4322671 ext. 1046",
+      "horario": "Lunes a viernes 7:00 am a 8:30 pm, sábados 8:00 am a 12:00 pm",
+      "url": "https://biblioteca.sanmartin.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["san martin", "odontologia", "derecho"]
+    },
+    {
+      "id": "bib-19",
+      "nombre": "Fundación Universitaria San Mateo",
+      "tipo": "Universitaria",
+      "direccion": "Transversal 17 Nº 25 - 25, Bogotá",
+      "telefono": "330 9999 ext. 107/125",
+      "horario": "Lunes a viernes 7:00 am a 9:00 pm, sábados 8:00 am a 4:00 pm",
+      "url": "https://www.sanmateo.edu.co/biblioteca.php",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["san mateo", "tecnologia", "sistemas"]
+    },
+    {
+      "id": "bib-20",
+      "nombre": "Corporación Universitaria Iberoamericana (IBERO)",
+      "tipo": "Universitaria",
+      "direccion": "Calle 65 N. 5-27",
+      "telefono": "601 - 3489292 ext. 138",
+      "horario": "Lunes a viernes 8:00 am a 6:00 pm, sábados 8:00 am a 3:00 pm",
+      "url": "https://biblioteca.ibero.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["ibero", "iberoamericana", "educacion", "pedagogia"]
+    },
+    {
+      "id": "bib-21",
+      "nombre": "Pontificia Universidad Javeriana",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 7 N. 41-00, Edificio Jesús María Fernández",
+      "telefono": "601 - 3208320 ext. 2135/2150/2159",
+      "horario": "Lunes a viernes 8:00 am a 9:00 pm, sábados 8:00 am a 5:00 pm",
+      "url": "https://www.javeriana.edu.co/biblos",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores", "Bases de datos"],
+      "keywords": ["javeriana", "pontificia", "biblos", "prestigio"]
+    },
+    {
+      "id": "bib-22",
+      "nombre": "Sistema de Bibliotecas SENA",
+      "tipo": "Pública",
+      "direccion": "Cra. 6 N. 45-52",
+      "telefono": "601 - 546 1500 ext. 15872",
+      "horario": "Lunes a viernes 6:00 am a 9:00 pm, sábados 8:00 am a 12:00 m",
+      "url": "http://biblioteca.sena.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["sena", "tecnico", "tecnologico", "formacion", "gratuito"]
+    },
+    {
+      "id": "bib-23",
+      "nombre": "UCENTRAL - CRAI",
+      "tipo": "Universitaria",
+      "direccion": "Carrera 5 n° 21-38, Edificio principal, tercer piso",
+      "telefono": "601 7442680 ext. 1908/1902",
+      "horario": "Lunes a viernes 7:00 am a 9:00 pm, sábados 8:00 am a 12:00 pm",
+      "url": "https://www.ucentral.edu.co/crai/crai",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["ucentral", "central", "crai", "recursos aprendizaje"]
+    },
+    {
+      "id": "bib-24",
+      "nombre": "UNICOC",
+      "tipo": "Universitaria",
+      "direccion": "Norte: Autopista Norte Km. 20 / Candelaria: Calle 12B # 9-56 Piso 9",
+      "telefono": "Consultar",
+      "horario": "Lunes a viernes 7:00 am a 6:00 pm, sábados 7:00 am a 2:00 pm",
+      "url": "https://www.unicoc.edu.co/bibliotecas-home.aspx",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["unicoc", "odontologia", "salud oral"]
+    },
+    {
+      "id": "bib-25",
+      "nombre": "Unigermana",
+      "tipo": "Universitaria",
+      "direccion": "Carrera 5 # 20 - 08, Bogotá",
+      "telefono": "601 5187777",
+      "horario": "Lunes a viernes 9:00 am a 6:00 pm",
+      "url": "https://www.unigermana.edu.co/campus/biblioteca-2",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["unigermana", "germana"]
+    },
+    {
+      "id": "bib-26",
+      "nombre": "UNINPAHU",
+      "tipo": "Universitaria",
+      "direccion": "Diagonal 40a #18-29",
+      "telefono": "601 9159051 ext. 501",
+      "horario": "Lunes, martes, viernes 7:00 am a 8:00 pm, sábados 7:00 am a 2:00 pm",
+      "url": "https://uninpahu.edu.co/biblioteca/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["uninpahu", "publicidad", "comunicacion"]
+    },
+    {
+      "id": "bib-27",
+      "nombre": "Universidad Católica de Colombia",
+      "tipo": "Universitaria",
+      "direccion": "Av. Caracas 46 - 72",
+      "telefono": "601 - 3277300 ext. 5120/5124",
+      "horario": "Lunes a viernes 7:00 am a 9:00 pm, sábados 7:00 am a 2:00 pm",
+      "url": "https://biblioteca.ucatolica.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["catolica", "ucatolica", "derecho", "arquitectura", "ingenieria"]
+    },
+    {
+      "id": "bib-28",
+      "nombre": "Universidad Cooperativa de Colombia",
+      "tipo": "Universitaria",
+      "direccion": "Bogotá: Av. Caracas #37-63 / Campus: Av. 9 #172-90",
+      "telefono": "601 7455655",
+      "horario": "Lunes a viernes 7:00 am a 9:30 pm, sábados 8:00 am a 4:00 pm",
+      "url": "https://ucc.edu.co/biblioteca",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["cooperativa", "ucc", "nacional", "sedes"]
+    },
+    {
+      "id": "bib-29",
+      "nombre": "Universidad de América",
+      "tipo": "Universitaria",
+      "direccion": "Ak 1 #20-53",
+      "telefono": "3122554428",
+      "horario": "Lunes a viernes 7:00 am a 9:00 pm, sábados 8:00 am a 4:00 pm",
+      "url": "https://www.uamerica.edu.co/bibliotecas/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["america", "uamerica", "ingenieria", "arquitectura"]
+    },
+    {
+      "id": "bib-30",
+      "nombre": "Universidad de la Costa",
+      "tipo": "Universitaria",
+      "direccion": "Calle 58 N° 55-66",
+      "telefono": "605 – 3319714",
+      "horario": "Lunes a viernes 6:30 am a 8:00 pm",
+      "url": "https://www.cuc.edu.co/biblioteca",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["costa", "cuc", "barranquilla", "caribe"]
+    },
+    {
+      "id": "bib-31",
+      "nombre": "Universidad del Tolima",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 1a N.42-1",
+      "telefono": "608 - 2771515 ext. 9675",
+      "horario": "Lunes a viernes 6:00 am a 9:00 pm, sábados 7:00 am a 7:00 pm",
+      "url": "http://administrativos.ut.edu.co/servicios-biblioteca/catalogo-en-linea-2.html",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["tolima", "ibague", "publica", "regional"]
+    },
+    {
+      "id": "bib-32",
+      "nombre": "Universidad Distrital Francisco José de Caldas",
+      "tipo": "Universitaria",
+      "direccion": "Calle 13 No. 31 – 75",
+      "telefono": "3239300 ext. 3042",
+      "horario": "Lunes a viernes 7:00 am a 5:00 pm",
+      "url": "https://bibliotecas.udistrital.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["distrital", "caldas", "publica", "ingenieria", "artes"]
+    },
+    {
+      "id": "bib-33",
+      "nombre": "Universidad Gran Colombia",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 6 N 12b - 40",
+      "telefono": "601 - 3410925 / 3276999 ext. 2500",
+      "horario": "Lunes a viernes 6:00 am a 10:00 pm, sábados 7:00 am a 6:00 pm",
+      "url": "http://biblioteca.ugc.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["gran colombia", "ugc", "derecho", "economia"]
+    },
+    {
+      "id": "bib-34",
+      "nombre": "Universidad Libre",
+      "tipo": "Universitaria",
+      "direccion": "Calle 8 N. 5-80",
+      "telefono": "601 - 3821000 ext. 1751",
+      "horario": "Lunes a viernes 7:00 am a 9:00 pm, sábados 8:00 am a 6:00 pm",
+      "url": "https://www.unilibre.edu.co/biblioteca",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["libre", "unilibre", "derecho", "ingenieria", "medicina"]
+    },
+    {
+      "id": "bib-35",
+      "nombre": "Universidad Militar Nueva Granada",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 11 N. 101-80",
+      "telefono": "601 - 6500000 ext. 1173/1174",
+      "horario": "Lunes a viernes 7:00 am a 10:00 pm, sábados 8:00 am a 4:00 pm",
+      "url": "http://catalogo.unimilitar.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["militar", "nueva granada", "umng", "defensa", "ingenieria"]
+    },
+    {
+      "id": "bib-36",
+      "nombre": "Universidad Minuto de Dios (UNIMINUTO)",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 74 N.81c-05",
+      "telefono": "601 - 2916520 ext. 6328/7454",
+      "horario": "Lunes a viernes 7:00 am a 10:00 pm, sábados 8:00 am a 10:00 pm",
+      "url": "http://biblioteca.uniminuto.edu/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["minuto de dios", "uniminuto", "social", "educacion", "sedes"]
+    },
+    {
+      "id": "bib-37",
+      "nombre": "Universidad Nacional Abierta y a Distancia (UNAD)",
+      "tipo": "Universitaria",
+      "direccion": "Transversal 31 # 12 - 38 sur",
+      "telefono": "601 3443700 ext. 2728/2755",
+      "horario": "Lunes a viernes 8:00 am a 5:00 pm, sábados 8:00 am a 1:00 pm",
+      "url": "https://biblioteca.unad.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores", "Recursos virtuales"],
+      "keywords": ["unad", "abierta", "distancia", "virtual", "nacional"]
+    },
+    {
+      "id": "bib-38",
+      "nombre": "Universidad Nacional de Colombia",
+      "tipo": "Universitaria",
+      "direccion": "Av. El Dorado N.44a - 40",
+      "telefono": "601 - 3165000 ext. 20008",
+      "horario": "Lunes a viernes 10:00 am a 4:00 pm",
+      "url": "http://www.sinab.unal.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores", "Colecciones especiales"],
+      "keywords": ["nacional", "unal", "publica", "investigacion", "prestigio"]
+    },
+    {
+      "id": "bib-39",
+      "nombre": "Universidad Santo Tomás",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 9 N. 51 - 11",
+      "telefono": "601 - 5878797 ext. 1101 / 6402929",
+      "horario": "Lunes a viernes 6:00 am a 10:00 pm, sábados 7:00 am a 3:00 pm",
+      "url": "http://crai.usta.edu.co/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["santo tomas", "usta", "crai", "filosofia", "derecho"]
+    },
+    {
+      "id": "bib-40",
+      "nombre": "Universidad Sergio Arboleda",
+      "tipo": "Universitaria",
+      "direccion": "Calle 74 N. 14 – 14",
+      "telefono": "601 - 3257500 ext. 2130",
+      "horario": "Lunes a viernes 6:00 am a 9:00 pm, sábados 8:00 am a 4:00 pm",
+      "url": "https://bibliotecausa.janium.net/",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["sergio arboleda", "usa", "comunicacion", "derecho", "negocios"]
+    },
+    {
+      "id": "bib-41",
+      "nombre": "Universidad Jorge Tadeo Lozano",
+      "tipo": "Universitaria",
+      "direccion": "Cra. 4 N. 22-61, Módulo 21",
+      "telefono": "601 - 2427030 ext. 2770",
+      "horario": "Lunes a viernes 7:00 am a 8:00 pm, sábados 8:00 am a 2:00 pm",
+      "url": "https://www.utadeo.edu.co/es/sistema-de-bibliotecas",
+      "servicios": ["Consulta en sala", "Préstamo bibliográfico", "Computadores"],
+      "keywords": ["tadeo", "utadeo", "lozano", "diseno", "artes", "comercio exterior"]
+    }
+  ],
+  "condiciones_prestamo": {
+    "titulo": "Condiciones del Préstamo Interbibliotecario",
+    "descripcion": "Para acceder a este servicio, deberás comprometerte a cumplir las siguientes condiciones:",
+    "requisitos": [
+      "Presentarte en la institución aliada con carné vigente y la carta respectiva",
+      "Cumplir con el reglamento de la institución con convenio",
+      "Devolver a tiempo y en buen estado el material solicitado",
+      "En caso de generarse multa por entrega tardía, realizar el pago correspondiente a la institución prestamista (acarrea sanción administrativa en Uniempresarial)",
+      "En caso de perder o dañar el material, reponerlo según las condiciones de la institución"
+    ],
+    "nota": "Recuerda que eres la imagen de Uniempresarial en otra institución."
+  }
+}

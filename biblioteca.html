@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Virtual - Uniempresarial</title>
+
+  <!-- ============================================
+       CSS - BIBLIOTECA VIRTUAL
+       ============================================ -->
+  <style>
+    /* ===== VARIABLES DE DISEÑO ===== */
+    :root {
+      /* Colores principales */
+      --color-azul: #16A6D8;
+      --color-morado: #6B3FD6;
+      --color-blanco: #FFFFFF;
+      --color-texto: #2B2B2B;
+      --color-borde-pill: #CFCFCF;
+      --color-sombra: rgba(0, 0, 0, 0.08);
+      
+      /* Gradientes */
+      --gradiente-header: linear-gradient(90deg, var(--color-azul) 0%, var(--color-morado) 100%);
+      
+      /* Radios */
+      --radius-card: 18px;
+      --radius-pill: 999px;
+      
+      /* Tipografía */
+      --font-familia: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      /* Espaciados */
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 40px;
+      --spacing-xl: 64px;
+      
+      /* Tamaños de fuente */
+      --font-titulo-desktop: 56px;
+      --font-titulo-tablet: 44px;
+      --font-titulo-mobile: 36px;
+      
+      /* Cards */
+      --card-max-width: 340px;
+      --card-img-height: 180px;
+    }
+
+    /* ===== RESET BÁSICO ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-familia);
+      background-color: var(--color-blanco);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .biblioteca-virtual {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ===== SECCIÓN BIBLIOTECA ===== *
+    .biblioteca-seccion {
+      margin-bottom: 64px;
+    }
+
+    /* ===== HEADER CON GRADIENTE ===== */
+    .biblioteca-header {
+      background: var(--gradiente-header);
+      padding: 24px 24px;
+      border-radius: var(--radius-card);
+      margin-top: 40px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .biblioteca-header__titulo {
+      color: var(--color-blanco) !important;
+      font-size: 28px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 2px !important;
+      margin: 0 !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ===== CONTENEDOR DE CARDS ===== */
+    .biblioteca-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 0 16px;
+      justify-items: center;
+    }
+
+    /* ===== CARD INDIVIDUAL ===== */
+    .biblioteca-card {
+      background: var(--color-blanco);
+      border-radius: var(--radius-card);
+      box-shadow: 0 4px 20px var(--color-sombra);
+      overflow: hidden;
+      width: 100%;
+      max-width: var(--card-max-width);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .biblioteca-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Imagen de la card */
+    .biblioteca-card__imagen {
+      width: 100%;
+      height: var(--card-img-height);
+      object-fit: cover;
+      background-color: #f5f5f5;
+    }
+
+    /* Contenido de la card */
+    .biblioteca-card__contenido {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
+    }
+
+    /* Pill button (etiqueta) */
+    .biblioteca-card__pill {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 2px solid var(--color-borde-pill);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-texto) !important;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: var(--color-blanco) !important;
+      text-align: center;
+      width: fit-content;
+    }
+
+    /* Descripción */
+    .biblioteca-card__descripcion {
+      color: var(--color-texto) !important;
+      font-size: 15px !important;
+      line-height: 1.5 !important;
+      flex-grow: 1;
+    }
+
+    /* Link CTA */
+    .biblioteca-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-morado) !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease;
+      margin-top: auto;
+    }
+
+    .biblioteca-card__link:hover {
+      color: var(--color-azul);
+      text-decoration: underline;
+    }
+
+    .biblioteca-card__link::after {
+      content: '→';
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .biblioteca-card__link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ===== ESTADOS: LOADING, ERROR, VACÍO ===== */
+    .biblioteca-estado {
+      text-align: center;
+      padding: 40px;
+      grid-column: 1 / -1;
+    }
+
+    .biblioteca-estado--loading {
+      color: var(--color-azul);
+    }
+
+    .biblioteca-estado--loading::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--color-azul);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .biblioteca-estado--error {
+      color: #D32F2F;
+      background: #FFEBEE;
+      border-radius: var(--radius-card);
+      padding: 24px;
+    }
+
+    .biblioteca-estado--vacio {
+      color: #757575;
+      background: #F5F5F5;
+      border-radius: var(--radius-card);
+    }
+
+    /* ===== RESPONSIVE: TABLET ===== */
+    @media (max-width: 1024px) {
+      .biblioteca-header__titulo {
+        font-size: var(--font-titulo-tablet);
+      }
+
+      .biblioteca-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ===== RESPONSIVE: MÓVIL ===== */
+    @media (max-width: 640px) {
+      .biblioteca-header {
+        padding: 16px 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+      }
+
+      .biblioteca-header__titulo {
+        font-size: 22px !important;
+        letter-spacing: 0.5px;
+        margin: 0 !important;
+      }
+
+      .biblioteca-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+
+      .biblioteca-card {
+        max-width: 100%;
+      }
+
+      .biblioteca-buscador h2{
+        font-size: 26px !important;
+        font-weight: 800 !important;
+      }
+
+      .biblioteca-buscador {
+        padding: 24px 16px;
+      }
+
+      .biblioteca-buscador__contenedor {
+        max-width: 100%;
+        gap: 8px;
+      }
+
+      .biblioteca-buscador__input-wrapper {
+        height: 36px !important;
+      }
+
+      .biblioteca-buscador__lupa-wrapper {
+        width: 36px !important;
+        height: 36px !important;
+      }
+
+      .biblioteca-buscador__lupa {
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .biblioteca-buscador__input {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+        height: 36px !important;
+      }
+
+      :root {
+        --card-img-height: 160px;
+      }
+    }
+
+    /* ===== BUSCADOR GLOBAL ===== */
+    .biblioteca-buscador {
+      background: var(--gradiente-header);
+      padding: 40px 24px;
+      border-radius: var(--radius-card);
+      margin-bottom: 64px;
+    }
+
+    .biblioteca-buscador__titulo {
+      color: var(--color-blanco) !important;
+      font-size: 32px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      margin-bottom: 24px !important;
+      text-align: center !important;
+    }
+
+    .biblioteca-buscador__contenedor {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .biblioteca-buscador__input-wrapper {
+      display: flex !important;
+      gap: 0 !important;
+      border: 2px solid var(--color-blanco) !important;
+      border-radius: 8px !important;
+      background: var(--color-blanco) !important;
+      height: 40px !important;
+      align-items: stretch !important;
+    }
+
+    .biblioteca-buscador__lupa-wrapper {
+      width: 40px !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: var(--color-blanco) !important;
+      padding: 0 !important;
+      border-radius: 8px 0 0 8px !important;
+      flex-shrink: 0 !important;
+      transition: background 0.2s ease;
+    }
+
+    .biblioteca-buscador__lupa-wrapper:hover {
+      background: #f5f5f5 !important;
+    }
+
+    .biblioteca-buscador__lupa {
+      width: 18px !important;
+      height: 18px !important;
+      display: block !important;
+      color: #757575 !important;
+      stroke: #757575 !important;
+      fill: none !important;
+      pointer-events: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .biblioteca-buscador__input {
+      flex: 1 !important;
+      padding: 16px 24px;
+      padding-left: 1px !important;
+      border: none !important;
+      border-radius: 0 8px 8px 0 !important;
+      font-size: 16px !important;
+      font-family: var(--font-familia) !important;
+      background: var(--color-blanco) !important;
+      color: var(--color-texto) !important;
+      transition: box-shadow 0.2s ease;
+      height: 100% !important;
+      display: block !important;
+      width: auto !important;
+    }
+
+    .biblioteca-buscador__input:focus {
+      outline: none;
+      border-color: var(--color-blanco);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    }
+
+    .biblioteca-buscador__input::placeholder {
+      color: #999 !important;
+    }
+
+    .biblioteca-buscador__contador {
+      display: none;
+      color: var(--color-blanco);
+      font-size: 13px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .biblioteca-buscador__contador.visible {
+      display: block;
+    }
+
+    /* Dropdown de resultados */
+    .biblioteca-resultados {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--color-blanco);
+      border-radius: 12px;
+      max-height: 500px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+      margin-top: 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .biblioteca-resultados.activo {
+      display: block;
+    }
+
+    .biblioteca-resultados__lista {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px;
+    }
+
+    .biblioteca-resultado-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .biblioteca-resultado-item:hover {
+      background: #f9f9f9;
+      border-color: var(--color-morado);
+      box-shadow: 0 2px 8px rgba(107, 63, 214, 0.1);
+    }
+
+    .biblioteca-resultado-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      width: fit-content;
+    }
+
+    .biblioteca-resultado-badge.colecciones {
+      background: rgba(22, 166, 216, 0.15);
+      color: var(--color-azul);
+    }
+
+    .biblioteca-resultado-badge.servicios {
+      background: rgba(107, 63, 214, 0.15);
+      color: var(--color-morado);
+    }
+
+    .biblioteca-resultado-badge.capacitaciones {
+      background: rgba(107, 63, 214, 0.1);
+      color: #8B5CF6;
+    }
+
+    .biblioteca-resultado-badge.bibliotecas_aliadas {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+    }
+
+    .biblioteca-resultado-contenido {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .biblioteca-resultado-titulo {
+      color: var(--color-texto) !important;
+      font-weight: 700 !important;
+      font-size: 15px !important;
+      margin: 0;
+    }
+
+    .biblioteca-resultado-descripcion {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .biblioteca-resultado-match-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .biblioteca-resultado-keyword {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      background: linear-gradient(135deg, rgba(22, 166, 216, 0.15), rgba(107, 63, 214, 0.15));
+      color: var(--color-azul);
+      border: 1px solid rgba(22, 166, 216, 0.3);
+      white-space: nowrap;
+    }
+
+    .biblioteca-resultados__vacio {
+      text-align: center;
+      padding: 24px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* ===== UTILIDADES ===== */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       HTML - ESTRUCTURA BIBLIOTECA VIRTUAL
+       ============================================ -->
+  <main class="biblioteca-virtual">
+    
+    <!-- BUSCADOR GLOBAL -->
+    <section class="biblioteca-buscador" aria-labelledby="titulo-buscador">
+      <h2 class="biblioteca-buscador__titulo" id="titulo-buscador">Buscar en la Biblioteca</h2>
+      <div class="biblioteca-buscador__contenedor">
+        <div class="biblioteca-buscador__input-wrapper">
+          <div 
+            class="biblioteca-buscador__lupa-wrapper"
+          >
+            <svg class="biblioteca-buscador__lupa" viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            class="biblioteca-buscador__input"
+            id="biblioteca-input-buscar"
+            placeholder="Busca por tema, palabra clave o servicio…"
+            autocomplete="off"
+            aria-label="Buscador de biblioteca"
+          />
+        </div>
+        <!-- DROPDOWN DE RESULTADOS -->
+        <div class="biblioteca-resultados" id="biblioteca-resultados" role="listbox">
+          <div class="biblioteca-resultados__lista" id="biblioteca-lista-resultados"></div>
+        </div>
+      </div>
+      <div class="biblioteca-buscador__contador" id="biblioteca-contador"></div>
+    </section>
+    <!-- SECCIÓN: COLECCIONES -->
+    <section class="biblioteca-seccion" aria-labelledby="titulo-colecciones">
+      <header class="biblioteca-header">
+        <h2 class="biblioteca-header__titulo" id="titulo-colecciones">Colecciones</h2>
+      </header>
+      <div class="biblioteca-grid" id="grid-colecciones" aria-live="polite">
+        <div class="biblioteca-estado biblioteca-estado--loading">Cargando colecciones...</div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SERVICIOS -->
+    <section class="biblioteca-seccion" aria-labelledby="titulo-servicios">
+      <header class="biblioteca-header">
+        <h2 class="biblioteca-header__titulo" id="titulo-servicios">Servicios</h2>
+      </header>
+      <div class="biblioteca-grid" id="grid-servicios" aria-live="polite">
+        <div class="biblioteca-estado biblioteca-estado--loading">Cargando servicios...</div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: CAPACITACIONES -->
+    <section class="biblioteca-seccion" aria-labelledby="titulo-capacitaciones">
+      <header class="biblioteca-header">
+        <h2 class="biblioteca-header__titulo" id="titulo-capacitaciones">Capacitaciones</h2>
+      </header>
+      <div class="biblioteca-grid" id="grid-capacitaciones" aria-live="polite">
+        <div class="biblioteca-estado biblioteca-estado--loading">Cargando capacitaciones...</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       JAVASCRIPT - LÓGICA DE CARGA Y BÚSQUEDA
+       ============================================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ===== CONFIGURACIÓN =====
+      const DATA_URL = 'https://uniempresarial.edu.co/wp-content/uploads/2026/03/biblioteca-secciones.json';
+      const SECCIONES = {
+        colecciones: 'grid-colecciones',
+        servicios: 'grid-servicios',
+        capacitaciones: 'grid-capacitaciones'
+      };
+
+      const CATEGORIAS_NOMBRES = {
+        colecciones: 'Colecciones',
+        servicios: 'Servicios',
+        capacitaciones: 'Capacitaciones',
+        bibliotecas_aliadas: 'Biblioteca Aliada'
+      };
+
+      // ===== ESTADO GLOBAL =====
+      let allItems = [];
+      let searchTimeout;
+
+      // ===== UTILIDADES =====
+
+      /**
+       * Normaliza strings para búsqueda: minúsculas, sin acentos
+       */
+      function normalizar(str) {
+        if (!str) return '';
+        return str
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
+      }
+
+      /**
+       * Debounce para búsqueda
+       */
+      function debounce(fn, delay) {
+        return function(...args) {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(() => fn(...args), delay);
+        };
+      }
+
+      /**
+       * Crea un elemento del DOM con atributos y contenido
+       */
+      function createElement(tag, attrs = {}, children = null) {
+        const el = document.createElement(tag);
+        Object.entries(attrs).forEach(([key, value]) => {
+          if (key === 'className') el.className = value;
+          else if (key === 'dataset') Object.entries(value).forEach(([k, v]) => el.dataset[k] = v);
+          else el.setAttribute(key, value);
+        });
+        if (children) {
+          [].concat(children).forEach(child => {
+            el.appendChild(typeof child === 'string' ? document.createTextNode(child) : child);
+          });
+        }
+        return el;
+      }
+
+      /**
+       * Copia texto al portapapeles
+       */
+      async function copyToClipboard(url) {
+        try {
+          // Privilegiar Clipboard API moderna
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(url);
+            alert('Enlace copiado al portapapeles');
+          } else {
+            // Fallback para navegadores antiguos
+            const textarea = document.createElement('textarea');
+            textarea.value = url;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Enlace copiado al portapapeles');
+          }
+        } catch (error) {
+          console.error('Error copiando enlace:', error);
+          alert('No se pudo copiar el enlace');
+        }
+      }
+
+      // ===== BÚSQUEDA =====
+
+      /**
+       * Construye un índice plano de todos los items con su categoría
+       */
+      function buildIndex(data) {
+        allItems = [];
+        
+        // Indexar secciones principales (colecciones, servicios, capacitaciones)
+        Object.entries(SECCIONES).forEach(([categoria]) => {
+          const items = data[categoria] || [];
+          items.forEach(item => {
+            allItems.push({
+              ...item,
+              categoria
+            });
+          });
+        });
+
+        // Indexar bibliotecas aliadas (estructura diferente)
+        if (data.bibliotecas_aliadas && Array.isArray(data.bibliotecas_aliadas)) {
+          data.bibliotecas_aliadas.forEach(bib => {
+            allItems.push({
+              id: bib.id,
+              titulo: bib.nombre,
+              descripcion: `${bib.tipo || ''} - ${bib.direccion || ''} - Horario: ${bib.horario || 'Consultar'}`,
+              keywords: bib.keywords || [],
+              href: bib.url || '#',
+              externo: true,
+              categoria: 'bibliotecas_aliadas',
+              telefono: bib.telefono,
+              correo: bib.correo,
+              servicios: bib.servicios
+            });
+          });
+        }
+      }
+
+      /**
+       * Busca en el índice de items
+       */
+      function search(query) {
+        if (!query || query.trim().length === 0) {
+          return [];
+        }
+
+        const normalizedQuery = normalizar(query.trim());
+        const results = [];
+
+        allItems.forEach(item => {
+          let score = 0;
+          const matchData = {};
+
+          // Buscar en título/nombre
+          if (normalizar(item.titulo || '').includes(normalizedQuery)) {
+            score += 30;
+            matchData.titulo = true;
+          }
+
+          // Buscar en keywords - guardar cuáles coincidieron
+          if (item.keywords && Array.isArray(item.keywords)) {
+            const keywordsCoincidentes = [];
+            item.keywords.forEach(keyword => {
+              if (normalizar(keyword).includes(normalizedQuery)) {
+                score += 20;
+                keywordsCoincidentes.push(keyword);
+              }
+            });
+            if (keywordsCoincidentes.length > 0) {
+              matchData.keywordsCoincidentes = keywordsCoincidentes;
+            }
+          }
+
+          // Buscar en descripción
+          if (normalizar(item.descripcion || '').includes(normalizedQuery)) {
+            score += 10;
+            matchData.descripcion = true;
+          }
+
+          // Buscar en servicios (para bibliotecas aliadas)
+          if (item.servicios && Array.isArray(item.servicios)) {
+            item.servicios.forEach(servicio => {
+              if (normalizar(servicio).includes(normalizedQuery)) {
+                score += 15;
+                matchData.servicios = true;
+              }
+            });
+          }
+
+          // Si hay relevancia, agregar al resultado
+          if (score > 0) {
+            results.push({
+              ...item,
+              score,
+              matchData
+            });
+          }
+        });
+
+        // Ordenar por relevancia
+        results.sort((a, b) => b.score - a.score);
+        return results;
+      }
+
+      /**
+       * Renderiza resultados de búsqueda
+       */
+      function renderSearchResults(results, query) {
+        const listContainer = document.getElementById('biblioteca-lista-resultados');
+        const resultsModal = document.getElementById('biblioteca-resultados');
+
+        if (!listContainer) return;
+
+        listContainer.innerHTML = '';
+
+        if (results.length === 0) {
+          const vacio = createElement('div', {
+            className: 'biblioteca-resultados__vacio'
+          }, 'No se encontraron coincidencias. Intenta con otras palabras clave.');
+          listContainer.appendChild(vacio);
+          resultsModal.classList.add('activo');
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        results.forEach(item => {
+          // Badge de categoría
+          const badge = createElement('span', {
+            className: `biblioteca-resultado-badge ${item.categoria}`
+          }, CATEGORIAS_NOMBRES[item.categoria]);
+
+          // Título
+          const titulo = createElement('h3', {
+            className: 'biblioteca-resultado-titulo'
+          }, item.titulo);
+
+          // Descripción
+          const descripcion = createElement('p', {
+            className: 'biblioteca-resultado-descripcion'
+          }, item.descripcion);
+
+          // Palabras clave que coincidieron
+          const contenidoArray = [badge, titulo, descripcion];
+          
+          if (item.matchData && item.matchData.keywordsCoincidentes && item.matchData.keywordsCoincidentes.length > 0) {
+            const keywordsContainer = createElement('div', {
+              className: 'biblioteca-resultado-match-keywords'
+            });
+            
+            item.matchData.keywordsCoincidentes.forEach(keyword => {
+              const pill = createElement('span', {
+                className: 'biblioteca-resultado-keyword'
+              }, keyword);
+              keywordsContainer.appendChild(pill);
+            });
+            
+            contenidoArray.push(keywordsContainer);
+          }
+
+          // Contenido
+          const contenido = createElement('div', {
+            className: 'biblioteca-resultado-contenido'
+          }, contenidoArray);
+
+          // Item completo (clickeable)
+          const itemEl = createElement('div', {
+            className: 'biblioteca-resultado-item',
+            role: 'option',
+            tabindex: '0'
+          }, contenido);
+
+          // Event listener para abrir el item
+          itemEl.addEventListener('click', () => {
+            if (item.externo) {
+              window.open(item.href, '_blank', 'noopener,noreferrer');
+            } else {
+              window.location.href = item.href;
+            }
+          });
+
+          // Permitir abrir con Enter
+          itemEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              itemEl.click();
+            }
+          });
+
+          fragment.appendChild(itemEl);
+        });
+
+        listContainer.appendChild(fragment);
+        resultsModal.classList.add('activo');
+      }
+
+      /**
+       * Maneja el evento de búsqueda
+       */
+      const handleSearch = debounce(() => {
+        const input = document.getElementById('biblioteca-input-buscar');
+        const query = input.value.trim();
+        const contador = document.getElementById('biblioteca-contador');
+
+        if (query.length === 0) {
+          document.getElementById('biblioteca-resultados').classList.remove('activo');
+          contador.classList.remove('visible');
+          return;
+        }
+
+        const results = search(query);
+        renderSearchResults(results, query);
+
+        // Mostrar contador
+        contador.classList.add('visible');
+        contador.textContent = `Se encontraron ${results.length} resultado${results.length !== 1 ? 's' : ''}`;
+      }, 250);
+
+      // ===== RENDER DE CARDS =====
+
+      function mostrarEstado(container, tipo, mensaje) {
+        container.innerHTML = '';
+        const estado = createElement('div', {
+          className: `biblioteca-estado biblioteca-estado--${tipo}`,
+          role: tipo === 'error' ? 'alert' : 'status'
+        }, mensaje);
+        container.appendChild(estado);
+      }
+
+      function crearCard(item) {
+        const imagen = createElement('img', {
+          className: 'biblioteca-card__imagen',
+          src: item.imagen || 'https://placehold.co/340x180/e8e8e8/999999?text=Sin+imagen',
+          alt: item.titulo || 'Recurso',
+          loading: 'lazy'
+        });
+
+        const pill = createElement('span', { className: 'biblioteca-card__pill' }, item.titulo || 'Sin título');
+        const descripcion = createElement('p', { className: 'biblioteca-card__descripcion' }, item.descripcion || '');
+
+        const linkAttrs = { className: 'biblioteca-card__link', href: item.href || '#' };
+        if (item.externo) { linkAttrs.target = '_blank'; linkAttrs.rel = 'noopener noreferrer'; }
+        const link = createElement('a', linkAttrs, 'Ver más');
+
+        const contenido = createElement('div', { className: 'biblioteca-card__contenido' }, [pill, descripcion, link]);
+        return createElement('article', { className: 'biblioteca-card', 'data-id': item.id || '' }, [imagen, contenido]);
+      }
+
+      function renderSection(key, containerId, items) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        if (!items || items.length === 0) {
+          mostrarEstado(container, 'vacio', `No hay ${key} disponibles.`);
+          return;
+        }
+        const fragment = document.createDocumentFragment();
+        items.forEach(item => fragment.appendChild(crearCard(item)));
+        container.appendChild(fragment);
+      }
+
+      // ===== CARGA DE DATOS =====
+
+      async function cargarDatos() {
+        try {
+          const response = await fetch(DATA_URL);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+
+          // Construir índice global
+          buildIndex(data);
+
+          // Renderizar secciones
+          Object.entries(SECCIONES).forEach(([key, id]) => {
+            renderSection(key, id, data[key] || []);
+          });
+        } catch (error) {
+          console.error('Error:', error);
+          Object.values(SECCIONES).forEach(id => {
+            const c = document.getElementById(id);
+            if (c) mostrarEstado(c, 'error', 'No se pudieron cargar los datos.');
+          });
+        }
+      }
+
+      // ===== EVENT LISTENERS DEL BUSCADOR =====
+
+      function initSearchListeners() {
+        const input = document.getElementById('biblioteca-input-buscar');
+        const resultsModal = document.getElementById('biblioteca-resultados');
+
+        if (input) {
+          input.addEventListener('input', handleSearch);
+          input.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              input.value = '';
+              resultsModal.classList.remove('activo');
+              document.getElementById('biblioteca-contador').classList.remove('visible');
+            }
+          });
+          input.addEventListener('focus', () => {
+            if (input.value.trim().length > 0) {
+              resultsModal.classList.add('activo');
+            }
+          });
+        }
+
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', (e) => {
+          const buscador = document.querySelector('.biblioteca-buscador__contenedor');
+          if (buscador && !buscador.contains(e.target)) {
+            resultsModal.classList.remove('activo');
+          }
+        });
+      }
+
+      // ===== INICIALIZACIÓN =====
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          cargarDatos();
+          initSearchListeners();
+        });
+      } else {
+        cargarDatos();
+        initSearchListeners();
+      }
+
+      // Exponer API global
+      window.BibliotecaVirtual = {
+        recargar: cargarDatos,
+        search: search
+      };
+
+    })();
+  </script>
+
+</body>
+</html>
