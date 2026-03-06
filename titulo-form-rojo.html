@@ -3,169 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario con Título en Rojo</title>
+    <title>Título y Subtítulo</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
 
         .form-title {
-            color: #D32F2F;
+            color: #ff0000;
             font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 700;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             text-align: center;
         }
 
         .form-subtitle {
             color: #333;
             font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 30px;
+            font-weight: 700;
             text-align: center;
             line-height: 1.5;
+                        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
-        .form-input {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
+        @media (max-width: 480px) {
+            .form-title {
+                font-size: 22px;
+                font-weight: 800;
+            }
 
-        .form-input::placeholder {
-            color: #999;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .form-row input {
-            flex: 1;
-        }
-
-        .phone-input {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .phone-input .country-flag {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: white;
-        }
-
-        .phone-input input {
-            flex: 1;
-        }
-
-        .form-select {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            background: white;
-        }
-
-        .btn-register {
-            width: 100%;
-            padding: 15px;
-            background: #000;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .btn-register:hover {
-            background: #333;
-        }
-
-        .form-checkbox {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-size: 13px;
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .form-checkbox input {
-            margin-top: 3px;
-            cursor: pointer;
-        }
-
-        .privacy-link {
-            color: #2196F3;
-            text-decoration: none;
-        }
-
-        .privacy-link:hover {
-            text-decoration: underline;
+            .form-subtitle {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-title">¿Deseas más información?</div>
-        <div class="form-subtitle">Inscribete para recibir orientación personalizada sobre el programa:</div>
-
-        <form>
-            <div class="form-row">
-                <input type="text" class="form-input" placeholder="Nombre*" required>
-                <input type="text" class="form-input" placeholder="Apellidos*" required>
-            </div>
-
-            <input type="email" class="form-input" placeholder="Email*" required>
-
-            <div class="phone-input">
-                <select class="country-flag">
-                    <option>🇨🇴 +57</option>
-                </select>
-                <input type="tel" class="form-input" placeholder="321 123 4567" required>
-            </div>
-
-            <button type="button" class="btn-register">Registrate Ahora</button>
-
-            <select class="form-select">
-                <option>Cohorte de ingreso</option>
-            </select>
-
-            <label class="form-checkbox">
-                <input type="checkbox" required>
-                <span>Marca la casilla para confirmar si estas de acuerdo con el uso y manejo de tus datos personales, por favor revisa nuestra Política de Datos en el siguiente enlace: <a href="#" class="privacy-link">Política de Datos Uniempresarial</a></span>
-            </label>
-
-            <label class="form-checkbox">
-                <input type="checkbox">
-                <span>Acepto recibir comunicaciones comerciales.</span>
-            </label>
-        </form>
-    </div>
+    <div class="form-title">¿Deseas más información?</div>
+    <div class="form-subtitle">Inscribete para recibir orientación personalizada sobre el programa:</div>
 </body>
 </html>

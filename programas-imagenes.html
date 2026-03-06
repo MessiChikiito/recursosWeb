@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes de Programas - Uniempresarial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0132AF;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .image-source {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Galería de Imágenes - Programas Académicos</h1>
+        
+        <div class="grid">
+            <!-- Ingeniería de Software -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1633356122544-f134ef2944f5?w=1920&h=1080&fit=crop" alt="Ingeniería de Software" class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Ingeniería de Software</h2>
+                    <p class="card-description">Desarrolladores trabajando en código y aplicaciones. Imagen de programación y desarrollo tecnológico.</p>
+                    <p class="image-source">Fuente: Unsplash - Creatividad y Tecnología</p>
+                </div>
+            </div>
+
+            <!-- Marketing -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop" alt="Marketing" class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Marketing</h2>
+                    <p class="card-description">Análisis de datos y estrategias de marketing digital. Equipo colaborando en campañas.</p>
+                    <p class="image-source">Fuente: Unsplash - Análisis de Datos</p>
+                </div>
+            </div>
+
+            <!-- Administración de Empresas -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop" alt="Administración de Empresas" class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Administración de Empresas</h2>
+                    <p class="card-description">Liderazgo empresarial y gestión estratégica en entornos corporativos modernos.</p>
+                    <p class="image-source">Fuente: Unsplash - Negocios Corporativos</p>
+                </div>
+            </div>
+
+            <!-- Finanzas y Comercio Exterior -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&h=1080&fit=crop" alt="Finanzas y Comercio Exterior" class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Finanzas y Comercio Exterior</h2>
+                    <p class="card-description">Análisis financiero, gráficos de mercado y decisiones de inversión estratégica.</p>
+                    <p class="image-source">Fuente: Unsplash - Mercados Financieros</p>
+                </div>
+            </div>
+
+            <!-- Negocios Internacionales -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&h=1080&fit=crop" alt="Negocios Internacionales" class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Negocios Internacionales</h2>
+                    <p class="card-description">Expansión global, comercio internacional y alianzas estratégicas entre empresas.</p>
+                    <p class="image-source">Fuente: Unsplash - Negocios Globales</p>
+                </div>
+            </div>
+
+            <!-- Ingeniería Industrial -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&h=1080&fit=crop" alt="Ingeniería Industrial" class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Ingeniería Industrial</h2>
+                    <p class="card-description">Optimización de procesos, manufactura y sistemas de producción industrial.</p>
+                    <p class="image-source">Fuente: Unsplash - Manufactura Industrial</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notas sobre las imágenes -->
+        <div style="margin-top: 60px; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <h2 style="color: #0132AF; margin-bottom: 15px;">📝 Información sobre las Imágenes</h2>
+            <p style="color: #666; line-height: 1.8;">
+                Las imágenes utilizadas provienen de <strong>Unsplash</strong>, una plataforma de imágenes de alta calidad completamente libres de derechos de autor.<br><br>
+                
+                <strong>Para personalizarlas:</strong><br>
+                1. Visita <a href="https://unsplash.com" target="_blank" style="color: #0132AF; text-decoration: none;">unsplash.com</a><br>
+                2. Busca por palabras clave (ej: "software development", "marketing", "manufacturing")<br>
+                3. Descarga la imagen en alta resolución<br>
+                4. Sube las imágenes a tu servidor y reemplaza las URLs en este archivo<br><br>
+                
+                <strong>Alternativas recomendadas:</strong>
+                <ul style="margin-left: 20px; color: #666;">
+                    <li><a href="https://www.pexels.com" target="_blank" style="color: #0132AF;">Pexels.com</a> - Imágenes gratis de alta calidad</li>
+                    <li><a href="https://pixabay.com" target="_blank" style="color: #0132AF;">Pixabay.com</a> - Amplio catálogo de imágenes libres</li>
+                    <li><a href="https://www.freepik.com" target="_blank" style="color: #0132AF;">Freepik.com</a> - Recursos gráficos y vector</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
