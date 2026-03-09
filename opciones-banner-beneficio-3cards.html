@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Opciones Banner Beneficio - 3 Cards (Presencial, Virtual, Posgrados)</title>
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #2A449C;
+            --color-primary-light: #3a5bc7;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-green: #10B981;
+            --color-purple: #8B5CF6;
+            --color-orange: #F59E0B;
+            --color-cyan: #06B6D4;
+            --color-white: #ffffff;
+            --color-gray-100: #f1f5f9;
+            --color-gray-200: #e2e8f0;
+            --color-gray-400: #94a3b8;
+            --color-gray-500: #64748b;
+            --color-gray-700: #334155;
+            --color-gray-900: #0f172a;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.8s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #1e293b;
+            min-height: 100vh;
+            padding: 40px 24px;
+        }
+
+        /* ========== CONTENEDOR DE OPCIONES ========== */
+        .options-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .option-section {
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .option-label {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ff6b6b 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .option-description {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        /* ========== BANNER HERO CONTAINER ========== */
+        .banner-hero {
+            background: linear-gradient(135deg, #2A449C 0%, #1e3a8a 100%);
+            padding: 50px;
+            width: 100%;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+        }
+
+        .banner-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .banner-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ========== LAYOUT PRINCIPAL ========== */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== COLUMNA IZQUIERDA - HERO CONTENT ========== */
+        .hero-content {
+            color: var(--color-white);
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: #ffffff !important;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8) !important;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        /* ========== 3 OPCIONES CARDS ========== */
+        .hero-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .hero-option {
+            background: rgba(255,255,255,0.1) !important;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-decoration: none;
+            color: white !important;
+            transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease !important;
+            position: relative;
+        }
+
+        .hero-option:hover {
+            background: rgba(255,255,255,0.15) !important;
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-4px);
+        }
+
+        .hero-option.presencial:hover {
+            border-color: var(--color-accent) !important;
+            box-shadow: 0 8px 30px rgba(239, 18, 24, 0.4) !important;
+        }
+
+        .hero-option.virtual:hover {
+            border-color: var(--color-green) !important;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .hero-option.posgrados:hover {
+            border-color: var(--color-purple) !important;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4) !important;
+        }
+
+        .hero-option .option-badge {
+            position: absolute;
+            top: -12px;
+            right: 12px;
+            background: linear-gradient(135deg, #EF1218 0%, #ff4d52 100%);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        .hero-option .option-badge.green {
+            background: linear-gradient(135deg, #10B981 0%, #34d399 100%);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .hero-option .option-badge.purple {
+            background: linear-gradient(135deg, #8B5CF6 0%, #a78bfa 100%);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .hero-option .option-badge.orange {
+            background: linear-gradient(135deg, #F59E0B 0%, #fbbf24 100%);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .option-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15) !important;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .option-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+        }
+
+        .option-type {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .option-type.red { color: #f87171; text-shadow: 0 0 10px rgba(248, 113, 113, 0.5); }
+        .option-type.green { color: #4ade80; text-shadow: 0 0 10px rgba(74, 222, 128, 0.5); }
+        .option-type.purple { color: #a78bfa; text-shadow: 0 0 10px rgba(167, 139, 250, 0.5); }
+        .option-type.orange { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+        .option-type.cyan { color: #22d3ee; text-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
+
+        .option-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #ffffff !important;
+        }
+
+        .option-price {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .option-price .price-old {
+            text-decoration: line-through;
+            color: #f87171;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-left: 4px;
+        }
+
+        .option-arrow {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .hero-option:hover .option-arrow {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(4px);
+        }
+
+        /* ========== COLUMNA DERECHA - STATS PANEL ========== */
+        .stats-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-panel {
+            background: rgba(42, 68, 156, 0.3) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .stat-item {
+            background: rgba(30, 58, 138, 0.5) !important;
+            border-radius: var(--radius-sm);
+            padding: 18px 14px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), #ff6b6b);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-item:hover {
+            background: rgba(30, 58, 138, 0.7) !important;
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-white);
+            line-height: 1;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-number .accent {
+            color: #4ade80 !important;
+            -webkit-text-fill-color: #4ade80 !important;
+            background: none !important;
+            background-clip: unset !important;
+            -webkit-background-clip: unset !important;
+        }
+
+        .stat-number .accent-red {
+            color: #f87171 !important;
+            -webkit-text-fill-color: #f87171 !important;
+            background: none !important;
+            background-clip: unset !important;
+            -webkit-background-clip: unset !important;
+        }
+
+        .stat-number .accent-purple {
+            color: #a78bfa !important;
+            -webkit-text-fill-color: #a78bfa !important;
+            background: none !important;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.8) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            width: 34px;
+            height: 34px;
+            margin: 0 auto 10px;
+            color: rgba(255,255,255,0.8) !important;
+            stroke: rgba(255,255,255,0.8) !important;
+        }
+
+        /* CTA Principal */
+        .stats-cta {
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #EF1218 0%, #c50e13 100%) !important;
+            color: white !important;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px 28px;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none !important;
+            transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+            box-shadow: 0 4px 20px rgba(239, 18, 24, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(239, 18, 24, 0.5) !important;
+        }
+
+        /* ========== VARIACIONES DE ESTILOS ========== */
+
+        /* Variante Dark */
+        .banner-hero.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .banner-hero.dark::before {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .banner-hero.dark .stats-panel {
+            background: rgba(15, 23, 42, 0.6) !important;
+            border-color: rgba(255,255,255,0.1) !important;
+        }
+
+        .banner-hero.dark .stat-item {
+            background: rgba(30, 41, 59, 0.8) !important;
+        }
+
+        /* Variante con gradiente violeta */
+        .banner-hero.purple-gradient {
+            background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+        }
+
+        .banner-hero.purple-gradient .stats-panel {
+            background: rgba(76, 29, 149, 0.4) !important;
+        }
+
+        .banner-hero.purple-gradient .stat-item {
+            background: rgba(109, 40, 217, 0.5) !important;
+        }
+
+        /* Variante emerald */
+        .banner-hero.emerald {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+        }
+
+        .banner-hero.emerald .stats-panel {
+            background: rgba(6, 78, 59, 0.4) !important;
+        }
+
+        .banner-hero.emerald .stat-item {
+            background: rgba(4, 120, 87, 0.5) !important;
+        }
+
+        /* Variante con pattern */
+        .banner-hero.with-pattern::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1100px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-hero {
+                padding: 35px 25px;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-options {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .stats-panel {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .banner-hero {
+                padding: 25px 18px;
+            }
+
+            .hero-title {
+                font-size: 1.3rem;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="options-wrapper">
+    <h1 class="page-title">Banner Beneficio Modular - 3 Cards</h1>
+    <p class="page-subtitle">10 opciones con Presencial, Virtual y Posgrados</p>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 1: Clásico con bullets de credibilidad institucional
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 1</span>
+        <p class="option-description">Diseño clásico azul con estadísticas institucionales. Bullets enfocados en credibilidad y trayectoria.</p>
+        
+        <div class="banner-hero">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">¡Aún estás a tiempo de aprovechar el beneficio Uniempresarial!</h2>
+                    <p class="hero-subtitle">Aplica ahora y obtén descuento en TODA tu carrera. Elige la modalidad que mejor se adapte a tu estilo de vida.</p>
+                    
+                    <div class="hero-options">
+                        <!-- Presencial -->
+                        <a href="#" class="hero-option presencial">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <!-- Virtual -->
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">Nuevo</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <!-- Posgrados -->
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Executive</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <div class="stat-number">92<span class="accent">%</span></div>
+                            <div class="stat-label">Empleabilidad</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                            <div class="stat-number">+15<span class="accent">K</span></div>
+                            <div class="stat-label">Graduados</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div class="stat-number">25</div>
+                            <div class="stat-label">Años</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                            <div class="stat-number">150<span class="accent">+</span></div>
+                            <div class="stat-label">Empresas aliadas</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Solicitar información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 2: Bullets de URGENCIA + AHORRO
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 2</span>
+        <p class="option-description">⚡ Bullets enfocados en URGENCIA y AHORRO REAL. Ideal para generar acción inmediata.</p>
+        
+        <div class="banner-hero">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">⏰ Últimos días: Beneficio exclusivo Uniempresarial</h2>
+                    <p class="hero-subtitle">No dejes pasar esta oportunidad. El descuento aplica en TODA tu carrera y vence pronto.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <span class="option-badge">¡Últimos cupos!</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">Más popular</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Impulsa tu carrera</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div class="stat-number">72<span class="accent-red">h</span></div>
+                            <div class="stat-label">Para aplicar</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            <div class="stat-number">$15<span class="accent">M</span></div>
+                            <div class="stat-label">Ahorras en tu carrera</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <div class="stat-number">847</div>
+                            <div class="stat-label">Ya se inscribieron</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <div class="stat-number">100<span class="accent">%</span></div>
+                            <div class="stat-label">Descuento garantizado</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">¡Aplicar ahora!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 3: Bullets de ROI y beneficio profesional
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 3</span>
+        <p class="option-description">💼 Bullets enfocados en RETORNO DE INVERSIÓN y crecimiento profesional. Ideal para audiencia más analítica.</p>
+        
+        <div class="banner-hero dark">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">Invierte hoy en tu futuro con el beneficio Uniempresarial</h2>
+                    <p class="hero-subtitle">Obtén el mejor retorno de inversión con descuentos exclusivos en programas de alta demanda laboral.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">Mejor ROI</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Alto impacto</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                            <div class="stat-number">+45<span class="accent">%</span></div>
+                            <div class="stat-label">Aumento salarial</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Meses para recuperar</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                            <div class="stat-number">3<span class="accent">x</span></div>
+                            <div class="stat-label">ROI vs otras unis</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <div class="stat-number">92<span class="accent">%</span></div>
+                            <div class="stat-label">Empleabilidad</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Calcular mi inversión</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 4: Prueba social y recomendaciones
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 4</span>
+        <p class="option-description">👥 Bullets con PRUEBA SOCIAL fuerte. Enfatiza testimonios y satisfacción de egresados.</p>
+        
+        <div class="banner-hero">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">Miles de profesionales ya aprovecharon este beneficio</h2>
+                    <p class="hero-subtitle">Únete a la comunidad de egresados exitosos. Aplica el descuento y comienza tu transformación.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">⭐ 4.9/5</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Top 10 Col</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                            <div class="stat-number">9/10</div>
+                            <div class="stat-label">Nos recomiendan</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            <div class="stat-number">+15<span class="accent">K</span></div>
+                            <div class="stat-label">Egresados exitosos</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                            </svg>
+                            <div class="stat-number">97<span class="accent">%</span></div>
+                            <div class="stat-label">Satisfacción</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                            </svg>
+                            <div class="stat-number">#1</div>
+                            <div class="stat-label">En empleabilidad</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Unirme a la comunidad</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 5: Gradiente púrpura premium
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 5</span>
+        <p class="option-description">🟣 Estilo premium con gradiente púrpura. Bullets de exclusividad y beneficios únicos.</p>
+        
+        <div class="banner-hero purple-gradient">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">Accede al beneficio exclusivo para nuevos estudiantes</h2>
+                    <p class="hero-subtitle">Un descuento que no encontrarás en ningún otro momento. Transforma tu futuro hoy.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type orange">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge orange">Exclusivo</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type cyan">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">VIP</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type orange">35% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $6.500.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <div class="stat-number">100<span class="accent">%</span></div>
+                            <div class="stat-label">Descuento asegurado</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Semestres cubiertos</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M16 8l-4 4-4-4"/>
+                                <path d="M12 16V12"/>
+                            </svg>
+                            <div class="stat-number">0<span class="accent">%</span></div>
+                            <div class="stat-label">Matrícula inicial</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                            <div class="stat-number">+3</div>
+                            <div class="stat-label">Beneficios extra</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Acceder al beneficio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 6: Enfoque en flexibilidad de pago
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 6</span>
+        <p class="option-description">💳 Bullets enfocados en FLEXIBILIDAD DE PAGO y financiación. Ideal para quienes buscan opciones de pago.</p>
+        
+        <div class="banner-hero">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">Tu carrera, a tu ritmo de pago</h2>
+                    <p class="hero-subtitle">Beneficio + financiación flexible. Empieza ahora y paga cómodamente durante tu carrera.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <span class="option-badge">Cuotas desde $450K</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">Cuotas desde $380K</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Cuotas desde $600K</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                <line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Cuotas sin interés</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M16 8l-4 4-4-4"/>
+                                <path d="M12 16V12"/>
+                            </svg>
+                            <div class="stat-number">$0</div>
+                            <div class="stat-label">Inscripción</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Entidades aliadas</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div class="stat-number">Sin</div>
+                            <div class="stat-label">Codeudor</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Ver planes de pago</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 7: Estilo emerald - Enfoque en experiencia práctica
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 7</span>
+        <p class="option-description">🟢 Estilo verde esmeralda. Bullets enfocados en EXPERIENCIA PRÁCTICA y conexión empresarial.</p>
+        
+        <div class="banner-hero emerald">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">Aprende trabajando en empresas reales desde el primer semestre</h2>
+                    <p class="hero-subtitle">Nuestro modelo único te conecta con el mundo laboral mientras estudias. Ahora con beneficio especial.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <span class="option-badge">Práctica empresarial</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">100% flexible</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Networking VIP</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                            <div class="stat-number">150<span class="accent">+</span></div>
+                            <div class="stat-label">Empresas aliadas</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div class="stat-number">2.880</div>
+                            <div class="stat-label">Horas de práctica</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <div class="stat-number">92<span class="accent">%</span></div>
+                            <div class="stat-label">Empleabilidad</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                            <div class="stat-number">1er</div>
+                            <div class="stat-label">Sem en empresa</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Conocer el modelo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 8: Enfoque en rapidez y resultados inmediatos
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 8</span>
+        <p class="option-description">⚡ Bullets enfocados en RAPIDEZ y resultados inmediatos. Para audiencia orientada a la acción.</p>
+        
+        <div class="banner-hero dark with-pattern">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">3 pasos para cambiar tu futuro profesional</h2>
+                    <p class="hero-subtitle">Aplica → Inscríbete → Empieza. Así de simple. Beneficio directo sin trámites complicados.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">Inicio inmediato</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Fast track</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div class="stat-number">24<span class="accent">h</span></div>
+                            <div class="stat-label">Respuesta admisiones</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Pasos para aplicar</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Requisitos extra</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                            <div class="stat-number">100<span class="accent">%</span></div>
+                            <div class="stat-label">Online el proceso</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Aplicar en 2 minutos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 9: Comparativa de valor vs competencia
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 9</span>
+        <p class="option-description">📊 Bullets de COMPARATIVA DE VALOR. Destaca por qué es mejor opción vs otras universidades.</p>
+        
+        <div class="banner-hero">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">La mejor relación calidad-precio en educación superior</h2>
+                    <p class="hero-subtitle">Compara y decide. Nuestro beneficio te da más por menos. Calidad acreditada a precio justo.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <span class="option-badge">Mejor precio/calidad</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type red">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">40% más económico</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type green">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Acreditado CNA</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type purple">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            <div class="stat-number">-40<span class="accent">%</span></div>
+                            <div class="stat-label">vs otras unis</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                            </svg>
+                            <div class="stat-number">AAA</div>
+                            <div class="stat-label">Acreditación CNA</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                            <div class="stat-number">Top 5</div>
+                            <div class="stat-label">En Colombia</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <div class="stat-number">92<span class="accent">%</span></div>
+                            <div class="stat-label">Empleabilidad</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Comparar programas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 10: Beneficios emocionales y transformación
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 10</span>
+        <p class="option-description">💫 Bullets con enfoque EMOCIONAL y transformación personal. Conecta con aspiraciones y sueños.</p>
+        
+        <div class="banner-hero purple-gradient with-pattern">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <h2 class="hero-title">Tu momento de brillar ha llegado</h2>
+                    <p class="hero-subtitle">Este beneficio es tu oportunidad de transformar tu vida. Miles ya lo lograron, ahora es tu turno.</p>
+                    
+                    <div class="hero-options">
+                        <a href="#" class="hero-option presencial">
+                            <span class="option-badge">Tu mejor versión</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <p class="option-type orange">25% OFF</p>
+                            <h4 class="option-title">Presencial</h4>
+                            <p class="option-price">$5.067.750/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="hero-option virtual">
+                            <span class="option-badge green">Sin límites</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <p class="option-type cyan">38% OFF</p>
+                            <h4 class="option-title">Virtual</h4>
+                            <p class="option-price">$4.200.000/sem <span class="price-old">$6.757.000</span></p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="#" class="hero-option posgrados">
+                            <span class="option-badge purple">Lidera tu futuro</span>
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <p class="option-type orange">30% OFF</p>
+                            <h4 class="option-title">Posgrados</h4>
+                            <p class="option-price">Desde $7.000.000/sem</p>
+                            <div class="option-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-panel">
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                            <div class="stat-number">15<span class="accent">K</span></div>
+                            <div class="stat-label">Sueños cumplidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                <line x1="15" y1="9" x2="15.01" y2="9"/>
+                            </svg>
+                            <div class="stat-number">97<span class="accent">%</span></div>
+                            <div class="stat-label">Felices con su decisión</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                            <div class="stat-number">+45<span class="accent">%</span></div>
+                            <div class="stat-label">Crecimiento personal</div>
+                        </div>
+                        <div class="stat-item">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Oportunidades</div>
+                        </div>
+                    </div>
+                    <a href="#" class="stats-cta">Empezar mi transformación</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

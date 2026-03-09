@@ -1,0 +1,2520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Opciones Banner Beneficio V2 - Diseños Alternativos</title>
+    <style>
+        /* ========== RESET Y VARIABLES ========== */
+        :root {
+            --color-primary: #2A449C;
+            --color-primary-dark: #1e3a8a;
+            --color-primary-light: #3a5bc7;
+            --color-accent: #EF1218;
+            --color-accent-hover: #c50e13;
+            --color-accent-light: #ff6b6b;
+            --color-green: #10B981;
+            --color-purple: #8B5CF6;
+            --color-white: #ffffff;
+            --color-gray-100: #f1f5f9;
+            --color-gray-200: #e2e8f0;
+            --color-gray-900: #0f172a;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #1e293b;
+            min-height: 100vh;
+            padding: 40px 24px;
+        }
+
+        .options-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .option-section {
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .option-label {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ff6b6b 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .option-description {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 1: CARDS HORIZONTALES APILADAS
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v1 {
+            background: linear-gradient(135deg, #2A449C 0%, #1e3a8a 100%);
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-v1::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(239,18,24,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .banner-v1 .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-v1 .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .banner-v1 .main-title {
+            font-size: 2.2rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .banner-v1 .main-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+        }
+
+        .banner-v1 .cards-horizontal {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .banner-v1 .card-h {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: 24px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 20px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v1 .card-h:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(8px);
+        }
+
+        .banner-v1 .card-h.presencial:hover { border-color: var(--color-accent); box-shadow: 0 0 30px rgba(239,18,24,0.3); }
+        .banner-v1 .card-h.virtual:hover { border-color: var(--color-green); box-shadow: 0 0 30px rgba(16,185,129,0.3); }
+        .banner-v1 .card-h.posgrados:hover { border-color: var(--color-purple); box-shadow: 0 0 30px rgba(139,92,246,0.3); }
+
+        .banner-v1 .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-v1 .card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+        }
+
+        .banner-v1 .card-info h4 {
+            color: white;
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+
+        .banner-v1 .card-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .banner-v1 .card-discount {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ff4d52 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .banner-v1 .card-discount.green {
+            background: linear-gradient(135deg, var(--color-green) 0%, #34d399 100%);
+        }
+
+        .banner-v1 .card-discount.purple {
+            background: linear-gradient(135deg, var(--color-purple) 0%, #a78bfa 100%);
+        }
+
+        .banner-v1 .card-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-v1 .card-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke: white;
+        }
+
+        .banner-v1 .cta-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .banner-v1 .main-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #c50e13 100%);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(239,18,24,0.4);
+        }
+
+        .banner-v1 .main-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(239,18,24,0.5);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 2: SPLIT DESIGN CON IMAGEN/PATRÓN
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v2 {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .banner-v2 .left-panel {
+            background: linear-gradient(180deg, #2A449C 0%, #1e3a8a 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .banner-v2 .left-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20h20v20H20zM0 0h20v20H0z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .banner-v2 .left-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-v2 .promo-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .banner-v2 .main-title {
+            font-size: 2.4rem;
+            color: white;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .banner-v2 .main-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .banner-v2 .stats-row {
+            display: flex;
+            gap: 30px;
+        }
+
+        .banner-v2 .stat-mini {
+            text-align: center;
+        }
+
+        .banner-v2 .stat-mini .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .banner-v2 .stat-mini .number span {
+            color: #4ade80;
+        }
+
+        .banner-v2 .stat-mini .label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .banner-v2 .right-panel {
+            background: #f1f5f9;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner-v2 .cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .banner-v2 .card-s {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v2 .card-s:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .banner-v2 .card-s.presencial:hover { border-color: var(--color-accent); }
+        .banner-v2 .card-s.virtual:hover { border-color: var(--color-green); }
+        .banner-v2 .card-s.posgrados:hover { border-color: var(--color-purple); }
+
+        .banner-v2 .card-s-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner-v2 .card-s-icon.red { background: linear-gradient(135deg, var(--color-accent) 0%, #ff6b6b 100%); }
+        .banner-v2 .card-s-icon.green { background: linear-gradient(135deg, var(--color-green) 0%, #34d399 100%); }
+        .banner-v2 .card-s-icon.purple { background: linear-gradient(135deg, var(--color-purple) 0%, #a78bfa 100%); }
+
+        .banner-v2 .card-s-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: white;
+        }
+
+        .banner-v2 .card-s-content {
+            flex: 1;
+        }
+
+        .banner-v2 .card-s-content h4 {
+            color: var(--color-gray-900);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .banner-v2 .card-s-content .price {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .banner-v2 .card-s-content .price .old {
+            text-decoration: line-through;
+            color: #94a3b8;
+            margin-left: 8px;
+        }
+
+        .banner-v2 .card-s-discount {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .banner-v2 .card-s-discount.red { color: var(--color-accent); }
+        .banner-v2 .card-s-discount.green { color: var(--color-green); }
+        .banner-v2 .card-s-discount.purple { color: var(--color-purple); }
+
+        .banner-v2 .cta-bottom {
+            margin-top: 24px;
+        }
+
+        .banner-v2 .cta-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v2 .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42,68,156,0.4);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 3: GLASSMORPHISM CARDS
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v3 {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2A449C 50%, #3b5998 100%);
+            padding: 60px 50px;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-v3::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(239,18,24,0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(59,89,152,0.3) 0%, transparent 50%);
+            animation: pulse-bg 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .banner-v3 .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-v3 .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .banner-v3 .header h2 {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .banner-v3 .header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+        }
+
+        .banner-v3 .glass-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .banner-v3 .glass-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 32px 28px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-v3 .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .banner-v3 .glass-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .banner-v3 .glass-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .banner-v3 .glass-card .discount-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-accent);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .banner-v3 .glass-card .discount-tag.green { background: var(--color-green); }
+        .banner-v3 .glass-card .discount-tag.purple { background: var(--color-purple); }
+
+        .banner-v3 .glass-card .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .banner-v3 .glass-card .card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: white;
+        }
+
+        .banner-v3 .glass-card h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .banner-v3 .glass-card .price-info {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .banner-v3 .glass-card .price-info .old {
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85em;
+        }
+
+        .banner-v3 .glass-card .features {
+            list-style: none;
+        }
+
+        .banner-v3 .glass-card .features li {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .banner-v3 .glass-card .features li::before {
+            content: '✓';
+            color: #4ade80;
+            font-weight: 700;
+        }
+
+        .banner-v3 .cta-center {
+            text-align: center;
+        }
+
+        .banner-v3 .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--color-primary);
+            padding: 18px 60px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v3 .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 4: CARDS CON RIBBON DIAGONAL
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v4 {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .banner-v4 .top-bar {
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: 30px 50px;
+            text-align: center;
+        }
+
+        .banner-v4 .top-bar h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .banner-v4 .top-bar p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+        }
+
+        .banner-v4 .cards-area {
+            padding: 50px;
+            background: #f8fafc;
+        }
+
+        .banner-v4 .ribbon-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .banner-v4 .ribbon-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .banner-v4 .ribbon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .banner-v4 .ribbon-card.presencial:hover { border-color: var(--color-accent); }
+        .banner-v4 .ribbon-card.virtual:hover { border-color: var(--color-green); }
+        .banner-v4 .ribbon-card.posgrados:hover { border-color: var(--color-purple); }
+
+        .banner-v4 .ribbon {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--color-accent);
+            color: white;
+            padding: 8px 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .banner-v4 .ribbon.green { background: var(--color-green); }
+        .banner-v4 .ribbon.purple { background: var(--color-purple); }
+
+        .banner-v4 .ribbon-card .icon-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .banner-v4 .icon-circle.red { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); }
+        .banner-v4 .icon-circle.green { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); }
+        .banner-v4 .icon-circle.purple { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); }
+
+        .banner-v4 .icon-circle svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .banner-v4 .icon-circle.red svg { stroke: var(--color-accent); }
+        .banner-v4 .icon-circle.green svg { stroke: var(--color-green); }
+        .banner-v4 .icon-circle.purple svg { stroke: var(--color-purple); }
+
+        .banner-v4 .ribbon-card h4 {
+            color: var(--color-gray-900);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .banner-v4 .ribbon-card .desc {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .banner-v4 .ribbon-card .price-big {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .banner-v4 .price-big.red { color: var(--color-accent); }
+        .banner-v4 .price-big.green { color: var(--color-green); }
+        .banner-v4 .price-big.purple { color: var(--color-purple); }
+
+        .banner-v4 .ribbon-card .price-old {
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-size: 0.95rem;
+        }
+
+        .banner-v4 .bottom-cta {
+            background: white;
+            padding: 0 50px 50px;
+            text-align: center;
+        }
+
+        .banner-v4 .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #c50e13 100%);
+            color: white;
+            padding: 18px 60px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(239,18,24,0.3);
+        }
+
+        .banner-v4 .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(239,18,24,0.4);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 5: MINIMALISTA CON LÍNEAS
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v5 {
+            background: #f8fafc;
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .banner-v5 .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .banner-v5 .header-left h2 {
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .banner-v5 .header-left p {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        .banner-v5 .header-right {
+            text-align: right;
+        }
+
+        .banner-v5 .header-right .countdown {
+            background: var(--color-accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .banner-v5 .minimal-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .banner-v5 .minimal-card {
+            padding: 40px 30px;
+            text-decoration: none;
+            border-right: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .banner-v5 .minimal-card:last-child {
+            border-right: none;
+        }
+
+        .banner-v5 .minimal-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            right: 30px;
+            height: 3px;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .banner-v5 .minimal-card:hover {
+            background: white;
+        }
+
+        .banner-v5 .minimal-card.presencial:hover::after { background: var(--color-accent); }
+        .banner-v5 .minimal-card.virtual:hover::after { background: var(--color-green); }
+        .banner-v5 .minimal-card.posgrados:hover::after { background: var(--color-purple); }
+
+        .banner-v5 .minimal-card .type-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .banner-v5 .type-label.red { color: var(--color-accent); }
+        .banner-v5 .type-label.green { color: var(--color-green); }
+        .banner-v5 .type-label.purple { color: var(--color-purple); }
+
+        .banner-v5 .minimal-card h4 {
+            color: var(--color-gray-900);
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .banner-v5 .minimal-card .discount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .banner-v5 .minimal-card .price-text {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .banner-v5 .minimal-card .price-text .old {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+
+        .banner-v5 .cta-section {
+            margin-top: 50px;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .banner-v5 .cta-btn {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 0;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v5 .cta-btn:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 6: TABS INTERACTIVAS (VISUAL)
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v6 {
+            background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .banner-v6 .tabs-header {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .banner-v6 .tab-btn {
+            padding: 24px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .banner-v6 .tab-btn:hover,
+        .banner-v6 .tab-btn.active {
+            background: transparent;
+            color: white;
+        }
+
+        .banner-v6 .tab-btn.presencial.active,
+        .banner-v6 .tab-btn.presencial:hover { border-bottom-color: var(--color-accent); }
+        .banner-v6 .tab-btn.virtual.active,
+        .banner-v6 .tab-btn.virtual:hover { border-bottom-color: var(--color-green); }
+        .banner-v6 .tab-btn.posgrados.active,
+        .banner-v6 .tab-btn.posgrados:hover { border-bottom-color: var(--color-purple); }
+
+        .banner-v6 .tab-btn .tab-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 10px;
+        }
+
+        .banner-v6 .tab-btn .tab-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+        }
+
+        .banner-v6 .tab-btn h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .banner-v6 .tab-btn .discount {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .banner-v6 .tab-content {
+            padding: 50px;
+        }
+
+        .banner-v6 .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .banner-v6 .content-left h2 {
+            font-size: 2.2rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .banner-v6 .content-left p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .banner-v6 .price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .banner-v6 .price-display .current {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .banner-v6 .price-display .old {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .banner-v6 .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #c50e13 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(239,18,24,0.4);
+        }
+
+        .banner-v6 .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(239,18,24,0.5);
+        }
+
+        .banner-v6 .content-right {
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            padding: 30px;
+        }
+
+        .banner-v6 .benefits-list {
+            list-style: none;
+        }
+
+        .banner-v6 .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .banner-v6 .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .banner-v6 .benefits-list .check {
+            width: 24px;
+            height: 24px;
+            background: var(--color-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner-v6 .benefits-list .check svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 7: MAGAZINE STYLE
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v7 {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .banner-v7 .magazine-left {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: 50px;
+            position: relative;
+        }
+
+        .banner-v7 .magazine-left::before {
+            content: 'OFERTA ESPECIAL';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.05);
+            white-space: nowrap;
+        }
+
+        .banner-v7 .magazine-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-v7 .big-number {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            line-height: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .banner-v7 .big-number span {
+            font-size: 3rem;
+            vertical-align: top;
+        }
+
+        .banner-v7 .discount-text {
+            font-size: 2rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .banner-v7 .magazine-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .banner-v7 .magazine-right {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner-v7 .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .banner-v7 .program-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .banner-v7 .program-item:hover {
+            background: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateX(8px);
+        }
+
+        .banner-v7 .program-item.presencial:hover { border-left-color: var(--color-accent); }
+        .banner-v7 .program-item.virtual:hover { border-left-color: var(--color-green); }
+        .banner-v7 .program-item.posgrados:hover { border-left-color: var(--color-purple); }
+
+        .banner-v7 .program-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner-v7 .program-icon.red { background: #fef2f2; }
+        .banner-v7 .program-icon.green { background: #ecfdf5; }
+        .banner-v7 .program-icon.purple { background: #f5f3ff; }
+
+        .banner-v7 .program-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .banner-v7 .program-icon.red svg { stroke: var(--color-accent); }
+        .banner-v7 .program-icon.green svg { stroke: var(--color-green); }
+        .banner-v7 .program-icon.purple svg { stroke: var(--color-purple); }
+
+        .banner-v7 .program-info {
+            flex: 1;
+        }
+
+        .banner-v7 .program-info h4 {
+            color: var(--color-gray-900);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .banner-v7 .program-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .banner-v7 .program-discount {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .banner-v7 .program-discount.red { color: var(--color-accent); }
+        .banner-v7 .program-discount.green { color: var(--color-green); }
+        .banner-v7 .program-discount.purple { color: var(--color-purple); }
+
+        .banner-v7 .cta-bottom {
+            margin-top: 30px;
+        }
+
+        .banner-v7 .cta-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--color-primary);
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v7 .cta-btn:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 8: FLOATING CARDS 3D
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v8 {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-v8::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(42,68,156,0.3) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .banner-v8 .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-v8 .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .banner-v8 .header h2 {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .banner-v8 .header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+
+        .banner-v8 .floating-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            perspective: 1000px;
+            margin-bottom: 50px;
+        }
+
+        .banner-v8 .float-card {
+            width: 280px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .banner-v8 .float-card:nth-child(1) { transform: rotateY(-5deg) translateZ(20px); }
+        .banner-v8 .float-card:nth-child(2) { transform: translateZ(40px); }
+        .banner-v8 .float-card:nth-child(3) { transform: rotateY(5deg) translateZ(20px); }
+
+        .banner-v8 .float-card:hover {
+            transform: rotateY(0) translateZ(60px) translateY(-10px) !important;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .banner-v8 .float-card .glow {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .banner-v8 .float-card.presencial .glow { background: linear-gradient(135deg, var(--color-accent), transparent); }
+        .banner-v8 .float-card.virtual .glow { background: linear-gradient(135deg, var(--color-green), transparent); }
+        .banner-v8 .float-card.posgrados .glow { background: linear-gradient(135deg, var(--color-purple), transparent); }
+
+        .banner-v8 .float-card:hover .glow {
+            opacity: 0.3;
+        }
+
+        .banner-v8 .float-card .discount-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .banner-v8 .discount-circle.red { background: linear-gradient(135deg, var(--color-accent) 0%, #ff6b6b 100%); }
+        .banner-v8 .discount-circle.green { background: linear-gradient(135deg, var(--color-green) 0%, #34d399 100%); }
+        .banner-v8 .discount-circle.purple { background: linear-gradient(135deg, var(--color-purple) 0%, #a78bfa 100%); }
+
+        .banner-v8 .float-card h4 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .banner-v8 .float-card .price {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .banner-v8 .float-card .price .old {
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9em;
+        }
+
+        .banner-v8 .float-card .card-cta {
+            display: block;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .banner-v8 .float-card:hover .card-cta {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .banner-v8 .cta-center {
+            text-align: center;
+        }
+
+        .banner-v8 .main-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #c50e13 100%);
+            color: white;
+            padding: 18px 60px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(239,18,24,0.4);
+        }
+
+        .banner-v8 .main-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239,18,24,0.5);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 9: COMPARATIVA SIDE BY SIDE
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v9 {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .banner-v9 .top-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .banner-v9 .top-section h2 {
+            font-size: 2rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .banner-v9 .top-section p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .banner-v9 .comparison-table {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .banner-v9 .comparison-col {
+            padding: 40px 30px;
+            text-align: center;
+            border-right: 1px solid #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v9 .comparison-col:last-child {
+            border-right: none;
+        }
+
+        .banner-v9 .comparison-col:hover {
+            background: #f8fafc;
+        }
+
+        .banner-v9 .comparison-col.featured {
+            background: #fef2f2;
+            position: relative;
+        }
+
+        .banner-v9 .comparison-col.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-accent);
+            color: white;
+            padding: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .banner-v9 .col-header {
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .banner-v9 .col-header h3 {
+            color: var(--color-gray-900);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .banner-v9 .col-header .price {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .banner-v9 .col-header .price.red { color: var(--color-accent); }
+        .banner-v9 .col-header .price.green { color: var(--color-green); }
+        .banner-v9 .col-header .price.purple { color: var(--color-purple); }
+
+        .banner-v9 .col-header .old-price {
+            color: #94a3b8;
+            text-decoration: line-through;
+            font-size: 0.95rem;
+        }
+
+        .banner-v9 .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .banner-v9 .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .banner-v9 .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .banner-v9 .features-list .icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner-v9 .features-list .icon.yes {
+            background: #dcfce7;
+            color: var(--color-green);
+        }
+
+        .banner-v9 .features-list .icon svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .banner-v9 .col-cta {
+            display: block;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .banner-v9 .col-cta.outline {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            background: transparent;
+        }
+
+        .banner-v9 .col-cta.outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .banner-v9 .col-cta.filled {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #c50e13 100%);
+            color: white;
+            border: none;
+        }
+
+        .banner-v9 .col-cta.filled:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(239,18,24,0.3);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           OPCIÓN 10: CENTRADO CON ICONOS GRANDES
+        ═══════════════════════════════════════════════════════════════ */
+        .banner-v10 {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1a365d 100%);
+            padding: 70px 50px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-v10::before,
+        .banner-v10::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(239,18,24,0.1);
+        }
+
+        .banner-v10::before {
+            top: -150px;
+            left: -150px;
+        }
+
+        .banner-v10::after {
+            bottom: -150px;
+            right: -150px;
+        }
+
+        .banner-v10 .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-v10 .badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .banner-v10 h2 {
+            font-size: 2.8rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 16px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .banner-v10 .subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.15rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .banner-v10 .big-icons-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .banner-v10 .big-icon-card {
+            width: 220px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 40px 24px 32px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .banner-v10 .big-icon-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .banner-v10 .big-icon-card.presencial:hover { box-shadow: 0 20px 40px rgba(239,18,24,0.3); }
+        .banner-v10 .big-icon-card.virtual:hover { box-shadow: 0 20px 40px rgba(16,185,129,0.3); }
+        .banner-v10 .big-icon-card.posgrados:hover { box-shadow: 0 20px 40px rgba(139,92,246,0.3); }
+
+        .banner-v10 .icon-wrapper {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-v10 .icon-wrapper.red { background: linear-gradient(135deg, var(--color-accent) 0%, #ff6b6b 100%); }
+        .banner-v10 .icon-wrapper.green { background: linear-gradient(135deg, var(--color-green) 0%, #34d399 100%); }
+        .banner-v10 .icon-wrapper.purple { background: linear-gradient(135deg, var(--color-purple) 0%, #a78bfa 100%); }
+
+        .banner-v10 .icon-wrapper svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+        }
+
+        .banner-v10 .big-icon-card h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .banner-v10 .big-icon-card .discount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .banner-v10 .big-icon-card .discount.red { color: #fca5a5; }
+        .banner-v10 .big-icon-card .discount.green { color: #6ee7b7; }
+        .banner-v10 .big-icon-card .discount.purple { color: #c4b5fd; }
+
+        .banner-v10 .big-icon-card .price {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .banner-v10 .main-cta {
+            display: inline-block;
+            background: white;
+            color: var(--color-primary);
+            padding: 20px 70px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .banner-v10 .main-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 1100px) {
+            .banner-v2,
+            .banner-v7 {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-v3 .glass-cards,
+            .banner-v4 .ribbon-cards,
+            .banner-v5 .minimal-cards,
+            .banner-v9 .comparison-table {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-v6 .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-v8 .floating-cards,
+            .banner-v10 .big-icons-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .banner-v8 .float-card {
+                transform: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-v1 .card-h {
+                grid-template-columns: auto 1fr;
+                gap: 16px;
+            }
+
+            .banner-v1 .card-discount,
+            .banner-v1 .card-arrow {
+                display: none;
+            }
+
+            .banner-v5 .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .banner-v5 .header-right {
+                text-align: left;
+            }
+
+            .banner-v6 .tabs-header {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="options-wrapper">
+    <h1 class="page-title">Banner Beneficio V2 - 10 Diseños Alternativos</h1>
+    <p class="page-subtitle">Mantiene colores azul y rojo institucionales</p>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 1: CARDS HORIZONTALES APILADAS
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 1</span>
+        <p class="option-description">Cards horizontales tipo lista con información compacta y fácil de escanear.</p>
+        
+        <div class="banner-v1">
+            <div class="content-wrapper">
+                <div class="header-section">
+                    <h2 class="main-title">¡Aprovecha el beneficio Uniempresarial!</h2>
+                    <p class="main-subtitle">Descuentos exclusivos en todas las modalidades. Elige la tuya.</p>
+                </div>
+
+                <div class="cards-horizontal">
+                    <a href="#" class="card-h presencial">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="card-info">
+                            <h4>Presencial</h4>
+                            <p>$5.067.750/sem · Antes $6.757.000</p>
+                        </div>
+                        <span class="card-discount">25% OFF</span>
+                        <div class="card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-h virtual">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="card-info">
+                            <h4>Virtual</h4>
+                            <p>$4.200.000/sem · Antes $6.757.000</p>
+                        </div>
+                        <span class="card-discount green">38% OFF</span>
+                        <div class="card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-h posgrados">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div class="card-info">
+                            <h4>Posgrados</h4>
+                            <p>Desde $7.000.000/sem</p>
+                        </div>
+                        <span class="card-discount purple">30% OFF</span>
+                        <div class="card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cta-section">
+                    <a href="#" class="main-cta">Solicitar información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 2: SPLIT DESIGN CON IMAGEN/PATRÓN
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 2</span>
+        <p class="option-description">Diseño dividido: información a la izquierda, cards en panel claro a la derecha.</p>
+        
+        <div class="banner-v2">
+            <div class="left-panel">
+                <div class="left-content">
+                    <span class="promo-badge">Oferta limitada</span>
+                    <h2 class="main-title">Tu futuro comienza con el beneficio correcto</h2>
+                    <p class="main-subtitle">Aplica ahora y obtén descuento en TODA tu carrera. Sin letra pequeña, sin sorpresas.</p>
+                    
+                    <div class="stats-row">
+                        <div class="stat-mini">
+                            <div class="number">92<span>%</span></div>
+                            <div class="label">Empleabilidad</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="number">+15K</div>
+                            <div class="label">Graduados</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="number">25</div>
+                            <div class="label">Años</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="cards-stack">
+                    <a href="#" class="card-s presencial">
+                        <div class="card-s-icon red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="card-s-content">
+                            <h4>Presencial</h4>
+                            <p class="price">$5.067.750/sem <span class="old">$6.757.000</span></p>
+                        </div>
+                        <span class="card-s-discount red">25%</span>
+                    </a>
+
+                    <a href="#" class="card-s virtual">
+                        <div class="card-s-icon green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="card-s-content">
+                            <h4>Virtual</h4>
+                            <p class="price">$4.200.000/sem <span class="old">$6.757.000</span></p>
+                        </div>
+                        <span class="card-s-discount green">38%</span>
+                    </a>
+
+                    <a href="#" class="card-s posgrados">
+                        <div class="card-s-icon purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div class="card-s-content">
+                            <h4>Posgrados</h4>
+                            <p class="price">Desde $7.000.000/sem</p>
+                        </div>
+                        <span class="card-s-discount purple">30%</span>
+                    </a>
+                </div>
+
+                <div class="cta-bottom">
+                    <a href="#" class="cta-btn">Quiero más información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 3: GLASSMORPHISM CARDS
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 3</span>
+        <p class="option-description">Efecto glassmorphism con blur y transparencias. Muy moderno y elegante.</p>
+        
+        <div class="banner-v3">
+            <div class="content">
+                <div class="header">
+                    <h2>Elige tu modalidad ideal</h2>
+                    <p>Descuentos exclusivos que aplican en toda tu carrera</p>
+                </div>
+
+                <div class="glass-cards">
+                    <a href="#" class="glass-card presencial">
+                        <span class="discount-tag">25% OFF</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h4>Presencial</h4>
+                        <p class="price-info">$5.067.750/sem <span class="old">$6.757.000</span></p>
+                        <ul class="features">
+                            <li>Práctica empresarial</li>
+                            <li>Campus moderno</li>
+                            <li>Red de contactos</li>
+                        </ul>
+                    </a>
+
+                    <a href="#" class="glass-card virtual">
+                        <span class="discount-tag green">38% OFF</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h4>Virtual</h4>
+                        <p class="price-info">$4.200.000/sem <span class="old">$6.757.000</span></p>
+                        <ul class="features">
+                            <li>100% flexible</li>
+                            <li>Misma calidad</li>
+                            <li>Desde cualquier lugar</li>
+                        </ul>
+                    </a>
+
+                    <a href="#" class="glass-card posgrados">
+                        <span class="discount-tag purple">30% OFF</span>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <h4>Posgrados</h4>
+                        <p class="price-info">Desde $7.000.000/sem</p>
+                        <ul class="features">
+                            <li>MBA y especializaciones</li>
+                            <li>Docentes expertos</li>
+                            <li>Networking ejecutivo</li>
+                        </ul>
+                    </a>
+                </div>
+
+                <div class="cta-center">
+                    <a href="#" class="cta-btn">Solicitar información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 4: CARDS CON RIBBON DIAGONAL
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 4</span>
+        <p class="option-description">Fondo claro con cards elegantes y ribbon diagonal que resalta el descuento.</p>
+        
+        <div class="banner-v4">
+            <div class="top-bar">
+                <h2>¡Beneficio exclusivo Uniempresarial!</h2>
+                <p>Aplica ahora y asegura tu descuento para toda la carrera</p>
+            </div>
+
+            <div class="cards-area">
+                <div class="ribbon-cards">
+                    <a href="#" class="ribbon-card presencial">
+                        <div class="ribbon">25% OFF</div>
+                        <div class="icon-circle red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h4>Presencial</h4>
+                        <p class="desc">Experiencia completa en campus con práctica empresarial</p>
+                        <div class="price-big red">$5.067.750</div>
+                        <p class="price-old">Antes $6.757.000/sem</p>
+                    </a>
+
+                    <a href="#" class="ribbon-card virtual">
+                        <div class="ribbon green">38% OFF</div>
+                        <div class="icon-circle green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h4>Virtual</h4>
+                        <p class="desc">Flexibilidad total con la misma calidad académica</p>
+                        <div class="price-big green">$4.200.000</div>
+                        <p class="price-old">Antes $6.757.000/sem</p>
+                    </a>
+
+                    <a href="#" class="ribbon-card posgrados">
+                        <div class="ribbon purple">30% OFF</div>
+                        <div class="icon-circle purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <h4>Posgrados</h4>
+                        <p class="desc">Impulsa tu carrera con especializaciones y MBA</p>
+                        <div class="price-big purple">$7.000.000</div>
+                        <p class="price-old">Desde por semestre</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bottom-cta">
+                <a href="#" class="cta-btn">Aplicar al beneficio ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 5: MINIMALISTA CON LÍNEAS
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 5</span>
+        <p class="option-description">Diseño minimalista y limpio con énfasis en tipografía y líneas.</p>
+        
+        <div class="banner-v5">
+            <div class="header">
+                <div class="header-left">
+                    <h2>Beneficio Uniempresarial</h2>
+                    <p>Descuentos exclusivos en todas las modalidades</p>
+                </div>
+                <div class="header-right">
+                    <span class="countdown">⏰ Termina pronto</span>
+                </div>
+            </div>
+
+            <div class="minimal-cards">
+                <a href="#" class="minimal-card presencial">
+                    <span class="type-label red">PRESENCIAL</span>
+                    <h4>Campus Bogotá</h4>
+                    <div class="discount">25%</div>
+                    <p class="price-text">$5.067.750/sem <span class="old">$6.757.000</span></p>
+                </a>
+
+                <a href="#" class="minimal-card virtual">
+                    <span class="type-label green">VIRTUAL</span>
+                    <h4>100% Online</h4>
+                    <div class="discount">38%</div>
+                    <p class="price-text">$4.200.000/sem <span class="old">$6.757.000</span></p>
+                </a>
+
+                <a href="#" class="minimal-card posgrados">
+                    <span class="type-label purple">POSGRADOS</span>
+                    <h4>MBA & Especializaciones</h4>
+                    <div class="discount">30%</div>
+                    <p class="price-text">Desde $7.000.000/sem</p>
+                </a>
+            </div>
+
+            <div class="cta-section">
+                <a href="#" class="cta-btn">Solicitar información</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 6: TABS INTERACTIVAS (VISUAL)
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 6</span>
+        <p class="option-description">Diseño con tabs tipo navegación. Muestra detalle de cada modalidad.</p>
+        
+        <div class="banner-v6">
+            <div class="tabs-header">
+                <a href="#" class="tab-btn presencial active">
+                    <div class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h4>Presencial</h4>
+                    <span class="discount">25% OFF</span>
+                </a>
+                <a href="#" class="tab-btn virtual">
+                    <div class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h4>Virtual</h4>
+                    <span class="discount">38% OFF</span>
+                </a>
+                <a href="#" class="tab-btn posgrados">
+                    <div class="tab-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <h4>Posgrados</h4>
+                    <span class="discount">30% OFF</span>
+                </a>
+            </div>
+
+            <div class="tab-content">
+                <div class="content-grid">
+                    <div class="content-left">
+                        <h2>Modalidad Presencial con 25% de descuento</h2>
+                        <p>Vive la experiencia completa en nuestro campus. Práctica empresarial desde el primer semestre y conexión directa con más de 150 empresas aliadas.</p>
+                        
+                        <div class="price-display">
+                            <span class="current">$5.067.750</span>
+                            <span class="old">$6.757.000</span>
+                        </div>
+
+                        <a href="#" class="cta-btn">Aplicar ahora</a>
+                    </div>
+
+                    <div class="content-right">
+                        <ul class="benefits-list">
+                            <li>
+                                <span class="check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                Práctica empresarial desde 1er semestre
+                            </li>
+                            <li>
+                                <span class="check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                92% de empleabilidad
+                            </li>
+                            <li>
+                                <span class="check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                150+ empresas aliadas
+                            </li>
+                            <li>
+                                <span class="check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                Descuento en toda la carrera
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 7: MAGAZINE STYLE
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 7</span>
+        <p class="option-description">Estilo editorial/magazine con número grande y lista de programas.</p>
+        
+        <div class="banner-v7">
+            <div class="magazine-left">
+                <div class="magazine-content">
+                    <div class="big-number">38<span>%</span></div>
+                    <div class="discount-text">de descuento</div>
+                    <p class="magazine-desc">Aprovecha nuestro beneficio exclusivo. Aplica en modalidad presencial, virtual y posgrados. El descuento se mantiene durante toda tu carrera.</p>
+                </div>
+            </div>
+
+            <div class="magazine-right">
+                <div class="program-list">
+                    <a href="#" class="program-item presencial">
+                        <div class="program-icon red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="program-info">
+                            <h4>Presencial</h4>
+                            <p>$5.067.750/sem · Antes $6.757.000</p>
+                        </div>
+                        <span class="program-discount red">25%</span>
+                    </a>
+
+                    <a href="#" class="program-item virtual">
+                        <div class="program-icon green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="program-info">
+                            <h4>Virtual</h4>
+                            <p>$4.200.000/sem · Antes $6.757.000</p>
+                        </div>
+                        <span class="program-discount green">38%</span>
+                    </a>
+
+                    <a href="#" class="program-item posgrados">
+                        <div class="program-icon purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div class="program-info">
+                            <h4>Posgrados</h4>
+                            <p>Desde $7.000.000/sem</p>
+                        </div>
+                        <span class="program-discount purple">30%</span>
+                    </a>
+                </div>
+
+                <div class="cta-bottom">
+                    <a href="#" class="cta-btn">Solicitar información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 8: FLOATING CARDS 3D
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 8</span>
+        <p class="option-description">Cards flotantes con efecto 3D y fondo oscuro premium.</p>
+        
+        <div class="banner-v8">
+            <div class="content">
+                <div class="header">
+                    <h2>Tu beneficio te espera</h2>
+                    <p>Elige la modalidad que mejor se adapte a ti</p>
+                </div>
+
+                <div class="floating-cards">
+                    <a href="#" class="float-card presencial">
+                        <div class="glow"></div>
+                        <div class="discount-circle red">25%</div>
+                        <h4>Presencial</h4>
+                        <p class="price">$5.067.750/sem <span class="old">$6.757.000</span></p>
+                        <span class="card-cta">Ver más →</span>
+                    </a>
+
+                    <a href="#" class="float-card virtual">
+                        <div class="glow"></div>
+                        <div class="discount-circle green">38%</div>
+                        <h4>Virtual</h4>
+                        <p class="price">$4.200.000/sem <span class="old">$6.757.000</span></p>
+                        <span class="card-cta">Ver más →</span>
+                    </a>
+
+                    <a href="#" class="float-card posgrados">
+                        <div class="glow"></div>
+                        <div class="discount-circle purple">30%</div>
+                        <h4>Posgrados</h4>
+                        <p class="price">Desde $7.000.000/sem</p>
+                        <span class="card-cta">Ver más →</span>
+                    </a>
+                </div>
+
+                <div class="cta-center">
+                    <a href="#" class="main-cta">Aplicar al beneficio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 9: COMPARATIVA SIDE BY SIDE
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 9</span>
+        <p class="option-description">Tabla comparativa estilo pricing. Facilita la comparación entre modalidades.</p>
+        
+        <div class="banner-v9">
+            <div class="top-section">
+                <h2>Compara y elige tu modalidad</h2>
+                <p>Todas incluyen el beneficio exclusivo Uniempresarial</p>
+            </div>
+
+            <div class="comparison-table">
+                <a href="#" class="comparison-col">
+                    <div class="col-header">
+                        <h3>Presencial</h3>
+                        <div class="price red">-25%</div>
+                        <p class="old-price">$6.757.000 → $5.067.750</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Campus moderno
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Práctica empresarial
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Networking directo
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Laboratorios
+                        </li>
+                    </ul>
+                    <span class="col-cta outline">Elegir</span>
+                </a>
+
+                <a href="#" class="comparison-col featured">
+                    <div class="col-header">
+                        <h3>Virtual</h3>
+                        <div class="price green">-38%</div>
+                        <p class="old-price">$6.757.000 → $4.200.000</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            100% flexible
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Misma calidad
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Mayor ahorro
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Sin traslados
+                        </li>
+                    </ul>
+                    <span class="col-cta filled">Elegir</span>
+                </a>
+
+                <a href="#" class="comparison-col">
+                    <div class="col-header">
+                        <h3>Posgrados</h3>
+                        <div class="price purple">-30%</div>
+                        <p class="old-price">Desde $7.000.000/sem</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            MBA disponible
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Especializaciones
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Docentes expertos
+                        </li>
+                        <li>
+                            <span class="icon yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Networking VIP
+                        </li>
+                    </ul>
+                    <span class="col-cta outline">Elegir</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPCIÓN 10: CENTRADO CON ICONOS GRANDES
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="option-section">
+        <span class="option-label">Opción 10</span>
+        <p class="option-description">Diseño centrado y simétrico con iconos grandes y prominentes.</p>
+        
+        <div class="banner-v10">
+            <div class="content">
+                <span class="badge">Oferta especial</span>
+                <h2>Transforma tu futuro con el beneficio Uniempresarial</h2>
+                <p class="subtitle">Descuentos de hasta 38% que aplican en toda tu carrera. Elige tu modalidad ideal.</p>
+
+                <div class="big-icons-grid">
+                    <a href="#" class="big-icon-card presencial">
+                        <div class="icon-wrapper red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h4>Presencial</h4>
+                        <div class="discount red">25% OFF</div>
+                        <p class="price">$5.067.750/sem</p>
+                    </a>
+
+                    <a href="#" class="big-icon-card virtual">
+                        <div class="icon-wrapper green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h4>Virtual</h4>
+                        <div class="discount green">38% OFF</div>
+                        <p class="price">$4.200.000/sem</p>
+                    </a>
+
+                    <a href="#" class="big-icon-card posgrados">
+                        <div class="icon-wrapper purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <h4>Posgrados</h4>
+                        <div class="discount purple">30% OFF</div>
+                        <p class="price">Desde $7.000.000/sem</p>
+                    </a>
+                </div>
+
+                <a href="#" class="main-cta">Solicitar información</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

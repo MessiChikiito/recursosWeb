@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesos Rápidos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .quick-access {
+      background: linear-gradient(135deg, #FE1C33 0%, #eb1010 100%);
+      border-radius: 15px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .access-item {
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      padding: 25px 15px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .access-item i {
+      font-size: 36px;
+      margin-bottom: 10px;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .access-label {
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+      display: inline-block;
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 0.85rem;
+    }
+
+    .access-item:hover {
+      background: white;
+      color: black;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .access-item:hover i {
+      color: black;
+    }
+
+    .access-item:hover .access-label {
+      background: rgba(0, 0, 0, 0.05);
+      color: black;
+    }
+
+    /* Tablets - 2 columnas */
+    @media (max-width: 768px) {
+      .quick-access {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .access-item {
+        padding: 20px 10px;
+      }
+
+      .access-item i {
+        font-size: 32px;
+      }
+
+      .access-label {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Móviles - 2 columnas */
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+
+      .quick-access {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+        gap: 12px;
+      }
+
+      .access-item {
+        padding: 15px 8px;
+      }
+
+      .access-item i {
+        font-size: 28px;
+      }
+
+      .access-label {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quick-access">
+  <a href="https://uniempresarial.edu.co/egresados/" class="access-item">
+    <i class="fas fa-user-graduate"></i>
+    <div class="access-label">EGRESADO</div>
+  </a>
+  <a href="https://uniempresarial.edu.co/estudiantes/" class="access-item">
+    <i class="fas fa-user"></i>
+    <div class="access-label">ESTUDIANTE</div>
+  </a>
+  <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-item">
+    <i class="fas fa-laptop-code"></i>
+    <div class="access-label">CAMPUS VIRTUAL</div>
+  </a>
+  <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-item">
+    <i class="fas fa-piggy-bank"></i>
+    <div class="access-label">PAGOS</div>
+  </a>
+  <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-item">
+    <i class="fas fa-calendar-alt"></i>
+    <div class="access-label">CALENDARIO AC.</div>
+  </a>
+  <a href="#" class="access-item">
+    <i class="fas fa-book"></i>
+    <div class="access-label">GESTIÓN ACADÉMICA</div>
+  </a>
+</div>
+
+</body>
+</html>

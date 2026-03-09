@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Beneficio - Tabs Interactivas</title>
+    <style>
+        /* ========== RESET - NO GLOBAL VARS ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            min-height: auto;
+            display: block;
+        }
+
+        /* ========== BANNER TABS - INTERACTIVE ========== */
+        .banner-tabs {
+            background: linear-gradient(180deg, #2A449C 0%, #1e3a8a 100%);
+            border-radius: 0;
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        /* ========== TABS HEADER ========== */
+        .banner-tabs .tabs-header {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: rgba(0,0,0,0.15);
+        }
+
+        .banner-tabs .tabs-tab-btn {
+            padding: 20px 16px;
+            text-align: center;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .banner-tabs .tabs-tab-btn:hover {
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .banner-tabs .tabs-tab-btn.active {
+            background: rgba(0,0,0,0.3);
+            color: white;
+            border-bottom-width: 3px;
+        }
+
+        .banner-tabs .tabs-tab-btn.active h4 {
+            color: white;
+        }
+
+        .banner-tabs .tabs-tab-btn.active .tabs-discount {
+            font-weight: 700;
+        }
+
+        .banner-tabs .tabs-tab-btn.tabs-presencial.active {
+            border-bottom-color: #F52C2C;
+        }
+
+        .banner-tabs .tabs-tab-btn.tabs-presencial.active .tabs-discount {
+            color: #F52C2C;
+        }
+
+        .banner-tabs .tabs-tab-btn.tabs-virtual.active {
+            border-bottom-color: #26ce13;
+        }
+
+        .banner-tabs .tabs-tab-btn.tabs-virtual.active .tabs-discount {
+            color: #26ce13;
+        }
+
+        .banner-tabs .tabs-tab-btn.tabs-posgrados.active {
+            border-bottom-color: #FF6B35;
+        }
+
+        .banner-tabs .tabs-tab-btn.tabs-posgrados.active .tabs-discount {
+            color: #FF6B35;
+        }
+
+        .banner-tabs .tabs-tab-btn h4 {
+            color: white;
+        }
+
+        .banner-tabs .tabs-tab-btn .tabs-discount {
+            color: rgba(255,255,255,0.7);
+            font-weight: 700;
+        }
+
+        .banner-tabs .tabs-tab-btn .tabs-icon {
+            width: 36px;
+            height: 36px;
+            margin: 0 auto 8px;
+            background: transparent;
+        }
+
+        .banner-tabs .tabs-tab-btn .tabs-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+        }
+
+        .banner-tabs .tabs-tab-btn h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .banner-tabs .tabs-tab-btn .tabs-discount {
+            font-size: 0.8rem;
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        .banner-tabs .tabs-tab-btn.active .tabs-discount {
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        /* ========== TAB CONTENT ========== */
+        .banner-tabs .tabs-content {
+            display: none;
+            padding: 45px 50px;
+            animation: fadeIn 0.4s ease !important;
+        }
+
+        .banner-tabs .tabs-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0 !important; transform: translateY(10px) !important; }
+            to { opacity: 1 !important; transform: translateY(0) !important; }
+        }
+
+        .banner-tabs .tabs-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        /* Contenido izquierda */
+        .banner-tabs .tabs-content-left h2 {
+            font-size: 1.9rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .banner-tabs .tabs-content-left p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .banner-tabs .tabs-price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .banner-tabs .tabs-price-display .tabs-current {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .banner-tabs .tabs-price-display .tabs-old {
+            font-size: 1.1rem;
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .banner-tabs .tabs-price-display .tabs-per-sem {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .banner-tabs .tabs-cta-btn {
+            display: inline-block;
+            background: #F52C2C;
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(245, 44, 44, 0.4);
+        }
+
+        .banner-tabs .tabs-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(245, 44, 44, 0.5);
+            background: #e01f1f;
+        }
+
+        /* Contenido derecha - Benefits */
+        .banner-tabs .tabs-content-right {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .banner-tabs .tabs-benefits-list {
+            list-style: none;
+        }
+
+        .banner-tabs .tabs-benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .banner-tabs .tabs-benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .banner-tabs .tabs-benefits-list .tabs-check {
+            width: 22px;
+            height: 22px;
+            background: #26ce13;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .banner-tabs .tabs-benefits-list .tabs-check svg {
+            width: 12px;
+            height: 12px;
+            stroke: white;
+            stroke-width: 3;
+        }
+
+        .banner-tabs .tabs-desde-label {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 1);
+            font-weight: 800;
+            margin-top: 15px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .banner-tabs .tabs-content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .banner-tabs .tabs-content {
+                padding: 35px 30px;
+            }
+
+            .banner-tabs .tabs-content-left h2 {
+                font-size: 1.6rem;
+            }
+
+            .banner-tabs .tabs-price-display .tabs-current {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .banner-tabs .tabs-header {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .banner-tabs .tabs-tab-btn {
+                padding: 18px 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                text-align: center;
+            }
+
+            .banner-tabs .tabs-tab-btn .tabs-icon {
+                margin: 0;
+                width: 24px;
+                height: 24px;
+            }
+
+            .banner-tabs .tabs-tab-btn h4 {
+                margin-bottom: 0;
+                font-size: 0.75rem;
+            }
+
+            .banner-tabs .tabs-tab-btn .tabs-discount {
+                font-size: 0.6rem;
+            }
+
+            .banner-tabs .tabs-content {
+                padding: 20px 25px;
+            }
+
+            .banner-tabs .tabs-content-left h2 {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+                font-weight: 800;
+            }
+
+            .banner-tabs .tabs-content-left p {
+                font-size: 0.8rem;
+                margin-bottom: 16px;
+            }
+
+            .banner-tabs .tabs-price-display {
+                flex-wrap: wrap;
+                gap: 6px;
+                margin-bottom: 16px;
+            }
+
+            .banner-tabs .tabs-price-display .tabs-current {
+                font-size: 1.6rem;
+            }
+
+            .banner-tabs .tabs-price-display .tabs-old {
+                font-size: 0.85rem;
+            }
+
+            .banner-tabs .tabs-price-display .tabs-per-sem {
+                font-size: 0.8rem;
+            }
+
+            .banner-tabs .tabs-desde-label {
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
+
+            .banner-tabs .tabs-content-right {
+                padding: 16px;
+            }
+
+            .banner-tabs .tabs-benefits-list li {
+                font-size: 0.85rem;
+                padding: 10px 0;
+                gap: 8px;
+            }
+
+            .banner-tabs .tabs-benefits-list .tabs-check {
+                width: 18px;
+                height: 18px;
+            }
+
+            .banner-tabs .tabs-cta-btn {
+                display: block;
+                text-align: center;
+                padding: 14px 28px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-tabs">
+        <!-- TABS HEADER -->
+        <div class="tabs-header">
+            <button class="tabs-tab-btn tabs-presencial active" data-tab="presencial">
+                <div class="tabs-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h4>Pregrados Presencial</h4>
+                <span class="tabs-discount">25% OFF</span>
+            </button>
+
+            <button class="tabs-tab-btn tabs-virtual" data-tab="virtual">
+                <div class="tabs-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h4>Virtual</h4>
+                <span class="tabs-discount">45% OFF</span>
+            </button>
+
+            <button class="tabs-tab-btn tabs-posgrados" data-tab="posgrados">
+                <div class="tabs-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6"></path>
+                        <path d="M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                </div>
+                <h4>Posgrados</h4>
+                <span class="tabs-discount">25% OFF</span>
+            </button>
+        </div>
+
+        <!-- TAB CONTENT: PRESENCIAL -->
+        <div class="tabs-content active" id="presencial">
+            <div class="tabs-content-grid">
+                <div class="tabs-content-left">
+                    <h2>Pregrados Presenciales con <span style="color: #26ce13;">25%</span> de descuento</h2>
+                    <p>Vive la experiencia completa en campus. Práctica empresarial desde el primer semestre y conexión directa con empresas aliadas.</p>
+                    
+                    <div class="tabs-price-display">
+                        <span class="tabs-current">$5.067.750</span>
+                        <span class="tabs-old">$6.757.000</span>
+                        <span class="tabs-per-sem">/semestre</span>
+                    </div>
+
+                    <a href="#" class="tabs-cta-btn">Aplicar ahora</a>
+                </div>
+
+                <div class="tabs-content-right">
+                    <ul class="tabs-benefits-list">
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Práctica empresarial desde 1er semestre
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            87% de empleabilidad
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            350+ empresas aliadas
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Descuento en toda la carrera
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: VIRTUAL -->
+        <div class="tabs-content" id="virtual">
+            <div class="tabs-content-grid">
+                <div class="tabs-content-left">
+                    <h2>Pregrados Virtuales con <span style="color: #26ce13;">45%</span> de descuento</h2>
+                    <p>Flexibilidad total para estudiar desde cualquier lugar. Misma calidad académica, títulos con igual validez y el mayor ahorro.</p>
+                    
+                    <div class="tabs-price-display">
+                        <span class="tabs-current">$3.716.350</span>
+                        <span class="tabs-old">$6.757.000</span>
+                        <span class="tabs-per-sem">/semestre</span>
+                    </div>
+
+                    <a href="#" class="tabs-cta-btn">Aplicar ahora</a>
+                </div>
+
+                <div class="tabs-content-right">
+                    <ul class="tabs-benefits-list">
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            100% flexible - estudia a tu ritmo
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Misma calidad y acreditación
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Mayor ahorro en toda tu carrera
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Sin gastos de transporte
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: POSGRADOS -->
+        <div class="tabs-content" id="posgrados">
+            <div class="tabs-content-grid">
+                <div class="tabs-content-left">
+                    <h2>Posgrados con <span style="color: #26ce13;">25%</span> de descuento</h2>
+                    <p>Impulsa tu carrera profesional con MBA y especializaciones. Docentes expertos y networking ejecutivo de alto nivel.</p>
+                    <div class="tabs-desde-label">Desde</div>
+                    
+                    <div class="tabs-price-display">
+                        <span class="tabs-current">$3.330.000</span>
+                        <span class="tabs-old">$4.440.000</span>
+                        <span class="tabs-per-sem">/cuatrimestre</span>
+                    </div>
+
+                    <a href="#" class="tabs-cta-btn">Aplicar ahora</a>
+                </div>
+
+                <div class="tabs-content-right">
+                    <ul class="tabs-benefits-list">
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            MBA y especializaciones disponibles
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Docentes con experiencia real
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Networking ejecutivo
+                        </li>
+                        <li>
+                            <span class="tabs-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </span>
+                            Horarios para profesionales
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FUNCIONAL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tabs-tab-btn');
+            const tabContents = document.querySelectorAll('.tabs-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Remover clase active de todos los botones
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Remover clase active de todos los contenidos
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+
+                    // Mostrar el contenido correspondiente
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
