@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto ALPRODE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      box-sizing: border-box;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      padding: 40px 5%;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .left, .right {
+      flex: 1 1 400px;
+      padding: 20px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .left img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .logos {
+      display: flex;
+      margin-bottom: 20px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0 5%;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logos img {
+      height: 50px;
+      max-width: auto;
+      flex-shrink: 0;
+    }
+    
+
+    h1 {
+      font-size: 32px;
+      color: #000c2d;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+        .campus-institucional {
+      padding: 0 0px 30px;
+    }
+    
+    .campus-btn-institucional {
+      width: 100%;
+      padding: 14px;
+      background: #57D100;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .campus-btn-institucional:hover {
+      background: #6AFF00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4);
+      color: #ffffff;
+    }
+    
+    .campus-btn-institucional i {
+      font-size: 30px;
+      align-content: center;
+    }
+    
+    body .campus-btn,
+    body .campus-btn-institucional,
+    body a.campus-btn,
+    body a.campus-btn-institucional {
+  -webkit-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out !important;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out !important;
+    }
+
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 5%;
+      }
+
+      .logos {
+        padding: 0 10px;
+        gap: 10px;
+        margin-bottom: 16px;
+        
+      }
+
+      .logos img {
+        max-width: 100%;
+        height: auto !important;
+      }
+
+      .left, .right {
+        flex: 1 1 auto;
+        padding: 10px 0;
+        width: 100%;
+      }
+
+      .left img {
+        width: 100%;
+        max-width: auto;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 16px 5%;
+      }
+
+      .logos {
+        padding: 0 10px;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .logos img {
+        max-width: 40%;
+        height: auto !important;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 13px;
+      }
+
+    }
+    
+
+  </style>
+</head>
+<body>
+
+  <div class="logos">
+    <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/LOGO-cofinanciado_por_la_union_europea_pos-PARA-USAR-MAS-1.png">
+    <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/LOGO-ALPRODE.jpeg" style="height: 100px;">
+  </div>
+
+  <div class="container">
+    <div class="left">
+     <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/imagen.jpeg">
+    
+    </div>
+    <div class="right">
+      <h1>PROYECTO ALPRODE</h1>
+      <p>
+        Conozca el proyecto ALPRODE, una iniciativa financiada por el Programa Erasmus+ de la Unión Europea, en la que participa Uniempresarial.
+        Este proyecto tiene como objetivo impulsar el crecimiento económico sostenible en Ecuador y Colombia mediante la formación académica y la mejora de la empleabilidad.
+        A través de un enfoque en el desarrollo productivo sostenible y la cooperación internacional, ALPRODE fomenta esquemas de asociación multiactor para generar un impacto positivo en la región.
+      </p>
+     <div class="campus-institucional">
+  <a href="https://campusue.uniempresarial.edu.co:10443/login/index.php" class="campus-btn-institucional">
+    <i class="fas fa-id-badge"></i>
+        ¡Inscríbete con tu cuenta institucional!
+  </a>
+</div>
+    </div>
+  </div>
+  
+
+</body>
+</html>
+

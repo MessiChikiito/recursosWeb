@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up Guías y Tutoriales</title>
+    <style>
+
+
+        /* --- Modal Styles --- */
+        .ue-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .ue-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .ue-modal-content {
+            background-color: #ffffff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 700px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .ue-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e0e3e8;
+            padding-bottom: 16px;
+        }
+
+        .ue-modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: #0132AF;
+        }
+
+        .ue-modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .ue-modal-close:hover {
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .ue-modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ue-modal-description {
+            color: #06325a;
+            margin: 0 0 28px;
+            line-height: 1.6;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        /* Grid de 4 botones */
+        .ue-files-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        /* Tarjeta de archivo */
+        .ue-file-card {
+            border: 1px solid #e0e3e8;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fafbfc;
+            text-align: center;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .ue-file-card:hover {
+            border-color: #0132AF;
+            box-shadow: 0 6px 18px rgba(1, 50, 175, 0.15);
+            background: #fff;
+            transform: translateY(-4px);
+        }
+
+        /* Icono del archivo */
+        .ue-file-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Nombre del archivo */
+        .ue-file-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0132AF;
+            margin: 0;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        /* Descripción del archivo */
+        .ue-file-desc {
+            font-size: 13px;
+            color: #7a8a99;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Botón CTA adicional */
+        .ue-modal-cta {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(1, 50, 175, 0.3);
+            box-sizing: border-box;
+        }
+
+        .ue-modal-cta:hover {
+            background: linear-gradient(135deg, #1a5bcf 0%, #2a6bdf 100%);
+            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.45);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .ue-modal-content {
+                width: 95%;
+                padding: 24px;
+                margin: 0px 20px;
+            }
+
+            .ue-files-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .ue-modal-header h2 {
+                font-size: 20px;
+            }
+
+            .ue-file-card {
+                padding: 16px;
+            }
+
+            .ue-file-icon {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+
+            .ue-file-name {
+                font-size: 13px;
+                margin-bottom: 2px;
+            }
+
+            .ue-file-desc {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modal de Descargas de Archivos -->
+    <div id="archivosModal" class="ue-modal">
+        <div class="ue-modal-content">
+            <div class="ue-modal-header">
+                <h2>Descarga tus archivos</h2>
+                <button class="ue-modal-close" onclick="closeArchivosModal()">&times;</button>
+            </div>
+            <div class="ue-modal-body">
+                <p class="ue-modal-description">Selecciona el archivo que deseas descargar o visualizar. Todos están disponibles en formato PDF.</p>
+
+                <div class="ue-files-grid">
+                    <!-- Archivo 1 -->
+                    <a href="https://uniempresarial.edu.co/wp-content/uploads/2026/03/Uso-de-las-Bases-de-Datos-2026.pdf" target="_blank" class="ue-file-card">
+                        <span class="ue-file-icon">📄</span>
+                        <p class="ue-file-name">Uso de las Bases de Datos - 2026</p>
+                        <p class="ue-file-desc">Click para ver o descargar el archivo</p>
+                    </a>
+
+                    <!-- Archivo 2 -->
+                    <a href="https://uniempresarial.edu.co/wp-content/uploads/2026/03/Uso-del-Catalogo-en-Linea-2026.pdf" target="_blank" class="ue-file-card">
+                        <span class="ue-file-icon">📄</span>
+                        <p class="ue-file-name">Uso del Catálogo en Línea - 2026</p>
+                        <p class="ue-file-desc">Click para ver o descargar el archivo</p>
+                    </a>
+
+                    <!-- Archivo 3 -->
+                    <a href="https://uniempresarial.edu.co/wp-content/uploads/2026/03/Aprende-normas-APA.pdf" target="_blank" class="ue-file-card">
+                        <span class="ue-file-icon">📄</span>
+                        <p class="ue-file-name">Aprende las normas APA - 2026</p>
+                        <p class="ue-file-desc">Click para ver o descargar el archivo</p>
+                    </a>
+
+                    <!-- Archivo 4 -->
+                    <a href="https://uniempresarial.edu.co/wp-content/uploads/2026/03/Guia-Mendeley-2026.pdf" target="_blank" class="ue-file-card">
+                        <span class="ue-file-icon">📄</span>
+                        <p class="ue-file-name">Guía de Mendeley - 2026</p>
+                        <p class="ue-file-desc">Click para ver o descargar el archivo</p>
+                    </a>
+                </div>
+
+                <button class="ue-modal-cta" onclick="closeArchivosModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir el modal
+        function openArchivosModal() {
+            const modal = document.getElementById('archivosModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+            
+            // Agregar query param a la URL
+            const url = new URL(window.location);
+            url.searchParams.set('archivos', 'true');
+            window.history.pushState({modal: true}, '', url);
+        }
+
+        // Función para cerrar el modal
+        function closeArchivosModal() {
+            const modal = document.getElementById('archivosModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+            
+            // Remover query param de la URL
+            const url = new URL(window.location);
+            url.searchParams.delete('archivos');
+            window.history.pushState({modal: false}, '', url);
+        }
+
+        // Cerrar modal al hacer click fuera del contenido
+        window.onclick = function(event) {
+            const modal = document.getElementById('archivosModal');
+            if (event.target == modal) {
+                closeArchivosModal();
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeArchivosModal();
+            }
+        });
+
+        // Abrir modal automáticamente si viene con query param
+        window.addEventListener('load', function() {
+            const url = new URL(window.location);
+            if (url.searchParams.get('archivos') === 'true') {
+                const modal = document.getElementById('archivosModal');
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        
+        // Función para abrir sin recargar (para usar desde onclick)
+        function abrirPopupArchivos() {
+            openArchivosModal();
+            return false;
+        }
+
+        // Manejar botón atrás del navegador
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.modal) {
+                openArchivosModal();
+            } else {
+                closeArchivosModal();
+            }
+        });
+    </script>
+</body>
+</html>

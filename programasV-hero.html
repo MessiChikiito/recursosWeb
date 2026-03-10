@@ -140,12 +140,12 @@
       flex:1 1 160px;
       display:flex;
       flex-direction:column;
-      gap:4px;
+      gap:2px;
       color:#06325a;
     }
     .ue-hero-metaRow .ue-hero-meta:nth-child(2){
-      flex:0.6 1 170px;
-      min-width:170px;
+      flex:0.6 1 180px;
+      min-width:180px;
     }
     .ue-hero-metaRow .ue-hero-meta:nth-child(3){
       flex:0.5 1 80px;
@@ -153,7 +153,7 @@
     }
     .ue-hero-meta__k{font-size:12px;color:rgba(1,50,175,0.72);font-weight:700}
     .ue-hero-meta__v{color:#06325a;font-weight:700}
-    .ue-hero-meta__v--big{font-size:18px;font-weight:800;color:#0132AF}
+    .ue-hero-meta__v--big{font-size:17px;font-weight:800;color:#0132AF}
 
     .hero-panel{
       background:#ffffff;
@@ -226,6 +226,85 @@
       .ue-hero{grid-template-columns:1fr}
       .ue-hero__visual{min-height:260px}
     }
+    
+    /* Media query para pantallas pequeñas de PC y zoom 150% */
+    @media (max-width:1320px){
+      .ue-hero__h1{
+        font-size:32px;
+      }
+      .ue-hero__lead{
+        font-size:14px;
+        margin-bottom:12px;
+      }
+      .ue-hero-metaRow{
+        gap:8px;
+        margin:10px 0;
+      }
+      .ue-hero-meta{
+        min-width:140px;
+        padding:10px 12px;
+      }
+      .ue-hero-meta__k{
+        font-size:11px;
+      }
+      .ue-hero-meta__v--big{
+        font-size:15px;
+      }
+      .ue-hero-meta__v{
+        font-size:13px;
+      }
+      .hero-panel > .ue-hero__right{
+        padding:50px;
+      }
+      .ue-hero-metaRow .ue-hero-meta:nth-child(2){
+        flex:1 1 140px;
+        min-width:140px;
+      }
+      .ue-hero-metaRow .ue-hero-meta:nth-child(3){
+        flex:1 1 100px;
+        min-width:100px;
+      }
+    }
+
+    @media (max-width:1024px){
+      .ue-hero__h1{
+        font-size:28px;
+      }
+      .hero-panel > .ue-hero__right{
+        padding:40px;
+      }
+      .ue-hero-metaRow{
+        flex-direction:column;
+        gap:10px;
+      }
+      .ue-hero-meta{
+        min-width:100% !important;
+        flex:1 1 auto !important;
+        padding:12px 14px;
+      }
+      .ue-hero-metaRow .ue-hero-meta:nth-child(2){
+        flex:1 1 auto !important;
+        min-width:100% !important;
+      }
+      .ue-hero-metaRow .ue-hero-meta:nth-child(3){
+        flex:1 1 auto !important;
+        min-width:100% !important;
+      }
+    }
+    
+    .ue-snies{font-size:13px;color:#0132AF;margin-top:0px;font-weight:600;line-height:1.5}
+    
+    /* Media query para pantallas grandes (1600px+) - Zoom 150% en 1920px */
+    @media (min-width:1600px){
+      .ue-hero-meta{
+        min-width:180px;
+        padding:12px 14px;
+      }
+      .ue-hero-metaRow{
+        gap:10px;
+      }
+    }
+    
     @media (max-width:560px){
       .ue-hero__visual{min-height:180px}
     }
@@ -301,7 +380,7 @@
         height:100% !important;
         width:100% !important;
         content: '';
-        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg?w=800&q=75');
+        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp');
         background-size: 180%;
         background-position: center 30%;
         background-repeat: no-repeat;
@@ -353,7 +432,7 @@
         height:100% !important;
         width:100% !important;
         content: '';
-        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg?w=800&q=75');
+        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp');
         background-size: 200%;
         background-position: center 35%;
         background-repeat: no-repeat;
@@ -392,7 +471,7 @@
 <section class="hero-panel" id="hero-section" aria-label="Presentación del programa">
 
   <div class="ue-hero__left">
-    <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/man-presenter-collaboration-with-team-office-startup-strategy-business-planning-new-york-people-diversity-laugh-joke-work-technology-online-documents-meeting-scaled.jpg?w=800&q=75" alt="Administración de Empresas" class="ue-hero__image" loading="lazy">
+    <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp" alt="Ingeniería de software virtual" class="ue-hero__image" loading="lazy">
   </div>
 
   <div class="ue-hero__right">
@@ -400,18 +479,20 @@
       <span class="ue-hero-chip">Pregrados<span class="ue-hero-badge">NUEVO</span></span>
     </div>
 
-    <h1 class="ue-hero__h1">Administración de Empresas Virtual</h1>
+    <h1 class="ue-hero__h1">Ingeniería de Software Virtual</h1>
     <p class="ue-hero__lead" id="heroDesc">
-      Formación virtual orientada a la gestión estratégica, emprendimiento y dirección de operaciones. Programa con acompañamiento académico, prácticas profesionales y opciones de financiación para facilitar tu ingreso al mercado laboral.
+  Domina las habilidades que mueven el mundo digital: aprende a diseñar, desarrollar y desplegar soluciones tecnológicas desde cualquier lugar. En este pregrado 100 % en línea, te formarás en programación, metodologías ágiles, bases de datos, desarrollo web y móvil, y así convertirte en un profesional listo para el mercado laboral digital.
     </p>
+    
+    <div class="ue-snies">SNIES / 118364</div>
 
     <div class="ue-hero-metaRow" role="list" aria-label="Datos clave del programa">
         <div class="ue-hero-meta" role="listitem">
         <span class="ue-hero-meta__k">Valor por semestre</span>
-        <div style="display:flex;align-items:baseline;gap:12px">
-          <span style="text-decoration:line-through;color:rgba(1,50,175,0.5);font-size:14px">$ 6.757.000</span>
+        <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+          <span style="text-decoration:line-through;color:rgba(1,50,175,0.5);font-size:13px">$ 6.757.000</span>
           <span class="ue-hero-meta__v ue-hero-meta__v--big">$ 3.716.350</span>
-          <span style="background:#FF3B3B;color:white;padding:2px 8px;border-radius:4px;font-size:14px;font-weight:700;">-45%</span>
+          <span style="background:#FF3B3B;color:white;padding:3px 7px;border-radius:4px;font-size:13px;font-weight:700;white-space:nowrap">-45%</span>
         </div>
       </div>
       <div class="ue-hero-meta" role="listitem">
@@ -428,7 +509,7 @@
 
     <div class="ue-hero__cta">
             <div class="campus-institucional">
-  <a href="#" class="campus-btn-institucional"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:8px;flex-shrink:0">
+  <a href="https://wa.me/573142084103?text=Hola%2C%20estoy%20interesado%2Fa%20en%20el%20programa%20Ingenier%C3%ADa%20de%20Software%20Virtual" onclick"" class="campus-btn-institucional"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:8px;flex-shrink:0">
           <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#fff"/>
           <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
         </svg>
@@ -444,5 +525,4 @@
   </div>
 </section>
 
-<!-- Transición elegante hacia siguiente sección -->
-<div class="transicion-divisor"></div>
+

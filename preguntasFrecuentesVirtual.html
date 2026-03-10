@@ -1,0 +1,242 @@
+<style>
+    :root {
+      --accent: #0132AF !important;
+      --muted: #6b7280 !important;
+      --card: #ffffff !important;
+      --radius: 12px !important;
+    }
+    .faq-wrap {
+      padding: 24px !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      margin-bottom: 18px !important;
+    }
+    .faq-title {
+      font-size: 1.6rem !important;
+      font-weight: 800 !important;
+      color: #067A2E !important;
+      margin: 0 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-intro {
+      color: #6b7280 !important;
+      margin: 0 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-section {
+      background: #ffffff !important;
+      border-radius: 12px !important;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06) !important
+      overflow: hidden !important;
+    }
+    .faq-item + .faq-item {
+      border-top: 1px solid #eef2f7 !important;
+    }
+    .faq-question {
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 18px 20px !important;
+      background: transparent !important;
+      border: 0 !important;
+      cursor: pointer !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      text-align: left !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      transition: all 0.3s ease !important;
+    }
+    .faq-question:hover {
+      background: #f7fafc !important;
+    }
+    .faq-question:focus {
+      outline: 3px solid rgba(1,50,175,0.12) !important;
+      outline-offset: -3px !important;
+    }
+    .faq-chevron {
+      transition: transform .28s cubic-bezier(.2,.9,.2,1) !important;
+      color: #6b7280 !important;
+      font-size: 1.2rem !important;
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg) !important;
+    }
+    .faq-answer {
+      max-height: 0 !important;
+      overflow: hidden !important;
+      padding: 0 20px !important;
+      transition: max-height .32s ease, padding .32s ease !important;
+      background: transparent !important;
+    }
+    .faq-answer p {
+      margin: 12px 0 18px !important;
+      color: #374151 !important;
+      line-height: 1.6 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    /* Open state helper */
+    .faq-item.open .faq-answer {
+      padding: 12px 20px 18px !important;
+      max-height: 420px !important;
+    }
+    /* Responsive */
+    @media (max-width:600px) {
+      .faq-wrap {
+        padding: 16px !important;
+        margin: 20px !important;
+      }
+      .faq-question {
+        padding: 14px !important;
+      }
+      .faq-answer {
+        padding: 0 14px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="faq-wrap">
+    <header class="faq-header">
+      <h1 class="faq-title">Preguntas frecuentes</h1>
+      <p class="faq-intro">Resolvemos las dudas más comunes sobre nuestros pregrados y procesos.</p>
+    </header>
+    <section class="faq-section" aria-label="Preguntas frecuentes">
+
+      <div class="faq-item" data-index="1">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-1" id="faq-q-1">
+          ¿Qué programas de pregrado ofrece Uniempresarial?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q-1">
+          <p>Uniempresarial ofrece programas como Administración de Empresas, Ingeniería de Software, Ingeniería Industrial, Marketing y Finanzas, diseñados para formar profesionales con enfoque empresarial.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="2">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-2" id="faq-q-2">
+          ¿Uniempresarial tiene modalidad presencial o virtual?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q-2">
+          <p>Uniempresarial ofrece modalidad presencial y modalidad virtual, para que los estudiantes puedan elegir la opción que mejor se adapte a su disponibilidad y estilo de aprendizaje.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="3">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-3" id="faq-q-3">
+          ¿Qué diferencia a Uniempresarial de otras universidades?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-q-3">
+          <p>Su modelo educativo conecta la formación académica con el entorno empresarial, permitiendo a los estudiantes desarrollar habilidades prácticas y visión de negocio desde su etapa de formación.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="4">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-4" id="faq-q-4">
+          ¿Qué necesito para ingresar a un pregrado?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-q-4">
+          <p>Debes haber terminado el bachillerato, presentar tu documento de identidad, los resultados de las pruebas Saber 11 y completar el proceso de admisión.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="5">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-5" id="faq-q-5">
+          ¿Cómo es el proceso de admisión?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-q-5">
+          <p>El proceso incluye registro como aspirante, envío de documentos, revisión del perfil y formalización de la matrícula.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="6">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-6" id="faq-q-6">
+          ¿Uniempresarial tiene convenios con empresas?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-6" role="region" aria-labelledby="faq-q-6">
+          <p>Sí. Uniempresarial mantiene relaciones con empresas que fortalecen la formación práctica y el desarrollo profesional de los estudiantes.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="7">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-7" id="faq-q-7">
+          ¿Existen opciones de financiación?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-7" role="region" aria-labelledby="faq-q-7">
+          <p>Sí. La universidad cuenta con diferentes alternativas de financiación y facilidades de pago para apoyar a los estudiantes en el pago de su matrícula.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="8">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-8" id="faq-q-8">
+          ¿Puedo estudiar desde cualquier ciudad si elijo modalidad virtual?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-8" role="region" aria-labelledby="faq-q-8">
+          <p>Sí. Los programas en modalidad virtual permiten estudiar desde cualquier lugar, siempre que tengas acceso a internet.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="9">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-9" id="faq-q-9">
+          ¿Cuánto dura un programa de pregrado?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-9" role="region" aria-labelledby="faq-q-9">
+          <p>La duración depende del programa, pero generalmente los pregrados tienen una duración aproximada de 8 a 10 semestres.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="10">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-10" id="faq-q-10">
+          ¿Puedo recibir orientación antes de inscribirme?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-10" role="region" aria-labelledby="faq-q-10">
+          <p>Sí. Puedes contactar al equipo de admisiones para recibir asesoría personalizada sobre programas, modalidades y proceso de inscripción.</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  <script>
+    // Acordeón accesible: abre/cierra items y permite navegación por teclado
+    (function(){
+      const items = Array.from(document.querySelectorAll('.faq-item'));
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        const panel = item.querySelector('.faq-answer');
+        btn.addEventListener('click', () => toggle(item, btn, panel));
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle(item, btn, panel);
+          }
+        });
+      });
+
+      function toggle(item, btn, panel){
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        } else {
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          panel.style.maxHeight = null;
+        }
+      }
+    })();
+</script>

@@ -67,11 +67,6 @@
       margin: 0 auto;
     }
 
-    /* ===== SECCIÓN BIBLIOTECA ===== *
-    .biblioteca-seccion {
-      margin-bottom: 64px;
-    }
-
     /* ===== HEADER CON GRADIENTE ===== */
     .biblioteca-header {
       background: var(--gradiente-header);
@@ -309,6 +304,7 @@
       padding: 40px 24px;
       border-radius: var(--radius-card);
       margin-bottom: 64px;
+      overflow: visible !important;
     }
 
     .biblioteca-buscador__titulo {
@@ -328,6 +324,7 @@
       max-width: 650px;
       margin: 0 auto;
       position: relative;
+      overflow: visible !important;
     }
 
     .biblioteca-buscador__input-wrapper {
@@ -584,35 +581,7 @@
       </div>
       <div class="biblioteca-buscador__contador" id="biblioteca-contador"></div>
     </section>
-    <!-- SECCIÓN: COLECCIONES -->
-    <section class="biblioteca-seccion" aria-labelledby="titulo-colecciones">
-      <header class="biblioteca-header">
-        <h2 class="biblioteca-header__titulo" id="titulo-colecciones">Colecciones</h2>
-      </header>
-      <div class="biblioteca-grid" id="grid-colecciones" aria-live="polite">
-        <div class="biblioteca-estado biblioteca-estado--loading">Cargando colecciones...</div>
-      </div>
-    </section>
 
-    <!-- SECCIÓN: SERVICIOS -->
-    <section class="biblioteca-seccion" aria-labelledby="titulo-servicios">
-      <header class="biblioteca-header">
-        <h2 class="biblioteca-header__titulo" id="titulo-servicios">Servicios</h2>
-      </header>
-      <div class="biblioteca-grid" id="grid-servicios" aria-live="polite">
-        <div class="biblioteca-estado biblioteca-estado--loading">Cargando servicios...</div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN: CAPACITACIONES -->
-    <section class="biblioteca-seccion" aria-labelledby="titulo-capacitaciones">
-      <header class="biblioteca-header">
-        <h2 class="biblioteca-header__titulo" id="titulo-capacitaciones">Capacitaciones</h2>
-      </header>
-      <div class="biblioteca-grid" id="grid-capacitaciones" aria-live="polite">
-        <div class="biblioteca-estado biblioteca-estado--loading">Cargando capacitaciones...</div>
-      </div>
-    </section>
 
   </main>
 
@@ -625,17 +594,13 @@
 
       // ===== CONFIGURACIÓN =====
       const DATA_URL = 'https://uniempresarial.edu.co/wp-content/uploads/2026/03/biblioteca-secciones.json';
-      const SECCIONES = {
-        colecciones: 'grid-colecciones',
-        servicios: 'grid-servicios',
-        capacitaciones: 'grid-capacitaciones'
-      };
 
+      // ===== CATEGORÍAS =====
       const CATEGORIAS_NOMBRES = {
-        colecciones: 'Colecciones',
-        servicios: 'Servicios',
-        capacitaciones: 'Capacitaciones',
-        bibliotecas_aliadas: 'Biblioteca Aliada'
+        'colecciones': 'Colección',
+        'servicios': 'Servicio',
+        'capacitaciones': 'Capacitación',
+        'bibliotecas_aliadas': 'Biblioteca Aliada'
       };
 
       // ===== ESTADO GLOBAL =====
@@ -718,17 +683,51 @@
       function buildIndex(data) {
         allItems = [];
         
-        // Indexar secciones principales (colecciones, servicios, capacitaciones)
-        Object.entries(SECCIONES).forEach(([categoria]) => {
-          const items = data[categoria] || [];
-          items.forEach(item => {
+        // Indexar colecciones
+        if (data.colecciones && Array.isArray(data.colecciones)) {
+          data.colecciones.forEach(item => {
             allItems.push({
-              ...item,
-              categoria
+              id: item.id,
+              titulo: item.titulo,
+              descripcion: item.descripcion,
+              keywords: item.keywords || [],
+              href: item.href || '#',
+              externo: item.externo || false,
+              categoria: 'colecciones'
             });
           });
-        });
+        }
 
+        // Indexar servicios
+        if (data.servicios && Array.isArray(data.servicios)) {
+          data.servicios.forEach(item => {
+            allItems.push({
+              id: item.id,
+              titulo: item.titulo,
+              descripcion: item.descripcion,
+              keywords: item.keywords || [],
+              href: item.href || '#',
+              externo: item.externo || false,
+              categoria: 'servicios'
+            });
+          });
+        }
+
+        // Indexar capacitaciones
+        if (data.capacitaciones && Array.isArray(data.capacitaciones)) {
+          data.capacitaciones.forEach(item => {
+            allItems.push({
+              id: item.id,
+              titulo: item.titulo,
+              descripcion: item.descripcion,
+              keywords: item.keywords || [],
+              href: item.href || '#',
+              externo: item.externo || false,
+              categoria: 'capacitaciones'
+            });
+          });
+        }
+        
         // Indexar bibliotecas aliadas (estructura diferente)
         if (data.bibliotecas_aliadas && Array.isArray(data.bibliotecas_aliadas)) {
           data.bibliotecas_aliadas.forEach(bib => {
@@ -840,7 +839,7 @@
           // Badge de categoría
           const badge = createElement('span', {
             className: `biblioteca-resultado-badge ${item.categoria}`
-          }, CATEGORIAS_NOMBRES[item.categoria]);
+          }, CATEGORIAS_NOMBRES[item.categoria] || 'Recurso');
 
           // Título
           const titulo = createElement('h3', {
@@ -957,19 +956,6 @@
         return createElement('article', { className: 'biblioteca-card', 'data-id': item.id || '' }, [imagen, contenido]);
       }
 
-      function renderSection(key, containerId, items) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = '';
-        if (!items || items.length === 0) {
-          mostrarEstado(container, 'vacio', `No hay ${key} disponibles.`);
-          return;
-        }
-        const fragment = document.createDocumentFragment();
-        items.forEach(item => fragment.appendChild(crearCard(item)));
-        container.appendChild(fragment);
-      }
-
       // ===== CARGA DE DATOS =====
 
       async function cargarDatos() {
@@ -981,16 +967,8 @@
           // Construir índice global
           buildIndex(data);
 
-          // Renderizar secciones
-          Object.entries(SECCIONES).forEach(([key, id]) => {
-            renderSection(key, id, data[key] || []);
-          });
         } catch (error) {
           console.error('Error:', error);
-          Object.values(SECCIONES).forEach(id => {
-            const c = document.getElementById(id);
-            if (c) mostrarEstado(c, 'error', 'No se pudieron cargar los datos.');
-          });
         }
       }
 
