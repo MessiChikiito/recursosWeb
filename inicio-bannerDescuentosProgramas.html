@@ -29,6 +29,7 @@
             max-width: 100%;
             width: 100%;
             box-shadow: none;
+            border-radius: 25px;
         }
 
         /* ========== TABS HEADER ========== */
@@ -42,7 +43,7 @@
             padding: 20px 16px;
             text-align: center;
             background: transparent;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.0);
             text-decoration: none;
             transition: all 0.3s ease;
             border: none;
@@ -53,12 +54,11 @@
 
         .banner-tabs .tabs-tab-btn:hover {
             background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.9);
+    
         }
 
         .banner-tabs .tabs-tab-btn.active {
             background: rgba(0,0,0,0.3);
-            color: white;
             border-bottom-width: 3px;
         }
 
@@ -107,13 +107,12 @@
             width: 36px;
             height: 36px;
             margin: 0 auto 8px;
-            background: transparent;
         }
 
         .banner-tabs .tabs-tab-btn .tabs-icon svg {
             width: 100%;
             height: 100%;
-            stroke: currentColor;
+            stroke: #fff;
         }
 
         .banner-tabs .tabs-tab-btn h4 {
@@ -264,6 +263,7 @@
             color: rgba(255, 255, 255, 1);
             font-weight: 800;
             margin-top: 15px;
+            margin-bottom: 10px;
         }
 
         /* ========== RESPONSIVE ========== */
@@ -384,12 +384,12 @@
         <div class="tabs-header">
             <button class="tabs-tab-btn tabs-presencial active" data-tab="presencial">
                 <div class="tabs-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
                 </div>
                 <h4>Pregrados Presencial</h4>
                 <span class="tabs-discount">25% OFF</span>
@@ -397,11 +397,11 @@
 
             <button class="tabs-tab-btn tabs-virtual" data-tab="virtual">
                 <div class="tabs-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
                 </div>
                 <h4>Virtual</h4>
                 <span class="tabs-discount">45% OFF</span>
@@ -409,11 +409,11 @@
 
             <button class="tabs-tab-btn tabs-posgrados" data-tab="posgrados">
                 <div class="tabs-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 10v6"></path>
-                        <path d="M2 10l10-5 10 5-10 5z"></path>
-                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                    </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M22 10v6"></path>
+                            <path d="M6 13v5c3 3 9 3 12 0v-5"></path>
+                            <path d="M2 10l10-5 10 5-10 5z"
+                        </svg>
                 </div>
                 <h4>Posgrados</h4>
                 <span class="tabs-discount">25% OFF</span>
@@ -539,8 +539,8 @@
                     <div class="tabs-desde-label">Desde</div>
                     
                     <div class="tabs-price-display">
-                        <span class="tabs-current">$3.330.000</span>
-                        <span class="tabs-old">$4.440.000</span>
+                        <span class="tabs-current">$3.336.000</span>
+                        <span class="tabs-old">$4.448.000</span>
                         <span class="tabs-per-sem">/cuatrimestre</span>
                     </div>
 

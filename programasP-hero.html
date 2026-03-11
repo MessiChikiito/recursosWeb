@@ -27,6 +27,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 10px;
+      align-items: center;
     }
 
     .hp-hero-chip {
@@ -136,7 +137,7 @@
       top: 0;
       width: 50%;
       height: 100%;
-      background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');
+      background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/department-meeting-scaled.webp');
       background-size: cover;
       background-position: center right;
       z-index: 1;
@@ -163,7 +164,7 @@
 
     .hp-hero p {
       font-size: 16px;
-      margin: 0 0 24px;
+      margin: 0 0 30px;
       line-height: 1.6;
       opacity: 0.95;
     }
@@ -182,7 +183,7 @@
       flex-wrap: wrap;
       gap: 12px;
       justify-content: flex-start;
-      margin-bottom: 24px;
+      margin-bottom: 10px;
     }
 
     .hp-card {
@@ -244,7 +245,7 @@
 
     .hp-card-value {
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
       color: #06325a;
       line-height: 1.3;
       margin-left: 2px;
@@ -252,7 +253,7 @@
 
     .hp-card-value--big {
       font-size: 20px;
-      font-weight: 900;
+      font-weight: 800;
       color: #0132AF;
       line-height: 1.3;
       margin-top: -4px;
@@ -286,6 +287,11 @@
       max-width: 200px;
       flex-shrink: 0;
     }
+    
+    .ue-snies{font-size:13px;color:#f6f6f6;margin-bottom:0px;font-weight:600;line-height:1;display:flex;align-items:center}
+    
+    .ue-tyc{font-size:13px;color:#f6f6f6;margin-bottom:20px;font-weight:400;line-height:1.5}
+    
     /* Responsive */
     @media (max-width: 980px) {
       .hp-hero {
@@ -300,7 +306,7 @@
         position: relative;
         width: 100%;
         height: 160px;
-        background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80') center / cover no-repeat;
+        background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/department-meeting-scaled.webp') center / cover no-repeat;
         display: block;
         z-index: 3;
         order: 1;
@@ -454,7 +460,7 @@
         position: relative;
         width: 100%;
         height: 160px;
-        background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80') center / cover no-repeat;
+        background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/department-meeting-scaled.webp') center / cover no-repeat;
         display: block;
         z-index: 3;
         order: 1;
@@ -478,7 +484,7 @@
       .hp-hero h1 {
         font-size: 32px !important;
         color: white !important;
-        margin: 0 0 12px !important;
+        margin: 0 0 16px !important;
       }
 
       .hp-hero p {
@@ -491,6 +497,7 @@
       .hp-hero-chips {
         margin-bottom: 10px;
         gap: 8px;
+        align-items: center;
       }
 
       .hp-hero-chip {
@@ -593,7 +600,7 @@
         position: relative;
         width: 100%;
         height: 200px;
-        background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80') center / cover no-repeat;
+        background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/department-meeting-scaled.webp') center / cover no-repeat;
         display: block;
         z-index: 3;
         order: 1;
@@ -617,7 +624,7 @@
       .hp-hero h1 {
         font-size: 32px !important;
         color: white !important;
-        margin: 0 0 8px !important;
+        margin: 0 0 12px !important;
       }
 
       .hp-hero p {
@@ -631,6 +638,7 @@
       .hp-hero-chips {
         margin-bottom: 8px;
         gap: 6px;
+        align-items: center;
       }
 
       .hp-hero-chip {
@@ -735,21 +743,23 @@
           <span class="hp-hero-chip">
             Pregrados<!--<span class="hp-hero-badge">NUEVO</span>-->
           </span>
+                  <div class="ue-snies">SNIES / 19193</div>
         </div>
 
-        <h1>Ingeniería de Software Presencial</h1>
+        <h1>Administración de Empresas Presencial</h1>
         
-        <p>Ingeniería de Software es una de las carreras con mayor demanda en el campo laboral y una de las de mayor déficit de profesionales en la era de la tecnología. Esta carrera desarrolla, entre otras competencias, la innovación, la capacidad de análisis y el pensamiento lógico y matemático aplicados al desarrollo de software y videojuegos.</p>
+        <p>Desarrolla habilidades para liderar organizaciones, optimizar recursos y diseñar estrategias empresariales. Aprende sobre gestión financiera, analítica de negocios, innovación y liderazgo para tomar decisiones que impulsen el crecimiento y la competitividad de las empresas.</p>
+        
+
 
         <!-- Cards de metadata -->
         <div class="hp-sidebar" role="list" aria-label="Datos clave del programa">
           <div class="hp-card" role="listitem">
             <span class="hp-card-label">Valor por semestre</span>
-            <div class="hp-card-price">
-              <div class="hp-card-price-content">
-                <span class="hp-card-value--big">$6.757.000</span>
-              </div>
-              <span class="hp-card-badge">¡Descuentos disponibles!</span>
+            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">
+              <span style="text-decoration:line-through;color:rgba(1,50,175,0.5);font-size:13px">$6.757.000</span>
+              <span class="hp-card-value--big">$5.068.250</span>
+              <span style="background:#FF3B3B;color:white;padding:3px 7px; margin-top: -5px; margin-left: 5px; border-radius:4px;font-size:13px;font-weight:700;white-space:nowrap">-25%</span>
             </div>
           </div>
           <div class="hp-card" role="listitem">
@@ -764,7 +774,7 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="#0132AF"/></svg>
               Jornada
             </span>
-            <span class="hp-card-value">Diurna/Nocturna</span>
+            <span class="hp-card-value">Diurna / Nocturna</span>
           </div>
           <div class="hp-card" role="listitem">
             <span class="hp-card-label">
@@ -774,6 +784,8 @@
             <span class="hp-card-value">Presencial</span>
           </div>
         </div>
+        
+        <div class="ue-tyc">Descuentos disponibles del 1 de Marzo al 30 de Abril de 2026. Aplican TyC</div>
 
         <div class="hp-hero-cta">
           <button class="hp-hero-btn-inscribete">

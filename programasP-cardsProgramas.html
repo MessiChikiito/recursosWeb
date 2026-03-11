@@ -368,7 +368,7 @@
             border-radius: var(--radius-lg);
             max-width: 600px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 95vh;
             overflow-y: auto;
             transform: translateY(30px) scale(0.95) !important;
             opacity: 0;
@@ -382,10 +382,11 @@
         }
 
         .modal-header {
-            padding: 24px 24px 0 !important;
+            padding: 15px 24px 0 !important;
             display: flex !important;
             justify-content: space-between !important;
-            align-items: flex-start !important;
+
+            align-items: center;
             gap: 16px !important;
         }
 
@@ -485,8 +486,7 @@
         }
 
         .modal-body {
-            padding: 24px;
-            padding-top: 0px;
+            padding: 0px 24px;
         }
 
         .modal-meta {
@@ -542,17 +542,16 @@
 
         /* ========== FORMULARIO DEL MODAL ========== */
         .modal-form {
-            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
-            padding: 24px;
             border-radius: var(--radius-md);
-            border: 2px solid #a7f3d0;
-            margin-bottom: 10px;
+            border: 2px solid #ffffff;
+            min-height: auto;
+            overflow-y: auto;
         }
 
         .modal-form h3 {
-            font-size: 1.1rem !important;
+            font-size: 1.5rem !important;
             font-weight: 700 !important;
-            color: #047857 !important;
+            color: #0132AF !important;
             margin-bottom: 16px !important;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
             text-align: center !important;
@@ -868,90 +867,194 @@
         </div>
     </section>
 
-    <!-- COMPONENTE: MODAL (Pop-up) -->
-    <div class="modal-overlay" id="modalOverlay">
+    <!-- MODAL 1: Ingeniería de Software -->
+    <div class="modal-overlay" id="modalOverlay1">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
                 <div>
-                    <span class="modal-tag" id="modalTag" style="display: none;">Nuevo</span>
-                    <h2 class="modal-title" id="modalTitle">Nombre del Programa</h2>
+                    <h2 class="modal-title">Ingeniería de Software</h2>
                 </div>
-                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
+                <button class="modal-close" onclick="cerrarModal(1)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="modal-meta" id="modalMeta">
-                    <!-- Meta info dinámica -->
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Diurna / Nocturna</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
-                    <p id="modalDescription">Descripción completa del programa...</p>
+                    <p>Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
                 </div>
-                <!-- Formulario de registro -->
                 <div class="modal-form">
                     <h3>¡Regístrate y recibe más información!</h3>
-                    <form id="modalFormulario">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Nombre*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="12" cy="7" r="4"/>
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Apellidos*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <input type="email" class="form-input" placeholder="Email*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                        <polyline points="22,6 12,13 2,6"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <input type="tel" class="form-input" placeholder="Teléfono*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <button type="submit" class="form-submit">Regístrate Ahora</button>
-                        <label class="form-checkbox">
-                            <input type="checkbox" required>
-                            <span>Marca la casilla para confirmar si estás de acuerdo con el uso y manejo de tus datos personales, por favor revisa nuestra <a href="https://uniempresarial.edu.co/politica-de-datos/" target="_blank">Política de Datos Uniempresarial</a>.</span>
-                        </label>
-                        <label class="form-checkbox">
-                            <input type="checkbox">
-                            <span>Acepto recibir comunicaciones comerciales.</span>
-                        </label>
-                    </form>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/237703.js"></script>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary-cerrar" id="modalCloseBtn">Cerrar</button>
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(1)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Marketing -->
+    <div class="modal-overlay" id="modalOverlay2">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Marketing</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(2)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Diurna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234515.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(2)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Administración de Empresas -->
+    <div class="modal-overlay" id="modalOverlay3">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Administración de Empresas</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(3)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Diurna / Nocturna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Desarrolla competencias gerenciales para liderar organizaciones con visión estratégica y responsabilidad social empresarial.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234523.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(3)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Negocios Internacionales -->
+    <div class="modal-overlay" id="modalOverlay4">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Negocios Internacionales</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(4)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Diurna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234517.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(4)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: Finanzas y Comercio Exterior -->
+    <div class="modal-overlay" id="modalOverlay5">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Finanzas y Comercio Exterior</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(5)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Diurna / Nocturna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Forma profesionales expertos en finanzas y comercio internacional, capaces de gestionar operaciones financieras en contextos globales.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234520.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(5)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: Ingeniería Industrial -->
+    <div class="modal-overlay" id="modalOverlay6">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Ingeniería Industrial</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(6)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Diurna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Forma ingenieros capaces de optimizar procesos productivos y logísticos para mejorar la eficiencia organizacional.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234527.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(6)">Cerrar</button>
             </div>
         </div>
     </div>
@@ -977,7 +1080,7 @@
                 ],
                 descripcion: "Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.",
                 esNuevo: false,
-                tieneVirtual: true, // ← CAMBIAR AQUÍ A true PARA MOSTRAR BADGE VIRTUAL
+                tieneVirtual: true,
                 urlPrograma: "https://uniempresarial.edu.co/ingenieria-de-software/"
             },
             {
@@ -1068,7 +1171,6 @@
         // ========================================
         // CONFIGURACIÓN GLOBAL
         // ========================================
-        const URL_INSCRIBETE = "https://uniempresarial.edu.co/inscribete";
 
         // ========================================
         // VARIABLES GLOBALES
@@ -1081,7 +1183,6 @@
         // ========================================
         const grid = document.getElementById('pp-programsGrid');
         const tabs = document.querySelectorAll('.tab-btn');
-        const modalOverlay = document.getElementById('modalOverlay');
 
         // ========================================
         // FUNCIÓN: Renderizar cards de programas
@@ -1167,32 +1268,12 @@
         }
 
         // ========================================
-        // FUNCIÓN: Abrir modal con detalles
+        // FUNCIÓN: Abrir modal del programa
         // ========================================
         function abrirModal(programa) {
-            document.getElementById('modalTitle').textContent = programa.nombre;
-            document.getElementById('modalDescription').textContent = programa.descripcion;
-            
-            const modalTag = document.getElementById('modalTag');
-            modalTag.style.display = programa.esNuevo ? 'inline-block' : 'none';
-
-            const modalMeta = document.getElementById('modalMeta');
-            modalMeta.innerHTML = `
-                <span class="modal-meta-item">
-                    <span class="pp-meta-icon icon-location"></span>
-                    ${programa.modalidad === 'virtual' ? 'Virtual' : 'Presencial'}
-                </span>
-                <span class="modal-meta-item">
-                    <span class="pp-meta-icon icon-calendar"></span>
-                    ${programa.duracion}
-                </span>
-                <span class="modal-meta-item">
-                    <span class="pp-meta-icon icon-clock"></span>
-                    ${programa.jornada}
-                </span>
-            `;
-
-            modalOverlay.classList.add('active');
+            const overlay = document.getElementById(`modalOverlay${programa.id}`);
+            if (!overlay) return;
+            overlay.classList.add('active');
             const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = 'hidden';
             document.body.style.paddingRight = scrollbarWidth + 'px';
@@ -1201,27 +1282,36 @@
         // ========================================
         // FUNCIÓN: Cerrar modal
         // ========================================
-        function cerrarModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
+        function cerrarModal(id) {
+            const overlay = document.getElementById(`modalOverlay${id}`);
+            if (overlay) overlay.classList.remove('active');
+            // Solo restaurar scroll si no hay otro modal activo
+            if (!document.querySelector('.modal-overlay.active')) {
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+            }
         }
 
         // ========================================
         // EVENT LISTENERS
         // ========================================
-        document.getElementById('modalClose').addEventListener('click', cerrarModal);
-        document.getElementById('modalCloseBtn').addEventListener('click', cerrarModal);
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                cerrarModal();
+        // Cerrar modales al hacer click en el overlay
+        for (let i = 1; i <= 6; i++) {
+            const overlay = document.getElementById(`modalOverlay${i}`);
+            if (overlay) {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) cerrarModal(i);
+                });
             }
-        });
+        }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                cerrarModal();
+            if (e.key === 'Escape') {
+                const activo = document.querySelector('.modal-overlay.active');
+                if (activo) {
+                    const id = activo.id.replace('modalOverlay', '');
+                    cerrarModal(id);
+                }
             }
         });
 

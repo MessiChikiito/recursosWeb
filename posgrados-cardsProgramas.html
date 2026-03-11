@@ -160,8 +160,8 @@
         }
 
         .pp-card-title {
-            font-size: 1.5rem !important;
-            font-weight: 900 !important;
+            font-size: 1.4rem !important;
+            font-weight: 800 !important;
             color: #1f2937 !important;
             margin-bottom: 8px !important;
             line-height: 1.2 !important;
@@ -541,17 +541,17 @@
 
         /* ========== FORMULARIO DEL MODAL ========== */
         .modal-form {
-            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            background: #fff3ee;
             padding: 24px;
             border-radius: var(--radius-md);
-            border: 2px solid #a7f3d0;
+            border: 2px solid #FF6B35;
             margin-bottom: 10px;
         }
 
         .modal-form h3 {
             font-size: 1.1rem !important;
             font-weight: 700 !important;
-            color: #047857 !important;
+            color: #FF6B35 !important;
             margin-bottom: 12px !important;
             margin-top: 0 !important;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
@@ -972,15 +972,14 @@
         </div>
     </section>
 
-    <!-- COMPONENTE: MODAL (Pop-up) -->
-    <div class="modal-overlay" id="modalOverlay">
+    <!-- MODAL 1: Analítica de Datos -->
+    <div class="modal-overlay" id="modalOverlay1">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
                 <div>
-                    <span class="modal-tag" id="modalTag" style="display: none;">Nuevo</span>
-                    <h2 class="modal-title" id="modalTitle">Nombre del Programa</h2>
+                    <h2 class="modal-title">Especialización en Analítica de Datos para la Gerencia de Organizaciones Inteligentes</h2>
                 </div>
-                <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
+                <button class="modal-close" onclick="cerrarModal(1)" aria-label="Cerrar modal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -988,74 +987,127 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="modal-meta" id="modalMeta">
-                    <!-- Meta info dinámica -->
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
-                    <p id="modalDescription">Descripción completa del programa...</p>
+                    <p>Especialización diseñada para profesionales que buscan dominar las herramientas de analítica de datos y aplicarlas en la gestión inteligente de organizaciones modernas.</p>
                 </div>
-                <!-- Formulario de registro -->
                 <div class="modal-form">
                     <h3>¡Regístrate y recibe más información!</h3>
-                    <form id="modalFormulario">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Nombre*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="12" cy="7" r="4"/>
-                                    </svg>
-                                </span>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Apellidos*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <input type="email" class="form-input" placeholder="Email*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                        <polyline points="22,6 12,13 2,6"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <input type="tel" class="form-input" placeholder="Teléfono*" required>
-                                <span class="form-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <button type="submit" class="form-submit">Regístrate Ahora</button>
-                        <label class="form-checkbox">
-                            <input type="checkbox" required>
-                            <span>Marca la casilla para confirmar si estás de acuerdo con el uso y manejo de tus datos personales, por favor revisa nuestra <a href="https://uniempresarial.edu.co/politica-de-datos/" target="_blank">Política de Datos Uniempresarial</a>.</span>
-                        </label>
-                        <label class="form-checkbox">
-                            <input type="checkbox">
-                            <span>Acepto recibir comunicaciones comerciales.</span>
-                        </label>
-                    </form>
+                    <!-- TODO: Agregar script de Clientify cuando esté disponible -->
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary-cerrar" id="modalCloseBtn">Cerrar</button>
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(1)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Dirección de Industrias Creativas -->
+    <div class="modal-overlay" id="modalOverlay2">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Especialización en Dirección de Industrias Creativas</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(2)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Forma directivos capaces de liderar empresas creativas, manejando aspectos estratégicos, financieros y operacionales del sector creativo y cultural.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/185518.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(2)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Gerencia y Protección de Sistemas de Información -->
+    <div class="modal-overlay" id="modalOverlay3">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Especialización en Gerencia y Protección de Sistemas de Información Empresarial</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(3)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Especialización para profesionales que desean dominar la gestión estratégica y la protección de sistemas de información, asegurando la continuidad empresarial.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <!-- TODO: Agregar script de Clientify cuando esté disponible -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(3)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Gerencia y Arquitectura Empresarial de Sistemas de TI -->
+    <div class="modal-overlay" id="modalOverlay4">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Especialización en Gerencia y Arquitectura Empresarial de Sistemas de TI</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(4)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Prepara profesionales para diseñar e implementar arquitecturas TI empresariales que alineen la tecnología con la estrategia de negocio de la organización.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <!-- TODO: Agregar script de Clientify cuando esté disponible -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(4)">Cerrar</button>
             </div>
         </div>
     </div>
@@ -1071,8 +1123,8 @@
                 id: 1,
                 nombre: "Especialización en Analítica de Datos para la Gerencia de Organizaciones Inteligentes",
                 modalidad: "posgrado",
-                duracion: "4 Cuatrimestres",
-                jornada: "Flexible",
+                duracion: "3 Cuatrimestres",
+                jornada: "Virtual Dual",
                 imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
                 bullets: [
                     "Análisis avanzado de datos empresariales",
@@ -1089,8 +1141,8 @@
                 id: 2,
                 nombre: "Especialización en Dirección de Industrias Creativas",
                 modalidad: "posgrado",
-                duracion: "4 Cuatrimestres",
-                jornada: "Flexible",
+                duracion: "3 Cuatrimestres",
+                jornada: "Presencial",
                 imagen: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop",
                 bullets: [
                     "Gestión de proyectos creativos",
@@ -1108,8 +1160,8 @@
                 id: 3,
                 nombre: "Especialización en Gerencia y Protección de Sistemas de Información Empresarial",
                 modalidad: "posgrado",
-                duracion: "4 Cuatrimestres",
-                jornada: "Flexible",
+                duracion: "3 Cuatrimestres",
+                jornada: "Virtual",
                 imagen: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/data-digital-technology-big-data-technologyscientists-complex-data-sets-computers.jpg",
                 bullets: [
                     "Ciberseguridad empresarial",
@@ -1126,8 +1178,8 @@
                 id: 4,
                 nombre: "Especialización en Gerencia y Arquitectura Empresarial de Sistemas de TI",
                 modalidad: "posgrado",
-                duracion: "4 Cuatrimestres",
-                jornada: "Flexible",
+                duracion: "3 Cuatrimestres",
+                jornada: "Virtual Dual",
                 imagen: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/portrait-pleased-manager-utilizing-data-reports-tools-build-vision-focusing-performance-scaled-e1771463116466.jpg",
                 bullets: [
                     "Arquitectura empresarial moderna",
@@ -1158,7 +1210,6 @@
         // ========================================
         const grid = document.getElementById('pp-programsGrid');
         const tabs = document.querySelectorAll('.tab-btn');
-        const modalOverlay = document.getElementById('modalOverlay');
 
         // ========================================
         // FUNCIÓN: Renderizar cards de programas
@@ -1244,32 +1295,12 @@
         }
 
         // ========================================
-        // FUNCIÓN: Abrir modal con detalles
+        // FUNCIÓN: Abrir modal del programa
         // ========================================
         function abrirModal(programa) {
-            document.getElementById('modalTitle').textContent = programa.nombre;
-            document.getElementById('modalDescription').textContent = programa.descripcion;
-            
-            const modalTag = document.getElementById('modalTag');
-            modalTag.style.display = programa.esNuevo ? 'inline-block' : 'none';
-
-            const modalMeta = document.getElementById('modalMeta');
-            modalMeta.innerHTML = `
-                <span class="modal-meta-item">
-                    <span class="pp-meta-icon icon-location"></span>
-                    Posgrado
-                </span>
-                <span class="modal-meta-item">
-                    <span class="pp-meta-icon icon-calendar"></span>
-                    ${programa.duracion}
-                </span>
-                <span class="modal-meta-item">
-                    <span class="pp-meta-icon icon-clock"></span>
-                    ${programa.jornada}
-                </span>
-            `;
-
-            modalOverlay.classList.add('active');
+            const overlay = document.getElementById('modalOverlay' + programa.id);
+            if (!overlay) return;
+            overlay.classList.add('active');
             const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = 'hidden';
             document.body.style.paddingRight = scrollbarWidth + 'px';
@@ -1278,8 +1309,10 @@
         // ========================================
         // FUNCIÓN: Cerrar modal
         // ========================================
-        function cerrarModal() {
-            modalOverlay.classList.remove('active');
+        function cerrarModal(id) {
+            const overlay = document.getElementById('modalOverlay' + id);
+            if (!overlay) return;
+            overlay.classList.remove('active');
             document.body.style.overflow = '';
             document.body.style.paddingRight = '';
         }
@@ -1287,18 +1320,21 @@
         // ========================================
         // EVENT LISTENERS
         // ========================================
-        document.getElementById('modalClose').addEventListener('click', cerrarModal);
-        document.getElementById('modalCloseBtn').addEventListener('click', cerrarModal);
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                cerrarModal();
+        [1, 2, 3, 4].forEach(i => {
+            const overlay = document.getElementById('modalOverlay' + i);
+            if (overlay) {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) cerrarModal(i);
+                });
             }
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                cerrarModal();
+            if (e.key === 'Escape') {
+                [1, 2, 3, 4].forEach(i => {
+                    const overlay = document.getElementById('modalOverlay' + i);
+                    if (overlay && overlay.classList.contains('active')) cerrarModal(i);
+                });
             }
         });
 
