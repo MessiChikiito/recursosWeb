@@ -129,7 +129,7 @@
     .ue-hero__lead{color:#06325a;margin:0 0 14px;font-size:16px;line-height:1.6;font-weight:500}
 
     .ue-hero-metaRow{
-      display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;
+          display:flex;flex-wrap:wrap;gap:10px;margin:14px 0; margin-bottom: 10px;
     }
     .ue-hero-meta{
       background: #ffffff;
@@ -214,6 +214,10 @@
       align-content: center;
     }
     
+    .ue-snies{font-size:13px;color:#0132AF;margin-bottom:0px;font-weight:600;line-height:1;display:flex;align-items:center}
+    
+    .ue-tyc{font-size:13px;color:#0132AF;margin-bottom:10px;font-weight:400;line-height:1.5}
+    
     body .campus-btn,
     body .campus-btn-institucional,
     body a.campus-btn,
@@ -292,7 +296,6 @@
       }
     }
     
-    .ue-snies{font-size:13px;color:#0132AF;margin-top:0px;font-weight:600;line-height:1.5}
     
     /* Media query para pantallas grandes (1600px+) - Zoom 150% en 1920px */
     @media (min-width:1600px){
@@ -376,15 +379,7 @@
         height:200px !important;
         border-radius:16px 16px 0 0;
       }
-      .ue-hero__image{
-        height:100% !important;
-        width:100% !important;
-        content: '';
-        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp');
-        background-size: 180%;
-        background-position: center 30%;
-        background-repeat: no-repeat;
-      }
+
       .hero-panel > .ue-hero__right{
         padding:24px 24px;
       }
@@ -428,15 +423,7 @@
       .hero-panel > .ue-hero__left{
         height:200px !important;
       }
-      .ue-hero__image{
-        height:100% !important;
-        width:100% !important;
-        content: '';
-        background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp');
-        background-size: 200%;
-        background-position: center 35%;
-        background-repeat: no-repeat;
-      }
+
       .hero-panel > .ue-hero__right{
         padding:16px 16px;
       }
@@ -477,14 +464,13 @@
   <div class="ue-hero__right">
     <div class="ue-hero-chips">
       <span class="ue-hero-chip">Pregrados<span class="ue-hero-badge">NUEVO</span></span>
+          <div class="ue-snies">SNIES / 118364</div>
     </div>
 
     <h1 class="ue-hero__h1">Ingeniería de Software Virtual</h1>
     <p class="ue-hero__lead" id="heroDesc">
   Domina las habilidades que mueven el mundo digital: aprende a diseñar, desarrollar y desplegar soluciones tecnológicas desde cualquier lugar. En este pregrado 100 % en línea, te formarás en programación, metodologías ágiles, bases de datos, desarrollo web y móvil, y así convertirte en un profesional listo para el mercado laboral digital.
     </p>
-    
-    <div class="ue-snies">SNIES / 118364</div>
 
     <div class="ue-hero-metaRow" role="list" aria-label="Datos clave del programa">
         <div class="ue-hero-meta" role="listitem">
@@ -492,7 +478,7 @@
         <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
           <span style="text-decoration:line-through;color:rgba(1,50,175,0.5);font-size:13px">$ 6.757.000</span>
           <span class="ue-hero-meta__v ue-hero-meta__v--big">$ 3.716.350</span>
-          <span style="background:#FF3B3B;color:white;padding:3px 7px;border-radius:4px;font-size:13px;font-weight:700;white-space:nowrap">-45%</span>
+<span style="background:#FF3B3B;color:white;padding:3px 7px; margin-top: -5px; margin-left: 5px; border-radius:4px;font-size:13px;font-weight:700;white-space:nowrap">-45%</span>
         </div>
       </div>
       <div class="ue-hero-meta" role="listitem">
@@ -505,6 +491,7 @@
       </div>
 
     </div>
+            <div class="ue-tyc">Descuentos disponibles del 1 de Marzo al 30 de Abril de 2026. Aplican TyC</div>
     
 
     <div class="ue-hero__cta">

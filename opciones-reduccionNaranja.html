@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opciones - Reducir Exceso de Naranja</title>
+  <style>
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 30px;
+    }
+    h1 { text-align: center; color: #333; margin-bottom: 10px; }
+    p.subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 14px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .option {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background: white;
+    }
+    .option-preview {
+      height: 320px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .left-section {
+      position: relative;
+      padding: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .right-section {
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23e0e0e0"/><text x="50%" y="50%" font-family="Arial" font-size="12" fill="%23999" text-anchor="middle" dy=".3em">IMG</text></svg>') center/cover;
+    }
+    .hero-title {
+      font-size: 16px;
+      font-weight: 900;
+      margin: 0 0 8px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .hero-desc {
+      font-size: 11px;
+      opacity: 0.9;
+      margin: 0 0 12px;
+      line-height: 1.4;
+    }
+    .sample-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .sample-card {
+      background: white;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 9px;
+      min-width: 50px;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .option-label {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #333;
+      font-weight: 600;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .option-label .num {
+      background: #FF6B35;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .description {
+      padding: 0 18px 14px;
+      font-size: 11px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* ===== OPCIONES ===== */
+
+    /* 1 - Fondo gris suave con acento naranja */
+    .opt-1 .left-section {
+      background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 100%);
+    }
+    .opt-1 .sample-card:first-child {
+      color: #FF6B35;
+      font-weight: 700;
+    }
+
+    /* 2 - Fondo azul original */
+    .opt-2 .left-section {
+      background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+    }
+    .opt-2 .sample-card {
+      color: #0132AF;
+    }
+
+    /* 3 - Naranja más sutil + blanco dominante */
+    .opt-3 .left-section {
+      background: linear-gradient(135deg, #F4F4F5 0%, #E5E7EB 100%);
+      color: #374151;
+    }
+    .opt-3 .sample-card:first-child {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* 4 - Gradiente naranja a gris */
+    .opt-4 .left-section {
+      background: linear-gradient(135deg, #FF6B35 0%, #6B7280 100%);
+    }
+
+    /* 5 - Fondo oscuro con acento naranja */
+    .opt-5 .left-section {
+      background: linear-gradient(135deg, #374151 0%, #1F2937 100%);
+    }
+    .opt-5 .sample-card:first-child {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* 6 - Cards grises en lugar de blanco */
+    .opt-6 .left-section {
+      background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+    }
+    .opt-6 .sample-card {
+      background: #F3F4F6;
+      color: #374151;
+    }
+
+    /* 7 - Naranja muy claro */
+    .opt-7 .left-section {
+      background: linear-gradient(135deg, #FED7B5 0%, #FDE68A 100%);
+      color: #92400E;
+    }
+    .opt-7 .sample-card {
+      color: #B45309;
+    }
+
+    /* 8 - Verde oliva + acento naranja */
+    .opt-8 .left-section {
+      background: linear-gradient(135deg, #65A30D 0%, #84CC16 100%);
+    }
+    .opt-8 .sample-card:first-child {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* 9 - Fondo negro con acento naranja */
+    .opt-9 .left-section {
+      background: linear-gradient(135deg, #000000 0%, #1F2937 100%);
+    }
+    .opt-9 .sample-card:first-child {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* 10 - Cards con fondo naranja claro */
+    .opt-10 .left-section {
+      background: linear-gradient(135deg, #6B7280 0%, #374151 100%);
+    }
+    .opt-10 .sample-card {
+      background: #FED7B5;
+      color: #92400E;
+    }
+
+    /* 11 - Texto naranja sobre fondo blanco */
+    .opt-11 .left-section {
+      background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+      color: #FF6B35;
+    }
+    .opt-11 .hero-title,
+    .opt-11 .hero-desc {
+      color: #FF6B35;
+      text-shadow: none;
+    }
+
+    /* 12 - Azul marino + acento naranja """
+    .opt-12 .left-section {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3730A3 100%);
+    }
+    .opt-12 .sample-card:first-child {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* 13 - Solo una card naranja */
+    .opt-13 .left-section {
+      background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 100%);
+    }
+    .opt-13 .sample-cards .sample-card:first-child {
+      background: #FF6B35;
+      color: white;
+    }
+    .opt-13 .sample-cards .sample-card:not(:first-child) {
+      background: white;
+      color: #374151;
+    }
+
+    /* 14 - Naranja semi-transparente */
+    .opt-14 .left-section {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.7) 0%, rgba(255, 165, 0, 0.8) 100%);
+    }
+
+    /* 15 - Fondo crema + detalles marrones */
+    .opt-15 .left-section {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      color: #92400E;
+    }
+    .opt-15 .sample-card {
+      background: #B45309;
+      color: white;
+    }
+
+    /* 16 - Verde sage + acento dorado */
+    .opt-16 .left-section {
+      background: linear-gradient(135deg, #84CC16 0%, #A3E635 100%);
+    }
+    .opt-16 .sample-card:first-child {
+      background: #F59E0B;
+      color: white;
+    }
+
+    /* 17 - Cards con bordes naranjas sobre gris */
+    .opt-17 .left-section {
+      background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 100%);
+    }
+    .opt-17 .sample-card {
+      background: white;
+      border: 2px solid #FF6B35;
+      color: #374151;
+    }
+
+    /* 18 - Púrpura + acento naranja pequeño */
+    .opt-18 .left-section {
+      background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+    }
+    .opt-18 .sample-card:last-child {
+      background: #FF6B35;
+      color: white;
+    }
+
+    /* 19 - Cards con iconos naranjas + texto azul */
+    .opt-19 .left-section {
+      background: linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%);
+      color: #374151;
+    }
+    .opt-19 .sample-card {
+      background: white;
+      color: #0132AF;
+    }
+    .opt-19 .sample-card::before {
+      content: "🔸";
+      margin-right: 3px;
+    }
+
+    /* 20 - Fondo muy claro con botones naranjas */
+    .opt-20 .left-section {
+      background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+      color: #374151;
+    }
+    .opt-20 .sample-cards::after {
+      content: "";
+      display: block;
+      background: #FF6B35;
+      height: 16px;
+      border-radius: 8px;
+      margin-top: 8px;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Opciones — Reducir Exceso de Naranja</h1>
+  <p class="subtitle">20 opciones para mitigar el exceso de naranja en el hero. Desde cambios de fondo hasta colores de texto y cards.</p>
+
+  <div class="grid">
+
+    <!-- Opción 1 -->
+    <div class="option">
+      <div class="option-preview opt-1">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Fondo gris + acento naranja</span><span class="num">1</span></div>
+      <div class="description">Cambiar el fondo naranja por gris suave. Solo mantener naranja en elementos clave como precios.</div>
+    </div>
+
+    <!-- Opción 2 -->
+    <div class="option">
+      <div class="option-preview opt-2">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Volver al azul original</span><span class="num">2</span></div>
+      <div class="description">Regresar completamente al esquema azul original y eliminar todo el naranja.</div>
+    </div>
+
+    <!-- Opción 3 -->
+    <div class="option">
+      <div class="option-preview opt-3">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Fondo blanco + acento naranja</span><span class="num">3</span></div>
+      <div class="description">Fondo blanco/gris muy claro con texto oscuro. Naranja solo en una card importante.</div>
+    </div>
+
+    <!-- Opción 4 -->
+    <div class="option">
+      <div class="option-preview opt-4">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Gradiente naranja → gris</span><span class="num">4</span></div>
+      <div class="description">Mantener naranja pero degradar hacia gris, reduciendo la intensidad visual.</div>
+    </div>
+
+    <!-- Opción 5 -->
+    <div class="option">
+      <div class="option-preview opt-5">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Fondo oscuro + acento naranja</span><span class="num">5</span></div>
+      <div class="description">Fondo gris oscuro elegante con naranja usado solo como acento llamativo.</div>
+    </div>
+
+    <!-- Opción 6 -->
+    <div class="option">
+      <div class="option-preview opt-6">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Cards grises en lugar de blanco</span><span class="num">6</span></div>
+      <div class="description">Mantener fondo naranja pero cambiar cards a gris claro para reducir contraste.</div>
+    </div>
+
+    <!-- Opción 7 -->
+    <div class="option">
+      <div class="option-preview opt-7">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Naranja muy claro / pasteles</span><span class="num">7</span></div>
+      <div class="description">Usar tonos naranjas pastel muy suaves, menos intensos y agresivos.</div>
+    </div>
+
+    <!-- Opción 8 -->
+    <div class="option">
+      <div class="option-preview opt-8">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Verde base + acento naranja</span><span class="num">8</span></div>
+      <div class="description">Cambiar base a verde y usar naranja solo como acento estratégico.</div>
+    </div>
+
+    <!-- Opción 9 -->
+    <div class="option">
+      <div class="option-preview opt-9">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Fondo negro + acento naranja</span><span class="num">9</span></div>
+      <div class="description">Enfoque premium con fondo negro y naranja usado solo en elementos críticos.</div>
+    </div>
+
+    <!-- Opción 10 -->
+    <div class="option">
+      <div class="option-preview opt-10">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Cards naranja claro sobre gris</span><span class="num">10</span></div>
+      <div class="description">Fondo gris neutro con cards en naranja muy claro para suavizar el impacto.</div>
+    </div>
+
+    <!-- Opción 11 -->
+    <div class="option">
+      <div class="option-preview opt-11">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Texto naranja sobre fondo blanco</span><span class="num">11</span></div>
+      <div class="description">Invertir: fondo blanco con texto y elementos en naranja para menor saturación.</div>
+    </div>
+
+    <!-- Opción 12 -->
+    <div class="option">
+      <div class="option-preview opt-12">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Azul marino + acento naranja</span><span class="num">12</span></div>
+      <div class="description">Base azul marino elegante con naranja usado solo en call-to-action.</div>
+    </div>
+
+    <!-- Opción 13 -->
+    <div class="option">
+      <div class="option-preview opt-13">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Solo una card naranja</span><span class="num">13</span></div>
+      <div class="description">Fondo gris neutro, cards blancas y solo el precio en naranja para enfoque.</div>
+    </div>
+
+    <!-- Opción 14 -->
+    <div class="option">
+      <div class="option-preview opt-14">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Naranja semi-transparente</span><span class="num">14</span></div>
+      <div class="description">Mantener el gradiente pero con opacidad reducida para menos intensidad.</div>
+    </div>
+
+    <!-- Opción 15 -->
+    <div class="option">
+      <div class="option-preview opt-15">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Fondo crema + detalles marrones</span><span class="num">15</span></div>
+      <div class="description">Tonos tierra cálidos pero suaves, más refinados que naranja vibrante.</div>
+    </div>
+
+    <!-- Opción 16 -->
+    <div class="option">
+      <div class="option-preview opt-16">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Verde + acento dorado</span><span class="num">16</span></div>
+      <div class="description">Base verde con acentos dorados en lugar de naranja llamativo.</div>
+    </div>
+
+    <!-- Opción 17 -->
+    <div class="option">
+      <div class="option-preview opt-17">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Cards con bordes naranjas</span><span class="num">17</span></div>
+      <div class="description">Fondo gris neutro, cards blancas con bordes naranjas sutiles.</div>
+    </div>
+
+    <!-- Opción 18 -->
+    <div class="option">
+      <div class="option-preview opt-18">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Púrpura + acento naranja mínimo</span><span class="num">18</span></div>
+      <div class="description">Base púrpura elegante con naranja solo en un elemento pequeño.</div>
+    </div>
+
+    <!-- Opción 19 -->
+    <div class="option">
+      <div class="option-preview opt-19">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Iconos naranjas + texto azul</span><span class="num">19</span></div>
+      <div class="description">Fondo claro, iconos pequeños en naranja, texto principal en azul.</div>
+    </div>
+
+    <!-- Opción 20 -->
+    <div class="option">
+      <div class="option-preview opt-20">
+        <div class="left-section">
+          <div class="hero-title">Programa de Estudio</div>
+          <div class="hero-desc">Descripción del programa educativo</div>
+          <div class="sample-cards">
+            <div class="sample-card">$5.067K</div>
+            <div class="sample-card">7 Sem</div>
+            <div class="sample-card">Diurna</div>
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+      <div class="option-label"><span>Fondo minimalista + botón naranja</span><span class="num">20</span></div>
+      <div class="description">Fondo blanco/gris muy claro con naranja solo en botones de acción.</div>
+    </div>
+
+  </div>
+</body>
+</html>

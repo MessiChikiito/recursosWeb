@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opciones de Fondo - Hero Posgrados</title>
+  <style>
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 30px;
+    }
+    h1 { text-align: center; color: #333; margin-bottom: 10px; }
+    p.subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 14px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .option {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background: white;
+    }
+    .option-preview {
+      height: 220px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .option-preview .sample-text {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .sample-text h2 {
+      font-size: 22px;
+      font-weight: 900;
+      margin: 0 0 6px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .sample-text span {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    .option-label {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #333;
+      font-weight: 600;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .option-label .num {
+      background: #FF6B35;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    code {
+      display: block;
+      padding: 10px 18px;
+      font-size: 11px;
+      color: #888;
+      background: #fafafa;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    /* ===== OPCIONES ===== */
+
+    /* 1 - Diagonal naranja + blanco inferior */
+    .bg-1 {
+      background:
+        linear-gradient(155deg, #FF6B35 65%, #ffffff 65.5%);
+    }
+
+    /* 2 - Diagonal blanco superior + naranja */
+    .bg-2 {
+      background:
+        linear-gradient(155deg, #ffffff 30%, #FF6B35 30.5%);
+    }
+
+    /* 3 - Doble diagonal naranja-blanco-naranja oscuro */
+    .bg-3 {
+      background:
+        linear-gradient(155deg, #FF6B35 40%, #ffffff 40.5%, #ffffff 50%, #E85D2C 50.5%);
+    }
+
+    /* 4 - Diagonal sutil con franja blanca fina */
+    .bg-4 {
+      background:
+        linear-gradient(150deg, #FF6B35 55%, #ffffff 55.3%, #ffffff 58%, #FF8C42 58.3%);
+    }
+
+    /* 5 - Gradiente naranja con esquina blanca */
+    .bg-5 {
+      background:
+        linear-gradient(135deg, #FF6B35 0%, #FFA500 60%, #ffffff 100%);
+    }
+
+    /* 6 - Blanco dominante con acento naranja diagonal */
+    .bg-6 {
+      background:
+        linear-gradient(160deg, #ffffff 45%, #FF6B35 45.5%);
+    }
+    .bg-6 .sample-text h2,
+    .bg-6 .sample-text span { text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+    /* 7 - Triple franja diagonal */
+    .bg-7 {
+      background:
+        linear-gradient(155deg, 
+          #FF6B35 30%, 
+          #ffffff 30.3%, #ffffff 33%, 
+          #FFA500 33.3%, #FFA500 63%, 
+          #ffffff 63.3%, #ffffff 66%, 
+          #E85D2C 66.3%);
+    }
+
+    /* 8 - Naranja con triángulo blanco inferior derecho */
+    .bg-8 {
+      background:
+        linear-gradient(170deg, #FF6B35 70%, #ffffff 70.3%);
+    }
+
+    /* 9 - Diagonal invertida con naranja claro */
+    .bg-9 {
+      background:
+        linear-gradient(200deg, #FF6B35 60%, #ffffff 60.3%);
+    }
+
+    /* 10 - Degradado con línea blanca diagonal */
+    .bg-10 {
+      background:
+        linear-gradient(150deg, 
+          #FF6B35 48%, 
+          #ffffff 48.3%, #ffffff 51%, 
+          #FF8C42 51.3%);
+    }
+
+    /* 11 - Patrón chevron naranja-blanco */
+    .bg-11 {
+      background:
+        linear-gradient(135deg, #FF6B35 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, #FF6B35 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, #FF6B35 25%, transparent 25%),
+        linear-gradient(45deg, #FF6B35 25%, transparent 25%);
+      background-size: 100px 100px;
+      background-color: #ffffff;
+    }
+
+    /* 12 - Mitad y mitad con corte diagonal */
+    .bg-12 {
+      background:
+        linear-gradient(160deg, #FF6B35 50%, #ffffff 50.3%);
+    }
+    .bg-12 .sample-text h2 { text-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+
+    /* 13 - Naranja oscuro a claro con banda blanca */
+    .bg-13 {
+      background:
+        linear-gradient(145deg, 
+          #E85D2C 35%, 
+          #ffffff 35.3%, #ffffff 40%, 
+          #FFA500 40.3%);
+    }
+
+    /* 14 - Esquina superior blanca con naranja */
+    .bg-14 {
+      background:
+        linear-gradient(135deg, #ffffff 20%, #FF6B35 20.5%, #FF6B35 80%, #FFA500 100%);
+    }
+    .bg-14 .sample-text h2 { text-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+
+    /* 15 - Franja diagonal blanca centrada */
+    .bg-15 {
+      background:
+        linear-gradient(155deg, 
+          #FF6B35 38%, 
+          rgba(255,255,255,0.85) 38.3%, rgba(255,255,255,0.85) 48%, 
+          #FFA500 48.3%);
+    }
+
+    /* 16 - Doble corte en V */
+    .bg-16 {
+      background:
+        linear-gradient(150deg, #FF6B35 35%, #ffffff 35.3%, #ffffff 37%, transparent 37.3%),
+        linear-gradient(210deg, #FF6B35 35%, #ffffff 35.3%, #ffffff 37%, transparent 37.3%),
+        linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+    }
+
+    /* 17 - Naranja con acento blanco sutil en esquina */
+    .bg-17 {
+      background:
+        linear-gradient(135deg, #FF6B35 0%, #FFA500 100%),
+        radial-gradient(ellipse at bottom right, rgba(255,255,255,0.4) 0%, transparent 60%);
+      background-blend-mode: normal;
+    }
+    .bg-17 {
+      background:
+        radial-gradient(ellipse at bottom right, rgba(255,255,255,0.35) 0%, transparent 50%),
+        linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+    }
+
+    /* 18 - Franjas diagonales finas naranja-blanco */
+    .bg-18 {
+      background: repeating-linear-gradient(
+        150deg,
+        #FF6B35,
+        #FF6B35 40px,
+        #FF8C42 40px,
+        #FF8C42 42px,
+        #ffffff 42px,
+        #ffffff 44px,
+        #FF6B35 44px,
+        #FF6B35 84px
+      );
+    }
+
+    /* 19 - Gradiente con doble triángulo blanco */
+    .bg-19 {
+      background:
+        linear-gradient(160deg, transparent 65%, #ffffff 65.3%),
+        linear-gradient(200deg, transparent 75%, rgba(255,255,255,0.5) 75.3%),
+        linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+    }
+
+    /* 20 - Diagonal naranja oscuro + blanco + naranja claro */
+    .bg-20 {
+      background:
+        linear-gradient(155deg, 
+          #E85D2C 30%, 
+          #ffffff 30.3%, #ffffff 35%, 
+          #FF6B35 35.3%, #FF6B35 65%, 
+          #ffffff 65.3%, #ffffff 70%, 
+          #FFA500 70.3%);
+    }
+  </style>
+</head>
+<body>
+  <h1>Opciones de Fondo — Hero Posgrados</h1>
+  <p class="subtitle">Cortes diagonales + blanco + detalles naranjas. Haz clic derecho → inspeccionar para copiar el CSS.</p>
+
+  <div class="grid">
+
+    <div class="option">
+      <div class="option-preview bg-1">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Diagonal naranja → blanco inferior</span><span class="num">1</span></div>
+      <code>background: linear-gradient(155deg, #FF6B35 65%, #ffffff 65.5%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-2">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Blanco superior → naranja</span><span class="num">2</span></div>
+      <code>background: linear-gradient(155deg, #ffffff 30%, #FF6B35 30.5%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-3">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Doble diagonal naranja-blanco-oscuro</span><span class="num">3</span></div>
+      <code>background: linear-gradient(155deg, #FF6B35 40%, #ffffff 40.5%, #ffffff 50%, #E85D2C 50.5%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-4">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Franja blanca fina diagonal</span><span class="num">4</span></div>
+      <code>background: linear-gradient(150deg, #FF6B35 55%, #ffffff 55.3%, #ffffff 58%, #FF8C42 58.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-5">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Gradiente naranja → esquina blanca</span><span class="num">5</span></div>
+      <code>background: linear-gradient(135deg, #FF6B35 0%, #FFA500 60%, #ffffff 100%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-6">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Blanco dominante + acento naranja</span><span class="num">6</span></div>
+      <code>background: linear-gradient(160deg, #ffffff 45%, #FF6B35 45.5%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-7">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Triple franja diagonal</span><span class="num">7</span></div>
+      <code>background: linear-gradient(155deg, #FF6B35 30%, #fff 30.3%, #fff 33%, #FFA500 33.3%, #FFA500 63%, #fff 63.3%, #fff 66%, #E85D2C 66.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-8">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Triángulo blanco inferior derecho</span><span class="num">8</span></div>
+      <code>background: linear-gradient(170deg, #FF6B35 70%, #ffffff 70.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-9">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Diagonal invertida</span><span class="num">9</span></div>
+      <code>background: linear-gradient(200deg, #FF6B35 60%, #ffffff 60.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-10">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Línea blanca diagonal centrada</span><span class="num">10</span></div>
+      <code>background: linear-gradient(150deg, #FF6B35 48%, #ffffff 48.3%, #ffffff 51%, #FF8C42 51.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-11">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Patrón chevron naranja-blanco</span><span class="num">11</span></div>
+      <code>Patrón chevron (ver CSS para detalle completo)</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-12">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Mitad y mitad diagonal</span><span class="num">12</span></div>
+      <code>background: linear-gradient(160deg, #FF6B35 50%, #ffffff 50.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-13">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Oscuro → blanco → claro</span><span class="num">13</span></div>
+      <code>background: linear-gradient(145deg, #E85D2C 35%, #ffffff 35.3%, #ffffff 40%, #FFA500 40.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-14">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Esquina superior blanca</span><span class="num">14</span></div>
+      <code>background: linear-gradient(135deg, #ffffff 20%, #FF6B35 20.5%, #FF6B35 80%, #FFA500 100%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-15">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Franja blanca semi-transparente</span><span class="num">15</span></div>
+      <code>background: linear-gradient(155deg, #FF6B35 38%, rgba(255,255,255,0.85) 38.3%, rgba(255,255,255,0.85) 48%, #FFA500 48.3%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-16">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Doble corte en V</span><span class="num">16</span></div>
+      <code>Doble corte en V con blanco (ver CSS)</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-17">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Gradiente + resplandor blanco</span><span class="num">17</span></div>
+      <code>background: radial-gradient(ellipse at bottom right, rgba(255,255,255,0.35) 0%, transparent 50%), linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-18">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Franjas finas diagonales repetidas</span><span class="num">18</span></div>
+      <code>Franjas finas repetidas naranja-blanco (ver CSS)</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-19">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Doble triángulo blanco inferior</span><span class="num">19</span></div>
+      <code>background: linear-gradient(160deg, transparent 65%, #fff 65.3%), linear-gradient(200deg, transparent 75%, rgba(255,255,255,0.5) 75.3%), linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);</code>
+    </div>
+
+    <div class="option">
+      <div class="option-preview bg-20">
+        <div class="sample-text"><h2>Programa</h2><span>Texto de ejemplo</span></div>
+      </div>
+      <div class="option-label"><span>Triple banda naranja-blanco-naranja</span><span class="num">20</span></div>
+      <code>background: linear-gradient(155deg, #E85D2C 30%, #fff 30.3%, #fff 35%, #FF6B35 35.3%, #FF6B35 65%, #fff 65.3%, #fff 70%, #FFA500 70.3%);</code>
+    </div>
+
+  </div>
+</body>
+</html>
