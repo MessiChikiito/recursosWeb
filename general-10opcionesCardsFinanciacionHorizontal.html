@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Diseños Horizontales (2 Cards en una fila)</title>
+    <style>
+        body {
+            font-family: Inter, 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0132AF;
+            margin-bottom: 50px;
+        }
+
+        .design-section {
+            margin-bottom: 80px;
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .design-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #666;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Contenedor principal para 2 columnas */
+        .row-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .row-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Botones generales */
+        .btn-base {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* =========================================
+           DISEÑO 1: Clásico con borde superior ancho
+           ========================================= */
+        .d1-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 30px; border: 1px solid #eee; position: relative; overflow: hidden; }
+        .d1-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px; }
+        .d1-card.orange::before { background: #FF6A00; }
+        .d1-card.blue::before { background: #0132AF; }
+        .d1-title { font-size: 22px; font-weight: 800; margin: 0 0 15px 0; }
+        .d1-price { font-size: 36px; font-weight: 900; color: #0132AF; margin: 10px 0; }
+
+        /* =========================================
+           DISEÑO 2: Alto Contraste (Dark & Light)
+           ========================================= */
+        .d2-card-dark { background: #092b57; color: white; border-radius: 16px; padding: 30px; }
+        .d2-card-light { background: #ffffff; color: #333; border-radius: 16px; padding: 30px; border: 2px solid #092b57; }
+        .d2-badge { display: inline-block; background: #FF6A00; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 12px; margin-bottom: 15px; }
+
+        /* =========================================
+           DISEÑO 3: Minimalista Outline con iconos/viñetas
+           ========================================= */
+        .d3-card { border: 2px solid #e0e3e8; border-radius: 12px; padding: 30px; transition: 0.3s; }
+        .d3-card:hover { border-color: #0132AF; transform: translateY(-5px); }
+        .d3-list { list-style: none; padding: 0; margin: 20px 0; }
+        .d3-list li { padding: 8px 0; margin: 0; border-bottom: 1px solid #eee; font-weight: 600; color: #555; }
+        .d3-list li:last-child { border-bottom: none; }
+        .d3-list li::before { content: '✓'; color: #0BD926; font-weight: 900; margin-right: 10px; }
+
+        /* =========================================
+           DISEÑO 4: Estilo Neumorfismo Flotante
+           ========================================= */
+        .d4-card { background: #ffffff; border-radius: 24px; padding: 40px 30px; box-shadow: 20px 20px 60px #d9dce0, -20px -20px 60px #ffffff; text-align: center; }
+        .d4-circle { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; font-weight: 900; color: white; }
+        .d4-circle.orange { background: #FF6A00; box-shadow: 0 4px 15px rgba(255,106,0,0.4); }
+        .d4-circle.blue { background: #0132AF; box-shadow: 0 4px 15px rgba(1,50,175,0.4); }
+
+        /* =========================================
+           DISEÑO 5: Layout Conectado (Split Card)
+           ========================================= */
+        .d5-wrapper { display: flex; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .d5-card { flex: 1; padding: 40px; background: white; }
+        .d5-card.right { background: #f0f4f8; }
+        @media (max-width: 768px) { .d5-wrapper { flex-direction: column; } }
+
+        /* =========================================
+           DISEÑO 6: Gradientes Sólidos
+           ========================================= */
+        .d6-card { border-radius: 16px; padding: 30px; color: white; display: flex; flex-direction: column; justify-content: space-between; min-height: 250px; }
+        .d6-card.orange { background: linear-gradient(135deg, #FF6A00 0%, #ff8a2e 100%); }
+        .d6-card.blue { background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%); }
+        .d6-btn-outline { background: transparent; border: 2px solid white; color: white; }
+        .d6-btn-outline:hover { background: white; color: #333; }
+
+        /* =========================================
+           DISEÑO 7: Offset / Tarjetas desfasadas
+           ========================================= */
+        .d7-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+        .d7-card { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .d7-card.highlight { border-color: #0132AF; transform: scale(1.05); box-shadow: 0 10px 30px rgba(1,50,175,0.15); z-index: 2; position: relative; }
+        
+        /* =========================================
+           DISEÑO 8: Tarjetas tipo Ticket (perforadas)
+           ========================================= */
+        .d8-card { background: radial-gradient(circle at top right, transparent 15px, white 16px), radial-gradient(circle at bottom right, transparent 15px, white 16px), radial-gradient(circle at top left, transparent 15px, white 16px), radial-gradient(circle at bottom left, transparent 15px, white 16px); background-size: 50% 50%; background-repeat: no-repeat; background-position: top left, bottom left, top right, bottom right; padding: 30px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); border: 2px dashed #e0e3e8; border-radius: 20px;}
+        
+        /* =========================================
+           DISEÑO 9: Minimalista Asimétrico
+           ========================================= */
+        .d9-row { display: grid; grid-template-columns: 4fr 6fr; gap: 20px; }
+        .d9-card { background: white; border-radius: 8px; padding: 30px; border-left: 4px solid #FF6A00; }
+        .d9-card.main { border-left-color: #0132AF; background: #fafbfc; }
+
+        /* =========================================
+           DISEÑO 10: Glowing Borders (Bordes brillantes)
+           ========================================= */
+        .d10-card { background: white; border-radius: 16px; padding: 30px; position: relative; }
+        .d10-card.orange { box-shadow: 0 0 0 2px #FF6A00, 0 8px 24px rgba(255,106,0,0.2); }
+        .d10-card.blue { box-shadow: 0 0 0 2px #0132AF, 0 8px 24px rgba(1,50,175,0.2); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>10 Alternativas en Fila Horizontal (2 Columnas)</h1>
+        
+        <!-- DISEÑO 1 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 1: Clásico con borde superior ancho</div>
+            <div class="row-grid">
+                <div class="d1-card orange">
+                    <h3 class="d1-title" style="color: #FF6A00;">Opciones de financiación</h3>
+                    <p style="color: #666; margin-bottom: 20px;">Aliados para facilitar tu pago:</p>
+                    <ul style="font-weight: 600; color: #444; margin-bottom: 30px;">
+                        <li>JFK Cooperativa</li>
+                        <li>Finky</li>
+                        <li>Fincomercio</li>
+                        <li>Canapro</li>
+                    </ul>
+                    <button class="btn-base" style="background:#FF6A00; color:white;">Ver opciones</button>
+                </div>
+                <div class="d1-card blue">
+                    <span style="background: #ff0033; color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; position:absolute; top:20px; right:20px;">25% Dcto</span>
+                    <h3 class="d1-title" style="color: #0132AF;">Inversión por semestre</h3>
+                    <div style="text-decoration: line-through; color: #999; margin-top: 20px;">Antes: $6.757.000</div>
+                    <div class="d1-price">$5.067.750</div>
+                    <div style="color: #0BD926; font-weight: 800; margin-bottom: 20px;">¡Ahorras $1.689.250!</div>
+                    <button class="btn-base" style="background:#0132AF; color:white;">Inscribirme</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 2 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 2: Alto Contraste (Dark & Light)</div>
+            <div class="row-grid">
+                <div class="d2-card-dark">
+                    <h3 style="color: #FF6A00; font-size: 24px; margin-top: 0;">Entidades Aliadas</h3>
+                    <p style="opacity: 0.8; line-height: 1.6;">Contamos con múltiples opciones crediticias para que estudies sin excusas:</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;">
+                        <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 8px;">JFK</span>
+                        <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 8px;">Finky</span>
+                        <span style="background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 8px;">Fincomercio</span>
+                    </div>
+                    <button class="btn-base" style="background: white; color: #092b57;">Conocer más</button>
+                </div>
+                <div class="d2-card-light">
+                    <div class="d2-badge">Oportunidad Especial</div>
+                    <h3 style="color: #0132AF; font-size: 24px; margin-top: 0;">Inversión Académica</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 20px;">
+                        <span style="color: #999; text-decoration: line-through; font-weight: 600;">$6.757.000</span>
+                        <span style="font-size: 38px; font-weight: 900; color: #333;">$5.067.750</span>
+                    </div>
+                    <div style="color: #0BD926; font-weight: 800; text-align: right; margin-bottom: 30px;">Ahorro: $1.689.250</div>
+                    <button class="btn-base" style="background: #0132AF; color: white;">Aprovechar descuento</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 3 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 3: Minimalista Outline</div>
+            <div class="row-grid">
+                <div class="d3-card">
+                    <h3 style="font-size: 20px; color: #333; margin-top: 0;">Opciones de financiación</h3>
+                    <ul class="d3-list">
+                        <li>JFK Cooperativa Financiera</li>
+                        <li>Crédito Estudiantil Finky</li>
+                        <li>Fincomercio Total</li>
+                        <li>Plan Canapro</li>
+                    </ul>
+                    <button class="btn-base" style="background: #f0f4f8; color: #333;">Ver Requisitos</button>
+                </div>
+                <div class="d3-card" style="border-color: #0132AF;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="font-size: 20px; color: #0132AF; margin: 0;">Inversión</h3>
+                        <span style="background: #e6f7eb; color: #0BD926; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 14px;">-25%</span>
+                    </div>
+                    <div style="margin: 30px 0;">
+                        <p style="color: #999; text-decoration: line-through; margin: 0;">$6.757.000</p>
+                        <p style="font-size: 40px; font-weight: 900; color: #0132AF; margin: 0;">$5.067.750</p>
+                        <p style="color: #666; font-size: 14px; font-weight: 600; margin: 5px 0 0;">Valor neto por semestre</p>
+                    </div>
+                    <button class="btn-base" style="background: #0132AF; color: white;">Aplicar ahora</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 4 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 4: Estilo Neumorfismo Flotante</div>
+            <div class="row-grid">
+                <div class="d4-card">
+                    <div class="d4-circle orange">%</div>
+                    <h3 style="color: #FF6A00; margin-bottom: 10px;">Financiación</h3>
+                    <p style="color: #777; font-weight: 600; margin-bottom: 25px;">JFK, Finky, Fincomercio, Canapro.</p>
+                    <button class="btn-base" style="background: white; color: #FF6A00; border: 2px solid #FF6A00; border-radius: 50px;">Opciones</button>
+                </div>
+                <div class="d4-card">
+                    <div class="d4-circle blue">$</div>
+                    <h3 style="color: #0132AF; margin-bottom: 10px;">Inversión Semestral</h3>
+                    <p style="color: #999; text-decoration: line-through; margin: 0; font-size: 14px;">Valor base: $6.757.000</p>
+                    <p style="font-size: 32px; font-weight: 900; color: #333; margin: 5px 0 20px;">$5.067.750</p>
+                    <button class="btn-base" style="background: linear-gradient(135deg, #0132AF, #1a5bcf); color: white; border-radius: 50px; box-shadow: 0 4px 15px rgba(1,50,175,0.3);">Pagar ahora</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 5 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 5: Layout Conectado (Split Card)</div>
+            <div class="d5-wrapper">
+                <div class="d5-card">
+                    <h3 style="color: #FF6A00; font-size: 24px; margin-top: 0;">Buscamos facilitarte el camino</h3>
+                    <p style="color: #555; line-height: 1.6;">Conoce nuestras opciones de financiación y entidades de crédito aliadas preparadas para ti.</p>
+                    <ul style="color: #333; font-weight: 600; line-height: 1.8;">
+                        <li>Cooperativa JFK</li>
+                        <li>Finky Estudiantil</li>
+                        <li>Fincomercio</li>
+                    </ul>
+                </div>
+                <div class="d5-card right">
+                    <div style="background: #0132AF; color: white; display: inline-block; padding: 4px 12px; font-weight: bold; border-radius: 4px; margin-bottom: 15px;">Ahorra 25%</div>
+                    <h3 style="color: #333; font-size: 20px; margin-top: 0;">Inversión Académica</h3>
+                    <div style="color: #7a8a99; text-decoration: line-through; font-size: 16px; margin-top: 15px;">Antes: $6.757.000</div>
+                    <div style="font-size: 42px; font-weight: 900; color: #0132AF; line-height: 1; margin: 5px 0 15px;">$5.067.<span style="font-size: 24px;">750</span></div>
+                    <div style="color: #0BD926; font-weight: 800; font-size: 16px;">Beneficio total: $1.689.250</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 6 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 6: Gradientes Sólidos</div>
+            <div class="row-grid">
+                <div class="d6-card orange">
+                    <div>
+                        <h3 style="font-size: 24px; margin-top: 0;">Créditos y Aliados</h3>
+                        <p style="font-weight: 600; opacity: 0.9;">Apoyo económico disponible con JFK, Finky, Fincomercio y más.</p>
+                    </div>
+                    <button class="btn-base d6-btn-outline">Consultar alianzas</button>
+                </div>
+                <div class="d6-card blue">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3 style="font-size: 24px; margin-top: 0;">Inversión</h3>
+                            <span style="background: #ff0033; padding: 4px 8px; font-weight: 900; font-size: 12px; border-radius: 4px;">-25%</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span style="font-size: 14px; text-decoration: line-through; opacity: 0.8;">$6.757.000</span>
+                            <div style="font-size: 40px; font-weight: 900; line-height: 1; margin: 5px 0;">$5.067.750</div>
+                        </div>
+                    </div>
+                    <button class="btn-base" style="background: white; color: #0132AF;">Proceder al pago</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 7 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 7: Tarjeta Desfasada (Highlight)</div>
+            <div class="d7-row">
+                <div class="d7-card">
+                    <h3 style="color: #666;">Medios de Pago e Instituciones</h3>
+                    <ul style="color: #555; font-weight: 600; line-height: 2;">
+                        <li>JFK Cooperativa</li>
+                        <li>Finky</li>
+                        <li>Fincomercio</li>
+                        <li>Canapro</li>
+                    </ul>
+                    <a href="#" style="color: #FF6A00; font-weight: 800; text-decoration: none; margin-top: 20px; display: block;">Ver más &rarr;</a>
+                </div>
+                <div class="d7-card highlight">
+                    <span style="color: white; background: #0132AF; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 12px;">Descuento Especial</span>
+                    <h3 style="color: #0132AF; font-size: 24px;">Inversión por Semestre</h3>
+                    <div style="color: #999; text-decoration: line-through; margin-top: 15px;">Precio referencial: $6.757.000</div>
+                    <div style="font-size: 38px; font-weight: 900; color: #333; margin: 10px 0;">$5.067.750</div>
+                    <div style="color: #0BD926; font-weight: 800; margin-bottom: 25px;">Ahorras: $1.689.250</div>
+                    <button class="btn-base" style="background: #0132AF; color: white; width: 100%;">Quiero mi descuento</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 8 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 8: Tarjetas tipo Ticket</div>
+            <div class="row-grid">
+                <div class="d8-card" style="border-color: #FF6A00; background-color: #fffaf5;">
+                    <h3 style="color: #FF6A00; margin-top: 0; text-align: center;">Financiación Estudiantil</h3>
+                    <div style="text-align: center; font-weight: 600; color: #555; margin: 20px 0;">
+                        JFK <br> Finky <br> Fincomercio <br> Canapro
+                    </div>
+                    <button class="btn-base" style="background: transparent; color: #FF6A00; border: 2px dashed #FF6A00;">Ver Condiciones</button>
+                </div>
+                <div class="d8-card" style="border-color: #0132AF; background-color: #f5f8ff;">
+                    <div style="text-align: center;">
+                        <span style="color: #ff0033; font-weight: 900; letter-spacing: 2px; font-size: 14px;">CUPÓN -25% APLICADO</span>
+                        <h3 style="color: #0132AF; font-size: 22px; margin: 10px 0 20px;">Inversión Semestral</h3>
+                        <div style="color: #999; text-decoration: line-through; font-size: 16px;">$6.757.000</div>
+                        <div style="font-size: 40px; font-weight: 900; color: #0132AF; margin: 5px 0;">$5.067.750</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 9 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 9: Minimalista Asimétrico</div>
+            <div class="d9-row">
+                <div class="d9-card">
+                    <h3 style="margin-top: 0; font-size: 18px; color: #444;">Opciones Financieras</h3>
+                    <p style="color: #777; font-size: 14px; font-weight: 600; margin: 15px 0;">JFK, Finky, Fincomercio, Canapro.</p>
+                    <button class="btn-base" style="background: #f0f4f8; color: #333; padding: 8px;">Conocer Más</button>
+                </div>
+                <div class="d9-card main">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <span style="background: #0BD926; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 11px;">DCTO 25%</span>
+                            <h3 style="margin: 10px 0 0; font-size: 22px; color: #0132AF;">Inversión</h3>
+                            <div style="color: #0BD926; font-weight: 700; font-size: 14px; margin-top: 5px;">Ahorro: $1.689.250</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: #999; text-decoration: line-through; font-size: 14px;">$6.757.000</div>
+                            <div style="font-size: 32px; font-weight: 900; color: #333;">$5.067.750</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISEÑO 10 -->
+        <div class="design-section">
+            <div class="design-title">Diseño 10: Glowing Borders</div>
+            <div class="row-grid">
+                <div class="d10-card orange">
+                    <h3 style="color: #FF6A00; text-align: center; font-size: 22px; margin-top: 0;">Financiación</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 25px 0; text-align: center; font-weight: 600; color: #444;">
+                        <span style="background: #fff5ef; padding: 10px; border-radius: 8px;">JFK</span>
+                        <span style="background: #fff5ef; padding: 10px; border-radius: 8px;">Finky</span>
+                        <span style="background: #fff5ef; padding: 10px; border-radius: 8px;">Fincomercio</span>
+                        <span style="background: #fff5ef; padding: 10px; border-radius: 8px;">Canapro</span>
+                    </div>
+                    <button class="btn-base" style="background: #FF6A00; color: white;">Ver Todas</button>
+                </div>
+                <div class="d10-card blue">
+                    <h3 style="color: #0132AF; text-align: center; font-size: 22px; margin-top: 0;">Inversión</h3>
+                    <div style="text-align: center; margin: 25px 0;">
+                        <div style="display: inline-block; background: #ff0033; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 12px; margin-bottom: 15px;">25% Descuento</div>
+                        <div style="color: #999; text-decoration: line-through; font-weight: 600;">$6.757.000</div>
+                        <div style="font-size: 42px; font-weight: 900; color: #0132AF; margin: 5px 0;">$5.067.750</div>
+                    </div>
+                    <button class="btn-base" style="background: #0132AF; color: white;">Pagar con descuento</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

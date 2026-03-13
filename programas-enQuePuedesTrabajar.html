@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En qué puedes trabajar - Uniempresarial</title>
-    <style>
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<style>
     body{
         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       color: #06325a;
@@ -47,8 +52,7 @@
         background: #ffffff;
         border-radius: 8px;
         border: 1px solid #e0e3e8;
-        border-left: 4px solid;
-        padding: 14px 14px;
+        padding: 16px 20px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         cursor: pointer;
         user-select: none;
@@ -56,10 +60,27 @@
         -webkit-user-select: none;
     }
 
+    .ue-work-item-header {
+        position: relative;
+        padding-left: 32px;
+    }
+
+    .ue-work-item-header::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
     .ue-work-item-content {
         overflow: hidden;
         max-height: 500px;
         transition: max-height 0.3s ease;
+        padding-left: 32px;
     }
 
     .ue-work-item-content.collapsed {
@@ -75,12 +96,12 @@
         line-height: 1.6;
     }
 
-    .ue-work-item:nth-child(odd) {
-        border-left-color: #0132AF;
+    .ue-work-item:nth-child(odd) .ue-work-item-header::before {
+        background-color: #0132AF;
     }
 
-    .ue-work-item:nth-child(even) {
-        border-left-color: #FF3B3B;
+    .ue-work-item:nth-child(even) .ue-work-item-header::before {
+        background-color: #ff0000;
     }
 
     .ue-work-item:hover {
@@ -126,8 +147,8 @@
             padding-right: 15px;
             padding-bottom: 30px;
         }
-
-        .ue-work-title {
+        
+                .ue-work-title {
             font-size: 24px;
         }
 
@@ -148,52 +169,69 @@
         }
     }
 </style>
-</head>
-<body>
 
 <section class="ue-section-work" aria-label="Oportunidades laborales">
-    <h3 class="ue-work-title">Negocios Internacionales</h3>
+    <h3 class="ue-work-title">Estudia y prepárate para estos roles con alta proyección laboral:</h3>
     <p class="ue-work-subtitle">Roles frecuentes según perfil y experiencia.</p>
 
     <div class="ue-work-grid">
         <div class="ue-work-column">
             <div class="ue-work-item">
                 <div class="ue-work-item-header">
-                    <p class="ue-work-title-item">Analista de Expansión Internacional</p>
+                    <p class="ue-work-title-item">Gerente de proyectos</p>
                     <p class="ue-work-desc">Saber más</p>
                 </div>
                 <div class="ue-work-item-content collapsed">
-                    <div class="ue-work-expanded-text">Diseña y ejecuta estrategias para abrir nuevos mercados en el exterior minimizando riesgos comerciales y regulatorios.</div>
+                    <div class="ue-work-expanded-text">Lidera proyectos reales y convierte ideas en resultados, aplicando lo que aprendes en planeación, gestión y trabajo en equipo.</div>
                 </div>
             </div>
             <div class="ue-work-item">
                 <div class="ue-work-item-header">
-                    <p class="ue-work-title-item">Coordinador de Comercio Exterior</p>
+                    <p class="ue-work-title-item">Analista de negocios (Business Analyst)</p>
                     <p class="ue-work-desc">Saber más</p>
                 </div>
                 <div class="ue-work-item-content collapsed">
-                    <div class="ue-work-expanded-text">Gestiona operaciones de importación y exportación optimizando tiempos, costos logísticos y cumplimiento normativo.</div>
+                    <div class="ue-work-expanded-text">Transforma datos en decisiones estratégicas y ayúdale a las empresas a crecer con análisis y visión de negocio.</div>
                 </div>
             </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Consultor empresarial</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Ayuda a las organizaciones a mejorar y crecer, usando tus conocimientos administrativos para proponer soluciones estratégicas.</div>
+                </div>
+            </div>
+
         </div>
 
         <div class="ue-work-column">
             <div class="ue-work-item">
                 <div class="ue-work-item-header">
-                    <p class="ue-work-title-item">Ejecutivo de Desarrollo de Mercados Globales</p>
+                    <p class="ue-work-title-item">Analista financiero</p>
                     <p class="ue-work-desc">Saber más</p>
                 </div>
                 <div class="ue-work-item-content collapsed">
-                    <div class="ue-work-expanded-text">Identifica oportunidades comerciales internacionales y construye alianzas estratégicas con socios extranjeros.</div>
+                    <div class="ue-work-expanded-text">Toma decisiones inteligentes con números claros y aporta a la sostenibilidad financiera de las empresas.</div>
                 </div>
             </div>
             <div class="ue-work-item">
                 <div class="ue-work-item-header">
-                    <p class="ue-work-title-item">Consultor en Internacionalización Empresarial</p>
+                    <p class="ue-work-title-item">Fundador/a de startups o PYMES</p>
                     <p class="ue-work-desc">Saber más</p>
                 </div>
                 <div class="ue-work-item-content collapsed">
-                    <div class="ue-work-expanded-text">Asesora empresas en procesos de entrada a mercados internacionales con enfoque financiero y competitivo.</div>
+                    <div class="ue-work-expanded-text">Crea tu propio negocio y haz crecer tus ideas con una formación que te prepara para emprender en el mundo digital.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Especialista en marketing digital</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Diseña estrategias digitales que conectan marcas con personas y generan resultados medibles para los negocios.</div>
                 </div>
             </div>
         </div>

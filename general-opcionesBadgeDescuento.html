@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Opciones de Badge de Descuento</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: #f4f6f9; 
+            padding: 40px; 
+            margin: 0;
+            color: #333;
+        }
+        h1 { text-align: center; color: #0132AF; margin-bottom: 40px; }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 40px 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            border: 1px solid #e0e3e8; 
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        
+        .title { 
+            position: absolute; 
+            top: 15px; 
+            left: 15px; 
+            font-size: 12px; 
+            font-weight: 800; 
+            color: #b0b5be; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        /* --- Estilo Base Común (Badge Rojo) --- */
+        .badge-base {
+            background: linear-gradient(135deg, #ff0033 0%, #fc3232 100%);
+            color: white; 
+            padding: 10px 18px; 
+            border-radius: 8px;
+            font-weight: 800; 
+            font-size: 18px; 
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* Opción 1: Minimalista Clásica */
+        .op1-text { color: #7e7e7e; font-weight: 600; font-size: 15px; margin-top: 10px; text-align: center; }
+
+        /* Opción 2: Sub-Cápsula (Pill conectada sutilmente) */
+        .op2-wrapper { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .op2-text { background: #f0f2f5; color: #555; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Opción 3: Unificada Oscura */
+        .op3-wrapper { background: #1f2937; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; text-align: center; }
+        .op3-badge { padding: 12px 20px; font-weight: 800; font-size: 18px; line-height: 1; }
+        .op3-text { color: #9ca3af; font-size: 11px; font-weight: 700; padding: 8px 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Opción 4: Separador Punteado */
+        .op4-text { color: #7e7e7e; font-weight: 600; font-size: 14px; margin-top: 14px; padding-top: 10px; border-top: 2px dashed #e0e3e8; text-align: center; width: 80%; }
+
+        /* Opción 5: Caja Resaltada Rosada */
+        .op5-wrapper { background: #fff1f2; padding: 15px 20px; border-radius: 12px; border: 1px solid #ffe4e6; text-align: center; }
+        .op5-text { color: #e11d48; font-weight: 700; font-size: 13px; margin-top: 8px; text-transform: uppercase; }
+
+        /* Opción 6: Placa Integrada Gris */
+        .op6-wrapper { background: #f8fafc; border: 1px solid #cbd5e1; padding: 6px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; }
+        .op6-text { color: #475569; font-weight: 700; font-size: 12px; margin: 8px 0 4px; text-transform: uppercase; }
+
+        /* Opción 7: Contorno Conectado Fino */
+        .op7-wrapper { text-align: center; display: flex; flex-direction: column; }
+        .op7-badge { border-radius: 8px 8px 0 0; position: relative; z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .op7-text { border: 2px solid #e0e3e8; border-top: none; border-radius: 0 0 8px 8px; padding: 12px 15px 8px; color: #64748b; font-weight: 700; font-size: 11px; text-transform: uppercase; margin-top: 0px; position: relative; z-index: 1; }
+
+        /* Opción 8: Completamente Ovalada */
+        .op8-badge { border-radius: 50px; padding: 10px 25px; box-shadow: 0 6px 16px rgba(255, 23, 68, 0.3); }
+        .op8-text { color: #7e7e7e; font-weight: 600; font-size: 14px; margin-top: 12px; font-style: italic; }
+
+        /* Opción 9: Ícono Sutil lateral */
+        .op9-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .op9-text { display: flex; align-items: center; gap: 4px; color: #64748b; font-size: 13px; font-weight: 600; }
+
+        /* Opción 10: Horizontal / Al Lado */
+        .op10-wrapper { display: flex; align-items: center; gap: 15px; background: white; border: 1px solid #e2e8f0; padding: 8px 15px 8px 8px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+        .op10-badge { padding: 8px 12px; font-size: 16px; border-radius: 8px; }
+        .op10-text { color: #475569; font-weight: 700; font-size: 12px; line-height: 1.2; text-align: left; width: 80px; text-transform: uppercase; }
+
+    </style>
+</head>
+<body>
+
+    <h1>Opciones para el Badge de Descuento + Texto</h1>
+
+    <div class="grid">
+        
+        <!-- Opción 1 -->
+        <div class="card">
+            <div class="title">Opción 1 - Minimalista</div>
+            <span class="badge-base" style="box-shadow: 0 4px 12px rgba(255, 23, 68, 0.4);">¡25% DE DESCUENTO!</span>
+            <div class="op1-text">durante todo el programa</div>
+        </div>
+
+        <!-- Opción 2 -->
+        <div class="card">
+            <div class="title">Opción 2 - Cápsula secundaria</div>
+            <div class="op2-wrapper">
+                <span class="badge-base">¡25% DE DESCUENTO!</span>
+                <span class="op2-text">durante todo el programa</span>
+            </div>
+        </div>
+
+        <!-- Opción 3 -->
+        <div class="card">
+            <div class="title">Opción 3 - Bloque oscuro unificado</div>
+            <div class="op3-wrapper">
+                <span class="badge-base op3-badge" style="border-radius: 0;">¡25% DE DESCUENTO!</span>
+                <span class="op3-text">Durante todo el programa</span>
+            </div>
+        </div>
+
+        <!-- Opción 4 -->
+        <div class="card">
+            <div class="title">Opción 4 - Divisor punteado</div>
+            <span class="badge-base" style="box-shadow: 0 4px 12px rgba(255, 23, 68, 0.2);">¡25% DE DESCUENTO!</span>
+            <div class="op4-text">durante todo el programa</div>
+        </div>
+
+        <!-- Opción 5 -->
+        <div class="card">
+            <div class="title">Opción 5 - Caja resaltada</div>
+            <div class="op5-wrapper">
+                <span class="badge-base" style="box-shadow: 0 4px 12px rgba(255, 23, 68, 0.3);">¡25% DE DESCUENTO!</span>
+                <div class="op5-text">Durante todo el programa</div>
+            </div>
+        </div>
+
+        <!-- Opción 6 -->
+        <div class="card">
+            <div class="title">Opción 6 - Placa con contorno</div>
+            <div class="op6-wrapper">
+                <span class="badge-base">¡25% DE DESCUENTO!</span>
+                <div class="op6-text">durante todo el programa</div>
+            </div>
+        </div>
+
+        <!-- Opción 7 -->
+        <div class="card">
+            <div class="title">Opción 7 - Etiqueta desplegada</div>
+            <div class="op7-wrapper">
+                <span class="badge-base op7-badge">¡25% DE DESCUENTO!</span>
+                <div class="op7-text">Durante todo el programa</div>
+            </div>
+        </div>
+
+        <!-- Opción 8 -->
+        <div class="card">
+            <div class="title">Opción 8 - Botón ovalado + Cursiva</div>
+            <span class="badge-base op8-badge">¡25% DE DESCUENTO!</span>
+            <div class="op8-text">durante todo el programa</div>
+        </div>
+
+        <!-- Opción 9 -->
+        <div class="card">
+            <div class="title">Opción 9 - Con Check Icon inline</div>
+            <div class="op9-wrapper">
+                <span class="badge-base" style="box-shadow: 0 4px 12px rgba(255, 23, 68, 0.4);">¡25% DE DESCUENTO!</span>
+                <div class="op9-text">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0BD926" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Durante todo el programa
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 10 -->
+        <div class="card">
+            <div class="title">Opción 10 - Horizontal integrado</div>
+            <div class="op10-wrapper">
+                <span class="badge-base op10-badge" style="margin: 0;">25% DCTO</span>
+                <div class="op10-text">Durante todo el programa</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
