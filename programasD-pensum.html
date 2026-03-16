@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios v2</title>
+    <style>
+        :root {
+            --color-primary: #FF6B35;
+            --color-accent: #0132AF;
+            --color-accent-hover: #c50e13;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-gray-100: #f7fafc;
+            --color-gray-200: #edf2f7;
+            --color-gray-300: #e2e8f0;
+            --color-gray-500: #718096;
+            --color-gray-700: #4a5568;
+            --color-gray-900: #1a202c;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+
+            /* COLORES DE MATERIAS - EDITAR AQUÍ */
+            --color-nucleo: #0132AF;
+            --color-prof: #FF3B3B;
+            --color-electiva: #00897B;
+            --color-transv: #D946EF;
+            --color-practica: #FF6B35;
+        }
+
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--color-gray-900);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .pd-mobile-br {
+            display: none;
+        }
+
+        .pd-container {
+            max-width: 1000px;
+            margin: 0 auto 20px;
+            padding: 40px 20px;
+                        padding-bottom: 20px;
+            position: relative;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
+            border-radius: 12px;
+        }
+
+        .pd-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pd-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-gray-900);
+            margin-bottom: 0px;
+            line-height: 1.3;
+            padding: 0px 120px;
+        }
+
+        .pd-header p {
+            font-size: 1.1rem;
+            color: var(--color-gray-500);
+            margin-bottom: 30px;
+            margin-top: 12px;
+        }
+
+        /* LEYENDA MOBILE - Entre header y semestres */
+        .pd-legend-mobile {
+            display: none;
+        }
+
+        /* Practica empresarial ocupa 2 columnas en mobile */
+        .pd-legend-mobile > .pd-legend-item:nth-child(6) {
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+
+        /* SEMESTRES TABS */
+        .pd-semesters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: nowrap; /* Cambiado a nowrap para que queden en una fila */
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 0 20px 0;
+            border-bottom: 2px solid var(--color-gray-200);
+        }
+
+        .pd-semester-btn {
+            padding: 12px 20px;
+            border: 2px solid var(--color-gray-300);
+            border-radius: 8px;
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            font-family: inherit;
+            white-space: normal; /* Permitir salto de línea */
+            line-height: 1.2;
+            flex: 1; /* Ocupar ancho completo equitativamente */
+            text-align: center;
+        }
+
+        .pd-semester-btn:hover {
+            border-color: #FF6A00;
+            color: #FF6A00;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .pd-semester-btn.active {
+            background: linear-gradient(135deg, #FF6A00 0%, #FF8C00 100%);
+            border-color: #FF6A00; /* Reemplaza el azul por naranja/transparente si es gradiente */
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* (Contenido de gradientes extra eliminado dado que ahora todos heredan del active naranja) */
+
+        /* CONTENIDO EXPANDIBLE */
+        .pd-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease !important;
+            margin-bottom: 24px;
+        }
+
+        .pd-content.expanded {
+            max-height: 2000px;
+        }
+
+        .pd-content-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            animation: slideIn 0.4s ease !important;
+        }
+
+        /* Total de créditos */
+        .pd-credits-box {
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.05) 0%, rgba(255, 106, 0, 0.02) 100%);
+            border: 2px solid #FF6A00;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pd-credits-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pd-credits-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #FF6A00;
+        }
+
+        .pd-credits-unit {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            font-weight: 600;
+        }
+
+        /* Ocultar/Mostrar según viewport */
+        .pd-credits-box-mobile {
+            display: none;
+        }
+
+        .pd-credits-box-desktop {
+            display: block;
+        }
+
+        /* Total carrera (derecha destacada) */
+        .pd-total-carrera {
+            position: sticky;
+            top: 20px;
+            background: linear-gradient(135deg, #006AFF 0%, #66CCFF 100%);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 106, 255, 0.2);
+        }
+
+        .pd-total-carrera-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .pd-total-carrera-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .pd-total-carrera-unit {
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 0px;
+        }
+
+        .pd-btn-descargar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #006AFF;
+            border: 2px solid #006AFF;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 6px rgba(0, 106, 255, 0.05);
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .pd-btn-descargar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 106, 255, 0.15);
+            background: #006AFF;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInStaggered {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pd-materias.fade-out {
+            animation: fadeOut 0.3s ease forwards !important;
+        }
+
+        .pd-materia {
+            animation: fadeInStaggered 0.5s ease forwards !important;
+        }
+
+        .pd-materia:nth-child(1) { animation-delay: 0.1s; }
+        .pd-materia:nth-child(2) { animation-delay: 0.15s; }
+        .pd-materia:nth-child(3) { animation-delay: 0.2s; }
+        .pd-materia:nth-child(4) { animation-delay: 0.25s; }
+        .pd-materia:nth-child(5) { animation-delay: 0.3s; }
+        .pd-materia:nth-child(6) { animation-delay: 0.35s; }
+        .pd-materia:nth-child(7) { animation-delay: 0.4s; }
+        .pd-materia:nth-child(8) { animation-delay: 0.45s; }
+        .pd-materia:nth-child(9) { animation-delay: 0.5s; }
+        .pd-materia:nth-child(10) { animation-delay: 0.55s; }
+        .pd-materia:nth-child(11) { animation-delay: 0.6s; }
+        .pd-materia:nth-child(12) { animation-delay: 0.65s; }
+        .pd-materia:nth-child(13) { animation-delay: 0.7s; }
+        .pd-materia:nth-child(14) { animation-delay: 0.75s; }
+        .pd-materia:nth-child(15) { animation-delay: 0.8s; }
+        .pd-materia:nth-child(16) { animation-delay: 0.85s; }
+
+        /* LEYENDA - PC: 2 COLUMNAS, MOBILE: 1 COLUMNA */
+        .pd-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-content: start;
+        }
+
+        .pd-legend-title {
+            grid-column: 1 / -1;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .pd-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pd-legend-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .pd-legend-dot.nucleo {
+            background: var(--color-nucleo);
+        }
+
+        .pd-legend-dot.prof {
+            background: var(--color-prof);
+        }
+
+        .pd-legend-dot.electiva {
+            background: var(--color-electiva);
+        }
+
+        .pd-legend-dot.transv {
+            background: var(--color-transv);
+        }
+
+        .pd-legend-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-gray-700);
+        }
+
+        /* MATERIAS */
+        .pd-materias {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .pd-materia {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #006AFF;
+            background: rgba(0, 106, 255, 0.05);
+            transition: all 0.3s ease !important;
+            cursor: default;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pd-materia:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .pd-materia-info {
+            flex: 1;
+        }
+
+        .pd-materia-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--color-gray-900);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .pd-materia-credit {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-left: 12px;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .pd-materias {
+                grid-template-columns: 1fr;
+            }
+
+            .pd-mobile-br {
+                display: block;
+            }
+            .pd-desktop-space {
+                display: none;
+            }
+
+            .pd-header h1 {
+                font-size: 2rem;
+                padding: 0 35px;
+            }
+
+            .pd-header p {
+                font-size: 14px;
+                padding: 0;
+            }
+
+            .pd-semesters {
+                flex-wrap: nowrap;
+                gap: 8px;
+            }
+
+            .pd-semester-btn {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+                flex: 1;
+            }
+
+            .pd-content-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            /* Mostrar credits-box en mobile (lado izquierdo) */
+            .pd-credits-box-mobile {
+                display: block;
+            }
+
+            .pd-credits-box-desktop {
+                display: none;
+            }
+
+            /* Mostrar leyenda mobile en tablet */
+            .pd-legend-mobile {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 24px;
+                background: #f7fafc;
+                padding: 16px;
+                border-radius: 8px;
+            }
+
+            /* Ocultar leyenda en content-inner */
+            .pd-content-inner .pd-legend {
+                display: none;
+            }
+
+            .pd-legend {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .pd-legend-label {
+                font-size: 0.80rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .pd-header h1 {
+                font-size: 2rem;
+                padding: 0 35px;
+            }
+
+            .pd-header p {
+                font-size: 14px;
+                padding: 0;
+            }
+
+            .pd-container {
+                padding: 20px 16px;
+                margin: 0 0 20px;
+            }
+
+            /* Mostrar leyenda mobile */
+            .pd-legend-mobile {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 24px;
+                background: #f7fafc;
+                padding: 16px;
+                border-radius: 8px;
+            }
+
+            /* Ocultar leyenda en content-inner */
+            .pd-content-inner .pd-legend {
+                display: none;
+            }
+
+            /* Mostrar credits-box en mobile (lado izquierdo) */
+            .pd-credits-box-mobile {
+                display: block;
+            }
+
+            .pd-credits-box-desktop {
+                display: none;
+            }
+
+            .pd-content-inner {
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .pd-semesters {
+                gap: 6px;
+                margin-bottom: 0px;
+            }
+            
+            .pd-semester-btn {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+                flex: 1; /* Ocupar ancho en móviles tmb */
+            }
+
+            .pd-legend-label {
+                font-size: 0.80rem;
+            }
+        }
+
+        /* ===== JORNADA COMPONENT ===== */
+        .pd-jornada {
+            padding: 24px 30px;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            margin-top: 20px;
+        }
+
+        .pd-jornada-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .pd-jornada-lb {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-gray-700);
+        }
+
+        .pd-jornada-opts {
+            display: flex;
+            gap: 16px;
+        }
+
+        .pd-jornada-card {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pd-jornada-card.diurna {
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+        }
+
+        .pd-jornada-card.nocturna {
+            background: #0F0E2A;
+            border: 1px solid #312E81;
+        }
+
+        .pd-jornada-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-icon {
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #fff;
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-icon {
+            background: linear-gradient(135deg, #6366F1, #818CF8);
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #fff;
+        }
+
+        .pd-jornada-nm {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: px;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-nm {
+            color: var(--color-gray-900);
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-nm {
+            color: #fff;
+        }
+
+        .pd-jornada-sub {
+            font-size: 0.8rem;
+            color: var(--color-gray-500);
+            margin-bottom: 2px;
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-sub {
+            color: #e0e6ff;
+        }
+
+        .pd-jornada-hs {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-hs {
+            color: var(--color-gray-700);
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-hs {
+            color: #92a6f7;
+        }
+
+        .pd-jornada-bar {
+            height: 3px;
+            border-radius: 2px;
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: 5px;
+        }
+
+        .pd-jornada-card.diurna .pd-jornada-bar {
+            background: #F59E0B;
+        }
+
+        .pd-jornada-card.nocturna .pd-jornada-bar {
+            background: #6366F1;
+        }
+
+        @media(max-width: 768px) {
+            .pd-jornada {
+                padding: 16px;
+            }
+
+            .pd-jornada-opts {
+                gap: 12px;
+                flex-direction: column;
+            }
+
+            .pd-jornada-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pd-container" id="pensum">
+        <!-- HEADER -->
+        <div class="pd-header">
+            <h1>Pénsum del Programa</h1>
+            <p>Conoce detalladamente los módulos y la intensidad horaria del programa.</p>
+        </div>
+
+        <!-- CONTENIDO EXPANDIBLE -->
+        <div class="pd-content expanded" id="contentContainer">
+            <div class="pd-content-inner">
+                <!-- MATERIAS -->
+                <div>
+                    <div class="pd-materias" id="materiasContainer"></div>
+                </div>
+
+                <!-- LEYENDA Y TOTAL (AHORA CENTRADO ABAJO) -->
+                <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px; margin: 0 auto; width: 100%;">
+                    <!-- TOTAL CARRERA -->
+                    <div class="pd-total-carrera" style="position: static; margin-bottom: 0;">
+                        <div class="pd-total-carrera-label">Duración total del programa</div>
+                        <div class="pd-total-carrera-value" style="margin-bottom: 0;"><span id="creditosCarrera">104</span> <span style="font-size: 2.5rem; font-weight: 800; opacity: 1;">Horas</span></div>
+                    </div>
+                    <a href="#" target="_blank" class="pd-btn-descargar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Conocer más detalles
+                    </a>
+                </div>
+            </div>
+
+            <!-- JORNADA COMPONENT -->
+            <div class="pd-jornada">
+                <div class="pd-jornada-header">
+                    <div class="pd-jornada-lb">Jornadas disponibles en este programa</div>
+                </div>
+                <div class="pd-jornada-opts">
+                    <!--    
+                    <div class="pd-jornada-card diurna">
+                        <div class="pd-jornada-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="pd-jornada-nm">Diurna</div>
+                        <div class="pd-jornada-sub">Lunes a Viernes</div>
+                        <div class="pd-jornada-hs">7:00 am - 6:00 pm</div>
+                        <div class="pd-jornada-bar"></div>
+                    </div>
+                        -->
+                    <div class="pd-jornada-card nocturna" data-night>
+                        <div class="pd-jornada-icon">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="currentColor"/></svg>
+                        </div>
+                        <div class="pd-jornada-nm">Nocturna</div>
+                        <div class="pd-jornada-sub">Lunes a Viernes</div>
+                        <div class="pd-jornada-hs">5:30 pm - 9:30 pm</div>
+                        <div class="pd-jornada-bar"></div>
+                        <!--<div class="pd-jornada-sub">*Algunos sábados de 9:00 AM a 1:00 PM</div> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DATA DEL PROGRAMA -->
+    <script>
+        const modulosData = [
+            { nombre: "I. FUNDAMENTOS CONSTITUCIONALES DEL DERECHO CONCURSAL", horas: "4" },
+            { nombre: "II. GENERALIDADES DEL DERECHO CONCURSAL", horas: "4" },
+            { nombre: "III. ASPECTOS GENERALES DEL RÉGIMEN DE INSOLVENCIA DE LA PERSONA NATURAL NO COMERCIANTE", horas: "4" },
+            { nombre: "IV. TRATAMIENTO DE CONTRATOS EN EL RÉGIMEN DE INSOLVENCIA", horas: "8" },
+            { nombre: "V. ASPECTOS BÁSICOS DE CONTABILIDAD Y ANÁLISIS FINANCIERO", horas: "8" },
+            { nombre: "VI. FUNDAMENTOS DE DERECHO DE SOCIEDADES", horas: "8" },
+            { nombre: "VII. DERECHO PROCESAL", horas: "8" },
+            { nombre: "VIII. EL PROCESO DE REORGANIZACIÓN EMPRESARIAL", horas: "8" },
+            { nombre: "IX. VALIDACIÓN JUDICIAL DE ACUERDOS EXTRAJUDICIALES", horas: "4" },
+            { nombre: "X. PROCESO DE LIQUIDACIÓN JUDICIAL", horas: "8" },
+            { nombre: "XI. NEGOCIOS FIDUCIARIOS", horas: "4" },
+            { nombre: "XII. GARANTÍAS MOBILIARIAS", horas: "4" },
+            { nombre: "XIII. LA INSOLVENCIA TRANSFRONTERIZA", horas: "4" },
+            { nombre: "XIV. INSOLVENCIA DE GRUPOS DE EMPRESAS", horas: "4" },
+            { nombre: "XV. LA CONCILIACIÓN", horas: "4" },
+            { nombre: "XVI. PROYECTO DE LEY 106 DE 2023", horas: "8" },
+            { nombre: "XVII. RÉGIMEN DE INTERVENCIÓN", horas: "12" }
+        ];
+
+        function renderMaterias() {
+            const container = document.getElementById('materiasContainer');
+            
+            container.innerHTML = modulosData.map(modulo => `
+                <div class="pd-materia">
+                    <div class="pd-materia-info">
+                        <div class="pd-materia-title">${modulo.nombre}</div>
+                    </div>
+                    <div class="pd-materia-credit">${modulo.horas} h</div>
+                </div>
+            `).join('');
+        }
+
+        // Calcular total de horas del programa
+        function calcularTotalHoras() {
+            const totalHoras = modulosData.reduce((total, modulo) => total + parseInt(modulo.horas), 0);
+            document.getElementById('creditosCarrera').textContent = totalHoras;
+        }
+
+        // Inicializar
+        renderMaterias();
+        calcularTotalHoras();
+    </script>
+</body>
+</html>
+ 
