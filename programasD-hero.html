@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hero Diplomados</title>
   <style>
+    :root {
+      --hero-logo-block-height: 90px;
+    }
+
     body {
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: #ffffff;
@@ -143,8 +147,9 @@
       width: 50%;
       height: 100%;
       background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/concentrated-partners-using-laptop-working-with-documents-confident-serious-businesspeople-office-suits-discussing-company-project-together-management-business-partnership-concept-scaled.webp');
-      background-size: 115%;
-      background-position: center right;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       z-index: 1;
     }
 
@@ -300,6 +305,23 @@
     
     .ue-tyc{font-size:13px;color:#ffffffcc;margin-bottom:20px;font-weight:400;line-height:1.5}
     
+    .hp-hero-logos {
+      position: absolute;
+      top: 20px;
+      left: calc(50% + 12px);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 15px 25px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
     /* Responsive */
     @media (max-width: 1300px) {
       .hp-content {
@@ -382,7 +404,7 @@
         background: #ffffff !important;
         border: 1px solid rgba(255, 255, 255, 0.3) !important;
         border-radius: 12px;
-        padding: 16px 18px !important;
+        padding: 16px 18px;
         flex: none;
         display: flex;
         flex-direction: column;
@@ -396,7 +418,7 @@
         width: 100%;
         min-width: auto;
         border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        padding: 16px 18px !important;
+        padding: 16px 18px;
       }
 
       .hp-card:nth-child(2) {
@@ -455,6 +477,9 @@
     }
 
     @media (max-width: 640px) {
+      :root {
+        --hero-mobile-img-height: 180px;
+      }
       .hp-hero {
         display: flex;
         flex-direction: column;
@@ -466,7 +491,8 @@
       .hp-hero::before {
         position: relative;
         width: 100%;
-        height: 160px;
+        height: var(--hero-mobile-img-height);
+        background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/concentrated-partners-using-laptop-working-with-documents-confident-serious-businesspeople-office-suits-discussing-company-project-together-management-business-partnership-concept-scaled.webp') center / cover no-repeat;
         display: block;
         z-index: 3;
         order: 1;
@@ -475,6 +501,20 @@
 
       .hp-hero::after {
         display: none;
+      }
+
+      .hp-hero-logos {
+        top: calc(var(--hero-mobile-img-height) - 70px);
+        bottom: auto;
+        left: auto;
+        right: 16px;
+        padding: 10px 15px;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .hp-hero-logos img {
+        height: 35px !important;
       }
 
       .hp-content {
@@ -510,6 +550,16 @@
         gap: 4px;
       }
 
+      .hp-card:nth-child(1) {
+        padding: 14px 18px !important;
+        padding-right: 0px;
+      }
+
+      .hp-card span[style*="background:#FF3B3B"] {
+        font-size: 11px !important;
+        padding: 2px 5px !important;
+      }
+
       .hp-card-label {
         font-size: 10px;
       }
@@ -538,8 +588,26 @@
     }
 
     @media (max-width: 480px) {
+      :root {
+        --hero-mobile-img-height: 200px;
+      }
       .hp-hero::before {
-        height: 200px;
+        height: var(--hero-mobile-img-height);
+        background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/concentrated-partners-using-laptop-working-with-documents-confident-serious-businesspeople-office-suits-discussing-company-project-together-management-business-partnership-concept-scaled.webp') center / cover no-repeat;
+      }
+
+      .hp-hero-logos {
+        top: calc(var(--hero-mobile-img-height) - 65px);
+        bottom: auto;
+        left: auto;
+        right: 6px;
+        padding: 2px 8px;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .hp-hero-logos img {
+        height: 30px !important;
       }
 
       .hp-content {
@@ -573,7 +641,17 @@
       }
 
       .hp-card {
-        padding: 14px 18px !important;
+        padding: 14px 18px;
+      }
+
+      .hp-card:nth-child(1) {
+        padding: 14px 18px;
+        padding-right: 0px !important;
+      }
+
+      .hp-card span[style*="background:#FF3B3B"] {
+        font-size: 12px !important;
+        padding: 2px 5px !important;
       }
 
       .hp-card-label {
@@ -671,6 +749,12 @@
         </div>
 
         <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8); margin-top: 12px;">Te contactamos por WhatsApp en horario hábil.</div>
+      </div>
+      
+      <div class="hp-hero-logos">
+        <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/07/logoblancofu.png" alt="Logo Uniempresarial" style="height: 60px; width: auto; object-fit: contain;">
+        <div style="width: 1px; height: 50px; background: rgba(255, 255, 255, 0.3);"></div>
+        <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/07/CAC_Logosimbolo_Version_Principal_Blanco-1024x259.png" alt="Logo CAC" style="height: 55px; width: auto; object-fit: contain;">
       </div>
     </section>
 </body>
