@@ -131,6 +131,7 @@
     .ue-hero-metaRow{
           display:flex;flex-wrap:wrap;gap:10px;margin:14px 0; margin-bottom: 10px;
     }
+    
     .ue-hero-meta{
       background: #ffffff;
       border:1px solid rgba(1,50,175,0.15);
@@ -154,6 +155,7 @@
       width: fit-content;
       min-width: auto;
     }
+    
     .ue-hero-meta__k{font-size:12px;color:rgba(1,50,175,0.72);font-weight:700}
     .ue-hero-meta__v{color:#06325a;font-weight:700}
     .ue-hero-meta__v--big{font-size:17px;font-weight:800;color:#0132AF}
@@ -248,9 +250,7 @@
         margin:10px 0;
       }
       .ue-hero-meta{
-        flex: 0 0 auto;
-        width: fit-content;
-        min-width: auto;
+        min-width:140px;
         padding:10px 12px;
       }
       .ue-hero-meta__k{
@@ -266,14 +266,12 @@
         padding:50px;
       }
       .ue-hero-metaRow .ue-hero-meta:nth-child(2){
-        flex: 0 0 auto;
-        width: fit-content;
-        min-width: auto;
+        flex:1 1 140px;
+        min-width:140px;
       }
       .ue-hero-metaRow .ue-hero-meta:nth-child(3){
-        flex: 0 0 auto;
-        width: fit-content;
-        min-width: auto;
+        flex:1 1 100px;
+        min-width:100px;
       }
     }
 
@@ -289,15 +287,13 @@
         gap:10px;
       }
       .ue-hero-meta{
-        flex: 0 0 auto;
-        width: fit-content;
-        min-width: auto !important;
+        min-width:100% !important;
+        flex:1 1 auto !important;
         padding:12px 14px;
       }
       .ue-hero-metaRow .ue-hero-meta:nth-child(2){
-        flex: 0 0 auto !important;
-        width: fit-content !important;
-        min-width: auto !important;
+        flex:1 1 auto !important;
+        min-width:100% !important;
       }
       .ue-hero-metaRow .ue-hero-meta:nth-child(3){
         flex:1 1 auto !important;
@@ -455,28 +451,152 @@
       }
     }
 
-    /* Transición elegante */
-    .transicion-divisor {
-      height: 2px;
-      background: linear-gradient(90deg, transparent 5%, rgb(1, 50, 175) 50%, transparent 95%);
-      margin: 40px 20px 0;
+    /* --- Modal Styles --- */
+    .mo-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease;
     }
+    .mo-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .mo-modal-content {
+        background-color: #ffffff;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 600px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        animation: slideUp 0.3s ease;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .mo-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #e0e3e8;
+        padding-bottom: 16px;
+    }
+
+    .mo-modal-header h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 800;
+        color: #0132AF;
+    }
+
+    .mo-modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #999;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+    .mo-modal-close:hover { background: #f5f7fa; color: #333; }
+    .mo-modal-body p { margin: 0; line-height: 1.6; color: #06325a; font-size: 15px; font-weight: 500; }
+
+    /* Estilo del disclaimer en la derecha */
+    .ue-tyc-box {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 1);
+      color: #0132AF;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 0;
+      max-width: calc(100% - 48px);
+    }
+
+    @media (max-width: 980px) {
+      .ue-tyc-box {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 0 36px 36px 36px;
+        order: 3;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ue-tyc-box { 
+        position: relative;
+        margin: 0 24px 24px 24px; 
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ue-tyc-box { 
+        position: relative;
+        margin: 0 16px 20px 16px; 
+        font-size: 11px; 
+      }
+    }
+    
 
 </style>
 
 <section class="hero-panel" id="hero-section" aria-label="Presentación del programa">
 
-  <div class="ue-hero__left">
+  <div class="ue-hero__left" style="position: relative;">
     <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp" alt="Ingeniería de software virtual" class="ue-hero__image" loading="lazy">
+    
+        <div style="position: absolute; bottom: 20px; left: 24px; z-index: 10; background: rgba(255, 255, 255, 0.95); padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: calc(100% - 48px); margin-bottom: 0;" class="ue-tyc">
+      Te recomendamos leer los términos y condiciones de apertura del programa. <a onclick="openTycModal()" style="text-decoration: underline; font-weight: 800; cursor: pointer; color: inherit;">Aquí</a>
+    </div>
+
   </div>
 
   <div class="ue-hero__right">
     <div class="ue-hero-chips">
-      <span class="ue-hero-chip">Pregrados<span class="ue-hero-badge">NUEVO</span></span>
-          <div class="ue-snies">SNIES / 118364</div>
+      <span class="ue-hero-chip">PREGRADOS<span class="ue-hero-badge">NUEVO</span></span>
+          <div class="ue-snies">SNIES: 118364 / Resolución No. 021295 10 de noviembre de 2023
+</div>
     </div>
 
-    <h1 class="ue-hero__h1">Ingeniería de Software Virtual</h1>
+    <h1 class="ue-hero__h1">Ingeniería de Software</h1>
     <p class="ue-hero__lead" id="heroDesc">
   Domina las habilidades que mueven el mundo digital: aprende a diseñar, desarrollar y desplegar soluciones tecnológicas desde cualquier lugar. En este pregrado 100 % en línea, te formarás en programación, metodologías ágiles, bases de datos, desarrollo web y móvil, y así convertirte en un profesional listo para el mercado laboral digital.
     </p>
@@ -496,7 +616,7 @@
       </div>
       <div class="ue-hero-meta" role="listitem">
         <span class="ue-hero-meta__k">Modalidad</span>
-        <span class="ue-hero-meta__v" id="modalidad">Virtual</span>
+        <span class="ue-hero-meta__v" id="modalidad">Dual - Virtual</span>
       </div>
 
     </div>
@@ -521,4 +641,42 @@
   </div>
 </section>
 
+<!-- Modal de Términos y Condiciones -->
+<div id="tycModal" class="mo-modal">
+    <div class="mo-modal-content">
+        <div class="mo-modal-header">
+            <h2>Términos y Condiciones de Apertura del Programa</h2>
+            <button class="mo-modal-close" onclick="closeTycModal()">&times;</button>
+        </div>
+        <div class="mo-modal-body">
+            <p style="font-size: 15px; font-weight: 500;">La apertura de los programas está sujeta a un número mínimo de estudiantes. Uniempresarial se reserva el derecho de suspender o aplazar el inicio de cualquiera de los programas, en función de la respuesta que obtenga de los interesados en la convocatoria. Igualmente, se reserva el derecho a realizar modificaciones en el plan de estudios, el enfoque metodológico y el claustro docente.</p>
+        </div>
+    </div>
+</div>
 
+<script>
+    function openTycModal() {
+        const modal = document.getElementById('tycModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTycModal() {
+        const modal = document.getElementById('tycModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('tycModal');
+        if (event.target == modal) {
+            closeTycModal();
+        }
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeTycModal();
+        }
+    });
+</script>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Página Principal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        /* =========================================
+           VARIABLES Y CONFIGURACIÓN BASE
+        ========================================= */
+        :root {
+            --color-primary: #0f766e; /* Color acento (teal) */
+            --color-primary-hover: #0b5f59;
+            --color-text-main: #1F2937; /* Gris muy oscuro */
+            --color-text-muted: #6B7280; /* Gris medio */
+            --color-bg-body: #F9FAFB;
+            --color-bg-card: #FFFFFF;
+            --color-border: #E5E7EB;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            
+            --font-family: 'Plus Jakarta Sans', 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            min-height: 100vh;
+            background-color: var(--color-bg-body);
+            color: var(--color-text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* =========================================
+           HEADER Y NAVEGACIÓN
+        ========================================= */
+        .site-header {
+            background-color: var(--color-bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+
+        .main-nav a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Ocultar menú en móviles por simplicidad visual sin JS */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* =========================================
+           HERO SECTION
+        ========================================= */
+        .hero {
+            background: linear-gradient(135deg, #f8fbfb 0%, #eef7f6 60%, #e7f3f2 100%);
+            padding: 5rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-text-main);
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           ESTRUCTURA PRINCIPAL (LAYOUT)
+        ========================================= */
+        .layout-wrapper {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(280px, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar {
+            width: 100%;
+        }
+
+        /* Responsive: Sidebar pasa abajo en móviles y tablets pequeñas */
+        @media (max-width: 992px) {
+            .layout-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        /* =========================================
+           GRID DE POSTS (MAIN CONTENT)
+        ========================================= */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+            gap: 2rem;
+        }
+
+        /* Responsive del Grid */
+        @media (max-width: 1024px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .posts-grid {
+                grid-template-columns: 1fr; /* 1 columna en móviles */
+            }
+        }
+
+        /* Tarjeta de Post */
+        .post-card {
+            background-color: var(--color-bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .post-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .post-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .post-excerpt {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1; /* Empuja el botón hacia abajo */
+        }
+
+        .btn-read-more {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-primary);
+            font-weight: 600;
+            border: 2px solid var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: fit-content;
+        }
+
+        .btn-read-more:hover {
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+        }
+
+        /* =========================================
+           SIDEBAR
+        ========================================= */
+        .sidebar-widget {
+            background-color: var(--color-bg-card);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #edf2f2;
+        }
+
+        /* Buscador */
+        .search-form {
+            display: flex;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .search-input:focus {
+            border-color: var(--color-primary);
+        }
+
+        .search-btn {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        /* Listas Sidebar (Categorías y Posts Recientes) */
+        .widget-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .widget-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .widget-list a {
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .widget-list a:hover {
+            color: var(--color-primary);
+            transform: translateX(4px);
+        }
+
+        .recent-post-link {
+            display: block !important;
+        }
+
+        .recent-post-date {
+            display: block;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            margin-top: 0.25rem;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        .site-footer {
+            background-color: var(--color-bg-card);
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-copy {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Artículos Populares */
+        .popular-post {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #edf2f2;
+        }
+
+        .popular-post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .popular-post-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .popular-post-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .popular-post-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--color-text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .popular-post-title a:hover {
+            color: var(--color-primary);
+        }
+
+        .popular-post-date {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER -->
+    <header class="site-header">
+        <div class="container header-content">
+            <div class="logo">MiBlog.</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Blog</h1>
+            <p>Descubre las últimas novedades, guías y recursos sobre tecnología, diseño y desarrollo web.</p>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL: Grid (Posts) + Sidebar -->
+    <div class="container layout-wrapper">
+        
+        <!-- 3. SECCIÓN DE POSTS RECIENTES -->
+        <main class="main-content">
+            <div class="posts-grid">
+                
+                <!-- Tarjeta de Post 1 -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Tech Setup" class="post-image">
+                    <div class="post-content">
+                        <span class="post-category">Desarrollo</span>
+                        <h2 class="post-title">Mejores prácticas para código limpio en 2026</h2>
+                        <p class="post-excerpt">Mantener un código legible es vital para proyectos a largo plazo. Descubre las convenciones más modernas del desarrollo web.</p>
+                        <a href="#" class="btn-read-more">Leer más</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Post 2 -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Código en pantalla" class="post-image">
+                    <div class="post-content">
+                        <span class="post-category">Diseño UI/UX</span>
+                        <h2 class="post-title">El impacto visual de los espacios en blanco</h2>
+                        <p class="post-excerpt">Un análisis profundo de cómo el "white space" puede transformar por completo la experiencia de usuario en tu sitio web.</p>
+                        <a href="#" class="btn-read-more">Leer más</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Post 3 -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=600&q=80" alt="Trabajo en equipo" class="post-image">
+                    <div class="post-content">
+                        <span class="post-category">Productividad</span>
+                        <h2 class="post-title">Herramientas que todo equipo ágil necesita</h2>
+                        <p class="post-excerpt">Desde gestores de tareas hasta plataformas de comunicación, estas son las herramientas esenciales para startups.</p>
+                        <a href="#" class="btn-read-more">Leer más</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Post 4 -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Laptop" class="post-image">
+                    <div class="post-content">
+                        <span class="post-category">Desarrollo</span>
+                        <h2 class="post-title">Introducción a las Variables de CSS</h2>
+                        <p class="post-excerpt">Aprende a crear temas dinámicos (modo claro/oscuro) sin librerías externas utilizando solo CSS Custom Properties.</p>
+                        <a href="#" class="btn-read-more">Leer más</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Post 5 -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Oficina" class="post-image">
+                    <div class="post-content">
+                        <span class="post-category">Tendencias</span>
+                        <h2 class="post-title">El futuro del desarrollo Frontend</h2>
+                        <p class="post-excerpt">Frameworks, herramientas de construcción y nuevos estándares web que dominarán la industria en los próximos años.</p>
+                        <a href="#" class="btn-read-more">Leer más</a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Post 6 -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Ciberseguridad" class="post-image">
+                    <div class="post-content">
+                        <span class="post-category">Seguridad</span>
+                        <h2 class="post-title">Protegiendo tus aplicaciones web de ataques básicos</h2>
+                        <p class="post-excerpt">Una lista de verificación esencial para blindar el frontend de tu aplicación contra vulnerabilidades comunes.</p>
+                        <a href="#" class="btn-read-more">Leer más</a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <!-- 4. SIDEBAR -->
+        <aside class="sidebar">
+            
+            <!-- Buscador -->
+            <div class="sidebar-widget">
+                <h3>Buscar</h3>
+                <form class="search-form" action="#" method="GET">
+                    <input type="text" class="search-input" placeholder="Buscar artículos...">
+                    <button type="submit" class="search-btn">Ir</button>
+                </form>
+            </div>
+
+            <!-- Categorías -->
+            <div class="sidebar-widget">
+                <h3>Categorías</h3>
+                <ul class="widget-list">
+                    <li><a href="#">Desarrollo <span>(12)</span></a></li>
+                    <li><a href="#">Diseño UI/UX <span>(8)</span></a></li>
+                    <li><a href="#">Productividad <span>(5)</span></a></li>
+                    <li><a href="#">Seguridad <span>(3)</span></a></li>
+                    <li><a href="#">Tendencias <span>(7)</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Posts Recientes (Lista Sidebar) -->
+            <div class="sidebar-widget">
+                <h3>Últimos Posts</h3>
+                <ul class="widget-list">
+                    <li>
+                        <a href="#" class="recent-post-link">
+                            Mejores prácticas para código limpio en 2026
+                            <span class="recent-post-date">18 Mar, 2026</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="recent-post-link">
+                            El impacto visual de los espacios en blanco
+                            <span class="recent-post-date">15 Mar, 2026</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="recent-post-link">
+                            Herramientas que todo equipo ágil necesita
+                            <span class="recent-post-date">10 Mar, 2026</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Artículos Populares -->
+            <div class="sidebar-widget">
+                <h3>Más Leído</h3>
+                <article class="popular-post">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=200&q=80" alt="Article" class="popular-post-thumb">
+                    <div class="popular-post-info">
+                        <h4 class="popular-post-title"><a href="#">Mejores prácticas para código limpio</a></h4>
+                        <time class="popular-post-date">18 Mar, 2026</time>
+                    </div>
+                </article>
+
+                <article class="popular-post">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=200&q=80" alt="Article" class="popular-post-thumb">
+                    <div class="popular-post-info">
+                        <h4 class="popular-post-title"><a href="#">El impacto visual de los espacios</a></h4>
+                        <time class="popular-post-date">15 Mar, 2026</time>
+                    </div>
+                </article>
+
+                <article class="popular-post">
+                    <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=200&q=80" alt="Article" class="popular-post-thumb">
+                    <div class="popular-post-info">
+                        <h4 class="popular-post-title"><a href="#">Herramientas que todo equipo necesita</a></h4>
+                        <time class="popular-post-date">10 Mar, 2026</time>
+                    </div>
+                </article>
+
+                <article class="popular-post">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=200&q=80" alt="Article" class="popular-post-thumb">
+                    <div class="popular-post-info">
+                        <h4 class="popular-post-title"><a href="#">Introducción a las Variables CSS</a></h4>
+                        <time class="popular-post-date">8 Mar, 2026</time>
+                    </div>
+                </article>
+            </div>
+
+        </aside>
+    </div>
+
+    <!-- 5. FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#">Acerca de</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+                <a href="#">Contacto</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 MiBlog. Todos los derechos reservados. Creado con HTML5 y CSS3.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

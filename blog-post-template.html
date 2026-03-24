@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla Post - Uniempresarial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+
+    }
+
+    .hero-banner {
+      position: relative;
+      /* Se aumenta el padding para hacer el banner mucho más alto */
+      padding: 180px 24px 180px;
+      overflow: hidden;
+      background: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/inducciones03.jpeg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      mix-blend-mode: normal;
+      opacity: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 600px;
+      margin: 0;
+      color: white;
+      background: rgba(17, 66, 211, 0.561);
+      backdrop-filter: blur(8px) brightness(1.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 72px 48px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-title {
+      margin: 0 0 10px 0;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-description {
+      margin: 0 0 18px 0;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .meta-pill {
+      padding: 10px 16px;
+      color: #fff;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px) brightness(0.95);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-container {
+      max-width: 1080px;
+      /* Subimos el contenido ligeramente sobre el banner */
+      margin: -100px auto 64px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content-article {
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 18px 38px rgba(4, 77, 194, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 12px 0 22px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: #dce9ff;
+      color: #044DC2;
+      font-weight: 700;
+      border: 1px solid rgba(4, 77, 194, 0.15);
+    }
+
+    h2 {
+      margin: 32px 0 16px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 24px 0 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: #475569;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #475569;
+    
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 24px 0 32px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      background: rgba(4, 77, 194, 0.04);
+    }
+
+    .stat-card strong {
+      color: #044DC2;
+      font-size: 1.1em;
+    }
+
+    blockquote {
+      margin: 32px 0;
+      padding: 24px;
+      border-left: 5px solid #EF1218;
+      background: #fff5f5;
+      color: #0f172a;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner {
+        padding: 140px 20px 110px;
+      }
+      
+      .hero-content {
+        margin: 0;
+        max-width: 100%;
+        padding: 24px;
+        border-radius: 16px;
+      }
+      
+      .hero-title {
+        font-size: clamp(24px, 5vw, 36px);
+        margin-bottom: 8px;
+      }
+      
+      .hero-description {
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+      
+      .meta-info {
+        font-size: 12px;
+        gap: 8px;
+      }
+      
+      .meta-pill {
+        padding: 8px 12px;
+      }
+      
+      .content-article {
+        padding: 20px;
+        border-radius: 12px;
+      }
+      
+      h2 {
+        font-size: 22px;
+        margin: 24px 0 12px;
+      }
+      
+      h3 {
+        font-size: 18px;
+        margin: 18px 0 10px;
+      }
+      
+      p {
+        font-size: 15px;
+        margin-bottom: 14px;
+      }
+      
+      .stats-grid {
+        margin: 18px 0 24px;
+      }
+      
+      .stat-card {
+        padding: 16px;
+      }
+      
+      blockquote {
+        font-size: 1em;
+        padding: 16px;
+        margin: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Titulo atractivo del post para captar la atencion</h1>
+      <p class="hero-description">Resuma en dos lineas la promesa central del articulo. Use un beneficio claro y lenguaje cercano para conectar con estudiantes y aliados.</p>
+      <div class="meta-info">
+        <div class="meta-pill">Autor: Nombre del autor</div>
+        <div class="meta-pill">Fecha: 24 Mar 2026</div>
+        <div class="meta-pill">Lectura: 5 min</div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-container">
+    <article class="content-article">
+      <div class="tags-container">
+        <span class="tag">Innovacion</span>
+        <span class="tag">Gestion</span>
+        <span class="tag">Vida Universitaria</span>
+      </div>
+
+      <h2>Resumen ejecutivo</h2>
+      <p>Escriba un parrafo inicial que explique el problema o la oportunidad que el lector encontrara en el post. Destaque el impacto para la comunidad Uniempresarial.</p>
+
+      <h2>Contexto y datos clave</h2>
+      <p>Comparta antecedentes breves y datos relevantes. Incluya cifras que demuestren el valor de la iniciativa o el logro mencionado.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <strong>50% de crecimiento</strong><br>
+          en proyectos de emprendimiento estudiantil en el ultimo ano.
+        </div>
+        <div class="stat-card">
+          <strong>Top 3</strong><br>
+          programas mas consultados: Administracion, Ingenieria Industrial, Negocios Internacionales.
+        </div>
+        <div class="stat-card">
+          <strong>Red de aliados</strong><br>
+          mas de 120 empresas vinculadas con practica y mentorias.
+        </div>
+      </div>
+
+      <h2>Desarrollo</h2>
+      <h3>Subtema 1</h3>
+      <p>Describa el primer aspecto clave. Incluya una cita breve o ejemplo concreto que refuerce el punto.</p>
+      
+      <blockquote>"La experiencia dual empresa-aula es el puente que acelera la empleabilidad de nuestros estudiantes."</blockquote>
+
+      <h3>Subtema 2</h3>
+      <p>Aborde el siguiente pilar del contenido. Puede listar pasos o aprendizajes.</p>
+      <ul>
+        <li>Accion concreta o hallazgo.</li>
+        <li>Resultado medible o historia de impacto.</li>
+        <li>Llamado a la comunidad para participar.</li>
+      </ul>
+
+      <h2>Conclusiones y proximo paso</h2>
+      <p>Redondee el mensaje y proponga una accion: inscribirse, agendar asesoría o compartir con la red.</p>
+    </article>
+  </main>
+</body>
+</html>

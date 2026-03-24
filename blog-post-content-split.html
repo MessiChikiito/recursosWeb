@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Component - Uniempresarial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      background: #f8fafc; /* Fondo claro de prueba para poder ver la tarjeta blanca */
+    }
+
+    .main-container {
+      max-width: 1080px;
+      margin: 40px auto 64px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .content-article {
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 18px 38px rgba(4, 77, 194, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 12px 0 22px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: #dce9ff;
+      color: #044DC2;
+      font-weight: 700;
+      border: 1px solid rgba(4, 77, 194, 0.15);
+    }
+
+    h2 {
+      margin: 32px 0 16px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin: 24px 0 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: #475569;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #475569;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 24px 0 32px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      background: rgba(4, 77, 194, 0.04);
+    }
+
+    .stat-card strong {
+      color: #044DC2;
+      font-size: 1.1em;
+    }
+
+    blockquote {
+      margin: 32px 0;
+      padding: 24px;
+      border-left: 5px solid #EF1218;
+      background: #fff5f5;
+      color: #0f172a;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1em;
+    }
+
+    /* Enlaces en el texto */
+    .content-article p a {
+      color: #044DC2;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(4, 77, 194, 0.2);
+      transition: all 0.3s ease !important;
+    }
+    
+    .content-article p a:hover {
+      color: #EF1218;
+      border-bottom-color: #EF1218;
+    }
+
+    /* Botones y CTAs */
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      margin: 32px 0 0;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease !important;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #044DC2;
+      color: #fff;
+      border: 2px solid #044DC2;
+    }
+    
+    .btn-primary:hover {
+      background: #033a94;
+      border-color: #033a94;
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #0f172a;
+      border: 2px solid #e2e8f0;
+    }
+
+    .btn-outline:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #044DC2;
+    }
+
+    .btn-secondary {
+      background: #EF1218;
+      color: #ffffff !important;
+      border: 2px solid #EF1218;
+    }
+
+    .btn-secondary:hover {
+      background: #d10f14;
+      border-color: #d10f14;
+    }
+
+    /* Tarjeta de captacion / Programa recomendado */
+    .recommended-program {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #044DC2;
+      border-radius: 12px;
+      padding: 32px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .recommended-program h3 {
+      margin: 0 0 8px 0;
+      color: #044DC2;
+    }
+
+    .recommended-program p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    @media (min-width: 481px) {
+      .recommended-program {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .recommended-program .program-info {
+        max-width: 65%;
+      }
+      .recommended-program .btn {
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 16px;
+      }
+      
+      .content-article {
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin: 24px 0 12px;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin: 18px 0 10px;
+      }
+
+      p {
+        font-size: 15px;
+        margin-bottom: 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        margin: 18px 0 24px;
+      }
+
+      .stat-card {
+        padding: 16px;
+      }
+
+      blockquote {
+        font-size: 1em;
+        padding: 16px;
+        margin: 20px 0;
+      }
+
+      .recommended-program {
+        margin: 24px 0;
+        padding: 20px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .recommended-program .program-info {
+        max-width: 100%;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .tag {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="main-container">
+    <article class="content-article">
+      <div class="tags-container">
+        <span class="tag">Innovacion</span>
+        <span class="tag">Gestion</span>
+        <span class="tag">Vida Universitaria</span>
+      </div>
+
+      <h2>Resumen ejecutivo</h2>
+      <p>Escriba un parrafo inicial que explique el problema o la oportunidad que el lector encontrara en el post. Destaque el impacto para la comunidad Uniempresarial.</p>
+
+      <h2>Contexto y datos clave</h2>
+      <p>Comparta antecedentes breves y datos relevantes. Incluya cifras que demuestren el valor de la iniciativa o el logro mencionado. Además, explore cómo nuestro <a href="#">modelo de formación dual</a> conecta a los estudiantes con el entorno laboral real.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <strong>50% de crecimiento</strong><br>
+          en proyectos de emprendimiento estudiantil en el ultimo ano.
+        </div>
+        <div class="stat-card">
+          <strong>Top 3</strong><br>
+          programas mas consultados: Administracion, Ingenieria Industrial, Negocios Internacionales.
+        </div>
+        <div class="stat-card">
+          <strong>Red de aliados</strong><br>
+          mas de 120 empresas vinculadas con practica y mentorias.
+        </div>
+      </div>
+
+      <h2>Desarrollo</h2>
+      <h3>Subtema 1</h3>
+      <p>Describa el primer aspecto clave. Incluya una cita breve o ejemplo concreto que refuerce el punto.</p>
+
+      <blockquote>"La experiencia dual empresa-aula es el puente que acelera la empleabilidad de nuestros estudiantes."</blockquote>
+
+      <h3>Subtema 2</h3>
+      <p>Aborde el siguiente pilar del contenido. Puede listar pasos o aprendizajes.</p>
+      <ul>
+        <li>Accion concreta o hallazgo.</li>
+        <li>Resultado medible o historia de impacto.</li>
+        <li>Llamado a la comunidad para participar.</li>
+      </ul>
+
+      <h2>Programas Relacionados</h2>
+      <div class="recommended-program">
+        <div class="program-info">
+          <h3>Especializacion en Gestion de Proyectos</h3>
+          <p>Potencia tus habilidades de liderazgo y lleva las iniciativas de tu organizacion al siguiente nivel con metodologias agiles e innovadoras.</p>
+        </div>
+        <a href="#" class="btn btn-primary">Ver programa</a>
+      </div>
+
+      <h2>Conclusiones y proximo paso</h2>
+      <p>Redondee el mensaje y proponga una accion: inscribirse, agendar asesoria o compartir con la red. Si el tema te apasiona y quieres dar el siguiente paso, te invitamos a <a href="#">agendar una asesoria gratuita</a> para evaluar tu perfil.</p>
+
+      <div class="action-buttons">
+        <a href="#" class="btn btn-secondary">Inscribirme ahora</a>
+        <a href="#" class="btn btn-outline">&larr; Volver a Todos los Blogs</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

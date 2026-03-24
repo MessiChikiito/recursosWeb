@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero y Card Destacada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 5%;
+            background-color: #f8f9fa;
+            min-height: 60vh;
+        }
+
+        /* Contenedor de texto del hero */
+        .hero-text {
+            flex: 1 1 50%;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .hero-subtitle {
+            color: #ff0011;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: #0132AF;
+            margin: 1rem 0;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            background-color: #ff0011;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(226, 6, 19, 0.4);
+        }
+
+        .hero-button:hover {
+            background-color: #d90010;
+        }
+
+        /* Contenedor de la card destacada */
+        .hero-card-wrapper {
+            flex: 0 1 400px;
+            margin-top: 2rem;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .card-label {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .card-label-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #002855;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Imagen de la card */
+        .card-image {
+            height: 200px;
+            background-color: #cbd5e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #002855;
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        /* Contenido de la card */
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-date {
+            color: #718096;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #002855;
+            margin: 0 0 1rem 0;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .card-description {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            color: #ff0011;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .card-link:hover {
+            gap: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+
+        <!-- Texto del Hero -->
+        <div class="hero-text">
+            <span class="hero-subtitle">Conocimiento a tu alcance</span>
+            <h1 class="hero-title">Impulsa tu visión profesional</h1>
+            <p class="hero-description">
+                Explora ideas, estrategias y tendencias clave para el ecosistema empresarial. Mantente un paso adelante con recursos y artículos actualizados por expertos.
+            </p>
+            <a href="#" class="hero-button">Suscribirse al boletín</a>
+        </div>
+        
+        <!-- Card Destacada -->
+        <div class="hero-card-wrapper">
+
+            <div class="card-label">
+                <span class="card-label-text">¡Echa un vistazo a nuestro artículo más reciente!</span>
+            </div>
+
+            <div class="card">
+                
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/400x200" alt="Imagen del artículo">
+                    <span class="card-badge">Destacado</span>
+                </div>
+
+                <div class="card-content">
+                    <p class="card-date">Publicado el 15 Oct, 2023</p>
+                    <h3 class="card-title">10 estrategias clave para tu desarrollo profesional este año</h3>
+                    <p class="card-description">
+                        Aprende cómo mejorar tu perfil con estas recomendaciones prácticas y sencillas, ideales para potenciar tus habilidades directivas.
+                    </p>
+                    <a href="#" class="card-link">
+                        Leer artículo <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

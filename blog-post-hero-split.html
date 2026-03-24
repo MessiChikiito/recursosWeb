@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Component - Uniempresarial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+    }
+
+    .hero-banner {
+      position: relative;
+      padding: 180px 24px 180px;
+      overflow: hidden;
+      background: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/inducciones03.jpeg') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      mix-blend-mode: normal;
+      opacity: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      margin: 0;
+      color: white;
+      background: rgba(4, 22, 64, 0.683);
+      backdrop-filter: blur(12px) brightness(1.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-title {
+      margin: 0 0 16px 0;
+      font-size: 36px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-description {
+      margin: 0 0 24px 0;
+      font-size: 18px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .meta-pill {
+      padding: 10px 16px;
+      color: #fff;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px) brightness(0.95);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner {
+        padding: 80px 16px 60px;
+      }
+
+      .hero-content {
+        margin: 0;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
+
+      .hero-description {
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
+
+      .meta-info {
+        font-size: 11px;
+        gap: 6px;
+      }
+
+      .meta-pill {
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Titulo atractivo del post para captar la atencion</h1>
+      <p class="hero-description">Resuma en dos lineas la promesa central del articulo. Use un beneficio claro y lenguaje cercano para conectar con estudiantes y aliados.</p>
+      <div class="meta-info">
+        <div class="meta-pill">Autor: Nombre del autor</div>
+        <div class="meta-pill">Fecha: 24 Mar 2026</div>
+        <div class="meta-pill">Lectura: 5 min</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
