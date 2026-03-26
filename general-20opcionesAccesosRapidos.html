@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Opciones de Accesos Rápidos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+            margin-top: 60px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Enlaces */
+        .access-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==============================================================
+           OPCIÓN 1: Botones Minimalistas de Contorno Rojo
+           ============================================================== */
+        .op1-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+        .op1-item {
+            border: 2px solid #FE1C33;
+            border-radius: 8px;
+            padding: 20px 10px;
+            text-align: center;
+            color: #FE1C33;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .op1-item i { font-size: 24px; margin-bottom: 8px; }
+        .op1-item:hover {
+            background: #FE1C33;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(254, 28, 51, 0.3);
+        }
+
+        /* ==============================================================
+           OPCIÓN 2: Tarjetas Blancas con Sombra Suave
+           ============================================================== */
+        .op2-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            background: #eef2f5;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .op2-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .op2-item i { font-size: 28px; color: #0132AF; margin-bottom: 12px; }
+        .op2-label { font-weight: 600; font-size: 0.85rem; color: #333; }
+        .op2-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .op2-item:hover i { color: #FE1C33; }
+
+        /* ==============================================================
+           OPCIÓN 3: Píldoras Horizontales (Capsules)
+           ============================================================== */
+        .op3-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .op3-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .op3-item i {
+            width: 30px;
+            height: 30px;
+            background: #FE1C33;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        .op3-label { font-weight: 500; font-size: 0.9rem; }
+        .op3-item:hover {
+            background: #fdfdfd;
+            border-color: #FE1C33;
+            transform: scale(1.05);
+        }
+
+        /* ==============================================================
+           OPCIÓN 4: Cuadros Sólidos Azules (Dark Mode feel)
+           ============================================================== */
+        .op4-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            background: #0132AF;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .op4-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 5px;
+            padding: 20px 10px;
+            text-align: center;
+            color: white;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .op4-item i { font-size: 24px; margin-bottom: 10px; opacity: 0.8; }
+        .op4-label { font-size: 0.8rem; letter-spacing: 1px; }
+        .op4-item:hover {
+            background: #FE1C33;
+            border-color: #FE1C33;
+        }
+        .op4-item:hover i { opacity: 1; }
+
+        /* ==============================================================
+           OPCIÓN 5: Iconos Grandes Flotantes
+           ============================================================== */
+        .op5-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+        .op5-item {
+            display: block;
+            group: hover;
+        }
+        .op5-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            color: #0132AF;
+            font-size: 28px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .op5-label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        .op5-item:hover .op5-icon-wrapper {
+            transform: scale(1.15) rotate(5deg);
+            background: #FE1C33;
+            color: white;
+        }
+        .op5-item:hover .op5-label { color: #FE1C33; }
+
+        /* ==============================================================
+           OPCIÓN 6: Diseño de "Tickets" Neumorfismo Suave
+           ============================================================== */
+        .op6-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            background: #f0f0f3;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: inset 5px 5px 10px #d9d9d9, inset -5px -5px 10px #ffffff;
+        }
+        .op6-item {
+            flex: 1;
+            background: #f0f0f3;
+            padding: 20px 10px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+            transition: all 0.2s;
+            color: #666;
+        }
+        .op6-item i { font-size: 22px; color: #FE1C33; margin-bottom: 8px; }
+        .op6-label { font-size: 0.8rem; font-weight: bold; }
+        .op6-item:active {
+            box-shadow: inset 5px 5px 10px #d9d9d9, inset -5px -5px 10px #ffffff;
+        }
+
+        /* ==============================================================
+           OPCIÓN 7: Grilla con Separadores Verticales (Lineas)
+           ============================================================== */
+        .op7-grid {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+        }
+        .op7-item {
+            flex: 1;
+            padding: 25px 15px;
+            text-align: center;
+            border-right: 1px solid #eaeaea;
+            transition: background 0.3s;
+        }
+        .op7-item:last-child { border-right: none; }
+        .op7-item i { font-size: 26px; color: #444; margin-bottom: 10px; transition: color 0.3s;}
+        .op7-label { font-size: 0.8rem; color: #666; text-transform: uppercase; font-weight: 600;}
+        .op7-item:hover { background: #fafafa; }
+        .op7-item:hover i { color: #0132AF; }
+
+        /* ==============================================================
+           OPCIÓN 8: Tarjetas "Lifting" con borde inferior
+           ============================================================== */
+        .op8-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        .op8-item {
+            background: white;
+            border-radius: 8px;
+            padding: 25px 10px;
+            text-align: center;
+            border-bottom: 4px solid #0132AF;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .op8-item i { font-size: 24px; color: #333; margin-bottom: 10px; }
+        .op8-item:hover {
+            transform: translateY(-8px);
+            border-bottom-color: #FE1C33;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        .op8-item:hover i { color: #FE1C33; }
+
+        /* ==============================================================
+           OPCIÓN 9: Diseño 3D Estilo Botón
+           ============================================================== */
+        .op9-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+        .op9-item {
+            background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+            border: 1px solid #dfdfdf;
+            border-radius: 10px;
+            padding: 20px 10px;
+            text-align: center;
+            border-bottom: 5px solid #cccccc;
+            transition: all 0.1s;
+        }
+        .op9-item i { font-size: 22px; color: #555; margin-bottom: 8px; }
+        .op9-item:active {
+            transform: translateY(4px);
+            border-bottom: 1px solid #cccccc;
+            background: #f0f0f0;
+        }
+
+        /* ==============================================================
+           OPCIÓN 10: Gradiente Moderno (Instagram/Instagram feel)
+           ============================================================== */
+        .op10-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        .op10-item {
+            background: linear-gradient(45deg, #FE1C33, #ff4c4c);
+            border-radius: 15px;
+            padding: 20px 10px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 15px rgba(254, 28, 51, 0.2);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .op10-item::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 100px; height: 100px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: all 0.5s;
+        }
+        .op10-item i { font-size: 26px; margin-bottom: 8px; position: relative; z-index: 1;}
+        .op10-label { font-size: 0.8rem; font-weight: bold; position: relative; z-index: 1;}
+        .op10-item:hover { transform: translateY(-5px); }
+        .op10-item:hover::before { top: -20%; left: -20%; width: 150px; height: 150px; }
+
+        /* ==============================================================
+           OPCIÓN 11: Modo Oscuro Elegante
+           ============================================================== */
+        .op11-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            background: #1a1a2e;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        .op11-item {
+            background: #16213e;
+            border: 1px solid #0f3460;
+            border-radius: 8px;
+            padding: 25px 10px;
+            text-align: center;
+            color: #e94560;
+            transition: all 0.3s;
+        }
+        .op11-item i { font-size: 26px; margin-bottom: 12px; }
+        .op11-label { color: #fff; font-size: 0.8rem; letter-spacing: 0.5px;}
+        .op11-item:hover {
+            background: #e94560;
+            color: white;
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        /* ==============================================================
+           OPCIÓN 12: Paneles Izquierda-Derecha (Icono izq, texto der)
+           ============================================================== */
+        .op12-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cols desktop */
+            gap: 15px;
+        }
+        .op12-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-left: 5px solid #0132AF;
+            border-radius: 6px;
+            padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+        .op12-item i { font-size: 28px; color: #0132AF; margin-right: 15px; width: 35px; text-align: center;}
+        .op12-label { font-weight: 600; color: #333; font-size: 0.95rem; text-align: left; line-height: 1.2;}
+        .op12-item:hover { border-left-color: #FE1C33; background: #fafafa; }
+        .op12-item:hover i { color: #FE1C33; }
+
+        /* ==============================================================
+           OPCIÓN 13: Diseño Circular Estricto
+           ============================================================== */
+        .op13-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .op13-item {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 2px dashed transparent;
+            transition: 0.4s;
+        }
+        .op13-item i { font-size: 24px; color: #555; margin-bottom: 5px; transition: 0.3s;}
+        .op13-label { font-size: 0.7rem; font-weight: bold; color: #444; text-align: center; line-height: 1;}
+        .op13-item:hover { border-color: #0132AF; transform: rotate(5deg) scale(1.05); }
+        .op13-item:hover i { color: #0132AF; }
+
+        /* ==============================================================
+           OPCIÓN 14: Cuadros Apilados tipo Banderín
+           ============================================================== */
+        .op14-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            background: #0132AF;
+        }
+        .op14-item {
+            background: #FE1C33;
+            color: white;
+            padding: 30px 10px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            transition: 0.3s;
+        }
+        .op14-item i { font-size: 24px; margin-bottom: 15px; }
+        .op14-label { font-size: 0.75rem; font-weight: bold; }
+        .op14-item:hover { padding-top: 40px; background: white; color: #FE1C33; }
+
+        /* ==============================================================
+           OPCIÓN 15: Cristal / Glassmorphism
+           ============================================================== */
+        .op15-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/03/Banners-Rompela_Banner-Descuentos-PC-scaled.webp') center/cover;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+        }
+        .op15-grid::before {
+            content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); border-radius: 15px;
+        }
+        .op15-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+            transition: 0.3s;
+        }
+        .op15-item i { font-size: 26px; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .op15-label { font-weight: 500; font-size: 0.8rem;}
+        .op15-item:hover { background: rgba(255,255,255,0.9); color: #0132AF; transform: scale(1.05);}
+        .op15-item:hover i { text-shadow: none; }
+
+        /* ==============================================================
+           OPCIÓN 16: Listado Ultradelgado (Thin Ribbon)
+           ============================================================== */
+        .op16-grid {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 5px 15px;
+            justify-content: space-between;
+        }
+        .op16-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: #555;
+            transition: 0.3s;
+            border-radius: 30px;
+        }
+        .op16-item i { margin-right: 8px; font-size: 18px; color: #0132AF; }
+        .op16-label { font-size: 0.85rem; font-weight: 600; }
+        .op16-item:hover { background: #f0f4f8; }
+
+        /* ==============================================================
+           OPCIÓN 17: Cuadros "Post-it"
+           ============================================================== */
+        .op17-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        .op17-item {
+            background: #fff9c4; /* Amarillo suave */
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            transition: 0.3s;
+        }
+        .op17-item::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            border-width: 0 15px 15px 0;
+            border-style: solid;
+            border-color: #f4f6f9 #f4f6f9 #e6e0b3 #e6e0b3; /* Efecto doblado */
+        }
+        .op17-item i { font-size: 24px; color: #d4a017; margin-bottom: 10px; }
+        .op17-label { color: #555; font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 0.85rem;}
+        .op17-item:hover { transform: scale(1.05) rotate(2deg); box-shadow: 4px 8px 12px rgba(0,0,0,0.15);}
+
+        /* ==============================================================
+           OPCIÓN 18: Estilo "App Mobile" (Iconos con fondo de color)
+           ============================================================== */
+        .op18-grid {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        .op18-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+        }
+        .op18-icon-box {
+            width: 65px; height: 65px;
+            background: linear-gradient(135deg, #0132AF, #4facfe);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 26px;
+            box-shadow: 0 4px 10px rgba(1, 50, 175, 0.3);
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+        .op18-item:nth-child(even) .op18-icon-box {
+            background: linear-gradient(135deg, #FE1C33, #ff758c);
+            box-shadow: 0 4px 10px rgba(254, 28, 51, 0.3);
+        }
+        .op18-label { font-size: 0.75rem; color: #444; text-align: center; line-height: 1.1; font-weight: 500;}
+        .op18-item:hover .op18-icon-box { border-radius: 35px; transform: translateY(-5px); }
+
+        /* ==============================================================
+           OPCIÓN 19: Tarjetas Dúo Tono
+           ============================================================== */
+        .op19-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+        .op19-item {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .op19-top {
+            background: #0132AF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .op19-bottom {
+            background: white;
+            padding: 12px 5px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .op19-item:hover { transform: translateY(-5px); }
+        .op19-item:hover .op19-top { background: #FE1C33; }
+
+        /* ==============================================================
+           OPCIÓN 20: Hexágonos (Hive Style)
+           ============================================================== */
+        .op20-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px 0;
+        }
+        .op20-item {
+            width: 100px;
+            height: 110px;
+            background: #FE1C33;
+            color: white;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .op20-item:nth-child(even) { background: #0132AF; margin-top: 55px; /* Offset to interlock slightly if wanted */ }
+        .op20-item i { font-size: 22px; margin-bottom: 5px; }
+        .op20-label { font-size: 0.65rem; font-weight: bold; width: 80%; }
+        .op20-item:hover { background: #333; transform: scale(1.1); }
+
+
+
+
+        /* =========================================================================
+                                RESPONSIVE (MÓVILES)
+           ========================================================================= */
+        @media (max-width: 768px) {
+            h2 { font-size: 1.2rem; }
+
+            /* Opt 1: Cuadrícula 3x2 */
+            .op1-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .op1-item { padding: 15px 5px; }
+            .op1-item i { font-size: 18px; }
+            .op1-item span { font-size: 0.7rem; display: block; }
+
+            /* Opt 2: Cuadrícula 3x2 o 2x3 */
+            .op2-grid { grid-template-columns: repeat(3, 1fr); padding: 15px; gap: 10px; }
+            .op2-item { padding: 15px 5px; }
+            .op2-label { font-size: 0.65rem; }
+
+            /* Opt 3: Envolver */
+            .op3-item { padding: 8px 15px; }
+            .op3-label { font-size: 0.75rem; }
+
+            /* Opt 4: Dark 3x2 */
+            .op4-grid { grid-template-columns: repeat(3, 1fr); padding: 10px; }
+            .op4-label { font-size: 0.65rem; }
+
+            /* Opt 5: Iconos Flotantes */
+            .op5-grid { grid-template-columns: repeat(3, 1fr); gap: 15px;}
+            .op5-icon-wrapper { width: 50px; height: 50px; font-size: 20px;}
+            .op5-label { font-size: 0.65rem; }
+
+            /* Opt 6: Tickets envolviendo a 3x2 */
+            .op6-grid { display: grid; grid-template-columns: repeat(3, 1fr); padding: 15px; }
+            .op6-item { padding: 10px 5px; }
+            .op6-label { font-size: 0.65rem; }
+
+            /* Opt 7: Separadores (Hacer scroll horizontal) */
+            .op7-grid { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 0;}
+            .op7-item { min-width: 100px; padding: 15px 5px; }
+
+            /* Opt 8: Lifting 3x2 */
+            .op8-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .op8-item { padding: 15px 5px; }
+            .op8-item span { font-size: 0.65rem; display: block;}
+
+            /* Opt 9: Botones 3D */
+            .op9-grid { grid-template-columns: repeat(3, 1fr); gap: 10px;}
+            .op9-item { padding: 12px 5px; }
+            .op9-item span { font-size: 0.65rem; display: block;}
+
+            /* Opt 10: Gradiente Moderno */
+            .op10-grid { grid-template-columns: repeat(3, 1fr); gap: 10px;}
+            .op10-item { padding: 15px 5px;}
+            .op10-label { font-size: 0.65rem; }
+
+            /* Opt 11: Dark Mode */
+            .op11-grid { grid-template-columns: repeat(3, 1fr); padding: 10px; gap: 10px;}
+            .op11-item { padding: 15px 5px;}
+            .op11-label { font-size: 0.65rem; }
+
+            /* Opt 12: Paneles Izq/Der (Pasan a 2 columnas o 1) */
+            .op12-grid { grid-template-columns: repeat(2, 1fr); gap: 10px;}
+            .op12-item { padding: 10px; }
+            .op12-item i { font-size: 20px; margin-right: 10px; }
+            .op12-label { font-size: 0.75rem; }
+
+            /* Opt 13: Círculos (más pequeños) */
+            .op13-item { width: 80px; height: 80px; }
+            .op13-item i { font-size: 18px; }
+            .op13-label { font-size: 0.6rem; }
+
+            /* Opt 14: Banderines */
+            .op14-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+            .op14-item { padding: 20px 5px; }
+            .op14-label { font-size: 0.6rem; }
+
+            /* Opt 15: Cristal */
+            .op15-grid { grid-template-columns: repeat(3, 1fr); padding: 15px; gap: 10px; }
+            .op15-item { padding: 15px 5px; }
+            .op15-label { font-size: 0.65rem; }
+
+            /* Opt 16: Ribbon (Scroll horizontal en celular) */
+            .op16-grid { overflow-x: auto; white-space: nowrap; border-radius: 8px;}
+            .op16-item { padding: 8px 12px; }
+
+            /* Opt 17: Post-it */
+            .op17-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .op17-item { padding: 15px 5px; }
+            .op17-label { font-size: 0.65rem; }
+
+            /* Opt 18: App Mobile */
+            .op18-grid { flex-wrap: wrap; gap: 15px; }
+            .op18-item { width: calc(33% - 15px); }
+            .op18-icon-box { width: 50px; height: 50px; font-size: 20px; }
+
+            /* Opt 19: Dúo Tono */
+            .op19-grid { grid-template-columns: repeat(3, 1fr); gap: 10px;}
+            .op19-top { padding: 10px; font-size: 18px;}
+            .op19-bottom { font-size: 0.65rem; padding: 8px 2px;}
+
+            /* Opt 20: Hexágonos */
+            .op20-grid { flex-wrap: wrap; padding: 0; }
+            .op20-item { width: 85px; height: 95px; margin-top: 0 !important; margin-bottom: 10px;}
+        }
+
+        /* Responsive Mobile Pequeño (< 480px) */
+        @media (max-width: 480px) {
+            /* Opt 12: Pasa a 1 columna */
+            .op12-grid { grid-template-columns: 1fr; }
+            
+            /* Opt 18: App Mobile (más juntos) */
+            .op18-item { width: calc(33% - 10px); }
+            
+            /* Ajustes finos de fuentes para pantallas muy chicas */
+            .op1-item span, .op2-label, .op4-label, .op5-label, .op6-label, 
+            .op8-item span, .op9-item span, .op10-label, .op11-label, 
+            .op14-label, .op15-label, .op17-label, .op19-bottom {
+                font-size: 0.55rem;
+                line-height: 1.1;
+                white-space: pre-wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- PLANTILLA DE ENLACES BASE PARA REUSAR -->
+        <!--
+        <a href="https://uniempresarial.edu.co/egresados/" class="access-link">EGRESADO</a>
+        <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link">ESTUDIANTE</a>
+        <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link">CAMPUS VIRTUAL</a>
+        <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link">PAGOS</a>
+        <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link">CALENDARIO AC.</a>
+        <a href="#" class="access-link">GESTIÓN ACADÉMICA</a>
+        -->
+
+        <h2>1. Minimalista Bordes (Outline)</h2>
+        <div class="op1-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op1-item"><i class="fas fa-user-graduate"></i><br><span>EGRESADO</span></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op1-item"><i class="fas fa-user"></i><br><span>ESTUDIANTE</span></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op1-item"><i class="fas fa-laptop-code"></i><br><span>CAMPUS VIRTUAL</span></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op1-item"><i class="fas fa-piggy-bank"></i><br><span>PAGOS</span></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op1-item"><i class="fas fa-calendar-alt"></i><br><span>CALENDARIO AC.</span></a>
+            <a href="#" class="access-link op1-item"><i class="fas fa-book"></i><br><span>GESTIÓN ACAD.</span></a>
+        </div>
+
+        <h2>2. Tarjetas Blancas Clean (Sombras Suaves)</h2>
+        <div class="op2-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op2-item"><i class="fas fa-user-graduate"></i><div class="op2-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op2-item"><i class="fas fa-user"></i><div class="op2-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op2-item"><i class="fas fa-laptop-code"></i><div class="op2-label">CAMPUS VIRTUAL</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op2-item"><i class="fas fa-piggy-bank"></i><div class="op2-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op2-item"><i class="fas fa-calendar-alt"></i><div class="op2-label">CALENDARIO AC.</div></a>
+            <a href="#" class="access-link op2-item"><i class="fas fa-book"></i><div class="op2-label">GESTIÓN ACAD.</div></a>
+        </div>
+
+        <h2>3. Píldoras Horizontales (Capsules)</h2>
+        <div class="op3-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op3-item"><i><span class="fas fa-user-graduate"></span></i><span class="op3-label">Egresado</span></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op3-item"><i><span class="fas fa-user"></span></i><span class="op3-label">Estudiante</span></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op3-item"><i><span class="fas fa-laptop-code"></span></i><span class="op3-label">Campus Virtual</span></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op3-item"><i><span class="fas fa-piggy-bank"></span></i><span class="op3-label">Pagos</span></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op3-item"><i><span class="fas fa-calendar-alt"></span></i><span class="op3-label">Calendario</span></a>
+            <a href="#" class="access-link op3-item"><i><span class="fas fa-book"></span></i><span class="op3-label">Gestión Acad.</span></a>
+        </div>
+
+        <h2>4. Dark Mode / Cuadros Fondo Azul</h2>
+        <div class="op4-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op4-item"><i class="fas fa-user-graduate"></i><div class="op4-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op4-item"><i class="fas fa-user"></i><div class="op4-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op4-item"><i class="fas fa-laptop-code"></i><div class="op4-label">CAMPUS VIRTUAL</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op4-item"><i class="fas fa-piggy-bank"></i><div class="op4-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op4-item"><i class="fas fa-calendar-alt"></i><div class="op4-label">CALENDARIO AC.</div></a>
+            <a href="#" class="access-link op4-item"><i class="fas fa-book"></i><div class="op4-label">GESTIÓN ACAD.</div></a>
+        </div>
+
+        <h2>5. Iconos Flotantes</h2>
+        <div class="op5-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op5-item"><div class="op5-icon-wrapper"><i class="fas fa-user-graduate"></i></div><div class="op5-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op5-item"><div class="op5-icon-wrapper"><i class="fas fa-user"></i></div><div class="op5-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op5-item"><div class="op5-icon-wrapper"><i class="fas fa-laptop-code"></i></div><div class="op5-label">CAMPUS VIRTUAL</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op5-item"><div class="op5-icon-wrapper"><i class="fas fa-piggy-bank"></i></div><div class="op5-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op5-item"><div class="op5-icon-wrapper"><i class="fas fa-calendar-alt"></i></div><div class="op5-label">CALENDARIO AC.</div></a>
+            <a href="#" class="access-link op5-item"><div class="op5-icon-wrapper"><i class="fas fa-book"></i></div><div class="op5-label">GESTIÓN ACAD.</div></a>
+        </div>
+
+        <h2>6. Neumorfismo (Soft UI)</h2>
+        <div class="op6-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op6-item"><i class="fas fa-user-graduate"></i><div class="op6-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op6-item"><i class="fas fa-user"></i><div class="op6-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op6-item"><i class="fas fa-laptop-code"></i><div class="op6-label">CAMPUS VIRT</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op6-item"><i class="fas fa-piggy-bank"></i><div class="op6-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op6-item"><i class="fas fa-calendar-alt"></i><div class="op6-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op6-item"><i class="fas fa-book"></i><div class="op6-label">GESTIÓN ACAD.</div></a>
+        </div>
+
+        <h2>7. Bloque Unificado Separadores</h2>
+        <div class="op7-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op7-item"><i class="fas fa-user-graduate"></i><br><span class="op7-label">Egresado</span></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op7-item"><i class="fas fa-user"></i><br><span class="op7-label">Estudiante</span></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op7-item"><i class="fas fa-laptop-code"></i><br><span class="op7-label">Campus Virtual</span></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op7-item"><i class="fas fa-piggy-bank"></i><br><span class="op7-label">Pagos</span></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op7-item"><i class="fas fa-calendar-alt"></i><br><span class="op7-label">Calendario</span></a>
+            <a href="#" class="access-link op7-item"><i class="fas fa-book"></i><br><span class="op7-label">Gestión</span></a>
+        </div>
+
+        <h2>8. Estilo Lifting (Borde Inferior Destacado)</h2>
+        <div class="op8-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op8-item"><i class="fas fa-user-graduate"></i><br><span>EGRESADO</span></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op8-item"><i class="fas fa-user"></i><br><span>ESTUDIANTE</span></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op8-item"><i class="fas fa-laptop-code"></i><br><span>CAMPUS VIRTUAL</span></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op8-item"><i class="fas fa-piggy-bank"></i><br><span>PAGOS</span></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op8-item"><i class="fas fa-calendar-alt"></i><br><span>CALENDARIO AC.</span></a>
+            <a href="#" class="access-link op8-item"><i class="fas fa-book"></i><br><span>GESTIÓN ACAD.</span></a>
+        </div>
+
+        <h2>9. Teclas 3D Básicas</h2>
+        <div class="op9-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op9-item"><i class="fas fa-user-graduate"></i><br><span>EGRESADO</span></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op9-item"><i class="fas fa-user"></i><br><span>ESTUDIANTE</span></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op9-item"><i class="fas fa-laptop-code"></i><br><span>CAMPUS VIRTUAL</span></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op9-item"><i class="fas fa-piggy-bank"></i><br><span>PAGOS</span></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op9-item"><i class="fas fa-calendar-alt"></i><br><span>CALENDARIO AC.</span></a>
+            <a href="#" class="access-link op9-item"><i class="fas fa-book"></i><br><span>GESTIÓN ACAD.</span></a>
+        </div>
+
+        <h2>10. Instagram Style (Gradientes)</h2>
+        <div class="op10-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op10-item"><i class="fas fa-user-graduate"></i><div class="op10-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op10-item"><i class="fas fa-user"></i><div class="op10-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op10-item"><i class="fas fa-laptop-code"></i><div class="op10-label">CAMPUS VIRT.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op10-item"><i class="fas fa-piggy-bank"></i><div class="op10-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op10-item"><i class="fas fa-calendar-alt"></i><div class="op10-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op10-item"><i class="fas fa-book"></i><div class="op10-label">GESTIÓN</div></a>
+        </div>
+
+        <h2>11. Estilo Ciber / Neon Dark</h2>
+        <div class="op11-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op11-item"><i class="fas fa-user-graduate"></i><div class="op11-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op11-item"><i class="fas fa-user"></i><div class="op11-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op11-item"><i class="fas fa-laptop-code"></i><div class="op11-label">CAMPUS VIRT.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op11-item"><i class="fas fa-piggy-bank"></i><div class="op11-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op11-item"><i class="fas fa-calendar-alt"></i><div class="op11-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op11-item"><i class="fas fa-book"></i><div class="op11-label">GESTIÓN ACAD.</div></a>
+        </div>
+
+        <h2>12. Paneles Laterales de Texto</h2>
+        <div class="op12-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op12-item"><i class="fas fa-user-graduate"></i><div class="op12-label">Portal<br>Egresado</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op12-item"><i class="fas fa-user"></i><div class="op12-label">Portal<br>Estudiante</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op12-item"><i class="fas fa-laptop-code"></i><div class="op12-label">Campus<br>Virtual</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op12-item"><i class="fas fa-piggy-bank"></i><div class="op12-label">Plataforma<br>de Pagos</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op12-item"><i class="fas fa-calendar-alt"></i><div class="op12-label">Calendario<br>Académico</div></a>
+            <a href="#" class="access-link op12-item"><i class="fas fa-book"></i><div class="op12-label">Gestión<br>Académica</div></a>
+        </div>
+
+        <h2>13. Burbujas Circulares (Round Buttons)</h2>
+        <div class="op13-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op13-item"><i class="fas fa-user-graduate"></i><div class="op13-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op13-item"><i class="fas fa-user"></i><div class="op13-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op13-item"><i class="fas fa-laptop-code"></i><div class="op13-label">CAMPUS</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op13-item"><i class="fas fa-piggy-bank"></i><div class="op13-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op13-item"><i class="fas fa-calendar-alt"></i><div class="op13-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op13-item"><i class="fas fa-book"></i><div class="op13-label">GESTIÓN</div></a>
+        </div>
+
+        <h2>14. Banderines</h2>
+        <div class="op14-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op14-item"><i class="fas fa-user-graduate"></i><div class="op14-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op14-item"><i class="fas fa-user"></i><div class="op14-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op14-item"><i class="fas fa-laptop-code"></i><div class="op14-label">CAMPUS</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op14-item"><i class="fas fa-piggy-bank"></i><div class="op14-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op14-item"><i class="fas fa-calendar-alt"></i><div class="op14-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op14-item"><i class="fas fa-book"></i><div class="op14-label">GESTIÓN AC.</div></a>
+        </div>
+
+        <h2>15. Cristal / Transparente encima de foto</h2>
+        <div class="op15-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op15-item"><i class="fas fa-user-graduate"></i><div class="op15-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op15-item"><i class="fas fa-user"></i><div class="op15-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op15-item"><i class="fas fa-laptop-code"></i><div class="op15-label">CAMPUS VIRT.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op15-item"><i class="fas fa-piggy-bank"></i><div class="op15-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op15-item"><i class="fas fa-calendar-alt"></i><div class="op15-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op15-item"><i class="fas fa-book"></i><div class="op15-label">GESTIÓN AC.</div></a>
+        </div>
+
+        <h2>16. Cinta Ultradelgada (Ribbon UI)</h2>
+        <div class="op16-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op16-item"><i class="fas fa-user-graduate"></i><span class="op16-label">Egresado</span></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op16-item"><i class="fas fa-user"></i><span class="op16-label">Estudiante</span></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op16-item"><i class="fas fa-laptop-code"></i><span class="op16-label">Campus Virtual</span></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op16-item"><i class="fas fa-piggy-bank"></i><span class="op16-label">Pagos</span></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op16-item"><i class="fas fa-calendar-alt"></i><span class="op16-label">Calendario</span></a>
+            <a href="#" class="access-link op16-item"><i class="fas fa-book"></i><span class="op16-label">Gestión</span></a>
+        </div>
+
+        <h2>17. Notas Adhesivas / Post-its (Fun)</h2>
+        <div class="op17-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op17-item"><i class="fas fa-user-graduate"></i><div class="op17-label">Egresado</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op17-item"><i class="fas fa-user"></i><div class="op17-label">Estudiante</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op17-item"><i class="fas fa-laptop-code"></i><div class="op17-label">Campus V.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op17-item"><i class="fas fa-piggy-bank"></i><div class="op17-label">Pagos</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op17-item"><i class="fas fa-calendar-alt"></i><div class="op17-label">Calendario</div></a>
+            <a href="#" class="access-link op17-item"><i class="fas fa-book"></i><div class="op17-label">Gestión</div></a>
+        </div>
+
+        <h2>18. Estilo Menú App de Celular (Squircle)</h2>
+        <div class="op18-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op18-item"><div class="op18-icon-box"><i class="fas fa-user-graduate"></i></div><div class="op18-label">Egresado</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op18-item"><div class="op18-icon-box"><i class="fas fa-user"></i></div><div class="op18-label">Estudiante</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op18-item"><div class="op18-icon-box"><i class="fas fa-laptop-code"></i></div><div class="op18-label">Campus V.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op18-item"><div class="op18-icon-box"><i class="fas fa-piggy-bank"></i></div><div class="op18-label">Pagos</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op18-item"><div class="op18-icon-box"><i class="fas fa-calendar-alt"></i></div><div class="op18-label">Calendario</div></a>
+            <a href="#" class="access-link op18-item"><div class="op18-icon-box"><i class="fas fa-book"></i></div><div class="op18-label">Gestión Acad.</div></a>
+        </div>
+
+        <h2>19. Dúo Tono Split</h2>
+        <div class="op19-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op19-item"><div class="op19-top"><i class="fas fa-user-graduate"></i></div><div class="op19-bottom">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op19-item"><div class="op19-top"><i class="fas fa-user"></i></div><div class="op19-bottom">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op19-item"><div class="op19-top"><i class="fas fa-laptop-code"></i></div><div class="op19-bottom">CAMPUS V.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op19-item"><div class="op19-top"><i class="fas fa-piggy-bank"></i></div><div class="op19-bottom">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op19-item"><div class="op19-top"><i class="fas fa-calendar-alt"></i></div><div class="op19-bottom">CALENDARIO</div></a>
+            <a href="#" class="access-link op19-item"><div class="op19-top"><i class="fas fa-book"></i></div><div class="op19-bottom">GESTIÓN AC.</div></a>
+        </div>
+
+        <h2>20. Hexágonos Alternados (Hive Shape)</h2>
+        <div class="op20-grid">
+            <a href="https://uniempresarial.edu.co/egresados/" class="access-link op20-item"><i class="fas fa-user-graduate"></i><div class="op20-label">EGRESADO</div></a>
+            <a href="https://uniempresarial.edu.co/estudiantes/" class="access-link op20-item"><i class="fas fa-user"></i><div class="op20-label">ESTUDIANTE</div></a>
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-link op20-item"><i class="fas fa-laptop-code"></i><div class="op20-label">CAMPUS V.</div></a>
+            <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-link op20-item"><i class="fas fa-piggy-bank"></i><div class="op20-label">PAGOS</div></a>
+            <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-link op20-item"><i class="fas fa-calendar-alt"></i><div class="op20-label">CALENDARIO</div></a>
+            <a href="#" class="access-link op20-item"><i class="fas fa-book"></i><div class="op20-label">GESTIÓN AC.</div></a>
+        </div>
+
+    </div>
+
+</body>
+</html>

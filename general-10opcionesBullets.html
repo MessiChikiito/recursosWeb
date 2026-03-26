@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Opciones de Diseño para Lista de Beneficios</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #f0f0f0; 
+            padding: 2rem;
+        }
+
+        h1 { text-align: center; margin-bottom: 2rem; color: #333; }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Base Card Styling (Simulating the left side of the banner) */
+        .option-card {
+            background: linear-gradient(120deg, #991b1b 0%, #dc2626 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .option-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Common List Reset */
+        ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+        li { display: flex; align-items: center; gap: 1rem; }
+
+        /* --- OPTION 1: Dark Glass (Vidrio Oscuro) --- */
+        .opt-1 li {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .opt-1 .icon { color: #ffd700; font-size: 1.2rem; }
+        .opt-1 span { color: #f0f0f0; font-weight: 500; }
+
+        /* --- OPTION 2: High Contrast White (Tarjeta Blanca) --- */
+        .opt-2 li {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .opt-2:hover li { transform: translateX(5px); }
+        .opt-2 .icon { color: #cc0000; font-weight: bold; font-size: 1.2rem; }
+        .opt-2 span { color: #cc0000; font-weight: 700; }
+
+        /* --- OPTION 3: Golden Border (Borde Dorado) --- */
+        .opt-3 li {
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(0,0,0,0.1);
+        }
+        .opt-3 .icon { color: #ffd700; }
+        .opt-3 span { color: #fff8e1; }
+
+        /* --- OPTION 4: Left Accent (Acento Izquierdo) --- */
+        .opt-4 li {
+            background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            padding: 1rem;
+            border-left: 4px solid #ffcc00;
+        }
+        .opt-4 .icon { display: none; } /* No icon needed, uses border */
+        .opt-4 span { font-size: 1.1rem; letter-spacing: 0.5px; }
+
+        /* --- OPTION 5: Paper Stack (Efecto Papel) --- */
+        .opt-5 li {
+            background: #fff0f0;
+            color: #991b1b;
+            padding: 0.8rem 1rem;
+            transform: skewX(-10deg);
+            margin-left: 1rem;
+            border-radius: 4px;
+        }
+        .opt-5 span { transform: skewX(10deg); font-weight: 800; display: block; }
+        .opt-5 .icon { transform: skewX(10deg); color: #dc2626; }
+
+        /* --- OPTION 6: Minimal Underline (Subrayado Minimalista) --- */
+        .opt-6 li {
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+        .opt-6 .icon { color: #ff9999; font-size: 0.8rem; }
+        .opt-6 span { font-weight: 300; font-size: 1.15rem; }
+
+        /* --- OPTION 7: Floating Circle Icon (Icono Flotante) --- */
+        .opt-7 li {
+            background: transparent;
+        }
+        .opt-7 .icon-box {
+            background: white;
+            color: #b91c1c;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .opt-7 span { font-size: 1.1rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        /* --- OPTION 8: Gradient Pills (Píldoras Degradadas) --- */
+        .opt-8 li {
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%); /* Different red gradient */
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .opt-8 span { font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        
+        /* --- OPTION 9: Tech / Dashed (Tecnológico) --- */
+        .opt-9 li {
+            border: 1px dashed rgba(255,255,255,0.4);
+            padding: 0.75rem;
+            background: rgba(0,0,0,0.2);
+        }
+        .opt-9 .icon { color: #00ffcc; font-family: monospace; }
+        .opt-9 span { font-family: monospace; font-size: 1.05rem; color: #e0f7fa; }
+
+        /* --- OPTION 10: Soft Shadow Inset (Sombra Interior) --- */
+        .opt-10 li {
+            background: rgba(139, 0, 0, 0.3);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+        .opt-10 .icon { color: #ffb7b7; font-size: 1.3rem; }
+        .opt-10 span { color: #ffdede; font-weight: 500; }
+
+    </style>
+</head>
+<body>
+
+    <h1>10 Opciones de Diseño para Lista de Beneficios</h1>
+
+    <div class="grid-container">
+        
+        <!-- Opción 1 -->
+        <div class="option-card opt-1">
+            <div class="option-title">1. Dark Glass (Contraste Oscuro)</div>
+            <ul>
+                <li><span class="icon">★</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">★</span> <span>Networking global</span></li>
+                <li><span class="icon">★</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 2 -->
+        <div class="option-card opt-2">
+            <div class="option-title">2. Tarjetas Blancas (Máxima Legibilidad)</div>
+            <ul>
+                <li><span class="icon">✓</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">✓</span> <span>Networking global</span></li>
+                <li><span class="icon">✓</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 3 -->
+        <div class="option-card opt-3">
+            <div class="option-title">3. Borde Dorado (Premium/Lujo)</div>
+            <ul>
+                <li><span class="icon">✦</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">✦</span> <span>Networking global</span></li>
+                <li><span class="icon">✦</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 4 -->
+        <div class="option-card opt-4">
+            <div class="option-title">4. Acento Lateral (Moderno/Corporativo)</div>
+            <ul>
+                <li><span>Mentoría personal</span></li>
+                <li><span>Networking global</span></li>
+                <li><span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 5 -->
+        <div class="option-card opt-5">
+            <div class="option-title">5. Estilo "Ticket" (Dinámico)</div>
+            <ul>
+                <li><span class="icon">➔</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">➔</span> <span>Networking global</span></li>
+                <li><span class="icon">➔</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 6 -->
+        <div class="option-card opt-6">
+            <div class="option-title">6. Minimalista (Limpio)</div>
+            <ul>
+                <li><span class="icon">◉</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">◉</span> <span>Networking global</span></li>
+                <li><span class="icon">◉</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 7 -->
+        <div class="option-card opt-7">
+            <div class="option-title">7. Icono Flotante (Destacado)</div>
+            <ul>
+                <li><div class="icon-box">1</div> <span>Mentoría personal</span></li>
+                <li><div class="icon-box">2</div> <span>Networking global</span></li>
+                <li><div class="icon-box">3</div> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 8 -->
+        <div class="option-card opt-8">
+            <div class="option-title">8. Gradient Pills (Energético)</div>
+            <ul>
+                <li><span class="icon">⚡</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">⚡</span> <span>Networking global</span></li>
+                <li><span class="icon">⚡</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 9 -->
+        <div class="option-card opt-9">
+            <div class="option-title">9. Tech / Borde Punteado</div>
+            <ul>
+                <li><span class="icon">&gt;_</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">&gt;_</span> <span>Networking global</span></li>
+                <li><span class="icon">&gt;_</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+        <!-- Opción 10 -->
+        <div class="option-card opt-10">
+            <div class="option-title">10. Sombra Interior (Profundidad)</div>
+            <ul>
+                <li><span class="icon">✔</span> <span>Mentoría personal</span></li>
+                <li><span class="icon">✔</span> <span>Networking global</span></li>
+                <li><span class="icon">✔</span> <span>Certificaciones</span></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

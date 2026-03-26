@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Opciones de Celular Simples</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #eef2f5;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        h1 { text-align: center; color: #0132AF; margin-bottom: 10px; }
+        p.intro { text-align: center; color: #666; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;}
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Simulación de Celular */
+        .phone-mockup {
+            width: 320px;
+            background: white;
+            border: 12px solid #222;
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: #fafafa;
+        }
+
+        .phone-header {
+            background: #fff;
+            padding: 20px 15px 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            color: #0132AF;
+        }
+
+        .phone-title {
+            position: absolute;
+            top: -35px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .phone-container {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* =======================================
+           OPCIÓN 1: Lista Clean (Estilo iPhone)
+           ======================================= */
+        .op1 .list-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px;
+            background: white; border-bottom: 1px solid #eee;
+        }
+        .op1 .list-item:active { background: #f5f5f5; }
+        .op1 .list-left { display: flex; align-items: center; gap: 15px; }
+        .op1 .list-left i { color: #FE1C33; font-size: 18px; width: 24px; text-align: center; }
+        .op1 .list-left span { font-weight: 500; font-size: 0.95rem; }
+        .op1 .fa-chevron-right { color: #ccc; font-size: 12px; }
+
+        /* =======================================
+           OPCIÓN 2: Menú App (3x2 Solo Iconos)
+           ======================================= */
+        .op2 { display: grid; grid-template-columns: repeat(3, 1fr); padding: 25px 15px; gap: 20px; background: white; }
+        .op2 .app-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;}
+        .op2 i { font-size: 24px; color: #0132AF; opacity: 0.8;}
+        .op2 span { font-size: 0.75rem; font-weight: 500; color: #444;}
+        .op2 .app-item:active i { opacity: 1; transform: scale(1.1); transition: 0.2s;}
+
+        /* =======================================
+           OPCIÓN 3: Scroll Horizontal (Cápsulas)
+           ======================================= */
+        .op3-wrap { padding: 20px 0; background: white; }
+        .op3 { display: flex; overflow-x: auto; gap: 10px; padding: 0 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .op3::-webkit-scrollbar { display: none; }
+        .op3 .pill { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: #f0f4f8; border-radius: 30px; scroll-snap-align: start; white-space: nowrap;}
+        .op3 i { color: #0132AF; font-size: 14px;}
+        .op3 span { font-size: 0.85rem; font-weight: 500; color: #333;}
+
+        /* =======================================
+           OPCIÓN 4: Botones Ultra Planos (2x3 Grid)
+           ======================================= */
+        .op4 { display: grid; grid-template-columns: 1fr 1fr; padding: 15px; gap: 10px; }
+        .op4 .flat-btn { background: white; padding: 15px; border-radius: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; border: 1px solid #eaeaea;}
+        .op4 i { color: #FE1C33; font-size: 20px; }
+        .op4 span { font-size: 0.8rem; font-weight: 600; color: #555;}
+
+        /* =======================================
+           OPCIÓN 5: Textos Minimalistas Flotantes
+           ======================================= */
+        .op5 { display: flex; flex-wrap: wrap; padding: 20px; gap: 10px; background: white;}
+        .op5 .text-tag { flex: 1 1 calc(40% - 10px); color: #0132AF; font-weight: 600; font-size: 0.85rem; padding: 12px 10px; border-bottom: 2px solid #f0f0f0; display: flex; align-items: center; gap: 8px;}
+        .op5 i { color: #FE1C33; font-size: 14px;}
+
+        /* =======================================
+           OPCIÓN 6: Cuadrícula Completa con Líneas
+           ======================================= */
+        .op6 { display: grid; grid-template-columns: 1fr 1fr; background: #e0e0e0; gap: 1px; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
+        .op6 .grid-item { background: white; padding: 20px 10px; text-align: center; display: flex; flex-direction: column; gap: 8px;}
+        .op6 i { color: #444; font-size: 22px;}
+        .op6 span { font-size: 0.75rem; font-weight: 500;}
+
+        /* =======================================
+           OPCIÓN 7: Botones Flotantes Circulares
+           ======================================= */
+        .op7 { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 25px 15px;}
+        .op7 .circle-btn { width: 70px; display: flex; flex-direction: column; align-items: center; gap: 8px;}
+        .op7 .icon-bg { width: 50px; height: 50px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); color: #FE1C33; font-size: 18px;}
+        .op7 span { font-size: 0.7rem; font-weight: 500; text-align: center; line-height: 1.1;}
+
+        /* =======================================
+           OPCIÓN 8: Tarjetas Tipo Billetera
+           ======================================= */
+        .op8 { padding: 15px; display: flex; flex-direction: column; gap: 10px;}
+        .op8 .wallet-card { background: linear-gradient(135deg, #0132AF, #0056D2); color: white; padding: 15px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;}
+        .op8 .wallet-card:nth-child(even) { background: linear-gradient(135deg, #FE1C33, #d31225); }
+        .op8 span { font-weight: 600; font-size: 1rem; letter-spacing: 0.5px;}
+        .op8 i { opacity: 0.8; font-size: 20px;}
+
+        /* =======================================
+           OPCIÓN 9: Material Design (Sombra y Radio)
+           ======================================= */
+        .op9 { padding: 20px 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+        .op9 .mat-btn { background: white; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); display: flex; align-items: center; gap: 10px;}
+        .op9 i { color: #0132AF; font-size: 16px;}
+        .op9 span { font-size: 0.8rem; font-weight: 500; color: #333;}
+
+        /* =======================================
+           OPCIÓN 10: Burbujas Neumórficas Suaves
+           ======================================= */
+        .op10 { display: grid; grid-template-columns: repeat(3, 1fr); padding: 30px 15px; gap: 15px; background: #eef2f5;}
+        .op10 .neu-btn { background: #eef2f5; height: 75px; border-radius: 15px; box-shadow: 5px 5px 10px #d1d5d8, -5px -5px 10px #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;}
+        .op10 i { color: #FE1C33; font-size: 18px;}
+        .op10 span { font-size: 0.65rem; color: #666; font-weight: 600;}
+
+        /* =======================================
+           OPCIÓN 11: Solo Textos Grandes (Estilo Editorial)
+           ======================================= */
+        .op11 { padding: 20px 25px; display: flex; flex-direction: column; gap: 18px; background: white;}
+        .op11 a { font-size: 1.3rem; font-weight: 700; color: #222; border-bottom: 2px solid transparent; width: fit-content;}
+        .op11 a:active { color: #FE1C33; border-bottom-color: #FE1C33; }
+        .op11 i { margin-right: 15px; font-size: 1.1rem; color: #ccc;}
+
+        /* =======================================
+           OPCIÓN 12: Swipe Rectangular (Tinder style UI)
+           ======================================= */
+        .op12 { display: flex; overflow-x: auto; gap: 15px; padding: 20px; scroll-snap-type: x mandatory; }
+        .op12::-webkit-scrollbar { display: none; }
+        .op12 .snap-card { flex: 0 0 140px; height: 100px; background: white; border-radius: 12px; border: 1px solid #e0e0e0; display: flex; flex-direction: column; justify-content: flex-end; padding: 15px; scroll-snap-align: start; box-shadow: 0 4px 6px rgba(0,0,0,0.02);}
+        .op12 i { font-size: 24px; color: #0132AF; margin-bottom: auto;}
+        .op12 span { font-size: 0.85rem; font-weight: bold; color: #333; line-height: 1.1;}
+
+        /* =======================================
+           OPCIÓN 13: Cajas Pastel (Soft Colors)
+           ======================================= */
+        .op13 { display: grid; grid-template-columns: repeat(2, 1fr); padding: 15px; gap: 10px; background: white;}
+        .op13 .pastel { padding: 16px 12px; border-radius: 10px; display: flex; align-items: center; gap: 10px;}
+        .op13 span { font-size: 0.8rem; font-weight: 600; color: #111;}
+        .op13 i { font-size: 18px; }
+        .op13 .p1 { background: #ffebee; color: #FE1C33;} /* Rojo suave */
+        .op13 .p2 { background: #e3f2fd; color: #0132AF;} /* Azul suave */
+        .op13 .p3 { background: #e8f5e9; color: #0277bd;} /* Otro suave */
+
+        /* =======================================
+           OPCIÓN 14: Dark Mode Minimal (Moderno)
+           ======================================= */
+        .op14-wrap { background: #111; color: white; height: 100%;}
+        .op14 { padding: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;}
+        .op14 .dark-btn { display: flex; flex-direction: column; align-items: center; gap: 10px;}
+        .op14 .icon-box { background: #222; border-radius: 12px; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border: 1px solid #333;}
+        .op14 i { color: white; font-size: 20px;}
+        .op14 span { font-size: 0.7rem; color: #aaa; text-align: center;}
+
+        /* =======================================
+           OPCIÓN 15: Tarjetas Divididas Verticales
+           ======================================= */
+        .op15 { padding: 15px; display: flex; flex-direction: column; gap: 10px;}
+        .op15 .split-row { display: flex; gap: 10px; height: 60px;}
+        .op15 .split-btn { flex: 1; background: white; border: 1px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 10px;}
+        .op15 i { font-size: 16px; color: #FE1C33;}
+        .op15 span { font-size: 0.8rem; font-weight: bold; color: #444;}
+
+        /* =======================================
+           OPCIÓN 16: Estilo Android (Barra Inferior Base)
+           ======================================= */
+        .op16 { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 20px 10px; background: white;}
+        .op16 .chip { padding: 8px 16px; border: 1px solid #ccc; border-radius: 8px; display: flex; align-items: center; gap: 6px;}
+        .op16 i { font-size: 14px; color: #555;}
+        .op16 span { font-size: 0.75rem; font-weight: 500; color: #333;}
+
+        /* =======================================
+           OPCIÓN 17: Acordeón / Menú Vertical Fino
+           ======================================= */
+        .op17 { display: flex; flex-direction: column; margin: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);}
+        .op17 .thin-list { background: white; padding: 14px 15px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;}
+        .op17 i { width: 25px; color: #0132AF;}
+        .op17 span { font-size: 0.85rem; font-weight: 500;}
+
+        /* =======================================
+           OPCIÓN 18: Grilla Punteada (Diseño Minimalista)
+           ======================================= */
+        .op18 { display: grid; grid-template-columns: 1fr 1fr; padding: 20px; gap: 20px; background: #fff;}
+        .op18 .dotted { border: 2px dashed #ddd; border-radius: 12px; padding: 20px 10px; text-align: center;}
+        .op18 i { font-size: 24px; color: #bbb; margin-bottom: 8px;}
+        .op18 span { display: block; font-size: 0.8rem; font-weight: bold; color: #666;}
+        .op18 .dotted:active { border-color: #FE1C33; color: #FE1C33; }
+        .op18 .dotted:active i { color: #FE1C33; }
+
+        /* =======================================
+           OPCIÓN 19: Metro UI (Cuadros de Colores Pegados)
+           ======================================= */
+        .op19 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #fff;}
+        .op19 .metro { padding: 25px 15px; color: white; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; height: 100px; }
+        .op19 .m-red { background: #E51400; }
+        .op19 .m-blue { background: #1BA1E2; }
+        .op19 .m-dark { background: #333333; }
+        .op19 .m-grey { background: #7A7A7A; }
+        .op19 i { font-size: 22px; margin-bottom: auto;}
+        .op19 span { font-weight: 600; font-size: 0.8rem;}
+
+        /* =======================================
+           OPCIÓN 20: Ícono a la izquierda resaltado (Bandeja)
+           ======================================= */
+        .op20 { display: flex; flex-direction: column; gap: 12px; padding: 15px;}
+        .op20 .tray-item { display: flex; align-items: center; background: white; border-radius: 50px; padding: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.04);}
+        .op20 i { width: 40px; height: 40px; border-radius: 50px; background: #0132AF; color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-right: 15px;}
+        .op20 .tray-item:nth-child(even) i { background: #FE1C33; }
+        .op20 span { font-weight: 600; font-size: 0.85rem; color: #444;}
+    </style>
+</head>
+<body>
+
+    <h1>Accesos Rápidos: Versiones Celular</h1>
+    <p class="intro">Aquí tienes 20 propuestas diseñadas <strong>exclusivamente pensando en cómo se ven y se sienten en un teléfono móvil</strong>. Utilizan menos elementos innecesarios, maximizan el espacio y favorecen que el usuario pueda hacer "tap" fácilmente con su pulgar izquierdo o derecho.</p>
+
+    <div class="gallery">
+
+        <!-- Opción 1 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 1: Lista de Ajustes (Clásica iOS)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op1">
+                    <a href="#" class="list-item"><div class="list-left"><i class="fas fa-user-graduate"></i><span>Graduados</span></div><i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="list-item"><div class="list-left"><i class="fas fa-user"></i><span>Estudiante</span></div><i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="list-item"><div class="list-left"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></div><i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="list-item"><div class="list-left"><i class="fas fa-piggy-bank"></i><span>Pagos</span></div><i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="list-item"><div class="list-left"><i class="fas fa-calendar-alt"></i><span>Calendario</span></div><i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="list-item"><div class="list-left"><i class="fas fa-book"></i><span>Gestión Académica</span></div><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 2 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 2: Menú App 3x2 (Sin Bordes)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op2">
+                    <a href="#" class="app-item"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="app-item"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="app-item"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                    <a href="#" class="app-item"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="app-item"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="app-item"><i class="fas fa-book"></i><span>Gestión Acad.</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 3 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 3: Scroll Horizontal (Slider)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op3-wrap">
+                    <div class="op3">
+                        <a href="#" class="pill"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                        <a href="#" class="pill"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                        <a href="#" class="pill"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></a>
+                        <a href="#" class="pill"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                        <a href="#" class="pill"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                        <a href="#" class="pill"><i class="fas fa-book"></i><span>Gestión Acad.</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 4 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 4: Contorno Plano 2x3 (Flat)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op4">
+                    <a href="#" class="flat-btn"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="flat-btn"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="flat-btn"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></a>
+                    <a href="#" class="flat-btn"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="flat-btn"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="flat-btn"><i class="fas fa-book"></i><span>Gestión Académica</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 5 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 5: Enlaces Flotantes en bloque</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op5">
+                    <a href="#" class="text-tag"><i class="fas fa-user-graduate"></i> Graduados</a>
+                    <a href="#" class="text-tag"><i class="fas fa-user"></i> Estudiante</a>
+                    <a href="#" class="text-tag"><i class="fas fa-laptop-code"></i> Campus Virtual</a>
+                    <a href="#" class="text-tag"><i class="fas fa-piggy-bank"></i> Pagos</a>
+                    <a href="#" class="text-tag"><i class="fas fa-calendar-alt"></i> Calendario Ac.</a>
+                    <a href="#" class="text-tag"><i class="fas fa-book"></i> Gestión Acad.</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 6 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 6: Cuadrícula Separadora</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op6">
+                    <a href="#" class="grid-item"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="grid-item"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="grid-item"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></a>
+                    <a href="#" class="grid-item"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="grid-item"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="grid-item"><i class="fas fa-book"></i><span>Gestión Académica</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 7 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 7: Burbujas Flotantes (Wrap)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op7">
+                    <a href="#" class="circle-btn"><div class="icon-bg"><i class="fas fa-user-graduate"></i></div><span>Graduados</span></a>
+                    <a href="#" class="circle-btn"><div class="icon-bg"><i class="fas fa-user"></i></div><span>Estudiante</span></a>
+                    <a href="#" class="circle-btn"><div class="icon-bg"><i class="fas fa-laptop-code"></i></div><span>Campus V.</span></a>
+                    <a href="#" class="circle-btn"><div class="icon-bg"><i class="fas fa-piggy-bank"></i></div><span>Pagos</span></a>
+                    <a href="#" class="circle-btn"><div class="icon-bg"><i class="fas fa-calendar-alt"></i></div><span>Calendario</span></a>
+                    <a href="#" class="circle-btn"><div class="icon-bg"><i class="fas fa-book"></i></div><span>Gestión</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 8 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 8: Tarjetas Anchas (Wallet)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op8">
+                    <a href="#" class="wallet-card"><span>Graduados</span><i class="fas fa-user-graduate"></i></a>
+                    <a href="#" class="wallet-card"><span>Estudiante</span><i class="fas fa-user"></i></a>
+                    <a href="#" class="wallet-card"><span>Campus Virtual</span><i class="fas fa-laptop-code"></i></a>
+                    <a href="#" class="wallet-card"><span>Pagos Plataforma</span><i class="fas fa-piggy-bank"></i></a>
+                    <a href="#" class="wallet-card"><span>Calendario Acad.</span><i class="fas fa-calendar-alt"></i></a>
+                    <a href="#" class="wallet-card"><span>Gestión Académica</span><i class="fas fa-book"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 9 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 9: Tarjetas Blancas (Material)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op9">
+                    <a href="#" class="mat-btn"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="mat-btn"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="mat-btn"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                    <a href="#" class="mat-btn"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="mat-btn"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="mat-btn"><i class="fas fa-book"></i><span>Gestión</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 10 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 10: Neumorfismo Suave (Hundido)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op10">
+                    <a href="#" class="neu-btn"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="neu-btn"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="neu-btn"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                    <a href="#" class="neu-btn"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="neu-btn"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="neu-btn"><i class="fas fa-book"></i><span>Gestión</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 11 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 11: Solo Texto (Estilo Editorial)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op11">
+                    <a href="#"><i class="fas fa-user-graduate"></i> Graduados</a>
+                    <a href="#"><i class="fas fa-user"></i> Estudiante</a>
+                    <a href="#"><i class="fas fa-laptop-code"></i> Campus Virtual</a>
+                    <a href="#"><i class="fas fa-piggy-bank"></i> Pagos</a>
+                    <a href="#"><i class="fas fa-calendar-alt"></i> Calendario</a>
+                    <a href="#"><i class="fas fa-book"></i> Gestión Acad.</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 12 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 12: Swipe Horizontal Cartas Altas</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op12">
+                    <a href="#" class="snap-card"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="snap-card"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="snap-card"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></a>
+                    <a href="#" class="snap-card"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="snap-card"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="snap-card"><i class="fas fa-book"></i><span>Gestión Acad.</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 13 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 13: Cajas Pastel (Colores Suaves)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op13">
+                    <a href="#" class="pastel p1"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="pastel p2"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="pastel p3"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                    <a href="#" class="pastel p1"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="pastel p2"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="pastel p3"><i class="fas fa-book"></i><span>Gestión</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 14 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 14: Dark Mode Minimal</div>
+            <div class="phone-mockup">
+                <div class="phone-header" style="background: #000; color: #fff; border-bottom: 1px solid #333;">Accesos Rápidos</div>
+                <div class="op14-wrap">
+                    <div class="op14">
+                        <a href="#" class="dark-btn"><div class="icon-box"><i class="fas fa-user-graduate"></i></div><span>Graduados</span></a>
+                        <a href="#" class="dark-btn"><div class="icon-box"><i class="fas fa-user"></i></div><span>Estudiante</span></a>
+                        <a href="#" class="dark-btn"><div class="icon-box"><i class="fas fa-laptop-code"></i></div><span>Campus V.</span></a>
+                        <a href="#" class="dark-btn"><div class="icon-box"><i class="fas fa-piggy-bank"></i></div><span>Pagos</span></a>
+                        <a href="#" class="dark-btn"><div class="icon-box"><i class="fas fa-calendar-alt"></i></div><span>Calendario</span></a>
+                        <a href="#" class="dark-btn"><div class="icon-box"><i class="fas fa-book"></i></div><span>Gestión</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 15 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 15: Cajas Apiladas Divididas</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op15">
+                    <div class="split-row">
+                        <a href="#" class="split-btn"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                        <a href="#" class="split-btn"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    </div>
+                    <div class="split-row">
+                        <a href="#" class="split-btn"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                        <a href="#" class="split-btn"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    </div>
+                    <div class="split-row">
+                        <a href="#" class="split-btn"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                        <a href="#" class="split-btn"><i class="fas fa-book"></i><span>Gestión</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 16 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 16: Etiquetas Píldora (Wrap)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op16">
+                    <a href="#" class="chip"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="chip"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="chip"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></a>
+                    <a href="#" class="chip"><i class="fas fa-piggy-bank"></i><span>Pagar Online</span></a>
+                    <a href="#" class="chip"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="chip"><i class="fas fa-book"></i><span>Gestión Académica</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 17 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 17: Lista Fina Integrada</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op17">
+                    <a href="#" class="thin-list"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="thin-list"><i class="fas fa-user"></i><span>Estudiante activo</span></a>
+                    <a href="#" class="thin-list"><i class="fas fa-laptop-code"></i><span>Ir a Campus Virtual</span></a>
+                    <a href="#" class="thin-list"><i class="fas fa-piggy-bank"></i><span>Realizar Pagos</span></a>
+                    <a href="#" class="thin-list"><i class="fas fa-calendar-alt"></i><span>Ver Calendario</span></a>
+                    <a href="#" class="thin-list"><i class="fas fa-book"></i><span>Plataforma Gestión</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 18 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 18: Grilla Minimalista Punteada</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op18">
+                    <a href="#" class="dotted"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="dotted"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="dotted"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                    <a href="#" class="dotted"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="dotted"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="dotted"><i class="fas fa-book"></i><span>Gestión</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 19 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 19: Metro UI (Estilo Windows)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op19">
+                    <a href="#" class="metro m-red"><i class="fas fa-user-graduate"></i><span>Graduados</span></a>
+                    <a href="#" class="metro m-blue"><i class="fas fa-user"></i><span>Estudiante</span></a>
+                    <a href="#" class="metro m-dark"><i class="fas fa-laptop-code"></i><span>Campus V.</span></a>
+                    <a href="#" class="metro m-grey"><i class="fas fa-piggy-bank"></i><span>Pagos</span></a>
+                    <a href="#" class="metro m-blue"><i class="fas fa-calendar-alt"></i><span>Calendario</span></a>
+                    <a href="#" class="metro m-red"><i class="fas fa-book"></i><span>Gestión Acad.</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opción 20 -->
+        <div class="phone-container">
+            <div class="phone-title">Opción 20: Burbuja Izquierda (Lista)</div>
+            <div class="phone-mockup">
+                <div class="phone-header">Accesos Rápidos</div>
+                <div class="op20">
+                    <a href="#" class="tray-item"><i class="fas fa-user-graduate"></i><span>Portal Graduados</span></a>
+                    <a href="#" class="tray-item"><i class="fas fa-user"></i><span>Portal Estudiante</span></a>
+                    <a href="#" class="tray-item"><i class="fas fa-laptop-code"></i><span>Campus Virtual</span></a>
+                    <a href="#" class="tray-item"><i class="fas fa-piggy-bank"></i><span>Sistema de Pagos</span></a>
+                    <a href="#" class="tray-item"><i class="fas fa-calendar-alt"></i><span>Calendario Académico</span></a>
+                    <a href="#" class="tray-item"><i class="fas fa-book"></i><span>Gestión Académica</span></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

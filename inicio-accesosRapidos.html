@@ -17,9 +17,9 @@
       border-radius: 15px;
       padding: 30px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       gap: 20px;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
@@ -70,7 +70,7 @@
       color: black;
     }
 
-    /* Tablets - 2 columnas */
+
     @media (max-width: 768px) {
       .quick-access {
         grid-template-columns: repeat(2, 1fr);
@@ -91,28 +91,31 @@
       }
     }
 
-    /* Móviles - 2 columnas */
     @media (max-width: 480px) {
       body {
-        padding: 15px;
+        padding: 10px;
       }
 
       .quick-access {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 15px;
-        gap: 12px;
+        grid-template-columns: repeat(3, 1fr); 
+        padding: 12px;
+        gap: 8px;
       }
 
       .access-item {
-        padding: 15px 8px;
+        padding: 10px 5px;
+        border-radius: 8px;
       }
 
       .access-item i {
-        font-size: 28px;
+        font-size: 20px;
+        margin-bottom: 4px;
       }
 
       .access-label {
-        font-size: 0.7rem;
+        font-size: 0.6rem; 
+        padding: 2px 4px;
+        line-height: 1.1;
       }
     }
   </style>

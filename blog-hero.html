@@ -21,8 +21,8 @@
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            padding: 4rem 5%;
-            background-color: #f8f9fa;
+            padding: 20px 20px 20px 150px;
+            background-color: #00000000;
             min-height: 60vh;
         }
 
@@ -43,15 +43,22 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: #0132AF;
             margin: 1rem 0;
             line-height: 1.1;
             font-weight: 800;
         }
 
+        .hero-logo {
+            display: block;
+            width: min(100%, 450px);
+            height: auto;
+            margin: 0 0 0.4rem 0;
+        }
+
         .hero-description {
-            font-size: 1.125rem;
+            font-size: 1.5rem;
             color: #4a5568;
             margin-bottom: 2rem;
             line-height: 1.6;
@@ -72,6 +79,7 @@
 
         .hero-button:hover {
             background-color: #d90010;
+            color: #fff;
         }
 
         /* Contenedor de la card destacada */
@@ -185,40 +193,15 @@
         <!-- Texto del Hero -->
         <div class="hero-text">
             <span class="hero-subtitle">Conocimiento a tu alcance</span>
-            <h1 class="hero-title">Impulsa tu visión profesional</h1>
+
+            <img class="hero-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/03/Logo-scaled.webp" alt="Logo Blog Uniempresarial">
             <p class="hero-description">
-                Explora ideas, estrategias y tendencias clave para el ecosistema empresarial. Mantente un paso adelante con recursos y artículos actualizados por expertos.
+                Todo lo que necesitas para construir una experiencia universitaria increíble.
             </p>
-            <a href="#" class="hero-button">Suscribirse al boletín</a>
+            <a href="#" class="hero-button">Regístrate al newsletter</a>
         </div>
         
-        <!-- Card Destacada -->
-        <div class="hero-card-wrapper">
 
-            <div class="card-label">
-                <span class="card-label-text">¡Echa un vistazo a nuestro artículo más reciente!</span>
-            </div>
-
-            <div class="card">
-                
-                <div class="card-image">
-                    <img src="https://via.placeholder.com/400x200" alt="Imagen del artículo">
-                    <span class="card-badge">Destacado</span>
-                </div>
-
-                <div class="card-content">
-                    <p class="card-date">Publicado el 15 Oct, 2023</p>
-                    <h3 class="card-title">10 estrategias clave para tu desarrollo profesional este año</h3>
-                    <p class="card-description">
-                        Aprende cómo mejorar tu perfil con estas recomendaciones prácticas y sencillas, ideales para potenciar tus habilidades directivas.
-                    </p>
-                    <a href="#" class="card-link">
-                        Leer artículo <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
 
     </section>
 

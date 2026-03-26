@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-banner-container {
+            display: flex;
+            align-items: stretch;
+            min-height: 650px;
+        }
+
+        .form-content {
+            flex: 1;
+            background: #EA0A2A;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .form-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .form-description {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 90%;
+            color: #fff0f0; /* Blanco ligeramente cálido */
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .benefit-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            background-color: #ffffff; /* Tarjeta blanca pura */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombra para resaltar */
+            transition: transform 0.2s ease-out;
+            cursor: default;
+        }
+
+        .check-circle {
+            /* Adaptado al estilo de solo icono rojo fuerte */
+            width: auto;
+            height: auto;
+            background: transparent;
+            border-radius: 0;
+            display: inline-block;
+            color: #cc0000; /* Rojo intenso */
+            font-size: 1.4rem;
+            font-weight: 900;
+            box-shadow: none;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            font-weight: 700; /* Texto en negrita roja */
+            color: #cc0000; /* Rojo intenso */
+            letter-spacing: 0.5px;
+        }
+
+        .banner-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            color: #999;
+            font-size: 1.125rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-banner-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .form-content {
+                padding: 2rem;
+                min-height: 400px;
+            }
+
+            .form-title {
+                font-size: 2rem;
+            }
+
+            .form-description {
+                font-size: 1rem;
+            }
+
+            .banner-content {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-content {
+                padding: 1.5rem;
+                min-height: 350px;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .form-description {
+                font-size: 0.95rem;
+                max-width: 100%;
+            }
+
+            .benefit-row {
+                padding: 0.75rem 1rem;
+                gap: 0.75rem;
+            }
+
+            .benefit-text {
+                font-size: 0.85rem;
+                font-weight: 600;
+            }
+
+            .check-circle {
+                font-size: 1rem;
+            }
+
+            .form-highlight {
+                padding: 1rem;
+            }
+
+            .banner-content {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-banner-container">
+        
+        <!-- Lado Izquierdo -->
+        <div class="form-content">
+            <h2 class="form-title">Transforma tu carrera profesional</h2>
+            
+            <p class="form-description">
+                Accede a recursos premium, mentoría personalizada y oportunidades de networking con líderes de la industria. Tu éxito es nuestro compromiso.
+            </p>
+
+            <div class="benefits-list">
+                <div class="benefit-row">
+                    <div class="check-circle">✓</div>
+                    <span class="benefit-text">Mentoría 1 a 1 con expertos</span>
+                </div>
+                <div class="benefit-row">
+                    <div class="check-circle">✓</div>
+                    <span class="benefit-text">Networking con líderes</span>
+                </div>
+                <div class="benefit-row">
+                    <div class="check-circle">✓</div>
+                    <span class="benefit-text">Certificaciones profesionales</span>
+                </div>
+                <div class="benefit-row">
+                    <div class="check-circle">✓</div>
+                    <span class="benefit-text">Oportunidades laborales exclusivas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

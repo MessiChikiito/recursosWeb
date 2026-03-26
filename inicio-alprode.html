@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALPRODE - Abstract Geometric Split</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+        .alprode-geo-section {
+            display: flex;
+            position: relative;
+            min-height: 700px;
+            width: 100%;
+            background: #fff;
+            align-items: center;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15); 
+            z-index: 10;
+        }
+
+        /* 1. Fondo geométrico raro (Diagonal shape) */
+        .alprode-geo-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 65%; 
+            height: 100%;
+            background: #001f3f; 
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); 
+            z-index: 0;
+        }
+
+        .alprode-geo-img-wrapper {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%; 
+            height: 80%;
+            z-index: 1;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+            overflow: hidden;
+            box-shadow: -20px 20px 60px rgba(0,0,0,0.3);
+            border: 8px solid white;
+            transition: all 5s ease-in-out infinite alternate; 
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 30% 70% / 50% 30% 70% 50%; }
+            100% { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
+        }
+
+        .alprode-geo-img-wrapper:hover {
+            animation: morph 4s ease-in-out infinite alternate;
+        }
+
+        .alprode-geo-img-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .alprode-geo-content {
+            position: relative;
+            z-index: 2;
+            width: 50%; 
+            padding-left: 8%;
+            padding-right: 2%; 
+            color: white;
+        }
+
+        .geo-logos {
+            background: rgba(255,255,255,0.95);
+            padding: 12px 25px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center; 
+            gap: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .geo-logos img { height: 45px; width: auto; }
+        
+        .geo-logos img:first-child {
+            border-right: 2px solid #ddd;
+
+            height: 35px; 
+        }
+
+        h2.geo-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .geo-highlight {
+            color: #57D100;
+            font-style: italic;
+        }
+
+        .geo-text-container {
+            margin-bottom: 40px;
+            border-left: 3px solid #57D100;
+            padding-left: 20px;
+            padding-right: 0px;
+        }
+
+        .geo-text-container p {
+            font-size: 16px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .geo-text-container p:last-child {
+            margin-bottom: 0;
+        }
+
+        .geo-text-container strong {
+            color: #57D100;
+            font-weight: 700;
+        }
+
+        .geo-btn {
+            background: #57D100;
+            color: #001f3f;
+            padding: 18px 40px;
+            padding-left: 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); 
+            transition: all 0.3s ease;
+        }
+
+        .geo-btn:hover {
+            background: white;
+            color: #57D100;
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 900px) {
+            .alprode-geo-section { flex-direction: column; padding: 60px 0px; box-shadow: none; width: 100%;}
+            .alprode-geo-bg { width: 100%; height: 60%; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+            .alprode-geo-img-wrapper { 
+                position: relative; 
+                width: 90%; 
+                height: 300px; 
+                margin: 50px auto; 
+                margin-bottom: 0px;
+                right: auto; top: auto; transform: none; 
+            }
+            .alprode-geo-content { width: 90%; padding: 0 5%; text-align: center; }
+            .geo-logos { 
+                justify-content: center; 
+                display: inline-flex;
+                flex-wrap: wrap; 
+                max-width: 100%;
+                gap: 15px;
+                padding: 10px 15px; 
+            }
+            .geo-logos img { height: 35px !important; width: auto; object-fit: contain; }
+            .geo-logos img:first-child { 
+                margin-right: 0; 
+                padding-right: 15px; 
+                border-right: 2px solid #ddd;
+                height: 25px !important;  
+            }
+            h2.geo-title {
+                margin-top: 10px; 
+                font-size: 28px; 
+                margin-bottom: 10px;
+            }
+            .geo-text-container { 
+                border-left: none; 
+                border-top: 3px solid #57D100; 
+                padding-top: 20px; 
+                padding-left: 0; 
+                padding-right: 0;
+            }
+            .geo-text-container p { font-size: 14px; }
+            .geo-btn {
+                font-size: 14px; 
+                padding: 15px 30px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="alprode-geo-section">
+        
+        <!-- Fondo Abstracto Polygon -->
+        <div class="alprode-geo-bg"></div>
+
+        <!-- Contenido Texto -->
+        <div class="alprode-geo-content">
+            <div class="geo-logos">
+                <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/LOGO-cofinanciado_por_la_union_europea_pos-PARA-USAR-MAS-1.png">
+                <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/LOGO-ALPRODE.jpeg">
+            </div>
+
+            <h2 class="geo-title">
+                Proyecto <br> <span class="geo-highlight">ALPRODE</span>
+            </h2>
+
+            <div class="geo-text-container">
+                <p>
+                    Una iniciativa cofinanciada por el programa <strong>Erasmus+ de la Unión Europea</strong>, con la participación activa de <strong>Uniempresarial</strong>. Su misión es dinamizar el crecimiento económico sostenible en Colombia y Ecuador, fortaleciendo la formación académica y potenciando la empleabilidad en la región.
+                </p>
+                <p>
+                    Mediante la cooperación internacional y el desarrollo productivo, el proyecto impulsa alianzas estratégicas que generan un impacto social positivo, conectando la educación con las necesidades reales del sector productivo.
+                </p>
+            </div>
+
+            <a href="https://campusue.uniempresarial.edu.co:10443/login/index.php" class="geo-btn">
+                Inscríbete con tu cuenta Institucional <i class="fas fa-chevron-right" style="margin-left: 10px;"></i>
+            </a>
+        </div>
+
+        <!-- Imagen Flotante -->
+        <div class="alprode-geo-img-wrapper">
+             <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/imagen.jpeg" alt="Estudiantes">
+        </div>
+
+    </section>
+
+</body>
+</html>

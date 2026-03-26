@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesos Rápidos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .quick-access-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .access-item {
+      display: flex;
+      align-items: center;
+      background: #ffffff !important;
+      border-radius: 50px;
+      padding: 10px 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease !important;
+      border: 1px solid #eee;
+      text-decoration: none !important;
+      color: #333333 !important;
+      flex: 1 1 auto;
+      max-width: fit-content;
+    }
+
+    .access-item i {
+      width: 30px;
+      height: 30px;
+      background: #FE1C33 !important;
+      color: #ffffff !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .access-label {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #333333 !important;
+      white-space: nowrap;
+    }
+
+    .access-item:hover {
+      background: #fdfdfd !important;
+      border-color: #FE1C33 !important;
+      transform: scale(1.05) !important;
+    }
+    
+    .access-item:hover .access-label {
+      color: #FE1C33 !important;
+    }
+
+    @media (max-width: 1300px) {
+      .quick-access-container {
+        gap: 10px;
+      }
+      .access-item {
+        padding: 8px 15px;
+      }
+      .access-label {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .access-label {
+        font-size: 0.9rem;
+      }
+      .access-item {
+        padding: 10px 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .quick-access-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .access-item {
+        padding: 8px 10px; 
+        justify-content: center;
+        max-width: none;
+      }
+
+      .access-item i {
+        width: 24px;
+        height: 24px;
+        font-size: 11px;
+        margin-right: 6px;
+      }
+
+      .access-label {
+        font-size: 0.75rem;
+        line-height: 1.1;
+        white-space: normal;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      
+      .quick-access-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px 8px;
+        padding: 10px 0;
+      }
+      
+      .access-item {
+        background: transparent !important;
+        border: none;
+        box-shadow: none;
+        padding: 5px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+
+      .access-item:hover {
+        background: transparent !important;
+        border-color: transparent !important;
+        transform: scale(1.03) !important;
+      }
+
+      .access-item i {
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        background: #ffffff !important;
+        color: #FE1C33 !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease !important;
+      }
+
+      .access-label {
+        font-size: 0.78rem;
+        line-height: 1.2;
+        white-space: normal;
+        word-break: break-word;
+        width: 100%;
+      }
+
+      .access-item:active i {
+        background: #FE1C33 !important;
+        color: #ffffff !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quick-access-container">
+    <a href="https://uniempresarial.edu.co/egresados/" class="access-item">
+      <i><span class="fas fa-user-graduate"></span></i>
+      <span class="access-label">Graduados</span>
+    </a>
+    <a href="https://uniempresarial.edu.co/estudiantes/" class="access-item">
+      <i><span class="fas fa-user"></span></i>
+      <span class="access-label">Estudiante</span>
+    </a>
+    <a href="https://www.abcpagos.com/uniempresarial/estudiantes" class="access-item">
+      <i><span class="fas fa-piggy-bank"></span></i>
+      <span class="access-label">Pagos</span>
+    </a>
+    <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="access-item">
+      <i><span class="fas fa-laptop-code"></span></i>
+      <span class="access-label">Campus Virtual</span>
+    </a>
+    <a href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Calendario-Academico-2026-vf.pdf" class="access-item">
+      <i><span class="fas fa-calendar-alt"></span></i>
+      <span class="access-label">Calendario Académico</span>
+    </a>
+    <a href="#" class="access-item">
+      <i><span class="fas fa-book"></span></i>
+      <span class="access-label">Gestión Académica</span>
+    </a>
+  </div>
+
+</body>
+</html>
