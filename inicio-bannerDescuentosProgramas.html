@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banner Beneficio - Tabs Interactivas</title>
     <style>
-        /* ========== RESET - NO GLOBAL VARS ========== */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +20,6 @@
             display: block;
         }
 
-        /* ========== BANNER TABS - INTERACTIVE ========== */
         .banner-tabs {
             background: linear-gradient(180deg, #2A449C 0%, #1e3a8a 100%);
             border-radius: 0;
@@ -32,7 +30,6 @@
             border-radius: 25px;
         }
 
-        /* ========== TABS HEADER ========== */
         .banner-tabs .tabs-header {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -133,7 +130,6 @@
             font-weight: 700;
         }
 
-        /* ========== TAB CONTENT ========== */
         .banner-tabs .tabs-content {
             display: none;
             padding: 45px 50px;
@@ -156,7 +152,6 @@
             align-items: center;
         }
 
-        /* Contenido izquierda */
         .banner-tabs .tabs-content-left h2 {
             font-size: 1.9rem;
             color: white;
@@ -204,17 +199,13 @@
             font-weight: 700;
             font-size: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(245, 44, 44, 0.4);
+            transition: all 0.3s ease !important;
         }
 
         .banner-tabs .tabs-cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(245, 44, 44, 0.5);
             background: #e01f1f;
         }
 
-        /* Contenido derecha - Benefits */
         .banner-tabs .tabs-content-right {
             background: rgba(255,255,255,0.08);
             border-radius: 16px;
@@ -266,7 +257,6 @@
             margin-bottom: 10px;
         }
 
-        /* ========== RESPONSIVE ========== */
         @media (max-width: 900px) {
             .banner-tabs .tabs-content-grid {
                 grid-template-columns: 1fr;
@@ -380,7 +370,6 @@
 <body>
 
     <div class="banner-tabs">
-        <!-- TABS HEADER -->
         <div class="tabs-header">
             <button class="tabs-tab-btn tabs-presencial active" data-tab="presencial">
                 <div class="tabs-icon">
@@ -409,10 +398,10 @@
 
             <button class="tabs-tab-btn tabs-posgrados" data-tab="posgrados">
                 <div class="tabs-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 10v6"></path>
                             <path d="M6 13v5c3 3 9 3 12 0v-5"></path>
-                            <path d="M2 10l10-5 10 5-10 5z"
+                            <path d="M2 10l10-5 10 5-10 5z"></path>
                         </svg>
                 </div>
                 <h4>Posgrados</h4>
@@ -420,12 +409,11 @@
             </button>
         </div>
 
-        <!-- TAB CONTENT: PRESENCIAL -->
         <div class="tabs-content active" id="presencial">
             <div class="tabs-content-grid">
                 <div class="tabs-content-left">
                     <h2>Pregrados Presenciales con <span style="color: #26ce13;">25%</span> de descuento</h2>
-                    <p>Vive la experiencia completa en campus. Práctica empresarial desde el primer semestre y conexión directa con empresas aliadas.</p>
+                    <p>Vive la experiencia completa en campus. Práctica empresarial desde el tercer semestre y conexión directa con empresas aliadas.</p>
                     
                     <div class="tabs-price-display">
                         <span class="tabs-current">$5.067.750</span>
@@ -433,7 +421,7 @@
                         <span class="tabs-per-sem">/semestre</span>
                     </div>
 
-                    <a href="#" class="tabs-cta-btn">Aplicar ahora</a>
+                    <a href="https://wa.me/573142084103?text=Hola%2C%20estoy%20interesado%2Fa%20en%20los%20pregrados%20presenciales." class="tabs-cta-btn" target="_blank" rel="noopener noreferrer">Solicitar asesoría</a>
                 </div>
 
                 <div class="tabs-content-right">
@@ -444,7 +432,7 @@
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </span>
-                            Práctica empresarial desde 1er semestre
+                            Práctica empresarial desde 3er semestre
                         </li>
                         <li>
                             <span class="tabs-check">
@@ -475,7 +463,6 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: VIRTUAL -->
         <div class="tabs-content" id="virtual">
             <div class="tabs-content-grid">
                 <div class="tabs-content-left">
@@ -488,7 +475,7 @@
                         <span class="tabs-per-sem">/semestre</span>
                     </div>
 
-                    <a href="#" class="tabs-cta-btn">Aplicar ahora</a>
+                    <a href="https://wa.me/573142084103?text=Hola%2C%20estoy%20interesado%2Fa%20en%20los%20pregrados%20virtuales." class="tabs-cta-btn" target="_blank" rel="noopener noreferrer">Solicitar asesoría</a>
                 </div>
 
                 <div class="tabs-content-right">
@@ -523,19 +510,18 @@
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </span>
-                            Sin gastos de transporte
+                            Descuento en toda la carrera
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- TAB CONTENT: POSGRADOS -->
         <div class="tabs-content" id="posgrados">
             <div class="tabs-content-grid">
                 <div class="tabs-content-left">
                     <h2>Posgrados con <span style="color: #26ce13;">25%</span> de descuento</h2>
-                    <p>Impulsa tu carrera profesional con MBA y especializaciones. Docentes expertos y networking ejecutivo de alto nivel.</p>
+                    <p>Impulsa tu carrera profesional con especializaciones. Docentes expertos y networking con empresas aliadas y la CCB.</p>
                     <div class="tabs-desde-label">Desde</div>
                     
                     <div class="tabs-price-display">
@@ -544,7 +530,7 @@
                         <span class="tabs-per-sem">/cuatrimestre</span>
                     </div>
 
-                    <a href="#" class="tabs-cta-btn">Aplicar ahora</a>
+                    <a href="https://wa.me/573142084103?text=Hola%2C%20estoy%20interesado%2Fa%20en%20los%20posgrados." class="tabs-cta-btn" target="_blank" rel="noopener noreferrer">Solicitar asesoría</a>
                 </div>
 
                 <div class="tabs-content-right">
@@ -555,7 +541,7 @@
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </span>
-                            MBA y especializaciones disponibles
+                            Especializaciones disponibles
                         </li>
                         <li>
                             <span class="tabs-check">
@@ -563,7 +549,7 @@
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </span>
-                            Docentes con experiencia real
+                            Docentes con experiencia real en la industria
                         </li>
                         <li>
                             <span class="tabs-check">
@@ -571,7 +557,7 @@
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </span>
-                            Networking ejecutivo
+                            Networking con empresas aliadas y la CCB
                         </li>
                         <li>
                             <span class="tabs-check">
@@ -579,7 +565,7 @@
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </span>
-                            Horarios para profesionales
+                            Descuento durante toda el programa
                         </li>
                     </ul>
                 </div>
@@ -587,7 +573,6 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT FUNCIONAL -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const tabButtons = document.querySelectorAll('.tabs-tab-btn');
@@ -597,16 +582,12 @@
                 button.addEventListener('click', function() {
                     const targetTab = this.getAttribute('data-tab');
 
-                    // Remover clase active de todos los botones
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     
-                    // Remover clase active de todos los contenidos
                     tabContents.forEach(content => content.classList.remove('active'));
 
-                    // Agregar clase active al botón clickeado
                     this.classList.add('active');
 
-                    // Mostrar el contenido correspondiente
                     document.getElementById(targetTab).classList.add('active');
                 });
             });

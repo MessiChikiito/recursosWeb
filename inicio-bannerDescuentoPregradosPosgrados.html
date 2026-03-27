@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banner Beneficio Modular V2 - Split Design (No Clases Globales)</title>
     <style>
-        /* ========== RESET - NO GLOBAL VARS ========== */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +20,6 @@
             display: block;
         }
 
-        /* ========== BANNER MODULAR - SPLIT DESIGN ========== */
         .banner-beneficio {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -33,7 +31,6 @@
             box-shadow: none;
         }
 
-        /* ========== LEFT PANEL - SPECIFIC STYLES ========== */
         .banner-beneficio .modular-left-panel {
             background: linear-gradient(180deg, #2A449C 0%, #1e3a8a 100%);
             padding: 50px 40px;
@@ -59,7 +56,6 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(239, 18, 24, 0.4);
         }
 
         .banner-beneficio .modular-main-title {
@@ -112,7 +108,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ========== RIGHT PANEL - SPECIFIC STYLES ========== */
         .banner-beneficio .modular-right-panel {
             background: #ffffff;
             padding: 40px;
@@ -298,7 +293,6 @@
             box-shadow: 0 8px 25px rgba(42, 68, 156, 0.4);
         }
 
-        /* ========== RESPONSIVE ========== */
         @media (max-width: 900px) {
             .banner-beneficio {
                 grid-template-columns: 1fr;
@@ -439,7 +433,6 @@
 <body>
 
     <div class="banner-beneficio">
-        <!-- PANEL IZQUIERDO -->
         <div class="modular-left-panel">
             <div class="modular-left-content">
                 <span class="modular-promo-badge">Oferta limitada</span>
@@ -463,11 +456,10 @@
             </div>
         </div>
         
-        <!-- PANEL DERECHO -->
         <div class="modular-right-panel">
             <div class="modular-cards-stack">
                 <!-- Card Presencial -->
-                <div class="modular-card modular-presencial">
+                <a class="modular-card modular-presencial" href="https://uniempresarial.edu.co/pregrados-presenciales/" aria-label="Ir a landing de pregrados presenciales">
                     <div class="modular-card-icon modular-icon-red">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -481,10 +473,10 @@
                         <p class="modular-card-subtitle">Vive la experiencia completa en campus</p>
                     </div>
                     <p class="modular-card-modality">Modalidad Dual</p>
-                </div>
+                </a>
 
                 <!-- Card Virtual -->
-                <div class="modular-card modular-virtual">
+                <a class="modular-card modular-virtual" href="https://uniempresarial.edu.co/pregrados-virtuales/" aria-label="Ir a landing de pregrados virtuales">
                     <div class="modular-card-icon modular-icon-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="2" y="3" width="20" height="14" rx="2"/>
@@ -497,15 +489,15 @@
                         <p class="modular-card-subtitle">Flexibilidad total para tu ritmo</p>
                     </div>
                     <p class="modular-card-modality">Modalidad Virtual Dual</p>
-                </div>
+                </a>
 
                 <!-- Card Posgrados -->
-                <div class="modular-card modular-posgrados">
+                <a class="modular-card modular-posgrados" href="https://uniempresarial.edu.co/posgrados/" aria-label="Ir a landing de posgrados">
                     <div class="modular-card-icon modular-icon-purple">
-                        <svg viewBox="0 0 24 24" fill="none" >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 10v6"></path>
                             <path d="M6 13v5c3 3 9 3 12 0v-5"></path>
-                            <path d="M2 10l10-5 10 5-10 5z"
+                            <path d="M2 10l10-5 10 5-10 5z"></path>
                         </svg>
                     </div>
                     <div class="modular-card-content">
@@ -513,11 +505,11 @@
                         <p class="modular-card-subtitle">Especialización y avance profesional</p>
                     </div>
                     <p class="modular-card-modality">Modalidad Virtual Dual y Presencial</p>
-                </div>
+                </a>
             </div>
 
             <div class="modular-cta-bottom">
-                <a href="#" class="modular-cta-btn">Quiero más información</a>
+                <a href="https://wa.me/573142084103" class="modular-cta-btn">Quiero más información</a>
             </div>
         </div>
     </div>
