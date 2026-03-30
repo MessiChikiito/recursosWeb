@@ -342,8 +342,9 @@
 
     .ue-hero__left{
       width:100% !important;
-      height:600px !important;
-      border-radius:14px !important;
+      height:100% !important;
+      min-height:600px !important;
+      border-radius:16px 0 0 16px !important;
       overflow:hidden !important;
       background: transparent !important;
     }
@@ -369,6 +370,11 @@
       .hero-panel{
         grid-template-columns:1fr;
         border-radius:16px;
+      }
+      .hero-panel > .ue-hero__left{
+        height: 260px !important;
+        min-height: auto !important;
+        border-radius: 16px 16px 0 0 !important;
       }
       .hero-panel > .ue-hero__right{
         border-left:none;
@@ -433,7 +439,7 @@
         padding:16px 16px;
       }
       .ue-hero__h1{
-        font-size:24px;
+        font-size:32px;
         margin:4px 0 6px;
       }
       .ue-hero-chips{
@@ -459,9 +465,8 @@
       left: 0;
       top: 0;
       width: 100%;
-      height: auto;
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.2);
       animation: fadeIn 0.3s ease;
     }
     .mo-modal.active {
@@ -536,7 +541,7 @@
     .ue-tyc-box {
       position: absolute;
       bottom: 20px;
-      right: 24px;
+      left: 24px;
       z-index: 10;
       background: rgba(255, 255, 255, 1);
       color: #0132AF;
@@ -552,7 +557,7 @@
     @media (max-width: 980px) {
       .ue-tyc-box {
         position: relative;
-        right: auto;
+        left: auto;
         bottom: auto;
         margin: 0 36px 36px 36px;
         order: 3;
@@ -578,15 +583,10 @@
 
 </style>
 
-<section class="hero-panel" id="hero-section" aria-label="Presentación del programa">
+<section class="hero-panel" id="hero-section" aria-label="Presentación del programa" style="position: relative;">
 
   <div class="ue-hero__left" style="position: relative;">
     <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp" alt="Ingeniería de software virtual" class="ue-hero__image" loading="lazy">
-    
-        <div style="position: absolute; bottom: 20px; left: 24px; z-index: 10; background: rgba(255, 255, 255, 0.95); padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: calc(100% - 48px); margin-bottom: 0;" class="ue-tyc">
-      Te recomendamos leer los términos y condiciones de apertura del programa. <a onclick="openTycModal()" style="text-decoration: underline; font-weight: 800; cursor: pointer; color: inherit;">Aquí</a>
-    </div>
-
   </div>
 
   <div class="ue-hero__right">
@@ -638,6 +638,10 @@
     </div>
 
     <div class="ue-hero__micro" id="microCopy">Te contactamos por WhatsApp en horario hábil.</div>
+  </div>
+  
+  <div class="ue-tyc-box">
+    Te recomendamos leer los términos y condiciones de apertura del programa. <a onclick="openTycModal()" style="text-decoration: underline; font-weight: 800; cursor: pointer; color: inherit;">Aquí</a>
   </div>
 </section>
 

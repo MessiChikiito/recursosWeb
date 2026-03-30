@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<style>
+    body{
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    
+    .ue-section-work{
+        margin-top: 0px !important;
+    }
+
+    .ue-work-title {
+        font-size: 33px;
+        font-weight: 700;
+        color: #0132AF !important;
+        margin: 0 0 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .ue-work-subtitle {
+        color: #7a8a99;
+        font-weight: 600;
+        margin: 0 0 24px;
+        font-size: 15px;
+    }
+
+    .ue-work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ue-work-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ue-work-item {
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e0e3e8;
+        padding: 16px 20px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+    }
+
+    .ue-work-item-header {
+        position: relative;
+        padding-left: 32px;
+    }
+
+    .ue-work-item-header::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    .ue-work-item-content {
+        overflow: hidden;
+        max-height: 500px;
+        transition: max-height 0.3s ease;
+        padding-left: 32px;
+    }
+
+    .ue-work-item-content.collapsed {
+        max-height: 0;
+    }
+
+    .ue-work-expanded-text {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #e0e3e8;
+        font-size: 13px;
+        color: #7a8a99;
+        line-height: 1.6;
+    }
+
+    .ue-work-item:nth-child(odd) .ue-work-item-header::before {
+        background-color: #0132AF;
+    }
+
+    .ue-work-item:nth-child(even) .ue-work-item-header::before {
+        background-color: #ff0000;
+    }
+
+    .ue-work-item:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        transform: translateX(4px) !important;
+    }
+
+    .ue-work-title-item {
+        color: #06325a;
+        font-weight: 700;
+        font-size: 18px;
+        margin: 0 0 0px 0;
+    }
+
+    .ue-work-desc {
+        color: #0132AF;
+        font-weight: 500;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ue-work-desc::after {
+        content: '→';
+        transition: transform 0.3s ease;
+    }
+
+    .ue-work-item.expanded .ue-work-desc::after {
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 640px) {
+        .ue-work-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .ue-section-work{
+            margin-top: -40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 30px;
+        }
+        
+                .ue-work-title {
+            font-size: 24px;
+        }
+
+        .ue-work-subtitle {
+            font-size: 13px;
+        }
+
+        .ue-work-title-item {
+            font-size: 15px;
+        }
+
+        .ue-work-desc {
+            font-size: 11px;
+        }
+
+        .ue-work-expanded-text {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<section class="ue-section-work" aria-label="Oportunidades laborales">
+    <h3 class="ue-work-title">Cargos directivos que puedes ocupar con esta especialización:</h3>
+    <p class="ue-work-subtitle">Con capacidad gerencial y liderazgo estratégico basado en análisis de datos.</p>
+
+    <div class="ue-work-grid">
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Director de gestión y diseño de procesos</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Lidera la transformación de procesos y diseño de productos con visión sistémica y análisis estratégico.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Director de gestión digital y análisis de datos</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Convierte datos en decisiones estratégicas y lidera la transformación digital de la organización.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Director de inteligencia de datos y analítica</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Desarrolla y gestiona sistemas de analítica para optimizar decisiones en toda la organización.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Director de productos y servicio al cliente</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Lidera la estrategia de productos y experiencia del cliente con enfoque en sostenibilidad organizacional.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Director de estrategias de mercados</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Define estrategias de mercado y crecimiento basadas en análisis y liderazgo empresarial.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Diseñador de productos y servicios</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Crea soluciones innovadoras en productos y servicios con visión estratégica para el mercado.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Director de proyectos de inversión y transformación</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Gestiona inversiones y proyectos de transformación tecnológica con impacto empresarial.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Diseñador de infraestructura tecnológica estratégica</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Desarrolla infraestructuras tecnológicas alineadas con estrategia comercial, logística y manufactura.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.ue-work-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const content = this.querySelector('.ue-work-item-content');
+            content.classList.toggle('collapsed');
+            this.classList.toggle('expanded');
+        });
+    });
+</script>
+
+</body>
+</html>
