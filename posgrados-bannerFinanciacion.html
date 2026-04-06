@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inversión y Financiación - Uniempresarial</title>
     <style>
-        /* Importar fuente Inter desde Google Fonts */
-        
-        /* --- Fuente Global --- */
+
         body {
             font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -16,7 +14,6 @@
             padding: 0;
         }
 
-        /* --- Financiación styles --- */
         .ue-section-financiacion {
             padding: 0;
             max-width: 1200px;
@@ -24,7 +21,6 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
-        /* --- Modal Styles --- */
         .ue-modal {
             display: none;
             position: fixed;
@@ -101,7 +97,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 8px;
-            transition: all 0.2s ease;
+            transition: all 0.2s ease !important;
         }
 
         .ue-modal-close:hover {
@@ -129,13 +125,7 @@
             align-items: center;
             justify-content: center;
             background: #fafbfc;
-            transition: all 0.25s ease;
-        }
-
-        .ue-partner-card:hover {
-            border-color: #0132AF;
-            box-shadow: 0 4px 14px rgba(1, 50, 175, 0.1);
-            background: #fff;
+            transition: all 0.25s ease !important;
         }
 
         .ue-partner-card img {
@@ -148,7 +138,7 @@
             display: block;
             width: 100%;
             padding: 14px 24px;
-            background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
+            background: #044DC2;
             color: white;
             border: none;
             border-radius: 10px;
@@ -158,15 +148,13 @@
             text-align: center;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(1, 50, 175, 0.3);
+            transition: all 0.3s ease !important;
+
             box-sizing: border-box;
         }
-
+        
         .ue-modal-cta:hover {
-            background: linear-gradient(135deg, #1a5bcf 0%, #2a6bdf 100%);
-            box-shadow: 0 8px 24px rgba(1, 50, 175, 0.45);
-            transform: translateY(-2px);
+            background: #033c97;
             color: white;
         }
         
@@ -203,10 +191,7 @@
             flex-direction: column;
             justify-content: center;
         }
-        .ue-s6-card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
+
         .ue-s6-card.orange { border-left-color: #FF6A00; }
         .ue-s6-card.orange .ue-s6-title { color: #FF6A00; }
         .ue-s6-card.blue { border-left-color: #0132AF; }
@@ -225,7 +210,7 @@
         .ue-s6-btn {
             display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 700;
             border: none; cursor: pointer; text-align: center; width: 100%; box-sizing: border-box;
-            transition: all 0.3s cubic-bezier(.4,0,.2,1); font-family: inherit; font-size: 15px;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1) !important; font-family: inherit; font-size: 15px;
             text-decoration: none;
         }
         .ue-s6-btn.orange { background: #FF6A00; color: white; }
@@ -303,7 +288,7 @@
             <div class="ue-s6-card orange">
                 <h3 class="ue-s6-title">Opciones de financiación</h3>
                 <ul class="ue-s6-list">
-                    <li>JFK <span class="ue-long-text">Cooperativa Financiera</span></li>
+                    <li>JFK <span class="ue-long-text">CF</span></li>
                     <li>Finky</li>
                     <li>Fincomercio</li>
                     <li>Canapro</li>
