@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pregrados Presenciales - Cards</title>
+    <title></title>
     <style>
-        /* ========== RESET Y VARIABLES ========== */
+
         :root {
             --color-primary: #0132AF;
             --color-primary-light: #0052D6;
@@ -41,37 +41,33 @@
 
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-gray-900);
+            background-color: #f7fafc;
+            color: #1a202c;
             line-height: 1.6;
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
         }
 
-        /* ========== BOTONES GLOBALES ========== */
         .btn-cta {
-            background: var(--color-accent) !important;
-            color: var(--color-white) !important;
+            background: #EF1218;
+            color: #ffffff;
             padding: 12px 24px;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             text-decoration: none;
             text-align: center;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease !important;
             border: none;
             cursor: pointer;
         }
 
         .btn-cta:hover {
-            background: var(--color-accent-hover);
-            transform: translateY(-1px);
+            background: #c50e13;
         }
 
-        /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
-        /* Grid responsive de cards */
         .pp-programs-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -84,25 +80,23 @@
             gap: 24px;
         }
 
-        /* Card de programa */
         .pp-program-card {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             padding: 28px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--color-gray-200);
-            transform: translateY(0) !important;
+            border: 1px solid #edf2f7;
+            transform: translateY(0);
             will-change: transform, box-shadow;
             overflow: visible;
         }
 
         .pp-program-card:hover {
-            box-shadow: var(--shadow-lg);
-            border: 1px solid #e0e7ff !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
@@ -111,7 +105,7 @@
             height: 170px;
             margin: -28px -28px 20px -28px;
             overflow: hidden;
-            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            border-radius: 12px 12px 0 0;
         }
 
         @media (max-width: 768px) {
@@ -139,20 +133,20 @@
             position: absolute;
             top: -8px;
             right: 16px;
-            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%) !important;
-            color: var(--color-white) !important;
-            font-size: 0.8rem !important;
-            padding: 8px 16px !important;
-            border-radius: 50px !important;
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
+            background: linear-gradient(135deg, #FF3B3B 0%, #EF1218 50%, #c50e13 100%);
+            color: #ffffff;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             box-shadow: 
                 0 4px 15px rgba(239, 18, 24, 0.5),
                 0 0 0 4px rgba(239, 18, 24, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
             animation: color-pulse 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             font-style: italic;
         }
 
@@ -161,18 +155,18 @@
         }
 
         .pp-card-title {
-            font-size: 1.90rem !important;
-            font-weight: 900 !important;
-            color: #1f2937 !important;
-            margin-bottom: 8px !important;
-            line-height: 1.3 !important;
-            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
-            text-rendering: optimizeLegibility !important;
-            font-synthesis: weight !important;
-            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03) !important;
-            text-shadow: 0 0 0.6px rgba(0,0,0,0.02) !important;
+            font-size: 1.90rem;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-synthesis: weight;
+            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03);
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02);
         }
 
         .pp-card-meta {
@@ -186,9 +180,9 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.95rem !important;
-            color: #8893a4 !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-size: 0.95rem;
+            color: #8893a4;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
@@ -197,7 +191,6 @@
             height: 16px;
         }
 
-        /* Iconos SVG como background para meta info */
         .pp-meta-icon {
             display: inline-block;
             width: 16px;
@@ -224,25 +217,25 @@
 
         .pp-card-bullets {
             list-style: none;
-            margin: 0 0 20px 0 !important;
-            padding: 0 !important;
+            margin: 0 0 20px 0;
+            padding: 0;
             flex-grow: 1;
-            text-align: left !important;
+            text-align: left;
         }
         
         .pp-card-bullets ul {
-            margin: 0 !important;
-            padding: 0 !important;
+            margin: 0;
+            padding: 0;
         }
 
         .pp-card-bullets li {
-            font-size: 0.9rem !important;
-            color: var(--color-gray-700) !important;
-            padding: 6px 0 !important;
-            padding-left: 20px !important;
+            font-size: 0.9rem;
+            color: #4a5568;
+            padding: 6px 0;
+            padding-left: 20px;
             position: relative;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            line-height: 1.5 !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
         }
 
         .pp-card-bullets li::before {
@@ -252,63 +245,62 @@
             top: 14px;
             width: 6px;
             height: 6px;
-            background: var(--color-primary);
+            background: #0132AF;
             border-radius: 50%;
         }
 
         .pp-btn-secondary {
             flex: 1;
             padding: 12px 20px;
-            background: #374151 !important;
-            color: var(--color-white) !important;
-            border: 2px solid #374151 !important;
-            border-radius: var(--radius-sm);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
+            background: #374151;
+            color: #ffffff;
+            border: 2px solid #374151;
+            border-radius: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             text-align: center;
-            transform: translateY(0) !important;
+            transform: translateY(0);
             will-change: transform, background;
-            text-decoration: none !important;
+            text-decoration: none;
             display: inline-block;
         }
 
         .pp-btn-secondary:hover {
-            background: #2c3a4e !important;
-            color: var(--color-white) !important;
-            border: 2px solid transparent !important;
-            transform: translateY(-2px) !important;
+            background: #2c3a4e;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transform: translateY(-2px);
         }
 
         .btn-secondary-cerrar {
             flex: 1;
             padding: 12px 20px;
-            background: #374151 !important;
-            color: var(--color-white) !important;
-            border: 2px solid #374151 !important;
-            border-radius: var(--radius-sm);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
+            background: #374151;
+            color: #ffffff;
+            border: 2px solid #374151;
+            border-radius: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             text-align: center;
-            transform: translateY(0) !important;
+            transform: translateY(0);
             will-change: transform, background;
-            text-decoration: none !important;
+            text-decoration: none;
             display: inline-block;
         }
         
         .btn-secondary-cerrar:hover {
-            background: #1f2937 !important;
-            color: var(--color-white) !important;
-            border: 2px solid transparent !important;
-            transform: translateY(-2px) !important;
+            background: #1f2937;
+            color: #ffffff;
+            border: 2px solid transparent;
+            transform: translateY(-2px);
         }
 
-        /* Contenedor de botones de la card */
         .pp-card-buttons {
             display: flex;
             gap: 10px;
@@ -318,29 +310,27 @@
         .pp-btn-info {
             flex: 1;
             padding: 12px 20px;
-            background: white !important;
-            color: #0b48e2 !important;
-            border: 2px solid #0b48e2 !important;
-            border-radius: var(--radius-sm);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
+            background: white;
+            color: #0b48e2;
+            border: 2px solid #0b48e2;
+            border-radius: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             text-align: center;
-            transform: translateY(0) !important;
+            transform: translateY(0);
             will-change: transform, background;
         }
 
         .pp-btn-info:hover {
-            background: #0b48e2 !important;
-            color: white !important;
-            border: 2px solid transparent !important;
-            transform: translateY(-2px) !important;
+            background: #0b48e2;
+            color: white;
+            border: 2px solid transparent;
+            transform: translateY(-2px);
         }
 
-        /* ========== MODAL ========== */
-        /* Modal para detalles del programa */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -364,124 +354,122 @@
         }
 
         .modal {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
+            background: #ffffff;
+            border-radius: 16px;
             max-width: 600px;
             width: 100%;
             max-height: 95vh;
             overflow-y: auto;
-            transform: translateY(30px) scale(0.95) !important;
+            transform: translateY(30px) scale(0.95);
             opacity: 0;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease !important;
             will-change: transform, opacity;
         }
 
         .modal-overlay.active .modal {
-            transform: translateY(0) scale(1) !important;
+            transform: translateY(0) scale(1);
             opacity: 1;
         }
 
         .modal-header {
-            padding: 15px 24px 0 !important;
-            display: flex !important;
-            justify-content: space-between !important;
-
+            padding: 15px 24px 0;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 16px !important;
+            gap: 16px;
         }
 
         .modal-tag {
-            background: var(--color-accent) !important;
-            color: var(--color-white) !important;
-            font-size: 0.7rem !important;
-            padding: 4px 10px !important;
-            border-radius: 50px !important;
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
+            background: #EF1218;
+            color: #ffffff;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
             display: inline-block;
             margin-bottom: 8px;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         .modal-title {
-            font-size: 1.9rem !important;
-            font-weight: 700 !important;
-            color: var(--color-primary) !important;
-            margin-top: 15px !important;
-            margin-bottom: 8px !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            text-align: left !important;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            text-align: left;
         }
 
         .modal-close {
-            background: var(--color-gray-200) !important;
-            border: none !important;
-            width: 40px !important;
-            height: 40px !important;
-            border-radius: 50% !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            transition: var(--transition) !important;
-            flex-shrink: 0 !important;
-            position: relative !important;
-            z-index: 10 !important;
+            background: #edf2f7;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease !important;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
         }
 
         .modal-close svg {
-            stroke: var(--color-gray-700) !important;
-            width: 20px !important;
-            height: 20px !important;
-            display: block !important;
-            stroke-width: 2 !important;
-            fill: none !important;
+            stroke: #4a5568;
+            width: 20px;
+            height: 20px;
+            display: block;
+            stroke-width: 2;
+            fill: none;
         }
 
         .modal-close:hover {
-            background: var(--color-gray-300) !important;
+            background: #e2e8f0;
         }
 
         .modal-close:hover svg {
-            stroke: var(--color-gray-900) !important;
+            stroke: #1a202c;
         }
 
-        /* Regla adicional con máxima especificidad para WordPress */
         .modal-overlay .modal .modal-header .modal-close {
-            background: #edf2f7 !important;
-            border: none !important;
-            width: 40px !important;
-            height: 40px !important;
-            min-width: 40px !important;
-            min-height: 40px !important;
-            border-radius: 50% !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            flex-shrink: 0 !important;
-            position: relative !important;
-            z-index: 999 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            padding: 0 !important;
-            margin: 0 !important;
+            background: #edf2f7;
+            border: none;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            min-height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 999;
+            opacity: 1;
+            visibility: visible;
+            padding: 0;
+            margin: 0;
             transition: all 0.3s ease !important;
         }
 
         .modal-overlay .modal .modal-header .modal-close:hover {
-            background: #d4d8dc !important;
+            background: #d4d8dc;
         }
 
         .modal-overlay .modal .modal-header .modal-close svg {
-            stroke: #4a5568 !important;
-            width: 20px !important;
-            height: 20px !important;
-            display: block !important;
-            stroke-width: 2 !important;
-            fill: none !important;
-            opacity: 1 !important;
-            visibility: visible !important;
+            stroke: #4a5568;
+            width: 20px;
+            height: 20px;
+            display: block;
+            stroke-width: 2;
+            fill: none;
+            opacity: 1;
+            visibility: visible;
             transition: stroke 0.3s ease !important;
         }
 
@@ -496,65 +484,64 @@
             margin-bottom: 24px;
             padding-top: 2px;
             padding-bottom: 15px;
-            border-bottom: 1px solid var(--color-gray-200);
-            text-align: left !important;
+            border-bottom: 1px solid #edf2f7;
+            text-align: left;
         }
 
         .modal-meta-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem !important;
-            color: var(--color-gray-700) !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         .modal-meta-item svg {
-            color: var(--color-primary);
+            color: #0132AF;
         }
 
         .modal-meta-item .meta-icon {
             font-size: 16px;
-            color: var(--color-primary);
+            color: #0132AF;
         }
 
         .modal-description {
             margin-bottom: 24px;
-            text-align: left !important;
+            text-align: left;
         }
 
         .modal-description h3 {
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            color: var(--color-gray-900) !important;
-            margin-bottom: 12px !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            text-align: left !important;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            text-align: left;
         }
 
         .modal-description p {
-            font-size: 0.95rem !important;
-            color: var(--color-gray-700) !important;
-            line-height: 1.7 !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            text-align: left !important;
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            text-align: left;
         }
 
-        /* ========== FORMULARIO DEL MODAL ========== */
         .modal-form {
-            border-radius: var(--radius-md);
+            border-radius: 12px;
             border: 2px solid #ffffff;
             min-height: auto;
             overflow-y: auto;
         }
 
         .modal-form h3 {
-            font-size: 1.5rem !important;
-            font-weight: 700 !important;
-            color: #0132AF !important;
-            margin-bottom: 16px !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            text-align: center !important;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 16px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            text-align: center;
         }
 
         .form-row {
@@ -577,7 +564,7 @@
             padding: 14px 16px;
             padding-right: 44px;
             border: 2px solid #e2e8f0;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             font-size: 0.95rem;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: white;
@@ -586,7 +573,7 @@
 
         .form-input:focus {
             outline: none;
-            border-color: var(--color-primary);
+            border-color: #0132AF;
             box-shadow: 0 0 0 3px rgba(42, 68, 156, 0.1);
         }
 
@@ -599,15 +586,15 @@
             right: 14px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--color-primary);
+            color: #0132AF;
             pointer-events: none;
         }
 
         .form-submit {
             width: 100%;
             padding: 14px 24px;
-            background: linear-gradient(135deg, #1a365d 0%, var(--color-primary) 100%) !important;
-            color: white !important;
+            background: linear-gradient(135deg, #1a365d 0%, #0132AF 100%);
+            color: white;
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -629,17 +616,17 @@
             gap: 10px;
             margin-top: 16px;
             font-size: 0.8rem;
-            color: var(--color-gray-700);
+            color: #4a5568;
             line-height: 1.4;
         }
 
         .form-checkbox input {
             margin-top: 3px;
-            accent-color: var(--color-primary);
+            accent-color: #0132AF;
         }
 
         .form-checkbox a {
-            color: var(--color-primary);
+            color: #0132AF;
             text-decoration: underline;
         }
 
@@ -657,87 +644,82 @@
             flex: 1;
         }
 
-        /* ========== BADGE VIRTUAL PERSONALIZADO ========== */
         .badge-virtual-custom{
-        position:absolute !important;
-        top:12px !important;
-        right:12px !important;
-        background:#ffffff !important;
-        color:#1a202c !important;
-        padding:5px 8px !important;
-        border-radius:999px !important;
-        font-size:.70rem !important;
-        font-weight:700 !important;
-        font-family:'Segoe UI',system-ui,-apple-system,sans-serif !important;
-        text-align:center !important;
-        white-space:nowrap !important;
-        cursor:help !important;
-        display:inline-flex !important;
-        align-items:center !important;
-        gap:8px !important;
-        overflow:visible !important;
-        border:1px solid rgba(0,0,0,0.08) !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.587) !important;
+        position:absolute;
+        top:12px;
+        right:12px;
+        background:#ffffff;
+        color:#1a202c;
+        padding:5px 8px;
+        border-radius:999px;
+        font-size:.70rem;
+        font-weight:700;
+        font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+        text-align:center;
+        white-space:nowrap;
+        cursor:help;
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        overflow:visible;
+        border:1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.587);
         will-change: box-shadow;
-        flex-direction: row-reverse !important;
+        flex-direction: row-reverse;
         }
 
-        /* Badge verde "VIRTUAL" */
         .badge-virtual-custom::before {
-            content: 'VIRTUAL' !important;
-            background: #0BD926 !important;
-            color: #ffffff !important;
-            padding: 4px 10px !important;
-            border-radius: 999px !important;
-            font-size: 0.70rem !important;
-            font-weight: 950 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
-            display: inline-block !important;
+            content: 'VIRTUAL';
+            background: #0BD926;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.70rem;
+            font-weight: 950;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
             box-shadow: 0 4px 15px rgba(11,217,38,.35), 0 0 0 4px rgba(11,217,38,.12), inset 0 1px 0 rgba(255,255,255,.25);
             animation: color-pulse 4s cubic-bezier(0.4,0,0.6,1) infinite !important;
         }
 
-        /* Tooltip */
         .badge-virtual-custom::after {
-            content: 'También disponible en modalidad virtual' !important;
-            position: absolute !important;
-            top: 100% !important;
-            right: 50% !important;
-            transform: translateX(50%) !important;
-            background: #1a202c !important;
-            color: white !important;
-            padding: 10px 14px !important;
-            border-radius: 6px !important;
-            font-size: 0.75rem !important;
-            font-weight: 500 !important;
-            white-space: nowrap !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
+            content: 'También disponible en modalidad virtual';
+            position: absolute;
+            top: 100%;
+            right: 50%;
+            transform: translateX(50%);
+            background: #1a202c;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease !important;
-            z-index: 999 !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
-            display: block !important;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-            margin-top: -70px !important;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: block;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin-top: -70px;
         }
 
         .badge-virtual-custom:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
         
         .badge-virtual-custom:hover::before {
-            animation-play-state: paused !important;
-            background: #06f526 !important;
-            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4) !important;
+            animation-play-state: paused;
+            background: #06f526;
+            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
         }
 
         .badge-virtual-custom:hover::after {
-            opacity: 1 !important;
-            pointer-events: auto !important;
+            opacity: 1;
+            pointer-events: auto;
         }
-
-        /* Animación Color Pulse - Sin transform, solo sombra como pulse-badge */
 
         @keyframes color-pulse {
         0% {
@@ -750,9 +732,6 @@
             box-shadow: 0 0 0 rgba(11, 217, 38, 0), 0 0 0 rgba(11, 217, 38, 0);
         }
         }
-
-
-
 
         @keyframes pulse-badge {
             0% {
@@ -769,15 +748,12 @@
             }
         }
 
-        /* ========== RESPONSIVE ========== */
-        /* Tablet */
         @media (max-width: 992px) {
             .pp-programs-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Móvil */
         @media (max-width: 768px) {
             .pp-programs-section {
                 padding: 32px 0 40px;
@@ -791,7 +767,7 @@
             }
 
             .pp-program-card {
-                padding: 25px !important;
+                padding: 25px;
             }
 
             .form-row {
@@ -805,10 +781,10 @@
             }
 
             .badge-virtual-custom{
-                top: 5px !important;
-                right: 5px !important;
-                padding: 4px 8px !important;
-                font-size: 0.65rem !important;
+                top: 5px;
+                right: 5px;
+                padding: 4px 8px;
+                font-size: 0.65rem;
             }
 
             .pp-card-header{
@@ -817,7 +793,6 @@
             }
         }
 
-        /* Mobile Extra Small */
         @media (max-width: 480px) {
             .pp-programs-section {
                 padding: 24px 0 32px;
@@ -828,7 +803,6 @@
             }
         }
 
-        /* Animación de carga de cards */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -854,10 +828,9 @@
 </head>
 <body>
 
-    <!-- CAJA: GRID DE PROGRAMAS -->
     <section class="pp-programs-section" id="pp-caja-programas">
         <div class="pp-programs-grid" id="pp-programsGrid">
-            <!-- Placeholder para el editor de Elementor (desaparece cuando JS carga) -->
+
             <div class="editor-placeholder" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #f0f4f8; border-radius: 12px; border: 2px dashed #cbd5e0;">
                 <p style="color: #718096; font-size: 1rem; margin: 0;">
                      <strong>Cards de programas</strong><br>
@@ -867,7 +840,6 @@
         </div>
     </section>
 
-    <!-- MODAL 1: Ingeniería de Software -->
     <div class="modal-overlay" id="modalOverlay1">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -899,7 +871,6 @@
         </div>
     </div>
 
-    <!-- MODAL 2: Marketing -->
     <div class="modal-overlay" id="modalOverlay2">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -931,7 +902,6 @@
         </div>
     </div>
 
-    <!-- MODAL 3: Administración de Empresas -->
     <div class="modal-overlay" id="modalOverlay3">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -963,7 +933,6 @@
         </div>
     </div>
 
-    <!-- MODAL 4: Negocios Internacionales -->
     <div class="modal-overlay" id="modalOverlay4">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -995,7 +964,6 @@
         </div>
     </div>
 
-    <!-- MODAL 5: Finanzas y Comercio Exterior -->
     <div class="modal-overlay" id="modalOverlay5">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -1027,7 +995,6 @@
         </div>
     </div>
 
-    <!-- MODAL 6: Ingeniería Industrial -->
     <div class="modal-overlay" id="modalOverlay6">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
@@ -1060,12 +1027,9 @@
     </div>
 
     <script>
-        // ========================================
-        // DATOS DE PROGRAMAS
-        // Array con todos los programas académicos
-        // ========================================
+
         const programasData = [
-            // PROGRAMAS PRESENCIALES
+
             {
                 id: 1,
                 nombre: "Ingeniería de Software",
@@ -1168,25 +1132,12 @@
             }
         ];
 
-        // ========================================
-        // CONFIGURACIÓN GLOBAL
-        // ========================================
-
-        // ========================================
-        // VARIABLES GLOBALES
-        // ========================================
         let tabActivo = 'Presencial';
         let terminoBusqueda = '';
 
-        // ========================================
-        // ELEMENTOS DEL DOM
-        // ========================================
         const grid = document.getElementById('pp-programsGrid');
         const tabs = document.querySelectorAll('.tab-btn');
 
-        // ========================================
-        // FUNCIÓN: Renderizar cards de programas
-        // ========================================
         function renderizarProgramas() {
             const programasFiltrados = programasData.filter(programa => {
                 const coincideModalidad = programa.modalidad === tabActivo;
@@ -1219,8 +1170,6 @@
                 card.setAttribute('role', 'button');
                 card.setAttribute('tabindex', '0');
                 card.setAttribute('aria-label', `Ver detalles de ${programa.nombre}`);
-
-                /*Las fokin tarjetas de nuevo y virtual*/
 
                 card.innerHTML = `
                     ${programa.imagen ? `<div class="pp-card-image-container"><img src="${programa.imagen}" alt="${programa.nombre}" class="pp-card-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect fill=%27%232A449C%27 width=%27400%27 height=%27200%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27 font-family=%27Arial%27%3E${programa.nombre}%3C/text%3E%3C/svg%3E';"></div>` : ''}
@@ -1267,9 +1216,6 @@
             });
         }
 
-        // ========================================
-        // FUNCIÓN: Abrir modal del programa
-        // ========================================
         function abrirModal(programa) {
             const overlay = document.getElementById(`modalOverlay${programa.id}`);
             if (!overlay) return;
@@ -1279,23 +1225,16 @@
             document.body.style.paddingRight = scrollbarWidth + 'px';
         }
 
-        // ========================================
-        // FUNCIÓN: Cerrar modal
-        // ========================================
         function cerrarModal(id) {
             const overlay = document.getElementById(`modalOverlay${id}`);
             if (overlay) overlay.classList.remove('active');
-            // Solo restaurar scroll si no hay otro modal activo
+
             if (!document.querySelector('.modal-overlay.active')) {
                 document.body.style.overflow = '';
                 document.body.style.paddingRight = '';
             }
         }
 
-        // ========================================
-        // EVENT LISTENERS
-        // ========================================
-        // Cerrar modales al hacer click en el overlay
         for (let i = 1; i <= 6; i++) {
             const overlay = document.getElementById(`modalOverlay${i}`);
             if (overlay) {

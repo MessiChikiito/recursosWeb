@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Opciones de Cards - Apilables Hero</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #122661;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .option {
+            background: linear-gradient(135deg, #0F47A6 0%, #0132AF 50%, #001D5E 100%);
+            border-radius: 12px;
+            padding: 40px;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -15%;
+            width: 300px;
+            height: 300px;
+            background: rgba(234, 10, 42, 0.06);
+            transform: rotate(25deg);
+            z-index: 0;
+        }
+
+        .option-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #FFCCCC;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cards-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============ OPCIONES DE CARDS ============ */
+
+        /* Opción 1: Clásico blanco con borde rojo */
+        .opt1 .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #EA0A2A;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .opt1 .card strong {
+            color: #0132AF;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt1 .card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Opción 2: Blanco con sombra fuerte */
+        .opt2 .card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .opt2 .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .opt2 .card strong {
+            color: #0132AF;
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .opt2 .card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Opción 3: Blanco con borde top rojo */
+        .opt3 .card {
+            background: white;
+            border: 1px solid #eee;
+            border-top: 4px solid #EA0A2A;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .opt3 .card strong {
+            color: #EA0A2A;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt3 .card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Opción 4: Blanco con icono circular */
+        .opt4 .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            padding-left: 60px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .opt4 .card::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #0132AF, #EA0A2A);
+            border-radius: 8px;
+        }
+
+        .opt4 .card strong {
+            color: #0132AF;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .opt4 .card p {
+            color: #666;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* Opción 5: Blanco con línea izquierda gruesa */
+        .opt5 .card {
+            background: white;
+            border-left: 6px solid #0132AF;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .opt5 .card strong {
+            color: #0132AF;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt5 .card p {
+            color: #555;
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        /* Opción 6: Blanco con badge rojo */
+        .opt6 .card {
+            background: white;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-right: 60px;
+        }
+
+        .opt6 .card::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: #EA0A2A;
+            border-radius: 50%;
+        }
+
+        .opt6 .card strong {
+            color: #0132AF;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .opt6 .card p {
+            color: #666;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* Opción 7: Blanco con fondo gradiente sutil */
+        .opt7 .card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .opt7 .card strong {
+            color: #0132AF;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt7 .card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Opción 8: Blanco número grande + texto */
+        .opt8 .card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .opt8 .card strong {
+            font-size: 1.8rem;
+            color: #EA0A2A;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .opt8 .card .text {
+            flex: 1;
+        }
+
+        .opt8 .card .text .title {
+            color: #0132AF;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .opt8 .card p {
+            color: #666;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Opción 9: Blanco con underline rojo */
+        .opt9 .card {
+            background: white;
+            border: none;
+            border-bottom: 3px solid #EA0A2A;
+            border-radius: 8px 8px 0 0;
+            padding: 18px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .opt9 .card strong {
+            color: #0132AF;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt9 .card p {
+            color: #666;
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        /* Opción 10: Blanco con pequeño badge en corner */
+        .opt10 .card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .opt10 .card::before {
+            content: '★';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            color: #EA0A2A;
+            font-size: 1.4rem;
+        }
+
+        .opt10 .card strong {
+            color: #0132AF;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .opt10 .card p {
+            color: #666;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* Opción 11: Blanco muy minimalista */
+        .opt11 .card {
+            background: white;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .opt11 .card strong {
+            color: #0132AF;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt11 .card p {
+            color: #777;
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        /* Opción 12: Blanco con borde círculo rojo */
+        .opt12 .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            padding-left: 50px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .opt12 .card::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border: 3px solid #EA0A2A;
+            border-radius: 50%;
+        }
+
+        .opt12 .card strong {
+            color: #0132AF;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .opt12 .card p {
+            color: #666;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* Opción 13: Blanco con tres puntos decorativos */
+        .opt13 .card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+        }
+
+        .opt13 .card strong {
+            color: #0132AF;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt13 .card p {
+            color: #666;
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        /* Opción 14: Blanco con dot list */
+        .opt14 .card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .opt14 .card strong {
+            color: #0132AF;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 0px;
+        }
+
+        .opt14 .card p {
+            color: #666;
+            font-size: 0.92rem;
+            margin: 4px 0 0 16px;
+        }
+
+        .opt14 .card p::before {
+            content: '→';
+            color: #EA0A2A;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        /* Opción 15: Blanco con fondo color suave */
+        .opt15 .card {
+            background: #f8fbfe;
+            border: 1px solid #d4e8ff;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .opt15 .card strong {
+            color: #0132AF;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt15 .card p {
+            color: #555;
+            font-size: 0.94rem;
+            margin: 0;
+        }
+
+        /* Opción 16: Horizontal layout */
+        .opt16 .card {
+            background: white;
+            border-radius: 10px;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 12px;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .opt16 .card::before {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #EA0A2A, #ff6b5b);
+            border-radius: 8px;
+        }
+
+        .opt16 .card strong {
+            color: #0132AF;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 2px;
+            grid-column: 2;
+        }
+
+        .opt16 .card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+            grid-column: 2;
+        }
+
+        /* Opción 17: Blanco con línea roja arriba */
+        .opt17 .card {
+            background: white;
+            border-top: 5px solid #EA0A2A;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .opt17 .card strong {
+            color: #0132AF;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt17 .card p {
+            color: #666;
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        /* Opción 18: Card con accento lateral y número */
+        .opt18 .card {
+            background: white;
+            border-left: 5px solid #0132AF;
+            border-radius: 8px;
+            padding: 18px;
+            position: relative;
+        }
+
+        .opt18 .card strong {
+            color: #0132AF;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt18 .card p {
+            color: #666;
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        /* Opción 19: Blanco con check mark */
+        .opt19 .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 18px;
+            padding-left: 45px;
+            position: relative;
+        }
+
+        .opt19 .card::before {
+            content: '✓';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #EA0A2A;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .opt19 .card strong {
+            color: #0132AF;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .opt19 .card p {
+            color: #666;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* Opción 20: Blanco con gradient border */
+        .opt20 .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .opt20 .card strong {
+            color: #0132AF;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .opt20 .card p {
+            color: #666;
+            font-size: 0.94rem;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>20 Opciones de Cards para Apilables Hero</h1>
+
+        <div class="options-container">
+            <!-- Opción 1 -->
+            <div class="option opt1">
+                <div class="option-title">1. Clásico con Borde Izquierdo Rojo</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico, sin teoría innecesaria.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 2 -->
+            <div class="option opt2">
+                <div class="option-title">2. Blanco con Sombra Fuerte (Hover Effect)</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Habilidades útiles</strong>
+                        <p>Liderazgo, negocios, trabajo en equipo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 3 -->
+            <div class="option opt3">
+                <div class="option-title">3. Borde Superior Rojo</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>100% Virtual y Flexible</strong>
+                        <p>Estudia cuando quieras y desde donde estés.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 4 -->
+            <div class="option opt4">
+                <div class="option-title">4. Con Ícono Cuadrado Gradiente</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico sin teoría.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 5 -->
+            <div class="option opt5">
+                <div class="option-title">5. Línea Izquierda Gruesa Azul</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Habilidades útiles</strong>
+                        <p>Liderazgo, negocios, trabajo en equipo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 6 -->
+            <div class="option opt6">
+                <div class="option-title">6. Badge Rojo en Esquina</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>100% Virtual</strong>
+                        <p>Estudia desde cualquier lugar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 7 -->
+            <div class="option opt7">
+                <div class="option-title">7. Fondo Gradiente Sutil</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico, sin teoría.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 8 -->
+            <div class="option opt8">
+                <div class="option-title">8. Número Grande + Texto (Horizontal)</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>01</strong>
+                        <div class="text">
+                            <div class="title">Aprende haciendo</div>
+                            <p>Contenido práctico, sin teoría.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 9 -->
+            <div class="option opt9">
+                <div class="option-title">9. Línea Roja Inferior</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Habilidades útiles</strong>
+                        <p>Liderazgo, negocios, trabajo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 10 -->
+            <div class="option opt10">
+                <div class="option-title">10. Star Badge en Esquina</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>100% Virtual</strong>
+                        <p>Estudia desde cualquier lugar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 11 -->
+            <div class="option opt11">
+                <div class="option-title">11. Minimalista Puro</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico, sin teoría.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 12 -->
+            <div class="option opt12">
+                <div class="option-title">12. Círculo Rojo Vacío</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Habilidades útiles</strong>
+                        <p>Liderazgo, negocios, trabajo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 13 -->
+            <div class="option opt13">
+                <div class="option-title">13. Con Línea Decorativa</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>100% Virtual y Flexible</strong>
+                        <p>Estudia cuando quieras y desde donde estés.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 14 -->
+            <div class="option opt14">
+                <div class="option-title">14. Con Flecha Roja</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 15 -->
+            <div class="option opt15">
+                <div class="option-title">15. Fondo Azul Suave</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Habilidades útiles</strong>
+                        <p>Liderazgo, negocios, trabajo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 16 -->
+            <div class="option opt16">
+                <div class="option-title">16. Layout Horizontal con Icono</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>100% Virtual</strong>
+                        <p>Estudia desde cualquier lugar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 17 -->
+            <div class="option opt17">
+                <div class="option-title">17. Línea Roja Arriba (Gruesa)</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico, sin teoría.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 18 -->
+            <div class="option opt18">
+                <div class="option-title">18. Borde Azul Lateral</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Habilidades útiles</strong>
+                        <p>Liderazgo, negocios, trabajo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 19 -->
+            <div class="option opt19">
+                <div class="option-title">19. Con Check Mark Rojo</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>100% Virtual</strong>
+                        <p>Estudia desde cualquier lugar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opción 20 -->
+            <div class="option opt20">
+                <div class="option-title">20. Premium con Sombra Elegante</div>
+                <div class="cards-demo">
+                    <div class="card">
+                        <strong>Aprende haciendo</strong>
+                        <p>Contenido práctico, sin teoría.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

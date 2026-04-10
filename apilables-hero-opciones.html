@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apilables Hero - Opciones de Diseño</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #122661;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #50608f;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .option {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .option-title {
+            background: #f0f4f8;
+            padding: 16px 24px;
+            border-bottom: 2px solid #e0e8f0;
+            font-weight: 700;
+            color: #122661;
+            font-size: 1.1rem;
+        }
+
+        .option-preview {
+            min-height: 600px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 54px;
+            align-items: start;
+            padding: 96px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-left {
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+
+        .option-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 2;
+        }
+
+        /* ============ OPCIÓN 1: Azul Corporativo Clásico ============ */
+        .option-1 .option-preview {
+            background: linear-gradient(135deg, #0132AF 0%, #0052D6 100%);
+            color: white;
+        }
+
+        .option-1 .chip {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #FFD700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            width: fit-content;
+        }
+
+        .option-1 .title {
+            font-size: 3.65rem;
+            line-height: 1.08;
+            letter-spacing: -0.7px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .option-1 .subtitle {
+            font-size: 1.22rem;
+            line-height: 1.74;
+            font-weight: 500;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .option-1 .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 4px solid #EA0A2A;
+            border-radius: 12px;
+            padding: 22px 20px;
+            backdrop-filter: blur(8px);
+        }
+
+        .option-1 .card strong {
+            display: block;
+            margin: 0 0 8px;
+            font-size: 1.38rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: #FFD700;
+        }
+
+        .option-1 .card p {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .option-1 .card:nth-child(2) strong {
+            color: #EA0A2A;
+        }
+
+        /* ============ OPCIÓN 2: Azul Oscuro Premium ============ */
+        .option-2 .option-preview {
+            background: linear-gradient(135deg, #001D5E 0%, #0132AF 100%);
+            color: white;
+        }
+
+        .option-2 .chip {
+            background: rgba(234, 10, 42, 0.2);
+            border: 1px solid rgba(234, 10, 42, 0.5);
+            color: #FF6B9D;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            width: fit-content;
+        }
+
+        .option-2 .title {
+            font-size: 3.65rem;
+            line-height: 1.08;
+            letter-spacing: -0.7px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .option-2 .subtitle {
+            font-size: 1.22rem;
+            line-height: 1.74;
+            font-weight: 500;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .option-2 .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(234, 10, 42, 0.3);
+            border-left: 5px solid #EA0A2A;
+            border-radius: 12px;
+            padding: 22px 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .option-2 .card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(234, 10, 42, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .option-2 .card strong {
+            display: block;
+            margin: 0 0 8px;
+            font-size: 1.38rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: white;
+        }
+
+        .option-2 .card p {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .option-2 .card:nth-child(2) strong {
+            color: #FF6B9D;
+        }
+
+        /* ============ OPCIÓN 3: Azul Brillante con Detalles Rojos ============ */
+        .option-3 .option-preview {
+            background: linear-gradient(135deg, #0052D6 0%, #0076FF 100%);
+            color: white;
+        }
+
+        .option-3 .chip {
+            background: linear-gradient(135deg, #EA0A2A 0%, #FF3B3B 100%);
+            border: none;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            width: fit-content;
+            box-shadow: 0 4px 12px rgba(234, 10, 42, 0.3);
+        }
+
+        .option-3 .title {
+            font-size: 3.65rem;
+            line-height: 1.08;
+            letter-spacing: -0.7px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .option-3 .subtitle {
+            font-size: 1.22rem;
+            line-height: 1.74;
+            font-weight: 500;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .option-3 .card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-left: 6px solid #FF3B3B;
+            border-radius: 12px;
+            padding: 22px 20px;
+        }
+
+        .option-3 .card strong {
+            display: block;
+            margin: 0 0 8px;
+            font-size: 1.38rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: white;
+        }
+
+        .option-3 .card p {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .option-3 .card:nth-child(2) strong,
+        .option-3 .card:nth-child(2) {
+            border-left-color: #FF3B3B;
+        }
+
+        /* ============ OPCIÓN 4: Azul Gradiente Elegante con Overlay ============ */
+        .option-4 .option-preview {
+            background: linear-gradient(135deg, #0F47A6 0%, #0132AF 50%, #001D5E 100%);
+            color: white;
+        }
+
+        .option-4 .option-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(234, 10, 42, 0.08);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .option-4 .option-preview::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .option-4 .chip {
+            background: rgba(234, 10, 42, 0.25);
+            border: 1.5px solid #EA0A2A;
+            color: #FFCCCC;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            width: fit-content;
+        }
+
+        .option-4 .title {
+            font-size: 3.65rem;
+            line-height: 1.08;
+            letter-spacing: -0.7px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .option-4 .subtitle {
+            font-size: 1.22rem;
+            line-height: 1.74;
+            font-weight: 500;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .option-4 .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 4px solid #EA0A2A;
+            border-radius: 14px;
+            padding: 24px 22px;
+            backdrop-filter: blur(12px);
+        }
+
+        .option-4 .card strong {
+            display: block;
+            margin: 0 0 8px;
+            font-size: 1.38rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: white;
+        }
+
+        .option-4 .card p {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .option-4 .card:nth-child(2) {
+            border-left-color: #FF3B3B;
+        }
+
+        .option-4 .card:nth-child(2) strong {
+            color: #FFCCCC;
+        }
+
+        /* ============ OPCIÓN 5: Azul Moderno con Líneas Rojas ============ */
+        .option-5 .option-preview {
+            background: linear-gradient(135deg, #0841B8 0%, #0132AF 100%);
+            color: white;
+        }
+
+        .option-5 .chip {
+            background: transparent;
+            border: 2px solid #EA0A2A;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-5 .chip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(234, 10, 42, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .option-5 .title {
+            font-size: 3.65rem;
+            line-height: 1.08;
+            letter-spacing: -0.7px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .option-5 .title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #EA0A2A 0%, transparent 100%);
+            border-radius: 2px;
+        }
+
+        .option-5 .subtitle {
+            font-size: 1.22rem;
+            line-height: 1.74;
+            font-weight: 500;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+            margin-top: 12px;
+        }
+
+        .option-5 .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: none;
+            border-top: 3px solid #EA0A2A;
+            border-radius: 12px;
+            padding: 22px 20px;
+        }
+
+        .option-5 .card strong {
+            display: block;
+            margin: 0 0 8px;
+            font-size: 1.38rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            color: white;
+        }
+
+        .option-5 .card p {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* ============ RESPONSIVO ============ */
+        @media (max-width: 992px) {
+            .option-preview {
+                grid-template-columns: 1fr !important;
+                padding: 60px 40px !important;
+                gap: 30px !important;
+            }
+
+            .option-1 .title,
+            .option-2 .title,
+            .option-3 .title,
+            .option-4 .title,
+            .option-5 .title {
+                font-size: 2.8rem;
+            }
+        }
+
+        .description {
+            padding: 20px 24px;
+            background: #fafbfc;
+            border-top: 1px solid #e0e8f0;
+            font-size: 0.95rem;
+            color: #50608f;
+            line-height: 1.6;
+        }
+
+        .description strong {
+            color: #122661;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Opciones de Diseño: Apilables Hero con Fondo Azul</h1>
+        <p class="subtitle">Explora diferentes variaciones con fondo azul, letras blancas y detalles rojos</p>
+
+        <div class="options-grid">
+            <!-- OPCIÓN 1 -->
+            <div class="option option-1">
+                <div class="option-title">Opción 1: Azul Corporativo Clásico</div>
+                <div class="option-preview">
+                    <div class="option-left">
+                        <span class="chip">Nuevos</span>
+                        <h2 class="title">Aprende habilidades que sí te sirven para trabajar y emprender</h2>
+                        <p class="subtitle">Cursos virtuales fáciles de entender, pensados para que desarrolles habilidades reales en negocios, liderazgo y toma de decisiones.</p>
+                    </div>
+                    <div class="option-right">
+                        <div class="card">
+                            <strong>Aprende haciendo</strong>
+                            <p>Contenido práctico, sin tanta teoría innecesaria.</p>
+                        </div>
+                        <div class="card">
+                            <strong>Habilidades útiles de verdad</strong>
+                            <p>Liderazgo, negocios, trabajo en equipo y más.</p>
+                        </div>
+                        <div class="card">
+                            <strong>100% virtual y flexible</strong>
+                            <p>Estudia cuando quieras y desde donde estés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Características:</strong> Gradiente azul corporativo suave, detalles en dorado/amarillo para el chip y textos destacados, bordes rojos en cards. Muy profesional y estándar.
+                </div>
+            </div>
+
+            <!-- OPCIÓN 2 -->
+            <div class="option option-2">
+                <div class="option-title">Opción 2: Azul Oscuro Premium</div>
+                <div class="option-preview">
+                    <div class="option-left">
+                        <span class="chip">Nuevos</span>
+                        <h2 class="title">Aprende habilidades que sí te sirven para trabajar y emprender</h2>
+                        <p class="subtitle">Cursos virtuales fáciles de entender, pensados para que desarrolles habilidades reales en negocios, liderazgo y toma de decisiones.</p>
+                    </div>
+                    <div class="option-right">
+                        <div class="card">
+                            <strong>Aprende haciendo</strong>
+                            <p>Contenido práctico, sin tanta teoría innecesaria.</p>
+                        </div>
+                        <div class="card">
+                            <strong>Habilidades útiles de verdad</strong>
+                            <p>Liderazgo, negocios, trabajo en equipo y más.</p>
+                        </div>
+                        <div class="card">
+                            <strong>100% virtual y flexible</strong>
+                            <p>Estudia cuando quieras y desde donde estés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Características:</strong> Azul muy oscuro y elegante, chip rojo oscuro con borde rojo claro, bordes rojos en cards, efecto hover. Vibe premium y corporativo fuerte.
+                </div>
+            </div>
+
+            <!-- OPCIÓN 3 -->
+            <div class="option option-3">
+                <div class="option-title">Opción 3: Azul Brillante con Detalles Rojos</div>
+                <div class="option-preview">
+                    <div class="option-left">
+                        <span class="chip">Nuevos</span>
+                        <h2 class="title">Aprende habilidades que sí te sirven para trabajar y emprender</h2>
+                        <p class="subtitle">Cursos virtuales fáciles de entender, pensados para que desarrolles habilidades reales en negocios, liderazgo y toma de decisiones.</p>
+                    </div>
+                    <div class="option-right">
+                        <div class="card">
+                            <strong>Aprende haciendo</strong>
+                            <p>Contenido práctico, sin tanta teoría innecesaria.</p>
+                        </div>
+                        <div class="card">
+                            <strong>Habilidades útiles de verdad</strong>
+                            <p>Liderazgo, negocios, trabajo en equipo y más.</p>
+                        </div>
+                        <div class="card">
+                            <strong>100% virtual y flexible</strong>
+                            <p>Estudia cuando quieras y desde donde estés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Características:</strong> Azul más vibrante y brillante, chip rojo gradiente con sombra, bordes rojos más gruesos y visibles. Muy moderno y energético.
+                </div>
+            </div>
+
+            <!-- OPCIÓN 4 -->
+            <div class="option option-4">
+                <div class="option-title">Opción 4: Azul Gradiente Elegante con Elementos Flotantes</div>
+                <div class="option-preview">
+                    <div class="option-left">
+                        <span class="chip">Nuevos</span>
+                        <h2 class="title">Aprende habilidades que sí te sirven para trabajar y emprender</h2>
+                        <p class="subtitle">Cursos virtuales fáciles de entender, pensados para que desarrolles habilidades reales en negocios, liderazgo y toma de decisiones.</p>
+                    </div>
+                    <div class="option-right">
+                        <div class="card">
+                            <strong>Aprende haciendo</strong>
+                            <p>Contenido práctico, sin tanta teoría innecesaria.</p>
+                        </div>
+                        <div class="card">
+                            <strong>Habilidades útiles de verdad</strong>
+                            <p>Liderazgo, negocios, trabajo en equipo y más.</p>
+                        </div>
+                        <div class="card">
+                            <strong>100% virtual y flexible</strong>
+                            <p>Estudia cuando quieras y desde donde estés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Características:</strong> Gradiente azul complejo con 3 tonos, elementos decorativos (círculos) sutiles de fondo, chip con borde rojo, backdrop filter en cards. Muy sofisticado.
+                </div>
+            </div>
+
+            <!-- OPCIÓN 5 -->
+            <div class="option option-5">
+                <div class="option-title">Opción 5: Azul Moderno con Líneas Rojas Dinámicas</div>
+                <div class="option-preview">
+                    <div class="option-left">
+                        <span class="chip">Nuevos</span>
+                        <h2 class="title">Aprende habilidades que sí te sirven para trabajar y emprender</h2>
+                        <p class="subtitle">Cursos virtuales fáciles de entender, pensados para que desarrolles habilidades reales en negocios, liderazgo y toma de decisiones.</p>
+                    </div>
+                    <div class="option-right">
+                        <div class="card">
+                            <strong>Aprende haciendo</strong>
+                            <p>Contenido práctico, sin tanta teoría innecesaria.</p>
+                        </div>
+                        <div class="card">
+                            <strong>Habilidades útiles de verdad</strong>
+                            <p>Liderazgo, negocios, trabajo en equipo y más.</p>
+                        </div>
+                        <div class="card">
+                            <strong>100% virtual y flexible</strong>
+                            <p>Estudia cuando quieras y desde donde estés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <strong>Características:</strong> Chip transparente con borde rojo y efecto shimmer, título con línea roja degradada debajo, cards con borde superior rojo. Muy contemporáneo y dinámico.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

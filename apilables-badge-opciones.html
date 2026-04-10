@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Badges - Apilables Hero</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0F47A6 0%, #0132AF 50%, #001D5E 100%);
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .option-title {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* OPCIÓN A - Rojo Sólido + Pulso */
+        .badge-a {
+            background: #EA0A2A;
+            border: none;
+            color: #FFFFFF;
+            border-radius: 50px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        /* OPCIÓN B - Angled + Brillo Lateral */
+        .badge-b {
+            background: #EA0A2A !important;
+            color: #FFFFFF !important;
+            padding: 10px 24px !important;
+            padding-left: 28px !important;
+            padding-right: 28px !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0 !important;
+            text-transform: uppercase !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            clip-path: polygon(20px 0, 100% 0, calc(100% - 20px) 100%, 0 100%) !important;
+            border-radius: 0 !important;
+            border: none !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge-b::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            50%, 100% {
+                left: 100%;
+            }
+        }
+
+        /* OPCIÓN D - Efecto Border Animado */
+        .badge-d {
+            background: transparent;
+            border: 2px solid #EA0A2A;
+            color: #EA0A2A;
+            border-radius: 50px;
+            padding: 8px 16px !important;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .badge-d::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid #EA0A2A;
+            border-radius: 50px;
+            animation: rotate-border 4s linear infinite;
+        }
+
+        @keyframes rotate-border {
+            0% {
+                clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 0% 0%);
+            }
+            25% {
+                clip-path: polygon(0% 0%, 2% 0%, 100% 0%, 100% 2%, 100% 100%, 0% 100%);
+            }
+            50% {
+                clip-path: polygon(98% 0%, 100% 0%, 100% 2%, 100% 100%, 98% 100%, 0% 100%);
+            }
+            75% {
+                clip-path: polygon(0% 98%, 100% 98%, 100% 100%, 0% 100%), 0% 100%, 0% 98%;
+            }
+            100% {
+                clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 0% 0%);
+            }
+        }
+
+        /* OPCIÓN E - Fondo Gradiente + Sombra */
+        .badge-e {
+            background: linear-gradient(135deg, #EA0A2A 0%, #F72A52 100%);
+            border: none;
+            color: #FFFFFF;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(234, 10, 42, 0.5);
+            font-weight: 800;
+        }
+
+        /* OPCIÓN F - Efecto Bounce */
+        .badge-f {
+            background: #EA0A2A;
+            border: none;
+            color: #FFFFFF;
+            border-radius: 8px;
+            animation: bounce-badge 2.5s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes bounce-badge {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* OPCIÓN G - Outline + Hover Efecto */
+        .badge-g {
+            background: transparent;
+            border: 3px solid #EA0A2A;
+            color: #EA0A2A;
+            border-radius: 50px;
+            font-weight: 900;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .badge-g:hover {
+            background: #EA0A2A;
+            color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(234, 10, 42, 0.6);
+        }
+
+        /* OPCIÓN H - Texto Degradado */
+        .badge-h {
+            background: transparent;
+            border: 2px solid #EA0A2A;
+            border-radius: 50px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #EA0A2A 0%, #F72A52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #EA0A2A;
+            position: relative;
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 16px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            word-break: break-all;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Opciones de Badge Llamativo - Nuevo</h1>
+        
+        <div class="grid">
+            <!-- OPCIÓN A -->
+            <div class="option">
+                <div class="option-title">Opción A: Pulso</div>
+                <span class="badge badge-a">Nuevo</span>
+                <div class="code">Rojo sólido + pulso</div>
+            </div>
+
+            <!-- OPCIÓN B -->
+            <div class="option">
+                <div class="option-title">Opción B: Angled Brillo</div>
+                <span class="badge badge-b">Nuevo</span>
+                <div class="code">Angled + shine effect</div>
+            </div>
+
+            <!-- OPCIÓN D -->
+            <div class="option">
+                <div class="option-title">Opción D: Border Rotativo</div>
+                <span class="badge badge-d">Nuevo</span>
+                <div class="code">Outline con borde animado</div>
+            </div>
+
+            <!-- OPCIÓN E -->
+            <div class="option">
+                <div class="option-title">Opción E: Gradiente Premium</div>
+                <span class="badge badge-e">Nuevo</span>
+                <div class="code">Gradient + sombra profunda</div>
+            </div>
+
+            <!-- OPCIÓN F -->
+            <div class="option">
+                <div class="option-title">Opción F: Bounce</div>
+                <span class="badge badge-f">Nuevo</span>
+                <div class="code">Efecto rebote vertical</div>
+            </div>
+
+            <!-- OPCIÓN G -->
+            <div class="option">
+                <div class="option-title">Opción G: Hover Interactivo</div>
+                <span class="badge badge-g">Nuevo</span>
+                <div class="code">Outline + hover relleno</div>
+            </div>
+
+            <!-- OPCIÓN H -->
+            <div class="option">
+                <div class="option-title">Opción H: Gradiente Texto</div>
+                <span class="badge badge-h">Nuevo</span>
+                <div class="code">Texto con gradiente rojo</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 8 opciones nuevas y llamativas. Selecciona tu favorita y dime la letra (A, B, D, E, F, G, H)</p>
+        </div>
+    </div>
+</body>
+</html>
