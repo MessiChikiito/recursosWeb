@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Por qué elegirnos?</title>
+    <style>
+        .why-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #0f172a;
+            box-sizing: border-box;
+        }
+        
+        .why-section * {
+            box-sizing: border-box;
+        }
+
+        .why-container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        
+        .why-us h2 {
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: #EF1218 !important;
+            margin-top: 0 !important;
+            margin-bottom: 30px !important;
+            font-family: inherit !important;
+            text-align: left;
+            line-height: 1.2;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .why-card {
+            background-color: #f8fafd;
+            padding: 30px 24px;
+            border-radius: 16px;
+            transition: transform 0.2s ease, background-color 0.2s ease !important;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .why-card:hover {
+            background-color: #f0f5fa;
+            transform: translateY(-2px);
+        }
+        
+        .why-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #EF1218;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .why-icon svg {
+            width: 26px !important;
+            height: 26px !important;
+            max-width: 26px !important;
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+            fill: none !important;
+            display: block !important;
+        }
+        
+        .why-card h3 {
+            font-size: 17px !important;
+            font-weight: 700 !important;
+            color: #0a1f44 !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
+            font-family: inherit !important;
+        }
+        
+        .why-card p {
+            font-size: 14px !important;
+            color: #64748b !important;
+            line-height: 1.5 !important;
+            font-family: inherit !important;
+            margin: 0 !important;
+        }
+        
+        @media (max-width: 640px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-us h2 {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="why-section" id="caja-info">
+        <div class="why-container">
+            <div class="why-us">
+                <h2>¿Por qué elegir nuestros cursos?</h2>
+                <div class="why-grid">
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Homologación Universitaria</h3>
+                        <p>Completa cursos y homologa materias directamente para nuestras carreras disponibles.</p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Insignias Digitales</h3>
+                        <p>Obtén certificaciones e insignias que validan tus nuevas habilidades y potencian tu CV de inmediato.</p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                            </svg>
+                        </div>
+                        <h3>Descubre tu Vocación</h3>
+                        <p>Explora la vida universitaria y experimenta con áreas de negocio y tecnología y define tu futuro profesional con seguridad.</p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Flexibilidad y Rapidez</h3>
+                        <p>Cursos intensivos (32 a 48 horas) en modalidades virtual o presencial, ideales para tu ritmo de vida.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+    
+    

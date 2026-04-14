@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Cards para Programas</title>
+    <style>
+        /* === RESET Y ESTILOS BASE === */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: #0132AF;
+            margin-bottom: 40px;
+            font-weight: 800;
+            margin-top: 60px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* SVG Icons setup */
+        .icon {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ==========================================
+           OPCIÓN 1: Limpio con Borde Completo y Badge
+           ========================================== */
+        .card-opt1 {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .card-opt1:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+            border-color: #cbd5e0;
+        }
+
+        .card-opt1-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .card-opt1-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #0BD926;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(11,217,38,0.4);
+        }
+
+        .card-opt1-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-opt1-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0132AF;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-opt1-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 16px;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .card-opt1-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-opt1-desc {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card-opt1-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .card-opt1-btn {
+            background: #f1f5f9;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .card-opt1-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .card-opt1-btn.primary {
+            background: #EF1218;
+            color: #ffffff;
+            border-color: #EF1218;
+        }
+
+        .card-opt1-btn.primary:hover {
+            background: #c50e13;
+            border-color: #c50e13;
+        }
+
+        /* ==========================================
+           OPCIÓN 2: Minimalista Flotante (Sin Imagen)
+           ========================================== */
+        .card-opt2 {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            border-left: 4px solid #0132AF;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card-opt2:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transform: translateX(4px);
+        }
+
+        .card-opt2-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .card-opt2-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a202c;
+            line-height: 1.2;
+            margin-right: 15px;
+        }
+
+        .card-opt2-badge {
+            background: #e6ffed;
+            color: #09a11b;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .card-opt2-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .card-opt2-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .card-opt2-meta-item svg {
+            color: #0132AF;
+        }
+        
+        .card-opt2-bullets {
+            list-style: none;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .card-opt2-bullets li {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-opt2-bullets li::before {
+            content: "•";
+            color: #EF1218;
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+            top: -1px;
+        }
+
+        .card-opt2-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: auto;
+        }
+
+        .card-opt2-link {
+            color: #0132AF;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-opt2-link:hover {
+            text-decoration: underline;
+        }
+
+        .card-opt2-btn {
+            background: #1a202c;
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card-opt2-btn:hover {
+            background: #000000;
+        }
+
+        /* ==========================================
+           OPCIÓN 3: Oscura (Dark Mode Elegante)
+           ========================================== */
+        .card-opt3 {
+            background: #0f172a;
+            border-radius: 16px;
+            overflow: hidden;
+            color: #f8fafc;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-opt3:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15,23,42,0.3);
+        }
+
+        .card-opt3-img-container {
+            position: relative;
+            height: 180px;
+        }
+
+        .card-opt3-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .card-opt3:hover .card-opt3-img {
+            opacity: 1;
+        }
+
+        .card-opt3-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, #0f172a);
+        }
+
+        .card-opt3-badge {
+            background: rgba(11, 217, 38, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.4);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .card-opt3-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .card-opt3-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-opt3-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 20px;
+        }
+
+        .card-opt3-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .card-opt3-meta-item svg {
+            color: #38bdf8;
+            width: 16px;
+            height: 16px;
+        }
+
+        .card-opt3-desc {
+            font-size: 14px;
+            color: #cbd5e0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-opt3-btn {
+            background: #0132AF;
+            color: #ffffff;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .card-opt3-btn:hover {
+            background: #0052D6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2 class="section-title">Opción 1: Diseño Limpio / Estructurado</h2>
+    <div class="programs-grid">
+        
+        <!-- Card Opt 1 -->
+        <article class="card-opt1">
+            <span class="card-opt1-badge">VIRTUAL</span>
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop" class="card-opt1-img" alt="Ingeniería de Software">
+            <div class="card-opt1-body">
+                <h3 class="card-opt1-title">Ingeniería de Software</h3>
+                <div class="card-opt1-meta">
+                    <div class="card-opt1-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        7 Semestres
+                    </div>
+                    <div class="card-opt1-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Diurna / Nocturna
+                    </div>
+                </div>
+                <p class="card-opt1-desc">Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
+                <div class="card-opt1-footer">
+                    <a href="#" class="card-opt1-btn">Ver Detalle</a>
+                    <button class="card-opt1-btn primary">Más Info</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- Card Opt 1 -->
+        <article class="card-opt1">
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=200&fit=crop" class="card-opt1-img" alt="Negocios Internacionales">
+            <div class="card-opt1-body">
+                <h3 class="card-opt1-title">Negocios Internacionales</h3>
+                <div class="card-opt1-meta">
+                    <div class="card-opt1-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        7 Semestres
+                    </div>
+                    <div class="card-opt1-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Diurna
+                    </div>
+                </div>
+                <p class="card-opt1-desc">Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+                <div class="card-opt1-footer">
+                    <a href="#" class="card-opt1-btn">Ver Detalle</a>
+                    <button class="card-opt1-btn primary">Más Info</button>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <h2 class="section-title">Opción 2: Minimalista / Corporativo (Sin imagen)</h2>
+    <div class="programs-grid">
+
+        <!-- Card Opt 2 -->
+        <article class="card-opt2">
+            <div class="card-opt2-header">
+                <h3 class="card-opt2-title">Ingeniería de Software</h3>
+                <span class="card-opt2-badge">Virtual Disp.</span>
+            </div>
+            <div class="card-opt2-meta">
+                <div class="card-opt2-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Presencial
+                </div>
+                <div class="card-opt2-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    7 Semestres • Diurna / Nocturna
+                </div>
+            </div>
+            <ul class="card-opt2-bullets">
+                <li>Desarrollo de aplicaciones web y móviles</li>
+                <li>Metodologías ágiles y DevOps</li>
+                <li>Inteligencia artificial aplicada</li>
+            </ul>
+            <div class="card-opt2-actions">
+                <a href="#" class="card-opt2-link">Ir al curso <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <button class="card-opt2-btn">Más Info</button>
+            </div>
+        </article>
+
+        <!-- Card Opt 2 -->
+        <article class="card-opt2">
+            <div class="card-opt2-header">
+                <h3 class="card-opt2-title">Negocios Internacionales</h3>
+            </div>
+            <div class="card-opt2-meta">
+                <div class="card-opt2-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Presencial
+                </div>
+                <div class="card-opt2-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    7 Semestres • Diurna
+                </div>
+            </div>
+            <ul class="card-opt2-bullets">
+                <li>Comercio exterior y logística</li>
+                <li>Negociación internacional</li>
+                <li>Mercados globales</li>
+            </ul>
+            <div class="card-opt2-actions">
+                <a href="#" class="card-opt2-link">Ir al curso <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <button class="card-opt2-btn">Más Info</button>
+            </div>
+        </article>
+
+    </div>
+
+    <h2 class="section-title">Opción 3: Oscuro Moderno (Elegante)</h2>
+    <div class="programs-grid">
+
+        <!-- Card Opt 3 -->
+        <article class="card-opt3">
+            <div class="card-opt3-img-container">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop" class="card-opt3-img" alt="Ingeniería de Software">
+                <div class="card-opt3-overlay">
+                    <span class="card-opt3-badge">Virtual Disponible</span>
+                    <h3 class="card-opt3-title">Ingeniería de Software</h3>
+                </div>
+            </div>
+            <div class="card-opt3-body">
+                <div class="card-opt3-meta-grid">
+                    <div class="card-opt3-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        7 Semestres
+                    </div>
+                    <div class="card-opt3-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Diurna / Nocturna
+                    </div>
+                </div>
+                <p class="card-opt3-desc">Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
+                <button class="card-opt3-btn">Ver más información</button>
+            </div>
+        </article>
+
+        <!-- Card Opt 3 -->
+        <article class="card-opt3">
+            <div class="card-opt3-img-container">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=200&fit=crop" class="card-opt3-img" alt="Negocios Internacionales">
+                <div class="card-opt3-overlay">
+                    <h3 class="card-opt3-title">Negocios Internacionales</h3>
+                </div>
+            </div>
+            <div class="card-opt3-body">
+                <div class="card-opt3-meta-grid">
+                    <div class="card-opt3-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        7 Semestres
+                    </div>
+                    <div class="card-opt3-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Diurna
+                    </div>
+                </div>
+                <p class="card-opt3-desc">Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+                <button class="card-opt3-btn">Ver más información</button>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ESTILOS PARA LAS NUEVAS OPCIONES SIN IMÁGENES -->
+    <style>
+        /* ==========================================
+           OPCIÓN 4: Icono Prominente y Limpio
+           ========================================== */
+        .card-opt4 {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 1px solid #edf2f7;
+        }
+        .card-opt4:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border-color: #e2e8f0;
+        }
+        .card-opt4-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #0132AF;
+        }
+        .card-opt4-icon-wrapper svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+        .card-opt4-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .card-opt4-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 600;
+        }
+        .card-opt4-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .card-opt4-meta-item svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+        }
+        .card-opt4-desc {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        .card-opt4-btn {
+            display: inline-block;
+            background: #f8fafc;
+            color: #0132AF;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+            align-self: flex-start;
+            border: 1px solid #e2e8f0;
+        }
+        .card-opt4-btn:hover {
+            background: #e2e8f0;
+        }
+
+        /* ==========================================
+           OPCIÓN 5: Neobrutalismo (Alto Contraste)
+           ========================================== */
+        .card-opt5 {
+            background: #ffffff;
+            border: 3px solid #1a202c;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 6px 6px 0px #0132AF;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-opt5:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #0132AF;
+        }
+        .card-opt5-tag-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .card-opt5-tag {
+            background: #1a202c;
+            color: #ffffff;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+        .card-opt5-tag.outline {
+            background: transparent;
+            color: #1a202c;
+            border: 2px solid #1a202c;
+        }
+        .card-opt5-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #1a202c;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        .card-opt5-divider {
+            height: 3px;
+            background: #e2e8f0;
+            width: 40px;
+            margin-bottom: 15px;
+        }
+        .card-opt5-desc {
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .card-opt5-btn {
+            background: #EF1218;
+            color: #ffffff;
+            text-align: center;
+            padding: 12px;
+            font-weight: 800;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 2px solid #1a202c;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+        .card-opt5-btn:hover {
+            background: #c50e13;
+        }
+
+        /* ==========================================
+           OPCIÓN 6: Tarjeta Dividida (Color Header)
+           ========================================== */
+        .card-opt6 {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #edf2f7;
+        }
+        .card-opt6:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .card-opt6-header {
+            background: #0132AF;
+            padding: 24px;
+            color: #ffffff;
+            position: relative;
+        }
+        .card-opt6-badge-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .card-opt6-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+        .card-opt6-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .card-opt6-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-opt6-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+        .card-opt6-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #1e293b;
+            font-weight: 700;
+        }
+        .card-opt6-meta-item svg {
+            color: #EF1218;
+            width: 18px;
+            height: 18px;
+        }
+        .card-opt6-desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .card-opt6-link {
+            color: #0132AF;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .card-opt6-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <h2 class="section-title">Opción 4: Icono Prominente y Limpio</h2>
+    <div class="programs-grid">
+
+        <!-- Card Opt 4 -->
+        <article class="card-opt4">
+            <div class="card-opt4-icon-wrapper">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <h3 class="card-opt4-title">Ingeniería de Software</h3>
+            <div class="card-opt4-meta">
+                <div class="card-opt4-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    7 Semestres
+                </div>
+                <div class="card-opt4-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Presencial
+                </div>
+            </div>
+            <p class="card-opt4-desc">Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
+            <a href="#" class="card-opt4-btn">Más información</a>
+        </article>
+
+        <!-- Card Opt 4 -->
+        <article class="card-opt4">
+            <div class="card-opt4-icon-wrapper">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <h3 class="card-opt4-title">Negocios Internacionales</h3>
+            <div class="card-opt4-meta">
+                <div class="card-opt4-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    7 Semestres
+                </div>
+                <div class="card-opt4-meta-item">
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Presencial
+                </div>
+            </div>
+            <p class="card-opt4-desc">Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+            <a href="#" class="card-opt4-btn">Más información</a>
+        </article>
+
+    </div>
+
+    <h2 class="section-title">Opción 5: Neo-Brutalismo (Alto Contraste)</h2>
+    <div class="programs-grid">
+
+        <!-- Card Opt 5 -->
+        <article class="card-opt5">
+            <div class="card-opt5-tag-container">
+                <span class="card-opt5-tag">Presencial</span>
+                <span class="card-opt5-tag outline">7 Semestres</span>
+            </div>
+            <h3 class="card-opt5-title">Ingeniería<br>de Software</h3>
+            <div class="card-opt5-divider"></div>
+            <p class="card-opt5-desc">Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
+            <a href="#" class="card-opt5-btn">Ir al curso</a>
+        </article>
+
+        <!-- Card Opt 5 -->
+        <article class="card-opt5">
+            <div class="card-opt5-tag-container">
+                <span class="card-opt5-tag">Presencial</span>
+                <span class="card-opt5-tag outline">7 Semestres</span>
+            </div>
+            <h3 class="card-opt5-title">Negocios<br>Internacionales</h3>
+            <div class="card-opt5-divider"></div>
+            <p class="card-opt5-desc">Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+            <a href="#" class="card-opt5-btn">Ir al curso</a>
+        </article>
+
+    </div>
+
+    <h2 class="section-title">Opción 6: Tarjeta Dividida (Color Header)</h2>
+    <div class="programs-grid" style="margin-bottom: 60px;">
+
+        <!-- Card Opt 6 -->
+        <article class="card-opt6">
+            <div class="card-opt6-header">
+                <div class="card-opt6-badge-container">
+                    <span class="card-opt6-badge">PREGRADO</span>
+                    <span class="card-opt6-badge" style="background:#0BD926; color:#ffffff;">VIRTUAL</span>
+                </div>
+                <h3 class="card-opt6-title">Ingeniería de Software</h3>
+            </div>
+            <div class="card-opt6-body">
+                <div class="card-opt6-meta">
+                    <div class="card-opt6-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        7 Semestres
+                    </div>
+                    <div class="card-opt6-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Diurna/Nocturna
+                    </div>
+                </div>
+                <p class="card-opt6-desc">Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
+                <a href="#" class="card-opt6-link">
+                    Más información 
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <!-- Card Opt 6 -->
+        <article class="card-opt6">
+            <div class="card-opt6-header">
+                <div class="card-opt6-badge-container">
+                    <span class="card-opt6-badge">PREGRADO</span>
+                </div>
+                <h3 class="card-opt6-title">Negocios Internacionales</h3>
+            </div>
+            <div class="card-opt6-body">
+                <div class="card-opt6-meta">
+                    <div class="card-opt6-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        7 Semestres
+                    </div>
+                    <div class="card-opt6-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Diurna
+                    </div>
+                </div>
+                <p class="card-opt6-desc">Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+                <a href="#" class="card-opt6-link">
+                    Más información 
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ESTILOS PARA OPCIONES NUEVAS CON IMAGEN -->
+    <style>
+        /* ==========================================
+           OPCIÓN 7: Imagen Completa con Degradado
+           ========================================== */
+        .card-opt7 {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 380px;
+            background-color: #1e293b;
+            color: #ffffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .card-opt7:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        .card-opt7-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 0.6s ease;
+        }
+        .card-opt7:hover .card-opt7-img {
+            transform: scale(1.05);
+        }
+        .card-opt7-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(1, 50, 175, 0.95) 0%, rgba(1, 50, 175, 0.5) 50%, transparent 100%);
+            z-index: 1;
+        }
+        .card-opt7-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px 25px;
+        }
+        .card-opt7-badge {
+            display: inline-block;
+            background: #EF1218;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .card-opt7-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+        .card-opt7-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        .card-opt7-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .card-opt7-meta-item svg {
+            width: 16px;
+            height: 16px;
+        }
+        .card-opt7-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            width: 100%;
+            transition: gap 0.2s;
+        }
+        .card-opt7:hover .card-opt7-btn {
+            gap: 12px;
+        }
+
+        /* ==========================================
+           OPCIÓN 8: Tarjeta Flotante (Material Design)
+           ========================================== */
+        .card-opt8 {
+            background: #f1f5f9;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .card-opt8:hover {
+            transform: translateY(-5px);
+        }
+        .card-opt8-img-wrapper {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .card-opt8-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-opt8-content {
+            background: #ffffff;
+            margin: -40px 20px 0 20px; /* Sube y se superpone a la imagen */
+            position: relative;
+            z-index: 2;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+        .card-opt8-title {
+            color: #0132AF;
+            font-size: 20px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        .card-opt8-desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .card-opt8-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-opt8-duration {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1e293b;
+            background: #f8fafc;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+        .card-opt8-btn {
+            background: #EF1218;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .card-opt8-btn:hover {
+            background: #c50e13;
+            transform: scale(1.1);
+        }
+    </style>
+
+    <h2 class="section-title">Opción 7: Imagen Completa con Degradado (Inmersiva)</h2>
+    <div class="programs-grid">
+
+        <!-- Card Opt 7 -->
+        <article class="card-opt7">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Software" class="card-opt7-img">
+            <div class="card-opt7-overlay"></div>
+            <div class="card-opt7-content">
+                <span class="card-opt7-badge">Virtual</span>
+                <h3 class="card-opt7-title">Ingeniería<br>de Software</h3>
+                <div class="card-opt7-meta">
+                    <div class="card-opt7-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        7 Semestres
+                    </div>
+                </div>
+                <a href="#" class="card-opt7-btn">
+                    Ir al curso detallado 
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </article>
+
+        <!-- Card Opt 7 -->
+        <article class="card-opt7">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Negocios" class="card-opt7-img">
+            <div class="card-opt7-overlay"></div>
+            <div class="card-opt7-content">
+                <span class="card-opt7-badge" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(2px);">Presencial</span>
+                <h3 class="card-opt7-title">Negocios<br>Internacionales</h3>
+                <div class="card-opt7-meta">
+                    <div class="card-opt7-meta-item">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        7 Semestres
+                    </div>
+                </div>
+                <a href="#" class="card-opt7-btn">
+                    Ir al curso detallado 
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+    <h2 class="section-title">Opción 8: Tarjeta Flotante (Caja superpuesta a Imagen)</h2>
+    <div class="programs-grid" style="margin-bottom: 60px;">
+
+        <!-- Card Opt 8 -->
+        <article class="card-opt8">
+            <div class="card-opt8-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Equipo de Software">
+            </div>
+            <div class="card-opt8-content">
+                <h3 class="card-opt8-title">Ingeniería de Software</h3>
+                <p class="card-opt8-desc">Forma profesionales capaces de diseñar y desarrollar soluciones innovadoras de software frente a la necesidad del mercado.</p>
+                <div class="card-opt8-footer">
+                    <span class="card-opt8-duration">7 Semestres</span>
+                    <a href="#" class="card-opt8-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Card Opt 8 -->
+        <article class="card-opt8">
+            <div class="card-opt8-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Reunión de Negocios">
+            </div>
+            <div class="card-opt8-content">
+                <h3 class="card-opt8-title">Negocios Internacionales</h3>
+                <p class="card-opt8-desc">Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
+                <div class="card-opt8-footer">
+                    <span class="card-opt8-duration">7 Semestres</span>
+                    <a href="#" class="card-opt8-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ESTILOS PARA LA OPCIÓN 9 -->
+    <style>
+        /* ==========================================
+           OPCIÓN 9: Minimalista / Corporativo (CON IMAGEN)
+           ========================================== */
+        .card-opt9 {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-opt9:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+        .card-opt9-img-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-bottom: 4px solid #0132AF; /* Mantiene el distintivo corporativo de la opción 2 */
+        }
+        .card-opt9-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .card-opt9:hover .card-opt9-img {
+            transform: scale(1.05); /* Suave zoom al hacer hover */
+        }
+        .card-opt9-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-opt9-title {
+            color: #1e293b;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .card-opt9-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            flex-grow: 1;
+        }
+        .card-opt9-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .card-opt9-list li svg {
+            width: 18px;
+            height: 18px;
+            color: #0BD926;
+            flex-shrink: 0;
+            margin-top: 2px;
+            stroke-width: 2.5;
+            fill: none;
+            stroke: currentColor;
+        }
+        .card-opt9-link {
+            color: #0132AF;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding-top: 15px;
+            border-top: 1px solid #edf2f7;
+            transition: gap 0.2s;
+        }
+        .card-opt9-link:hover {
+            gap: 10px;
+        }
+        .card-opt9-link svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+    </style>
+
+    <h2 class="section-title">Opción 9: Minimalista / Corporativa (Con Imagen)</h2>
+    <div class="programs-grid" style="margin-bottom: 80px;">
+
+        <!-- Card Opt 9 -->
+        <article class="card-opt9">
+            <div class="card-opt9-img-container">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Ingeniería de Software" class="card-opt9-img">
+            </div>
+            <div class="card-opt9-content">
+                <h3 class="card-opt9-title">Ingeniería de Software</h3>
+                <ul class="card-opt9-list">
+                    <li>
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        100% Virtual o Presencial
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Duración de 7 semestres
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Enfoque en desarrollo ágil y arquitectura
+                    </li>
+                </ul>
+                <a href="#" class="card-opt9-link">
+                    Ir al curso 
+                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </article>
+
+        <!-- Card Opt 9 -->
+        <article class="card-opt9">
+            <div class="card-opt9-img-container">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Negocios Internacionales" class="card-opt9-img">
+            </div>
+            <div class="card-opt9-content">
+                <h3 class="card-opt9-title">Negocios Internacionales</h3>
+                <ul class="card-opt9-list">
+                    <li>
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Presencial (Jornada Diurna)
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Duración de 7 semestres
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Énfasis en mercados globales y finanzas
+                    </li>
+                </ul>
+                <a href="#" class="card-opt9-link">
+                    Ir al curso 
+                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+</body>
+</html>

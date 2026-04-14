@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apilables Hero Banner</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: #122661;
+        }
+
+        .ap-banner {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0F47A6 0%, #0132AF 50%, #001D5E 100%);
+        }
+
+        .ap-banner::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -15%;
+            width: 500px;
+            height: 600px;
+            background: rgba(234, 10, 42, 0.06);
+            transform: rotate(25deg);
+            z-index: 0;
+        }
+
+        .ap-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -5%;
+            width: 450px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.04);
+            transform: rotate(-15deg);
+            z-index: 0;
+        }
+
+        .ap-banner-inner {
+            max-width: 100%;
+            margin: 0 auto;
+            min-height: 620px;
+            padding: 96px 10%;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            gap: 54px;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ap-left {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ap-right {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ap-badge {
+            background: #EA0A2A;
+            color: #FFFFFF;
+            padding: 12px 32px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            display: inline-block;
+            clip-path: polygon(20px 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+            margin: 0 0 18px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ap-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            50%, 100% {
+                left: 100%;
+            }
+        }
+
+        .ap-title {
+            margin: 0;
+            color: #ffffff;
+            font-size: 3.65rem;
+            line-height: 1.08;
+            letter-spacing: -0.7px;
+            font-weight: bold;
+        }
+
+        .ap-subtitle {
+            margin: 20px 0 0;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.22rem;
+            line-height: 1.74;
+            font-weight: 500;
+            max-width: 800px;
+        }
+
+        .ap-note {
+            margin: 18px 0 0;
+            color: #50608f;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .ap-cta-group {
+            display: flex;
+            gap: 14px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .ap-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ap-btn-whatsapp {
+            background: #EA0A2A;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .ap-btn-whatsapp:hover {
+            background: #c60824;
+
+        }
+
+        .ap-btn-whatsapp svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            overflow: visible;
+        }
+
+        .ap-right {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: min(500px, 100%);
+            justify-self: end;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .ap-right-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ap-feature {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .ap-feature-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #EA0A2A;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            margin: 0;
+        }
+
+        .ap-feature-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ap-feature-title {
+            display: block;
+            margin: 0;
+            color: #0132AF;
+            font-size: 1.05rem;
+            line-height: 1.3;
+            font-weight: bold;
+            letter-spacing: -0.2px;
+        }
+
+        .ap-feature p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .ap-feature:nth-child(2) .ap-feature-number {
+            color: #EA0A2A;
+        }
+
+        @media (max-width: 992px) {
+            .ap-banner-inner {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 64px 20px;
+                gap: 30px;
+            }
+
+            .ap-badge {
+                font-size: 1rem;
+                padding: 8px 30px;
+                margin-bottom: 16px;
+                font-weight: 900;
+            }
+
+            .ap-title {
+                font-size: 2.7rem;
+            }
+
+            .ap-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .ap-right {
+                justify-self: start;
+                width: min(560px, 100%);
+                padding: 0;
+            }
+
+            .ap-right-title {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+
+            .ap-feature {
+                grid-template-columns: 60px 1fr;
+                gap: 16px;
+                padding: 22px;
+            }
+
+            .ap-feature-title {
+                font-size: 1.08rem;
+            }
+
+            .ap-feature p {
+                font-size: 0.92rem;
+            }
+
+            .ap-cta-group {
+                margin-top: 28px;
+            }
+
+            .ap-banner::before {
+                width: 350px;
+                height: 400px;
+                top: -5%;
+                right: -10%;
+            }
+
+            .ap-banner::after {
+                width: 300px;
+                height: 300px;
+                bottom: -10%;
+                left: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ap-banner-inner {
+                padding: 54px 16px;
+            }
+
+            .ap-title {
+                font-size: 2.2rem;
+            }
+
+            .ap-subtitle {
+                font-size: 1.03rem;
+                line-height: 1.62;
+            }
+
+            .ap-right {
+                width: 100%;
+                padding: 0;
+            }
+
+            .ap-right-title {
+                font-size: 1.6rem;
+                margin-bottom: 18px;
+            }
+
+            .ap-feature {
+                grid-template-columns: 50px 1fr;
+                gap: 14px;
+                padding: 20px;
+            }
+
+            .ap-feature-number {
+                font-size: 1.9rem;
+            }
+
+            .ap-feature-title {
+                font-size: 1.05rem;
+            }
+
+            .ap-feature p {
+                font-size: 0.9rem;
+            }
+
+            .ap-cta-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .ap-btn {
+                width: 100%;
+            }
+
+            .ap-badge {
+                font-size: 0.95rem;
+                padding: 11px 30px;
+                margin-bottom: 16px;
+                font-weight: 900;
+            }
+
+            .ap-banner::before,
+            .ap-banner::after {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="ap-banner" id="apilables-hero" aria-label="Banner de cursos apilables">
+        <div class="ap-banner-inner">
+            <div class="ap-left">
+                <h3 class="ap-badge">Nuevo</h3>
+                <h1 class="ap-title">Aprende habilidades que sí te sirven para trabajar y emprender</h1>
+                <p class="ap-subtitle">Cursos virtuales fáciles de entender, pensados para que desarrolles habilidades reales en negocios, liderazgo y toma de decisiones. Mejora tu perfil, aprende a tu ritmo y prepárate para oportunidades laborales o para crear tus propios proyectos.</p>
+                <div class="ap-cta-group">
+                    <a href="https://wa.me/57" class="ap-btn ap-btn-whatsapp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                            <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="none" stroke="#fff" stroke-width="1.5"/>
+                            <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" stroke="#fff"  fill="#fff"/>
+                        </svg>
+                        <span>Contáctanos por WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <aside class="ap-right" aria-label="Beneficios de los cursos apilables">
+                <h2 class="ap-right-title">¿Por qué somos diferentes?</h2>
+                <article class="ap-feature">
+                    <h3 class="ap-feature-number">01</h3>
+                    <div class="ap-feature-content">
+                        <h4 class="ap-feature-title">Cursos Certificados</h4>
+                        <p>Consigue una insignia con cada curso completado.</p>
+                    </div>
+                </article>
+                <article class="ap-feature">
+                    <h3 class="ap-feature-number">02</h3>
+                    <div class="ap-feature-content">
+                        <h4 class="ap-feature-title">1 Curso = 1 Materia de tu carrera</h4>
+                        <p>Homologable solo en nuestros programas académicos.<span style="color: #EA0A2A; font-size: 15px;">*</span></p>
+                    </div>
+                </article>
+                <article class="ap-feature">
+                    <h3 class="ap-feature-number">03</h3>
+                    <div class="ap-feature-content">
+                        <h4 class="ap-feature-title">100% virtual y flexible</h4>
+                        <p>Estudia cuando quieras y desde donde estés.</p>
+                    </div>
+                </article>
+            </aside>
+        </div>
+    </section>
+</body>
+</html>

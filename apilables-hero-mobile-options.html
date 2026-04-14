@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Curso - Opciones Celular y Opt3 Mejorado</title>
+<style>
+body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   ESTILOS GENERALES DEL HERO (Desktop Base)
+   ========================================= */
+.hero-section-wrapper {
+  width: 100%;
+}
+
+.hero-container {
+  background: #ffffff;
+}
+
+/* Typography */
+.hero-h1 {
+  font-size: 40px;
+  color: #0132AF;
+  margin: 16px 0;
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: #06325a;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.hero-micro {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 12px;
+}
+
+/* Badges & Chips */
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #eef4ff;
+  color: #0132AF;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid rgba(1, 50, 175, 0.1);
+}
+
+.hero-badge {
+  background: #FF1744;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+/* Metadata */
+.hero-meta-grid {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-meta-item {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(1, 50, 175, 0.15);
+  flex: 1;
+  min-width: 120px;
+}
+
+.hero-meta-lbl {
+  font-size: 12px;
+  color: rgba(1, 50, 175, 0.72);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.hero-meta-val {
+  font-size: 14px;
+  color: #06325a;
+  font-weight: 700;
+}
+
+.hero-price {
+  font-size: 18px;
+  color: #0132AF;
+  font-weight: 900;
+}
+
+.hero-old-price {
+  text-decoration: line-through;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 6px;
+}
+
+/* Buttons */
+.hero-btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* --- ESTILOS DE BOTÓN DE WHATSAPP ACTUALIZADOS --- */
+.hero-btn-wa {
+  background: #57D100;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.hero-btn-wa:hover {
+  background: #6AFF00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4);
+  color: #ffffff;
+}
+/* ------------------------------------------------- */
+
+.hero-btn-out {
+  background: transparent;
+  color: #0132AF;
+  border: 2px solid #0132AF;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.hero-btn-out:hover {
+  background: #0132AF;
+  color: #ffffff;
+}
+
+/* Layout Specific */
+.hero-demo-img {
+  background-image: url('https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-layout {
+  position: relative;
+  min-height: 550px;
+  background: #eef2f6;
+  display: flex;
+  align-items: center;
+  padding: 60px;
+}
+
+.hero-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  border-radius: 100px 0 0 100px;
+  overflow: hidden;
+}
+
+.hero-card {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  padding: 50px 60px; /* Padding incrementado para dar mayor respiro */
+  border-radius: 24px;
+  max-width: 650px; /* Card más ancha (Original 550px) */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* =========================================
+   VERSIONES MÓVILES (OPCIONES)
+   ========================================= */
+.showcase-title {
+  text-align: center;
+  padding: 30px;
+  background: #0132AF;
+  color: white;
+  margin: 0;
+  font-size: 22px;
+}
+
+
+/* OPCIÓN 1: Superposición de la tarjeta (El clásico mejorado) 
+   La imagen queda arriba con aspecto ancho, y la tarjeta sube montándose sobre ella. */
+.mobile-opt1 .hero-card {
+  margin: -60px auto 30px; /* Margen negativo para sobreponer */
+  width: 90%;
+  padding: 30px 24px;
+}
+.mobile-opt1 .hero-img {
+  position: relative;
+  width: 100%;
+  height: 350px; /* Altura generosa para la imagen */
+  border-radius: 0;
+}
+
+
+/* OPCIÓN 2: Bloques Separados (Edge-to-Edge sin superposición) 
+   La imagen y la tarjeta no se tocan. Diseño limpio estilo app. */
+.mobile-opt2 .hero-layout {
+  padding: 0; /* Quitar padding general */
+  flex-direction: column;
+  background: #ffffff;
+}
+.mobile-opt2 .hero-img {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 0 0 40px 40px; /* Borde curvo en la parte inferior de la imagen */
+}
+.mobile-opt2 .hero-card {
+  box-shadow: none; /* Sin sombra en móvil, diseño plano */
+  border-radius: 0;
+  width: 100%;
+  padding: 30px 20px;
+  max-width: 100%;
+}
+
+
+/* OPCIÓN 3: Fondo Envolvente (Estilo "Card in a Box") 
+   La imagen desaparece y se vuelve fondo de toda la sección, 
+   la caja blanca flota al centro con algo de margen. */
+.mobile-opt3 .hero-layout {
+  padding: 20px;
+  min-height: auto;
+}
+.mobile-opt3 .hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  z-index: 1;
+}
+.mobile-opt3 .hero-img::after {
+  content:'';
+  position: absolute; inset: 0;
+  background: rgba(1, 50, 175, 0.4); /* Capa oscura azul para contraste */
+}
+.mobile-opt3 .hero-card {
+  width: 100%;
+  margin: 40px 0;
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* COMPARTIDO PARA COMPONENTE EN MÓVIL (Menos de 768px) */
+@media (max-width: 768px) {
+  
+  .hero-h1 {
+    font-size: 32px;
+  }
+  
+  .hero-meta-grid {
+    gap: 8px;
+    flex-direction: column; /* Apilamos los meta items en vertical */
+  }
+  
+  .hero-meta-item {
+    width: 100%;
+  }
+
+  .hero-btn-group {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .hero-btn-wa, .hero-btn-out {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Solo para simular vistas en el archivo, forzamos responsive */
+.mobile-simulator {
+  max-width: 480px;
+  margin: 40px auto;
+  border: 12px solid #333;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  background: #f4f7fb;
+}
+
+/* En desktop se ven normal */
+@media (min-width: 769px) {
+  .mobile-simulator {
+    max-width: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0 60px 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<p style="text-align: center; padding: 20px; font-weight: 500; font-size: 18px;">
+  Si abres esto en teléfono o "reduces la ventana" del navegador, las siguientes 3 pantallas se adaptarán. <br>
+  <small>(En pantallas pequeñas verás las 3 opciones de diseño celular. En monitor, verás el diseño desktop original con el ancho de tarjeta actualizado y botón WhatsApp).</small>
+</p>
+
+<!-- =========================================
+     OPCIÓN 1: Sobreposición Mejorada
+     ========================================= -->
+<div class="mobile-simulator">
+  <h2 class="showcase-title">Opción Móvil 1: Tarjeta Superpuesta</h2>
+  
+  <div class="hero-section-wrapper mobile-opt1">
+    <div class="hero-container hero-layout">
+      <div class="hero-demo-img hero-img"></div>
+      <div class="hero-card">
+        <div class="hero-chip">CURSOS <span class="hero-badge">NUEVO</span></div>
+        <h1 class="hero-h1">Curso en Herramientas de Diagnóstico</h1>
+        <p class="hero-desc">Adquiere conocimientos prácticos y domina las herramientas estratégicas para potenciar tu empresa.</p>
+        
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item">
+            <span class="hero-meta-lbl">Inversión</span>
+            <span class="hero-meta-val hero-price"><span class="hero-old-price">$ X.XXX.XXX</span>$ X.XXX.XXX</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <div class="hero-meta-item" style="flex:1;">
+              <span class="hero-meta-lbl">Duración</span>
+              <span class="hero-meta-val">40 horas</span>
+            </div>
+            <div class="hero-meta-item" style="flex:1;">
+              <span class="hero-meta-lbl">Modalidad</span>
+              <span class="hero-meta-val">Virtual</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-btn-group">
+          <!-- Botón de WhatsApp actualizado con SVG original -->
+          <a href="#" class="hero-btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:4px;">
+              <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#fff"/>
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
+            </svg>
+            ¡Inscríbete Ya!
+          </a>
+          <a href="#" class="hero-btn-out">Ver plan de estudios</a>
+        </div>
+        <div class="hero-micro">Te contactamos por WhatsApp en horario hábil.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================
+     OPCIÓN 2: Diseño Edge-to-Edge (Borde Recto)
+     ========================================= -->
+<div class="mobile-simulator">
+  <h2 class="showcase-title">Opción Móvil 2: Borde Curvo App</h2>
+  
+  <div class="hero-section-wrapper mobile-opt2">
+    <div class="hero-container hero-layout">
+      <div class="hero-demo-img hero-img"></div>
+      <div class="hero-card">
+        <div class="hero-chip">CURSOS <span class="hero-badge">NUEVO</span></div>
+        <h1 class="hero-h1">Curso en Herramientas de Diagnóstico</h1>
+        <p class="hero-desc">Adquiere conocimientos prácticos y domina las herramientas estratégicas para potenciar tu empresa.</p>
+        
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item">
+            <span class="hero-meta-lbl">Inversión</span>
+            <span class="hero-meta-val hero-price"><span class="hero-old-price">$ X.XXX.XXX</span>$ X.XXX.XXX</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <div class="hero-meta-item" style="flex:1;">
+              <span class="hero-meta-lbl">Duración</span>
+              <span class="hero-meta-val">40 horas</span>
+            </div>
+            <div class="hero-meta-item" style="flex:1;">
+              <span class="hero-meta-lbl">Modalidad</span>
+              <span class="hero-meta-val">Virtual</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-btn-group">
+          <!-- Botón de WhatsApp actualizado con SVG original -->
+          <a href="#" class="hero-btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:4px;">
+              <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#fff"/>
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
+            </svg>
+            ¡Inscríbete Ya!
+          </a>
+          <a href="#" class="hero-btn-out">Ver plan de estudios</a>
+        </div>
+        <div class="hero-micro">Te contactamos por WhatsApp en horario hábil.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================
+     OPCIÓN 3: Imagen como Background
+     ========================================= -->
+<div class="mobile-simulator">
+  <h2 class="showcase-title">Opción Móvil 3: Fondo Envolvente</h2>
+  
+  <div class="hero-section-wrapper mobile-opt3">
+    <div class="hero-container hero-layout">
+      <div class="hero-demo-img hero-img"></div>
+      <div class="hero-card">
+        <div class="hero-chip">CURSOS <span class="hero-badge">NUEVO</span></div>
+        <h1 class="hero-h1">Curso en Herramientas de Diagnóstico</h1>
+        <p class="hero-desc">Adquiere conocimientos prácticos y domina las herramientas estratégicas para potenciar tu empresa.</p>
+        
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item">
+            <span class="hero-meta-lbl">Inversión</span>
+            <span class="hero-meta-val hero-price"><span class="hero-old-price">$ X.XXX.XXX</span>$ X.XXX.XXX</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <div class="hero-meta-item" style="flex:1;">
+              <span class="hero-meta-lbl">Duración</span>
+              <span class="hero-meta-val">40 horas</span>
+            </div>
+            <div class="hero-meta-item" style="flex:1;">
+              <span class="hero-meta-lbl">Modalidad</span>
+              <span class="hero-meta-val">Virtual</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-btn-group">
+          <!-- Botón de WhatsApp actualizado con SVG original -->
+          <a href="#" class="hero-btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:4px;">
+              <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#fff"/>
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
+            </svg>
+            ¡Inscríbete Ya!
+          </a>
+          <a href="#" class="hero-btn-out">Ver plan de estudios</a>
+        </div>
+        <div class="hero-micro">Te contactamos por WhatsApp en horario hábil.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

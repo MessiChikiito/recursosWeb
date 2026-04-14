@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Opciones Inversión</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f1f5f9; /* Fondo visible para notar las transparencias */
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .showcase-title {
+            background: #0132AF; color: white; padding: 15px 20px; text-align: center;
+            font-size: 22px; font-weight: 800; margin-top: 60px;
+        }
+
+        .split-section {
+            padding: 60px 20px;
+            background-color: transparent; /* TRANSPARENTE COMO SE SOLICITÓ */
+        }
+        
+        .split-section * { box-sizing: border-box; }
+
+        .split-container {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: stretch;
+        }
+
+        /* Dummy Left (Why Us visual placeholder) */
+        .dummy-left {
+            background-color: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            border-radius: 16px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: #64748b; font-size: 24px; font-weight: 800; text-align: center;
+            min-height: 480px; /* SIMULA LA ALTURA DEL ORIGINAL */
+            padding: 40px;
+        }
+        .dummy-left small { font-size: 14px; font-weight: 500; margin-top: 10px; color: #94a3b8;}
+
+        ul.ben-list { list-style: none; padding: 0; margin: 0 0 24px 0; }
+        ul.ben-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 15px; font-weight: 500; }
+        ul.ben-list li::before { content: '✓'; position: absolute; left: 0; top: 0; font-weight: 800; }
+
+        /* ====================
+           OPCIÓN 1: Listón Clásico (Ribbon)
+           ==================== */
+        .c1 { background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; overflow: hidden; border: 1px solid #e2e8f0; }
+        .c1-ribbon { position: absolute; top: 20px; right: -35px; background: #FF1744; color: white; padding: 8px 40px; font-weight: 800; font-size: 12px; transform: rotate(45deg); box-shadow: 0 4px 10px rgba(255,23,68,0.3); }
+        .c1 h3 { color: #0132AF; font-size: 18px; margin: 0 0 8px; }
+        .c1 .old { color: #94a3b8; text-decoration: line-through; font-size: 14px; }
+        .c1 .price { font-size: 48px; color: #0f172a; font-weight: 900; margin: 4px 0; }
+        .c1 .save { color: #16a34a; font-weight: 700; font-size: 14px; margin-bottom: 24px; }
+        .c1 ul.ben-list li::before { color: #0132AF; }
+        .c1-btn { display: block; background: #0132AF; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 2: Corporativo Oscuro (Dark Mode)
+           ==================== */
+        .c2 { background: #011d66; border-radius: 16px; padding: 40px; color: #fff; box-shadow: 0 20px 40px rgba(1,50,175,0.2); }
+        .c2-badge { display: inline-block; background: rgba(255,23,68,0.2); border: 1px solid #FF1744; color: #FF1744; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 800; margin-bottom: 16px; }
+        .c2 h3 { color: #93c5fd; font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+        .c2 .price { font-size: 52px; font-weight: 900; margin: 0 0 4px; line-height: 1; }
+        .c2 .old { color: #64748b; text-decoration: line-through; }
+        .c2 ul.ben-list { margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;}
+        .c2 ul.ben-list li { color: #e2e8f0; }
+        .c2 ul.ben-list li::before { color: #FF1744; }
+        .c2-btn { display: block; background: #FF1744; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 800; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 3: Acento Borde Izquierdo Izquierdo
+           ==================== */
+        .c3 { background: #fff; border-radius: 12px; padding: 40px; border-left: 8px solid #0132AF; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .c3-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+        .c3 h3 { margin: 0; color: #64748b; font-size: 16px; }
+        .c3 .save-badge { background: #e6fced; color: #16a34a; padding: 4px 10px; border-radius: 4px; font-weight: 800; font-size: 12px; }
+        .c3 .price-block { margin-bottom: 24px; }
+        .c3 .price { font-size: 40px; color: #0132AF; font-weight: 900; }
+        .c3 .old { font-size: 16px; color: #94a3b8; text-decoration: line-through; margin-left: 8px; }
+        .c3 ul.ben-list li::before { color: #0132AF; }
+        .c3-btn { display: block; border: 2px solid #0132AF; color: #0132AF; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 4: Contraste Superior
+           ==================== */
+        .c4 { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .c4-header { background: #EF1218; color: white; padding: 30px 40px; text-align: center; }
+        .c4-header h3 { margin: 0 0 10px; font-size: 18px; color: #fca5a5; }
+        .c4-header .price { font-size: 46px; font-weight: 900; margin: 0; line-height: 1; }
+        .c4-body { padding: 30px 40px; }
+        .c4-body .old-save { text-align: center; margin-bottom: 24px; color: #64748b; font-weight: 500; font-size: 14px;}
+        .c4 ul.ben-list li::before { color: #EF1218; }
+        .c4-btn { display: block; background: #0132AF; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 5: Neo Brutalismo
+           ==================== */
+        .c5 { background: #fff; border: 3px solid #0f172a; border-radius: 12px; padding: 40px; box-shadow: 8px 8px 0px #0132AF; }
+        .c5-badge { background: #FF1744; color: #fff; border: 2px solid #0f172a; padding: 6px 14px; border-radius: 99px; font-weight: 900; font-size: 12px; display: inline-block; margin-bottom: 16px; }
+        .c5 h3 { margin: 0 0 4px; font-size: 20px; font-weight: 800; color: #0f172a; }
+        .c5 .price { font-size: 48px; font-weight: 900; color: #0f172a; margin: 0 0 8px; }
+        .c5 ul.ben-list li { font-weight: 700; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;}
+        .c5 ul.ben-list li::before { color: #0132AF; }
+        .c5-btn { display: block; background: #0f172a; color: #fff; text-align: center; padding: 14px; border-radius: 0; font-weight: 800; text-decoration: none; text-transform: uppercase;}
+
+        /* ====================
+           OPCIÓN 6: Foco Centrado Minimal
+           ==================== */
+        .c6 { background: #fff; border-radius: 20px; padding: 50px 40px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .c6-badge { font-size: 13px; font-weight: 800; color: #EF1218; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+        .c6 .price { font-size: 56px; font-weight: 900; color: #0132AF; line-height: 1; margin-bottom: 12px; }
+        .c6 .old { color: #94a3b8; text-decoration: line-through; font-size: 16px; margin-bottom: 24px; display: block; }
+        .c6-divider { height: 1px; background: #e2e8f0; width: 60%; margin: 0 auto 24px; }
+        .c6 p { color: #475569; font-weight: 500; font-size: 15px; margin-bottom: 30px; line-height: 1.6; }
+        .c6-btn { display: inline-block; background: #0132AF; color: #fff; padding: 16px 40px; border-radius: 50px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 7: Ticket Estilo Cupón (Dashed)
+           ==================== */
+        .c7 { background: #fff; border-radius: 12px; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.08)); position: relative; }
+        .c7-top { padding: 40px; border-bottom: 3px dashed #cbd5e1; position: relative; }
+        /* Círculos del ticket */
+        .c7-top::before, .c7-top::after { content: ''; position: absolute; bottom: -12px; width: 24px; height: 24px; background: #f1f5f9; border-radius: 50%; } /* Color de fondo body */
+        .c7-top::before { left: -12px; } .c7-top::after { right: -12px; }
+        .c7-bottom { padding: 30px 40px; }
+        .c7 h3 { margin: 0 0 10px; color: #0132AF; }
+        .c7 .price { font-size: 42px; font-weight: 900; color: #0f172a; margin: 0; }
+        .c7 .badge { display: inline-block; margin-top: 10px; background: #fee2e2; color: #ef4444; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 800; }
+        .c7 ul.ben-list li::before { color: #0132AF; }
+        .c7-btn { display: block; border: 2px dashed #0132AF; color: #0132AF; text-align: center; padding: 14px; border-radius: 8px; font-weight: 800; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 8: Fondo Gradiente Suave
+           ==================== */
+        .c8 { background: linear-gradient(145deg, #ffffff 0%, #e0e7ff 100%); border-radius: 24px; padding: 40px; border: 1px solid #fff; box-shadow: 0 10px 30px rgba(1,50,175,0.1); }
+        .c8-badge { background: #ffffff; border: 1px solid #0132AF; color: #0132AF; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 12px; margin-bottom: 24px; display: inline-block; }
+        .c8 .price { font-size: 44px; font-weight: 900; color: #0132AF; margin: 0 0 8px; }
+        .c8 .save { color: #0f172a; font-weight: 600; font-size: 14px; margin-bottom: 24px; }
+        .c8 ul.ben-list li::before { color: #0132AF; background: rgba(1,50,175,0.1); width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 10px; top: 0; left: 0; }
+        .c8 ul.ben-list li { padding-left: 32px; }
+        .c8-btn { display: block; background: linear-gradient(90deg, #0132AF, #1e40af); color: #fff; text-align: center; padding: 14px; border-radius: 12px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(1,50,175,0.3);}
+
+        /* ====================
+           OPCIÓN 9: Insignia Flotante Arriba
+           ==================== */
+        .c9 { background: #fff; border-radius: 16px; padding: 50px 40px 40px; border: 2px solid #0132AF; position: relative; }
+        .c9-float { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: #0132AF; color: white; padding: 8px 24px; border-radius: 30px; font-weight: 800; font-size: 14px; white-space: nowrap; box-shadow: 0 4px 10px rgba(1,50,175,0.4); }
+        .c9 h3 { text-align: center; color: #64748b; font-size: 16px; margin: 0 0 10px; }
+        .c9 .price { text-align: center; font-size: 50px; font-weight: 900; color: #0f172a; margin: 0 0 24px; }
+        .c9 ul.ben-list li::before { color: #0132AF; }
+        .c9-btn { display: block; background: #EF1218; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 10: Horizontal / Side-by-Side (Precios juntos)
+           ==================== */
+        .c10 { background: #fff; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0; }
+        .c10 h3 { color: #0f172a; font-size: 20px; font-weight: 800; margin: 0 0 16px; }
+        .c10-price-box { display: flex; align-items: baseline; gap: 12px; background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 24px; border: 1px dashed #cbd5e1; }
+        .c10 .price { font-size: 36px; font-weight: 900; color: #0132AF; margin: 0; }
+        .c10 .old { font-size: 16px; color: #94a3b8; text-decoration: line-through; }
+        .c10 ul.ben-list li::before { color: #16a34a; } /* Checkmarks verdes */
+        .c10-btn { display: block; background: #0a1f44; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 11: Destilado de Ahorro
+           ==================== */
+        .c11 { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 12px 24px rgba(0,0,0,0.03); display: flex; flex-direction: column; }
+        .c11-top { padding: 40px; }
+        .c11 h3 { font-size: 16px; color: #0132AF; margin: 0 0 8px; font-weight: 800; text-transform: uppercase;}
+        .c11 .price { font-size: 46px; font-weight: 900; color: #0f172a; margin: 0 0 8px; }
+        .c11 ul.ben-list { margin-bottom: 0; }
+        .c11 ul.ben-list li::before { color: #0132AF; }
+        .c11-bottom { background: #fef2f2; padding: 24px 40px; border-top: 1px solid #fecaca; }
+        .c11-bottom .text { color: #dc2626; font-weight: 800; text-align: center; margin-bottom: 12px; font-size: 15px; }
+        .c11-btn { display: block; background: #EF1218; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 12: Minimalista Limpio y Tabulado (Filas rayadas)
+           ==================== */
+        .c12 { background: #fff; border-radius: 12px; padding: 40px; border: 1px solid #e2e8f0; }
+        .c12-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e2e8f0; }
+        .c12 .price-col { display: flex; flex-direction: column; }
+        .c12 .price { font-size: 32px; font-weight: 900; color: #0f172a; }
+        .c12 .old { font-size: 14px; color: #94a3b8; text-decoration: line-through; }
+        .c12-badge { background: #0132AF; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 700; }
+        .c12 ul { list-style: none; padding: 0; margin: 0 0 24px 0; }
+        .c12 ul li { padding: 12px 14px; color: #475569; font-size: 14px; font-weight: 500; display: flex; justify-content: space-between; border-radius: 6px; }
+        .c12 ul li:nth-child(odd) { background: #f8fafc; }
+        .c12 ul li strong { color: #0f172a; }
+        .c12-btn { display: block; background: transparent; border: 2px solid #0f172a; color: #0f172a; text-align: center; padding: 12px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 13: Sombra Material (Elevación Extrema)
+           ==================== */
+        .c13 { background: #fff; border-radius: 28px; padding: 40px; box-shadow: 0 25px 50px -12px rgba(1,50,175,0.25); position: relative; border: 1px solid rgba(255,255,255,0.5); }
+        .c13 h3 { color: #0132AF; font-size: 20px; font-weight: 800; margin: 0 0 16px; }
+        .c13 .price { font-size: 54px; font-weight: 900; color: #0f172a; letter-spacing: -2px; margin: 0 0 4px; line-height: 1; }
+        .c13 .old { display: inline-block; background: #f1f5f9; color: #64748b; text-decoration: line-through; padding: 4px 8px; border-radius: 4px; font-size: 14px; margin-bottom: 24px; font-weight: 600;}
+        .c13 ul.ben-list li::before { color: #0132AF; }
+        .c13-btn { display: block; background: #0132AF; color: #fff; text-align: center; padding: 16px; border-radius: 100px; font-weight: 700; text-decoration: none; box-shadow: 0 8px 20px rgba(1,50,175,0.3); }
+
+        /* ====================
+           OPCIÓN 14: Contorno Doble (Doble stroke)
+           ==================== */
+        .c14 { background: #ffffff; border-radius: 12px; padding: 40px; box-shadow: 0 0 0 4px #ffffff, 0 0 0 6px #0132AF; margin: 6px; }
+        .c14 h3 { text-transform: uppercase; font-size: 14px; font-weight: 800; color: #0132AF; letter-spacing: 1px; margin: 0 0 12px; }
+        .c14 .price { font-size: 46px; font-weight: 900; color: #0f172a; margin: 0 0 8px; }
+        .c14 .save { font-size: 14px; color: #ef4444; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 24px; }
+        .c14 ul.ben-list li::before { color: #0132AF; }
+        .c14-btn { display: block; background: #0132AF; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; }
+
+        /* ====================
+           OPCIÓN 15: Highlight de Marcador Textual
+           ==================== */
+        .c15 { background: #fff; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0; }
+        .c15-hl { background: #fef08a; padding: 2px 8px; border-radius: 4px; display: inline-block; font-size: 14px; font-weight: 800; color: #ca8a04; margin-bottom: 12px; transform: rotate(-2deg); }
+        .c15 .price { font-size: 48px; font-weight: 900; color: #0f172a; margin: 0 0 8px; position: relative; z-index: 1;}
+        /* pseudo highlighter for price */
+        .c15 .price span { position: relative;}
+        .c15 .price span::after { content: ''; position: absolute; left: -5%; bottom: 4px; width: 110%; height: 16px; background: rgba(1,50,175,0.15); z-index: -1; border-radius: 4px; }
+        .c15 .old { color: #94a3b8; font-size: 15px; text-decoration: line-through; margin-bottom: 24px; display: block; }
+        .c15 ul.ben-list li::before { color: #0132AF; }
+        .c15-btn { display: block; background: #0f172a; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: background 0.2s ease;}
+        .c15-btn:hover { background: #0132AF;}
+
+        @media (max-width: 980px) {
+            .split-container { grid-template-columns: 1fr; gap: 40px; }
+            .dummy-left { min-height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OPCIÓN 1 -->
+    <div class="showcase-title">1. Listón Clásico (Ribbon Rojo en equina)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c1">
+                <div class="c1-ribbon">-45% OFF</div>
+                <h3>Tu Inversión</h3>
+                <div class="old">Antes: $ 2.150.000</div>
+                <div class="price">$ 1.250.000</div>
+                <div class="save">¡Te ahorras $ 900.000 hoy!</div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c1-btn">Inscribirme ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 2 -->
+    <div class="showcase-title">2. Corporativo Oscuro (Dark Mode Azul)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c2">
+                <div class="c2-badge">TIEMPO LIMITADO</div>
+                <h3>Pago único</h3>
+                <div class="price">$ 1.250.000</div>
+                <div class="old">$ 2.150.000 Precio Regular</div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c2-btn">Aprovechar Descuento</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 3 -->
+    <div class="showcase-title">3. Borde Lateral Acento (Muy Corporativo)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c3">
+                <div class="c3-top">
+                    <h3>Inversión</h3>
+                    <div class="save-badge">Ahorras -45%</div>
+                </div>
+                <div class="price-block">
+                    <div class="price">$ 1.250.000</div>
+                    <div class="old">Normal: $ 2.150.000</div>
+                </div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c3-btn">Iniciar Trámite</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 4 -->
+    <div class="showcase-title">4. Contraste Superior (Header Rojo Fuerte)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c4">
+                <div class="c4-header">
+                    <h3>Inversión Especial</h3>
+                    <div class="price">$ 1.250.000</div>
+                </div>
+                <div class="c4-body">
+                    <div class="old-save">Antes: <span style="text-decoration: line-through;">$ 2.150.000</span> (Ahorras 45%)</div>
+                    <ul class="ben-list">
+                        <li>Acceso al curso completo</li>
+                        <li>Material de estudio digital</li>
+                        <li>Insignia digital y certificado</li>
+                    </ul>
+                    <a href="#" class="c4-btn">Inscribirme Ya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 5 -->
+    <div class="showcase-title">5. Neo Brutalismo (Bordes gruesos y sombra pesada)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c5">
+                <div class="c5-badge">-45% OFF</div>
+                <h3>PAGO ÚNICO</h3>
+                <div class="price">$ 1.250.000</div>
+                <ul class="ben-list" style="margin-top: 24px;">
+                    <li>Acceso completo</li>
+                    <li>Certificado digital</li>
+                    <li>Asesoría docente</li>
+                </ul>
+                <a href="#" class="c5-btn" style="margin-top: 24px;">Inscribirse</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 6 -->
+    <div class="showcase-title">6. Foco Minimalista Centrado (Limpieza Total)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c6">
+                <div class="c6-badge">Beca Aplicada</div>
+                <div class="price">$ 1.250.000</div>
+                <div class="old">Precio Original: $ 2.150.000</div>
+                <div class="c6-divider"></div>
+                <p>Únete a más de 500 profesionales que ya han potenciado su CV con este curso intensivo de 40 horas.</p>
+                <a href="#" class="c6-btn">Tomar el curso</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 7 -->
+    <div class="showcase-title">7. Ticket de Descuento (Borde Dashed y cortes laterales)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c7">
+                <div class="c7-top">
+                    <h3>Valor Especial</h3>
+                    <div class="price">$ 1.250.000</div>
+                    <div class="badge">Ahorras $ 900.000</div>
+                </div>
+                <div class="c7-bottom">
+                    <ul class="ben-list">
+                        <li>Acceso al curso completo</li>
+                        <li>Insignia digital certificada</li>
+                    </ul>
+                    <a href="#" class="c7-btn">Canjear Beneficio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 8 -->
+    <div class="showcase-title">8. Fondo Gradiente Suave (Azul Premium)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c8">
+                <div class="c8-badge">Recomendado</div>
+                <div class="price">$ 1.250.000</div>
+                <div class="save">Ahorras un 45% respecto a la tarifa normal.</div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c8-btn">Matricularme Hoy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 9 -->
+    <div class="showcase-title">9. Insignia Flotante (Borde llamativo)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c9">
+                <div class="c9-float">DESCUENTO LIMITADO</div>
+                <h3>La mejor inversión para tu futuro</h3>
+                <div class="price">$ 1.250.000</div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c9-btn">Aplicar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 10 -->
+    <div class="showcase-title">10. Estructura Side-by-Side (Precios Destacados en Caja)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c10">
+                <h3>Inversión del Curso</h3>
+                <div class="c10-price-box">
+                    <div class="price">$ 1.250.000</div>
+                    <div class="old">$ 2.150.000</div>
+                </div>
+                <ul class="ben-list">
+                    <li>Modalidad Virtual</li>
+                    <li>40 horas de duración</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c10-btn">Ir al registro</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 11 -->
+    <div class="showcase-title">11. Destilado de Ahorro (Caja de urgencia roja inferior)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c11">
+                <div class="c11-top">
+                    <h3>Pago Único</h3>
+                    <div class="price">$ 1.250.000</div>
+                    <ul class="ben-list">
+                        <li>Acceso al curso completo</li>
+                        <li>Insignia digital incluida</li>
+                    </ul>
+                </div>
+                <div class="c11-bottom">
+                    <div class="text">¡Te ahorras $ 900.000 si reservas hoy!</div>
+                    <a href="#" class="c11-btn">Asegurar mi cupo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 12 -->
+    <div class="showcase-title">12. Tabulada (Listado estilo Fila/Rayado) sin Checkmarks</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c12">
+                <div class="c12-header">
+                    <div class="price-col">
+                        <span class="old">Antes: $ 2.150.000</span>
+                        <span class="price">$ 1.250.000</span>
+                    </div>
+                    <div class="c12-badge">-45%</div>
+                </div>
+                <ul>
+                    <li>Modalidad <strong>Virtual</strong></li>
+                    <li>Duración <strong>40 horas</strong></li>
+                    <li>Acompañamiento <strong>Docente</strong></li>
+                    <li>Certificación <strong>Insignia Digital</strong></li>
+                </ul>
+                <a href="#" class="c12-btn">Empezar Inscripción</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 13 -->
+    <div class="showcase-title">13. Elevación Extrema (Material Design Redondeado)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c13">
+                <h3>Inversión</h3>
+                <div class="old">Normalmente $ 2.150.000</div>
+                <div class="price">$ 1.250</div>
+                <div style="color: #0f172a; font-weight: 800; font-size: 24px; margin-bottom: 24px;">.000 COP</div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio</li>
+                </ul>
+                <a href="#" class="c13-btn">Inscribirse →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 14 -->
+    <div class="showcase-title">14. Contorno Doble (Apariencia Sólida y Estructurada)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c14">
+                <h3>Inversión</h3>
+                <div class="price">$ 1.250.000</div>
+                <div class="save">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>
+                    Ahorras un 45% hoy
+                </div>
+                <ul class="ben-list">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c14-btn">Generar Recibo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPCIÓN 15 -->
+    <div class="showcase-title">15. Highlight Marcador (Toque creativo / orgánico)</div>
+    <section class="split-section">
+        <div class="split-container">
+            <div class="dummy-left">¿Por qué elegirnos? <br><small>(Espacio Dummy Gris)</small></div>
+            <div class="c15">
+                <div class="c15-hl">Excelente Oportunidad</div>
+                <div class="old">Revisión Base: $ 2.150.000</div>
+                <div class="price"><span>$ 1.250.000</span></div>
+                <ul class="ben-list" style="margin-top: 24px;">
+                    <li>Acceso al curso completo</li>
+                    <li>Material de estudio digital</li>
+                    <li>Insignia digital y certificado</li>
+                </ul>
+                <a href="#" class="c15-btn">Comenzar Trámite</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

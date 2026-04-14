@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  
+<style>
+    body{
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(1, 50, 175, .08);
+        border-color: rgba(1, 50, 175, .35);
+    }
+
+    .ue-card {
+        background: #ffffff; 
+        border: 1px solid #e2e8f0; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        padding: 40px;
+        border-radius: 16px;
+    }
+
+    .why-ue-h3 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #0132AF; 
+        border-bottom: 2px solid #f10a0a; 
+        padding-bottom: 12px;
+        margin: 0 0 28px;
+        letter-spacing: -0.5px;
+    }
+
+    .ue-why-benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+
+    .ue-why-benefit-card {
+        background: #f8fafc; 
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 24px;
+        padding-top: 50px;
+        position: relative;
+        transition: all 0.3s ease !important;
+    }
+
+    .ue-why-benefit-card::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: 24px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0132AF 0%, #0052cc 100%); 
+        box-shadow: 0 4px 12px rgba(1, 50, 175, 0.2);
+    }
+
+    .ue-why-benefit-title {
+        font-size: 16px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 6px;
+    }
+
+    .ue-why-benefit-desc {
+        font-size: 14px;
+        color: #475569;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .ue-why-metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 24px 0 0;
+    }
+
+    .ue-why-metric {
+        background: #ffffff; 
+        border: 1px solid #e2e8f0;
+        color: #1e3a8a;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-weight: 900;
+        flex: 1;
+        min-width: 140px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .ue-why-metric__sub {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: #64748b;
+        margin-top: 4px;
+    }
+
+    @media (max-width: 980px) {
+      .ue-why-benefits-grid { grid-template-columns: 1fr; }
+      .ue-why-metrics { gap: 10px; }
+    }
+
+    @media (max-width: 640px) {
+      .ue-card { padding: 20px 15px; margin-left: 15px; margin-right: 15px; }
+      .ue-why-benefits-grid { gap: 14px; }
+      .ue-why-benefit-card { padding: 18px; padding-top: 44px; }
+      .ue-why-benefit-title { font-size: 14px; }
+      .ue-why-benefit-desc { font-size: 13px; }
+      .why-ue-h3 { font-size: 22px; }
+      .ue-why-metric { min-width: 0; flex: 1 1 100%; }
+    }
+</style>
+
+  <div class="ue-card" id="whyUs">
+    <h3 class="why-ue-h3">¿Por qué realizar este curso?</h3>
+    
+    <div class="ue-why-benefits-grid">
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Soluciones Integrales</div>
+        <div class="ue-why-benefit-desc">Da soluciones a necesidades individuales, sociales y organizacionales en distintos sectores.</div>
+      </div>
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Gestión Eficiente</div>
+        <div class="ue-why-benefit-desc">Aporta directamente al bienestar y a la eficiencia administrativa de cualquier proyecto.</div>
+      </div>
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Toma de Decisiones</div>
+        <div class="ue-why-benefit-desc">Comprende los factores clave en la economía para tomar mejores rumbos financieros.</div>
+      </div>
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Gestión Responsable</div>
+        <div class="ue-why-benefit-desc">Evita riesgos y sanciones operativas optimizando los recursos de la organización.</div>
+      </div>
+    </div>
+
+    <div class="ue-why-metrics">
+      <div class="ue-why-metric"><span>Planeación Mercantil</span><span class="ue-why-metric__sub">Fortalece tus conocimientos en la materia.</span></div>
+      <div class="ue-why-metric"><span>Obligaciones Tributarias</span><span class="ue-why-metric__sub">Cumplimiento al 100% y al día.</span></div>
+    </div>
+
+  </div>
+
+</body>
+</html>

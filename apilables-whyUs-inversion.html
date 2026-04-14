@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Por qué elegirnos? e Inversión</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafd;
+        }
+
+        .split-section {
+            padding: 60px 20px;
+            background-color: transparent;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #0f172a;
+        }
+        
+        .split-section * {
+            box-sizing: border-box;
+        }
+
+        .split-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: stretch;
+        }
+        .why-us h2 {
+            font-size: 28px !important;
+            font-weight: 800 !important;
+            color: #EF1218 !important;
+            margin-top: 0 !important;
+            margin-bottom: 30px !important;
+            line-height: 1.2;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .why-card {
+            background-color: #f8fafd;
+            padding: 24px 20px;
+            border-radius: 16px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .why-card:hover {
+            background-color: #f0f5fa;
+            transform: translateY(-2px);
+        }
+        
+        .why-icon {
+            width: 46px;
+            height: 46px;
+            background-color: #EF1218;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        
+        .why-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #ffffff;
+            fill: none;
+        }
+        
+        .why-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0a1f44;
+            margin: 0 0 8px 0;
+        }
+        
+        .why-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .pricing-container {
+            display: flex;
+            height: 100%;
+        }
+
+        .blue-card {
+            background: #0132AF;
+            border-radius: 16px;
+            padding: 50px 40px;
+            color: #ffffff;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(1, 50, 175, 0.25);
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blue-card-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .blue-card h3 {
+            color: #93c5fd;
+            font-size: 18px;
+            margin: 0 0 8px;
+            font-weight: 600;
+        }
+
+        .blue-card .price {
+            font-size: 60px;
+            font-weight: 900;
+            margin: 0 0 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            line-height: 1;
+        }
+
+        .blue-card .desc {
+            color: #e0e7ff;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .blue-card-btn {
+            display: block;
+            width: 100%;
+            background: #EF1218;
+            color: #ffffff;
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.2s ease !important;
+        }
+
+        .blue-card-btn:hover {
+            background: #d90f14;
+            color: #ffffff;
+        }
+
+        @media (max-width: 980px) {
+            .split-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .blue-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-us h2 {
+                font-size: 24px !important;
+            }
+            .blue-card .price {
+                font-size: 46px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="split-section">
+        <div class="split-container">
+            <div class="why-us">
+                <h2>¿Por qué elegir nuestros cursos?</h2>
+                <div class="why-grid">
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Homologación</h3>
+                        <p>Completa cursos y homologa materias para nuestras carreras disponibles.</p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Flexibilidad</h3>
+                        <p>Cursos intensivos en modalidades virtual o presencial, ideales para tu ritmo.</p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                            </svg>
+                        </div>
+                        <h3>Descubre tu Vocación</h3>
+                        <p>Explora áreas de negocio y tecnología para definir tu futuro profesional.</p>
+                    </div>
+                    
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Insignias Digitales</h3>
+                        <p>Obtén certificaciones e insignias para potenciar tu CV de inmediato.</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="pricing-container">
+                <div class="blue-card">
+                    <div class="blue-card-badge">ÚNICA INVERSIÓN</div>
+                    <h3>Precio Especial</h3>
+                    <div class="price">$X.XXX.XXX</div>
+                    <div class="desc">Empieza ahora tu camino al éxito. Obtén acceso inmediato a todos los recursos con este pago único.</div>
+                    <a href="#inscripcion" class="blue-card-btn">Inscribirme ahora</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Viñetas (1 Columna)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #06325a;
+            -webkit-font-smoothing: antialiased;
+            background-color: #f8fafd;
+            padding: 40px;
+        }
+        
+        .opt-title {
+            background-color: #0132AF;
+            color: white;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .ue-work-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* TODAS LAS OPCIONES A 1 COLUMNA */
+            gap: 12px;
+            max-width: 600px; /* Limitado para simular la división con el form */
+            margin: 0 auto;
+        }
+
+        .ue-work-item {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e0e3e8;
+            padding: 16px 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .ue-work-item:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transform: translateX(4px);
+        }
+
+        .ue-work-title-item {
+            color: #06325a;
+            font-weight: 700;
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* COMÚN PARA EL HEADER (El espacio para la viñeta) */
+        .ue-work-item-header {
+            position: relative;
+            padding-left: 36px;
+        }
+
+        /* ==============================================================
+           OPCIÓN 1: Círculo Clásico Alternado (como el original pero en 1 col)
+           ============================================================== */
+        .opt1 .ue-work-item-header::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%; transform: translateY(-50%);
+            width: 15px; height: 15px; border-radius: 50%;
+        }
+        .opt1 .ue-work-item:nth-child(odd) .ue-work-item-header::before { background-color: #0132AF; }
+        .opt1 .ue-work-item:nth-child(even) .ue-work-item-header::before { background-color: #ff0000; }
+
+        /* ==============================================================
+           OPCIÓN 2: Checkmarks (Sutíles y profesionales)
+           ============================================================== */
+        .opt2 .ue-work-item-header::before {
+            content: '✓';
+            position: absolute;
+            left: 0; top: 50%; transform: translateY(-50%);
+            color: #0132AF; font-size: 18px; font-weight: 900;
+        }
+
+        /* ==============================================================
+           OPCIÓN 3: Númeración en Círculos
+           ============================================================== */
+        .opt3 { counter-reset: skill-counter; }
+        .opt3 .ue-work-item-header::before {
+            counter-increment: skill-counter;
+            content: counter(skill-counter);
+            position: absolute;
+            left: 0; top: 50%; transform: translateY(-50%);
+            background-color: #f1f5f9; color: #0132AF;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 800; border: 1px solid #cbd5e1;
+        }
+        .opt3 .ue-work-item-header { padding-left: 40px; }
+
+        /* ==============================================================
+           OPCIÓN 4: Barra Lateral en lugar de bola
+           ============================================================== */
+        .opt4 .ue-work-item-header { padding-left: 20px; }
+        .opt4 .ue-work-item-header::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px; border-radius: 4px;
+        }
+        .opt4 .ue-work-item:nth-child(odd) .ue-work-item-header::before { background-color: #0132AF; }
+        .opt4 .ue-work-item:nth-child(even) .ue-work-item-header::before { background-color: #EF1218; }
+
+        /* ==============================================================
+           OPCIÓN 5: Rombo (Diamante)
+           ============================================================== */
+        .opt5 .ue-work-item-header::before {
+            content: '';
+            position: absolute;
+            left: 4px; top: 50%; transform: translateY(-50%) rotate(45deg);
+            width: 10px; height: 10px;
+            background-color: #0132AF;
+        }
+
+        /* ==============================================================
+           OPCIÓN 6: Flecha tipo Play (Chevron)
+           ============================================================== */
+        .opt6 .ue-work-item-header::before {
+            content: '❯';
+            position: absolute;
+            left: 4px; top: 50%; transform: translateY(-50%);
+            color: #EF1218; font-size: 14px; font-weight: 900;
+        }
+
+        /* ==============================================================
+           OPCIÓN 7: Anillo Hueco (Minimalista)
+           ============================================================== */
+        .opt7 .ue-work-item-header::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%; transform: translateY(-50%);
+            width: 12px; height: 12px; border-radius: 50%;
+            border: 3px solid #0132AF; background-color: transparent;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- OPT 1 -->
+    <div class="opt-title">Opción 1: Círculo Clásico Alternado</div>
+    <div class="ue-work-grid opt1">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <!-- OPT 2 -->
+    <div class="opt-title">Opción 2: Checkmarks ('✓')</div>
+    <div class="ue-work-grid opt2">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <!-- OPT 3 -->
+    <div class="opt-title">Opción 3: Números Consecutivos (1 al 6)</div>
+    <div class="ue-work-grid opt3">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <!-- OPT 4 -->
+    <div class="opt-title">Opción 4: Barra Lateral Alineada (Limpio)</div>
+    <div class="ue-work-grid opt4">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <!-- OPT 5 -->
+    <div class="opt-title">Opción 5: Rombo (Diamante Rotado)</div>
+    <div class="ue-work-grid opt5">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <!-- OPT 6 -->
+    <div class="opt-title">Opción 6: Flecha Chevron (❯)</div>
+    <div class="ue-work-grid opt6">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <!-- OPT 7 -->
+    <div class="opt-title">Opción 7: Anillo Hueco Elegante</div>
+    <div class="ue-work-grid opt7">
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Pensamiento lógico y secuencial para solucionar problemas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Comprender, definir y analizar propiedades de algoritmos.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Diseñar estructuras secuenciales, condicionales y repetitivas.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Evaluar eficiencia de algoritmos en tiempo y espacio.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Programación dinámica y algoritmos voraces para optimizar soluciones.</p></div></div>
+        <div class="ue-work-item"><div class="ue-work-item-header"><p class="ue-work-title-item">Desarrollar software eficiente, estructurado y escalable.</p></div></div>
+    </div>
+
+    <script>
+        // Mismo hover sutil que las cards originales
+    </script>
+</body>
+</html>
