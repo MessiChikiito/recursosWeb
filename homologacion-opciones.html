@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones de Homologación</title>
+    <style>
+/* 
+    ========================================================================
+    CÓDIGO DE HOMOLOGACIÓN - LISTO PARA COPIAR A WORDPRESS 
+    ========================================================================
+    
+    INSTRUCCIONES:
+    1. Agrega este CSS en tu archivo de estilos o Appearance > Customize > Additional CSS.
+    2. Copia el bloque HTML de abajo y pégalo donde quieras que aparezca el banner.
+    3. Cambia "Nombre de la Materia" y "Nombre de la Carrera".
+*/
+
+         .homologacion-banner {
+    background: #ffffff;
+    border-left: 4px solid #EF1218;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 30px 0 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.homologacion-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 100%;
+}
+
+.homologacion-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 28px;
+    min-height: 28px;
+    flex-shrink: 0;
+    margin-top: 0px;
+}
+
+/* Forzar reset del fill en caso de que WordPress intente sobrescribirlo */
+.homologacion-icon path,
+.homologacion-icon polyline,
+.homologacion-icon circle {
+    fill: none !important;
+    stroke: #EF1218 !important;
+    stroke-width: 2;
+}
+
+.homologacion-text {
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.homologacion-text strong {
+    color: #EF1218;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .homologacion-banner {
+        padding: 16px 20px;
+    }
+    
+    .homologacion-text {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body style="background: #f8fafd; padding: 40px; display: flex; flex-direction: column; align-items: center;">
+
+    <h2 style="font-family: sans-serif; color: #0a1f44; margin-bottom: 20px;">Banner Listo:</h2>
+
+                <!-- HTML PARA OPIAR -->
+    <div style="width: 100%;">
+        <div class="homologacion-banner">
+            <div class="homologacion-content">
+                <svg class="homologacion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <p class="homologacion-text">
+                    Al terminar este curso podrás homologar la materia <strong>"Nombre de la Materia"</strong> en la carrera de <strong>"Nombre de la Carrera"</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
