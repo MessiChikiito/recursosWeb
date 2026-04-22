@@ -6,129 +6,34 @@
     <title>Renovación Virtual 2026 | Webinars Exclusivos | CCB + Uniempresarial</title>
     <meta name="description" content="Por renovar tu matrícula mercantil de forma virtual en 2026, accede a webinars exclusivos de IA, Marketing Digital, Finanzas y E-commerce para tu Pyme.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ========================================
-           RENOVACIÓN MATRÍCULA MERCANTIL 2026
-           Landing Page - CCB + Uniempresarial
-           Prefijo: rmm- (Renovación Matrícula Mercantil)
-           ======================================== */
-        
-        /* === VARIABLES Y RESET === */
-        :root {
-            --rmm-azul-primario: #0132AF;
-            --rmm-azul-secundario: #0145D4;
-            --rmm-azul-claro: #E3EFFE;
-            --rmm-rojo-primario: #EA0A2A;
-            --rmm-rojo-hover: #C90820;
-            --rmm-rojo-claro: #FFE8ED;
-            --rmm-gris-texto: #333333;
-            --rmm-gris-secundario: #666666;
-            --rmm-gris-claro: #F5F7FA;
-            --rmm-blanco: #FFFFFF;
-            --rmm-verde-exito: #28A745;
-            --rmm-amarillo-alerta: #FFC107;
-            --rmm-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --rmm-sombra: 0 4px 20px rgba(1, 50, 175, 0.1);
-            --rmm-sombra-hover: 0 8px 30px rgba(1, 50, 175, 0.15);
-            --rmm-radio: 12px;
-            --rmm-transicion: all 0.3s ease;
-        }
-
-        /* Reset específico para la landing */
-        .rmm-landing * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        .rmm-landing {
-            font-family: var(--rmm-font);
-            color: var(--rmm-gris-texto);
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #333333;
             line-height: 1.6;
-            background: var(--rmm-blanco);
+            background: #FFFFFF;
             overflow-x: hidden;
         }
 
-        /* === UTILIDADES === */
-        .rmm-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .rmm-sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-
-        /* === HEADER / BARRA SUPERIOR === */
-        .rmm-header {
-            background: var(--rmm-azul-primario);
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .rmm-header__inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .rmm-header__logos {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .rmm-header__logo {
-            height: 40px;
-            width: auto;
-        }
-
-        .rmm-header__logo--ccb {
-            filter: brightness(0) invert(1);
-        }
-
-        .rmm-header__divider {
-            width: 1px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .rmm-header__badge {
-            background: var(--rmm-rojo-primario);
-            color: var(--rmm-blanco);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* === HERO SECTION === */
-        .rmm-hero {
-            background: linear-gradient(135deg, var(--rmm-azul-primario) 0%, var(--rmm-azul-secundario) 100%);
+        /* ======= HERO ======= */
+        .hero {
+            background: linear-gradient(135deg, #0132AF 0%, #0145D4 100%);
             padding: 60px 0 80px;
             position: relative;
             overflow: hidden;
         }
 
-        .rmm-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -139,7 +44,13 @@
             pointer-events: none;
         }
 
-        .rmm-hero__content {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero__content {
             position: relative;
             z-index: 2;
             text-align: center;
@@ -147,7 +58,7 @@
             margin: 0 auto;
         }
 
-        .rmm-hero__eyebrow {
+        .hero__eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -158,32 +69,32 @@
             margin-bottom: 24px;
             font-size: 14px;
             font-weight: 500;
-            color: var(--rmm-blanco);
+            color: #FFFFFF;
         }
 
-        .rmm-hero__eyebrow-icon {
+        .hero__eyebrow-icon {
             width: 20px;
             height: 20px;
         }
 
-        .rmm-hero__title {
+        .hero__title {
             font-size: clamp(32px, 6vw, 52px);
             font-weight: 800;
-            color: var(--rmm-blanco);
+            color: #FFFFFF;
             line-height: 1.15;
             margin-bottom: 20px;
         }
 
-        .rmm-hero__title-accent {
-            color: var(--rmm-rojo-primario);
-            background: var(--rmm-blanco);
+        .hero__title-accent {
+            color: #EA0A2A;
+            background: #FFFFFF;
             padding: 4px 12px;
             border-radius: 6px;
             display: inline-block;
             margin-top: 8px;
         }
 
-        .rmm-hero__subtitle {
+        .hero__subtitle {
             font-size: clamp(17px, 2.8vw, 22px);
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 32px;
@@ -193,29 +104,29 @@
             font-weight: 500;
         }
 
-        .rmm-hero__cta {
+        .hero__cta {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--rmm-rojo-primario);
-            color: var(--rmm-blanco);
+            background: #EA0A2A;
+            color: #FFFFFF;
             padding: 16px 32px;
             border-radius: 50px;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
-            transition: var(--rmm-transicion);
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
         }
 
-        .rmm-hero__cta:hover {
-            background: var(--rmm-rojo-hover);
+        .hero__cta:hover {
+            background: #C90820;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(234, 10, 42, 0.3);
         }
 
-        .rmm-hero__benefits {
+        .hero__benefits {
             display: flex;
             justify-content: center;
             gap: 30px;
@@ -223,7 +134,7 @@
             flex-wrap: wrap;
         }
 
-        .rmm-hero__benefit {
+        .hero__benefit {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -231,137 +142,136 @@
             font-size: 14px;
         }
 
-        .rmm-hero__benefit-icon {
+        .hero__benefit-icon {
             width: 20px;
             height: 20px;
-            color: var(--rmm-verde-exito);
+            color: #28A745;
         }
 
-        /* === SECCIÓN TESTIMONIOS === */
-        .rmm-testimonios {
+        /* ======= TESTIMONIOS ======= */
+        .testimonios {
             padding: 80px 0;
-            background: var(--rmm-blanco);
+            background: #FFFFFF;
         }
 
-        .rmm-testimonios__header {
+        .testimonios__header {
             text-align: center;
             margin-bottom: 48px;
         }
 
-        .rmm-testimonios__eyebrow {
+        .testimonios__eyebrow {
             font-size: 14px;
             font-weight: 600;
-            color: var(--rmm-rojo-primario);
+            color: #EA0A2A;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
         }
 
-        .rmm-testimonios__titulo {
+        .testimonios__titulo {
             font-size: clamp(28px, 5vw, 40px);
             font-weight: 700;
-            color: var(--rmm-azul-primario);
+            color: #0132AF;
             margin-bottom: 16px;
         }
 
-        .rmm-testimonios__subtitulo {
+        .testimonios__subtitulo {
             font-size: 16px;
-            color: var(--rmm-gris-secundario);
+            color: #666666;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Slider de testimonios */
-        .rmm-testimonios__slider-wrapper {
-            position: relative !important;
-            padding: 0 60px !important;
-            margin-bottom: 40px !important;
-            z-index: 50 !important;
+        .testimonios__slider-wrapper {
+            position: relative;
+            padding: 0 60px;
+            margin-bottom: 40px;
+            z-index: 50;
         }
 
-        .rmm-testimonios__slider-track {
-            overflow: hidden !important;
-            border-radius: 16px !important;
+        .testimonios__slider-track {
+            overflow: hidden;
+            border-radius: 16px;
         }
 
-        .rmm-testimonio-slider-item {
-            display: none !important;
-            animation: rmm-slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .testimonio-slider-item {
+            display: none;
+            animation: slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .rmm-testimonio-slider-item.active {
-            display: grid !important;
-            grid-template-columns: 1fr 280px !important;
-            gap: 48px !important;
-            align-items: center !important;
-            background: linear-gradient(135deg, #F8F9FA 0%, var(--rmm-azul-claro) 100%) !important;
-            padding: 48px !important;
-            border-radius: 16px !important;
-            border: 2px solid #E0E5EB !important;
-            animation: rmm-slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .testimonio-slider-item.active {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: center;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E3EFFE 100%);
+            padding: 48px;
+            border-radius: 16px;
+            border: 2px solid #E0E5EB;
+            animation: slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes rmm-slider-fadeIn {
+        @keyframes slider-fadeIn {
             from { opacity: 0; transform: translateX(20px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
-        .rmm-testimonio-slider-content {
+        .testimonio-slider-content {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .rmm-testimonio-slider-nombre {
+        .testimonio-slider-nombre {
             font-size: 28px;
             font-weight: 700;
-            color: var(--rmm-azul-primario);
+            color: #0132AF;
             line-height: 1.2;
         }
 
-        .rmm-testimonio-slider-cargo {
+        .testimonio-slider-cargo {
             font-size: 16px;
             font-weight: 600;
-            color: var(--rmm-rojo-primario);
+            color: #EA0A2A;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .rmm-testimonio-slider-quote {
+        .testimonio-slider-quote {
             font-size: 18px;
             color: #333;
             line-height: 1.8;
             font-style: italic;
-            border-left: 4px solid var(--rmm-rojo-primario);
+            border-left: 4px solid #EA0A2A;
             padding-left: 20px;
         }
 
-        .rmm-testimonio-slider-historia {
+        .testimonio-slider-historia {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--rmm-azul-primario);
+            color: #0132AF;
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
-            transition: var(--rmm-transicion);
+            transition: all 0.3s ease;
         }
 
-        .rmm-testimonio-slider-historia:hover {
-            color: var(--rmm-rojo-primario);
+        .testimonio-slider-historia:hover {
+            color: #EA0A2A;
             gap: 12px;
         }
 
-        .rmm-testimonio-slider-historia svg {
+        .testimonio-slider-historia svg {
             width: 16px;
             height: 16px;
         }
 
-        .rmm-testimonio-slider-video {
+        .testimonio-slider-video {
             aspect-ratio: 9 / 16;
-            background: linear-gradient(135deg, var(--rmm-azul-claro) 0%, #C8DEFF 100%);
+            background: linear-gradient(135deg, #E3EFFE 0%, #C8DEFF 100%);
             border-radius: 16px;
-            border: 3px solid var(--rmm-azul-primario);
+            border: 3px solid #0132AF;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -371,365 +281,241 @@
             max-height: 450px;
         }
 
-        .rmm-testimonio-slider-video img,
-        .rmm-testimonio-slider-video video {
+        .testimonio-slider-video img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .rmm-testimonio-slider-video-play {
-            position: absolute;
-            width: 64px;
-            height: 64px;
-            background: var(--rmm-rojo-primario);
+        .testimonios__slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .testimonios__slider-btn {
+            width: 48px;
+            height: 48px;
+            background: #FFFFFF;
+            border: 2px solid #0132AF;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: var(--rmm-transicion);
-            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 101;
+            padding: 0;
+            min-width: 48px;
+            min-height: 48px;
         }
 
-        .rmm-testimonio-slider-video-play:hover {
-            background: var(--rmm-rojo-hover);
+        .testimonios__slider-btn:hover {
+            background: #0132AF;
             transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(1, 50, 175, 0.3);
         }
 
-        .rmm-testimonio-slider-video-play svg {
-            width: 28px;
-            height: 28px;
-            color: var(--rmm-blanco);
-            fill: currentColor;
+        .testimonios__slider-btn:hover svg {
+            color: #FFFFFF;
         }
 
-        /* Controles del slider */
-        .rmm-testimonios__slider-controls {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 24px !important;
-            margin-top: 40px !important;
-            position: relative !important;
-            z-index: 100 !important;
+        .testimonios__slider-btn svg {
+            width: 20px;
+            height: 20px;
+            color: #0132AF;
+            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
         }
 
-        .rmm-testimonios__slider-btn {
-            width: 48px !important;
-            height: 48px !important;
-            background: var(--rmm-blanco) !important;
-            border: 2px solid var(--rmm-azul-primario) !important;
-            border-radius: 50% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            cursor: pointer !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            position: relative !important;
-            z-index: 101 !important;
-            padding: 0 !important;
-            min-width: 48px !important;
-            min-height: 48px !important;
+        .testimonios__slider-dots {
+            display: flex;
+            gap: 12px;
+            position: relative;
+            z-index: 100;
         }
 
-        .rmm-testimonios__slider-btn:hover {
-            background: var(--rmm-azul-primario) !important;
-            transform: scale(1.1) !important;
-            box-shadow: 0 4px 16px rgba(1, 50, 175, 0.3) !important;
-        }
-
-        .rmm-testimonios__slider-btn:hover svg {
-            color: var(--rmm-blanco) !important;
-        }
-
-        .rmm-testimonios__slider-btn svg {
-            width: 20px !important;
-            height: 20px !important;
-            color: var(--rmm-azul-primario) !important;
-            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            pointer-events: none !important;
-        }
-
-        .rmm-testimonios__slider-dots {
-            display: flex !important;
-            gap: 12px !important;
-            position: relative !important;
-            z-index: 100 !important;
-        }
-
-        .rmm-testimonios__slider-dot {
-            width: 12px !important;
-            height: 12px !important;
-            border-radius: 50% !important;
-            background: #E0E5EB !important;
-            cursor: pointer !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-
-        .rmm-testimonios__slider-dot.active {
-            background: var(--rmm-rojo-primario) !important;
-            width: 32px !important;
-            border-radius: 6px !important;
-        }
-
-        .rmm-testimonios__slider-indicator {
-            font-size: 14px !important;
-            color: var(--rmm-gris-secundario) !important;
-            font-weight: 600 !important;
-            position: relative !important;
-            z-index: 100 !important;
-        }
-
-        /* === SECCIÓN FAQ === */
-        .rmm-validacion {
-            padding: 80px 0;
-            background: var(--rmm-gris-claro);
-        }
-
-        .rmm-validacion__card {
-            background: var(--rmm-blanco);
-            border-radius: var(--rmm-radio);
-            box-shadow: var(--rmm-sombra);
-            padding: 40px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .rmm-validacion__icon {
-            width: 64px;
-            height: 64px;
-            background: var(--rmm-azul-claro);
+        .testimonios__slider-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-
-        .rmm-validacion__icon svg {
-            width: 32px;
-            height: 32px;
-            color: var(--rmm-azul-primario);
-        }
-
-        .rmm-validacion__titulo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--rmm-azul-primario);
-            margin-bottom: 12px;
-        }
-
-        .rmm-validacion__descripcion {
-            color: var(--rmm-gris-secundario);
-            margin-bottom: 32px;
-            font-size: 15px;
-        }
-
-        .rmm-validacion__form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rmm-validacion__campo {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: left;
-        }
-
-        .rmm-validacion__label {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--rmm-gris-texto);
-        }
-
-        .rmm-validacion__input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #E0E5EB;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: var(--rmm-font);
-            transition: var(--rmm-transicion);
-        }
-
-        .rmm-validacion__input:focus {
-            outline: none;
-            border-color: var(--rmm-azul-secundario);
-            box-shadow: 0 0 0 4px rgba(1, 50, 175, 0.1);
-        }
-
-        .rmm-validacion__btn {
-            background: var(--rmm-azul-primario);
-            color: var(--rmm-blanco);
-            padding: 16px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: var(--rmm-font);
+            background: #E0E5EB;
             cursor: pointer;
-            transition: var(--rmm-transicion);
-            margin-top: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .rmm-validacion__btn:hover {
-            background: var(--rmm-azul-secundario);
+        .testimonios__slider-dot.active {
+            background: #EA0A2A;
+            width: 32px;
+            border-radius: 6px;
         }
 
-        .rmm-validacion__ayuda {
-            font-size: 13px;
-            color: var(--rmm-gris-secundario);
-            margin-top: 16px;
+        .testimonios__slider-indicator {
+            font-size: 14px;
+            color: #666666;
+            font-weight: 600;
+            position: relative;
+            z-index: 100;
         }
 
-        /* === FAQ === */
-        .rmm-faq {
+        /* ======= FAQ ======= */
+        .faq {
             padding: 80px 0;
-            background: var(--rmm-blanco);
+            background: #FFFFFF;
         }
 
-        .rmm-faq__header {
+        .faq__header {
             text-align: center;
             margin-bottom: 48px;
         }
 
-        .rmm-faq__titulo {
+        .faq__titulo {
             font-size: clamp(28px, 5vw, 36px);
             font-weight: 700;
-            color: var(--rmm-azul-primario);
+            color: #0132AF;
             margin-bottom: 12px;
         }
 
-        .rmm-faq__subtitulo {
+        .faq__subtitulo {
             font-size: 16px;
-            color: var(--rmm-gris-secundario);
+            color: #666666;
         }
 
-        .rmm-faq__lista {
+        .faq__lista {
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .rmm-faq__item {
+        .faq__item {
             border: 1px solid #E0E5EB;
-            border-radius: var(--rmm-radio);
+            border-radius: 12px;
             margin-bottom: 16px;
             overflow: hidden;
         }
 
-        .rmm-faq__pregunta {
+        .faq__pregunta {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 20px 24px;
-            background: var(--rmm-blanco);
+            background: #FFFFFF;
             border: none;
             font-size: 16px;
             font-weight: 600;
-            color: var(--rmm-azul-primario);
-            font-family: var(--rmm-font);
+            color: #0132AF;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             cursor: pointer;
             text-align: left;
-            transition: var(--rmm-transicion);
+            transition: all 0.3s ease;
         }
 
-        .rmm-faq__pregunta:hover {
+        .faq__pregunta:hover {
             background: #d2e8ff;
         }
 
-        .rmm-faq__item--abierto .rmm-faq__pregunta {
-            background: var(--rmm-azul-claro);
+        .faq__item--abierto .faq__pregunta {
+            background: #E3EFFE;
         }
 
-        .rmm-faq__icono {
+        .faq__icono {
             width: 24px;
             height: 24px;
             transition: transform 0.3s ease;
             flex-shrink: 0;
+            color: #0132AF;
         }
 
-        .rmm-faq__item--abierto .rmm-faq__icono {
+        .faq__item--abierto .faq__icono {
             transform: rotate(180deg);
         }
 
-        .rmm-faq__respuesta {
+        .faq__respuesta {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
 
-        .rmm-faq__item--abierto .rmm-faq__respuesta {
+        .faq__item--abierto .faq__respuesta {
             max-height: 300px;
         }
 
-        .rmm-faq__respuesta-inner {
+        .faq__respuesta-inner {
             padding: 15px 24px 20px;
             font-size: 15px;
-            color: var(--rmm-gris-secundario);
+            color: #666666;
             line-height: 1.7;
         }
 
-        /* === RESPONSIVE === */
+        /* ======= RESPONSIVE ======= */
         @media (max-width: 768px) {
-            .rmm-hero {
+            .hero {
                 padding: 40px 0 60px;
             }
 
-            .rmm-hero__benefits {
+            .hero__benefits {
                 flex-direction: column;
                 gap: 16px;
             }
 
-            .rmm-testimonios,
-            .rmm-faq {
+            .testimonios,
+            .faq {
                 padding: 60px 0;
+            }
+
+            .testimonio-slider-item.active {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 24px;
+            }
+
+            .testimonios__slider-wrapper {
+                padding: 0 20px;
             }
         }
     </style>
 </head>
-<body class="rmm-landing">
-
+<body>
     <main>
         <!-- HERO SECTION -->
-        <section class="rmm-hero" id="rmm-hero">
-            <div class="rmm-container rmm-hero__content">
-                <div class="rmm-hero__eyebrow">
-                    <svg class="rmm-hero__eyebrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <section class="hero" id="hero">
+            <div class="container hero__content">
+                <div class="hero__eyebrow">
+                    <svg class="hero__eyebrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     Beneficio exclusivo por renovación digital
                 </div>
 
-                <h1 class="rmm-hero__title">
-                    Renovaste tu matrícula mercantil en línea.
-                    <span class="rmm-hero__title-accent">Ahora disfruta de tus beneficios.</span>
+                <h1 class="hero__title">
+                    Renovaste tu matrícula mercantil en línea
+                    <span class="hero__title-accent">Ahora disfruta de tus beneficios</span>
                 </h1>
 
-                <p class="rmm-hero__subtitle">
-                    Por renovar de forma virtual en 2026, accede a webinars gratuitos de <strong> IA, Marketing Digital, Finanzas y E-commerce</strong> para impulsar tu negocio.
+                <p class="hero__subtitle">
+                    Por renovar de forma virtual en 2026, accede a webinars gratuitos de <strong>IA, Marketing Digital, Finanzas y E-commerce</strong> para impulsar tu negocio.
                 </p>
 
-
-                <div class="rmm-hero__benefits">
-                    <div class="rmm-hero__benefit">
-                        <svg class="rmm-hero__benefit-icon" fill="currentColor" viewBox="0 0 20 20">
+                <div class="hero__benefits">
+                    <div class="hero__benefit">
+                        <svg class="hero__benefit-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
                         100% online y gratuito
                     </div>
-                    <div class="rmm-hero__benefit">
-                        <svg class="rmm-hero__benefit-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="hero__benefit">
+                        <svg class="hero__benefit-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
                         Hasta 4 webinars
                     </div>
-                    <div class="rmm-hero__benefit">
-                        <svg class="rmm-hero__benefit-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="hero__benefit">
+                        <svg class="hero__benefit-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
                         Certificado digital
@@ -738,139 +524,110 @@
             </div>
         </section>
 
-        <!-- SECCIÓN TESTIMONIOS -->
-        <section class="rmm-testimonios" id="rmm-testimonios">
-            <div class="rmm-container">
-                <header class="rmm-testimonios__header">
-                    <p class="rmm-testimonios__eyebrow">Conoce a nuestros referentes empresariales</p>
-                    <h2 class="rmm-testimonios__titulo">Voces expertas del ecosistema empresarial</h2>
-                    <p class="rmm-testimonios__subtitulo">
-    Adquiere conocimientos en las áreas más importantes en el crecimiento de estructuras empresariales. Su trayectoria convierte la teoría en decisiones estratégicas con impacto comprobado.
+        <!-- TESTIMONIOS SECTION -->
+        <section class="testimonios" id="testimonios">
+            <div class="container">
+                <header class="testimonios__header">
+                    <p class="testimonios__eyebrow">Conoce a nuestros referentes empresariales</p>
+                    <h2 class="testimonios__titulo">Voces expertas del ecosistema empresarial</h2>
+                    <p class="testimonios__subtitulo">
+                        Adquiere conocimientos en las áreas más importantes en el crecimiento de estructuras empresariales. Su trayectoria convierte la teoría en decisiones estratégicas con impacto comprobado.
                     </p>
                 </header>
 
-                <!-- Slider de Testimonios -->
-                <div class="rmm-testimonios__slider-wrapper">
-                    <div class="rmm-testimonios__slider-track" id="rmm-testimonios-slider">
+                <div class="testimonios__slider-wrapper">
+                    <div class="testimonios__slider-track" id="testimonios-slider">
                         
-                        <!-- Slide 1 -->
-                        <div class="rmm-testimonio-slider-item active">
-                            <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Paula Amado Kattah</h3>
-                                <p class="rmm-testimonio-slider-cargo">Head of Marketing I Global Brand Manager</p>
-                                <blockquote class="rmm-testimonio-slider-quote">
-   Marketing & Communications leader con +20 años en LATAM, especializada en brand building, crecimiento e innovación para: bebidas, educación y salud/OTC. 
+                        <div class="testimonio-slider-item">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Daniel Andrés Zárate</h3>
+                                <p class="testimonio-slider-cargo">Creación de contenido con Inteligencia Artificial</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Ingeniero de Sistemas, desarrollador de software y docente universitario, especializado en inteligencia artificial, automatización y transformación digital. Su experiencia integra la visión técnica y académica para ayudar a empresas y profesionales a entender, aplicar e implementar tecnologías que generan impacto real.
                                 </blockquote>
-                                <a href="#" class="rmm-testimonio-slider-historia">
-                                    Ver su historia completa
+                            </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Image.webp" alt="Daniel Andrés Zárate - Experto en Inteligencia Artificial">
+                            </div>
+                        </div>
+
+                        <div class="testimonio-slider-item">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Hernan Escobar</h3>
+                                <p class="testimonio-slider-cargo">Intraemprendimiento para negocios exitosos</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Director de Desarrollo de Producto en Totto, con una trayectoria enfocada en innovación, diseño y evolución de portafolios dentro de la industria de moda y accesorios.
+                                </blockquote>
+                                <a href="https://www.linkedin.com/in/hern%C3%A1n-escobar-7921b669/" class="testimonio-slider-historia" target="_blank">
+                                    Ver Linkedin
                                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                                     </svg>
                                 </a>
                             </div>
-                            <div class="rmm-testimonio-slider-video">
-                                <div class="rmm-testimonio-slider-video-play">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Hernan-Escobar.webp" alt="Hernan Escobar - Experto en Intraemprendimiento">
                             </div>
                         </div>
 
-                        <!-- Slide 2 -->
-                        <div class="rmm-testimonio-slider-item">
-                            <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Jose Fabricio Gómez</h3>
-                                <p class="rmm-testimonio-slider-cargo">Brand Manager I Estratega Digital</p>
-                                <blockquote class="rmm-testimonio-slider-quote">
-                              Marketing Leader con +10 años liderando marcas a nivel internacional y nacional. Especializado en marketing digital, brand power y marketing estratégico.
+                        <div class="testimonio-slider-item">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Jessica Valencia</h3>
+                                <p class="testimonio-slider-cargo">E-commerce</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Directiva especializada en e-commerce y negocio digital, con experiencia liderando operaciones en Colombia y Perú en industrias como moda, retail, alimentos y tecnología. Actualmente se desempeña como Subgerente de E-commerce en Coolbox (Perú).
                                 </blockquote>
-                                <a href="#" class="rmm-testimonio-slider-historia">
-                                    Ver su historia completa
+                                <a href="https://www.linkedin.com/in/jessivalencia/" class="testimonio-slider-historia" target="_blank">
+                                    Ver su Linkedin
                                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                                     </svg>
                                 </a>
                             </div>
-                            <div class="rmm-testimonio-slider-video">
-                                <div class="rmm-testimonio-slider-video-play">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Jessica-Valencia.webp" alt="Jessica Valencia - Experta en E-commerce">
                             </div>
                         </div>
 
-                        <!-- Slide 3 -->
-                        <div class="rmm-testimonio-slider-item">
-                            <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Alejandro Duque</h3>
-                                <p class="rmm-testimonio-slider-cargo">CEO sector Agroindustrial</p>
-                                <blockquote class="rmm-testimonio-slider-quote">
-Líder empresarial en el sector agroindustrial, partiendo de la administración de recursos, construcción de empresas sostenibles y fortalecimiento de las dinámicas comerciales nacionales e internacionales.
+                        <div class="testimonio-slider-item active">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Paula Amado Kattah</h3>
+                                <p class="testimonio-slider-cargo">Innovación y Producto</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Marketing & Communications leader con +20 años en LATAM, especializada en brand building, crecimiento e innovación para: bebidas, educación y salud/OTC.
                                 </blockquote>
-                                <a href="#" class="rmm-testimonio-slider-historia">
-                                    Ver su historia completa
+                                <a href="https://www.linkedin.com/in/paulaamadok/" class="testimonio-slider-historia" target="_blank">
+                                    Ver su Linkedin
                                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                                     </svg>
                                 </a>
                             </div>
-                            <div class="rmm-testimonio-slider-video">
-                                <div class="rmm-testimonio-slider-video-play">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/No-hay-descripcion-alternativa-para-esta-imagen.webp" alt="Paula Amado Kattah - Experta en Innovación y Producto">
                             </div>
                         </div>
-
-                        <!-- Slide 4 -->
-                        <div class="rmm-testimonio-slider-item">
-                            <div class="rmm-testimonio-slider-content">
-                                <h3 class="rmm-testimonio-slider-nombre">Daniel Zárate</h3>
-                                <p class="rmm-testimonio-slider-cargo">Experto en Inteligencia Artificial (AI)</p>
-                                <blockquote class="rmm-testimonio-slider-quote">
-Líder empresarial y experto en aplicación de Inteligencia Artificial generativo, operativo, business y administrativo.
-                                </blockquote>
-                                <a href="#" class="rmm-testimonio-slider-historia">
-                                    Ver su historia completa
-                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="rmm-testimonio-slider-video">
-                                <div class="rmm-testimonio-slider-video-play">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <!-- Controles -->
-                    <div class="rmm-testimonios__slider-controls">
-                        <button class="rmm-testimonios__slider-btn rmm-testimonios__slider-prev" type="button">
+                    <div class="testimonios__slider-controls">
+                        <button class="testimonios__slider-btn testimonios__slider-prev" type="button" aria-label="Anterior">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                             </svg>
                         </button>
 
-                        <div class="rmm-testimonios__slider-dots">
-                            <span class="rmm-testimonios__slider-dot active"></span>
-                            <span class="rmm-testimonios__slider-dot"></span>
-                            <span class="rmm-testimonios__slider-dot"></span>
-                            <span class="rmm-testimonios__slider-dot"></span>
+                        <div class="testimonios__slider-dots">
+                            <span class="testimonios__slider-dot active" data-slide="0"></span>
+                            <span class="testimonios__slider-dot" data-slide="1"></span>
+                            <span class="testimonios__slider-dot" data-slide="2"></span>
+                            <span class="testimonios__slider-dot" data-slide="3"></span>
                         </div>
 
-                        <span class="rmm-testimonios__slider-indicator">
-                            <span id="rmm-testimonios-current">1</span> / 4
+                        <span class="testimonios__slider-indicator">
+                            <span id="testimonios-current">1</span> / 4
                         </span>
 
-                        <button class="rmm-testimonios__slider-btn rmm-testimonios__slider-next" type="button">
+                        <button class="testimonios__slider-btn testimonios__slider-next" type="button" aria-label="Siguiente">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
@@ -880,177 +637,148 @@ Líder empresarial y experto en aplicación de Inteligencia Artificial generativ
             </div>
         </section>
 
- 
-
-        <!-- FAQ -->
-        <section class="rmm-faq" id="rmm-faq">
-            <div class="rmm-container">
-                <header class="rmm-faq__header">
-                    <h2 class="rmm-faq__titulo">Preguntas frecuentes</h2>
-                    <p class="rmm-faq__subtitulo">Resuelve tus dudas sobre el beneficio</p>
+        <!-- FAQ SECTION -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <header class="faq__header">
+                    <h2 class="faq__titulo">Preguntas frecuentes</h2>
+                    <p class="faq__subtitulo">Resuelve tus dudas sobre el beneficio</p>
                 </header>
 
-                <div class="rmm-faq__lista">
-                    <div class="rmm-faq__item">
-                        <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
+                <div class="faq__lista">
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
                             ¿Cómo valido la fecha de renovación?
-                            <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <div class="rmm-faq__respuesta">
-                            <div class="rmm-faq__respuesta-inner">
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
                                 La fecha de renovación es la que aparece en tu recibo de pago o en el correo de confirmación que recibiste de la Cámara de Comercio de Bogotá después de realizar el trámite de forma virtual. Si no la encuentras, puedes consultarla en tu historial de la plataforma de la CCB.
                             </div>
                         </div>
                     </div>
 
-                    <div class="rmm-faq__item">
-                        <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
                             ¿Puedo cambiar mi selección de webinars?
-                            <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <div class="rmm-faq__respuesta">
-                            <div class="rmm-faq__respuesta-inner">
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
                                 Este beneficio específico aplica únicamente para renovaciones virtuales realizadas entre el <strong>1 de enero y el 31 de marzo de 2026.</strong> Sin embargo, la CCB y Uniempresarial tienen otros programas de formación que podrían interesarte. Déjanos tus datos y te mantendremos informado sobre futuras oportunidades.
                             </div>
                         </div>
                     </div>
 
-                    <div class="rmm-faq__item">
-                        <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
                             ¿Cuándo llegan los enlaces de conexión?
-                            <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <div class="rmm-faq__respuesta">
-                            <div class="rmm-faq__respuesta-inner">
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
                                 Inmediatamente después de confirmar tu registro recibirás un correo con la información general. Los enlaces específicos de cada webinar se enviarán 48 horas antes de cada sesión, junto con un recordatorio 24 horas antes. Revisa tu bandeja de spam si no lo ves en tu inbox principal.
                             </div>
                         </div>
                     </div>
 
-                    <div class="rmm-faq__item">
-                        <button type="button" class="rmm-faq__pregunta" aria-expanded="false">
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
                             ¿Los webinars tienen certificación?
-                            <svg class="rmm-faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <div class="rmm-faq__respuesta">
-                            <div class="rmm-faq__respuesta-inner">
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
                                 Sí, cada webinar incluye un certificado digital de participación emitido por Uniempresarial, que recibirás por correo electrónico dentro de los 5 días hábiles siguientes a la sesión. Para obtener el certificado debes asistir al menos al 80% de la sesión.
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- JAVASCRIPT -->
     <script>
         (function() {
-            // ========================================
-            // FUNCIONES AUXILIARES
-            // ========================================
-            const $ = (sel) => document.querySelector(sel);
-            const $$ = (sel) => document.querySelectorAll(sel);
+            const $ = sel => document.querySelector(sel);
+            const $$ = sel => document.querySelectorAll(sel);
 
-            // ========================================
-            // FAQ ACCORDION
-            // ========================================
+            // Testimonios Slider
+            let testimoniosCurrentSlide = 0;
+
+            function initTestimoniosSlider() {
+                const slides = $$('.testimonio-slider-item');
+                const dots = $$('.testimonios__slider-dot');
+                const totalSlides = slides.length;
+
+                function showSlide(index) {
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+
+                    if (index >= totalSlides) testimoniosCurrentSlide = 0;
+                    if (index < 0) testimoniosCurrentSlide = totalSlides - 1;
+
+                    slides[testimoniosCurrentSlide].classList.add('active');
+                    dots[testimoniosCurrentSlide].classList.add('active');
+                    $('#testimonios-current').textContent = testimoniosCurrentSlide + 1;
+                }
+
+                $$('.testimonios__slider-next').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        testimoniosCurrentSlide++;
+                        showSlide(testimoniosCurrentSlide);
+                    });
+                });
+
+                $$('.testimonios__slider-prev').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        testimoniosCurrentSlide--;
+                        showSlide(testimoniosCurrentSlide);
+                    });
+                });
+
+                dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        testimoniosCurrentSlide = parseInt(dot.dataset.slide);
+                        showSlide(testimoniosCurrentSlide);
+                    });
+                });
+            }
+
+            // FAQ Accordion
             function toggleFaq(pregunta) {
-                const item = pregunta.closest('.rmm-faq__item');
-                const isAbierto = item.classList.contains('rmm-faq__item--abierto');
-                
-                // Cerrar todos
-                $$('.rmm-faq__item').forEach(i => i.classList.remove('rmm-faq__item--abierto'));
-                
-                // Abrir el actual si estaba cerrado
+                const item = pregunta.closest('.faq__item');
+                const isAbierto = item.classList.contains('faq__item--abierto');
+
+                $$('.faq__item').forEach(i => i.classList.remove('faq__item--abierto'));
+
                 if (!isAbierto) {
-                    item.classList.add('rmm-faq__item--abierto');
+                    item.classList.add('faq__item--abierto');
                     pregunta.setAttribute('aria-expanded', 'true');
                 } else {
                     pregunta.setAttribute('aria-expanded', 'false');
                 }
             }
 
-            // ========================================
-            // SLIDER DE TESTIMONIOS
-            // ========================================
-            let rmmTestimoniosCurrentSlide = 0;
-            
-            function initTestimoniosSlider() {
-                const slides = $$('.rmm-testimonio-slider-item');
-                const dots = $$('.rmm-testimonios__slider-dot');
-                const totalSlides = slides.length;
-                
-                function showTestimoniosSlide(index) {
-                    slides.forEach(slide => slide.classList.remove('active'));
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    
-                    if (index >= totalSlides) rmmTestimoniosCurrentSlide = 0;
-                    if (index < 0) rmmTestimoniosCurrentSlide = totalSlides - 1;
-                    
-                    slides[rmmTestimoniosCurrentSlide].classList.add('active');
-                    dots[rmmTestimoniosCurrentSlide].classList.add('active');
-                    $('#rmm-testimonios-current').textContent = rmmTestimoniosCurrentSlide + 1;
-                }
-                
-                // Botones prev/next - Usar $$ para agarrar todos los elementos
-                $$('.rmm-testimonios__slider-next').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        rmmTestimoniosCurrentSlide++;
-                        showTestimoniosSlide(rmmTestimoniosCurrentSlide);
-                    });
-                });
-                
-                $$('.rmm-testimonios__slider-prev').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        rmmTestimoniosCurrentSlide--;
-                        showTestimoniosSlide(rmmTestimoniosCurrentSlide);
-                    });
-                });
-                
-                // Dots clicables
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        rmmTestimoniosCurrentSlide = index;
-                        showTestimoniosSlide(rmmTestimoniosCurrentSlide);
-                    });
-                });
-            }
-
-            // ========================================
-            // FUNCIONES DE FORMULARIO Y WEBINARS
-            // ========================================
-
-            // ========================================
-            // EVENT LISTENERS
-            // ========================================
-            function initEventListeners() {
-                // Inicializar slider de testimonios
+            // Initialize
+            document.addEventListener('DOMContentLoaded', () => {
                 initTestimoniosSlider();
 
-                // FAQ accordion
-                $$('.rmm-faq__pregunta').forEach(pregunta => {
+                $$('.faq__pregunta').forEach(pregunta => {
                     pregunta.addEventListener('click', function() {
                         toggleFaq(this);
                     });
                 });
-            }
-
-            // ========================================
-            // INICIALIZACIÓN
-            // ========================================
-            document.addEventListener('DOMContentLoaded', initEventListeners);
+            });
         })();
     </script>
-
 </body>
 </html>

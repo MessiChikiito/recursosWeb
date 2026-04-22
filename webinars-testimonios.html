@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios | Webinars Exclusivos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            background: #FFFFFF;
+        }
+
+        .testimonios {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .testimonios__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .testimonios__eyebrow {
+            font-size: 16px;
+            font-weight: 600;
+            color: #EA0A2A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .testimonios__titulo {
+            font-size: 35px;
+            font-weight: 800;
+            color: #0132AF;
+            margin-bottom: 16px;
+        }
+
+        .testimonios__subtitulo {
+            font-size: 16px;
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonios__slider-wrapper {
+            position: relative;
+            padding: 0 60px;
+            margin-bottom: 40px;
+            z-index: 50;
+        }
+
+        .testimonios__slider-track {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .testimonio-slider-item {
+            display: none;
+            animation: slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonio-slider-item.active {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: center;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E3EFFE 100%);
+            padding: 48px;
+            border-radius: 16px;
+            border: 2px solid #E0E5EB;
+            animation: slider-fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slider-fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .testimonio-slider-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .testimonio-slider-nombre {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0132AF;
+            line-height: 1.2;
+            margin: 0 !important;
+        }
+
+        .testimonio-slider-cargo {
+            font-size: 16px;
+            font-weight: 600;
+            color: #EA0A2A;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 !important;
+        }
+
+        .testimonio-slider-quote {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.8;
+            font-style: italic;
+            border-left: 4px solid #EA0A2A;
+            padding-left: 20px;
+            margin: 0 !important;
+        }
+
+        .testimonio-slider-historia {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0132AF;
+            color: #FFFFFF;
+            border-radius: 0 16px 0 16px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            overflow: hidden;
+            transition: all 0.3s ease !important;
+            width: fit-content;
+            margin-top: 8px;
+        }
+
+        .testimonio-slider-historia .logo-area {
+            background-color: #00227a;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonio-slider-historia .text-area {
+            padding: 10px 16px 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s ease !important;
+        }
+
+        .testimonio-slider-fecha {
+            color: #EA0A2A;
+            font-weight: 800;
+            font-size: 16px;
+            margin-top: 8px;
+            white-space: nowrap;
+        }
+
+        .testimonio-slider-historia:hover {
+            background-color: #00227a;
+        }
+
+        .testimonio-slider-historia:hover .text-area {
+            gap: 12px;
+        }
+
+        .testimonio-slider-historia svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .testimonio-slider-video {
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #E3EFFE 0%, #C8DEFF 100%);
+            border-radius: 16px;
+            border: 3px solid #0132AF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(1, 50, 175, 0.2);
+            position: relative;
+            max-height: 450px;
+        }
+
+        .testimonio-slider-video img,
+        .testimonio-slider-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonio-slider-video-play {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            background: #EA0A2A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .testimonio-slider-video-play:hover {
+            background: #C90820;
+            transform: scale(1.1);
+        }
+
+        .testimonio-slider-video-play svg {
+            width: 28px;
+            height: 28px;
+            color: #FFFFFF;
+            fill: currentColor;
+        }
+
+        .testimonios__slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 100;
+            overflow: visible;
+        }
+
+        .testimonios__slider-btn {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: #FFFFFF;
+            border: 2px solid #0132AF !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+            z-index: 101;
+            padding: 0;
+            min-width: 48px;
+            min-height: 48px;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .testimonios__slider-btn:active,
+        .testimonios__slider-btn:focus {
+            border: 2px solid #0132AF !important;
+            outline: none !important;
+        }
+
+        .testimonios__slider-btn:hover {
+            background: #0132AF !important;
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(1, 50, 175, 0.3);
+        }
+
+        .testimonios__slider-btn:hover svg {
+            color: #FFFFFF !important;
+        }
+
+        .testimonios__slider-btn svg {
+            width: 20px;
+            height: 20px;
+            color: #0132AF;
+            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .testimonios__slider-dots {
+            display: flex;
+            gap: 12px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .testimonios__slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #E0E5EB;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonios__slider-dot.active {
+            background: #EA0A2A;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        .testimonios__slider-indicator {
+            font-size: 14px;
+            color: #666666;
+            font-weight: 600;
+            position: relative;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .testimonios {
+                padding: 50px 0;
+            }
+
+            .testimonio-slider-item.active {
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .testimonio-slider-nombre {
+                font-size: 22px;
+            }
+
+            .testimonio-slider-quote {
+                font-size: 15px;
+                line-height: 1.6;
+                padding-left: 15px;
+            }
+
+            .testimonio-slider-historia {
+                padding: 8px 14px;
+                font-size: 14px;
+            }
+
+            .testimonio-slider-video {
+                max-height: 300px;
+            }
+
+            .testimonios__slider-wrapper {
+                padding: 0;
+            }
+
+            .testimonios__slider-controls {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="testimonios" id="testimonios">
+            <div class="container">
+                <header class="testimonios__header">
+                    <p class="testimonios__eyebrow">Conoce a nuestros referentes empresariales</p>
+                    <h2 class="testimonios__titulo">Voces expertas del ecosistema empresarial</h2>
+                    <p class="testimonios__subtitulo">
+                        Adquiere conocimientos en las áreas más importantes en el crecimiento de estructuras empresariales. Su trayectoria convierte la teoría en decisiones estratégicas con impacto comprobado.
+                    </p>
+                </header>
+
+                <div class="testimonios__slider-wrapper">
+                    <div class="testimonios__slider-track" id="testimonios-slider">
+                        
+                        <div class="testimonio-slider-item active">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Daniel Andrés Zárate</h3>
+                                <p class="testimonio-slider-cargo">Charla: Creación de contenido con Inteligencia Artificial</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Ingeniero de Sistemas, desarrollador de software y docente universitario, especializado en inteligencia artificial, automatización y transformación digital. Su experiencia integra la visión técnica y académica para ayudar a empresas y profesionales a entender, aplicar e implementar tecnologías que generan impacto real.
+                                </blockquote>
+                                <div class="testimonio-slider-fecha" style="flex-shrink: 0; white-space: nowrap;">13 de mayo</div>
+                            </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Image.webp" alt="Daniel Andrés Zárate - Experto en Inteligencia Artificial">
+                            </div>
+                        </div>
+
+                        <div class="testimonio-slider-item">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Hernan Escobar</h3>
+                                <p class="testimonio-slider-cargo">Charla: Intraemprendimiento para negocios exitosos</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Director de Desarrollo de Producto en Totto, con una trayectoria enfocada en innovación, diseño y evolución de portafolios dentro de la industria de moda y accesorios.
+                                </blockquote>
+                                <a href="https://www.linkedin.com/in/hern%C3%A1n-escobar-7921b669/" class="testimonio-slider-historia" target="_blank">
+                                    <span class="logo-area">
+                                        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.84v8.37h2.84v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.84M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="text-area">
+                                        Ver LinkedIn
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="testimonio-slider-fecha" style="flex-shrink: 0; white-space: nowrap;">20 de mayo</div>
+                            </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Hernan-Escobar.webp" alt="Hernan Escobar - Experto en Intraemprendimiento">
+                            </div>
+                        </div>
+
+                        <div class="testimonio-slider-item">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Jessica Valencia</h3>
+                                <p class="testimonio-slider-cargo">Charla: E-commerce</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Directiva especializada en e-commerce y negocio digital, con experiencia liderando operaciones en Colombia y Perú en industrias como moda, retail, alimentos y tecnología. Actualmente se desempeña como Subgerente de E-commerce en Coolbox (Perú).
+                                </blockquote>
+                                <a href="https://www.linkedin.com/in/jessivalencia/" class="testimonio-slider-historia" target="_blank">
+                                    <span class="logo-area">
+                                        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.84v8.37h2.84v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.84M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="text-area">
+                                        Ver LinkedIn
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="testimonio-slider-fecha" style="flex-shrink: 0; white-space: nowrap;">27 de mayo</div>
+                            </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Jessica-Valencia.webp" alt="Jessica Valencia - Experta en E-commerce">
+                            </div>
+                        </div>
+
+                        <div class="testimonio-slider-item">
+                            <div class="testimonio-slider-content">
+                                <h3 class="testimonio-slider-nombre">Paula Amado Kattah</h3>
+                                <p class="testimonio-slider-cargo">Charla: Innovación y Producto</p>
+                                <blockquote class="testimonio-slider-quote">
+                                    Marketing & Communications leader con +20 años en LATAM, especializada en brand building, crecimiento e innovación para: bebidas, educación y salud/OTC.
+                                </blockquote>
+                                <a href="https://www.linkedin.com/in/paulaamadok/" class="testimonio-slider-historia" target="_blank">
+                                    <span class="logo-area">
+                                        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.39v-1.2h-2.84v8.37h2.84v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.84M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="text-area">
+                                        Ver LinkedIn
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="testimonio-slider-fecha" style="flex-shrink: 0; white-space: nowrap;">3 de junio</div>
+                            </div>
+                            <div class="testimonio-slider-video">
+                                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/No-hay-descripcion-alternativa-para-esta-imagen.webp" alt="Paula Amado Kattah - Experta en Innovación y Producto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonios__slider-controls">
+                        <button class="testimonios__slider-btn testimonios__slider-prev" type="button" aria-label="Anterior">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+
+                        <div class="testimonios__slider-dots">
+                            <span class="testimonios__slider-dot active" data-slide="0"></span>
+                            <span class="testimonios__slider-dot" data-slide="1"></span>
+                            <span class="testimonios__slider-dot" data-slide="2"></span>
+                            <span class="testimonios__slider-dot" data-slide="3"></span>
+                        </div>
+
+                        <span class="testimonios__slider-indicator">
+                            <span id="testimonios-current">1</span> / 4
+                        </span>
+
+                        <button class="testimonios__slider-btn testimonios__slider-next" type="button" aria-label="Siguiente">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function() {
+            const $ = sel => document.querySelector(sel);
+            const $$ = sel => document.querySelectorAll(sel);
+
+            let currentSlide = 0;
+
+            function initSlider() {
+                const slides = $$('.testimonio-slider-item');
+                const dots = $$('.testimonios__slider-dot');
+                const totalSlides = slides.length;
+
+                function showSlide(index) {
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+
+                    if (index >= totalSlides) currentSlide = 0;
+                    if (index < 0) currentSlide = totalSlides - 1;
+
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                    $('#testimonios-current').textContent = currentSlide + 1;
+                }
+
+                $$('.testimonios__slider-next').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentSlide++;
+                        showSlide(currentSlide);
+                    });
+                });
+
+                $$('.testimonios__slider-prev').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentSlide--;
+                        showSlide(currentSlide);
+                    });
+                });
+
+                dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        currentSlide = parseInt(dot.dataset.slide);
+                        showSlide(currentSlide);
+                    });
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', initSlider);
+        })();
+    </script>
+</body>
+</html>

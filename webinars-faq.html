@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes | Webinars Exclusivos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            background: #FFFFFF;
+        }
+
+        .faq {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .faq__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .faq__titulo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 12px;
+        }
+
+        .faq__subtitulo {
+            font-size: 16px;
+            color: #666666;
+        }
+
+        .faq__lista {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq__item {
+            border: 1px solid #E0E5EB;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq__pregunta {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: #FFFFFF;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #0132AF;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .faq__pregunta:hover {
+            background: #d2e8ff;
+        }
+
+        .faq__item--abierto .faq__pregunta {
+            background: #E3EFFE;
+        }
+
+        .faq__icono {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            color: #0132AF;
+        }
+
+        .faq__item--abierto .faq__icono {
+            transform: rotate(180deg);
+        }
+
+        .faq__respuesta {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq__item--abierto .faq__respuesta {
+            max-height: 300px;
+        }
+
+        .faq__respuesta-inner {
+            padding: 15px 24px 20px;
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .faq {
+                padding: 50px 0;
+            }
+            
+            .faq__titulo {
+                font-size: 28px;
+            }
+            
+            .faq__pregunta {
+                padding: 16px 20px;
+                font-size: 15px;
+            }
+            
+            .faq__respuesta-inner {
+                padding: 10px 20px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="faq" id="faq">
+            <div class="container">
+                <header class="faq__header">
+                    <h2 class="faq__titulo">Preguntas frecuentes</h2>
+                    <p class="faq__subtitulo">Resuelve tus dudas sobre el beneficio</p>
+                </header>
+
+                <div class="faq__lista">
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
+                            ¿Cómo valido la fecha de renovación?
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
+                                La fecha de renovación es la que aparece en tu recibo de pago o en el correo de confirmación que recibiste de la Cámara de Comercio de Bogotá después de realizar el trámite de forma virtual. Si no la encuentras, puedes consultarla en tu historial de la plataforma de la CCB.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
+                            ¿Puedo cambiar mi selección de webinars?
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
+                                Este beneficio específico aplica únicamente para renovaciones virtuales realizadas entre el <strong>1 de enero y el 31 de marzo de 2026.</strong> Sin embargo, la CCB y Uniempresarial tienen otros programas de formación que podrían interesarte. Déjanos tus datos y te mantendremos informado sobre futuras oportunidades.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
+                            ¿Cuándo llegan los enlaces de conexión?
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
+                                Inmediatamente después de confirmar tu registro recibirás un correo con la información general. Los enlaces específicos de cada webinar se enviarán 48 horas antes de cada sesión, junto con un recordatorio 24 horas antes. Revisa tu bandeja de spam si no lo ves en tu inbox principal.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button type="button" class="faq__pregunta" aria-expanded="false">
+                            ¿Los webinars tienen certificación?
+                            <svg class="faq__icono" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq__respuesta">
+                            <div class="faq__respuesta-inner">
+                                Sí, cada webinar incluye un certificado digital de participación emitido por Uniempresarial, que recibirás por correo electrónico dentro de los 5 días hábiles siguientes a la sesión. Para obtener el certificado debes asistir al menos al 80% de la sesión.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function() {
+            const $$ = sel => document.querySelectorAll(sel);
+
+            function toggleFaq(pregunta) {
+                const item = pregunta.closest('.faq__item');
+                const isAbierto = item.classList.contains('faq__item--abierto');
+
+                $$('.faq__item').forEach(i => i.classList.remove('faq__item--abierto'));
+
+                if (!isAbierto) {
+                    item.classList.add('faq__item--abierto');
+                    pregunta.setAttribute('aria-expanded', 'true');
+                } else {
+                    pregunta.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            $$('.faq__pregunta').forEach(pregunta => {
+                pregunta.addEventListener('click', function() {
+                    toggleFaq(this);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
