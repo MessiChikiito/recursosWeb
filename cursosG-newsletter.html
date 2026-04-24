@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Cursos</title>
+    <style>
+        .cg-nl-section {
+            background-color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #ffffff;
+        }
+        .cg-nl-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background-color: #EF1218;
+            padding: 40px;
+            border-radius: 16px;
+        }
+        .cg-nl-text {
+            flex: 1;
+        }
+        .cg-nl-text h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+        .cg-nl-text p {
+            font-size: 1.1rem;
+            margin: 0;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+        .cg-nl-form {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+        .cg-nl-input {
+            flex: 1;
+            padding: 15px 20px;
+            border-radius: 8px !important;
+            border: none;
+            background-color: #ffffff;
+            color: #333333;
+            font-size: 1rem;
+        }
+        .cg-nl-input::placeholder {
+            color: #666666;
+        }
+        .cg-nl-btn {
+            background-color: #ffffff;
+            color: #EF1218;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease !important;
+            font-family: inherit;
+        }
+        .cg-nl-btn:hover {
+            background-color: #ababab;
+            color: #f1f1f1;
+        }
+        @media (max-width: 768px) {
+            .cg-nl-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cg-nl-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="cg-nl-section">
+        <div class="cg-nl-container">
+            <div class="cg-nl-text">
+                <h2>¡Domina tu futuro hoy!</h2>
+                <p>Inscríbete a nuestro Newsletter y sé el primero en enterarte de nuevos cursos, tendencias del mercado y beneficios exclusivos para impulsar tu perfil profesional.</p>
+            </div>
+            <form class="cg-nl-form" onsubmit="event.preventDefault();">
+                <input type="email" class="cg-nl-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="cg-nl-btn">Inscribirme</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

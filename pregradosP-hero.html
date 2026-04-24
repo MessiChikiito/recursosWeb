@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title></title>
   <style>
         /* ========== RESET GLOBAL ========== */
         html, body {
             margin: 0;
             padding: 0;
+
         }
 
         /* ========== HERO VIRTUAL BASE - SCOPED STYLES ========== */
@@ -41,7 +42,6 @@
         }
 
         .hvb-hero {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             color: var(--hvb-color-gray-900);
             line-height: 1.6;
         }
@@ -117,7 +117,7 @@
         }
 
         .hvb-hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--hvb-color-white);
             margin-bottom: 20px;
@@ -159,7 +159,7 @@
         .hvb-hero-info-card-dual strong {
             display: block !important;
             font-size: 2rem !important;
-            font-weight: 900 !important;
+            font-weight: 800 !important;
             text-align: center !important;
             margin-bottom: 8px !important;
             letter-spacing: -0.5px !important;
@@ -185,7 +185,7 @@
         .hvb-hero-info-card strong {
             display: block;
             font-size: 2rem;
-            font-weight: 900;
+            font-weight: 800;
             margin-bottom: 8px;
             letter-spacing: -0.5px;
         }
@@ -267,7 +267,6 @@
         .hvb-btn-verde:hover {
             background: #08B81F !important;
             border-color: #08B81F !important;
-            transform: translateY(-2px) !important;
         }
 
         .hvb-btn-asesoria {
@@ -295,7 +294,6 @@
         .hvb-btn-asesoria:hover {
             background: #ffffff53 !important;
             border-color: #ffffff !important;
-            transform: translateY(-2px) !important;
         }
 
         /* RESPONSIVE */
@@ -491,10 +489,10 @@
                     Formación dual que conecta tu aprendizaje con el mundo empresarial real. Desarrolla competencias prácticas desde el primer semestre y sé parte de profesionales que transforman organizaciones.
                 </p>
                 <div class="hvb-hero-actions">
-                    <button class="hvb-btn-verde" onclick="alert('Ir a programas virtuales')" style="position: relative;">
+                    <a href="https://uniempresarial.edu.co/pregrados-virtuales/" class="hvb-btn-verde"  style="position: relative;">
                         <span>Ver Pregrados Virtuales →</span>
                         <span class="hvb-badge-nuevo-button">Nuevo</span>
-                    </button>
+                    </a>
                     <button class="hvb-btn-asesoria" onclick="scrollToSection('caja-info')">
                         <span>Solicitar una asesoría</span>
                     </button>
@@ -513,7 +511,7 @@
                 </div>
                 <div class="hvb-hero-info-card-dual">
                     <strong>Modalidad <strong class="hvb-dual">Dual</strong></strong>
-                    <p>Adquieres experiencia mientras estudias </p>
+                    <p>Adquieres experiencia laboral mientras estudias </p>
                 </div>
                 <div class="hvb-hero-info-card-dual">
                     <strong>Enfoques Reales</strong>
