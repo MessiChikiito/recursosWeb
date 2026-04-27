@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internacionalización en Casa - Uniempresarial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f5f7fa;
+            color: #06325a;
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0132AF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #06325a;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0132AF;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            background: linear-gradient(135deg, #0132AF 0%, #1a47d0 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 0;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* ===== BREADCRUMB ===== */
+        .breadcrumb {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e0e3e8;
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #7a8a99;
+        }
+
+        .breadcrumb-container a {
+            color: #0132AF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .breadcrumb-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            background: white;
+            padding: 60px 20px;
+            border-bottom: 1px solid #e0e3e8;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 32px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #7a8a99;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        /* ===== CONTENIDO CON IMAGEN ===== */
+        .content-with-image {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .content-text h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 16px;
+        }
+
+        .content-text p {
+            font-size: 16px;
+            color: #7a8a99;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .content-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #0132AF 0%, #00D4FF 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 900;
+        }
+
+        /* ===== REDES CARDS ===== */
+        .redes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .red-card {
+            background: linear-gradient(135deg, white 0%, #f9fbfd 100%);
+            border: 2px solid #e0e3e8;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .red-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0132AF 0%, #00D4FF 100%);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .red-card:nth-child(2)::before {
+            background: linear-gradient(90deg, #EF1218 0%, #FF6B6B 100%);
+        }
+
+        .red-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            border-color: #0132AF;
+        }
+
+        .red-logo {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .red-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 12px;
+        }
+
+        .red-description {
+            font-size: 14px;
+            color: #7a8a99;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .red-link {
+            display: inline-block;
+            color: #0132AF;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border-bottom: 2px solid #0132AF;
+            transition: all 0.3s ease;
+        }
+
+        .red-link:hover {
+            color: #001a85;
+            border-bottom-color: #001a85;
+        }
+
+        /* ===== DOBLE TITULACION SECTION ===== */
+        .doble-tit-container {
+            background: linear-gradient(135deg, #0132AF 0%, #1a47d0 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 32px 0;
+        }
+
+        .doble-tit-content h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .doble-tit-content p {
+            font-size: 15px;
+            margin-bottom: 16px;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .doble-tit-benefits {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .doble-tit-benefits li {
+            padding: 8px 0;
+            font-size: 14px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .doble-tit-benefits li::before {
+            content: '✓';
+            font-weight: 900;
+            color: #00D4FF;
+        }
+
+        .doble-tit-button {
+            display: inline-block;
+            background: #EF1218;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .doble-tit-button:hover {
+            background: #d91017;
+            transform: translateY(-2px);
+        }
+
+        .fgu-logo {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        /* ===== ESTUDIANTE VISITANTE SECTION ===== */
+        .visitante-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .visitante-card {
+            background: linear-gradient(135deg, #e8f1ff 0%, #f9fbfd 100%);
+            border-left: 4px solid #0132AF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .visitante-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(1, 50, 175, 0.15);
+        }
+
+        .visitante-card h4 {
+            font-size: 14px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 8px;
+        }
+
+        .visitante-card p {
+            font-size: 13px;
+            color: #7a8a99;
+            line-height: 1.5;
+        }
+
+        /* ===== NEWSLETTER SECTION ===== */
+        .newsletter-section {
+            background: linear-gradient(135deg, #0132AF 0%, #1a47d0 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-description {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            background: #EF1218;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #d91017;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-privacy {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* ===== TESTIMONIOS SECTION ===== */
+        .testimonios-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+            margin: 32px 0;
+        }
+
+        .testimonio-card {
+            background: linear-gradient(135deg, #f9fbfd 0%, #f3f9ff 100%);
+            border: 1px solid #e0e3e8;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .testimonio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonio-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0132AF 0%, #00D4FF 100%);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: 900;
+        }
+
+        .testimonio-name {
+            font-size: 16px;
+            font-weight: 900;
+            color: #0132AF;
+            margin-bottom: 8px;
+        }
+
+        .testimonio-title {
+            font-size: 12px;
+            color: #7a8a99;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .testimonio-text {
+            font-size: 14px;
+            color: #7a8a99;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonio-stars {
+            margin-top: 12px;
+            color: #FFD700;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #0132AF 0%, #1a47d0 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .cta-description {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #EF1218;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #d91017;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(239, 18, 24, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #06325a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #00D4FF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .content-with-image {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .content-image {
+                height: 200px;
+            }
+
+            .doble-tit-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .redes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .visitante-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-container">
+        <a href="internacionalizacion-inicio.html" class="logo">UNIEMPRESARIAL</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="internacionalizacion-inicio.html">Inicio</a></li>
+                <li><a href="internacionalizacion-movilidad.html">Movilidad</a></li>
+                <li><a href="mailto:aneira@uniempresarial.edu.co">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-subtitle">Internacionalización en Casa</div>
+        <h1 class="hero-title">¡Aquí no necesitas un avión para vivir el mundo!</h1>
+        <p class="hero-description">
+            Acercamos el mundo a tu salón de clases a través de clases espejo, ferias, eventos académicos y participación en redes internacionales.
+        </p>
+    </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="breadcrumb-container">
+        <a href="internacionalizacion-inicio.html">Inicio</a> / <span>Internacionalización en Casa</span>
+    </div>
+</div>
+
+<!-- CLASE ESPEJO SECTION -->
+<section class="content-section">
+    <div class="section-container">
+        <h2 class="section-title">Clases Espejo</h2>
+        
+        <div class="content-with-image">
+            <div class="content-text">
+                <h3>Interacción Global en Vivo</h3>
+                <p>
+                    Las clases espejo son espacios donde estudiantes de Uniempresarial interactúan en tiempo real con estudiantes y docentes de universidades internacionales. 
+                </p>
+                <p>
+                    A través de estas clases, promuovemos el intercambio de conocimientos, el aprendizaje colaborativo y la inmersión en contextos académicos internacionales sin dejar el aula.
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong style="color: #0132AF;">Beneficios:</strong> Mejora tu inglés, expande tu red profesional global, y vive experiencias internacionales desde Bogotá.
+                </p>
+            </div>
+            <div class="content-image">🌐 Clase Espejo</div>
+        </div>
+    </div>
+</section>
+
+<!-- REDES INTERNACIONALES SECTION -->
+<section class="content-section">
+    <div class="section-container">
+        <h2 class="section-title">Redes Internacionales</h2>
+        <p class="section-description">
+            Formamos parte de redes académicas globales que te permiten participar en grupos de investigación, proyectos colaborativos y networking internacional.
+        </p>
+
+        <div class="redes-grid">
+            <div class="red-card">
+                <div class="red-logo">🐬</div>
+                <h3 class="red-title">Programa Delfín</h3>
+                <p class="red-description">
+                    Una red de universidades mexicanas y latinoamericanas comprometidas con la excelencia académica y la internacionalización.
+                </p>
+                <a href="https://programadelfin.org.mx/" target="_blank" class="red-link">Conocer más →</a>
+            </div>
+
+            <div class="red-card">
+                <div class="red-logo">🌍</div>
+                <h3 class="red-title">Red Iberonex</h3>
+                <p class="red-description">
+                    Red de universidades iberoamericanas que facilita intercambios académicos, proyectos conjuntos y movilidad estudiantil.
+                </p>
+                <a href="https://www.iberonex.com/" target="_blank" class="red-link">Conocer más →</a>
+            </div>
+        </div>
+
+        <div style="background: #e8f1ff; border: 1px solid #0132AF; padding: 20px; border-radius: 6px; margin-top: 32px; text-align: center;">
+            <strong style="color: #0132AF;">💡 Oportunidad:</strong> Participa en investigaciones multinacionales, conferencias internacionales y desarrolla tus competencias globales desde cualquier lugar.
+        </div>
+    </div>
+</section>
+
+<!-- CULTURA GLOBAL SECTION -->
+<section class="content-section">
+    <div class="section-container">
+        <h2 class="section-title">Cultura Global</h2>
+        
+        <div class="content-with-image">
+            <div class="content-image">🎭 Cultura</div>
+            <div class="content-text">
+                <h3>Celebrando la Diversidad</h3>
+                <p>
+                    En Uniempresarial celebramos los Días Internacionales en colaboración con Embajadas y sus agencias en Colombia, generando espacios de intercambio cultural y académico.
+                </p>
+                <p>
+                    Estos eventos permiten a nuestra comunidad universitaria conocer diferentes culturas, tradiciones y perspectivas globales.
+                </p>
+            </div>
+        </div>
+
+        <h3 style="font-size: 20px; font-weight: 900; color: #0132AF; margin-top: 40px; margin-bottom: 16px;">Multilingüismo y Competencias Interculturales</h3>
+        
+        <div class="content-with-image" style="margin-top: 24px;">
+            <div class="content-text">
+                <p>
+                    Promovemos el multilingüismo en nuestra institución mediante:
+                </p>
+                <ul style="margin-left: 20px; margin-top: 12px;">
+                    <li>Acceso a materiales de estudio en múltiples idiomas</li>
+                    <li>Oferta de cátedras como Portugués y otras lenguas</li>
+                    <li>Sesiones académicas en diferentes lenguas</li>
+                    <li>Certificaciones internacionales de idiomas</li>
+                </ul>
+                <p style="margin-top: 16px;">
+                    Así fortalecemos tus competencias interculturales y tu proyección internacional.
+                </p>
+            </div>
+            <div class="content-image">🗣️ Idiomas</div>
+        </div>
+    </div>
+</section>
+
+<!-- DOBLE TITULACIÓN SECTION -->
+<section class="content-section">
+    <div class="section-container">
+        <h2 class="section-title">Doble Titulación</h2>
+
+        <div class="doble-tit-container">
+            <div class="doble-tit-content">
+                <h3>Convenio con Florida Global University</h3>
+                <p>
+                    El convenio de cooperación académica entre Uniempresarial y Florida Global University ofrece la posibilidad de doble titulación.
+                </p>
+                <p>
+                    <strong>Accede a una titulación en los Estados Unidos</strong> completando tus estudios en FGU de manera virtual, en español y a tu ritmo.
+                </p>
+                
+                <ul class="doble-tit-benefits">
+                    <li>Títulos válidos en todo EEUU</li>
+                    <li>Avalados por la comisión independiente del Estado de Florida</li>
+                    <li>Modalidad 100% virtual</li>
+                    <li>Estudio flexible a tu propio ritmo</li>
+                </ul>
+
+                <a href="https://floridaglobal.university/es/" target="_blank" class="doble-tit-button">Ver Oferta de Programas</a>
+            </div>
+
+            <div style="text-align: center;">
+                <div class="fgu-logo">🎓</div>
+                <div style="font-size: 18px; font-weight: 900; color: white;">Florida Global University</div>
+                <div style="font-size: 12px; opacity: 0.8; margin-top: 12px;">Fortalece tu perfil académico y proyección internacional</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESTUDIANTE VISITANTE SECTION -->
+<section class="content-section">
+    <div class="section-container">
+        <h2 class="section-title">Estudiante Visitante</h2>
+        <p class="section-description">
+            Vive una experiencia internacional orientada al mundo empresarial en Bogotá, Colombia. Uniempresarial te invita a formar parte de una institución líder en educación dual.
+        </p>
+
+        <h3 style="font-size: 20px; font-weight: 900; color: #0132AF; margin: 32px 0 16px;">¿Por qué Ser Estudiante Visitante en Uniempresarial?</h3>
+        <p class="section-description">
+            Aquí tendrás la oportunidad de fortalecer tus competencias académicas y profesionales en un entorno dinámico, con una visión global y orientada al mundo empresarial. Puedes:
+        </p>
+
+        <ul style="margin-left: 20px; color: #7a8a99; font-size: 16px; line-height: 1.7;">
+            <li style="margin-bottom: 12px;">Realizar un <strong style="color: #06325a;">intercambio académico durante un semestre</strong></li>
+            <li style="margin-bottom: 12px;">Participar en una <strong style="color: #06325a;">estancia de investigación</strong></li>
+            <li>Conectar con el sector real y vivir la experiencia de educación dual</li>
+        </ul>
+
+        <h3 style="font-size: 20px; font-weight: 900; color: #0132AF; margin: 40px 0 16px;">Fechas de Aplicación</h3>
+
+        <div class="visitante-grid">
+            <div class="visitante-card">
+                <h4>Primer Semestre</h4>
+                <p><strong>Nominación:</strong> 1 de octubre</p>
+                <p><strong>Aplicación:</strong> 15 de octubre</p>
+            </div>
+
+            <div class="visitante-card">
+                <h4>Segundo Semestre</h4>
+                <p><strong>Nominación:</strong> 1 de abril</p>
+                <p><strong>Aplicación:</strong> 15 de abril</p>
+            </div>
+        </div>
+
+        <h3 style="font-size: 20px; font-weight: 900; color: #0132AF; margin: 40px 0 16px;">Requisitos de Postulación</h3>
+
+        <div class="visitante-grid">
+            <div class="visitante-card">
+                <h4>Documentación Básica</h4>
+                <p>✓ Formulario de postulación</p>
+                <p>✓ Pasaporte o cédula de ciudadanía</p>
+                <p>✓ Certificado de calificaciones</p>
+            </div>
+
+            <div class="visitante-card">
+                <h4>Requisitos de Idioma y Salud</h4>
+                <p>✓ Certificado español B1 (si no es lengua materna)</p>
+                <p>✓ Seguro médico con cobertura integral</p>
+            </div>
+
+            <div class="visitante-card">
+                <h4>Información Práctica</h4>
+                <p>💰 Presupuesto: ~USD $800 mensuales</p>
+                <p>✈️ Visa: No requerida para estancias &lt; 6 meses</p>
+            </div>
+        </div>
+
+        <div style="background: #fff3cd; border-left: 4px solid #ff9800; padding: 20px; border-radius: 6px; margin-top: 32px;">
+            <strong style="color: #ff9800;">📝 Proceso de Aplicación:</strong>
+            <p style="margin-top: 12px; color: #7a8a99;">
+                Para postularte, realiza el proceso a través de la <strong>Oficina de Relaciones Internacionales (ORI)</strong> de tu universidad. Por ese canal recibirás toda la información y acompañamiento necesario durante el proceso de aplicación.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER SECTION -->
+<section class="newsletter-section">
+    <div class="newsletter-container">
+        <h2 class="newsletter-title">📰 Boletín "El Faro"</h2>
+        <p class="newsletter-description">
+            Mantente informado sobre becas, convocatorias y eventos internacionales. Recibe mensualmente las mejores oportunidades de internacionalización.
+        </p>
+
+        <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" placeholder="tu.email@example.com" required>
+            <button type="submit">Suscribirse</button>
+        </form>
+        <p class="newsletter-privacy">
+            Al suscribirse, aceptas recibir comunicaciones de Uniempresarial sobre oportunidades internacionales.
+        </p>
+    </div>
+</section>
+
+<!-- TESTIMONIOS SECTION -->
+<section class="testimonios-section">
+    <div class="section-container">
+        <h2 class="section-title">Testimonio de Estudiantes</h2>
+
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <div class="testimonio-avatar">E</div>
+                <div class="testimonio-name">Elkin Fabián</div>
+                <div class="testimonio-title">Estudiante de Administración</div>
+                <p class="testimonio-text">
+                    "La experiencia de internacionalización en Uniempresarial cambió completamente mi perspectiva académica y profesional. Las oportunidades que ofrece la institución son increíbles."
+                </p>
+                <div class="testimonio-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: #7a8a99; font-size: 14px; margin-top: 32px; font-style: italic;">
+            Más testimonios de estudiantes que han vivido la experiencia internacional en Uniempresarial...
+        </p>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2 class="cta-title">¿Listo para internacionalizarte?</h2>
+        <p class="cta-description">
+            Ya sea que elijas movilidad, clases espejo, doble titulación o estudiar como visitante, en Uniempresarial tenemos una opción para ti.
+        </p>
+        <a href="internacionalizacion-inicio.html" class="cta-button">Explorar Todas las Opciones</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="internacionalizacion-inicio.html">Inicio</a>
+            <a href="internacionalizacion-movilidad.html">Movilidad Académica</a>
+            <a href="mailto:aneira@uniempresarial.edu.co">Contacto</a>
+        </div>
+        <p>&copy; 2024 Uniempresarial. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    function handleNewsletterSubmit(event) {
+        event.preventDefault();
+        const email = event.target.querySelector('input[type="email"]').value;
+        alert('¡Gracias por suscribirse! Se ha enviado un correo de confirmación a ' + email);
+        event.target.reset();
+    }
+</script>
+
+</body>
+</html>
