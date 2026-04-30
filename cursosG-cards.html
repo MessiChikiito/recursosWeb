@@ -9,6 +9,7 @@
   <style>
    .cg-cards-section {
             padding: 80px 20px;
+            padding-top: 0px;
             font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
             background-color: #ffffff;
         }
@@ -90,17 +91,17 @@
         }
         .cg-card-title {
             font-size: 24px;
-            font-weight: 800;
+            font-weight: 900; -webkit-font-smoothing: antialiased;
             color: #1a202c;
             line-height: 1.2;
             margin: 0;
         }
         .cg-card-badge {
             color: #ffffff;
-            padding: 6px 12px;
+            padding: 4px 12px ;
             border-radius: 6px;
             font-size: 11px;
-            font-weight: 800;
+            font-weight: 900; -webkit-font-smoothing: antialiased;
             white-space: nowrap;
             text-transform: uppercase;
         }
@@ -128,12 +129,17 @@
         }
         .cg-card-meta {
             display: flex;
-            align-items: center;            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 15px;
             background-color: #f8fafc;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
+        }
+        .cg-card-meta:has(> .cg-card-meta-item:nth-child(2)) {
+            justify-content: flex-start;
         }
         .cg-card-meta-item {
             display: flex;
@@ -199,6 +205,8 @@
         @media (max-width: 768px) {
             .cg-cards-section {
                 padding: 50px 15px;
+                padding-top: 0px;
+                margin-top: -45px;
             }
 
             .cg-tabs {
@@ -233,7 +241,60 @@
                 gap: 20px;
             }
         }
-  </style>
+  
+        .cg-card-image-container {
+            width: calc(100% + 60px);
+            height: 170px;
+            margin: -30px -30px 20px -30px;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+        }
+        .cg-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cg-badge-nuevo, .cg-badge-homologable, .cg-badge-diplomado {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            -webkit-font-smoothing: antialiased;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border: 2px solid #e2e8f0;
+        }
+        .cg-badge-nuevo {
+            background-color: #EF1218;
+            color: #ffffff;
+        }
+        .cg-badge-homologable {
+            background-color: #0132AF;
+            color: #ffffff;
+        }
+        .cg-badge-diplomado {
+            background-color: #00D4FF;
+            color: #1a202c;
+        }
+                @media (max-width: 768px) {
+            .cg-badge-nuevo, .cg-badge-homologable, .cg-badge-diplomado {
+                font-size: 11px;
+                padding: 4px 8px;
+                top: 8px;
+                right: 8px;
+                letter-spacing: 0.3px;
+            }
+        }
+
+</style>
  </head>
  <body>
   <section class="cg-cards-section">
@@ -251,7 +312,11 @@
     </div>
     <div class="cg-cards-grid active" id="tab1">
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-de-proyectos-PMI-basico-o-agil-scaled.webp" alt="Gestión de Proyectos" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Gestión de Proyectos
        </h3>
@@ -264,20 +329,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        20 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 20 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -301,7 +353,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Innovacion-y-transformacion-digital-scaled.webp" alt="Innovación y Transformación Digital" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Innovación y Transformación Digital
        </h3>
@@ -314,20 +370,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        12 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual
+        Tiempo total: 12 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -351,7 +394,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Planeacion-estrategica-y-toma-de-desiciones-scaled.webp" alt="Planeación Estratégica y Toma de Decisiones" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Planeación Estratégica y Toma de Decisiones
        </h3>
@@ -364,20 +411,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        16 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual
+        Tiempo total: 16 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -401,7 +435,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Servicio-al-cliente-y-experiencia-del-usuario-scaled.webp" alt="Servicio al Cliente y Experiencia del Usuario" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Servicio al Cliente y Experiencia del Usuario
        </h3>
@@ -414,20 +452,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        16 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Presencial
+        Tiempo total: 16 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -451,7 +476,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Liderazgo-y-Gestion-de-equipos-scaled.webp" alt="Liderazgo y Gestión de Equipos" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Liderazgo y Gestión de Equipos
        </h3>
@@ -464,20 +493,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        8 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 8 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -501,7 +517,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Actualizacion-Normas-NIF-scaled.webp" alt="Actualización Normas NIIF" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Actualización Normas NIIF
        </h3>
@@ -514,20 +534,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        8 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 8 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -551,7 +558,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-del-tiempo-y-productividad-scaled.webp" alt="Gestión del Tiempo y Productividad" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Gestión del Tiempo y Productividad
        </h3>
@@ -564,20 +575,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        8 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 8 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -601,7 +599,11 @@
       </div>
      </article>
      <article class="cg-card cursos-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-y-Productividad-Digital-con-Office-365-para-Empresas-scaled.webp" alt="Gestión Digital con Office 365" class="cg-card-image" >
+       <span class="cg-badge-nuevo">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Gestión Digital con Office 365
        </h3>
@@ -614,20 +616,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        30 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 30 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -653,7 +642,11 @@
     </div>
     <div class="cg-cards-grid" id="tab2">
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Diseno-de-Negocios-Futuros-scaled.webp" alt="Diseño de Negocios Futuros" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Diseño de Negocios Futuros
        </h3>
@@ -666,20 +659,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 40 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -703,7 +683,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Herramientas-de-Diagnostico-para-la-Competitividad-Empresarial-Uniempresarial-scaled.webp" alt="Herramientas de Diagnóstico para la Competitividad Empresarial" class="cg-card-image" >
+       <span class="cg-badge-homologable">Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Herramientas de Diagnóstico para la Competitividad Empresarial
        </h3>
@@ -716,20 +700,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Presencial
+        Tiempo total: 40 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -753,7 +724,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Creacion-Formalizacion-y-Tributacion-de-Empresas-en-Colombia-Uniempresarial-scaled.webp" alt="Creación, Formalización y Tributación de Empresas en Colombia" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Creación, Formalización y Tributación de Empresas en Colombia
        </h3>
@@ -767,19 +742,6 @@
          </polyline>
         </svg>
         40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -803,7 +765,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Cultura-Organizacional-y-Empresas-con-Proposito-Uniempresarial-scaled.webp" alt="Cultura Organizacional y Empresas con Propósito" class="cg-card-image" >
+       <span class="cg-badge-homologable">Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Cultura Organizacional y Empresas con Propósito
        </h3>
@@ -816,20 +782,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Presencial
+        Tiempo total: 40 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -853,7 +806,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Liderazgo-y-Coaching-para-el-Desarrollo-del-Talento-4.0-Uniempresarial-scaled.webp" alt="Liderazgo y Coaching para el Desarrollo del Talento 4.0" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Liderazgo y Coaching para el Desarrollo del Talento 4.0
        </h3>
@@ -866,20 +823,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 40 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -903,7 +847,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp" alt="Pensamiento Computacional y Programación Eficiente" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Pensamiento Computacional y Programación Eficiente
        </h3>
@@ -916,20 +864,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 40 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -953,7 +888,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Programacion-y-Estructuras-de-Datos-Java-y-Python-Uniempresarial-scaled.webp" alt="Programación y Estructuras de Datos: Java y Python" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Programación y Estructuras de Datos: Java y Python
        </h3>
@@ -966,20 +905,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        60 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual / Presencial
+        Tiempo total: 60 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -1003,7 +929,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Ecosistemas-Digitales-y-Ciberseguridad-Empresarial-Uniempresarial-scaled.webp" alt="Ecosistemas Digitales y Ciberseguridad Empresarial" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Ecosistemas Digitales y Ciberseguridad Empresarial
        </h3>
@@ -1016,20 +946,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        40 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Virtual
+        Tiempo total: 40 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -1053,7 +970,11 @@
       </div>
      </article>
      <article class="cg-card homologables-tab">
-      <div class="cg-card-header">
+      <div class="cg-card-image-container">
+       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-Frontend-Master-Diseno-e-Interactividad-Web-Profesional-Uniempresarial-1-scaled.webp" alt="Frontend Master: Diseño e Interactividad Web Profesional" class="cg-card-image" >
+       <span class="cg-badge-homologable">Virtual / Presencial</span>
+      </div>
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Frontend Master: Diseño e Interactividad Web Profesional
        </h3>
@@ -1066,9 +987,8 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        60 horas
+        Tiempo total: 60 horas
        </div>
-
       </div>
       <ul class="cg-card-bullets">
        <li>
@@ -1093,7 +1013,13 @@
     </div>
     <div class="cg-cards-grid" id="tab3">
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Creación y Optimización de Prompts para IA
        </h3>
@@ -1106,22 +1032,8 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        80 horas
+        Tiempo total: 80 horas
        </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
-       </div>
-
       </div>
       <ul class="cg-card-bullets">
        <li>
@@ -1147,7 +1059,13 @@
       </div>
      </article>
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Estrategias Éxito Empresarial: Eventos y Marketing
        </h3>
@@ -1160,20 +1078,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        80 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
+        Tiempo total: 80 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -1200,7 +1105,13 @@
       </div>
      </article>
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Impulsa tu Negocio 360: Escalable y Sostenible
        </h3>
@@ -1213,22 +1124,8 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        80 horas
+        Tiempo total: 80 horas
        </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
-       </div>
-
       </div>
       <ul class="cg-card-bullets">
        <li>
@@ -1254,7 +1151,13 @@
       </div>
      </article>
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Inteligencia Artificial Aplicada al Marketing
        </h3>
@@ -1267,20 +1170,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        80 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
+        Tiempo total: 80 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -1307,7 +1197,13 @@
       </div>
      </article>
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Insolvencia e Intervención
        </h3>
@@ -1320,21 +1216,8 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        104 horas
+        Tiempo total: 104 horas
        </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
-      </div>
       </div>
       <ul class="cg-card-bullets">
        <li>
@@ -1360,7 +1243,13 @@
       </div>
      </article>
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Protección de Datos en Entornos Digitales
        </h3>
@@ -1373,20 +1262,7 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        90 horas
-       </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
+        Tiempo total: 90 horas
        </div>
       </div>
       <ul class="cg-card-bullets">
@@ -1413,7 +1289,13 @@
       </div>
      </article>
      <article class="cg-card diplomados-tab">
-      <div class="cg-card-header">
+      <!-- 
+<div class="cg-card-image-container">
+       
+       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
+      </div>
+ -->
+<div class="cg-card-header">
        <h3 class="cg-card-title">
         Preparatorio Carrera Notarial
        </h3>
@@ -1426,22 +1308,8 @@
          <polyline points="12 6 12 12 16 14">
          </polyline>
         </svg>
-        50 horas
+        Tiempo total: 50 horas
        </div>
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <rect height="18" rx="2" width="18" x="3" y="4">
-         </rect>
-         <line x1="16" x2="16" y1="2" y2="6">
-         </line>
-         <line x1="8" x2="8" y1="2" y2="6">
-         </line>
-         <line x1="3" x2="21" y1="10" y2="10">
-         </line>
-        </svg>
-        Sincrónico - Online
-       </div>
-
       </div>
       <ul class="cg-card-bullets">
        <li>

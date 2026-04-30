@@ -17,9 +17,8 @@
         }
         .cg-hero-content {
             margin: 0 auto;
-            padding-right: 200px;
             display: grid;
-            grid-template-columns: 60% 40%;
+            grid-template-columns: 100% 0%;
             gap: 50px;
             align-items: center;
         }
@@ -28,7 +27,7 @@
             padding-left: 200px;
             margin: 0;
             background-color: #0132AF;
-            min-height: 600px;
+            min-height: 700px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -72,17 +71,17 @@
             color: #fff;
         }
         .cg-hero-right {
-            padding-top: 200px;
+            min-height: 500px;
+            max-height: 600px;
             border-radius: 16px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 600;
             background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            overflow: hidden;
         }
+
         @media (max-width: 992px) {
             
             .cg-hero-left {
@@ -108,7 +107,7 @@
                 font-size: 36px;
             }
             .cg-hero-subtitle{
-                font-size: 16px;            
+                font-size: 14px;            
             }
             .cg-hero-left strong{
                 padding-left: 0px;
@@ -116,14 +115,12 @@
             .cg-hero-content { 
                 grid-template-columns: 1fr;
                 padding-right: 0px;
-                gap: 50px;
+                gap: 0px;
             }
 
             .cg-hero-right { 
-                min-height: 300px;
-                padding-top: 0px;
-                padding-bottom: 50px;
-                margin-top: 230px;
+                max-height: none;
+                padding: 15px;
             }
         }
     </style>
@@ -145,11 +142,6 @@
                         Contáctanos por WhatsApp
                     </a>
                 </div>
-            </div>
-
-            <div class="cg-hero-right">
-                <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/284859.js"></script>
-
             </div>
         </div>
     </section>
