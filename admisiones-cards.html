@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admisiones - Proceso</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .adm-section {
+      background: #fff;
+      padding: 60px 24px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .adm-section-title {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #0132AF;
+      margin: 0 0 40px 0;
+      text-align: center;
+    }
+
+    .adm-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .adm-card {
+      background: #ffffff;
+      border: 1px solid #edf2f7;
+      border-left: 4px solid #0B8A38;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s ease !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .adm-card:nth-child(2) {
+      border-left-color: #EA0A2A;
+    }
+
+    .adm-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: inline-flex;
+      width: 56px;
+      height: 56px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: #f3f4f6;
+    }
+
+    .adm-card:nth-child(1) .adm-card-icon {
+      color: #0B8A38;
+      background: #ecfdf5;
+    }
+
+    .adm-card:nth-child(2) .adm-card-icon {
+      color: #EA0A2A;
+      background: #fef2f2;
+    }
+
+    .adm-card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .adm-card-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1f2937;
+      margin: 0 0 12px 0;
+    }
+
+    .adm-card-description {
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin: 0 0 24px 0;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .adm-card-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+      transition: background 0.3s ease !important;
+      width: fit-content;
+    }
+
+    .adm-card:nth-child(1) .adm-card-button {
+      background: #0B8A38;
+      color: #ffffff;
+    }
+
+    .adm-card:nth-child(1) .adm-card-button:hover {
+      background: #11A546;
+    }
+
+    .adm-card:nth-child(2) .adm-card-button {
+      background: #EA0A2A;
+      color: #ffffff;
+    }
+
+    .adm-card:nth-child(2) .adm-card-button:hover {
+      background: #F02441;
+    }
+
+    .adm-cta-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .adm-cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+      background: #0132AF;
+      color: #ffffff;
+    }
+
+    .adm-cta-button:hover {
+      background: #0a2d88;
+      color: #ffffff;
+    }
+
+    .adm-cta-button:active {
+      background: #001244;
+      color: #ffffff;
+    }
+
+    .adm-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .adm-modal-content {
+      background-color: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #edf2f7;
+      width: 90%;
+      max-width: 600px;
+      padding: 40px;
+      animation: slideUp 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .adm-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #e0e3e8;
+      padding-bottom: 16px;
+    }
+
+    .adm-modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+      color: #0132AF;
+    }
+
+    .adm-modal-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #999;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .adm-modal-close:hover {
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    .adm-modal-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .adm-partners-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .adm-partner-card {
+      border: 1px solid #e0e3e8;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafbfc;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .adm-partner-card:hover {
+      border-color: #012c9b;
+      background: #ffffff;
+    }
+
+    .adm-partner-card img {
+      max-width: 80%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .adm-partner-card::after {
+      content: '→';
+      font-size: 1.5rem;
+      color: #0132AF;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .adm-modal-cta {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+      background: #0132AF;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease !important;
+      box-sizing: border-box;
+    }
+
+    .adm-modal-cta:hover {
+      background: #0a2d88;
+      color: #ffffff;
+    }
+
+    .adm-modal-cta:active {
+      background: #001244;
+    }
+
+    .adm-rq-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .adm-rq-list li {
+      padding: 12px 16px;
+      border-bottom: 1px solid #edf2f7;
+      color: #374151;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .adm-rq-list li::before {
+      content: '✓';
+      color: #0B8A38;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .adm-rq-list li:last-child {
+      border-bottom: none;
+    }
+
+    .adm-modal-intro {
+      color: #06325a;
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .adm-rq-list-container {
+      margin-bottom: 24px;
+    }
+        @media (max-width: 768px) {
+      .adm-section {
+        padding: 40px 16px;
+        padding-top: 0;
+      }
+
+      .adm-section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        grid-row: 1;
+      }
+
+      .adm-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .adm-cards-grid {
+        display: contents;
+      }
+
+      .adm-cta-buttons {
+        display: contents;
+      }
+
+      .adm-card {
+        padding: 24px;
+      }
+
+      .adm-card-button {
+        font-size: 1.1rem;
+      }
+
+      .adm-cards-grid .adm-card:nth-child(1) {
+        grid-row: 2;
+      }
+
+      .adm-cta-buttons .adm-cta-button:nth-child(1) {
+        grid-row: 3;
+      }
+
+      .adm-cards-grid .adm-card:nth-child(2) {
+        grid-row: 4;
+      }
+
+      .adm-cta-buttons .adm-cta-button:nth-child(2) {
+        grid-row: 5;
+      }
+
+      .adm-cta-buttons {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .adm-cta-button {
+        padding: 14px 20px;
+        font-size: 1.1rem;
+      }
+
+      .adm-modal-content {
+        padding: 24px;
+        width: 95%;
+      }
+
+      .adm-modal-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .adm-modal-intro {
+        font-size: 1.1rem;
+      }
+
+      .adm-rq-list li {
+        font-size: 1rem;
+        padding: 10px 12px;
+      }
+
+      .adm-modal-cta {
+        font-size: 1rem;
+        padding: 12px 16px;
+      }
+
+      .adm-partners-grid {
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .adm-partner-card {
+        padding: 12px;
+        font-size: 0.85rem;
+      }
+
+      .adm-partner-card img {
+        max-height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="adm-section">
+    <div class="adm-container">
+      <h2 class="adm-section-title">Procesos de Admisión</h2>
+
+      <div class="adm-cards-grid">
+        <div class="adm-card">
+          <div class="adm-card-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+          <h3 class="adm-card-title">Inscríbete por WhatsApp</h3>
+          <p class="adm-card-description">Comunícate directamente con nuestro equipo de admisiones. Resolvemos tus dudas en tiempo real y guiamos todo tu proceso de forma ágil y personalizada.</p>
+          <a href="https://wa.me/571234567890" class="adm-card-button">Iniciar Conversación</a>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+          <h3 class="adm-card-title">Descargar Guía de Proceso</h3>
+          <p class="adm-card-description">Accede a nuestra guía completa con todos los pasos, requisitos y documentos necesarios para completar tu admisión sin inconvenientes.</p>
+          <a href="#" class="adm-card-button">Descargar PDF</a>
+        </div>
+      </div>
+
+      <div class="adm-cta-buttons">
+        <button onclick="openFinancingModal()" class="adm-cta-button">Opciones de Financiación</button>
+        <button onclick="openRqModal()" class="adm-cta-button">Ver Opciones de Pago</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="financingModal" class="adm-modal">
+    <div class="adm-modal-content">
+      <div class="adm-modal-header">
+        <h2>Opciones de Financiación</h2>
+        <button class="adm-modal-close" onclick="closeFinancingModal()">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <p class="adm-modal-intro">Contamos con aliados financieros para que puedas financiar tu carrera con facilidad:</p>
+
+        <div class="adm-partners-grid">
+          <a href="https://www.jfk.com.co/" target="_blank" rel="noopener noreferrer" class="adm-partner-card">
+            <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/logo-jfkCooperativa-JFK.png" alt="JFK Cooperativa Financiera">
+          </a>
+          <a href="https://www.finky.la/" target="_blank" rel="noopener noreferrer" class="adm-partner-card">
+            <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/Logo-Finky-768x432.png" alt="Finky">
+          </a>
+          <a href="https://fincoeducar.fincomercio.com/Fincoeducar/Home/IndexApp.jsp?ID=9C191E66-CDA0-4CD7-A972-F5968BD7640A" target="_blank" rel="noopener noreferrer" class="adm-partner-card">
+            <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/06/Fincomercio-100.jpg" alt="Fincomercio">
+          </a>
+          <a href="https://www.canapro.coop/" target="_blank" rel="noopener noreferrer" class="adm-partner-card">
+            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/logo-25-pag-web-01.webp" alt="Canapro">
+          </a>
+        </div>
+
+        <a href="https://uniempresarial.edu.co/financiacion/" target="_blank" class="adm-modal-cta">Conoce todas las opciones de financiación</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="rqModal" class="adm-modal">
+    <div class="adm-modal-content">
+      <div class="adm-modal-header">
+        <h2>Opciones de Pago</h2>
+        <button class="adm-modal-close" onclick="closeRqModal()">&times;</button>
+      </div>
+      <div class="adm-modal-body">
+        <p class="adm-modal-intro">Asegúrate de contar con los siguientes documentos para formalizar tu proceso:</p>
+
+        <ul class="adm-rq-list adm-rq-list-container">
+          <li>PSE</li>
+          <li>Visa / Mastercad</li>
+          <li>Pago en Efectivo</li>
+        </ul>
+
+        <a href="https://www.abcpagos.com/uniempresarial/estudiantes" target="_blank" class="adm-modal-cta">Paga tu matrícula ahora</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openFinancingModal() {
+      const modal = document.getElementById('financingModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFinancingModal() {
+      const modal = document.getElementById('financingModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function openRqModal() {
+      const modal = document.getElementById('rqModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeRqModal() {
+      const modal = document.getElementById('rqModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+      const financingModal = document.getElementById('financingModal');
+      const rqModal = document.getElementById('rqModal');
+      if (event.target == financingModal) {
+        closeFinancingModal();
+      }
+      if (event.target == rqModal) {
+        closeRqModal();
+      }
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeFinancingModal();
+        closeRqModal();
+      }
+    });
+  </script>
+</body>
+</html>

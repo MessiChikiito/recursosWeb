@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes - Admisiones</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .adm-faq-wrap {
+      padding: 60px 24px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+    }
+
+    .adm-faq-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .adm-faq-header {
+      text-align: left;
+      margin-bottom: 40px;
+      padding: 0px 16px;
+    }
+
+    .adm-faq-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #0132AF;
+      margin: 0 0 12px 0;
+    }
+
+    .adm-faq-intro {
+      color: #6b7280;
+      margin: 0;
+      font-size: 1rem;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-faq-section {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .adm-faq-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .adm-faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .adm-faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      text-align: left;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .adm-faq-question:hover {
+      background: #f9fafb;
+      color: #0132AF;
+    }
+
+    .adm-faq-question[aria-expanded="true"] {
+      color: #0132AF;
+    }
+
+    .adm-faq-question:focus {
+      outline-offset: -3px;
+    }
+
+    .adm-faq-chevron {
+      transition: transform 0.3s ease;
+      color: #6b7280;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .adm-faq-question[aria-expanded="true"] .adm-faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .adm-faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      transition: max-height 0.3s ease;
+      background: transparent;
+    }
+
+    .adm-faq-answer p {
+      margin: 12px 0 18px 0;
+      color: #374151;
+      line-height: 1.6;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-faq-item.open .adm-faq-answer {
+      max-height: 500px;
+    }
+
+    @media (max-width: 768px) {
+      .adm-faq-wrap {
+        padding: 40px 16px;
+      }
+
+      .adm-faq-header {
+        margin-bottom: 20px;
+      }
+
+      .adm-faq-title {
+        font-size: 2rem;
+      }
+
+      .adm-faq-intro{
+        font-size: 16px;
+      }
+
+      .adm-faq-question {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+
+      .adm-faq-answer {
+        padding: 0 16px;
+      }
+
+      .adm-faq-item.open .adm-faq-answer {
+        max-height: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="adm-faq-wrap">
+    <div class="adm-faq-container">
+      <div class="adm-faq-header">
+        <h1 class="adm-faq-title">Preguntas Frecuentes</h1>
+        <p class="adm-faq-intro">Resolvemos las dudas más comunes sobre el proceso de admisión.</p>
+      </div>
+
+      <section class="adm-faq-section" aria-label="Preguntas frecuentes sobre admisiones">
+        <div class="adm-faq-item" data-index="1">
+          <button class="adm-faq-question" aria-expanded="false" aria-controls="adm-faq-1" id="adm-faq-q-1">
+            ¿Cuál es el primer paso del proceso de admisión?
+            <span class="adm-faq-chevron">▾</span>
+          </button>
+          <div class="adm-faq-answer" id="adm-faq-1" role="region" aria-labelledby="adm-faq-q-1">
+            <p>El primer paso es contactarnos a través de WhatsApp o completar el formulario en línea. Uno de nuestros asesores te guiará en todo el proceso, resolverá tus dudas sobre los programas disponibles y te orientará según tus intereses profesionales.</p>
+          </div>
+        </div>
+
+        <div class="adm-faq-item" data-index="2">
+          <button class="adm-faq-question" aria-expanded="false" aria-controls="adm-faq-2" id="adm-faq-q-2">
+            ¿Qué requisitos necesito para aplicar?
+            <span class="adm-faq-chevron">▾</span>
+          </button>
+          <div class="adm-faq-answer" id="adm-faq-2" role="region" aria-labelledby="adm-faq-q-2">
+            <p>Para aplicar necesitas: cédula de identidad, diploma de educación media o equivalente, documento de identidad vigente, y comprobante de domicilio. Algunos programas pueden requerir requisitos adicionales específicos. Contáctanos para conocer los detalles según el programa de tu interés.</p>
+          </div>
+        </div>
+
+        <div class="adm-faq-item" data-index="3">
+          <button class="adm-faq-question" aria-expanded="false" aria-controls="adm-faq-3" id="adm-faq-q-3">
+            ¿Cuánto tiempo tarda el proceso de admisión?
+            <span class="adm-faq-chevron">▾</span>
+          </button>
+          <div class="adm-faq-answer" id="adm-faq-3" role="region" aria-labelledby="adm-faq-q-3">
+            <p>El proceso de admisión generalmente toma entre 5 a 10 días hábiles desde que envías tu documentación completa. Trabajamos de forma ágil para revisar tu perfil y asignarte un asesor personal que te acompañe en los siguientes pasos.</p>
+          </div>
+        </div>
+
+        <div class="adm-faq-item" data-index="4">
+          <button class="adm-faq-question" aria-expanded="false" aria-controls="adm-faq-4" id="adm-faq-q-4">
+            ¿Existe un costo por el proceso de admisión?
+            <span class="adm-faq-chevron">▾</span>
+          </button>
+          <div class="adm-faq-answer" id="adm-faq-4" role="region" aria-labelledby="adm-faq-q-4">
+            <p>No. El proceso de admisión es completamente gratuito. Lo que sí tiene costo es el programa académico que elijas, pero contamos con opciones de financiación, becas y descuentos especiales para estudiantes de excelencia académica.</p>
+          </div>
+        </div>
+
+        <div class="adm-faq-item" data-index="5">
+          <button class="adm-faq-question" aria-expanded="false" aria-controls="adm-faq-5" id="adm-faq-q-5">
+            ¿Puedo aplicar a varios programas a la vez?
+            <span class="adm-faq-chevron">▾</span>
+          </button>
+          <div class="adm-faq-answer" id="adm-faq-5" role="region" aria-labelledby="adm-faq-q-5">
+            <p>Sí, puedes aplicar a múltiples programas. Te recomendamos contactar a nuestro equipo de asesoría para que te ayude a explorar las opciones que mejor se alineen con tu perfil y objetivos profesionales.</p>
+          </div>
+        </div>
+
+        <div class="adm-faq-item" data-index="6">
+          <button class="adm-faq-question" aria-expanded="false" aria-controls="adm-faq-6" id="adm-faq-q-6">
+            ¿Cuáles son los plazos de inscripción para cada semestre?
+            <span class="adm-faq-chevron">▾</span>
+          </button>
+          <div class="adm-faq-answer" id="adm-faq-6" role="region" aria-labelledby="adm-faq-q-6">
+            <p>Abrimos convocatorias continuamente durante todo el año. Los períodos principales son: semestre 1 (enero-febrero), semestre 2 (julio-agosto), y períodos intermedios en abril y octubre. Puedes inscribirte en cualquier momento contactando a nuestro equipo.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.adm-faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const parent = button.closest('.adm-faq-item');
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+        if (!isOpen) {
+          parent.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+        } else {
+          parent.classList.remove('open');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

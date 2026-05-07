@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: #f7fafc;
+    }
+
+    .adm-hero {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .adm-hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      padding: 80px 24px;
+    }
+
+    .adm-hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .adm-hero-left h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #0132AF;
+      margin: 0 0 20px 0;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    .adm-hero-left p {
+      font-size: 1.1rem;
+      color: #4a5568;
+      margin: 0 0 32px 0;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .eyebrow-line {
+      margin-bottom: 24px;
+      font-weight: 700;
+      color: #ea0a2a;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .eyebrow-line::after {
+      content: '';
+      width: 200px;
+      height: 3px;
+      background: #ea0a2a;
+      margin-top: 8px;
+      border-radius: 2px;
+      transform-origin: left center;
+      animation: estirar-linea 8s infinite ease-in-out;
+    }
+
+    @keyframes estirar-linea {
+      0%, 100% { transform: scaleX(0.1); }
+      50% { transform: scaleX(1); }
+    }
+
+    .adm-hero-right {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .adm-hero-right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .adm-hero-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 60px 16px;
+      }
+      .eyebrow-line > span {
+        font-size: 0.95rem;
+      }
+      .adm-hero-left h1 {
+        font-size: 2.3rem;
+      }
+      .adm-hero-left p {
+        margin-bottom: 5px;
+        font-size: 1rem;
+      }
+      .adm-hero-right {
+        aspect-ratio: 16 / 9;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="adm-hero">
+    <div class="adm-hero-content">
+      <div class="adm-hero-left">
+        <div class="eyebrow-line">
+          <span>Nuevo Proceso 2026</span>
+        </div>
+        <h1>Inicia Tu Carrera con Nosotros</h1>
+        <p>Conoce paso a paso el proceso de admisión. Prepárate para una experiencia académica transformadora que te abrirá las puertas al mundo empresarial.</p>
+      </div>
+      <div class="adm-hero-right">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

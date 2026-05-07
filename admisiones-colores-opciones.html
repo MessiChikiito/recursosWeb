@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opciones de Colores - Admisiones Cards</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+    }
+
+    .adm-color-wrap {
+      padding: 60px 24px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .adm-color-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #0132AF;
+      margin: 0 0 12px 0;
+      text-align: center;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-intro {
+      text-align: center;
+      color: #6b7280;
+      margin: 0 0 40px 0;
+      font-size: 1rem;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-section {
+      margin-bottom: 50px;
+    }
+
+    .adm-color-section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1f2937;
+      margin: 0 0 24px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e5e7eb;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-variant {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .adm-color-card {
+      background: #ffffff;
+      border: 1px solid #edf2f7;
+      border-left: 4px solid;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(0);
+    }
+
+    .adm-color-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-right-color: #e0e7ff;
+      border-top-color: #e0e7ff;
+      border-bottom-color: #e0e7ff;
+      transform: translateY(-5px);
+    }
+
+    .adm-color-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: inline-flex;
+      width: 56px;
+      height: 56px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+
+    .adm-color-card-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1f2937;
+      margin: 0 0 12px 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-card-description {
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin: 0 0 24px 0;
+      line-height: 1.6;
+      flex-grow: 1;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-card-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-size: 0.95rem;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      width: fit-content;
+      transition: all 0.3s ease;
+      color: #ffffff;
+    }
+
+    .adm-color-card-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      opacity: 0.9;
+    }
+
+    .adm-color-label {
+      display: inline-block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 16px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .adm-color-label-code {
+      background: #1f2937;
+      color: #ffffff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'Monaco', 'Courier New', monospace;
+    }
+
+    .opt1-card1 {
+      border-left-color: #10B981;
+    }
+
+    .opt1-card1 .adm-color-card-icon {
+      background: #ecfdf5;
+      color: #10B981;
+    }
+
+    .opt1-card1 .adm-color-card-button {
+      background: #10B981;
+    }
+
+    .opt1-card2 {
+      border-left-color: #F97316;
+    }
+
+    .opt1-card2 .adm-color-card-icon {
+      background: #ffedd5;
+      color: #F97316;
+    }
+
+    .opt1-card2 .adm-color-card-button {
+      background: #F97316;
+    }
+
+    .opt2-card1 {
+      border-left-color: #8B5CF6;
+    }
+
+    .opt2-card1 .adm-color-card-icon {
+      background: #f3e8ff;
+      color: #8B5CF6;
+    }
+
+    .opt2-card1 .adm-color-card-button {
+      background: #8B5CF6;
+    }
+
+    .opt2-card2 {
+      border-left-color: #EC4899;
+    }
+
+    .opt2-card2 .adm-color-card-icon {
+      background: #fce7f3;
+      color: #EC4899;
+    }
+
+    .opt2-card2 .adm-color-card-button {
+      background: #EC4899;
+    }
+
+    .opt3-card1 {
+      border-left-color: #0B8A38;
+    }
+
+    .opt3-card1 .adm-color-card-icon {
+      background: #ecfdf5;
+      color: #0B8A38;
+    }
+
+    .opt3-card1 .adm-color-card-button {
+      background: #0B8A38;
+    }
+
+    .opt3-card2 {
+      border-left-color: #DC2626;
+    }
+
+    .opt3-card2 .adm-color-card-icon {
+      background: #fef2f2;
+      color: #DC2626;
+    }
+
+    .opt3-card2 .adm-color-card-button {
+      background: #DC2626;
+    }
+
+    .opt4-card1 {
+      border-left-color: #06B6D4;
+    }
+
+    .opt4-card1 .adm-color-card-icon {
+      background: #ecf7fb;
+      color: #06B6D4;
+    }
+
+    .opt4-card1 .adm-color-card-button {
+      background: #06B6D4;
+    }
+
+    .opt4-card2 {
+      border-left-color: #FF6B6B;
+    }
+
+    .opt4-card2 .adm-color-card-icon {
+      background: #ffe8e8;
+      color: #FF6B6B;
+    }
+
+    .opt4-card2 .adm-color-card-button {
+      background: #FF6B6B;
+    }
+
+    @media (max-width: 768px) {
+      .adm-color-wrap {
+        padding: 40px 16px;
+      }
+
+      .adm-color-title {
+        font-size: 1.5rem;
+      }
+
+      .adm-color-variant {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .adm-color-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="adm-color-wrap">
+    <div class="adm-color-container">
+      <h1 class="adm-color-title">Opciones de Colores para Cards</h1>
+      <p class="adm-color-intro">Variantes de colores para diferenciar las secciones de admisión manteniendo coherencia visual.</p>
+
+      <div class="adm-color-section">
+        <h2 class="adm-color-section-title">Opción 1: Verde + Naranja</h2>
+        <div class="adm-color-variant">
+          <div class="adm-color-card opt1-card1">
+            <div class="adm-color-card-icon">📱</div>
+            <h3 class="adm-color-card-title">Inscríbete por WhatsApp</h3>
+            <p class="adm-color-card-description">Comunícate directamente con nuestro equipo de admisiones. Resolvemos tus dudas en tiempo real.</p>
+            <button class="adm-color-card-button">Iniciar Conversación</button>
+            <span class="adm-color-label">Verde Esmeralda <span class="adm-color-label-code">#10B981</span></span>
+          </div>
+          <div class="adm-color-card opt1-card2">
+            <div class="adm-color-card-icon">📄</div>
+            <h3 class="adm-color-card-title">Descargar Guía</h3>
+            <p class="adm-color-card-description">Accede a nuestra guía completa con todos los pasos, requisitos y documentos necesarios.</p>
+            <button class="adm-color-card-button">Descargar PDF</button>
+            <span class="adm-color-label">Naranja <span class="adm-color-label-code">#F97316</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-color-section">
+        <h2 class="adm-color-section-title">Opción 2: Violeta + Rosa</h2>
+        <div class="adm-color-variant">
+          <div class="adm-color-card opt2-card1">
+            <div class="adm-color-card-icon">📱</div>
+            <h3 class="adm-color-card-title">Inscríbete por WhatsApp</h3>
+            <p class="adm-color-card-description">Comunícate directamente con nuestro equipo de admisiones. Resolvemos tus dudas en tiempo real.</p>
+            <button class="adm-color-card-button">Iniciar Conversación</button>
+            <span class="adm-color-label">Violeta <span class="adm-color-label-code">#8B5CF6</span></span>
+          </div>
+          <div class="adm-color-card opt2-card2">
+            <div class="adm-color-card-icon">📄</div>
+            <h3 class="adm-color-card-title">Descargar Guía</h3>
+            <p class="adm-color-card-description">Accede a nuestra guía completa con todos los pasos, requisitos y documentos necesarios.</p>
+            <button class="adm-color-card-button">Descargar PDF</button>
+            <span class="adm-color-label">Rosa <span class="adm-color-label-code">#EC4899</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-color-section">
+        <h2 class="adm-color-section-title">Opción 3: Verde Oscuro + Rojo</h2>
+        <div class="adm-color-variant">
+          <div class="adm-color-card opt3-card1">
+            <div class="adm-color-card-icon">📱</div>
+            <h3 class="adm-color-card-title">Inscríbete por WhatsApp</h3>
+            <p class="adm-color-card-description">Comunícate directamente con nuestro equipo de admisiones. Resolvemos tus dudas en tiempo real.</p>
+            <button class="adm-color-card-button">Iniciar Conversación</button>
+            <span class="adm-color-label">Verde Oscuro <span class="adm-color-label-code">#0B8A38</span></span>
+          </div>
+          <div class="adm-color-card opt3-card2">
+            <div class="adm-color-card-icon">📄</div>
+            <h3 class="adm-color-card-title">Descargar Guía</h3>
+            <p class="adm-color-card-description">Accede a nuestra guía completa con todos los pasos, requisitos y documentos necesarios.</p>
+            <button class="adm-color-card-button">Descargar PDF</button>
+            <span class="adm-color-label">Rojo <span class="adm-color-label-code">#DC2626</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-color-section">
+        <h2 class="adm-color-section-title">Opción 4: Cyan + Coral</h2>
+        <div class="adm-color-variant">
+          <div class="adm-color-card opt4-card1">
+            <div class="adm-color-card-icon">📱</div>
+            <h3 class="adm-color-card-title">Inscríbete por WhatsApp</h3>
+            <p class="adm-color-card-description">Comunícate directamente con nuestro equipo de admisiones. Resolvemos tus dudas en tiempo real.</p>
+            <button class="adm-color-card-button">Iniciar Conversación</button>
+            <span class="adm-color-label">Cyan <span class="adm-color-label-code">#06B6D4</span></span>
+          </div>
+          <div class="adm-color-card opt4-card2">
+            <div class="adm-color-card-icon">📄</div>
+            <h3 class="adm-color-card-title">Descargar Guía</h3>
+            <p class="adm-color-card-description">Accede a nuestra guía completa con todos los pasos, requisitos y documentos necesarios.</p>
+            <button class="adm-color-card-button">Descargar PDF</button>
+            <span class="adm-color-label">Coral <span class="adm-color-label-code">#FF6B6B</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
