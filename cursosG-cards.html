@@ -35,6 +35,14 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease !important;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cg-tab-btn:focus {
+            outline: none !important;
+        }
+        .cg-tab-btn:focus-visible {
+            outline: none !important;
         }
         .cg-tab-btn.active {
             background-color: #0132AF;
@@ -46,6 +54,11 @@
             border: solid 1px;
             border-color: #0132AF;
             color: #0132AF;
+        }
+        .cg-tab-btn:active:not(.active) {
+            background-color: #f1f5f9;
+            color: #1a202c;
+            border-color: #e2e8f0;
         }
         .cg-cards-grid {
             display: none;
@@ -66,50 +79,19 @@
         }
         .cg-card {
             background-color: #ffffff;
+            border: 1px solid #cbd5e1;
             border-radius: 12px;
             padding: 30px;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid #0132AF;
             display: flex;
             flex-direction: column;
         }
-        .cg-card.cursos-tab {
-            border-left-color: #0132AF;
-        }
-        .cg-card.homologables-tab {
-            border-left-color: #EF1218;
-        }
-        .cg-card.diplomados-tab {
-            border-left-color: #00D4FF;
-        }
-        .cg-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            gap: 15px;
-        }
         .cg-card-title {
             font-size: 24px;
-            font-weight: 900; -webkit-font-smoothing: antialiased;
+            font-weight: 900;
+            -webkit-font-smoothing: antialiased;
             color: #1a202c;
             line-height: 1.2;
-            margin: 0;
-        }
-        .cg-card-badge {
-            color: #ffffff;
-            padding: 4px 12px ;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 900; -webkit-font-smoothing: antialiased;
-            white-space: nowrap;
-            text-transform: uppercase;
-        }
-        .cg-card-badge.virtual {
-            background-color: #0BD926;
-        }
-        .cg-card-badge.presencial {
-            background-color: #0132AF;
+            margin: 0 0 15px 0;
         }
         
         .cg-icon {
@@ -130,31 +112,34 @@
         .cg-card-meta {
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 0;
             background-color: #f8fafc;
-            padding: 15px;
+            padding: 0;
             border-radius: 8px;
             margin-bottom: 20px;
-        }
-        .cg-card-meta:has(> .cg-card-meta-item:nth-child(2)) {
-            justify-content: flex-start;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
         }
         .cg-card-meta-item {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             font-size: 13px;
             color: #334155;
             font-weight: 600;
+            flex: 1;
+            padding: 14px;
+            margin: 0;
         }
-        .cg-card-meta-item:not(:last-child)::after {
-            content: "/";
-            color: #cbd5e1;
-            margin-left: 10px;
-            font-size: 14px;
-            font-weight: 400;
+        .cg-card-meta-item:first-child {
+            flex: 1.5;
+        }
+        .cg-card-meta-item:last-child {
+            flex: 1;
+        }
+        .cg-card-meta-item:not(:last-child) {
+            border-right: 1px solid #cbd5e1;
         }
         .cg-card-bullets {
             list-style: none;
@@ -201,18 +186,49 @@
             color: #ffffff !important;
         }
 
-        /* Responsive Settings */
+        .cg-card-image-container {
+            width: calc(100% + 60px);
+            height: 170px;
+            margin: -30px -30px 20px -30px;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+            .cg-card-meta {
+                flex-direction: row;
+                align-items: center;
+                gap: 0;
+            }
+            .cg-card-meta-item {
+                gap: 8px;
+                padding: 14px;
+                font-size: 13px;
+                align-items: center;
+                justify-content: center;
+                border-right: 1px solid #cbd5e1;
+                border-bottom: none !important;
+                flex: 1 !important;
+            }
+            .cg-card-meta-item:first-child {
+                flex: 1.5;
+            }
+            .cg-card-meta-item:last-child {
+                border-right: none;
+            }
+            .cg-card-meta-item svg {
+                margin-top: 0;
+                margin-right: 0;
+                align-self: center;
+            }
+    
         @media (max-width: 768px) {
             .cg-cards-section {
                 padding: 50px 15px;
-<<<<<<< Updated upstream
                 padding-top: 0px;
-                margin-top: -45px;
-=======
-                margin-top: -50px;
->>>>>>> Stashed changes
             }
-
             .cg-tabs {
                 flex-wrap: nowrap;
                 overflow-x: auto;
@@ -221,11 +237,26 @@
                 margin-bottom: 30px;
                 gap: 10px;
             }
-            .cg-card-meta-item {
-                font-size: 12px;
-            }
             .cg-card-meta{
+                flex-direction: row;
+                align-items: center;
                 justify-content: center;
+                gap: 0;
+            }
+            .cg-card-meta-item {
+                gap: 8px;
+                padding: 14px;
+                font-size: 13px;
+                align-items: center;
+                justify-content: center;
+                border-right: 1px solid #cbd5e1;
+                flex: 1 !important;
+            }
+            .cg-card-meta-item:first-child {
+                flex: 1.5;
+            }
+            .cg-card-meta-item:last-child {
+                border-right: none;
             }
             .cg-tabs::-webkit-scrollbar {
                 height: 4px;
@@ -235,30 +266,89 @@
                 border-radius: 4px;
             }
             .cg-tab-btn {
-                padding: 10px 14px;
-                font-weight: 700;
-                font-size: 0.9rem;
+                padding: 12px 14px;
+                font-size: 0.95rem;
                 white-space: nowrap;
                 flex-shrink: 0;
+                outline: none;
             }
             .cg-cards-grid {
                 gap: 20px;
             }
+            .cg-badge-nuevo, .cg-badge-homologable, .cg-badge-diplomado {
+                font-size: 10px;
+                font-weight: 900;
+                padding: 4px 8px;
+                top: 8px;
+                right: 8px;
+                letter-spacing: 0.3px;
+            }
         }
-  
-        .cg-card-image-container {
-            width: calc(100% + 60px);
-            height: 170px;
-            margin: -30px -30px 20px -30px;
-            overflow: hidden;
-            border-radius: 12px 12px 0 0;
-            position: relative;
-        }
-        .cg-card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        @media (max-width: 430px) {
+        .cg-tab-btn {
+                font-size: 0.95rem;
+                padding: 12px 14px;
+                outline: none;
+            }
+        .cg-badge-nuevo, .cg-badge-homologable, .cg-badge-diplomado {
+                font-size: 10px;
+                font-weight: 900;
+                padding: 4px 8px;
+                top: 8px;
+                right: 8px;
+                letter-spacing: 0.3px;
+            }
+            .cg-card-title {
+                font-size: 22px;
+                margin-top: 8px;
+                padding: 0 16px;
+            }
+            .cg-card {
+                padding: 16px;
+            }
+            .cursos-tab {
+                padding: 16px;
+            }
+            .cg-card-bullets li {
+                padding-left: 20px;
+                margin-left: 16px;
+            }
+            .cg-card-image-container {
+                width: calc(100% + 32px);
+                margin: -16px -16px 12px -16px;
+            }
+            .cg-card-meta {
+                flex-direction: row;
+                align-items: center;
+                gap: 0;
+            }
+            .cg-card-meta-item {
+                gap: 6px;
+                padding: 12px 14px;
+                font-size: 12px;
+                align-items: center;
+                justify-content: center;
+                border-right: 1px solid #cbd5e1;
+                border-bottom: none !important;
+                flex: 1 !important;
+            }
+            .cg-card-meta-item:first-child {
+                flex: 1.5 !important;
+            }
+            .cg-card-meta-item:last-child {
+                border-right: none;
+            }
+            .cg-card-meta-item svg {
+                margin-top: 0;
+                margin-right: 2px;
+                flex-shrink: 0;
+                align-self: center;
+            }
+            .cg-card-meta-item div {
+                gap: 0px !important;
+                line-height: 1.4;
+                flex: 1;
+            }
         }
 
         .cg-badge-nuevo, .cg-badge-homologable, .cg-badge-diplomado {
@@ -268,13 +358,12 @@
             font-size: 12px;
             padding: 4px 10px;
             border-radius: 6px;
-            font-weight: 800;
-            -webkit-font-smoothing: antialiased;
+            font-weight: 900 !important;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: inherit;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             border: 2px solid #e2e8f0;
+                            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif !important;
         }
         .cg-badge-nuevo {
             background-color: #EF1218;
@@ -286,20 +375,11 @@
         }
         .cg-badge-diplomado {
             background-color: #00D4FF;
-            color: #1a202c;
-        }
-                @media (max-width: 768px) {
-            .cg-badge-nuevo, .cg-badge-homologable, .cg-badge-diplomado {
-                font-size: 11px;
-                padding: 4px 8px;
-                top: 8px;
-                right: 8px;
-                letter-spacing: 0.3px;
-            }
+            color: #000000;
         }
 
 </style>
- </head>
+</head>
  <body>
   <section class="cg-cards-section">
    <div class="cg-cards-container">
@@ -314,1040 +394,436 @@
       Diplomados
      </button>
     </div>
-    <div class="cg-cards-grid active" id="tab1">
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-de-proyectos-PMI-basico-o-agil-scaled.webp" alt="Gestión de Proyectos" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Gestión de Proyectos
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 20 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        PMI básico y metodologías ágiles
-       </li>
-       <li>
-        Planificación y gestión de recursos
-       </li>
-       <li>
-        Identificación y mitigación de riesgos
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Innovacion-y-transformacion-digital-scaled.webp" alt="Innovación y Transformación Digital" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Innovación y Transformación Digital
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 12 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Diagnóstico de madurez digital
-       </li>
-       <li>
-        Tecnologías emergentes y automatización
-       </li>
-       <li>
-        Gestión del cambio organizacional
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Planeacion-estrategica-y-toma-de-desiciones-scaled.webp" alt="Planeación Estratégica y Toma de Decisiones" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Planeación Estratégica y Toma de Decisiones
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 16 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Planeación estratégica empresarial
-       </li>
-       <li>
-        Análisis FODA, PESTEL y Porter
-       </li>
-       <li>
-        Definición de KPIs y seguimiento
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Servicio-al-cliente-y-experiencia-del-usuario-scaled.webp" alt="Servicio al Cliente y Experiencia del Usuario" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Servicio al Cliente y Experiencia del Usuario
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 16 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Cultura de servicio y fidelización
-       </li>
-       <li>
-        Gestión de quejas y conflictos
-       </li>
-       <li>
-        Venta consultiva y CX
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Liderazgo-y-Gestion-de-equipos-scaled.webp" alt="Liderazgo y Gestión de Equipos" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Liderazgo y Gestión de Equipos
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 8 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Liderazgo operativo efectivo
-       </li>
-       <li>
-        Delegación y comunicación
-       </li>
-       <li>
-        Resolución de conflictos
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Actualizacion-Normas-NIF-scaled.webp" alt="Actualización Normas NIIF" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Actualización Normas NIIF
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 8 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        NIIF plenas y para PYMES
-       </li>
-       <li>
-        Impacto normativo en cooperativas
-       </li>
-       <li>
-        Articulación contable-tributaria
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-del-tiempo-y-productividad-scaled.webp" alt="Gestión del Tiempo y Productividad" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Gestión del Tiempo y Productividad
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 8 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Matriz de Eisenhower y Pomodoro
-       </li>
-       <li>
-        Priorización y productividad personal
-       </li>
-       <li>
-        Herramientas digitales de apoyo
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card cursos-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-y-Productividad-Digital-con-Office-365-para-Empresas-scaled.webp" alt="Gestión Digital con Office 365" class="cg-card-image" >
-       <span class="cg-badge-nuevo">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Gestión Digital con Office 365
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 30 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Microsoft 365 y automatización
-       </li>
-       <li>
-        Colaboración digital con Teams
-       </li>
-       <li>
-        Power Automate y control operativo
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-    </div>
-    <div class="cg-cards-grid" id="tab2">
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Diseno-de-Negocios-Futuros-scaled.webp" alt="Diseño de Negocios Futuros" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Diseño de Negocios Futuros
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Diseña soluciones de negocio innovadoras.
-       </li>
-       <li>
-        Analiza el ecosistema emprendedor.
-       </li>
-       <li>
-        Formula propuestas viables y escalables.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Herramientas-de-Diagnostico-para-la-Competitividad-Empresarial-Uniempresarial-scaled.webp" alt="Herramientas de Diagnóstico para la Competitividad Empresarial" class="cg-card-image" >
-       <span class="cg-badge-homologable">Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Herramientas de Diagnóstico para la Competitividad Empresarial
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Aplica DOFA, PESTEL y CAME.
-       </li>
-       <li>
-        Evalúa la competitividad empresarial.
-       </li>
-       <li>
-        Implementa el Cuadro de Mando Integral.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Creacion-Formalizacion-y-Tributacion-de-Empresas-en-Colombia-Uniempresarial-scaled.webp" alt="Creación, Formalización y Tributación de Empresas en Colombia" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Creación, Formalización y Tributación de Empresas en Colombia
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Comprende el derecho mercantil.
-       </li>
-       <li>
-        Domina la normativa tributaria en Colombia.
-       </li>
-       <li>
-        Aplica planeación tributaria preventiva.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Cultura-Organizacional-y-Empresas-con-Proposito-Uniempresarial-scaled.webp" alt="Cultura Organizacional y Empresas con Propósito" class="cg-card-image" >
-       <span class="cg-badge-homologable">Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Cultura Organizacional y Empresas con Propósito
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Analiza y mejora el clima organizacional.
-       </li>
-       <li>
-        Integra ética y responsabilidad social.
-       </li>
-       <li>
-        Promueve el liderazgo estratégico.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Liderazgo-y-Coaching-para-el-Desarrollo-del-Talento-4.0-Uniempresarial-scaled.webp" alt="Liderazgo y Coaching para el Desarrollo del Talento 4.0" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Liderazgo y Coaching para el Desarrollo del Talento 4.0
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Forma equipos de alto desempeño.
-       </li>
-       <li>
-        Aplica coaching en talento humano.
-       </li>
-       <li>
-        Gestiona ciclos de selección y bienestar.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp" alt="Pensamiento Computacional y Programación Eficiente" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Pensamiento Computacional y Programación Eficiente
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Construye lógica algorítmica estructurada.
-       </li>
-       <li>
-        Optimiza eficiencia de programas.
-       </li>
-       <li>
-        Aplica programación dinámica y voraz.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Programacion-y-Estructuras-de-Datos-Java-y-Python-Uniempresarial-scaled.webp" alt="Programación y Estructuras de Datos: Java y Python" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Programación y Estructuras de Datos: Java y Python
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 60 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Programa soluciones en Python y Java.
-       </li>
-       <li>
-        Implementa estructuras de datos.
-       </li>
-       <li>
-        Diseña arquitecturas lógicas funcionales.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Ecosistemas-Digitales-y-Ciberseguridad-Empresarial-Uniempresarial-scaled.webp" alt="Ecosistemas Digitales y Ciberseguridad Empresarial" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Ecosistemas Digitales y Ciberseguridad Empresarial
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 40 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Administra infraestructura tecnológica.
-       </li>
-       <li>
-        Implementa ecosistemas Cloud y virtualización.
-       </li>
-       <li>
-        Despliega aplicaciones de software escalables.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card homologables-tab">
-      <div class="cg-card-image-container">
-       <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-Frontend-Master-Diseno-e-Interactividad-Web-Profesional-Uniempresarial-1-scaled.webp" alt="Frontend Master: Diseño e Interactividad Web Profesional" class="cg-card-image" >
-       <span class="cg-badge-homologable">Virtual / Presencial</span>
-      </div>
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Frontend Master: Diseño e Interactividad Web Profesional
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 60 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Desarrolla con HTML, CSS y JavaScript moderno.
-       </li>
-       <li>
-        Construye interfaces usando React.
-       </li>
-       <li>
-        Integra servicios Frontend y Backend.
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="#">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-    </div>
-    <div class="cg-cards-grid" id="tab3">
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Creación y Optimización de Prompts para IA
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 80 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Técnicas de prompts efectivos
-       </li>
-       <li>
-        Optimización de resultados IA
-       </li>
-       <li>
-        Herramientas de IA actuales
-       </li>
-       <li>
-        Automatización de procesos
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/diplomado-en-creacion-y-optimizacion-de-prompts-para-ia/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Estrategias Éxito Empresarial: Eventos y Marketing
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 80 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Planificación de eventos
-       </li>
-       <li>
-        Marketing logístico
-       </li>
-       <li>
-        Estrategias de posicionamiento
-       </li>
-       <li>
-        Gestión de experiencias
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/diplomado-en-estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Impulsa tu Negocio 360: Escalable y Sostenible
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 80 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Modelo de negocios sostenibles
-       </li>
-       <li>
-        Escalabilidad empresarial
-       </li>
-       <li>
-        Innovación y crecimiento
-       </li>
-       <li>
-        Estrategia integral
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/diplomado-en-impulsa-tu-negocio-360-negocios-escalables-y-sostenibles/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Inteligencia Artificial Aplicada al Marketing
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 80 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        IA para análisis de datos
-       </li>
-       <li>
-        Personalización y segmentación
-       </li>
-       <li>
-        Marketing predictivo
-       </li>
-       <li>
-        Automatización de campañas
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/diplomado-en-inteligencia-artificial-aplicada-al-marketing/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Insolvencia e Intervención
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 104 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Normativa de insolvencia
-       </li>
-       <li>
-        Procesos de intervención
-       </li>
-       <li>
-        Gestión de crisis financiera
-       </li>
-       <li>
-        Resolución de conflictos
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/diplomado-en-insolvencia-e-intervencion/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Protección de Datos en Entornos Digitales
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 90 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        GDPR y normativa colombiana
-       </li>
-       <li>
-        Protección de datos empresariales
-       </li>
-       <li>
-        Ciberseguridad
-       </li>
-       <li>
-        Cumplimiento regulatorio
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/diplomado-en-proteccion-de-datos-personales-en-entornos-digitales-empresariales/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-     <article class="cg-card diplomados-tab">
-      <!-- 
-<div class="cg-card-image-container">
-       
-       <span class="cg-badge-diplomado">ALTA CALIDAD</span>
-      </div>
- -->
-<div class="cg-card-header">
-       <h3 class="cg-card-title">
-        Preparatorio Carrera Notarial
-       </h3>
-      </div>
-      <div class="cg-card-meta">
-       <div class="cg-card-meta-item">
-        <svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <circle cx="12" cy="12" r="10">
-         </circle>
-         <polyline points="12 6 12 12 16 14">
-         </polyline>
-        </svg>
-        Tiempo total: 50 horas
-       </div>
-      </div>
-      <ul class="cg-card-bullets">
-       <li>
-        Fundamentos de derecho notarial
-       </li>
-       <li>
-        Procedimientos notariales
-       </li>
-       <li>
-        Normativa vigente
-       </li>
-       <li>
-        Preparación para examen
-       </li>
-      </ul>
-      <div class="cg-card-actions">
-       <a class="cg-card-link" href="https://uniempresarial.edu.co/programa-preparatorio-para-el-ingreso-a-la-carrera-notarial/">
-        Ver detalles
-        <span>
-         →
-        </span>
-       </a>
-      </div>
-     </article>
-    </div>
+    <div class="cg-cards-grid active" id="tab1"></div>
+    <div class="cg-cards-grid" id="tab2"></div>
+    <div class="cg-cards-grid" id="tab3"></div>
    </div>
   </section>
+  
   <script>
-   function showTab(tabId) {
-            document.querySelectorAll(".cg-cards-grid").forEach(grid => grid.classList.remove("active"));
-            document.querySelectorAll(".cg-tab-btn").forEach(btn => btn.classList.remove("active"));
-            document.getElementById("tab" + tabId).classList.add("active");
-            event.target.classList.add("active");
+const cursosData = [
+  // TAB 1 - CURSOS (8 cards) | id: 1-8
+  {
+    id: 1,
+    tab: 1,
+    nombre: "Servicio al Cliente y Experiencia del Usuario",
+    badge: "Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Servicio-al-cliente-y-experiencia-del-usuario-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Servicio-al-cliente-y-experiencia-del-usuario-scaled.webp?w=700&q=75",
+    duracion: "16 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Cultura de servicio y fidelización", "Gestión de quejas y conflictos", "Venta consultiva y CX"],
+    link: "#"
+  },
+  {
+    id: 2,
+    tab: 1,
+    nombre: "Innovación y Transformación Digital",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Innovacion-y-transformacion-digital-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Innovacion-y-transformacion-digital-scaled.webp?w=700&q=75",
+    duracion: "12 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Diagnóstico de madurez digital", "Tecnologías emergentes y automatización", "Gestión del cambio organizacional"],
+    link: "#"
+  },
+  {
+    id: 3,
+    tab: 1,
+    nombre: "Planeación Estratégica y Toma de Decisiones",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Planeacion-estrategica-y-toma-de-desiciones-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Planeacion-estrategica-y-toma-de-desiciones-scaled.webp?w=700&q=75",
+    duracion: "16 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Planeación estratégica empresarial", "Análisis FODA, PESTEL y Porter", "Definición de KPIs y seguimiento"],
+    link: "#"
+  },
+  {
+    id: 4,
+    tab: 1,
+    nombre: "Gestión de Proyectos",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-de-proyectos-PMI-basico-o-agil-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-de-proyectos-PMI-basico-o-agil-scaled.webp?w=700&q=75",
+    duracion: "20 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["PMI básico y metodologías ágiles", "Planificación y gestión de recursos", "Identificación y mitigación de riesgos"],
+    link: "#"
+  },
+  {
+    id: 5,
+    tab: 1,
+    nombre: "Liderazgo y Gestión de Equipos",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Liderazgo-y-Gestion-de-equipos-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Liderazgo-y-Gestion-de-equipos-scaled.webp?w=700&q=75",
+    duracion: "8 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Liderazgo operativo efectivo", "Delegación y comunicación", "Resolución de conflictos"],
+    link: "#"
+  },
+  {
+    id: 6,
+    tab: 1,
+    nombre: "Actualización Normas NIIF",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Actualizacion-Normas-NIF-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Actualizacion-Normas-NIF-scaled.webp?w=700&q=75",
+    duracion: "8 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["NIIF plenas y para PYMES", "Impacto normativo en cooperativas", "Articulación contable-tributaria"],
+    link: "#"
+  },
+  {
+    id: 7,
+    tab: 1,
+    nombre: "Gestión del Tiempo y Productividad",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-del-tiempo-y-productividad-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-del-tiempo-y-productividad-scaled.webp?w=700&q=75",
+    duracion: "8 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Matriz de Eisenhower y Pomodoro", "Priorización y productividad personal", "Herramientas digitales de apoyo"],
+    link: "#"
+  },
+  {
+    id: 8,
+    tab: 1,
+    nombre: "Curso en Gestión y Productividad Digital con Office 365 para Empresas",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-y-Productividad-Digital-con-Office-365-para-Empresas-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Gestion-y-Productividad-Digital-con-Office-365-para-Empresas-scaled.webp?w=700&q=75",
+    duracion: "30 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Microsoft 365 y automatización", "Colaboración digital con Teams", "Power Automate y control operativo"],
+    link: "#"
+  },
+  
+  // TAB 2 - HOMOLOGABLES (9 cards) | id: 1-9
+  {
+    id: 1,
+    tab: 2,
+    nombre: "Programación y Estructuras de Datos: Java y Python",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Programacion-y-Estructuras-de-Datos-Java-y-Python-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Programacion-y-Estructuras-de-Datos-Java-y-Python-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "60 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Programa soluciones en Python y Java.", "Implementa estructuras de datos.", "Diseña arquitecturas lógicas funcionales."],
+    link: "#"
+  },
+  {
+    id: 2,
+    tab: 2,
+    nombre: "Herramientas de Diagnóstico para la Competitividad Empresarial",
+    badge: "Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Herramientas-de-Diagnostico-para-la-Competitividad-Empresarial-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Herramientas-de-Diagnostico-para-la-Competitividad-Empresarial-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Aplica DOFA, PESTEL y CAME.", "Evalúa la competitividad empresarial.", "Implementa el Cuadro de Mando Integral."],
+    link: "#"
+  },
+  {
+    id: 3,
+    tab: 2,
+    nombre: "Creación, Formalización y Tributación de Empresas en Colombia",
+    badge: "Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Creacion-Formalizacion-y-Tributacion-de-Empresas-en-Colombia-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Creacion-Formalizacion-y-Tributacion-de-Empresas-en-Colombia-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Comprende el derecho mercantil.", "Domina la normativa tributaria en Colombia.", "Aplica planeación tributaria preventiva."],
+    link: "#"
+  },
+  {
+    id: 4,
+    tab: 2,
+    nombre: "Cultura Organizacional y Empresas con Propósito",
+    badge: "Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Cultura-Organizacional-y-Empresas-con-Proposito-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Cultura-Organizacional-y-Empresas-con-Proposito-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Analiza y mejora el clima organizacional.", "Integra ética y responsabilidad social.", "Promueve el liderazgo estratégico."],
+    link: "#"
+  },
+  {
+    id: 5,
+    tab: 2,
+    nombre: "Liderazgo y Coaching para el Desarrollo del Talento 4.0",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Liderazgo-y-Coaching-para-el-Desarrollo-del-Talento-4.0-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Liderazgo-y-Coaching-para-el-Desarrollo-del-Talento-4.0-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Forma equipos de alto desempeño.", "Aplica coaching en talento humano.", "Gestiona ciclos de selección y bienestar."],
+    link: "#"
+  },
+  {
+    id: 6,
+    tab: 2,
+    nombre: "Pensamiento Computacional y Programación Eficiente",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/smart-it-developer-looking-coding-program-application-back-side-infobahn.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Construye lógica algorítmica estructurada.", "Optimiza eficiencia de programas.", "Aplica programación dinámica y voraz."],
+    link: "#"
+  },
+  {
+    id: 7,
+    tab: 2,
+    nombre: "Diseño de Negocios Futuros",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Diseno-de-Negocios-Futuros-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Diseno-de-Negocios-Futuros-scaled.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Diseña soluciones de negocio innovadoras.", "Analiza el ecosistema emprendedor.", "Formula propuestas viables y escalables."],
+    link: "#"
+  },
+  {
+    id: 8,
+    tab: 2,
+    nombre: "Ecosistemas Digitales y Ciberseguridad Empresarial",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Ecosistemas-Digitales-y-Ciberseguridad-Empresarial-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-en-Ecosistemas-Digitales-y-Ciberseguridad-Empresarial-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "40 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Administra infraestructura tecnológica.", "Implementa ecosistemas Cloud y virtualización.", "Despliega aplicaciones de software escalables."],
+    link: "#"
+  },
+  {
+    id: 9,
+    tab: 2,
+    nombre: "Frontend Master: Diseño e Interactividad Web Profesional",
+    badge: "Virtual / Presencial",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-Frontend-Master-Diseno-e-Interactividad-Web-Profesional-Uniempresarial-1-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/04/Curso-Frontend-Master-Diseno-e-Interactividad-Web-Profesional-Uniempresarial-1-scaled.webp?w=700&q=75",
+    duracion: "60 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Desarrolla con HTML, CSS y JavaScript moderno.", "Construye interfaces usando React.", "Integra servicios Frontend y Backend."],
+    link: "#"
+  },
+  
+  // TAB 3 - DIPLOMADOS (6 cards) | id: 1-6
+  {
+    id: 1,
+    tab: 3,
+    nombre: "Creación y Optimización de Prompts para IA",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-en-Creacion-y-optimizacion-de-prompts-para-IA-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-en-Creacion-y-optimizacion-de-prompts-para-IA-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "80 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Técnicas de prompts efectivos", "Optimización de resultados IA", "Herramientas de IA actuales", "Automatización de procesos"],
+    link: "https://uniempresarial.edu.co/diplomado-en-creacion-y-optimizacion-de-prompts-para-ia/"
+  },
+  {
+    id: 2,
+    tab: 3,
+    nombre: "Estrategias Éxito Empresarial: Eventos y Marketing",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-de-Estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-de-Estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "80 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Planificación de eventos", "Marketing logístico", "Estrategias de posicionamiento", "Gestión de experiencias"],
+    link: "https://uniempresarial.edu.co/diplomado-en-estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico/"
+  },
+  {
+    id: 3,
+    tab: 3,
+    nombre: "Impulsa tu Negocio 360: Escalable y Sostenible",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-Impulsa-tu-negocio-360-Negocios-escalables-y-sostenibles-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-Impulsa-tu-negocio-360-Negocios-escalables-y-sostenibles-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "80 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Modelo de negocios sostenibles", "Escalabilidad empresarial", "Innovación y crecimiento", "Estrategia integral"],
+    link: "https://uniempresarial.edu.co/diplomado-en-impulsa-tu-negocio-360-negocios-escalables-y-sostenibles/"
+  },
+  {
+    id: 4,
+    tab: 3,
+    nombre: "Inteligencia Artificial Aplicada al Marketing",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-Inteligencia-Artificial-Aplicada-al-Marketing-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-Inteligencia-Artificial-Aplicada-al-Marketing-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "80 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["IA para análisis de datos", "Personalización y segmentación", "Marketing predictivo", "Automatización de campañas"],
+    link: "https://uniempresarial.edu.co/diplomado-en-inteligencia-artificial-aplicada-al-marketing/"
+  },
+  {
+    id: 5,
+    tab: 3,
+    nombre: "Insolvencia e Intervención",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/03/concentrated-partners-using-laptop-working-with-documents-confident-serious-businesspeople-office-suits-discussing-company-project-together-management-business-partnership-concept-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/03/concentrated-partners-using-laptop-working-with-documents-confident-serious-businesspeople-office-suits-discussing-company-project-together-management-business-partnership-concept-scaled.webp?w=700&q=75",
+    duracion: "104 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["Normativa de insolvencia", "Procesos de intervención", "Gestión de crisis financiera", "Resolución de conflictos"],
+    link: "https://uniempresarial.edu.co/diplomado-en-insolvencia-e-intervencion/"
+  },
+  {
+    id: 6,
+    tab: 3,
+    nombre: "Protección de Datos en Entornos Digitales",
+    badge: "Virtual",
+    imagen_desktop: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-en-Proteccion-de-Datos-Personales-en-Entornos-Digitales-Empresariales-Uniempresarial-scaled.webp?w=1200&q=75",
+    imagen_mobile: "https://uniempresarial.edu.co/wp-content/uploads/2026/05/Diplomado-en-Proteccion-de-Datos-Personales-en-Entornos-Digitales-Empresariales-Uniempresarial-scaled.webp?w=700&q=75",
+    duracion: "90 horas",
+    inicio: "15 Oct 2026",
+    bullets: ["GDPR y normativa colombiana", "Protección de datos empresariales", "Ciberseguridad", "Cumplimiento regulatorio"],
+    link: "https://uniempresarial.edu.co/diplomado-en-proteccion-de-datos-personales-en-entornos-digitales-empresariales/"
+  }
+];
+
+const calendarSVG = '<svg class="cg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>';
+const clockSVG = '<svg class="cg-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>';
+
+const fallbackSVG = 'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect width=%27400%27 height=%27200%27 fill=%27%23e2e8f0%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial%27 font-size=%2716%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27 fill=%27%23475569%27%3EImagen no disponible%3C/text%3E%3C/svg%3E';
+
+function getBadgeClass(tab) {
+  if (tab === 1) return 'cg-badge-nuevo';
+  if (tab === 2) return 'cg-badge-homologable';
+  if (tab === 3) return 'cg-badge-diplomado';
+  return 'cg-badge-nuevo';
+}
+
+function getTabClass(tab) {
+  if (tab === 1) return 'cursos-tab';
+  if (tab === 2) return 'homologables-tab';
+  if (tab === 3) return 'diplomados-tab';
+  return '';
+}
+
+function renderCards(tabId) {
+  const filteredCards = cursosData.filter(card => card.tab === tabId);
+  const grid = document.getElementById(`tab${tabId}`);
+  
+  grid.innerHTML = filteredCards.map(card => `
+    <article class="cg-card ${getTabClass(card.tab)}">
+      <div class="cg-card-image-container" style="background-image: url('${card.imagen_desktop}');" data-mobile="${card.imagen_mobile}">
+        <div class="${getBadgeClass(card.tab)}">${card.badge}</div>
+      </div>
+      <h3 class="cg-card-title">${card.nombre}</h3>
+      <div class="cg-card-meta">
+        <div class="cg-card-meta-item">
+          ${calendarSVG}
+          Inicio: ${card.inicio}
+        </div>
+        <div class="cg-card-meta-item">
+          ${clockSVG}
+          ${card.duracion}
+        </div>
+      </div>
+      <ul class="cg-card-bullets">
+        ${card.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+      </ul>
+      <div class="cg-card-actions">
+        <a class="cg-card-link" href="${card.link}">
+          Ver detalles
+          <span>→</span>
+        </a>
+      </div>
+    </article>
+  `).join('');
+}
+
+function setupIntersectionObserver() {
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          observer.unobserve(img);
         }
+      });
+    }, {
+      rootMargin: '200px 0px',
+      threshold: 0.01
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+}
+
+function updateBackgroundImages() {
+  const isMobile = window.innerWidth <= 767;
+  const containers = document.querySelectorAll('.cg-card-image-container');
+  
+  containers.forEach(container => {
+    if (isMobile && container.dataset.mobile) {
+      container.style.backgroundImage = `url('${container.dataset.mobile}')`;
+    } else if (!isMobile) {
+      // Store desktop image in data attribute on first render
+      const style = window.getComputedStyle(container);
+      const currentBg = style.backgroundImage;
+      if (!container.dataset.desktop && currentBg !== 'none') {
+        container.dataset.desktop = currentBg.slice(5, -2); // Extract URL
+      }
+      // For desktop, keep the original background-image from inline style
+      if (container.dataset.desktop && !currentBg.includes(container.dataset.desktop)) {
+        container.style.backgroundImage = `url('${container.dataset.desktop}')`;
+      }
+    }
+  });
+}
+
+function showTab(tabId) {
+  document.querySelectorAll(".cg-cards-grid").forEach(grid => grid.classList.remove("active"));
+  document.querySelectorAll(".cg-tab-btn").forEach(btn => btn.classList.remove("active"));
+  
+  renderCards(tabId);
+  updateBackgroundImages();
+  
+  document.getElementById("tab" + tabId).classList.add("active");
+  event.target.classList.add("active");
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Render all tabs
+  renderCards(1);
+  renderCards(2);
+  renderCards(3);
+  
+  // Update background images based on screen size
+  updateBackgroundImages();
+  
+  // Preload Tab2 and Tab3 images after 1.5s
+  setTimeout(() => {
+    const preloadImages = (tabId) => {
+      document.querySelectorAll(`#tab${tabId} .cg-card-image-container`).forEach(container => {
+        const bgImage = window.getComputedStyle(container).backgroundImage;
+        if (bgImage && bgImage !== 'none') {
+          const preloader = new Image();
+          preloader.src = bgImage.slice(5, -2); // Extract URL from url('...')
+        }
+        
+        const mobileImage = container.dataset.mobile;
+        if (mobileImage) {
+          const preloader = new Image();
+          preloader.src = mobileImage;
+        }
+      });
+    };
+
+    preloadImages(2);
+    preloadImages(3);
+  }, 1500);
+  
+  // Handle window resize for responsive images
+  window.addEventListener('resize', updateBackgroundImages);
+});
   </script>
  </body>
 </html>
