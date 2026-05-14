@@ -5,102 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preguntas Frecuentes</title>
 <style>
-    :root {
-      --accent: #0132AF !important;
-      --muted: #6b7280 !important;
-      --card: #ffffff !important;
-      --radius: 12px !important;
-    }
+
     .faq-wrap {
-      padding: 24px !important;
-      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      padding: 24px 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     }
     .faq-header {
-      display: flex !important;
-      align-items: center !important;
-      gap: 16px !important;
-      margin-bottom: 18px !important;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 5px;
+      margin-left: 20px;
     }
     .faq-title {
-      font-size: 1.6rem !important;
-      font-weight: 800 !important;
-      color: #0132AF !important;
-      margin: 0 !important;
-      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      font-size: 32px;
+      font-weight: 900 !important;
+      color: #0132AF;
+      margin: 0;
     }
     .faq-intro {
-      color: #6b7280 !important;
-      margin: 0 !important;
-      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      color: #626f7a;
+      margin: 0;
+      font-size: 1rem;
     }
     .faq-section {
-      background: #ffffff !important;
-      border-radius: 12px !important;
-      box-shadow: 0 6px 18px rgba(16,24,40,0.06) !important;
-      overflow: hidden !important;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-item {
+      border-left: 3px solid transparent;
+      border-top: 1px solid #eef2f7;
+      transition: border-color 0.3s ease !important;
+    }
+    .faq-item:first-child {
+      border-top: 1px solid #eef2f7;
+    }
+    .faq-item:last-child {
+      border-bottom: 1px solid #eef2f7;
     }
     .faq-item + .faq-item {
-      border-top: 1px solid #eef2f7 !important;
+      border-top: 1px solid #eef2f7;
+    }
+    .faq-item.open {
+      border-left-color: #0132AF;
     }
     .faq-question {
-      width: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 18px 20px !important;
-      background: transparent !important;
-      border: 0 !important;
-      cursor: pointer !important;
-      font-size: 1rem !important;
-      font-weight: 700 !important;
-      color: #0f172a !important;
-      text-align: left !important;
-      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #0f172a;
+      text-align: left;
       transition: all 0.3s ease !important;
+      font-weight: 700;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
     }
     .faq-question:hover {
-      background: #f7fafc !important;
+      background: #f7fafc;
+      color: #0f172a;
     }
     .faq-question:focus {
-      outline: 3px solid rgba(1,50,175,0.12) !important;
+      outline: 3px solid rgba(1, 50, 175, 0.12) !important;
       outline-offset: -3px !important;
+            color: #0f172a;
     }
     .faq-chevron {
-      transition: transform .28s cubic-bezier(.2,.9,.2,1) !important;
-      color: #6b7280 !important;
-      font-size: 1.2rem !important;
+      transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1) !important;
+      color: #6b7280;
+      font-size: 1.2rem;
+      display: inline-block;
+      
     }
-    .faq-question[aria-expanded="true"] .faq-chevron {
+    .faq-item.open .faq-chevron {
       transform: rotate(180deg) !important;
     }
     .faq-answer {
-      max-height: 0 !important;
-      overflow: hidden !important;
-      padding: 0 20px !important;
-      transition: max-height .60s ease !important;
-      background: transparent !important;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      transition: max-height 0.6s ease !important;
+      background: transparent;
     }
     .faq-answer p {
-      margin: 12px 0 18px !important;
-      color: #374151 !important;
-      line-height: 1.6 !important;
-      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      margin: 12px 0 18px;
+      color: #374151;
+      line-height: 1.6;
     }
-    /* Open state helper */
     .faq-item.open .faq-answer {
       max-height: 420px !important;
     }
-    /* Responsive */
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
       .faq-wrap {
-        padding: 8px !important;
-        margin: 10px !important;
+        padding: 16px;
+      }
+      .faq-header {
+        margin-left: 5px;
+        margin-bottom: 5px;
+      }
+      .faq-title {
+        font-size: 26px;
+        font-weight: 900 !important;
+      }
+      .faq-intro {
+        font-size: 0.85rem;
       }
       .faq-question {
-        padding: 7px !important;
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+      .faq-chevron {
+        font-size: 1rem;
       }
       .faq-answer {
-        padding: 0 7px !important;
+        padding: 0 16px;
+      }
+      .faq-answer p {
+        font-size: 0.9rem;
       }
       .faq-item.open .faq-answer {
         max-height: 520px !important;
@@ -222,11 +250,11 @@
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
         if (!isOpen) {
           item.classList.add('open');
-          btn.setAttribute('aria-expanded','true');
+          btn.setAttribute('aria-expanded', 'true');
           panel.style.maxHeight = panel.scrollHeight + 'px';
         } else {
           item.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
+          btn.setAttribute('aria-expanded', 'false');
           panel.style.maxHeight = null;
         }
       }

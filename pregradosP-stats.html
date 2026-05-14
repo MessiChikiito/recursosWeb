@@ -1,50 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pregrados Presenciales - Stats Section</title>
+    <title></title>
     <style>
-        /* ========== RESET Y VARIABLES ========== */
-        :root {
-            --color-primary: #0132AF;
-            --color-primary-light: #0052D6;
-            --color-accent: #EF1218;
-            --color-accent-hover: #c50e13;
-            --color-bg: #f7fafc;
-            --color-white: #ffffff;
-            --color-gray-100: #f7fafc;
-            --color-gray-200: #edf2f7;
-            --color-gray-300: #e2e8f0;
-            --color-gray-500: #718096;
-            --color-gray-700: #4a5568;
-            --color-gray-900: #1a202c;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --transition: all 0.3s ease !important;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-gray-900);
-            line-height: 1.6;
+        html {
             overflow-x: hidden;
+            width: 100%;
         }
 
-        /* ========== CAJA STATS: NÚMEROS CLAVE ========== */
-          .pp-stats-section {
-            max-width: 1200px;
+
+        .pp-stats-section {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            max-width: 1336px;
             margin: 0 auto;
             position: relative;
             z-index: 5;
@@ -63,37 +39,25 @@
             align-items: center;
             background: white;
             border: 1px solid #e3edff;
-            border-top: 4px solid #e3edff;
+            border-top: 4px solid #067A2E;
             border-radius: 8px;
             padding: 32px 20px;
             text-align: center;
             transition: none !important;
             box-shadow: 0 10px 24px rgba(2,6,23,.06);
         }
-        
-        @keyframes pulse-badge {
-            0% {
-                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 24px rgba(239, 18, 24, 1), 0 0 32px rgba(239, 18, 24, 0.5);
-                transform: scale(1.08);
-            }
-            100% {
-                box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
-                transform: scale(1);
-            }
-        }
-        
+
         /* Card especial de becas */
         .pp-stat-card-becas {
-            border-top-color: #F59E0B;
             padding: 20px;
             display: flex;
-            align-items: center;
             justify-content: flex-start;
             text-align: left;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #F59E0B;
+            border-radius: 8px;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
         }
 
         .pp-card-becas-content {
@@ -116,17 +80,17 @@
         }
 
         .pp-card-becas-title {
-            font-size: 1.7rem !important;
-            font-weight: 700 !important;
-            color: #F59E0B !important;
-            margin-bottom: 4px !important;
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: #F59E0B;
+            margin-bottom: 4px;
         }
 
         .pp-card-becas-subtitle {
-            color: var(--color-gray-700) !important;
-            font-size: 0.9rem !important;
-            margin-bottom: 8px !important;
-            font-weight: 500 !important;
+            color: #4a5568;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .pp-becas-list {
@@ -137,15 +101,17 @@
 
         .pp-becas-list li {
             padding: 2px 0;
-            color: var(--color-gray-700);
-            font-size: 0.85rem;
+            color: #4a5568;
+            font-size: 0.8rem;
             line-height: 1.3;
+            font-weight: 700;
         }
 
         .pp-becas-list li.highlight-blue {
-            color: #0132AF !important;
-            font-weight: 600 !important;
+            color: #0132AF;
+            font-weight: 600;
         }
+
         .pp-becas-list li:before {
             content: "✓ ";
             color: #F59E0B;
@@ -153,7 +119,6 @@
             margin-right: 6px;
         }
 
-        /* Colores de bordes para stats (excluye becas) */
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) {
             border-top-color: #0048ff;
         }
@@ -166,69 +131,174 @@
             border-top-color: #0048ff;
         }
 
-        .pp-stat-card strong {
-            display: block !important;
-            font-size: 2rem !important;
+        .pp-stat-card > div {
             font-weight: 900;
-            color: #F59E0B !important;
-            margin-bottom: 8px !important;
-            letter-spacing: -0.5px !important;
-            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif !important;
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
-            text-rendering: optimizeLegibility !important;
-            font-synthesis: weight !important;
-            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03) !important;
-            text-shadow: 0 0 0.6px rgba(0,0,0,0.02) !important;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: block;
+            font-size: 2rem;
+            color: #000;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
-        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) strong {
-            color: #1C1917 !important;
+        .pp-stat-card p {
+            color: #0048ff;
+            font-size: rem;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
         }
 
-        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) strong {
-            color: #1C1917 !important;
+        .pp-stat-card-discount {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #0048ff;
+            border-radius: 8px;
+            padding: 32px 20px;
+            padding-top: 15px;
+            text-align: center;
+            transition: none !important;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
         }
 
-        .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) strong {
-            color: #1C1917 !important;
+        .pp-discount-investment-badge {
+            background: #EF1218;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(239, 18, 24, 0.3);
+            display: inline-block;
         }
 
-        .pp-stat-card p{
-            color: #0132AF;
-            font-size: 0.95rem !important;
-            margin: 0 ;
-            font-weight: 600 !important;
-            line-height: 1.4 !important;
+        .pp-discount-investment-old {
+            color: #4a5568;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            margin-bottom: 0px;
         }
 
-        /* RESPONSIVE */
+        .pp-discount-investment-new {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: block;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 0px;
+            margin-top: -8px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02);
+        }
+
+        .pp-stat-card-discount p {
+            color: #0048ff;
+            font-size: rem;
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
         @media (max-width: 992px) {
             .pp-stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1.5fr 1fr 1fr 1fr;
+                gap: 16px;
             }
         }
 
+        /* Móvil */
         @media (max-width: 768px) {
             .pp-stats-section {
-                padding: 24px 16px;
+                padding: 0 16px;
+            }
+
+            body {
+                padding: 32px 16px;
             }
 
             .pp-stats-grid {
-                grid-template-columns: repeat(1, 1fr);
+                grid-template-columns: 1fr;
                 gap: 16px;
             }
 
             .pp-stat-card {
                 padding: 24px 16px;
             }
+
+            .pp-stat-card-becas {
+                padding: 16px;
+            }
+
+            .pp-card-becas-content {
+                gap: 16px;
+            }
+
+            .pp-card-becas-svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .pp-card-becas-title {
+                font-size: 1.3rem;
+            }
+
+            .pp-stat-card > div {
+                font-size: 1.5rem;
+            }
+
+            .pp-card-becas-subtitle {
+                font-weight: 500;
+            }
+            .pp-discount-investment-new{
+                font-weight: bold;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pp-stats-section {
+                padding: 0 16px;
+            }
+
+            body {
+                padding: 24px 12px;
+            }
+
+            .pp-stat-card {
+                padding: 20px 12px;
+            }
+
+            .pp-card-becas-title {
+                font-size: 1.1rem;
+            }
+
+            .pp-stat-card > div {
+                font-size: 1.3rem;
+            }
+
+            .pp-stat-card p {
+                font-size: 0.85rem;
+            }
+
+            .pp-card-becas-subtitle {
+                font-weight: 500;
+            }
+
+            .pp-discount-investment-new{
+                font-weight: bold;
+            }
         }
     </style>
 </head>
 <body>
+
     <section class="pp-stats-section" id="pp-caja-stats">
         <div class="pp-stats-grid">
-            <div class="pp-stat-card pp-stat-card-becas">
+            <div class="pp-stat-card-becas">
                 <div class="pp-card-becas-content">
                     <svg class="pp-card-becas-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="30" cy="25" r="12" fill="none" stroke="#F59E0B" stroke-width="2"/>
@@ -247,19 +317,22 @@
                     </div>
                 </div>
             </div>
-            <div class="pp-stat-card">
-                <strong>$6.757.000</strong>
+            <div class="pp-stat-card-discount">
+                <div class="pp-discount-investment-badge">-20% DESCUENTO</div>
+                <div class="pp-discount-investment-old">$6.757.000</div>
+                <div class="pp-discount-investment-new">$5.405.600</div>
                 <p>Inversión por semestre</p>
             </div>
             <div class="pp-stat-card">
-                <strong>87%</strong>
+                <div>87%</div>
                 <p>Tasa de empleabilidad</p>
             </div>
             <div class="pp-stat-card">
-                <strong>500+</strong>
+                <div>350+</div>
                 <p>Empresas Aliadas</p>
             </div>
         </div>
     </section>
+
 </body>
 </html>

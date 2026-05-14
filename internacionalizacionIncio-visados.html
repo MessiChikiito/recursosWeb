@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UE Internacional – Visados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,900&display=swap" rel="stylesheet">
+  <style>
+    .visados-section {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f9f9f9;
+      color: #1a1a1a;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .visados-section *,
+    .visados-section *::before,
+    .visados-section *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .visados-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0132AF;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+    }
+    .visa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .visa-card {
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 18px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: border-color 0.2s ease, background 0.2s ease !important;
+      font-weight: 600;
+      color: #0132AF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .visa-card:hover {
+      border-color: #0132AF !important;
+      background: #f6f9ff;
+    }
+    .visa-flag {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .visa-name {
+      font-weight: 700;
+    }
+    .visa-link {
+      font-size: 0.8rem;
+      color: #EF1218;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0; background:#fff;">
+  <div class="visados-section">
+    <div class="visados-container">
+      <h2 class="section-title">Trámite de visados</h2>
+      <div class="visa-grid">
+        <a href="https://bogota.diplo.de/co-es/service/visa-einreise/1808586-1808586" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇩🇪</span>
+          <span class="visa-name">Alemania</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+        <a href="https://www.exteriores.gob.es/Consulados/bogota/es/ServiciosConsulares/Paginas/index.aspx?scco=Colombia&scd=31&scca=Visados&scs=Visados+Nacionales+-+Visado+de+estudios" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇪🇸</span>
+          <span class="visa-name">España</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+        <a href="https://embamex.sre.gob.mx/colombia/index.php/comunicados-de-prensa-blog/33-servicios-consulares/756-visa-de-residente-temporal-estudiante" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇲🇽</span>
+          <span class="visa-name">México</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+        <a href="https://www.colombia.emb-japan.go.jp/itpr_es/ReactivaVisa.html" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇯🇵</span>
+          <span class="visa-name">Japón</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+        <a href="https://www.mofa.go.kr/co-es/wpge/m_6692/contents.do" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇰🇷</span>
+          <span class="visa-name">Corea del Sur</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+        <a href="https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-estudiante" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇪🇨</span>
+          <span class="visa-name">Ecuador</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+        <a href="https://www.gub.uy/ministerio-relaciones-exteriores/embajada-republica-oriental-del-uruguay-colombia/tramites-consulares/visas" target="_blank" rel="noopener" class="visa-card">
+          <span class="visa-flag">🇺🇾</span>
+          <span class="visa-name">Uruguay</span>
+          <span class="visa-link">Consultar</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,22 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+<div class="campus-botones">
+  <a href="https://campusue.uniempresarial.edu.co:10443/login/index.php" class="campus-btn campus-btn-presencial">
+    <i class="fas fa-university"></i>
+    <span>Presencial</span>
+    <small>Clases en sede física</small>
+  </a>
 
-    #container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        color: #273474;
+  <a href="https://campusvirtual.uniempresarial.edu.co/?redirect=0" class="campus-btn campus-btn-virtual">
+    <i class="fas fa-globe"></i>
+    <span>Virtual</span>
+    <small>Clases 100% en línea</small>
+  </a>
+</div>
+
+<style>
+    .campus-botones {
+      display: flex;
+      gap: 15px;
+      padding: 0px 40px;
     }
-    </style>
-</head>
-<body>
     
-</body>
-</html>
+    .campus-btn {
+      flex: 1;
+      padding: 20px 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .campus-btn i {
+      font-size: 20px;
+    }
+    
+    .campus-btn span {
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .campus-btn small {
+      font-size: 11px;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    
+    .campus-btn-presencial {
+      background: #044DC2;
+      color: white;
+    }
+    
+    .campus-btn-presencial:hover {
+    background: #063e9f;
+      color: white;
+    }
+    
+    .campus-btn-virtual {
+      background: #EF1218;
+      color: white;
+    }
+    
+    .campus-btn-virtual:hover {
+      background: #cd0f16;  
+      color: white;
+    }
+    
+    /* Responsivo móvil */
+    @media (max-width: 500px) {
+      .campus-botones {
+        flex-direction: column;
+        padding: 0 25px;
+      }
+    }
+</style>

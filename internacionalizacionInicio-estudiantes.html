@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UE Internacional – Estudiantes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/variable.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .estudiantes-section {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #1a1a1a;
+      line-height: 1.6;
+      position: relative;
+      background: linear-gradient(180deg, #ffffff 0%, #fef2f2 100%);
+    }
+
+    .estudiantes-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: left;
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #C41E3A;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: #C41E3A;
+      border-radius: 1px;
+    }
+
+    .section-title {
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+      font-weight: 800;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #111;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .section-title span {
+      color: #C41E3A;
+      position: relative;
+      display: inline;
+    }
+
+    .section-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(120deg, rgba(196,30,58,0.15) 0%, rgba(196,30,58,0) 100%);
+      border-radius: 3px;
+      z-index: -1;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      font-weight: 400;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: #ffffff;
+      border: 1px solid #f0e6e8;
+      border-radius: 18px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+      box-shadow: 0 2px 8px rgba(196,30,58,0.04);
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(180deg, #C41E3A, #8B0000);
+      transition: height 0.35s ease !important;
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(196,30,58,0.25);
+      box-shadow: 0 8px 24px rgba(196,30,58,0.12);
+    }
+
+    .benefit-card:hover::before {
+      height: 100%;
+    }
+
+    .benefit-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(196,30,58,0.08) 0%, rgba(196,30,58,0.02) 100%);
+      border: 1px solid rgba(196,30,58,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      transition: all 0.35s ease !important;
+    }
+
+    .benefit-card:hover .benefit-icon-wrapper {
+      background: linear-gradient(135deg, #C41E3A, #8B0000);
+      border-color: transparent;
+    }
+
+    .benefit-icon {
+      width: 22px;
+      height: 22px;
+      color: #C41E3A;
+      transition: color 0.35s ease !important;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      color: #ffffff;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #111;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease !important;
+    }
+
+    .benefit-card:hover h3 {
+      color: #C41E3A;
+    }
+
+    .benefit-card p {
+      font-size: 0.88rem;
+      font-weight: 400;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #666;
+      line-height: 1.55;
+    }
+
+    .highlight-note {
+      margin-top: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(196,30,58,0.06) 0%, rgba(196,30,58,0.02) 100%);
+      border-left: 3px solid #C41E3A;
+      border-radius: 0 12px 12px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-note::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(196,30,58,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .highlight-note svg {
+      width: 20px;
+      height: 20px;
+      color: #C41E3A;
+      flex-shrink: 0;
+      margin-top: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .highlight-note p {
+      font-size: 0.92rem;
+      font-weight: 400;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .estudiantes-section svg {
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 900px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .estudiantes-container {
+        padding: 48px 20px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .section-header {
+        margin-bottom: 36px;
+      }
+
+      .highlight-note {
+        padding: 16px 18px;
+      }
+
+      .section-label {
+        font-weight: 700 !important;
+      }
+      .section-title {
+        font-weight: 800 !important;
+      }
+      .section-subtitle {
+        font-weight: 400 !important;
+      }
+      .benefit-card h3 {
+        font-weight: 700 !important;
+      }
+      .benefit-card p {
+        font-weight: 400 !important;
+      }
+      .highlight-note p {
+        font-weight: 400 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="estudiantes-section">
+    <div class="estudiantes-container">
+
+      <div class="section-header">
+        <div class="section-label">UE Internacional</div>
+        <h2 class="section-title">Oportunidades <span>internacionales</span> para estudiantes</h2>
+        <p class="section-subtitle">Descubre las experiencias que la universidad ofrece para ampliar tu formación en un contexto global.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <article class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg class="benefit-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="10" r="3"/>
+              <path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8z"/>
+            </svg>
+          </div>
+          <h3>Movilidad académica</h3>
+          <p>Nacional e internacional, con universidades aliadas en 8 países.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg class="benefit-icon" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Internacionalización en casa</h3>
+          <p>Interacción con estudiantes y docentes de diferentes culturas sin salir del campus.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg class="benefit-icon" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Doble titulación</h3>
+          <p>Convenios que te permiten obtener dos títulos universitarios.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg class="benefit-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3>Aprendizaje de idiomas</h3>
+          <p>Programas de formación en segunda lengua para tu perfil global.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg class="benefit-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Cultura global</h3>
+          <p>Eventos, proyectos y experiencias que amplían tu visión internacional.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg class="benefit-icon" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="13" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+          </div>
+          <h3>Proyectos internacionales</h3>
+          <p>Participa en iniciativas que conectan la academia con el mundo real.</p>
+        </article>
+      </div>
+
+      <div class="highlight-note">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <p>Así se fortalece la formación integral y se prepara a los estudiantes para desenvolverse en entornos internacionales.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

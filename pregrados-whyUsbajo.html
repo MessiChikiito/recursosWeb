@@ -6,29 +6,24 @@
     <title>¿Por qué elegirnos?</title>
     <style>
         .why-section {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #ffffff;
-            padding: 40px 20px;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 60px 40px;
             color: #0f172a;
-            box-sizing: border-box;
-        }
-        
-        .why-section * {
             box-sizing: border-box;
         }
 
         .why-container {
-            max-width: 680px; /* Ancho ajustado para que las 4 cards se vean proporcionadas como en la imagen */
+            max-width: 680px;
             margin: 0 auto;
         }
         
         .why-us h2 {
             font-size: 26px !important;
-            font-weight: 800 !important;
+            font-weight: 800;
             color: #0132AF !important;
             margin-top: 0 !important;
             margin-bottom: 30px !important;
-            font-family: inherit !important;
             text-align: left;
             line-height: 1.2;
         }
@@ -36,22 +31,17 @@
         .why-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px; /* Espacio exacto entre cards */
+            gap: 20px; 
         }
         
         .why-card {
-            background-color: #f8fafd; /* Color fondo gris/azulado clarito como la imagen */
+            background-color: #f8fafd;
             padding: 30px 24px;
-            border-radius: 16px; /* Bordes muy redondeados */
+            border-radius: 16px; 
             transition: transform 0.2s ease, background-color 0.2s ease !important;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-        }
-        
-        .why-card:hover {
-            background-color: #f0f5fa;
-            transform: translateY(-2px);
         }
         
         .why-icon {
@@ -77,28 +67,26 @@
         
         .why-card h3 {
             font-size: 17px !important;
-            font-weight: 700 !important;
+            font-weight: 700 ;
             color: #0a1f44 !important;
             margin-top: 0 !important;
             margin-bottom: 10px !important;
-            font-family: inherit !important;
         }
         
         .why-card p {
             font-size: 14px !important;
             color: #64748b !important;
             line-height: 1.5 !important;
-            font-family: inherit !important;
             margin: 0 !important;
         }
         
-        /* Responsive para móviles */
         @media (max-width: 640px) {
             .why-grid {
                 grid-template-columns: 1fr;
             }
             .why-us h2 {
                 font-size: 24px !important;
+                font-weight: 800;
             }
         }
     </style>
@@ -110,7 +98,6 @@
                 <h2>¿Por qué elegir Uniempresarial?</h2>
                 <div class="why-grid">
                     
-                    <!-- Card 1 -->
                     <div class="why-card">
                         <div class="why-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -123,7 +110,6 @@
                         <p>Combina teoría y práctica empresarial desde el tercer semestre.</p>
                     </div>
                     
-                    <!-- Card 2 -->
                     <div class="why-card">
                         <div class="why-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -137,7 +123,6 @@
                         <p>Más de 350 empresas aliadas para tu práctica profesional.</p>
                     </div>
                     
-                    <!-- Card 3 -->
                     <div class="why-card">
                         <div class="why-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -150,7 +135,6 @@
                         <p>Convenios internacionales y doble titulación disponible.</p>
                     </div>
                     
-                    <!-- Card 4 -->
                     <div class="why-card">
                         <div class="why-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

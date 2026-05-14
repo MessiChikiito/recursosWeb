@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UE Internacional – Documentos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,900&display=swap" rel="stylesheet">
+  <style>
+    .documentos-section {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f9f9f9;
+      color: #1a1a1a;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .documentos-section *,
+    .documentos-section *::before,
+    .documentos-section *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .documentos-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0132AF;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+    }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .doc-card {
+      background: #ffffff;
+      border: 1px solid #ededed;
+      border-radius: 18px;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: border-color 0.2s ease !important;
+    }
+    .doc-card:hover {
+      border-color: #0132AF !important;
+    }
+    .doc-icon {
+      width: 36px;
+      height: 36px;
+      color: #0132AF;
+      margin-bottom: 16px;
+    }
+    .doc-card h3 {
+      font-weight: 700;
+      color: #0132AF;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .doc-card p {
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .doc-link {
+      font-weight: 700;
+      color: #0132AF;
+      border-bottom: 1.5px solid #0132AF;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s !important;
+    }
+    .doc-link:hover {
+      color: #EF1218 !important;
+      border-color: #EF1218 !important;
+    }
+    @media (max-width: 480px) {
+      .doc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0; background:#fff;">
+  <div class="documentos-section">
+    <div class="documentos-container">
+      <h2 class="section-title">Documentos requeridos</h2>
+      <div class="doc-grid">
+        <article class="doc-card">
+          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <h3>Formulario de postulación</h3>
+          <p>Incluye la pre‑aprobación de homologación de asignaturas, revisado con el gestor académico.</p>
+          <a href="https://uniempresarial-my.sharepoint.com/personal/aneira_uniempresarial_edu_co/Documents/INTERNACIONALIZACION%202025/MOVILIDAD/Formulario-movilidad-saliente-Estudiantes%20.xlsx" target="_blank" rel="noopener" class="doc-link">Descargar formulario</a>
+        </article>
+        <article class="doc-card">
+          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>Certificado de notas</h3>
+          <p>Traducido según los requisitos de la universidad de destino.</p>
+          <span class="doc-link" style="cursor:default; border-bottom:none;">Solicítalo en registro</span>
+        </article>
+        <article class="doc-card">
+          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="7.01" y2="15"/><line x1="11" y1="15" x2="13" y2="15"/></svg>
+          <h3>Pasaporte vigente</h3>
+          <p>Fotocopia del pasaporte que esté vigente al momento del viaje.</p>
+          <span class="doc-link" style="cursor:default; border-bottom:none;">Imprescindible</span>
+        </article>
+        <article class="doc-card">
+          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M8 12l2 2 4-4"/></svg>
+          <h3>Certificado de idioma</h3>
+          <p>Cuando el programa se imparta en un idioma diferente al español.</p>
+          <span class="doc-link" style="cursor:default; border-bottom:none;">Según destino</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UE Internacional – Importante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,900&display=swap" rel="stylesheet">
+  <style>
+    .importante-section {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .importante-section *,
+    .importante-section *::before,
+    .importante-section *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .importante-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0132AF;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+    }
+    .important-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .important-item {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.4;
+    }
+    .important-item strong {
+      color: #0132AF;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .red-accent {
+      color: #EF1218 !important;
+    }
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0; background:#fff;">
+  <div class="importante-section">
+    <div class="importante-container">
+      <h2 class="section-title">Importante</h2>
+      <div class="important-grid">
+        <div class="important-item"><strong>📅 Fechas de convocatoria</strong>No se aceptan documentos fuera de las fechas establecidas ni aplicaciones incompletas.</div>
+        <div class="important-item"><strong>🏥 Seguro médico internacional</strong>Debes contratar un seguro que cubra todo el período en el exterior, incluida repatriación.</div>
+        <div class="important-item"><strong>📄 Homologación</strong>Guarda copia del formulario y pre‑homologación; deberás entregarlo al regresar para homologar materias.</div>
+        <div class="important-item"><strong>🛂 Visados</strong>Consulta con la embajada o consulado del país destino el proceso de solicitud de visa.</div>
+        <div class="important-item"><strong class="red-accent">⚠️ Documentos incompletos</strong>No se procesarán postulaciones que no incluyan toda la documentación solicitada.</div>
+        <div class="important-item"><strong>📋 Pre‑homologación</strong>La sección de pre‑homologación debe estar completamente diligenciada y aprobada por el gestor académico.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

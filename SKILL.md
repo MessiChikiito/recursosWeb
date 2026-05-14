@@ -74,6 +74,33 @@ Todo botón o elemento interactivo debe incluir:
   - beneficios claros,
   - y llamados a la acción directos.
 
+## Font Weight en Móvil (WordPress + Elementor)
+
+**Problema:** En WordPress + Elementor, los `font-weight` no se aplican correctamente en celulares aunque se vean bien en desktop.
+
+**Solución:**
+1. **NO usar `font-family: inherit`** - siempre especificar la familia completa
+2. **ESPECIFICAR `font-weight` en media queries** - aunque sea el mismo valor que en desktop, es necesario re-declararlo en móvil para que se aplique
+3. **Font stack completo cuando se pierden fuentes:**
+
+```css
+.elemento {
+  font-weight: 900 !important;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 768px) {
+  .elemento {
+    font-weight: 900 !important;
+  }
+}
+```
+
+**Por qué funciona:** Elementor inyecta CSS que sobrescribe estilos. Al re-declarar el peso en el media query, aseguramos que se aplique en móvil.
+
 ---
 
 ## Convenciones de CSS
