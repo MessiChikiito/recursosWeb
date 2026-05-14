@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Globo UE Internacional – Minimalista</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Hero - UE Internacional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,26 +13,105 @@
     }
 
     body {
-      background: #e8ecf3;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f4f7fe;
+    }
+
+    .hero-wrap {
+      background: linear-gradient(135deg, #f0f4ff 0%, #f8f9fc 60%, #fff0f0 100%);
+      width: 100%;
+      min-height: 520px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      font-family: 'Inter', -apple-system, sans-serif;
-      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(1, 50, 175, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      padding: 0px 0px;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 420px;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #EF1218;
+      border-bottom: 2px solid #EF1218;
+      display: inline-block;
+      padding-bottom: 3px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #0132AF;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .hero-p {
+      font-size: 0.92rem;
+      color: #666;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0132AF;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 13px 28px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+      box-shadow: 0 4px 16px rgba(1, 50, 175, 0.25);
+    }
+
+    .btn:hover {
+      background: #EF1218;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(239, 18, 24, 0.3);
     }
 
     .globe-container {
       position: relative;
-      width: min(600px, 85vw);
-      height: min(600px, 85vw);
+      width: min(450px, 85vh);
+      height: min(450px, 85vh);
       cursor: grab;
+      background: transparent;
       user-select: none;
       touch-action: none;
+      transition: box-shadow 0.3s ease !important;
       border-radius: 50%;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-      transition: box-shadow 0.3s ease;
-      overflow: hidden;
+      flex-shrink: 0;
     }
 
     .globe-container:active {
@@ -40,30 +119,44 @@
       box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
     }
 
-    canvas {
-      display: block;
+    #globe-canvas {
       width: 100%;
       height: 100%;
+      padding: 5%;
+      display: block;
+      border-radius: 50%;
     }
 
-    /* Bandera redonda */
     .country-flag {
       position: absolute;
-      width: 36px;
-      height: 36px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       overflow: hidden;
       transform: translate(-50%, -50%);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
       border: 2px solid white;
-      pointer-events: none;
-      transition: opacity 0.15s ease;
+      pointer-events: auto;
+      cursor: pointer;
+      transition: opacity 0.15s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+      z-index: 10;
+    }
+
+    .country-flag:hover {
+      transform: translate(-50%, -50%) scale(1.25);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      border-color: #f0f0f0;
+    }
+
+    .country-flag:active {
+      transform: translate(-50%, -50%) scale(1.1);
     }
 
     .country-flag svg {
       width: 100%;
       height: 100%;
       display: block;
+      pointer-events: none;
     }
 
     .country-label {
@@ -72,259 +165,416 @@
       font-weight: 700;
       font-size: 10px;
       color: #0132AF;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255, 255, 255, 0.85);
       padding: 2px 6px;
       border-radius: 4px;
       white-space: nowrap;
       pointer-events: none;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      transition: opacity 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: opacity 0.15s ease !important;
+      z-index: 5;
+      backdrop-filter: blur(2px);
+    }
+
+
+    @media (max-width: 850px) {
+      .hero-wrap {
+        padding: 16px;
+        min-height: auto;
+        border-radius: 24px;
+      }
+
+      .hero-inner {
+        flex-direction: column;
+        padding: 32px 20px;
+        gap: 36px;
+        text-align: center;
+      }
+
+      .hero-text {
+        max-width: 100%;
+        text-align: center;
+        order: 1;
+      }
+
+      .hero-title {
+        font-size: 2.3rem;
+        line-height: 1.1;
+      }
+
+      .hero-sub {
+        font-size: 0.95rem;
+      }
+
+      .hero-p {
+        font-size: 0.88rem;
+        margin-bottom: 24px;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+      }
+
+      .globe-container {
+        width: 85vw;
+        height: 85vw;
+        max-width: 380px;
+        max-height: 380px;
+        margin: 0 auto;
+        order: 2; 
+      }
+
+      #globe-canvas {
+        width: 100%;
+        height: 100%;
+      }
+      .country-flag {
+        width: 30px ;
+        height: 30px ;
+        border-width: 1.5px;
+      }
+
+      .country-label {
+        font-size: 9px;
+        padding: 2px 5px;
+        white-space: nowrap;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+      .hero-inner {
+        padding: 24px 16px;
+        gap: 28px;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-sub {
+        font-size: 0.9rem;
+      }
+
+      .hero-p {
+        font-size: 0.85rem;
+        max-width: 100%;
+      }
+
+      .globe-container {
+        width: 80vw;
+        height: 80vw;
+        max-width: 320px;
+        max-height: 320px;
+      }
+
+      .country-flag {
+        width: 30px;
+        height: 30px;
+      }
+
+      .country-label {
+        font-size: 8px;
+        padding: 1px 4px;
+        white-space: nowrap;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 750px) and (orientation: landscape) {
+      .hero-inner {
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .hero-text {
+        text-align: left;
+        max-width: 45%;
+      }
+
+      .globe-container {
+        width: 40vw;
+        height: 40vw;
+        max-width: 280px;
+        max-height: 280px;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="globe-container" id="globe-container">
-    <canvas id="globe-canvas"></canvas>
 
-    <!-- Banderas en divs -->
-    <div id="flag-colombia" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="32" fill="#FCD116"/><rect x="0" y="32" width="64" height="16" fill="#003893"/><rect x="0" y="48" width="64" height="16" fill="#CE1126"/></svg>
+<div class="hero-wrap">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">Movilidad global</span>
+      <div class="hero-title">UE<br>Internacional</div>
+      <div class="hero-sub">Uniempresarial — más allá del aula.</div>
+      <p class="hero-p">Vivimos la internacionalización, la innovación y la conexión con el mundo real.</p>
+      <a href="#cta" class="btn">Explora el mundo ↗</a>
     </div>
-    <div id="flag-mexico" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="22" height="64" fill="#006847"/><rect x="21" y="0" width="22" height="64" fill="#FFFFFF"/><rect x="42" y="0" width="22" height="64" fill="#CE1126"/><circle cx="32" cy="32" r="8" fill="#A52132"/></svg>
-    </div>
-    <div id="flag-ecuador" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="32" fill="#FFD100"/><rect x="0" y="32" width="64" height="16" fill="#0033A0"/><rect x="0" y="48" width="64" height="16" fill="#CE1126"/><polygon points="32,22 36,28 36,36 32,40 28,36 28,28" fill="#FCD116" stroke="#0033A0" stroke-width="2"/></svg>
-    </div>
-    <div id="flag-uruguay" class="country-flag">
-      <svg viewBox="0 0 64 64">
-        <rect x="0" y="0" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="7.1" width="64" height="7.1" fill="#0038A8"/>
-        <rect x="0" y="14.2" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="21.3" width="64" height="7.1" fill="#0038A8"/>
-        <rect x="0" y="28.4" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="35.5" width="64" height="7.1" fill="#0038A8"/>
-        <rect x="0" y="42.6" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="49.7" width="64" height="7.1" fill="#0038A8"/>
-        <rect x="0" y="56.8" width="64" height="7.2" fill="#FFFFFF"/>
-        <rect x="0" y="0" width="24" height="28" fill="#FCD116"/>
-        <circle cx="12" cy="14" r="7" fill="#0038A8"/>
-      </svg>
-    </div>
-    <div id="flag-espana" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="16" fill="#AA151B"/><rect x="0" y="16" width="64" height="32" fill="#F1BF00"/><rect x="0" y="48" width="64" height="16" fill="#AA151B"/><rect x="16" y="24" width="12" height="16" fill="#AA151B"/></svg>
-    </div>
-    <div id="flag-alemania" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="22" fill="#000000"/><rect x="0" y="21" width="64" height="22" fill="#DD0000"/><rect x="0" y="43" width="64" height="21" fill="#FFCE00"/></svg>
-    </div>
-    <div id="flag-japon" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="64" fill="#FFFFFF"/><circle cx="32" cy="32" r="14" fill="#BC002D"/></svg>
-    </div>
-    <div id="flag-corea" class="country-flag">
-      <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="64" fill="#FFFFFF"/><path d="M32,18 A14,14 0 0,1 32,46 A7,7 0 0,0 32,32 A7,7 0 0,1 32,18" fill="#CD2E3A"/><path d="M32,18 A14,14 0 0,0 32,46 A7,7 0 0,0 32,32 A7,7 0 0,1 32,18" fill="#0047A0"/><rect x="5" y="7" width="6" height="2" fill="#000"/><rect x="5" y="11" width="6" height="2" fill="#000"/><rect x="5" y="15" width="6" height="2" fill="#000"/><rect x="53" y="47" width="6" height="2" fill="#000"/><rect x="53" y="51" width="6" height="2" fill="#000"/><rect x="53" y="55" width="6" height="2" fill="#000"/></svg>
-    </div>
+    <div class="globe-container" id="globe-container">
+      <canvas id="globe-canvas"></canvas>
 
-    <!-- Etiquetas -->
-    <div id="label-colombia" class="country-label">Colombia</div>
-    <div id="label-mexico" class="country-label">México</div>
-    <div id="label-ecuador" class="country-label">Ecuador</div>
-    <div id="label-uruguay" class="country-label">Uruguay</div>
-    <div id="label-espana" class="country-label">España</div>
-    <div id="label-alemania" class="country-label">Alemania</div>
-    <div id="label-japon" class="country-label">Japón</div>
-    <div id="label-corea" class="country-label">Corea del Sur</div>
+      <a id="flag-colombia" class="country-flag" href="https://example.com/colombia" target="_blank" data-country="colombia">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="32" fill="#FCD116"/><rect x="0" y="32" width="64" height="16" fill="#003893"/><rect x="0" y="48" width="64" height="16" fill="#CE1126"/></svg>
+      </a>
+      <a id="flag-mexico" class="country-flag" href="https://example.com/mexico" target="_blank" data-country="mexico">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="22" height="64" fill="#006847"/><rect x="21" y="0" width="22" height="64" fill="#FFFFFF"/><rect x="42" y="0" width="22" height="64" fill="#CE1126"/><circle cx="32" cy="32" r="8" fill="#A52132"/></svg>
+      </a>
+      <a id="flag-ecuador" class="country-flag" href="https://example.com/ecuador" target="_blank" data-country="ecuador">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="32" fill="#FFD100"/><rect x="0" y="32" width="64" height="16" fill="#0033A0"/><rect x="0" y="48" width="64" height="16" fill="#CE1126"/><polygon points="32,22 36,28 36,36 32,40 28,36 28,28" fill="#FCD116" stroke="#0033A0" stroke-width="2"/></svg>
+      </a>
+      <a id="flag-uruguay" class="country-flag" href="https://example.com/uruguay" target="_blank" data-country="uruguay">
+        <svg viewBox="0 0 64 64">
+          <rect x="0" y="0" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="7.1" width="64" height="7.1" fill="#0038A8"/>
+          <rect x="0" y="14.2" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="21.3" width="64" height="7.1" fill="#0038A8"/>
+          <rect x="0" y="28.4" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="35.5" width="64" height="7.1" fill="#0038A8"/>
+          <rect x="0" y="42.6" width="64" height="7.1" fill="#FFFFFF"/><rect x="0" y="49.7" width="64" height="7.1" fill="#0038A8"/>
+          <rect x="0" y="56.8" width="64" height="7.2" fill="#FFFFFF"/>
+          <rect x="0" y="0" width="24" height="28" fill="#FCD116"/>
+          <circle cx="12" cy="14" r="7" fill="#0038A8"/>
+        </svg>
+      </a>
+      <a id="flag-espana" class="country-flag" href="https://example.com/espana" target="_blank" data-country="espana">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="16" fill="#AA151B"/><rect x="0" y="16" width="64" height="32" fill="#F1BF00"/><rect x="0" y="48" width="64" height="16" fill="#AA151B"/><rect x="16" y="24" width="12" height="16" fill="#AA151B"/></svg>
+      </a>
+      <a id="flag-alemania" class="country-flag" href="https://example.com/alemania" target="_blank" data-country="alemania">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="22" fill="#000000"/><rect x="0" y="21" width="64" height="22" fill="#DD0000"/><rect x="0" y="43" width="64" height="21" fill="#FFCE00"/></svg>
+      </a>
+      <a id="flag-japon" class="country-flag" href="https://example.com/japon" target="_blank" data-country="japon">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="64" fill="#FFFFFF"/><circle cx="32" cy="32" r="14" fill="#BC002D"/></svg>
+      </a>
+      <a id="flag-corea" class="country-flag" href="https://example.com/corea" target="_blank" data-country="corea">
+        <svg viewBox="0 0 64 64"><rect x="0" y="0" width="64" height="64" fill="#FFFFFF"/><path d="M32,18 A14,14 0 0,1 32,46 A7,7 0 0,0 32,32 A7,7 0 0,1 32,18" fill="#CD2E3A"/><path d="M32,18 A14,14 0 0,0 32,46 A7,7 0 0,0 32,32 A7,7 0 0,1 32,18" fill="#0047A0"/><rect x="5" y="7" width="6" height="2" fill="#000"/><rect x="5" y="11" width="6" height="2" fill="#000"/><rect x="5" y="15" width="6" height="2" fill="#000"/><rect x="53" y="47" width="6" height="2" fill="#000"/><rect x="53" y="51" width="6" height="2" fill="#000"/><rect x="53" y="55" width="6" height="2" fill="#000"/></svg>
+      </a>
+
+      <div id="label-colombia" class="country-label">Colombia</div>
+      <div id="label-mexico" class="country-label">México</div>
+      <div id="label-ecuador" class="country-label">Ecuador</div>
+      <div id="label-uruguay" class="country-label">Uruguay</div>
+      <div id="label-espana" class="country-label">España</div>
+      <div id="label-alemania" class="country-label">Alemania</div>
+      <div id="label-japon" class="country-label">Japón</div>
+      <div id="label-corea" class="country-label">Corea del Sur</div>
+    </div>
   </div>
+</div>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
-      }
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
     }
-  </script>
+  }
+</script>
 
-  <script type="module">
-    import * as THREE from 'three';
+<script type="module">
+  import * as THREE from 'three';
 
-    // ----- Configuración de países (lat, lng) -----
-    const countries = [
-      { id: 'colombia',  lat: 4.5709,  lng: -74.2973 },
-      { id: 'mexico',    lat: 23.6345, lng: -102.5528 },
-      { id: 'ecuador',   lat: -1.8312, lng: -78.1834 },
-      { id: 'uruguay',   lat: -32.5228, lng: -55.7658 },
-      { id: 'espana',    lat: 40.4637, lng: -3.7492 },
-      { id: 'alemania',  lat: 51.1657, lng: 10.4515 },
-      { id: 'japon',     lat: 36.2048, lng: 138.2529 },
-      { id: 'corea',     lat: 35.9078, lng: 127.7669 },
-    ];
+  const countries = [
+    { id: 'colombia',  lat: -10,  lng: -87 },
+    { id: 'mexico',    lat: 10, lng: -116 },
+    { id: 'ecuador',   lat: -18, lng: -92 },
+    { id: 'uruguay',   lat: -44, lng: -56 },
+    { id: 'espana',    lat: 29, lng: -16 },
+    { id: 'alemania',  lat: 44, lng: -3 },
+    { id: 'japon',     lat: 23, lng: 129 },
+    { id: 'corea',     lat: 23, lng: 115 },
+  ];
 
-    const container = document.getElementById('globe-container');
-    const canvas = document.getElementById('globe-canvas');
+  const container = document.getElementById('globe-container');
+  const canvas = document.getElementById('globe-canvas');
 
-    // ----- Escena Three.js -----
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 2.5;  // Ligeramente más cerca para que se vea grande
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+  camera.position.z = 2.5;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Iluminación suave y uniforme para estética minimalista
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.6);  // Mucha luz ambiental para colores claros
-    scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(1, 1, 3);
-    scene.add(directionalLight);
-    // Luz de relleno desde atrás
-    const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
-    backLight.position.set(-1, -1, -2);
-    scene.add(backLight);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.6);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  directionalLight.position.set(1, 1, 3);
+  scene.add(directionalLight);
+  const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  backLight.position.set(-1, -1, -2);
+  scene.add(backLight);
 
-    // ----- Textura de la Tierra -----
-    const textureLoader = new THREE.TextureLoader();
-    const earthTexture = textureLoader.load(
-      'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'
+  const textureLoader = new THREE.TextureLoader();
+  const earthTexture = textureLoader.load(
+    'https://uniempresarial.edu.co/wp-content/uploads/2026/05/globeTexture-scaled.webp'
+  );
+
+  const material = new THREE.MeshStandardMaterial({
+    map: earthTexture,
+    roughness: 0.4,
+    metalness: 0.1,
+    color: new THREE.Color(1.2, 1.2, 1.2).multiplyScalar(1.4)
+  });
+
+  const geometry = new THREE.SphereGeometry(1, 64, 64);
+  const globe = new THREE.Mesh(geometry, material);
+
+  globe.rotation.set(
+    THREE.MathUtils.degToRad(-15),
+    THREE.MathUtils.degToRad(20),
+    0
+  );
+  scene.add(globe);
+
+  let isDragging = false;
+  let hasDragged = false;
+  let lastX = 0, lastY = 0;
+  let autoRotate = true;
+  let autoRotateSpeedY = 0.005;
+  let resumeTimer = null;
+
+  function latLngToVector3(lat, lng, radius = 1.0) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (lng + 180) * Math.PI / 180;
+    return new THREE.Vector3(
+      -radius * Math.sin(phi) * Math.cos(theta),
+      radius * Math.cos(phi),
+      radius * Math.sin(phi) * Math.sin(theta)
     );
+  }
 
-    // Material: más rugoso y claro para que los colores no sean muy intensos
-    const material = new THREE.MeshStandardMaterial({
-      map: earthTexture,
-      roughness: 0.85,
-      metalness: 0.05,
-      color: new THREE.Color(1, 1, 1).multiplyScalar(1.2) // blanquea ligeramente la textura
-    });
+  function updateMarkers() {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    if (width === 0 || height === 0) return;
 
-    // Esfera del globo
-    const geometry = new THREE.SphereGeometry(1, 64, 64);
-    const globe = new THREE.Mesh(geometry, material);
-    scene.add(globe);
+    const halfWidth = width / 2;
+    const halfHeight = height / 2;
 
-    // ----- Rotación inicial (como la Tierra) -----
-    globe.rotation.x = THREE.MathUtils.degToRad(23.5 * 0.6); // inclinación sutil
-    globe.rotation.y = 0.6;
+    countries.forEach(({ id, lat, lng }) => {
+      const flag = document.getElementById(`flag-${id}`);
+      const label = document.getElementById(`label-${id}`);
+      if (!flag || !label) return;
 
-    // ----- Variables para rotación manual y automática -----
-    let isDragging = false;
-    let lastX = 0, lastY = 0;
-    let autoRotate = true;
-    let autoRotateSpeed = 0.005;
+      const localPos = latLngToVector3(lat, lng, 0.9);
+      const worldPos = localPos.clone().applyQuaternion(globe.quaternion);
 
-    // ----- Conversión de lat/lng a Vector3 en la esfera -----
-    function latLngToVector3(lat, lng, radius = 1.0) {
-      const phi = (90 - lat) * Math.PI / 180;
-      const theta = (lng + 180) * Math.PI / 180;
-      return new THREE.Vector3(
-        -radius * Math.sin(phi) * Math.cos(theta),
-        radius * Math.cos(phi),
-        radius * Math.sin(phi) * Math.sin(theta)
-      );
-    }
+      const cameraDir = new THREE.Vector3(0, 0, 1).applyQuaternion(camera.quaternion);
+      const toMarker = worldPos.clone().normalize();
+      const dot = toMarker.dot(cameraDir);
 
-    // ----- Proyectar marcadores HTML sobre la esfera rotada -----
-    function updateMarkers() {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      if (width === 0 || height === 0) return;
+      if (dot > 0.6) {
+        const screenPos = worldPos.clone().project(camera);
+        const x = (screenPos.x * halfWidth) + halfWidth;
+        const y = -(screenPos.y * halfHeight) + halfHeight;
 
-      const halfWidth = width / 2;
-      const halfHeight = height / 2;
+        flag.style.left = `${x}px`;
+        flag.style.top = `${y}px`;
+        flag.style.opacity = '1';
+        flag.style.pointerEvents = 'auto';
 
-      countries.forEach(({ id, lat, lng }) => {
-        const flag = document.getElementById(`flag-${id}`);
-        const label = document.getElementById(`label-${id}`);
-        if (!flag || !label) return;
-
-        // Posición local en la esfera (sin rotar)
-        const localPos = latLngToVector3(lat, lng, 1.02);
-        // Aplicar la rotación actual del globo
-        const worldPos = localPos.clone().applyQuaternion(globe.quaternion);
-
-        // Verificar si está en el lado visible (cámara mira hacia +Z)
-        const cameraDir = new THREE.Vector3(0, 0, 1).applyQuaternion(camera.quaternion);
-        const toMarker = worldPos.clone().normalize();
-        const dot = toMarker.dot(cameraDir);
-
-        if (dot > 0.15) {  // margen para no mostrar muy en el borde
-          // Proyectar a coordenadas de pantalla
-          const screenPos = worldPos.clone().project(camera);
-          const x = (screenPos.x * halfWidth) + halfWidth;
-          const y = -(screenPos.y * halfHeight) + halfHeight;
-
-          flag.style.left = `${x}px`;
-          flag.style.top = `${y}px`;
-          flag.style.opacity = '1';
-
-          label.style.left = `${x}px`;
-          label.style.top = `${y + 22}px`;
-          label.style.opacity = '1';
-        } else {
-          flag.style.opacity = '0';
-          label.style.opacity = '0';
-        }
-      });
-    }
-
-    // ----- Interacción de arrastre para rotar la esfera -----
-    function onPointerDown(e) {
-      isDragging = true;
-      autoRotate = false;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      container.setPointerCapture(e.pointerId);
-    }
-
-    function onPointerMove(e) {
-      if (!isDragging) return;
-      const deltaX = e.clientX - lastX;
-      const deltaY = e.clientY - lastY;
-
-      // Rotación Y: movimiento horizontal
-      globe.rotation.y += deltaX * 0.007;
-      // Rotación X: movimiento vertical (limitado para no volcar)
-      globe.rotation.x += deltaY * 0.005;
-      globe.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globe.rotation.x));
-
-      lastX = e.clientX;
-      lastY = e.clientY;
-    }
-
-    function onPointerUp() {
-      isDragging = false;
-      container.releasePointerCapture();
-      // Reanudar auto-rotación tras 2.5 segundos de inactividad
-      clearTimeout(window.autoRotateTimeout);
-      window.autoRotateTimeout = setTimeout(() => {
-        autoRotate = true;
-      }, 2500);
-    }
-
-    container.addEventListener('pointerdown', onPointerDown);
-    container.addEventListener('pointermove', onPointerMove);
-    container.addEventListener('pointerup', onPointerUp);
-    container.addEventListener('pointerleave', onPointerUp);
-
-    // ----- Animación -----
-    function animate() {
-      requestAnimationFrame(animate);
-
-      if (autoRotate) {
-        globe.rotation.y += autoRotateSpeed;
+        label.style.left = `${x}px`;
+        label.style.top = `${y + 22}px`;
+        label.style.opacity = '1';
+      } else {
+        flag.style.opacity = '0';
+        flag.style.pointerEvents = 'none';
+        label.style.opacity = '0';
       }
+    });
+  }
 
-      updateMarkers();
-      renderer.render(scene, camera);
+  function onPointerDown(e) {
+    isDragging = true;
+    hasDragged = false;
+    autoRotate = false;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    container.setPointerCapture(e.pointerId);
+
+    if (resumeTimer) {
+      clearTimeout(resumeTimer);
+      resumeTimer = null;
+    }
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+
+    const deltaX = e.clientX - lastX;
+    const deltaY = e.clientY - lastY;
+    const dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+    if (dist > 4) {
+      hasDragged = true;
     }
 
-    animate();
+    globe.rotation.y += deltaX * 0.007;
+    globe.rotation.x += deltaY * 0.005;
+    globe.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globe.rotation.x));
 
-    // ----- Redimensionar -----
-    const resizeObserver = new ResizeObserver(() => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      if (w === 0 || h === 0) return;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    });
-    resizeObserver.observe(container);
-  </script>
+    lastX = e.clientX;
+    lastY = e.clientY;
+  }
+
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    container.releasePointerCapture(e.pointerId);
+
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      autoRotate = true;
+      resumeTimer = null;
+    }, 1000);
+  }
+
+  container.addEventListener('pointerdown', onPointerDown);
+  container.addEventListener('pointermove', onPointerMove);
+  container.addEventListener('pointerup', onPointerUp);
+  container.addEventListener('pointerleave', onPointerUp);
+
+  container.addEventListener('click', (e) => {
+    if (hasDragged) return;
+    if (e.target.closest('.country-flag')) return;
+    window.location.href = '#';
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (autoRotate) {
+      globe.rotation.y += autoRotateSpeedY;
+    }
+
+    updateMarkers();
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  const resizeObserver = new ResizeObserver(() => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    if (w === 0 || h === 0) return;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+  resizeObserver.observe(container);
+</script>
+
 </body>
 </html>
