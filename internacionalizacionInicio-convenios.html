@@ -1,492 +1,604 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>UE Internacional – Convenios</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/variable.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>UE Internacional – Convenios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      margin: 0;
-      background: #ffffff;
-    }
+        body {
+            background: #ffffff;
+        }
 
-    .convenios-section {
-      font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #1a1a1a;
-      line-height: 1.6;
-      overflow: hidden;
-      position: relative;
-    }
+        .co-convenios-section {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .convenios-section::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(1,50,175,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
+        .co-convenios-section::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(239, 18, 24, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-    .convenios-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 64px 32px;
-      position: relative;
-      z-index: 1;
-    }
+        .co-convenios-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 0px !important;
+            padding: 64px 32px;
+            position: relative;
+            z-index: 1;
+        }
 
-    /* Header – estilo de sección */
-    .section-header {
-      text-align: left;
-      max-width: 600px;
-      margin-bottom: 40px;
-    }
+        svg {
+            width: 24px !important;
+            height: 24px !important;
+            stroke: currentColor;
+            fill: #00000000 !important;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #0132AF;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
-    }
+        .co-layout-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            gap: 28px;
+            align-items: stretch;
+        }
 
-    .section-label::before {
-      content: '';
-      width: 18px;
-      height: 2px;
-      background: #0132AF;
-      border-radius: 1px;
-    }
+        .co-left-col {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .section-title {
-      font-size: clamp(1.3rem, 2.5vw, 1.65rem);
-      font-weight: 800;
-      color: #111;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-    }
+        .co-section-header {
+            margin-bottom: 28px;
+            flex-shrink: 0;
+        }
 
-    .section-title span {
-      color: #0132AF;
-    }
+        .co-section-title {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
 
-    .section-subtitle {
-      font-size: 0.95rem;
-      color: #777;
-      line-height: 1.6;
-      margin-bottom: 4px;
-    }
+        .co-section-title span {
+            color: #0132AF;
+        }
 
-    .section-info {
-      font-size: 0.88rem;
-      color: #0132AF;
-      font-weight: 600;
-      margin-top: 6px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .co-section-subtitle {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
 
-    .section-info svg {
-      width: 16px;
-      height: 16px;
-    }
+        .co-section-info {
+            font-size: 0.82rem;
+            color: #0132AF;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-    /* Stats bar */
-    .stats-bar {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 36px;
-      flex-wrap: wrap;
-    }
+        .co-section-info svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: #0132AF;
+        }
 
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      padding: 16px 24px;
-      background: #f8f9fc;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.04);
-      min-width: 140px;
-    }
+        .co-partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+            flex: 1;
+        }
 
-    .stat-number {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: #0132AF;
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
+        .co-partner-card {
+            background: #ffffff;
+            border: 1.5px solid rgba(0, 0, 0, 0.07);
+            border-radius: 16px;
+            padding: 22px 14px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            color: #222;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
 
-    .stat-label {
-      font-size: 0.78rem;
-      color: #888;
-      margin-top: 4px;
-      font-weight: 500;
-    }
+        .co-partner-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+            transform: skewX(-20deg);
+            pointer-events: none;
+            transition: left 0.55s ease;
+        }
 
-    /* Grid */
-    .partner-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 16px;
-    }
+        .co-partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #EF1218, #ff5f63);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
 
-    /* Partner Card */
-    .partner-card {
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 16px;
-      padding: 24px 16px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: pointer;
-      color: #222;
-      font-weight: 500;
-      font-size: 0.85rem;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
+        .co-partner-card:hover {
+            border-color: rgba(239, 18, 24, 0.22);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(239, 18, 24, 0.1), 0 4px 10px rgba(0, 0, 0, 0.04);
+        }
 
-    .partner-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .co-partner-card:hover::before {
+            transform: scaleX(1);
+        }
+        .co-partner-card:hover::after {
+            left: 135%;
+        }
 
-    .partner-card:hover {
-      border-color: rgba(1,50,175,0.15);
-      transform: translateY(-5px);
-      box-shadow: 
-        0 10px 24px rgba(1,50,175,0.07),
-        0 4px 8px rgba(0,0,0,0.03);
-    }
+        .co-partner-logo-wrapper {
+            width: 68px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
 
-    .partner-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #0132AF, #3b82f6);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
-    }
+        .co-partner-card:hover .co-partner-logo-wrapper {
+            background: #f2f2f200;
+            transform: scale(1.08);
+        }
 
-    .partner-card:hover::before {
-      transform: scaleX(1);
-    }
+        .co-partner-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
 
-    .partner-logo-wrapper {
-      width: 72px;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      border-radius: 50%;
-      background: #f8f9fc;
-      border: 1px solid rgba(0,0,0,0.04);
-      transition: all 0.35s ease;
-      overflow: hidden;
-    }
+        .co-partner-name {
+            font-weight: 700;
+            font-size: 0.80rem;
+            line-height: 1.35;
+            color: #2a2a2a;
+            transition: color 0.3s ease;
+        }
 
-    .partner-card:hover .partner-logo-wrapper {
-      background: #f0f3ff;
-      border-color: rgba(1,50,175,0.1);
-      transform: scale(1.05);
-    }
+        .co-partner-card:hover .co-partner-name {
+            color: #EF1218;
+        }
 
-    .partner-logo {
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-      transition: transform 0.35s ease;
-    }
+        .co-partner-country {
+            font-size: 0.70rem;
+            color: #aaa;
+            margin-top: 5px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-    .partner-name {
-      font-weight: 700;
-      font-size: 0.82rem;
-      line-height: 1.35;
-      color: #333;
-      transition: color 0.3s ease;
-    }
+        .fi {
+            width: 16px;
+            height: 12px;
+            border-radius: 2px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+            display: inline-block;
+        }
 
-    .partner-card:hover .partner-name {
-      color: #0132AF;
-    }
+        .co-stats-col {
+            padding-top: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 100%;
+        }
 
-    .partner-country {
-      font-size: 0.72rem;
-      color: #aaa;
-      margin-top: 4px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+        .co-stats-label-top {
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #EF1218;
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
 
-    .partner-card:hover .partner-country {
-      color: #888;
-    }
+        .co-stat-card {
+            background:
+                radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                radial-gradient(circle at 65% 75%, rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
+                radial-gradient(circle at 15% 70%, rgba(255, 255, 255, 0.06) 2px, transparent 2px),
+                repeating-linear-gradient(-32deg,
+                    transparent,
+                    transparent 18px,
+                    rgba(255, 255, 255, 0.025) 18px,
+                    rgba(255, 255, 255, 0.025) 19px),
+                linear-gradient(160deg, #EF1218 0%, #EF1218 100%);
+            border-radius: 20px;
+            padding: 24px 20px 20px;
+            color: #fff;
+            position: relative;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            min-height: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+                0 6px 20px rgba(239, 18, 24, 0.25),
+                0 2px 6px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(2px);
+        }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .co-stat-card::before {
+            content: '';
+            position: absolute;
+            top: -28px;
+            right: -28px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                    rgba(255, 255, 255, 0.13) 0%,
+                    rgba(255, 255, 255, 0.04) 50%,
+                    transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .partner-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+        .co-stat-card::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: -18px;
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            transform: rotate(35deg);
+            z-index: 0;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-    @media (max-width: 640px) {
-      .convenios-container {
-        padding: 48px 20px;
-      }
+        .co-stat-card .co-decorative-ring {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-      .partner-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
+        .co-stat-icon {
+            width: 35px !important;
+            height: 35px !important;
+            margin-right: 10px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            color: #fff !;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+        }
 
-      .partner-card {
-        padding: 20px 12px 16px;
-      }
+        .co-stat-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            z-index: 2;
+        }
 
-      .partner-logo-wrapper {
-        width: 56px;
-        height: 56px;
-      }
+        .co-stat-number {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+            text-shadow:
+                2px 4px 0 rgba(0, 0, 0, 0.12),
+                0 0 20px rgba(255, 255, 255, 0.08);
+        }
 
-      .partner-logo {
-        width: 40px;
-        height: 40px;
-      }
+        .co-stat-label {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-top: 8px;
+            font-weight: 600;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.02em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
 
-      .stats-bar {
-        gap: 12px;
-      }
+        @media (max-width: 900px) {
+            .co-layout-wrapper {
+                grid-template-columns: 1fr;
+            }
 
-      .stat-item {
-        padding: 12px 18px;
-        min-width: 110px;
-      }
+            .co-stats-col {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 12px;
+                height: auto;
+                margin-top: 24px;
+                padding-top: 0;
+            }
 
-      .section-header {
-        margin-bottom: 28px;
-      }
-    }
-  </style>
+            .co-stat-card {
+                flex: 1 1 140px;
+                min-height: 110px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .co-convenios-container {
+                padding: 48px 20px;
+            }
+
+            .co-partner-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .co-partner-card {
+                padding: 18px 10px 14px;
+            }
+
+            .co-partner-logo-wrapper {
+                width: 56px;
+                height: 56px;
+            }
+            .co-partner-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .co-stat-card {
+                flex: 1 1 100px;
+                min-height: 95px;
+                padding: 18px 14px 14px;
+            }
+            .co-stat-number {
+                font-size: 2.4rem;
+            }
+            .co-stat-label {
+                font-size: 0.78rem;
+            }
+            .co-stat-icon {
+                width: 28px !important;
+                height: 28px !important;
+                margin-right: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="convenios-section">
-    <div class="convenios-container">
+    <div class="co-convenios-section">
+        <div class="co-convenios-container">
+            <div class="co-layout-wrapper">
 
-      <!-- Encabezado de sección -->
-      <div class="section-header">
-        <div class="section-label">UE Internacional</div>
-        <h2 class="section-title">Convenios para la <span>movilidad académica</span></h2>
-        <p class="section-subtitle">¡Uniempresarial te abre puertas en otros países!</p>
-        <p class="section-info">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          13 convenios internacionales en 8 países + 1 convenio nacional
-        </p>
-      </div>
+                <div class="co-left-col">
+                    <div class="co-section-header">
+                        <h2 class="co-section-title">Convenios para la <span>movilidad académica</span></h2>
+                        <p class="co-section-subtitle">¡Uniempresarial te abre puertas en otros países!</p>
+                        <p class="co-section-info">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            14 convenios internacionales en 8 países + 1 convenio nacional
+                        </p>
+                    </div>
 
-      <!-- Stats bar -->
-      <div class="stats-bar">
-        <div class="stat-item">
-          <span class="stat-number">14</span>
-          <span class="stat-label">Universidades aliadas</span>
+                    <div class="co-partner-grid">
+                        <a href="https://www-u--tokyo-ac-jp.translate.goog/en/index.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Tokio-Convenios-Uniempresarial-1.png" alt="Universidad de Tokio">
+                            </div>
+                            <span class="co-partner-name">Universidad de Tokio</span>
+                            <span class="co-partner-country"><span class="fi fi-jp"></span> Japón</span>
+                        </a>
+
+                        <a href="https://en.snu.ac.kr" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Seul-Convenios-Uniempresarial.webp" alt="Universidad de Seúl">
+                            </div>
+                            <span class="co-partner-name">Universidad de Seúl</span>
+                            <span class="co-partner-country"><span class="fi fi-kr"></span> Corea del Sur</span>
+                        </a>
+
+                        <a href="https://www.unam.mx" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/UNAM-Convenios-Uniempresarial.webp" alt="UNAM México">
+                            </div>
+                            <span class="co-partner-name">UNAM</span>
+                            <span class="co-partner-country"><span class="fi fi-mx"></span> México</span>
+                        </a>
+
+                        <a href="https://tec.mx/es" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Tec-de-Monterrey-Convenios-Uniempresarial.svg" alt="Tec de Monterrey">
+                            </div>
+                            <span class="co-partner-name">Tec de Monterrey</span>
+                            <span class="co-partner-country"><span class="fi fi-mx"></span> México</span>
+                        </a>
+
+                        <a href="https://www.ub.edu/visitavirtual/visitavirtualEH/index.php/es/" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Barcelona-Convenios-Uniempresarial.png" alt="Universidad de Barcelona">
+                            </div>
+                            <span class="co-partner-name">Universidad de Barcelona</span>
+                            <span class="co-partner-country"><span class="fi fi-es"></span> España</span>
+                        </a>
+
+                        <a href="https://www.ucm.es" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-Complutense-Madrid-Convenios-Uniempresarial.webp" alt="U. Complutense Madrid">
+                            </div>
+                            <span class="co-partner-name">U. Complutense Madrid</span>
+                            <span class="co-partner-country"><span class="fi fi-es"></span> España</span>
+                        </a>
+
+                        <a href="https://www.uv.es/uvweb/universidad/es/universidad-valencia-1285845048380.html" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Valencia-Convenios-Uniempresarial-1.png" alt="Universidad de Valencia">
+                            </div>
+                            <span class="co-partner-name">Universidad de Valencia</span>
+                            <span class="co-partner-country"><span class="fi fi-es"></span> España</span>
+                        </a>
+
+                        <a href="https://www-uni--bonn-de.translate.goog/en?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Bonn-Convenios-Uniempresarial.png" alt="Universidad de Bonn">
+                            </div>
+                            <span class="co-partner-name">Universidad de Bonn</span>
+                            <span class="co-partner-country"><span class="fi fi-de"></span> Alemania</span>
+                        </a>
+
+                        <a href="https://uni-koeln.de/en/" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Colonia-Convenios-Uniempresarial.webp" alt="Universidad de Colonia">
+                            </div>
+                            <span class="co-partner-name">Universidad de Colonia</span>
+                            <span class="co-partner-country"><span class="fi fi-de"></span> Alemania</span>
+                        </a>
+
+                        <a href="https://www.uba.ar" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Buenos-Aires-Convenios-Uniempresarial.webp" alt="U. de Buenos Aires">
+                            </div>
+                            <span class="co-partner-name">U. de Buenos Aires</span>
+                            <span class="co-partner-country"><span class="fi fi-ar"></span> Argentina</span>
+                        </a>
+
+                        <a href="https://www.usach.cl" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Santiago-de-Chile-Convenios-Uniempresarial.webp" alt="U. de Santiago de Chile">
+                            </div>
+                            <span class="co-partner-name">U. de Santiago de Chile</span>
+                            <span class="co-partner-country"><span class="fi fi-cl"></span> Chile</span>
+                        </a>
+
+                        <a href="https://www.ug.edu.ec" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-de-Guayaquil-Convenios-Uniempresarial.webp" alt="Universidad de Guayaquil">
+                            </div>
+                            <span class="co-partner-name">U. de Guayaquil</span>
+                            <span class="co-partner-country"><span class="fi fi-ec"></span> Ecuador</span>
+                        </a>
+
+                        <a href="https://www.ort.edu.uy" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-ORT-Convenios-Uniempresarial.webp" alt="Universidad ORT Uruguay">
+                            </div>
+                            <span class="co-partner-name">Universidad ORT</span>
+                            <span class="co-partner-country"><span class="fi fi-uy"></span> Uruguay</span>
+                        </a>
+
+                        <a href="https://unal.edu.co" target="_blank" rel="noopener" class="co-partner-card">
+                            <div class="co-partner-logo-wrapper">
+                                <img class="co-partner-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Universidad-Nacional-Convenios-Uniempresarial.webp" alt="Universidad Nacional Colombia">
+                            </div>
+                            <span class="co-partner-name">U. Nacional (Colombia)</span>
+                            <span class="co-partner-country"><span class="fi fi-co"></span> Colombia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="co-stats-col">
+                    <p class="co-stats-label-top">Cifras clave</p>
+
+                    <div class="co-stat-card">
+                        <div class="co-decorative-ring"></div>
+                        <div class="co-stat-row">
+                            <svg class="co-stat-icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 2 8.67 2 12 0v-5"/></svg>
+                            <span class="co-stat-number">14</span>
+                        </div>
+                        <div class="co-stat-label">Universidades aliadas</div>
+                    </div>
+
+                    <div class="co-stat-card">
+                        <div class="co-decorative-ring"></div>
+                        <div class="co-stat-row">
+                            <svg class="co-stat-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            <span class="co-stat-number">8</span>
+                        </div>
+                        <div class="co-stat-label">Países con convenio</div>
+                    </div>
+
+                    <div class="co-stat-card">
+                        <div class="co-decorative-ring"></div>
+                        <div class="co-stat-row">
+                            <svg class="co-stat-icon" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="co-stat-number">1</span>
+                        </div>
+                        <div class="co-stat-label">Convenio nacional</div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">8</span>
-          <span class="stat-label">Países</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">1</span>
-          <span class="stat-label">Convenio nacional</span>
-        </div>
-      </div>
-
-      <!-- Grid de universidades -->
-      <div class="partner-grid">
-
-        <!-- España -->
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/126af7843-213c-4500-873c-9e43b8c5aae1.png" alt="Universidad de Barcelona">
-          </div>
-          <span class="partner-name">Universidad de Barcelona</span>
-          <span class="partner-country">🇪🇸 España</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/1b7a947eb-488d-4379-b8d9-0fba0f05d888.png" alt="U. Complutense Madrid">
-          </div>
-          <span class="partner-name">U. Complutense Madrid</span>
-          <span class="partner-country">🇪🇸 España</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/1d0c87f31-699b-4950-afd2-35397d44347e.png" alt="Universidad de Valencia">
-          </div>
-          <span class="partner-name">Universidad de Valencia</span>
-          <span class="partner-country">🇪🇸 España</span>
-        </a>
-
-        <!-- México -->
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/173bdef5a-b9b6-4c26-baa9-e30b89d31f2c.png" alt="UNAM México">
-          </div>
-          <span class="partner-name">UNAM</span>
-          <span class="partner-country">🇲🇽 México</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/14a501bab-5325-4c77-8b9c-c6bca2c19d80.png" alt="Tec de Monterrey">
-          </div>
-          <span class="partner-name">Tec de Monterrey</span>
-          <span class="partner-country">🇲🇽 México</span>
-        </a>
-
-        <!-- Asia -->
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/1a7d096b5-0628-4a45-9ad3-a24e33f4fd00.png" alt="Universidad de Tokio">
-          </div>
-          <span class="partner-name">Universidad de Tokio</span>
-          <span class="partner-country">🇯🇵 Japón</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/1074aafce-d9bd-4fdb-9d8e-2a01760108b0.png" alt="Universidad de Seúl">
-          </div>
-          <span class="partner-name">Universidad de Seúl</span>
-          <span class="partner-country">🇰🇷 Corea del Sur</span>
-        </a>
-
-        <!-- Sudamérica -->
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/1f8873033-92da-4148-99b4-5d6ef174146b.png" alt="Universidad de Guayaquil">
-          </div>
-          <span class="partner-name">U. de Guayaquil</span>
-          <span class="partner-country">🇪🇨 Ecuador</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/165f345bc-a480-4a9b-bf94-f51c49182afd.png" alt="Universidad ORT Uruguay">
-          </div>
-          <span class="partner-name">Universidad ORT</span>
-          <span class="partner-country">🇺 Uruguay</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/1883a95e1-598e-4db2-a81e-9df75e9f920a.png" alt="U. de Buenos Aires">
-          </div>
-          <span class="partner-name">U. de Buenos Aires</span>
-          <span class="partner-country">🇦🇷 Argentina</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/11c0d69c4-0108-4913-82cd-39f1eb2bb6c8.png" alt="U. de Santiago de Chile">
-          </div>
-          <span class="partner-name">U. de Santiago de Chile</span>
-          <span class="partner-country">🇨🇱 Chile</span>
-        </a>
-
-        <!-- Europa -->
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/13e5c2265-a6b2-4af9-b174-4b3cfb438c09.png" alt="Universidad de Bonn">
-          </div>
-          <span class="partner-name">Universidad de Bonn</span>
-          <span class="partner-country">🇩🇪 Alemania</span>
-        </a>
-
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/18e6a24b8-2639-4c5e-ac68-287a0a7a12ff.png" alt="Universidad de Colonia">
-          </div>
-          <span class="partner-name">Universidad de Colonia</span>
-          <span class="partner-country">🇩 Alemania</span>
-        </a>
-
-        <!-- Colombia -->
-        <a href="#" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-wrapper">
-            <img class="partner-logo" src="https://image.qwenlm.ai/public_source/9d862eef-cc8a-4517-90c9-e15424a6cd7b/10f3b44f5-91b2-4c29-9292-23c1364f8655.png" alt="Universidad Nacional Colombia">
-          </div>
-          <span class="partner-name">U. Nacional (Colombia)</span>
-          <span class="partner-country">🇨🇴 Colombia</span>
-        </a>
-
-      </div>
     </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.partner-card');
-      const statsBar = document.querySelector('.stats-bar');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (entry.target === statsBar) {
-              entry.target.classList.add('visible');
-            } else {
-              const idx = Array.from(cards).indexOf(entry.target);
-              setTimeout(() => {
-                entry.target.classList.add('visible');
-              }, idx * 60);
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -20px 0px'
-      });
-
-      if (statsBar) observer.observe(statsBar);
-      cards.forEach(card => observer.observe(card));
-    });
-  </script>
 </body>
 </html>
-

@@ -29,39 +29,19 @@
     .estudiantes-container {
       max-width: 1200px;
       margin: 0 auto;
+      padding-top: 0px !important;
       padding: 64px 32px;
       position: relative;
       z-index: 1;
     }
 
-    .section-header {
+    .es-section-header {
       text-align: left;
       max-width: 640px;
       margin-bottom: 48px;
     }
 
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #0132AF;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 18px;
-      height: 2px;
-      background: #0132AF;
-      border-radius: 1px;
-    }
-
-    .section-title {
+    .es-section-title {
       font-size: clamp(1.3rem, 2.5vw, 1.65rem);
       font-weight: 800;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -71,11 +51,11 @@
       line-height: 1.25;
     }
 
-    .section-title span {
-      color: #0132AF;
+    .es-section-title span {
+      color: #EF1218;
     }
 
-    .section-subtitle {
+    .es-section-subtitle {
       font-size: 0.95rem;
       font-weight: 400;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -83,13 +63,13 @@
       line-height: 1.6;
     }
 
-    .benefits-grid {
+    .es-benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .benefit-card {
+    .es-benefit-card {
       background: #fafbfc;
       border: 1px solid rgba(0,0,0,0.05);
       border-radius: 18px;
@@ -102,14 +82,9 @@
       transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     }
 
-    .benefit-card:hover {
-      background: #ffffff;
-      border-color: rgba(1,50,175,0.12);
-    }
-
-    .benefit-icon-wrapper {
-      width: 44px;
-      height: 44px;
+    .es-benefit-icon-wrapper {
+      width: 50px ;
+      height: 50px ;
       background: rgba(1,50,175,0.06);
       border-radius: 12px;
       display: flex;
@@ -119,22 +94,14 @@
       transition: all 0.35s ease !important;
     }
 
-    .benefit-card:hover .benefit-icon-wrapper {
-      background: #0132AF;
-    }
-
-    .benefit-icon {
-      width: 22px;
-      height: 22px;
+    .es-benefit-icon {
+      width: 25px !important;
+      height: 25px !important;
       color: #0132AF;
       transition: color 0.35s ease !important;
     }
 
-    .benefit-card:hover .benefit-icon {
-      color: #ffffff;
-    }
-
-    .benefit-card h3 {
+    .es-benefit-card h3 {
       font-size: 1.05rem;
       font-weight: 700;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -144,11 +111,7 @@
       transition: color 0.3s ease !important;
     }
 
-    .benefit-card:hover h3 {
-      color: #0132AF;
-    }
-
-    .benefit-card p {
+    .es-benefit-card p {
       font-size: 0.88rem;
       font-weight: 400;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -156,7 +119,7 @@
       line-height: 1.55;
     }
 
-    .highlight-note {
+    .es-highlight-note {
       margin-top: 40px;
       display: flex;
       align-items: flex-start;
@@ -167,7 +130,7 @@
       border-radius: 0 12px 12px 0;
     }
 
-    .highlight-note svg {
+    .es-highlight-note svg {
       width: 20px;
       height: 20px;
       color: #0132AF;
@@ -175,7 +138,7 @@
       margin-top: 2px;
     }
 
-    .highlight-note p {
+    .es-highlight-note p {
       font-size: 0.92rem;
       font-weight: 400;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -192,7 +155,7 @@
     }
 
     @media (max-width: 900px) {
-      .benefits-grid {
+      .es-benefits-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -202,35 +165,35 @@
         padding: 48px 20px;
       }
 
-      .benefits-grid {
+      .es-benefits-grid {
         grid-template-columns: 1fr;
         gap: 16px;
       }
 
-      .section-header {
+      .es-section-header {
         margin-bottom: 36px;
       }
 
-      .highlight-note {
+      .es-highlight-note {
         padding: 16px 18px;
       }
 
-      .section-label {
+      .es-section-label {
         font-weight: 700 !important;
       }
-      .section-title {
+      .es-section-title {
         font-weight: 800 !important;
       }
-      .section-subtitle {
+      .es-section-subtitle {
         font-weight: 400 !important;
       }
-      .benefit-card h3 {
+      .es-benefit-card h3 {
         font-weight: 700 !important;
       }
-      .benefit-card p {
+      .es-benefit-card p {
         font-weight: 400 !important;
       }
-      .highlight-note p {
+      .es-highlight-note p {
         font-weight: 400 !important;
       }
     }
@@ -240,16 +203,15 @@
   <div class="estudiantes-section">
     <div class="estudiantes-container">
 
-      <div class="section-header">
-        <div class="section-label">UE Internacional</div>
-        <h2 class="section-title">Oportunidades <span>internacionales</span> para estudiantes</h2>
-        <p class="section-subtitle">Descubre las experiencias que la universidad ofrece para ampliar tu formación en un contexto global.</p>
+      <div class="es-section-header">
+        <h2 class="es-section-title">Oportunidades <span>internacionales</span> para estudiantes</h2>
+        <p class="es-section-subtitle">Descubre las experiencias que la universidad ofrece para ampliar tu formación en un contexto global.</p>
       </div>
 
-      <div class="benefits-grid">
-        <article class="benefit-card">
-          <div class="benefit-icon-wrapper">
-            <svg class="benefit-icon" viewBox="0 0 24 24">
+      <div class="es-benefits-grid">
+        <article class="es-benefit-card">
+          <div class="es-benefit-icon-wrapper">
+            <svg class="es-benefit-icon" viewBox="0 0 24 24">
               <circle cx="12" cy="10" r="3"/>
               <path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8z"/>
             </svg>
@@ -258,9 +220,9 @@
           <p>Nacional e internacional, con universidades aliadas en 8 países.</p>
         </article>
 
-        <article class="benefit-card">
-          <div class="benefit-icon-wrapper">
-            <svg class="benefit-icon" viewBox="0 0 24 24">
+        <article class="es-benefit-card">
+          <div class="es-benefit-icon-wrapper">
+            <svg class="es-benefit-icon" viewBox="0 0 24 24">
               <rect x="2" y="3" width="20" height="14" rx="2"/>
               <line x1="8" y1="21" x2="16" y2="21"/>
               <line x1="12" y1="17" x2="12" y2="21"/>
@@ -270,9 +232,9 @@
           <p>Interacción con estudiantes y docentes de diferentes culturas sin salir del campus.</p>
         </article>
 
-        <article class="benefit-card">
-          <div class="benefit-icon-wrapper">
-            <svg class="benefit-icon" viewBox="0 0 24 24">
+        <article class="es-benefit-card">
+          <div class="es-benefit-icon-wrapper">
+            <svg class="es-benefit-icon" viewBox="0 0 24 24">
               <path d="M12 2L2 7l10 5 10-5-10-5z"/>
               <path d="M2 17l10 5 10-5"/>
               <path d="M2 12l10 5 10-5"/>
@@ -282,9 +244,9 @@
           <p>Convenios que te permiten obtener dos títulos universitarios.</p>
         </article>
 
-        <article class="benefit-card">
-          <div class="benefit-icon-wrapper">
-            <svg class="benefit-icon" viewBox="0 0 24 24">
+        <article class="es-benefit-card">
+          <div class="es-benefit-icon-wrapper">
+            <svg class="es-benefit-icon" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10"/>
               <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
               <line x1="9" y1="9" x2="9.01" y2="9"/>
@@ -295,9 +257,9 @@
           <p>Programas de formación en segunda lengua para tu perfil global.</p>
         </article>
 
-        <article class="benefit-card">
-          <div class="benefit-icon-wrapper">
-            <svg class="benefit-icon" viewBox="0 0 24 24">
+        <article class="es-benefit-card">
+          <div class="es-benefit-icon-wrapper">
+            <svg class="es-benefit-icon" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10"/>
               <path d="M2 12h20"/>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -307,9 +269,9 @@
           <p>Eventos, proyectos y experiencias que amplían tu visión internacional.</p>
         </article>
 
-        <article class="benefit-card">
-          <div class="benefit-icon-wrapper">
-            <svg class="benefit-icon" viewBox="0 0 24 24">
+        <article class="es-benefit-card">
+          <div class="es-benefit-icon-wrapper">
+            <svg class="es-benefit-icon" viewBox="0 0 24 24">
               <rect x="2" y="7" width="20" height="13" rx="2"/>
               <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
             </svg>
@@ -319,7 +281,7 @@
         </article>
       </div>
 
-      <div class="highlight-note">
+      <div class="es-highlight-note">
         <svg viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10"/>
           <line x1="12" y1="16" x2="12" y2="12"/>
