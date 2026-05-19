@@ -8,44 +8,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,900&display=swap" rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            margin: 0;
-            background: #eef1f9;
-        }
+
+            * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
         .wrapper {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             padding: 60px 28px;
+            padding-top: 0;
             margin: 0 auto;
         }
         .panel-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
-            background: #ffffff;
-            border-radius: 24px;
+            border: 1px solid #d4d8e6;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(1, 50, 175, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(1, 50, 175, 0.01);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: #1a1a1a;
             line-height: 1.5;
         }
         .panel-requisitos {
             background: #ffffff;
-            border-right: 1px solid #eef0f6;
+            border-right: 1px solid #d4d8e6;
             padding: 48px 40px;
             display: flex;
             flex-direction: column;
         }
         .panel-aplicar {
-            background: #fafbff;
+            background: #ffffff;
             padding: 48px 40px;
             display: flex;
             flex-direction: column;
@@ -106,9 +103,12 @@
             color: #374151;
             line-height: 1.45;
             padding: 12px 16px;
-            background: #f9fafc;
             border-radius: 12px;
             transition: background 0.2s ease, box-shadow 0.2s ease !important;
+        }
+        .req-list .req-item > div {
+            flex: 1;
+            margin-left: 6px;
         }
         .req-icon-circle {
             flex-shrink: 0;
@@ -132,22 +132,14 @@
         }
         .destacado-card {
             background: linear-gradient(135deg, #fff9f9 0%, #fff5f5 100%);
-            border: 1px solid #fddcdc;
+            border: 1px solid #f8c2c2;
+            border-left: 3px solid #ff0008;
             border-radius: 16px;
             padding: 22px 20px;
             margin-top: 28px;
             position: relative;
         }
-        .destacado-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 16px;
-            bottom: 16px;
-            width: 4px;
-            background: #EF1218;
-            border-radius: 0 4px 4px 0;
-        }
+
         .destacado-card .destacado-title {
             font-weight: 700;
             color: #0132AF;
@@ -158,24 +150,23 @@
             font-weight: 400;
             font-size: 0.85rem;
             color: #6b7280;
-            padding-left: 12px;
             display: block;
-            margin-top: 2px;
+            margin-top: 8px;
         }
         .steps-vertical {
+            list-style: none;
             display: flex;
             flex-direction: column;
             gap: 20px;
             flex: 1;
         }
-        .step-card {
+        .steps-vertical .step-card {
             display: flex;
             gap: 16px;
             align-items: flex-start;
             padding: 18px 16px;
             background: #ffffff;
             border-radius: 14px;
-            border: 1px solid #eef0f6;
             transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
         }
 
@@ -192,7 +183,6 @@
             justify-content: center;
             flex-shrink: 0;
             line-height: 1;
-            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.25);
         }
         .step-content h3 {
             font-weight: 700;
@@ -239,7 +229,7 @@
         }
         .doc-link:hover {
             background: #0229a0;
-            box-shadow: 0 4px 12px rgba(1, 50, 175, 0.3);
+            color: #ffffff;
         }
         .doc-link:active:not(.active) {
             background: #0132AF;
@@ -258,7 +248,7 @@
             }
             .panel-requisitos {
                 border-right: none;
-                border-bottom: 1px solid #eef0f6;
+                border-bottom: 1px solid #d4d8e6;
                 padding: 36px 24px;
             }
             .panel-aplicar {
@@ -289,29 +279,43 @@
         }
         @media (max-width: 480px) {
             .wrapper {
-                padding: 30px 12px;
+                padding: 30px 16px;
+                padding-top: 0px;
             }
             .panel-requisitos {
-                padding: 28px 16px;
+                padding: 28px 24px;
             }
             .panel-aplicar {
-                padding: 28px 16px;
+                padding: 28px 24px;
+            }
+            .panel-badge {
+                font-size: 0.85rem;
+                padding: 0;
             }
             .panel-title {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
                 font-weight: 800;
             }
             .panel-subtitle {
+                margin-bottom: 15px;
                 font-weight: 400;
             }
-            .req-list .req-item {
+            .req-list .req-item {  
                 font-weight: 400;
+                padding: 5px 0;
             }
             .step-content h3 {
                 font-weight: 700;
             }
             .step-number-badge {
                 font-weight: 900;
+            }
+            .step-card {
+                padding: 0px !important;
+                margin: 10px 0;
+            }
+            .destacado-card{
+                padding: 16px 15px;
             }
             .destacado-title {
                 font-weight: 700;
@@ -338,31 +342,31 @@
                         <span class="req-icon-circle">
                             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
                         </span>
-                        Ser estudiante activo de Uniempresarial.
+                        <div>Ser estudiante activo de Uniempresarial.</div>
                     </div>
                     <div class="req-item">
                         <span class="req-icon-circle">
                             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
                         </span>
-                        No tener sanciones académicas ni disciplinarias.
+                        <div>No tener sanciones académicas ni disciplinarias.</div>
                     </div>
                     <div class="req-item">
                         <span class="req-icon-circle">
                             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
                         </span>
-                        Haber cursado y aprobado el&nbsp;<strong>40%</strong> de los créditos del programa.
+                        <div>Haber cursado y aprobado el&nbsp;<strong>40%</strong> de los créditos del programa.</div>
                     </div>
                     <div class="req-item">
                         <span class="req-icon-circle">
                             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
                         </span>
-                        Promedio acumulado igual o mayor a&nbsp;<strong>3.8/5.0</strong>.
+                        <div>Promedio acumulado igual o mayor a&nbsp;<strong>3.8/5.0</strong>.</div>
                     </div>
                     <div class="req-item">
                         <span class="req-icon-circle">
                             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
                         </span>
-                        Demostrar dominio de segunda lengua si el programa no es en español.
+                        <div>Demostrar dominio de segunda lengua si el programa no es en español.</div>
                     </div>
                 </div>
                 <div class="destacado-card">

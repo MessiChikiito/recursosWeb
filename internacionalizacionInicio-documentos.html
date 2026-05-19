@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -6,212 +6,290 @@
   <title>UE Internacional – Documentos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
-    .documentos-section {
+    .doc-section {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f9f9f9;
+      background: #ffffff;
       color: #1a1a1a;
       line-height: 1.5;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    .documentos-section *,
-    .documentos-section *::before,
-    .documentos-section *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    .documentos-container {
+    
+    .doc-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 80px 24px;
+      padding-top: 0px;
     }
-    .section-title {
+    .doc-title {
       font-size: 2.2rem;
-      font-weight: 700;
-      color: #0132AF;
+      font-weight: 800;
+      color: #0d1b3e;
       margin-bottom: 32px;
       letter-spacing: -0.02em;
     }
     .doc-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
+      margin-bottom: 60px;
     }
     .doc-card {
-      background: #ffffff;
-      border: 1px solid #ededed;
+      background: #fafbfc;
+      border: 1px solid #d4d8e6;
       border-radius: 18px;
-      padding: 28px 20px;
+      padding: 18px 16px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      transition: border-color 0.2s ease !important;
     }
-    .doc-card:hover {
-      border-color: #0132AF !important;
+    .doc-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      background: #0132AF;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
     }
-    .doc-icon {
-      width: 36px;
-      height: 36px;
-      color: #0132AF;
-      margin-bottom: 16px;
+    .doc-icon-svg {
+      width: 24px;
+      height: 24px;
+      color: #ffffff !important;
+      stroke: #ffffff !important;
+      stroke-width: 1.5 !important;
+      fill: none !important;
     }
     .doc-card h3 {
       font-weight: 700;
-      color: #0132AF;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
+      color: #0d1b3e;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
     }
     .doc-card p {
-      color: #555;
-      font-size: 0.9rem;
-      margin-bottom: 16px;
+      color: #666;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
       flex: 1;
+      line-height: 1.5;
     }
-    .doc-link {
+    .doc-btn {
+      background: #0132AF;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 12px;
       font-weight: 700;
-      color: #0132AF;
-      border-bottom: 1.5px solid #0132AF;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       text-decoration: none;
-      transition: color 0.2s, border-color 0.2s !important;
+      transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      align-self: flex-start;
+      border: none;
+      cursor: pointer;
     }
-    .doc-link:hover {
-      color: #EF1218 !important;
-      border-color: #EF1218 !important;
+    .doc-btn:hover {
+      background: #0d1b3e !important;
     }
-    @media (max-width: 480px) {
+    .doc-badge {
+      background: transparent;
+      color: #6c6c6c;
+      padding: 0;
+      border-radius: 0;
+      font-weight: 600;
+      text-transform: none;
+      font-size: 0.80rem;
+      position: static;
+      margin-top: auto;
+      letter-spacing: 0;
+      font-style: italic;
+      border-top: 1px solid #e0e4ed;
+      padding-top: 8px;
+      width: 100%;
+    }
+    .doc-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .doc-item {
+      display: flex;
+      align-items: flex-start;
+      background: #fafbfc;
+      border: 1px solid #d4d8e6;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .doc-item.doc-destacado {
+      background: #fff5f5;
+      border-color: #fca5a5 !important;
+    }
+    .doc-icon-circle {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      background: #eef2ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      margin-top: 2px;
+    }
+    .doc-item.doc-destacado .doc-icon-circle {
+      background: #fee2e2;
+    }
+    .doc-icon-stroke {
+      width: 20px;
+      height: 20px;
+      stroke: #0132AF !important;
+      stroke-width: 2 !important;
+      fill: none !important;
+    }
+    .doc-item.doc-destacado .doc-icon-stroke {
+      stroke: #EF1218 !important;
+    }
+    .doc-text-container {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+    }
+    .doc-text-container strong {
+      display: block;
+      color: #0d1b3e;
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+    .doc-item.doc-destacado .doc-text-container strong {
+      color: #EF1218;
+    }
+    @media (max-width: 1024px) {
       .doc-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .doc-title {
+        font-size: 1.8rem;
+      }
+      .doc-list {
         grid-template-columns: 1fr;
       }
     }
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 1.8rem;
-        font-weight: 700;
+    @media (max-width: 640px) {
+      .doc-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .doc-card {
+        padding: 24px 20px;
+      }
+      .doc-item {
+        padding: 16px;
       }
     }
   </style>
 </head>
 <body style="margin:0; background:#fff;">
-  <div class="documentos-section">
-    <div class="documentos-container">
-      <h2 class="section-title">Documentos requeridos</h2>
+  <div class="doc-section">
+    <div class="doc-container">
+      <h2 class="doc-title">Documentos requeridos</h2>
       <div class="doc-grid">
         <article class="doc-card">
-          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <h3>Formulario de postulación</h3>
-          <p>Incluye la pre‑aprobación de homologación de asignaturas, revisado con el gestor académico.</p>
-          <a href="https://uniempresarial-my.sharepoint.com/personal/aneira_uniempresarial_edu_co/Documents/INTERNACIONALIZACION%202025/MOVILIDAD/Formulario-movilidad-saliente-Estudiantes%20.xlsx" target="_blank" rel="noopener" class="doc-link">Descargar formulario</a>
-        </article>
-        <article class="doc-card">
-          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="doc-icon-wrapper">
+            <svg class="doc-icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
           <h3>Certificado de notas</h3>
           <p>Traducido según los requisitos de la universidad de destino.</p>
-          <span class="doc-link" style="cursor:default; border-bottom:none;">Solicítalo en registro</span>
+          <span class="doc-badge">Solicítalo en registro</span>
         </article>
         <article class="doc-card">
-          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="7.01" y2="15"/><line x1="11" y1="15" x2="13" y2="15"/></svg>
+          <div class="doc-icon-wrapper">
+            <svg class="doc-icon-svg" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="7" y1="15" x2="7.01" y2="15"/><line x1="11" y1="15" x2="13" y2="15"/></svg>
+          </div>
           <h3>Pasaporte vigente</h3>
           <p>Fotocopia del pasaporte que esté vigente al momento del viaje.</p>
-          <span class="doc-link" style="cursor:default; border-bottom:none;">Imprescindible</span>
+          <span class="doc-badge">Imprescindible</span>
         </article>
         <article class="doc-card">
-          <svg class="doc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M8 12l2 2 4-4"/></svg>
+          <div class="doc-icon-wrapper">
+            <svg class="doc-icon-svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+          </div>
           <h3>Certificado de idioma</h3>
           <p>Cuando el programa se imparta en un idioma diferente al español.</p>
-          <span class="doc-link" style="cursor:default; border-bottom:none;">Según destino</span>
+          <span class="doc-badge">Según destino</span>
+        </article>
+        <article class="doc-card">
+          <div class="doc-icon-wrapper">
+            <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Formulario de postulación</h3>
+          <p>Incluye la pre‑aprobación de homologación de asignaturas, revisado con el gestor académico.</p>
+          <a href="https://uniempresarial-my.sharepoint.com/personal/aneira_uniempresarial_edu_co/Documents/INTERNACIONALIZACION%202025/MOVILIDAD/Formulario-movilidad-saliente-Estudiantes%20.xlsx" target="_blank" rel="noopener" class="doc-btn">Descargar formulario</a>
         </article>
       </div>
-    </div>
-  </div>
-</body>
-</html>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>UE Internacional – Importante</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,700;14..32,900&display=swap" rel="stylesheet">
-  <style>
-    .importante-section {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.5;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    .importante-section *,
-    .importante-section *::before,
-    .importante-section *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    .importante-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #0132AF;
-      margin-bottom: 32px;
-      letter-spacing: -0.02em;
-    }
-    .important-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-    .important-item {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #f0f0f0;
-      font-size: 0.95rem;
-      color: #333;
-      line-height: 1.4;
-    }
-    .important-item strong {
-      color: #0132AF;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 4px;
-    }
-    .red-accent {
-      color: #EF1218 !important;
-    }
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-      }
-    }
-  </style>
-</head>
-<body style="margin:0; background:#fff;">
-  <div class="importante-section">
-    <div class="importante-container">
-      <h2 class="section-title">Importante</h2>
-      <div class="important-grid">
-        <div class="important-item"><strong>📅 Fechas de convocatoria</strong>No se aceptan documentos fuera de las fechas establecidas ni aplicaciones incompletas.</div>
-        <div class="important-item"><strong>🏥 Seguro médico internacional</strong>Debes contratar un seguro que cubra todo el período en el exterior, incluida repatriación.</div>
-        <div class="important-item"><strong>📄 Homologación</strong>Guarda copia del formulario y pre‑homologación; deberás entregarlo al regresar para homologar materias.</div>
-        <div class="important-item"><strong>🛂 Visados</strong>Consulta con la embajada o consulado del país destino el proceso de solicitud de visa.</div>
-        <div class="important-item"><strong class="red-accent">⚠️ Documentos incompletos</strong>No se procesarán postulaciones que no incluyan toda la documentación solicitada.</div>
-        <div class="important-item"><strong>📋 Pre‑homologación</strong>La sección de pre‑homologación debe estar completamente diligenciada y aprobada por el gestor académico.</div>
+      <h2 class="doc-title" style="margin-top: 40px;">Importante</h2>
+      <div class="doc-list">
+        <div class="doc-item">
+          <div class="doc-icon-circle">
+            <svg class="doc-icon-stroke" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div class="doc-text-container">
+            <strong>Fechas de convocatoria</strong>
+            No se aceptan documentos fuera de las fechas establecidas ni aplicaciones incompletas.
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon-circle">
+            <svg class="doc-icon-stroke" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <div class="doc-text-container">
+            <strong>Seguro médico internacional</strong>
+            Debes contratar un seguro que cubra todo el período en el exterior, incluida repatriación.
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon-circle">
+            <svg class="doc-icon-stroke" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <div class="doc-text-container">
+            <strong>Homologación</strong>
+            Guarda copia del formulario y pre‑homologación; deberás entregarlo al regresar para homologar materias.
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon-circle">
+            <svg class="doc-icon-stroke" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+          </div>
+          <div class="doc-text-container">
+            <strong>Visados</strong>
+            Consulta con la embajada o consulado del país destino el proceso de solicitud de visa.
+          </div>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon-circle">
+            <svg class="doc-icon-stroke" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="doc-text-container">
+            <strong>Pre‑homologación</strong>
+            La sección de pre‑homologación debe estar completamente diligenciada y aprobada por el gestor académico.
+          </div>
+        </div>
+                <div class="doc-item doc-destacado">
+          <div class="doc-icon-circle">
+            <svg class="doc-icon-stroke" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <div class="doc-text-container">
+            <strong>Documentos incompletos</strong>
+            No se procesarán postulaciones que no incluyan toda la documentación solicitada.
+          </div>
+        </div>
       </div>
     </div>
   </div>

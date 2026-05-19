@@ -6,22 +6,18 @@
   <title>UE Internacional – Estudiantes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5/variable.css">
   <style>
-    * {
-      box-sizing: border-box;
+
+        * {
       margin: 0;
       padding: 0;
-    }
-
-    body {
-      margin: 0;
-      background: #ffffff;
+      box-sizing: border-box;
     }
 
     .estudiantes-section {
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      color: #1a1a1a;
+      color: #fff;
       line-height: 1.6;
       position: relative;
     }
@@ -29,7 +25,6 @@
     .estudiantes-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding-top: 0px !important;
       padding: 64px 32px;
       position: relative;
       z-index: 1;
@@ -37,22 +32,17 @@
 
     .es-section-header {
       text-align: left;
-      max-width: 640px;
       margin-bottom: 48px;
     }
 
     .es-section-title {
-      font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+      font-size: 2.2rem;
       font-weight: 800;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       color: #111;
       margin-bottom: 8px;
       letter-spacing: -0.02em;
       line-height: 1.25;
-    }
-
-    .es-section-title span {
-      color: #EF1218;
     }
 
     .es-section-subtitle {
@@ -71,7 +61,7 @@
 
     .es-benefit-card {
       background: #fafbfc;
-      border: 1px solid rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.18);
       border-radius: 18px;
       padding: 28px 24px;
       display: flex;
@@ -85,7 +75,7 @@
     .es-benefit-icon-wrapper {
       width: 50px ;
       height: 50px ;
-      background: rgba(1,50,175,0.06);
+      background: #0132AF;
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -97,7 +87,7 @@
     .es-benefit-icon {
       width: 25px !important;
       height: 25px !important;
-      color: #0132AF;
+      color: #ffffff;
       transition: color 0.35s ease !important;
     }
 
@@ -125,7 +115,7 @@
       align-items: flex-start;
       gap: 14px;
       padding: 20px 24px;
-      background: rgba(1,50,175,0.04);
+      background: rgba(1, 50, 175, 0.079);
       border-left: 3px solid #0132AF;
       border-radius: 0 12px 12px 0;
     }
@@ -152,6 +142,11 @@
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    .estudiantes-section svg.es-icon-filled {
+      fill: currentColor !important;
+      stroke: none !important;
     }
 
     @media (max-width: 900px) {
@@ -182,12 +177,14 @@
         font-weight: 700 !important;
       }
       .es-section-title {
+        font-size: 1.6rem;
         font-weight: 800 !important;
       }
       .es-section-subtitle {
         font-weight: 400 !important;
       }
       .es-benefit-card h3 {
+        font-size: 1.1rem;
         font-weight: 700 !important;
       }
       .es-benefit-card p {
@@ -246,11 +243,9 @@
 
         <article class="es-benefit-card">
           <div class="es-benefit-icon-wrapper">
-            <svg class="es-benefit-icon" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-              <line x1="9" y1="9" x2="9.01" y2="9"/>
-              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            <svg class="es-benefit-icon es-icon-filled" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path d="M478.33,433.6l-90-218a22,22,0,0,0-40.67,0l-90,218a22,22,0,1,0,40.67,16.79L316.66,406H419.33l18.33,44.39A22,22,0,0,0,458,464a22,22,0,0,0,20.32-30.4ZM334.83,362,368,281.65,401.17,362Z"/>
+              <path d="M267.84,342.92a22,22,0,0,0-4.89-30.7c-.2-.15-15-11.13-36.49-34.73,39.65-53.68,62.11-114.75,71.27-143.49H330a22,22,0,0,0,0-44H214V70a22,22,0,0,0-44,0V90H54a22,22,0,0,0,0,44H251.25c-9.52,26.95-27.05,69.5-53.79,108.36-31.41-41.68-43.08-68.65-43.17-68.87a22,22,0,0,0-40.58,17c.58,1.38,14.55,34.23,52.86,83.93.92,1.19,1.83,2.35,2.74,3.51-39.24,44.35-77.74,71.86-93.85,80.74a22,22,0,1,0,21.07,38.63c2.16-1.18,48.6-26.89,101.63-85.59,22.52,24.08,38,35.44,38.93,36.1a22,22,0,0,0,30.75-4.9Z"/>
             </svg>
           </div>
           <h3>Aprendizaje de idiomas</h3>

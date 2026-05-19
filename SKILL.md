@@ -130,10 +130,17 @@ svg {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* Para SVGs que usan relleno sólido y no líneas (ej. FontAwesome, Ionicons solid) */
+svg.icon-filled {
+  fill: currentColor !important;
+  stroke: none !important;
+}
 ```
 
 **Importante:**
-- No incluir atributos de estilo en el SVG mismo.
+- OBLIGATORIO usar `!important` en las propiedades de `fill`, `stroke` y `stroke-width` en los svgs importados para que WordPress/Elementor no sobrescriba nuestros colores en los íconos integrados.
+- No incluir atributos de estilo en el SVG mismo (evita `style="..."`).
 - El `viewBox` es el único atributo necesario en el tag `<svg>`.
 - Usar CSS para definir tamaño, stroke, fill y atributos de línea.
 - Esto permite que los estilos se hereden correctamente del contenedor padre.
