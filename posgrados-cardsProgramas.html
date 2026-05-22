@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posgrados - Cards</title>
+    <title></title>
     <style>
-        /* ========== RESET Y VARIABLES ========== */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +18,7 @@
 
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: #f7fafc;
+            background-color: #fff !important;
             color: #1a202c;
             line-height: 1.6;
             overflow-x: hidden;
@@ -27,7 +26,6 @@
             max-width: 100%;
         }
 
-        /* ========== BOTONES GLOBALES ========== */
         .btn-cta {
             background: #0074FF;
             color: #ffffff;
@@ -47,21 +45,43 @@
             background: #0055bb;
         }
 
-        /* ========== CAJA 3: GRID DE PROGRAMAS ========== */
-        /* Grid responsive de cards */
         .pp-programs-section {
-            max-width: 1550px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 48px 16px 64px;
+            padding: 48px 32px 64px;
+        }
+
+        @media (max-width: 992px) {
+            .pp-programs-section {
+                padding: 40px 32px 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pp-programs-section {
+                padding: 32px 16px 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pp-programs-section {
+                padding: 24px 12px 32px;
+            }
         }
 
         .pp-programs-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
         }
 
-        /* Card de programa */
+        @media (max-width: 768px) {
+            .pp-programs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
         .pp-program-card {
             background: #ffffff;
             border-radius: 12px;
@@ -71,16 +91,21 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid #edf2f7;
-            transform: translateY(0);
-            will-change: transform, box-shadow;
+            border: 1px solid #cbd5e1;
             overflow: visible;
         }
 
-        .pp-program-card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border: 1px solid #e0e7ff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        @media (max-width: 768px) {
+            .pp-program-card {
+                padding: 16px;
+                box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pp-program-card {
+                padding: 14px;
+            }
         }
 
         .pp-card-image-container {
@@ -93,10 +118,21 @@
 
         @media (max-width: 768px) {
             .pp-card-image-container {
-                width: 100%;
+                width: calc(100% + 32px);
+                height: 150px;
+                margin: -16px -16px 12px -16px;
+                overflow: hidden;
+                border-radius: 12px 12px 0 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pp-card-image-container {
+                width: calc(100% + 28px);
                 height: 170px;
-                margin: 0;
-                padding: 0;
+                margin: -14px -14px 10px -14px;
+                overflow: hidden;
+                border-radius: 12px 12px 0 0;
             }
         }
 
@@ -153,19 +189,33 @@
 
         .pp-card-meta {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            align-items: center;
+            gap: 0;
+            background-color: #f8fafc;
+            padding: 0;
+            border-radius: 8px;
+            margin: 0;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
             margin-bottom: 16px;
         }
 
         .pp-meta-item {
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 8px;
             font-size: 0.95rem;
-            color: #8893a4;
+            color: #334155;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            flex: 1;
+            padding: 12px;
+            margin: 0;
+        }
+
+        .pp-meta-item:not(:last-child) {
+            border-right: 1px solid #cbd5e1;
         }
 
         .pp-meta-item svg {
@@ -173,7 +223,6 @@
             height: 16px;
         }
 
-        /* Iconos SVG como background para meta info */
         .pp-meta-icon {
             display: inline-block;
             width: 16px;
@@ -284,7 +333,6 @@
             transform: translateY(-2px);
         }
 
-        /* Contenedor de botones de la card */
         .pp-card-buttons {
             display: flex;
             gap: 10px;
@@ -315,8 +363,6 @@
             transform: translateY(-2px);
         }
 
-        /* ========== MODAL ========== */
-        /* Modal para detalles del programa */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -516,7 +562,6 @@
             text-align: left;
         }
 
-        /* ========== FORMULARIO DEL MODAL ========== */
         .modal-form {
             background: #fff3ee;
             padding: 24px;
@@ -635,7 +680,6 @@
             flex: 1;
         }
         
-        /*El badge virtual */
         .badge-virtual-custom{
         position:absolute;
         top:12px;
@@ -643,82 +687,47 @@
         background:#0BD926;
         color:#fff;
         padding:6px 12px;
-        border-radius:16px;
+        border-radius:6px;
         font-size:.75rem;
         font-weight:700;
         font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-
         text-transform:uppercase;
         text-align:center;
         white-space:nowrap;
         cursor:help;
         display:inline-block;
         overflow:visible;
-        box-shadow:
-            0 4px 15px rgba(11,217,38,.35),
-            0 0 0 4px rgba(11,217,38,.12),
-            inset 0 1px 0 rgba(255,255,255,.25);
-        animation: color-pulse 4s cubic-bezier(0.4,0,0.6,1) infinite !important;
-        will-change: box-shadow;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        border: 2px solid white;
         }
 
-        /* Badge Virtual/Dual en Azul */
         .badge-virtual-dual {
         position: absolute;
         top: 12px;
         right: 12px;
-        background: linear-gradient(135deg, #0074FF 0%,  #004FCC 100%);
+        background: #0074FF;
         color: #fff;
-        font-size: .75rem;
+        font-size: .85rem;
         padding: 6px 12px;
-        border-radius: 16px;
+        border-radius: 6px;
         font-weight: 700;
         text-transform: uppercase;
         cursor: help;
         letter-spacing: 1px;
-        box-shadow:
-            0 4px 15px rgba(0, 116, 255, 0.5),
-            0 0 0 4px rgba(0, 116, 255, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        animation: pulse-badge-blue 4s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        .badge-virtual-dual::after {
-            content: 'Disponible en formato virtual y dual';
-            position: absolute;
-            top: 100%;
-            right: 50%;
-            transform: translateX(50%);
-            background: #1a202c;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.8s ease !important;
-            z-index: 999;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) ;
-            display: block;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin-top: -85px;
+        border: 2px solid white;
         }
 
         .badge-virtual-dual:hover {
-            animation-play-state: paused;
-            background: linear-gradient(135deg, #0087FF 0%, #0074FF 100%);
-            box-shadow: 0 4px 12px rgba(0, 116, 255, 0.4);
+            background: #0087FF;
         }
 
         .badge-virtual-dual:hover::after {
-            opacity: 1;
-            pointer-events: auto;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        /* Badge Presencial - Naranja */
         .badge-presencial {
         position: absolute;
         top: 12px;
@@ -726,130 +735,35 @@
         background: #ff6016;
         color: #fff;
         padding: 6px 12px;
-        border-radius: 16px;
-        font-size: .75rem;
+        border-radius: 6px;
+        font-size: .85rem;
         font-weight: 700;
         text-transform: uppercase;
         z-index: 3;
         cursor: help;
         letter-spacing: 1px;
-        box-shadow:
-            0 4px 15px rgba(255, 107, 53, 0.5),
-            0 0 0 4px rgba(255, 107, 53, 0.1),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        animation: pulse-badge-orange 4s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        .badge-presencial::after {
-            content: 'Disponible en modalidad presencial';
-            position: absolute;
-            top: 100%;
-            right: 50%;
-            transform: translateX(50%);
-            background: #1a202c;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.8s ease !important;
-            z-index: 999;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) ;
-            display: block;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin-top: -85px;
+        border: 2px solid white;
         }
 
         .badge-presencial:hover {
-            animation-play-state: paused;
             background: #ff733c;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
         }
 
         .badge-presencial:hover::after {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Tooltip */
-        .badge-virtual-custom::after {
-            content: 'También disponible en modalidad virtual';
-            position: absolute;
-            top: 100%;
-            right: 50%;
-            transform: translateX(50%);
-            background: #1a202c;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease !important;
-            z-index: 999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            display: block;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin-top: -85px;
         }
 
         .badge-virtual-custom:hover {
-            animation-play-state: paused;
             background: #06f526;
-            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
         }
 
         .badge-virtual-custom:hover::after {
-            opacity: 1;
-            pointer-events: auto;
+            opacity: 0;
+            pointer-events: none;
         }
-
-        /* Animación Color Pulse - Sin transform, solo sombra como pulse-badge */
-
-        @keyframes color-pulse {
-        0% {
-            box-shadow: 0 0 0 rgba(11, 217, 38, 0), 0 0 0 rgba(11, 217, 38, 0);
-        }
-        50% {
-            box-shadow: 0 0 15px rgba(11, 217, 38, 0.9), 0 0 34px rgba(11, 217, 38, 0.45);
-        }
-        100% {
-            box-shadow: 0 0 0 rgba(11, 217, 38, 0), 0 0 0 rgba(11, 217, 38, 0);
-        }
-        }
-
-        @keyframes pulse-badge-blue {
-            0% {
-                box-shadow: 0 0 8px rgba(0, 116, 255, 0.4), 0 0 16px rgba(0, 116, 255, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 15px rgba(0, 116, 255, 1), 0 0 20px rgba(0, 116, 255, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 8px rgba(0, 116, 255, 0.4), 0 0 16px rgba(0, 116, 255, 0.2);
-            }
-        }
-
-        @keyframes pulse-badge-orange {
-            0% {
-                box-shadow: 0 0 8px rgba(255, 107, 53, 0.4), 0 0 16px rgba(255, 107, 53, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 15px rgba(255, 107, 53, 1), 0 0 20px rgba(255, 107, 53, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 8px rgba(255, 107, 53, 0.4), 0 0 16px rgba(255, 107, 53, 0.2);
-            }
-        }
-
-
-
 
         @keyframes pulse-badge {
             0% {
@@ -857,37 +771,13 @@
             }
             50% {
                 box-shadow: 0 0 15px rgba(239, 18, 24, 1), 0 0 32px rgba(239, 18, 24, 0.5);
-
             }
             100% {
                 box-shadow: 0 0 8px rgba(239, 18, 24, 0.4), 0 0 16px rgba(239, 18, 24, 0.2);
-
             }
         }
 
-        /* ========== RESPONSIVE ========== */
-        /* Tablet */
-        @media (max-width: 992px) {
-            .pp-programs-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Móvil */
         @media (max-width: 768px) {
-            .pp-programs-section {
-                padding: 32px 0 40px;
-            }
-
-            .pp-programs-grid {
-                grid-template-columns: repeat(1, 1fr);
-                gap: 12px;
-            }
-
-            .pp-program-card {
-                padding: 20px;
-            }
-
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -899,18 +789,6 @@
             }
         }
 
-        /* Mobile Extra Small */
-        @media (max-width: 480px) {
-            .pp-programs-section {
-                padding: 24px 0 32px;
-            }
-
-            .pp-program-card {
-                padding: 16px;
-            }
-        }
-
-        /* Animación de carga de cards */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -974,7 +852,7 @@
             <div class="modal-body">
                 <div class="modal-meta">
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 3 Cuatrimestres</span>
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
                 </div>
                 <div class="modal-description">
@@ -1009,7 +887,7 @@
             <div class="modal-body">
                 <div class="modal-meta">
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 2 Semestres</span>
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
                 </div>
                 <div class="modal-description">
@@ -1044,8 +922,8 @@
             <div class="modal-body">
                 <div class="modal-meta">
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 3 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Virtual Dual</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
@@ -1079,7 +957,7 @@
             <div class="modal-body">
                 <div class="modal-meta">
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span> Posgrado</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 4 Cuatrimestres</span>
+                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span> 3 Cuatrimestres</span>
                     <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span> Flexible</span>
                 </div>
                 <div class="modal-description">
@@ -1126,7 +1004,7 @@
                 id: 2,
                 nombre: "Especialización en Dirección de Industrias Creativas",
                 modalidad: "posgrado",
-                duracion: "3 Cuatrimestres",
+                duracion: "2 Semestres",
                 jornada: "Presencial",
                 imagen: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop",
                 bullets: [
@@ -1146,7 +1024,7 @@
                 nombre: "Especialización en Gerencia y Protección de Sistemas de Información Empresarial",
                 modalidad: "posgrado",
                 duracion: "3 Cuatrimestres",
-                jornada: "Virtual",
+                jornada: "Virtual Dual",
                 imagen: "https://uniempresarial.edu.co/wp-content/uploads/2026/02/data-digital-technology-big-data-technologyscientists-complex-data-sets-computers.jpg",
                 bullets: [
                     "Ciberseguridad empresarial",
@@ -1155,8 +1033,8 @@
                 ],
                 descripcion: "Especialización para profesionales que desean dominar la gestión estratégica y la protección de sistemas de información, asegurando la continuidad empresarial.",
                 esNuevo: false,
-                tieneVirtual: true,
-                tieneVirtualDual: false,
+                tieneVirtual: false,
+                tieneVirtualDual: true,
                 urlPrograma: "https://uniempresarial.edu.co/gerencia-y-proteccion-de-sistemas-de-informacion-empresarial/"
             },
             {

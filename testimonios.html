@@ -1,0 +1,424 @@
+<div class="unie-iv">
+  <style>
+    :root{
+      --radio-xl:16px;
+      --radio-lg:12px;
+      --radio-sm:8px;
+      --sombra:0 6px 14px rgba(0,0,0,.08);
+      --transicion:.2s ease;
+      --transicion-slide:.4s ease-in-out;
+    }
+
+    .unie-iv{
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size:16px;
+      line-height:1.5;
+      color:#1e1e2f;
+      max-width:1280px;
+      margin:0 auto;
+      padding:32px 24px;
+    }
+    .unie-iv *{ box-sizing:border-box; }
+    .unie-iv p{ margin-top:0; font-size:16px; }
+
+    .unie-iv__title{
+      position:relative;
+      display:inline-block;
+      margin-bottom:32px;
+      font-size:32px;
+      font-weight:700;
+      color:#0132AF;
+    }
+    .unie-iv__title::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      width:60px;
+      height:4px;
+      border-radius:2px;
+      background:#EF1218;
+    }
+
+    .unie-iv__carousel-container{
+      position:relative;
+      overflow:hidden;
+      margin:24px 0 8px;
+      padding:10px 16px;
+      border-radius:var(--radio-xl);
+      outline:none;
+    }
+    .unie-iv__carousel-container:focus-visible{
+      box-shadow:0 0 0 2px #0132AF;
+    }
+
+    .unie-iv__carousel-track{
+      display:flex;
+      gap:20px; /* separación entre tarjetas */
+      will-change:transform;
+      transition:transform var(--transicion-slide);
+    }
+
+    .unie-iv__carousel-card{
+      flex:0 0 100%;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      padding:16px;
+      background:#fff;
+      border-radius:var(--radio-xl);
+      box-shadow:var(--sombra);
+    }
+    @media (min-width:768px){
+      .unie-iv__carousel-card{
+        flex-direction:row;
+        align-items:center;
+        gap:32px;
+        padding:24px;
+      }
+    }
+
+    .unie-iv__carousel-img-wrap{
+      flex:1;
+      display:flex;
+      align-items:stretch;
+      min-height:200px;
+      overflow:hidden;
+      background:#f0f3ff;
+      border-radius:var(--radio-lg);
+    }
+    .unie-iv__carousel-img-wrap img{
+      display:block;
+      width:100%;
+      height:100%;
+      min-height:200px;
+      object-fit:cover;
+      border-radius:var(--radio-lg);
+    }
+
+    .unie-iv__carousel-text{
+      flex:1;
+      padding:16px 0;
+    }
+    .unie-iv__carousel-text h3{
+      margin-bottom:12px;
+      font-size:24px;
+      font-weight:700;
+      color:#0132AF;
+    }
+    .unie-iv__carousel-text p{
+      margin-bottom:0;
+      color:#334155;
+    }
+    .unie-iv__autor{
+      margin-top:.75rem !important;
+      font-weight:700;
+      color:#0132AF !important;
+    }
+
+    .unie-iv__carousel-btn{
+      position:absolute;
+      top:50%;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:40px;
+      height:40px;
+      padding:0;
+      border:none;
+      border-radius:50%;
+      cursor:pointer;
+      color:#0132AF;
+      background:rgba(255,255,255,0.9);
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
+      transform:translateY(-50%);
+      transition: background var(--transicion), color var(--transicion), box-shadow var(--transicion);
+    }
+    .unie-iv__carousel-btn:hover{
+      color:#EF1218;
+      background:#fff;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+    .unie-iv__carousel-btn:focus{
+      outline:2px solid #0132AF;
+      outline-offset:2px;
+    }
+    .unie-iv__btn-prev{ left:8px; }
+    .unie-iv__btn-next{ right:8px; }
+
+    .unie-iv__dots{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-top:16px;
+    }
+    .unie-iv__dot{
+      width:10px;
+      height:10px;
+      padding:0;
+      border:none;
+      border-radius:50%;
+      cursor:pointer;
+      background:#cbd5e1;
+      transition: background var(--transicion), transform var(--transicion);
+    }
+    .unie-iv__dot.active{
+      background:#EF1218;
+      transform:scale(1.6);
+    }
+
+    /* Ajustes para móvil */
+    @media (max-width:640px){
+      .unie-iv{
+        padding:16px;
+      }
+      .unie-iv__title{
+        font-size:26px;
+      }
+      .unie-iv__carousel-container{
+        padding:10px 12px;
+      }
+      .unie-iv__carousel-track{
+        gap:16px;
+      }
+      .unie-iv__carousel-card{
+        padding:12px;
+        box-shadow:0 4px 12px rgba(0,0,0,.08);
+      }
+      .unie-iv__carousel-btn{
+        width:36px;
+        height:36px;
+        top:auto;
+        bottom:12px;
+        transform:none;
+      }
+      .unie-iv__carousel-text p{
+        font-size:15px;
+      }
+      .unie-iv__autor{
+        margin-top:0.5rem !important;
+        font-size:15px;
+      }
+      .unie-iv__carousel-img-wrap{
+        min-height:180px;
+      }
+      .unie-iv__carousel-img-wrap img{
+        min-height:180px;
+      }
+    }
+  </style>
+
+  <section aria-labelledby="testimoniosHeading">
+    <h2 class="unie-iv__title" id="testimoniosHeading">Testimonios</h2>
+
+    <div class="unie-iv__carousel-container" id="testimoniosContainer" tabindex="0" aria-label="Carrusel de testimonios" aria-roledescription="carrusel">
+      <div class="unie-iv__carousel-track" id="testimoniosTrack" aria-live="polite"></div>
+
+      <button class="unie-iv__carousel-btn unie-iv__btn-prev" aria-label="Anterior testimonio">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button class="unie-iv__carousel-btn unie-iv__btn-next" aria-label="Siguiente testimonio">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="unie-iv__dots" id="testimoniosDots" role="tablist" aria-label="Seleccionar testimonio"></div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const container = document.getElementById('testimoniosContainer');
+      const track = document.getElementById('testimoniosTrack');
+      const dotsContainer = document.getElementById('testimoniosDots');
+      if (!container || !track || !dotsContainer) return;
+
+      const testimonios = [
+        {
+          imgSrc: '',
+          alt: 'Elkin Fabián',
+          texto: '"Mi experiencia como estudiante visitante en Uniempresarial me permitió conectar con el mundo empresarial y fortalecer mis competencias internacionales. Un semestre inolvidable."',
+          autor: '— Elkin Fabián'
+        },
+        {
+          imgSrc: '',
+          alt: 'María López',
+          texto: '"El programa de emprendimiento me brindó las herramientas necesarias para lanzar mi propio proyecto. Los profesores son excelentes guías."',
+          autor: '— María López'
+        },
+        {
+          imgSrc: '',
+          alt: 'Carlos Gómez',
+          texto: '"Gracias a las prácticas profesionales logré vincularme a una multinacional antes de graduarme. Una experiencia que marcó mi carrera."',
+          autor: '— Carlos Gómez'
+        }
+      ];
+
+      const placeholderSVG = (w, h) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20' fill='%2394a3b8'%3E${w}×${h}%3C/text%3E%3C/svg%3E`;
+
+      const realCount = testimonios.length;
+      if (!realCount) return;
+
+      /* Clones para loop infinito */
+      const firstClone = { ...testimonios[0] };
+      const lastClone = { ...testimonios[realCount - 1] };
+      const slides = [lastClone, ...testimonios, firstClone];
+      const totalSlides = slides.length;
+
+      track.innerHTML = slides.map(t => `
+        <article class="unie-iv__carousel-card">
+          <div class="unie-iv__carousel-img-wrap">
+            <img src="${t.imgSrc || placeholderSVG(600,400)}" alt="${t.alt}" loading="lazy" width="600" height="400">
+          </div>
+          <div class="unie-iv__carousel-text">
+            <p>${t.texto}</p>
+            <p class="unie-iv__autor">${t.autor}</p>
+          </div>
+        </article>
+      `).join('');
+
+      const cards = [...track.children];
+      let currentIndex = 1; // primer testimonio real
+      let isTransitioning = false;
+      let resizeTimer;
+      let autoplayInterval;
+      const autoplayDelay = 5000;
+
+      const prevBtn = container.querySelector('.unie-iv__btn-prev');
+      const nextBtn = container.querySelector('.unie-iv__btn-next');
+
+      /* Dots solo para los reales */
+      dotsContainer.innerHTML = '';
+      testimonios.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `unie-iv__dot${idx === 0 ? ' active' : ''}`;
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Ir a testimonio ${idx + 1}`);
+        dot.setAttribute('aria-selected', idx === 0);
+        dot.addEventListener('click', () => {
+          goToRealIndex(idx);
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      const updateDots = (realIdx) => {
+        const dots = dotsContainer.querySelectorAll('.unie-iv__dot');
+        dots.forEach((dot, idx) => {
+          const active = idx === realIdx;
+          dot.classList.toggle('active', active);
+          dot.setAttribute('aria-selected', active);
+        });
+      };
+
+      /* Desplazamiento: ancho de tarjeta + gap (20px escritorio, 16px móvil) */
+      const getStep = () => {
+        const gap = window.innerWidth <= 640 ? 16 : 20;
+        return `calc(-${currentIndex} * (100% + ${gap}px))`;
+      };
+
+      const updateTransform = (instant = false) => {
+        track.style.transition = instant ? 'none' : 'transform var(--transicion-slide)';
+        track.style.transform = `translateX(${getStep()})`;
+      };
+
+      const getRealIndex = () => {
+        if (currentIndex === 0) return realCount - 1;
+        if (currentIndex === totalSlides - 1) return 0;
+        return currentIndex - 1;
+      };
+
+      const goToRealIndex = (realIdx) => {
+        currentIndex = realIdx + 1;
+        updateTransform();
+        updateDots(realIdx);
+      };
+
+      const nextSlide = () => {
+        if (isTransitioning) return;
+        currentIndex++;
+        updateTransform();
+        updateDots(getRealIndex());
+        isTransitioning = true;
+      };
+
+      const prevSlide = () => {
+        if (isTransitioning) return;
+        currentIndex--;
+        updateTransform();
+        updateDots(getRealIndex());
+        isTransitioning = true;
+      };
+
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        if (currentIndex === 0) {
+          currentIndex = realCount;
+          updateTransform(true);
+        } else if (currentIndex === totalSlides - 1) {
+          currentIndex = 1;
+          updateTransform(true);
+        }
+        updateDots(getRealIndex());
+      });
+
+      prevBtn?.addEventListener('click', () => { if (!isTransitioning) prevSlide(); });
+      nextBtn?.addEventListener('click', () => { if (!isTransitioning) nextSlide(); });
+
+      const startAutoplay = () => {
+        stopAutoplay();
+        autoplayInterval = setInterval(() => {
+          if (!isTransitioning && container.matches(':hover') === false && !container.contains(document.activeElement)) {
+            nextSlide();
+          }
+        }, autoplayDelay);
+      };
+      const stopAutoplay = () => clearInterval(autoplayInterval);
+
+      container.addEventListener('mouseenter', stopAutoplay);
+      container.addEventListener('focusin', stopAutoplay);
+      container.addEventListener('mouseleave', startAutoplay);
+      container.addEventListener('focusout', () => {
+        if (!container.contains(document.activeElement)) startAutoplay();
+      });
+
+      container.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          if (!isTransitioning) prevSlide();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          if (!isTransitioning) nextSlide();
+        }
+      });
+
+      let touchStartX = 0;
+      container.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].clientX;
+        stopAutoplay();
+      }, { passive: true });
+
+      container.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) { if (!isTransitioning) nextSlide(); }
+          else { if (!isTransitioning) prevSlide(); }
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => updateTransform(true), 150);
+      });
+
+      updateTransform(true);
+      updateDots(0);
+      startAutoplay();
+    })();
+  </script>
+</div>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Posgrados</title>
+  <style>
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #FF6B35;
+      margin: 0;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    * { box-sizing: border-box; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Estilos base */
+    .hp-hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .hp-hero-chip {
+      background: #F3F4F6;
+      color: #000000;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 107, 53, 0.15);
+    }
+
+    .hp-hero-badge {
+      background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 950;
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hp-hero-btn-inscribete {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      padding: 12px 24px !important;
+      background: #57D100 !important;
+      color: white !important;
+      border: none !important;
+      border-radius: 8px !important;
+      cursor: pointer !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      font-size: 14px !important;
+      width: auto !important;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .hp-hero-btn-inscribete:hover {
+      background: #6AFF00 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 20px rgba(106, 255, 0, 0.4) !important;
+    }
+
+    .hp-hero-btn-pensum {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 12px 24px !important;
+      background: transparent !important;
+      border: 2px solid #ffffff !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+      cursor: pointer !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      font-size: 14px !important;
+      width: auto !important;
+    }
+
+    .hp-hero-btn-pensum:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.9) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* ========================
+     Metadatos en Columna Derecha
+    ======================== */
+
+      .hp-hero::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background:
+          linear-gradient(115deg, transparent 80%, #ffffff 80%, #ffffff 81%, transparent 81%),
+          linear-gradient(210deg, transparent 15%, #ffffff 15%, #ffffff 16%, transparent 16%),
+          linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+        z-index: 1;
+    }
+
+    .hp-hero {
+      position: relative;
+      min-height: 600px;
+      height: auto;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .hp-hero::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&h=1080&fit=crop');
+      background-size: cover;
+      background-position: center right;
+      z-index: 1;
+    }
+
+    .hp-content {
+      position: relative;
+      z-index: 3;
+      padding: 60px;
+      padding-right: 30px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hp-hero h1 {
+      font-size: 40px !important;
+      margin: 0 0 16px !important;
+      padding-right: 50px;
+      line-height: 1.2 !important;
+      font-weight: 900 !important;
+      color: white !important;
+    }
+
+    .hp-hero p {
+      font-size: 16px;
+      padding-right: 60px;
+      margin: 0 0 30px;
+      line-height: 1.6;
+      opacity: 01;
+    }
+
+    .hp-hero-cta {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+    
+
+    .hp-sidebar {
+      z-index: 3;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .hp-card {
+      background: #F3F4F6;
+      border: 1px solid #ff6b3566;
+      border-radius: 10px;
+      padding: 14px 16px;
+      flex: 1 1 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #06325a;
+      min-width: 120px;
+    }
+
+    .hp-card:nth-child(1) {
+      flex: 0 0 auto;
+      width: fit-content;
+      min-width: auto;
+      border: 1px solid #ff6b3566;
+      padding: 14px 12px;
+    }
+
+    .hp-card:nth-child(2) {
+      flex: 0 0 auto;
+      width: fit-content;
+      min-width: auto;
+    }
+
+    .hp-card:nth-child(3) {
+      flex: 0 0 auto;
+      width: fit-content;
+      min-width: auto;
+    }
+
+    .hp-card:nth-child(4) {
+      flex: 0 0 auto;
+      min-width: auto;
+      width: fit-content;
+    }
+
+    .hp-card-label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #6B7280;
+      font-weight: 700 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .hp-card-label svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    .hp-card-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0A2351;
+      line-height: 1.3;
+      margin-left: 2px;
+    }
+
+    .hp-card-value--big {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0e295b;
+      line-height: 1.3;
+      margin-top: -4px;
+      margin-left: 2px;
+    }
+    .hp-card-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hp-card-price-content {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .hp-card-badge {
+      display: inline-block;
+      background: #FF3B3B;
+      color: white;
+      text-align: center;
+      padding: 6px 8px;
+      margin-top: -2px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: normal;
+      word-break: break-word;
+      max-width: 200px;
+      flex-shrink: 0;
+    }
+    
+    .ue-snies{font-size:13px;color:#ffffff;margin-bottom:0px;font-weight:600;line-height:1;display:flex;align-items:center}
+    
+    .ue-tyc{font-size:13px;color:#ffffffcc;margin-bottom:20px;font-weight:400;line-height:1.5}
+    
+    /* --- Modal Styles --- */
+    .mo-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
+    }
+    .mo-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .mo-modal-content {
+        background-color: #ffffff;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 600px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        animation: slideUp 0.3s ease;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .mo-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #e0e3e8;
+        padding-bottom: 16px;
+    }
+
+    .mo-modal-header h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 800;
+        color: #0A2351;
+    }
+
+    .mo-modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #999;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+    .mo-modal-close:hover { background: #f5f7fa; color: #333; }
+    .mo-modal-body p { margin: 0; line-height: 1.6; color: #0A2351; font-size: 15px; font-weight: 500; }
+
+    /* Estilo del disclaimer en la derecha */
+    .ue-tyc-box {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 1);
+      color: #0A2351;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 0;
+      max-width: calc(100% - 48px);
+    }
+
+    @media (max-width: 980px) {
+      .ue-tyc-box {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 0 36px 36px 36px;
+        order: 3;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ue-tyc-box { 
+        position: relative;
+        margin: 0 24px 24px 24px; 
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ue-tyc-box { 
+        position: relative;
+        margin: 0 16px 20px 16px; 
+        font-size: 11px; 
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1300px) {
+      .hp-content {
+        padding: 40px;
+        padding-right: 24px;
+      }
+
+      .hp-hero h1 {
+        font-size: 32px !important;
+        margin: 0 0 12px !important;
+      }
+
+      .hp-hero p {
+        font-size: 14px;
+        padding-right: 10px !important;
+      }
+
+      .hp-card {
+        padding: 10px 12px;
+      }
+
+      .hp-card:nth-child(1) {
+        padding: 10px 12px;
+      }
+
+      .hp-card-value--big {
+        font-size: 17px;
+      }
+
+      .hp-card-value {
+        font-size: 12px;
+      }
+
+      .hp-card-label {
+        font-size: 10px;
+      }
+    }
+    
+    @media (max-width: 980px) {
+      .hp-hero {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+      }
+
+      .hp-hero::before {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background: url('https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&h=1080&fit=crop') center / cover no-repeat;
+        display: block;
+        z-index: 3;
+        order: 1;
+      }
+
+      .hp-hero::after {
+        display: none;
+      }
+
+      .hp-content {
+        position: relative;
+        z-index: 3;
+        padding: 40px 36px;
+        color: white;
+        background: transparent;
+        border: none;
+        order: 2;
+      }
+
+      .hp-hero h1 {
+        font-size: 32px !important;
+        color: white !important;
+        margin: 0 0 12px !important;
+      }
+
+      .hp-hero p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 0 0 28px;
+
+        line-height: 1.6;
+        opacity: 1;
+      }
+
+      .hp-hero-chips {
+        margin-bottom: 16px;
+      }
+
+      .hp-hero-chip {
+        background: #F3F4F6 !important;
+        color: #000000 !important;
+        border-color: rgba(255, 107, 53, 0.15) !important;
+      }
+
+      .hp-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 0;
+        width: 100%;
+        padding: 0 0px 0px 0px;
+        background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+      }
+
+      .hp-card {
+        background: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 12px;
+        padding: 16px 18px !important;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: auto;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(1) {
+        flex: none;
+        width: 100%;
+        min-width: auto;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        padding: 16px 18px !important;
+      }
+
+      .hp-card:nth-child(2) {
+        flex: none;
+        width: 100%;
+        min-width: auto;
+      }
+
+      .hp-card:nth-child(3) {
+        flex: none;
+        width: 100%;
+        min-width: auto;
+      }
+
+      .hp-card:nth-child(4) {
+        flex: none;
+        width: 100%;
+        min-width: auto;
+      }
+
+      .hp-card-label {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+
+      .hp-card-value {
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .hp-card-value--big {
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .hp-hero-cta {
+        flex-direction: row;
+        gap: 12px;
+        margin-top: 0;
+      }
+
+      .hp-hero-btn-inscribete {
+        flex: 1;
+      }
+
+      .hp-hero-btn-pensum {
+        flex: 1;
+      }
+
+      div[style*="font-size: 13px"] {
+        color: rgba(255, 255, 255, 0.8) !important;
+        margin-top: 14px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hp-hero {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+      }
+
+      .hp-hero::before {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background: url('https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&h=1080&fit=crop') center / cover no-repeat;
+        display: block;
+        z-index: 3;
+        order: 1;
+
+      }
+
+      .hp-hero::after {
+        display: none;
+      }
+
+      .hp-content {
+        position: relative;
+        z-index: 3;
+        padding: 28px 24px;
+        color: white;
+        background: transparent;
+        border: none;
+        order: 2;
+      }
+
+      .hp-hero h1 {
+        font-size: 32px !important;
+        color: white !important;
+        margin: 0 0 12px !important;
+      }
+
+      .hp-hero p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.95);
+        opacity: 1;
+        margin: 0 0 20px;
+        padding-right: 0;
+      }
+
+      .hp-hero-chips {
+        margin-bottom: 10px;
+        gap: 8px;
+      }
+
+      .hp-hero-chip {
+        background: #F3F4F6 !important;
+        color: #000000 !important;
+        border-color: rgba(255, 107, 53, 0.15) !important;
+      }
+
+      .hp-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
+        width: 100%;
+        padding: 0 0px 0px 0px;
+        background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+      }
+
+      .hp-card {
+        background: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 10px;
+        padding: 12px 14px !important;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: auto;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(1) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(2) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(3) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(4) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card-label {
+        font-size: 10px;
+      }
+
+      .hp-card-value {
+        font-size: 13px;
+      }
+
+      .hp-hero-cta {
+        flex-direction: row;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .hp-hero-btn-inscribete,
+      .hp-hero-btn-pensum {
+        flex: 1;
+        padding: 10px 14px !important;
+        font-size: 13px !important;
+      }
+
+      div[style*="font-size: 13px"] {
+        color: rgba(255, 255, 255, 0.7) !important;
+        margin-top: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hp-hero {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+      }
+
+      .hp-hero::before {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background: url('https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&h=1080&fit=crop') center / cover no-repeat;
+        display: block;
+        z-index: 3;
+        order: 1;
+
+      }
+
+      .hp-hero::after {
+        display: none;
+      }
+
+      .hp-content {
+        position: relative;
+        z-index: 3;
+        padding: 20px 16px;
+        color: white;
+        background: transparent;
+        border: none;
+        order: 2;
+      }
+
+      .hp-hero h1 {
+        font-size: 22px !important;
+        color: white !important;
+        margin: 0 0 8px !important;
+        padding-right: 0;
+      }
+
+      .hp-hero p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.95);
+        opacity: 1;
+        margin: 0 0 16px;
+        padding-right: 0;
+        line-height: 1.5;
+      }
+
+      .hp-hero-chips {
+        margin-bottom: 8px;
+        gap: 6px;
+      }
+
+      .hp-hero-chip {
+        background: #F3F4F6 !important;
+        color: #000000 !important;
+        border-color: rgba(255, 107, 53, 0.15) !important;
+        padding: 5px 8px;
+        font-size: 13px;
+      }
+
+      .hp-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 0;
+        width: 100%;
+        padding: 0 0px 0px 0px;
+        background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+      }
+
+      .hp-card {
+        background: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 10px;
+        padding: 14px 18px !important;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(1) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(2) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(3) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card:nth-child(4) {
+        flex: none;
+        width: 100%;
+      }
+
+      .hp-card-label {
+        font-size: 9px;
+      }
+
+      .hp-card-value {
+        font-size: 13px;
+      }
+
+      .hp-card-value--big {
+        font-size: 18px;
+        margin-bottom: -8px;
+      }
+
+      .hp-hero-cta {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .hp-hero-btn-inscribete,
+      .hp-hero-btn-pensum {
+        width: 100% !important;
+        padding: 13px 12px !important;
+        font-size: 14px !important;
+      }
+
+      div[style*="font-size: 13px"] {
+        color: rgba(255, 255, 255, 0.7) !important;
+        margin-top: 10px;
+        font-size: 11px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hp-hero" id="hero-section" aria-label="Presentación del programa presencial">
+    <div class="hp-content">
+        <div class="hp-hero-chips">
+          <span class="hp-hero-chip">
+            Pregrados<!--<span class="hp-hero-badge">NUEVO</span>-->
+          </span>
+          
+                  <div class="ue-snies">SNIES / 117406</div>
+        </div>
+
+        <h1>Especialización en Gerencia y Protección de Sistemas de Información Empresarial </h1>
+        
+        <p>Optimiza procesos, recursos y sistemas productivos para mejorar la eficiencia organizacional. Desarrolla competencias en gestión de operaciones, analítica de datos, logística, mejora continua y toma de decisiones estratégicas en entornos empresariales.</p>
+
+        <!-- Cards de metadata -->
+        <div class="hp-sidebar" role="list" aria-label="Datos clave del programa">
+          <div class="hp-card" role="listitem">
+            <span class="hp-card-label">Valor por cuatrimestre</span>
+<div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap">
+              <span style="text-decoration:line-through;color:#0a2351a0;font-size:13px">$4.448.000</span>
+              <span class="hp-card-value--big">$3.336.000</span>
+              <span style="background:#FF3B3B;color:white;padding:3px 7px; margin-top: -5px; margin-left: 5px; border-radius:4px;font-size:13px;font-weight:700;white-space:nowrap">-25%</span>
+            </div>
+          </div>
+          <div class="hp-card" role="listitem">
+            <span class="hp-card-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 5v5l4 2.22-1 1.73L11 13V7h1z" fill="#FF6B35"/></svg>
+              Duración
+            </span>
+            <span class="hp-card-value">3 Cuatrimestres</span>
+          </div>
+          <div class="hp-card" role="listitem">
+            <span class="hp-card-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="#FF6B35"/></svg>
+              Jornada
+            </span>
+            <span class="hp-card-value">Flexible</span>
+          </div>
+          <div class="hp-card" role="listitem">
+            <span class="hp-card-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#FF6B35"/></svg>
+              Modalidad
+            </span>
+            <span class="hp-card-value">Virtual</span>
+          </div>
+        </div>
+        
+                <div class="ue-tyc">Descuentos disponibles del 1 de Marzo al 30 de Abril de 2026. Aplican TyC</div>
+
+        <div class="hp-hero-cta">
+          <button class="hp-hero-btn-inscribete">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+              <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 12c0 2.12.56 4.16 1.62 5.94L0 24l6.28-1.65A11.95 11.95 0 0 0 12 24c6.63 0 12-5.35 12-12 0-3.2-1.24-6.18-3.48-8.52z" fill="#ffffff"/>
+              <path d="M17.5 14.2c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.63.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.46.12-.61.12-.12.3-.32.45-.48.15-.16.2-.28.3-.47.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53-.17-.02-.37-.02-.57-.02-.2 0-.52.07-.8.37-.28.3-1.07 1.05-1.07 2.56 0 1.5 1.1 2.95 1.25 3.16.15.2 2.16 3.46 5.24 4.84 3.08 1.38 3.08.92 3.64.86.57-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35z" fill="#25D366"/>
+            </svg>
+            ¡Inscríbete Ya!
+          </button>
+          <a href="#pensum" class="hp-hero-btn-pensum">Ver plan de estudios</a>
+        </div>
+
+        <div style="font-size: 13px; color: rgba(255, 255, 255, 0.8); margin-top: 12px;">Te contactamos por WhatsApp en horario hábil.</div>
+      </div>
+
+      <!-- Disclaimer Caja (Derecha) -->
+      <div class="ue-tyc-box">
+        Te recomendamos leer los términos y condiciones de apertura del programa. <a onclick="openTycModal()" style="text-decoration: underline; font-weight: 800; cursor: pointer; color: inherit;">Aquí</a>
+      </div>
+    </section>
+
+    <!-- Modal de Términos y Condiciones -->
+    <div id="tycModal" class="mo-modal">
+        <div class="mo-modal-content">
+            <div class="mo-modal-header">
+                <h2>Términos y Condiciones de Apertura del Programa</h2>
+                <button class="mo-modal-close" onclick="closeTycModal()">&times;</button>
+            </div>
+            <div class="mo-modal-body">
+                <p>La apertura de los programas está sujeta a un número mínimo de estudiantes. Uniempresarial se reserva el derecho de suspender o aplazar el inicio de cualquiera de los programas, en función de la respuesta que obtenga de los interesados en la convocatoria. Igualmente, se reserva el derecho a realizar modificaciones en el plan de estudios, el enfoque metodológico y el claustro docente.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTycModal() {
+            const modal = document.getElementById('tycModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTycModal() {
+            const modal = document.getElementById('tycModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('tycModal');
+            if (event.target == modal) {
+                closeTycModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeTycModal();
+            }
+        });
+    </script>
+</body>
+</html>

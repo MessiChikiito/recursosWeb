@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<style>
+    body{
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+
+        .why-ue-h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 28px;
+            letter-spacing: -0.5px;
+
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(1, 50, 175, .08);
+            border-color: rgba(1, 50, 175, .35);
+        }
+
+        .ue-why-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .ue-why-benefit-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e8;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 24px;
+            transition: all 0.3s ease !important;
+            padding-top: 50px;
+            position: relative;
+        }
+
+        .ue-why-benefit-card::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .ue-why-benefit-card:nth-child(1)::before {
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+            box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
+        }
+
+        .ue-why-benefit-card:nth-child(2)::before {
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+        }
+
+        .ue-why-benefit-card:nth-child(3)::before {
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+        }
+
+        .ue-why-benefit-card:nth-child(4)::before {
+            background: linear-gradient(135deg, #FF3B3B 0%, #FF1744 100%);
+        }
+
+        .ue-why-benefit-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #06325a;
+            margin: 0 0 6px;
+        }
+
+        .ue-why-benefit-desc {
+            font-size: 14px;
+            color: #7a8a99;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        @media (max-width: 980px) {
+          .ue-why-benefits-grid {
+            grid-template-columns: 1fr; 
+          }
+        }
+
+        .ue-card {
+            background: linear-gradient(180deg, #0132AF 0%, #0854d1 100%);
+            padding: 40px;
+            border-radius: 16px;
+        }
+
+        .ue-card .ue-h3 {
+            color: white !important;
+        }
+        
+        @media (max-width: 640px) {
+          .ue-card {
+            padding: 20px 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+          }
+        
+          .ue-why-benefits-grid {
+            gap: 14px;
+          }
+        
+          .ue-why-benefit-card {
+            padding: 18px;
+            padding-top: 44px;
+          }
+
+          .ue-why-benefit-title {
+            font-size: 14px;
+          }
+
+          .ue-why-benefit-desc {
+            font-size: 13px;
+          }
+
+                    .why-ue-h3 {
+            font-size: 22px;
+          }
+        
+          h3.ue-h3 {
+            font-size: 20px;
+            margin-bottom: 18px;
+          }
+        
+          .ue-why-btn {
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+
+</style>
+
+  <div class="ue-card" id="whyUs">
+    <h3 class="why-ue-h3">¿Por qué elegirnos?</h3>
+    
+    <div class="ue-why-benefits-grid">
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Alta empleabilidad</div>
+        <div class="ue-why-benefit-desc">87% de inserción laboral en graduados.</div>
+      </div>
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Experiencia certificada</div>
+        <div class="ue-why-benefit-desc">8 meses de práctica con respaldo formal.</div>
+      </div>
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Experiencia real</div>
+        <div class="ue-why-benefit-desc">Trabajo práctico como consultor empresarial desde el inicio.</div>
+      </div>
+      <div class="ue-why-benefit-card">
+        <div class="ue-why-benefit-title">Habilidades estratégicas</div>
+        <div class="ue-why-benefit-desc">Formación enfocada en lo que las empresas realmente buscan.</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

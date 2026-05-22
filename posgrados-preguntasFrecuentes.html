@@ -1,576 +1,255 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preguntas frecuentes</title>
+<style>
+    :root {
+      --accent: #0132AF !important;
+      --muted: #6b7280 !important;
+      --card: #ffffff !important;
+      --radius: 12px !important;
+    }
+    .faq-wrap {
+      padding: 24px !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      margin-bottom: 18px !important;
+    }
+    .faq-title {
+      font-size: 1.6rem;
+      font-weight: 800 !important;
+      color: #FF6B35 !important;
+      margin: 0 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-intro {
+      color: #6b7280 !important;
+      margin: 0 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    .faq-section {
+      background: #ffffff !important;
+      border-radius: 12px !important;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06) !important;
+      overflow: hidden !important;
+    }
+    .faq-item + .faq-item {
+      border-top: 1px solid #eef2f7 !important;
+    }
+    .faq-question {
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 18px 20px !important;
+      background: transparent !important;
+      border: 0 !important;
+      cursor: pointer !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+      text-align: left !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+      transition: all 0.3s ease !important;
+    }
+    .faq-question:hover {
+      background: #f7fafc !important;
+    }
+    .faq-question:focus {
+      outline: 3px solid rgba(1,50,175,0.12) !important;
+      outline-offset: -3px !important;
+    }
+    .faq-chevron {
+      transition: transform .28s cubic-bezier(.2,.9,.2,1) !important;
+      color: #6b7280 !important;
+      font-size: 1.2rem !important;
+    }
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg) !important;
+    }
+    .faq-answer {
+      max-height: 0 !important;
+      overflow: hidden !important;
+      padding: 0 20px !important;
+      transition: max-height .32s ease, padding .32s ease !important;
+      background: transparent !important;
+    }
+    .faq-answer p {
+      margin: 12px 0 18px !important;
+      color: #374151 !important;
+      line-height: 1.6 !important;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif !important;
+    }
+    /* Open state helper */
+    .faq-item.open .faq-answer {
+      padding: 12px 20px 18px !important;
+      max-height: 420px !important;
+    }
+    /* Responsive */
+    @media (max-width:600px) {
+      .faq-wrap {
+        padding: 16px !important;
+      }
+      .faq-question {
+        padding: 14px !important;
+      }
+      .faq-title{
+          font-size: 24px;
+      }
+      .faq-intro{
+          font-size: 12px;
+      }
+      .faq-answer {
+        padding: 0 14px !important;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main class="faq-wrap">
+    <header class="faq-header">
+      <h1 class="faq-title">Preguntas frecuentes</h1>
+      <p class="faq-intro">Resolvemos las dudas más comunes sobre nuestros pregrados y procesos.</p>
+    </header>
+    <section class="faq-section" aria-label="Preguntas frecuentes">
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-  /* FAQ Section Styles */
-  .ue-faq-section {
-    background: white;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    padding: 40px;
-    border-radius: 12px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .ue-faq-section .ue-headRow {
-    display: flex;
-    gap: 14px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
-  }
-
-  .ue-h3-faq {
-    color: #FF6B35;
-    font-weight: 900;
-    margin: 0;
-    font-size: 32px;
-  }
-
-  /* FAQ Answer Text */
-  .ue-faq-answer {
-    color: #7a8a99;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  /* FAQ Accordion */
-  .ue-faq-accordion {
-    margin: 0;
-    padding: 0;
-  }
-
-  .ue-faq-acc-item {
-    border-bottom: 1px solid #e0e3e8;
-  }
-
-  .ue-faq-acc-item:first-child {
-    border-top: 1px solid #e0e3e8;
-  }
-
-  .ue-faq-acc-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 16px 0;
-    background: none;
-    border: none;
-    font-size: 16px;
-    font-weight: 700;
-    color: #092b57;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    cursor: pointer;
-    transition: color 0.4s ease !important;
-  }
-
-  .ue-faq-acc-btn:hover {
-    color: #0132AF !important;
-  }
-
-  .ue-faq-acc-icon {
-    font-size: 20px;
-    font-weight: 300;
-    transition: transform 0.4s ease !important;
-  }
-
-  .ue-faq-acc-btn[aria-expanded="true"] .ue-faq-acc-icon {
-    transform: rotate(180deg) !important;
-  }
-
-  .ue-faq-acc-panel {
-    overflow: hidden;
-    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-
-  .ue-faq-acc-panel-inner {
-    padding: 0 0 16px 0;
-  }
-
-  /* FAQ Buttons Container */
-  .ue-faq-buttons {
-    margin-top: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .ue-faq-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-
-    .ue-faq-btn-primary {
-      background: #044DC2;
-      color: white;
-    }
-
-    .ue-faq-btn-primary:hover {
-      background: #0132AF;
-    }
-
-    .ue-faq-btn-outline {
-      background: #FF6A00;
-      color: white;
-    }
-
-    .ue-faq-btn-outline:hover {
-      background: #e86100;
-    }    .ue-faq-btn-primary {
-      background: #044DC2;
-      color: white;
-    }
-
-    .ue-faq-btn-primary:hover {
-      background: #0132AF;
-    }
-
-    .ue-faq-btn-outline {
-      background: #FF6A00;
-      color: white;
-    }
-
-    .ue-faq-btn-outline:hover {
-      background: #e86100;
-    }
-  /* --- Modal Styles --- */
-  .ue-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    animation: fadeIn 0.3s ease;
-  }
-
-  .ue-modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slideUp {
-    from {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .ue-modal-content {
-    background-color: #ffffff;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 600px;
-    padding: 40px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .ue-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    border-bottom: 1px solid #e0e3e8;
-    padding-bottom: 16px;
-  }
-
-  .ue-modal-header h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 800;
-    color: #0132AF;
-  }
-
-  .ue-modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #999;
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-  }
-
-  .ue-modal-close:hover {
-    background: #f5f7fa;
-    color: #333;
-  }
-
-  .ue-modal-body {
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .ue-partners-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .ue-partner-card {
-    border: 1px solid #e0e3e8;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fafbfc;
-    transition: all 0.25s ease;
-  }
-
-  .ue-partner-card:hover {
-    border-color: #0132AF;
-    box-shadow: 0 4px 14px rgba(1, 50, 175, 0.1);
-    background: #fff;
-  }
-
-  .ue-partner-card img {
-    max-width: 100%;
-    max-height: 70px;
-    object-fit: contain;
-  }
-
-  .ue-modal-cta {
-    display: block;
-    width: 100%;
-    padding: 14px 24px;
-    background: linear-gradient(135deg, #0132AF 0%, #1a5bcf 100%);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 700;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 14px rgba(1, 50, 175, 0.3);
-    box-sizing: border-box;
-  }
-
-  .ue-modal-cta:hover {
-      background: #0132AF;
-    color: white;
-  }
-
-  @media (max-width: 640px) {
-    .ue-faq-section {
-      padding: 24px 16px;
-    }
-
-    .ue-faq-buttons {
-      flex-direction: column;
-    }
-
-    .ue-faq-btn {
-      width: 100%;
-      text-align: center;
-    }
-    
-        .ue-h3-faq {
-      font-size: 24px;
-    }
-
-    .ue-faq-acc-btn {
-      font-size: 14px;
-    }
-
-    .ue-faq-answer {
-      font-size: 13px;
-    }
-
-    .ue-faq-btn {
-      font-size: 13px;
-      padding: 10px 20px;
-    }
-  }
-</style>
-
-<section id="faq" class="ue-section ue-card ue-faq-section" aria-label="Preguntas frecuentes">
-  <div class="ue-faq-headRow ue-headRow">
-    <div>
-      <h3 class="ue-h3-faq">Preguntas frecuentes</h3>
-      <div class="ue-muted" style="color: #6b7280; font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif; margin-top:6px">Resolvemos las dudas más comunes sobre nuestros pregrados y procesos.</div>
-    </div>
-  </div>
-
-  <div class="ue-faq-accordion" id="faqAcc" aria-label="FAQ">
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-1">
-        <span>¿Qué posgrados ofrece Uniempresarial?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-1" role="region" aria-label="Respuesta 1">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Uniempresarial ofrece programas de especialización orientados al fortalecimiento de habilidades estratégicas y de liderazgo, diseñados para responder a las necesidades actuales del entorno empresarial.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-2">
-        <span>¿En qué modalidades se pueden estudiar las especializaciones?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-2" role="region" aria-label="Respuesta 2">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Las especializaciones de Uniempresarial se ofrecen en modalidad presencial y virtual, brindando flexibilidad para profesionales que trabajan.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-3">
-        <span>¿Cuánto dura una especialización?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-3" role="region" aria-label="Respuesta 3">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          La mayoría de las especializaciones tienen una duración aproximada de dos semestres académicos.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-4">
-        <span>¿Qué requisitos necesito para estudiar una especialización?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-4" role="region" aria-label="Respuesta 4">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Debes contar con título profesional de pregrado, documento de identidad y completar el proceso de admisión establecido por la universidad.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-5">
-        <span>¿Puedo estudiar una especialización mientras trabajo?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-5" role="region" aria-label="Respuesta 5">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Sí. Los programas están diseñados para profesionales en ejercicio, con horarios y metodologías que facilitan combinar estudio y trabajo.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-6">
-        <span>¿Cómo es el proceso de admisión a un posgrado?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-6" role="region" aria-label="Respuesta 6">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          El proceso incluye registro como aspirante, envío de documentos, validación del perfil y formalización de la matrícula.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-7">
-        <span>¿Uniempresarial ofrece opciones de financiación para posgrados?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-7" role="region" aria-label="Respuesta 7">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Sí. La universidad cuenta con alternativas de financiación y facilidades de pago para apoyar a los profesionales interesados en continuar su formación.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-8">
-        <span>¿Qué beneficios tiene estudiar una especialización en Uniempresarial?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-8" role="region" aria-label="Respuesta 8">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Permite actualizar conocimientos, fortalecer habilidades estratégicas y ampliar oportunidades de crecimiento profesional en el entorno empresarial.
-        </div>
-      </div>
-    </div>
-
-    <div class="ue-faq-acc-item">
-      <button class="ue-faq-acc-btn" type="button" aria-expanded="false" aria-controls="faq-9">
-        <span>¿Puedo recibir asesoría antes de iniciar el proceso de inscripción?</span><span class="ue-faq-acc-icon" aria-hidden="true">▼</span>
-      </button>
-      <div class="ue-faq-acc-panel" id="faq-9" role="region" aria-label="Respuesta 9">
-        <div class="ue-faq-acc-panel-inner ue-faq-answer">
-          Sí. Puedes contactar al equipo de admisiones para recibir orientación sobre programas, modalidades y proceso de inscripción.
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="ue-faq-buttons">
-    <a href="#whyUs" class="ue-faq-btn ue-faq-btn-primary">Solicitar información</a>
-    <button onclick="openFinancingModal()" class="ue-faq-btn ue-faq-btn-outline" style="border: none; cursor: pointer;">Ver financiación</button>
-  </div>
-</section>
-
-<!-- Modal de Opciones de Financiación -->
-<div id="financingModal" class="ue-modal">
-  <div class="ue-modal-content">
-    <div class="ue-modal-header">
-      <h2>Opciones de Financiación</h2>
-      <button class="ue-modal-close" onclick="closeFinancingModal()">&times;</button>
-    </div>
-    <div class="ue-modal-body">
-      <p style="color: #06325a; margin: 0 0 20px; line-height: 1.6; font-weight: 600;">Contamos con aliados financieros para que puedas financiar tu carrera con facilidad:</p>
-
-      <div class="ue-partners-grid">
-        <div class="ue-partner-card">
-          <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/logo-jfkCooperativa-JFK.png" alt="JFK Cooperativa Financiera">
-        </div>
-        <div class="ue-partner-card">
-          <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/Logo-Finky-768x432.png" alt="Finky">
-        </div>
-        <div class="ue-partner-card">
-          <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/06/Fincomercio-100.jpg" alt="Fincomercio">
-        </div>
-        <div class="ue-partner-card">
-          <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/logo-25-pag-web-01.webp" alt="Aliado financiero">
+      <div class="faq-item" data-index="1">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-1" id="faq-q-1">
+          ¿Qué posgrados ofrece Uniempresarial?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q-1">
+          <p>
+            Uniempresarial ofrece programas de especialización orientados al fortalecimiento de habilidades estratégicas y de liderazgo, diseñados para responder a las necesidades actuales del entorno empresarial.
+          </p>
         </div>
       </div>
 
-      <a href="https://uniempresarial.edu.co/financiacion/" target="_blank" class="ue-modal-cta">Conoce todas las opciones de financiación</a>
-    </div>
-  </div>
-</div>
+      <div class="faq-item" data-index="2">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-2" id="faq-q-2">
+          ¿En qué modalidades se pueden estudiar las especializaciones?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q-2">
+          <p>
+            Las especializaciones de Uniempresarial se ofrecen en modalidad presencial y virtual, brindando flexibilidad para profesionales que trabajan.
+          </p>
+        </div>
+      </div>
 
-<script>
-  // FAQ accordion with self-contained height management
-  const faqAcc = document.getElementById('faqAcc');
-  
-  // Helper function to set panel height
-  function setPanelHeightFaq(panel, shouldExpand) {
-    if (shouldExpand) {
-      panel.style.height = panel.scrollHeight + 'px';
-    } else {
-      panel.style.height = '0px';
-    }
-  }
+      <div class="faq-item" data-index="3">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-3" id="faq-q-3">
+          ¿Cuánto dura una especialización?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-q-3">
+          <p>
+            La mayoría de las especializaciones tienen una duración aproximada de dos semestres académicos.
+          </p>
+        </div>
+      </div>
 
-  if (faqAcc) {
-    faqAcc.querySelectorAll('.ue-faq-acc-item').forEach((item) => {
-      const btn = item.querySelector('.ue-faq-acc-btn');
-      const panel = item.querySelector('.ue-faq-acc-panel');
-      if (!btn || !panel) return;
+      <div class="faq-item" data-index="4">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-4" id="faq-q-4">
+          ¿Qué requisitos necesito para estudiar una especialización?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-q-4">
+          <p>
+            Debes contar con título profesional de pregrado, documento de identidad y completar el proceso de admisión establecido por la universidad.
+          </p>
+        </div>
+      </div>
 
-      // Initialize panel height
-      panel.style.height = '0px';
-      btn.setAttribute('aria-expanded', 'false');
+      <div class="faq-item" data-index="5">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-5" id="faq-q-5">
+          ¿Puedo estudiar una especialización mientras trabajo?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-q-5">
+          <p>
+            Sí. Los programas están diseñados para profesionales en ejercicio, con horarios y metodologías que facilitan combinar estudio y trabajo.
+          </p>
+        </div>
+      </div>
 
-      // Click handler
-      btn.addEventListener('click', () => {
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        const newState = !isExpanded;
-        
-        btn.setAttribute('aria-expanded', String(newState));
-        setPanelHeightFaq(panel, newState);
+      <div class="faq-item" data-index="6">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-6" id="faq-q-6">
+          ¿Cómo es el proceso de admisión a un posgrado?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-6" role="region" aria-labelledby="faq-q-6">
+          <p>
+            El proceso incluye registro como aspirante, envío de documentos, validación del perfil y formalización de la matrícula.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="7">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-7" id="faq-q-7">
+          ¿Uniempresarial ofrece opciones de financiación para posgrados?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-7" role="region" aria-labelledby="faq-q-7">
+          <p>
+            Sí. La universidad cuenta con alternativas de financiación y facilidades de pago para apoyar a los profesionales interesados en continuar su formación.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="8">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-8" id="faq-q-8">
+          ¿Qué beneficios tiene estudiar una especialización en Uniempresarial?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-8" role="region" aria-labelledby="faq-q-8">
+          <p>
+            Permite actualizar conocimientos, fortalecer habilidades estratégicas y ampliar oportunidades de crecimiento profesional en el entorno empresarial.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="9">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-9" id="faq-q-9">
+          ¿Puedo recibir asesoría antes de iniciar el proceso de inscripción?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer" id="faq-9" role="region" aria-labelledby="faq-q-9">
+          <p>
+            Sí. Puedes contactar al equipo de admisiones para recibir orientación sobre programas, modalidades y proceso de inscripción.
+          </p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  <script>
+    // Acordeón accesible: abre/cierra items y permite navegación por teclado
+    (function(){
+      const items = Array.from(document.querySelectorAll('.faq-item'));
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        const panel = item.querySelector('.faq-answer');
+        btn.addEventListener('click', () => toggle(item, btn, panel));
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle(item, btn, panel);
+          }
+        });
       });
 
-      // Resize handler
-      window.addEventListener('resize', () => {
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-          setPanelHeightFaq(panel, true);
+      function toggle(item, btn, panel){
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        } else {
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          panel.style.maxHeight = null;
         }
-      });
-    });
-  }
-
-  // Función para abrir el modal de financiación
-  function openFinancingModal() {
-    const modal = document.getElementById('financingModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    const url = new URL(window.location);
-    url.searchParams.set('financiacion', 'true');
-    window.history.pushState({modal: true}, '', url);
-  }
-
-  // Función para cerrar el modal de financiación
-  function closeFinancingModal() {
-    const modal = document.getElementById('financingModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    
-    const url = new URL(window.location);
-    url.searchParams.delete('financiacion');
-    window.history.pushState({modal: false}, '', url);
-  }
-
-  // Cerrar modal al hacer click fuera del contenido
-  window.onclick = function(event) {
-    const modal = document.getElementById('financingModal');
-    if (event.target == modal) {
-      closeFinancingModal();
-    }
-  }
-
-  // Cerrar modal con tecla ESC
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      closeFinancingModal();
-    }
-  });
-
-  // Abrir modal automáticamente si viene con query param
-  window.addEventListener('load', function() {
-    const url = new URL(window.location);
-    if (url.searchParams.get('financiacion') === 'true') {
-      openFinancingModal();
-    }
-  });
-
-  // Manejar botón atrás del navegador
-  window.addEventListener('popstate', function(event) {
-    if (event.state && event.state.modal) {
-      openFinancingModal();
-    } else {
-      closeFinancingModal();
-    }
-  });
+      }
+    })();
 </script>
-
-</body>
-</html>
