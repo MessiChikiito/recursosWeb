@@ -15,7 +15,7 @@
 
     body {
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        background-color: #fff;
+        background-color: #fff !important;
     }
 
     .hero-wrap {
@@ -110,7 +110,7 @@
       transition: box-shadow 0.3s ease !important;
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 0 60px 15px rgba(1, 50, 175, 0.2), 0 0 30px 5px rgba(1, 50, 175, 0.15);
+      box-shadow: 0 0 200px 40px rgba(1, 50, 175, 0.2), 0 0 30px 5px rgba(1, 50, 175, 0.15);
     }
 
     .globe-container:active {
@@ -355,8 +355,8 @@
       <a id="flag-ecuador" class="country-flag" href="https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-estudiante" target="_blank" data-country="ecuador">
         <span class="fi fi-ec"></span>
       </a>
-      <a id="flag-uruguay" class="country-flag" href="https://www.gub.uy/ministerio-relaciones-exteriores/embajada-republica-oriental-del-uruguay-colombia/tramites-consulares/visas" target="_blank" data-country="uruguay">
-        <span class="fi fi-uy"></span>
+      <a id="flag-paraguay" class="country-flag" href="https://example.com/paraguay" target="_blank" data-country="paraguay">
+        <span class="fi fi-py"></span>
       </a>
       <a id="flag-espana" class="country-flag" href="https://www.exteriores.gob.es/Consulados/bogota/es/ServiciosConsulares/Paginas/index.aspx?scco=Colombia&scd=31&scca=Visados&scs=Visados+Nacionales+-+Visado+de+estudios" target="_blank" data-country="espana">
         <span class="fi fi-es"></span>
@@ -370,15 +370,19 @@
       <a id="flag-corea" class="country-flag" href="https://www.mofa.go.kr/co-es/wpge/m_6692/contents.do" target="_blank" data-country="corea">
         <span class="fi fi-kr"></span>
       </a>
+      <a id="flag-republicadominicana" class="country-flag" href="https://example.com/republicadominicana" target="_blank" data-country="republicadominicana">
+        <span class="fi fi-do"></span>
+      </a>
 
       <div id="label-colombia" class="country-label">Colombia</div>
       <div id="label-mexico" class="country-label">México</div>
       <div id="label-ecuador" class="country-label">Ecuador</div>
-      <div id="label-uruguay" class="country-label">Uruguay</div>
+      <div id="label-paraguay" class="country-label">Paraguay</div>
       <div id="label-espana" class="country-label">España</div>
       <div id="label-alemania" class="country-label">Alemania</div>
       <div id="label-japon" class="country-label">Japón</div>
       <div id="label-corea" class="country-label">Corea del Sur</div>
+      <div id="label-republicadominicana" class="country-label">República Dominicana</div>
     </div>
   </div>
 </div>
@@ -399,11 +403,12 @@
     { id: 'colombia',  lat: -10,  lng: -87 },
     { id: 'mexico',    lat: 5, lng: -114 },
     { id: 'ecuador',   lat: -18, lng: -92 },
-    { id: 'uruguay',   lat: -44, lng: -56 },
+    { id: 'paraguay',   lat: -39, lng: -68 },
     { id: 'espana',    lat: 29, lng: -16 },
     { id: 'alemania',  lat: 44, lng: -3 },
     { id: 'japon',     lat: 23, lng: 129 },
     { id: 'corea',     lat: 23, lng: 115 },
+    { id: 'republicadominicana',  lat: 3, lng: -83 },
   ];
 
   const container = document.getElementById('globe-container');
@@ -442,7 +447,7 @@
   const globe = new THREE.Mesh(geometry, material);
 
   globe.rotation.set(
-    THREE.MathUtils.degToRad(-5),
+    THREE.MathUtils.degToRad(-16),
     THREE.MathUtils.degToRad(-40),
     0
   );
@@ -452,7 +457,7 @@
   let hasDragged = false;
   let lastX = 0, lastY = 0;
   let autoRotate = true;
-  let autoRotateSpeedY = 0.003;
+  let autoRotateSpeedY = 0.003; 
   let resumeTimer = null;
 
   function latLngToVector3(lat, lng, radius = 1.0) {
