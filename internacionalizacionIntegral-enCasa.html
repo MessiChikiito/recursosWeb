@@ -1,0 +1,613 @@
+<style>
+.unie-ic *, .unie-ic *::before, .unie-ic *::after {
+    box-sizing: border-box;
+}
+
+.unie-ic {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 16px !important;
+    color: #1e1e2f !important;
+    line-height: 1.5 !important;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px !important;
+}
+
+.unie-ic h2,
+.unie-ic h3,
+.unie-ic p,
+.unie-ic a,
+.unie-ic strong {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    line-height: 1.5 !important;
+    margin-top: 0 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+}
+.unie-ic p {
+    font-size: 16px !important;
+}
+.unie-ic strong {
+    font-size: inherit !important;
+}
+
+.unie-ic__title {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    margin-bottom: 32px !important;
+    position: relative;
+    display: inline-block;
+    color: #0132AF !important;
+    padding: 0 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+.unie-ic__title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #EF1218;
+    border-radius: 2px;
+}
+
+.unie-ic__intro {
+    margin-bottom: 16px !important;
+    color: #2c3e50 !important;
+    font-size: 16px !important;
+}
+
+.unie-ic__programas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin: 32px 0 24px;
+}
+.unie-ic__programa-card {
+    background: #fff !important;
+    border-radius: 16px;
+    padding: 24px 32px !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    width: 460px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border: 1px solid #e8edf2;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.unie-ic__programa-logo {
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    background-color: #f4f6fa;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+.unie-ic__programa-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+.unie-ic__programa-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.unie-ic__programa-info h3 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    color: #0132AF !important;
+    font-weight: 600 !important;
+}
+.unie-ic__programa-info a {
+    text-decoration: none !important;
+    background: #EF1218 !important;
+    color: #fff !important;
+    padding: 6px 18px !important;
+    border-radius: 32px !important;
+    display: inline-block !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s;
+    align-self: flex-start;
+}
+.unie-ic__programa-info a:hover {
+    background: #c51218 !important;
+}
+
+.unie-ic__carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 24px 0 8px;
+    padding: 10px 16px;
+    border-radius: 16px;
+    outline: none;
+}
+.unie-ic__carousel-container:focus-visible {
+    box-shadow: 0 0 0 2px #0132AF;
+}
+.unie-ic__carousel-track {
+    display: flex;
+    will-change: transform;
+    transition: transform 0.4s ease-in-out;
+}
+.unie-ic__carousel-card {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 16px !important;
+    background: #fff !important;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+@media (min-width: 768px) {
+    .unie-ic__carousel-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+        padding: 24px !important;
+    }
+}
+.unie-ic__carousel-img-wrap {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    min-height: 200px;
+    overflow: hidden;
+    background: #f0f3ff;
+    border-radius: 12px;
+}
+.unie-ic__carousel-img-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.unie-ic__carousel-text {
+    flex: 1;
+    padding: 16px 0 !important;
+}
+.unie-ic__carousel-text h3 {
+    margin-bottom: 12px !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #0132AF !important;
+}
+.unie-ic__carousel-text p {
+    margin-bottom: 0 !important;
+    color: #334155 !important;
+}
+
+.unie-ic__carousel-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #0132AF;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transform: translateY(-50%);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.unie-ic__carousel-btn:hover {
+    color: #EF1218;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.unie-ic__carousel-btn:focus {
+    outline: 2px solid #0132AF;
+    outline-offset: 2px;
+}
+.unie-ic__btn-prev { left: 8px; }
+.unie-ic__btn-next { right: 8px; }
+
+.unie-ic__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+.unie-ic__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #cbd5e1;
+    transition: background 0.2s, transform 0.2s;
+}
+.unie-ic__dot.active {
+    background: #EF1218;
+    transform: scale(1.6);
+}
+
+.unie-ic__boletin {
+    background: linear-gradient(145deg, #f0f4fa, #fff) !important;
+    border-radius: 16px;
+    padding: 24px !important;
+    text-align: center;
+    margin: 32px 0 0;
+    border-left: 5px solid #EF1218;
+}
+.unie-ic__boletin h3 {
+    color: #0132AF !important;
+    margin: 0 0 8px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+.unie-ic__boletin p {
+    color: #2c3e50 !important;
+    font-size: 16px !important;
+    margin: 0 0 4px !important;
+}
+.unie-ic__boletin-btn {
+    display: inline-block !important;
+    background-color: #0132AF !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 13px 29px !important;
+    border-radius: 40px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    margin-top: 16px !important;
+    transition: background 0.2s;
+    text-decoration: none !important;
+}
+.unie-ic__boletin-btn:hover {
+    background-color: #EF1218 !important;
+    color: #fff !important;
+}
+
+@media (max-width: 520px) {
+    .unie-ic__programa-card {
+        width: 100%;
+        padding: 19px !important;
+        gap: 20px;
+    }
+    .unie-ic__programa-logo {
+        width: 120px;
+        height: 70px;
+    }
+}
+@media (max-width: 640px) {
+    .unie-ic {
+        padding: 16px !important;
+    }
+    .unie-ic__title {
+        font-size: 26px !important;
+        font-weight: 700 !important;
+    }
+    .unie-ic__carousel-container {
+        padding: 10px 12px;
+    }
+    .unie-ic__carousel-card {
+        padding: 12px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+    .unie-ic__carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+    .unie-ic__carousel-text p {
+        font-size: 15px;
+    }
+    .unie-ic__carousel-img-wrap {
+        min-height: 180px;
+    }
+    .unie-ic__carousel-img-wrap img {
+        min-height: 180px;
+    }
+}
+</style>
+
+<!-- Schema.org: ItemList de programas de internacionalización para SEO semántico -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Internacionalización en Casa – Uniempresarial",
+  "description": "Programas y redes de internacionalización en casa: clases espejo, ferias académicas y cursos virtuales internacionales.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Programa Delfín",
+      "url": "https://programadelfin.org.mx/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Red Iberonex",
+      "url": "https://www.iberonex.com/"
+    }
+  ]
+}
+</script>
+
+<div class="unie-ic">
+    <section aria-labelledby="unie-titulo-inter">
+
+        <h2 class="unie-ic__title" id="unie-titulo-inter">Internacionalización en casa</h2>
+
+        <p class="unie-ic__intro">A través de nuestra oferta de clases espejo, ferias, eventos académicos y cursos internacionales en modalidad virtual, acercamos el mundo a tu salón de clases.</p>
+
+        <div class="unie-ic__programas-grid" role="list" aria-label="Programas de internacionalización en casa">
+
+            <article class="unie-ic__programa-card" role="listitem">
+                <div class="unie-ic__programa-logo">
+                    <img
+                        src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/Logo-Programa-Delfin.webp"
+                        alt="Logo Programa Delfín – red académica de movilidad estudiantil"
+                        loading="lazy"
+                        width="160"
+                        height="90"
+                    >
+                </div>
+                <div class="unie-ic__programa-info">
+                    <h3>Programa Delfín</h3>
+                    <a
+                        href="https://programadelfin.org.mx/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Conocer más sobre el Programa Delfín de movilidad estudiantil"
+                    >Conocer más →</a>
+                </div>
+            </article>
+
+            <article class="unie-ic__programa-card" role="listitem">
+                <div class="unie-ic__programa-logo">
+                    <img
+                        src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/logo-iberonex.webp"
+                        alt="Logo Red Iberonex – red de universidades iberoamericanas"
+                        loading="lazy"
+                        width="160"
+                        height="90"
+                    >
+                </div>
+                <div class="unie-ic__programa-info">
+                    <h3>Red Iberonex</h3>
+                    <a
+                        href="https://www.iberonex.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Conocer más sobre la Red Iberonex de cooperación universitaria"
+                    >Conocer más →</a>
+                </div>
+            </article>
+
+        </div>
+        <div class="unie-ic__carousel-container" id="enCasaContainer" tabindex="0" aria-label="Carrusel de internacionalización" aria-roledescription="carrusel">
+            <div class="unie-ic__carousel-track" id="enCasaTrack" aria-live="polite"></div>
+
+            <button class="unie-ic__carousel-btn unie-ic__btn-prev" aria-label="Anterior diapositiva">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <button class="unie-ic__carousel-btn unie-ic__btn-next" aria-label="Siguiente diapositiva">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <div class="unie-ic__dots" id="enCasaDots" role="tablist" aria-label="Seleccionar diapositiva"></div>
+        </div>
+        <aside class="unie-ic__boletin" aria-label="Boletín El Faro – oportunidades internacionales Uniempresarial">
+            <h3>Conoce oportunidades de becas, convocatorias y eventos</h3>
+            <p>En nuestro boletín mensual <strong>"EL FARO"</strong> encontrarás información actualizada sobre movilidad, cultura global y más.</p>
+            <a
+                href="https://uniempresarial.edu.co/wp-content/uploads/2026/05/El-faro_Mayo.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="unie-ic__boletin-btn"
+                aria-label="Descargar boletín El Faro de Uniempresarial"
+            >
+                Descargar boletín
+            </a>
+        </aside>
+
+    </section>
+</div>
+
+<script>
+(() => {
+  const container = document.getElementById('enCasaContainer');
+  const track = document.getElementById('enCasaTrack');
+  const dotsContainer = document.getElementById('enCasaDots');
+  if (!container || !track || !dotsContainer) return;
+
+  const slides = [
+    {
+      imgSrc: '',
+      alt: 'Estudiantes de Uniempresarial participando en clases espejo y eventos académicos internacionales',
+      titulo: 'Clases espejo y eventos académicos',
+      texto: '¡Aquí no necesitas un avión para vivir el mundo! Acercamos el mundo a tu salón de clases promoviendo el intercambio de conocimientos y la interacción con comunidades académicas globales a través de clases espejo, ferias y cursos virtuales.'
+    },
+    {
+      imgSrc: '',
+      alt: 'Estudiantes de Uniempresarial participando en redes internacionales de investigación universitaria',
+      titulo: 'Redes internacionales e investigación',
+      texto: 'También hacemos parte de redes internacionales que te permitirán participar en grupos de investigación tanto de universidades nacionales como del exterior, así como proyectar la continuidad de tus estudios a nivel internacional.'
+    }
+  ];
+
+  const placeholderSVG = (w, h) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20' fill='%2394a3b8'%3E${w}×${h}%3C/text%3E%3C/svg%3E`;
+
+  const realCount = slides.length;
+  if (!realCount) return;
+
+  /* Clones para loop infinito */
+  const firstClone = { ...slides[0] };
+  const lastClone = { ...slides[realCount - 1] };
+  const allSlides = [lastClone, ...slides, firstClone];
+  const totalSlides = allSlides.length;
+
+  track.innerHTML = allSlides.map(s => `
+    <article class="unie-ic__carousel-card">
+      <div class="unie-ic__carousel-img-wrap">
+        <img src="${s.imgSrc || placeholderSVG(600,400)}" alt="${s.alt}" loading="lazy" width="600" height="400">
+      </div>
+      <div class="unie-ic__carousel-text">
+        <h3>${s.titulo}</h3>
+        <p>${s.texto}</p>
+      </div>
+    </article>
+  `).join('');
+
+  const cards = [...track.children];
+  let currentIndex = 1; // primer slide real
+  let isTransitioning = false;
+  let resizeTimer;
+  let autoplayInterval;
+  const autoplayDelay = 5000;
+
+  const prevBtn = container.querySelector('.unie-ic__btn-prev');
+  const nextBtn = container.querySelector('.unie-ic__btn-next');
+
+  /* Dots solo para los reales */
+  dotsContainer.innerHTML = '';
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.className = `unie-ic__dot${idx === 0 ? ' active' : ''}`;
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Ir a diapositiva ${idx + 1}`);
+    dot.setAttribute('aria-selected', idx === 0);
+    dot.addEventListener('click', () => {
+      goToRealIndex(idx);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const updateDots = (realIdx) => {
+    const dots = dotsContainer.querySelectorAll('.unie-ic__dot');
+    dots.forEach((dot, idx) => {
+      const active = idx === realIdx;
+      dot.classList.toggle('active', active);
+      dot.setAttribute('aria-selected', active);
+    });
+  };
+
+  const updateTransform = (instant = false) => {
+    track.style.transition = instant ? 'none' : 'transform 0.4s ease-in-out';
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  };
+
+  const getRealIndex = () => {
+    if (currentIndex === 0) return realCount - 1;
+    if (currentIndex === totalSlides - 1) return 0;
+    return currentIndex - 1;
+  };
+
+  const goToRealIndex = (realIdx) => {
+    currentIndex = realIdx + 1;
+    updateTransform();
+    updateDots(realIdx);
+  };
+
+  const nextSlide = () => {
+    if (isTransitioning) return;
+    currentIndex++;
+    updateTransform();
+    updateDots(getRealIndex());
+    isTransitioning = true;
+  };
+
+  const prevSlide = () => {
+    if (isTransitioning) return;
+    currentIndex--;
+    updateTransform();
+    updateDots(getRealIndex());
+    isTransitioning = true;
+  };
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    if (currentIndex === 0) {
+      currentIndex = realCount;
+      updateTransform(true);
+    } else if (currentIndex === totalSlides - 1) {
+      currentIndex = 1;
+      updateTransform(true);
+    }
+    updateDots(getRealIndex());
+  });
+
+  prevBtn?.addEventListener('click', () => { if (!isTransitioning) prevSlide(); });
+  nextBtn?.addEventListener('click', () => { if (!isTransitioning) nextSlide(); });
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      if (!isTransitioning && container.matches(':hover') === false && !container.contains(document.activeElement)) {
+        nextSlide();
+      }
+    }, autoplayDelay);
+  };
+  const stopAutoplay = () => clearInterval(autoplayInterval);
+
+  container.addEventListener('mouseenter', stopAutoplay);
+  container.addEventListener('focusin', stopAutoplay);
+  container.addEventListener('mouseleave', startAutoplay);
+  container.addEventListener('focusout', () => {
+    if (!container.contains(document.activeElement)) startAutoplay();
+  });
+
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (!isTransitioning) prevSlide();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (!isTransitioning) nextSlide();
+    }
+  });
+
+  let touchStartX = 0;
+  container.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+    stopAutoplay();
+  }, { passive: true });
+
+  container.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) { if (!isTransitioning) nextSlide(); }
+      else { if (!isTransitioning) prevSlide(); }
+    }
+    startAutoplay();
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => updateTransform(true), 150);
+  });
+
+  updateTransform(true);
+  updateDots(0);
+  startAutoplay();
+})();
+</script>

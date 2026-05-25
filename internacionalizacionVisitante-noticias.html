@@ -1,0 +1,294 @@
+﻿<div class="unie-iv">
+
+  <style>
+
+    :root{
+      --radio-xl:16px;
+      --radio-lg:10px;
+
+      --sombra:0 4px 12px rgba(0,0,0,.06);
+      --sombra-hover:0 8px 20px rgba(0,0,0,.10);
+
+      --transicion:.2s ease;
+    }
+
+    .unie-iv{
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size:16px;
+      line-height:1.5;
+      color:#1e1e2f;
+
+      max-width:1280px;
+      margin:0 auto;
+      padding:32px 24px;
+    }
+
+    .unie-iv *{
+      box-sizing:border-box;
+    }
+
+    .unie-iv__title{
+      position:relative;
+      display:inline-block;
+
+      margin-bottom:32px;
+
+      font-size:32px;
+      font-weight:700;
+      color:#0132AF;
+    }
+
+    .unie-iv__title::after{
+      content:'';
+
+      position:absolute;
+      left:0;
+      bottom:-10px;
+
+      width:60px;
+      height:4px;
+
+      border-radius:2px;
+
+      background:#EF1218;
+    }
+
+    .unie-iv__grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;margin:32px 0 24px;}
+
+    .unie-iv__card{
+      display:flex;
+      align-items:center;
+      gap:28px;
+
+      width:100%;
+
+      padding:24px 32px;
+
+      background:#fff;
+
+      border:1px solid #e8edf2;
+      border-radius:var(--radio-xl);
+
+      box-shadow:var(--sombra);
+    }
+
+    .unie-iv__logo{
+      flex-shrink:0;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      width:160px;
+      height:90px;
+
+      overflow:hidden;
+
+      background:#f0f3ff;
+
+      border:1px solid #e2e8f0;
+      border-radius:var(--radio-lg);
+    }
+
+    .unie-iv__logo img{
+      max-width:100%;
+      max-height:100%;
+
+      object-fit:contain;
+
+      padding:8px;
+    }
+
+    .unie-iv__info{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .unie-iv__info h3{
+      margin:0;
+
+      font-size:18px;
+      font-weight:600;
+      color:#0132AF;
+    }
+
+    .unie-iv__info a{
+      align-self:flex-start;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 18px;
+      border-radius:32px;
+      font-size:14px;
+      font-weight:500;
+      text-decoration:none;
+      color:#fff;
+      background:#EF1218;
+      transition:background var(--transicion);
+    }
+
+    .unie-iv__info a:hover{
+      background:#d61016;
+    }
+
+    .unie-iv__info a:focus{
+      outline:2px solid #0132AF;
+      outline-offset:2px;
+    }
+
+    @media (max-width:1000px){.unie-iv__grid{grid-template-columns:repeat(2, 1fr);}}
+
+    @media (max-width:640px){
+      .unie-iv__grid{grid-template-columns:1fr;}
+
+      .unie-iv{
+        padding:20px 16px;
+      }
+
+      .unie-iv__card{
+        flex-direction:column;
+        gap:16px;
+        padding:20px;
+        text-align:center;
+      }
+
+      .unie-iv__logo{
+        width:140px;
+        height:80px;
+      }
+
+      .unie-iv__info{
+        align-items:center;
+      }
+
+      .unie-iv__info a{
+        align-self:center;
+      }
+    }
+
+    @media (max-width:480px){
+
+      .unie-iv__logo{
+        width:120px;
+        height:70px;
+      }
+
+      .unie-iv__info h3{
+        font-size:16px;
+      }
+    }
+
+  </style>
+
+  <section>
+
+    <h2 class="unie-iv__title">
+      Noticias
+    </h2>
+
+    <div
+      class="unie-iv__grid"
+      role="list"
+      aria-label="Convocatorias de movilidad entrante"
+    >
+
+      <article
+        class="unie-iv__card"
+        role="listitem"
+      >
+
+        <div class="unie-iv__logo">
+          <img
+            src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/UANL-logo.webp"
+            alt="Logo UANL"
+            loading="lazy"
+            width="160"
+            height="90"
+          >
+        </div>
+
+        <div class="unie-iv__info">
+
+          <h3>UANL</h3>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conocer más <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: sub;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+
+      </article>
+
+      <article
+        class="unie-iv__card"
+        role="listitem"
+      >
+
+        <div class="unie-iv__logo">
+          <img
+            src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/UPE-logo.webp"
+            alt="Logo UPE"
+            loading="lazy"
+            width="160"
+            height="90"
+          >
+        </div>
+
+        <div class="unie-iv__info">
+
+          <h3>UPE</h3>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conocer más <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: sub;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+
+      </article>
+
+      <article
+        class="unie-iv__card"
+        role="listitem"
+      >
+
+        <div class="unie-iv__logo">
+          <img
+            src="https://uniempresarial.edu.co/wp-content/uploads/2026/05/DHBW-logo.webp"
+            alt="Logo DHBW"
+            loading="lazy"
+            width="160"
+            height="90"
+          >
+        </div>
+
+        <div class="unie-iv__info">
+
+          <h3>DHBW</h3>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conocer más <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: sub;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+

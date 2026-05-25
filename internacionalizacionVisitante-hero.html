@@ -1,0 +1,349 @@
+<div class="unie-iv">
+  <style>
+    :root{
+      --radio-lg:28px;
+      --radio-md:1.5rem;
+      --sombra:0 4px 12px rgba(0,0,0,.05);
+      --sombra-card:0 12px 20px rgba(0,0,0,.1);
+      --transicion:.3s ease;
+    }
+
+    .unie-iv{
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size:16px;
+      color:#1e1e2f;
+      line-height:1.5;
+      max-width:1280px;
+      margin:0 auto;
+      padding:32px 24px;
+    }
+
+    .unie-iv *{
+      box-sizing:border-box;
+    }
+
+    .unie-iv h1,
+    .unie-iv h2,
+    .unie-iv h3,
+    .unie-iv p{
+      margin-top:0;
+    }
+
+    .unie-iv p{
+      font-size:16px;
+    }
+
+    .unie-iv__title{
+      position:relative;
+      display:inline-block;
+      margin-bottom:32px;
+      font-size:32px;
+      font-weight:700;
+      color:#0132AF;
+    }
+
+    .unie-iv__title::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      width:60px;
+      height:4px;
+      border-radius:2px;
+      background:#EF1218;
+    }
+
+    .unie-iv__hero{
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:2rem;
+      padding:4rem 3rem;
+      border-radius:var(--radio-lg);
+      color:#fff;
+      background:linear-gradient(135deg, #0132AF 0%, rgba(1, 50, 175, 0.85) 100%);
+    }
+
+    .unie-iv__hero::before{
+      content:'';
+      position:absolute;
+      top:-120px;
+      right:-80px;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      background:rgba(255,255,255,.06);
+    }
+
+    .unie-iv__hero-title{
+      color:#fff !important;
+      font-size:clamp(2rem,5vw,3.2rem);
+      font-weight:700;
+    }
+
+    .unie-iv__hero-title::after{
+      background:#fff;
+    }
+
+    .unie-iv__hero-text{
+      max-width:650px;
+      margin-top:1.5rem;
+      font-size:1.1rem;
+      opacity:.95;
+    }
+
+    .unie-iv__buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      margin-top:2rem;
+    }
+
+    .unie-iv__btn{
+      padding:.9rem 1.4rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      transition:background var(--transicion), color var(--transicion);
+      border:none;
+      cursor:pointer;
+    }
+
+    .unie-iv__btn:focus{
+      outline:2px solid #fff;
+      outline-offset:2px;
+    }
+
+    .unie-iv__btn--primary{
+      background:#EF1218;
+      color:#fff;
+    }
+
+    .unie-iv__btn--primary:hover{
+      background:#d61016;
+    }
+
+    .unie-iv__btn--secondary{
+      border:1px solid rgba(255,255,255,.3);
+      color:#fff;
+      background:transparent;
+    }
+
+    .unie-iv__btn--secondary:hover{
+      background:rgba(255,255,255,.1);
+    }
+
+    .unie-iv__description{
+      margin-bottom:2rem;
+      padding:1.8rem;
+      background:#fff;
+      border-radius:1rem;
+      box-shadow:var(--sombra);
+    }
+
+    .unie-iv__dates{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:2rem;
+      margin:2rem 0;
+    }
+
+    .unie-iv__date-card{
+      flex:1;
+      min-width:200px;
+      padding:1.5rem;
+      border-radius:var(--radio-md);
+      text-align:center;
+      color:#fff;
+      background:linear-gradient(135deg, #0132AF 0%, rgba(1, 50, 175, 0.85) 100%);
+      box-shadow:var(--sombra-card);
+      transition:box-shadow var(--transicion);
+    }
+
+    .unie-iv__date-card:hover{
+      box-shadow:0 16px 32px rgba(0,0,0,.15);
+    }
+
+    .unie-iv__date-card h3{
+      display:inline-block;
+      margin-bottom:1rem;
+      padding-bottom:.3rem;
+      font-size:1.8rem;
+      color:#fff;
+      font-weight:700;
+      border-bottom:2px solid #EF1218;
+    }
+
+    .unie-iv__date-item{
+      margin:1rem 0;
+    }
+
+    .unie-iv__date-label{
+      display:block;
+      font-size:1rem;
+      font-weight:600;
+      opacity:.9;
+    }
+
+    .unie-iv__date-value{
+      display:inline-block;
+      margin-top:.3rem;
+      padding:.2rem 1rem;
+      border-radius:2rem;
+      font-size:1.4rem;
+      font-weight:700;
+      background:rgba(255,255,255,.2);
+    }
+
+    @media (max-width:768px){
+      .unie-iv__hero{
+        padding:3rem 2rem;
+      }
+
+      .unie-iv__hero-text{
+        font-size:1rem;
+      }
+
+      .unie-iv__date-card h3{
+        font-size:1.5rem;
+        font-weight:700;
+      }
+
+      .unie-iv__date-value{
+        font-size:1.2rem;
+      }
+
+      .unie-iv__description{
+        padding:1.5rem;
+      }
+    }
+
+    @media (max-width:480px){
+      .unie-iv{
+        padding:20px 16px;
+      }
+
+      .unie-iv__hero{
+        padding:2rem 1.5rem;
+        text-align:center;
+      }
+
+      .unie-iv__buttons{
+        justify-content:center;
+        flex-wrap:nowrap;
+        gap:.5rem;
+      }
+
+      .unie-iv__btn{
+        padding:.7rem 1rem;
+        font-size:.9rem;
+      }
+
+      .unie-iv__dates{
+        gap:1rem;
+      }
+
+      .unie-iv__date-card{
+        min-width:160px;
+        padding:1rem;
+      }
+
+      .unie-iv__date-card h3{
+        font-size:1.3rem;
+        font-weight:700;
+      }
+
+      .unie-iv__date-value{
+        font-size:1rem;
+      }
+
+      .unie-iv__description{
+        padding:1.2rem;
+      }
+
+      .unie-iv__description p{
+        font-size:.95rem;
+      }
+    }
+
+  </style>
+
+  <section class="unie-iv__hero">
+    <div>
+      <h1 class="unie-iv__title unie-iv__hero-title">
+        Estudiante visitante
+      </h1>
+      <p class="unie-iv__hero-text">
+        Vive una experiencia internacional orientada al mundo empresarial
+        en Bogotá, Colombia.
+      </p>
+      <div class="unie-iv__buttons">
+        <a href="#requisitos" class="unie-iv__btn unie-iv__btn--primary">
+          Ver requisitos
+        </a>
+        <a href="#testimonios" class="unie-iv__btn unie-iv__btn--secondary">
+          Ver testimonios
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="unie-iv__description">
+      <p>
+        Uniempresarial te invita a vivir una experiencia académica y cultural
+        en Bogotá, donde podrás formar parte de una institución líder a nivel
+        regional en educación dual.
+      </p>
+      <p>
+        Aquí vivirás una formación conectada con el sector real y tendrás la
+        oportunidad de realizar tu intercambio académico durante un semestre
+        o participar en una estancia de investigación.
+      </p>
+      <p>
+        Como estudiante visitante, tendrás la oportunidad de fortalecer tus
+        competencias académicas y profesionales en un entorno dinámico,
+        con una visión global y
+        <strong>orientada al mundo empresarial</strong>.
+      </p>
+      <p>
+        Para postularte, solo debes realizar el proceso a través de la
+        Oficina de Relaciones Internacionales (ORI) de tu universidad.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="unie-iv__title">
+      Fechas de aplicación
+    </h2>
+    <div class="unie-iv__dates">
+      <article class="unie-iv__date-card">
+        <h3>Primer semestre</h3>
+        <div class="unie-iv__date-item">
+          <span class="unie-iv__date-label">Nominación</span>
+          <span class="unie-iv__date-value">1 de octubre</span>
+        </div>
+        <div class="unie-iv__date-item">
+          <span class="unie-iv__date-label">Aplicación</span>
+          <span class="unie-iv__date-value">15 de octubre</span>
+        </div>
+      </article>
+      <article class="unie-iv__date-card">
+        <h3>Segundo semestre</h3>
+        <div class="unie-iv__date-item">
+          <span class="unie-iv__date-label">Nominación</span>
+          <span class="unie-iv__date-value">1 de abril</span>
+        </div>
+        <div class="unie-iv__date-item">
+          <span class="unie-iv__date-label">Aplicación</span>
+          <span class="unie-iv__date-value">15 de abril</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</div>

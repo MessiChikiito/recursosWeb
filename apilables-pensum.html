@@ -18,7 +18,7 @@
         }
 
         .pd-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto 20px;
             padding: 40px 20px;
             padding-bottom: 20px;
@@ -453,6 +453,16 @@
         .pd-materia-header.expanded .pd-materia-desc::after {
             transform: rotate(90deg);
         }
+        
+         .homologacion-banner {
+    background: #ffffff;
+    border-left: 4px solid #EF1218;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 30px 0 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
 
          .homologacion-banner {
     background: #ffffff;
@@ -510,7 +520,7 @@
         font-size: 14px;
     }
 }
-    </style>
+            </style>
 </head>
 <body>
     <div class="pd-container" id="pensum">
@@ -533,36 +543,34 @@
                 <div>
                     <div class="pd-total-carrera">
                         <div class="pd-total-carrera-label">Total</div>
-                        <div class="pd-total-carrera-value" id="creditosCarrera">48</div>
+                        <div class="pd-total-carrera-value" id="creditosCarrera">32</div>
                         <div class="pd-total-carrera-unit">horas en total</div>
                     </div>
                 </div>
+                
             </div>
-
-                <!-- HTML PARA OPIAR -->
-    <div style="width: 100%; max-width: 800px;">
-        <div class="homologacion-banner">
-            <div class="homologacion-content">
-                <svg class="homologacion-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <p class="homologacion-text">
-                    Al terminar este curso podrás homologar la materia <strong>"Nombre de la Materia"</strong> en la carrera de <strong>"Nombre de la Carrera"</strong>
-                </p>
-            </div>
-        </div>
+<!-- BANNER HOMOLOGACIÓN WP -->
+<div class="homologacion-banner">
+    <div class="homologacion-content">
+        <svg class="homologacion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <p class="homologacion-text">
+            Al terminar este curso podrás homologar la materia <strong>"Programación Web - FrontEnd</strong> en la carrera de <strong>"Ingeniería de Software".</strong>
+        </p>
     </div>
+</div>
         </div>
     </div>
 
     <script>
         const semestreData = {
             1: [
-                { nombre: `Liderazgo, Coaching y Gestión del Talento en Entornos Organizacionales "Equipos que Inspiran — Liderazgo, Coaching y Alto Desempeño"`, tipo: "nucleo", temas: "Liderazgo y desempeño directivo en las organizaciones.<br>Comportamiento humano, motivación y desempeño colectivo.<br>Coaching y desarrollo de habilidades relacionales en contextos organizacionales." }
+                { nombre: `Fundamentos de Desarrollo Web – Estructura y Estilos. JavaScript Moderno y Arquitectura Cliente–Servidor "Construcción Web Inteligente: De la Idea a la Página con HTML y CSS"`, tipo: "nucleo", temas: "Fundamentos del desarrollo frontend y lógica funcional.<br>Integración frontend–backend y fundamentos arquitectónicos" }
             ],
             2: [
-                { nombre: `Gestión Integral del Talento Humano y Cultura Organizacional "Liderazgo y Talento: Cómo Construir Equipos que Transforman Empresas"`, tipo: "nucleo", temas: "El mercado laboral y competencias.<br>Selección de personal.<br>Capacitación y bienestar.<br>Compensación y plan carrera.<br>Motivación y liderazgo.<br>Cultura organizacional" }
+                { nombre: `Interactividad y Diseño Web Moderno con JavaScript "Frontend Avanzado: JavaScript y Diseño Web Moderno"`, tipo: "nucleo", temas: "Frameworks frontend y arquitecturas modernas.<br>Arquitectura basada en componentes<br>Introducción a React: componentes, props y estado<br>Hooks básicos y ciclo de vida<br>Integración frontend–backend" }
             ]
         };
 

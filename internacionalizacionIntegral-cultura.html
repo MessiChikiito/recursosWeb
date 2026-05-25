@@ -1,0 +1,433 @@
+<style>
+.unie-cg *, .unie-cg *::before, .unie-cg *::after {
+    box-sizing: border-box;
+}
+
+.unie-cg {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 16px !important;
+    color: #1e1e2f !important;
+    line-height: 1.5 !important;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px !important;
+}
+
+.unie-cg h2,
+.unie-cg h3,
+.unie-cg p,
+.unie-cg a,
+.unie-cg strong {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    line-height: 1.5 !important;
+    margin-top: 0 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+}
+.unie-cg p {
+    font-size: 16px !important;
+}
+.unie-cg strong {
+    font-size: inherit !important;
+}
+
+.unie-cg__title {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    margin-bottom: 32px !important;
+    position: relative;
+    display: inline-block;
+    color: #0132AF !important;
+    padding: 0 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+.unie-cg__title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #EF1218;
+    border-radius: 2px;
+}
+
+.unie-cg__carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 24px 0 8px;
+    padding: 10px 16px;
+    border-radius: 16px;
+    outline: none;
+}
+.unie-cg__carousel-container:focus-visible {
+    box-shadow: 0 0 0 2px #0132AF;
+}
+.unie-cg__carousel-track {
+    display: flex;
+    will-change: transform;
+    transition: transform 0.4s ease-in-out;
+}
+.unie-cg__carousel-card {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 16px !important;
+    background: #fff !important;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+@media (min-width: 768px) {
+    .unie-cg__carousel-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+        padding: 24px !important;
+    }
+}
+.unie-cg__carousel-img-wrap {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    min-height: 200px;
+    overflow: hidden;
+    background: #f0f3ff;
+    border-radius: 12px;
+}
+.unie-cg__carousel-img-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.unie-cg__carousel-text {
+    flex: 1;
+    padding: 16px 0 !important;
+}
+.unie-cg__carousel-text h3 {
+    margin-bottom: 12px !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #0132AF !important;
+}
+.unie-cg__carousel-text p {
+    margin-bottom: 0 !important;
+    color: #334155 !important;
+}
+
+.unie-cg__carousel-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #0132AF;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transform: translateY(-50%);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.unie-cg__carousel-btn:hover {
+    color: #EF1218;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.unie-cg__carousel-btn:focus {
+    outline: 2px solid #0132AF;
+    outline-offset: 2px;
+}
+.unie-cg__btn-prev { left: 8px; }
+.unie-cg__btn-next { right: 8px; }
+
+.unie-cg__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+.unie-cg__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #cbd5e1;
+    transition: background 0.2s, transform 0.2s;
+}
+.unie-cg__dot.active {
+    background: #EF1218;
+    transform: scale(1.6);
+}
+
+@media (max-width: 640px) {
+    .unie-cg {
+        padding: 16px !important;
+    }
+    .unie-cg__title {
+        font-size: 26px !important;
+        font-weight: 700 !important;
+    }
+    .unie-cg__carousel-container {
+        padding: 10px 12px;
+    }
+    .unie-cg__carousel-card {
+        padding: 12px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+    .unie-cg__carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+    .unie-cg__carousel-text p {
+        font-size: 15px;
+    }
+    .unie-cg__carousel-img-wrap {
+        min-height: 180px;
+    }
+    .unie-cg__carousel-img-wrap img {
+        min-height: 180px;
+    }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOccupationalProgram",
+  "name": "Cultura Global – Uniempresarial",
+  "description": "Programa de Cultura Global de Uniempresarial: Días Internacionales con Embajadas, multilingüismo, cátedra de portugués e intercambio cultural con la comunidad académica.",
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": "Uniempresarial",
+    "url": "https://uniempresarial.edu.co"
+  },
+  "offers": [
+    {
+      "@type": "Offer", 
+      "name": "Días Internacionales",
+      "description": "Espacios de intercambio cultural y académico desarrollados en articulación con Embajadas y sus agencias en Colombia."
+    },
+    {
+      "@type": "Offer",
+      "name": "Multilingüismo y cátedra de portugués",
+      "description": "Acceso a materiales en otros idiomas, cátedra de portugués y sesiones en diferentes lenguas para fortalecer competencias interculturales."
+    }
+  ]
+}
+</script>
+
+<div class="unie-cg">
+    <section aria-labelledby="unie-titulo-cultura">
+
+        <h2 class="unie-cg__title" id="unie-titulo-cultura">Cultura Global</h2>
+        <div class="unie-cg__carousel-container" id="culturaContainer" tabindex="0" aria-label="Carrusel de cultura global" aria-roledescription="carrusel">
+            <div class="unie-cg__carousel-track" id="culturaTrack" aria-live="polite"></div>
+
+            <button class="unie-cg__carousel-btn unie-cg__btn-prev" aria-label="Anterior diapositiva">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <button class="unie-cg__carousel-btn unie-cg__btn-next" aria-label="Siguiente diapositiva">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <div class="unie-cg__dots" id="culturaDots" role="tablist" aria-label="Seleccionar diapositiva"></div>
+        </div>
+
+    </section>
+</div>
+
+<script>
+(() => {
+  const container = document.getElementById('culturaContainer');
+  const track = document.getElementById('culturaTrack');
+  const dotsContainer = document.getElementById('culturaDots');
+  if (!container || !track || !dotsContainer) return;
+
+  const slides = [
+    {
+      imgSrc: '',
+      alt: 'Comunidad de Uniempresarial celebrando los Días Internacionales en colaboración con Embajadas en Colombia',
+      titulo: 'Días Internacionales',
+      texto: 'Acercamos la cultura global a nuestra comunidad a través de los <strong>Días Internacionales</strong>, desarrollados en articulación con Embajadas y sus agencias en Colombia, generando espacios de intercambio cultural y académico.'
+    },
+    {
+      imgSrc: '',
+      alt: 'Estudiantes de Uniempresarial en clases de portugués y actividades de multilingüismo intercultural',
+      titulo: 'Multilingüismo y portugués',
+      texto: 'Promovemos el multilingüismo mediante el acceso a materiales de estudio en otros idiomas, la oferta de cátedras como <strong>portugués</strong> y la realización de sesiones en diferentes lenguas, fortaleciendo competencias interculturales.'
+    }
+  ];
+
+  const placeholderSVG = (w, h) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'%3E%3Crect width='100%25' height='100%25' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20' fill='%2394a3b8'%3E${w}×${h}%3C/text%3E%3C/svg%3E`;
+
+  const realCount = slides.length;
+  if (!realCount) return;
+
+  /* Clones para loop infinito */
+  const firstClone = { ...slides[0] };
+  const lastClone = { ...slides[realCount - 1] };
+  const allSlides = [lastClone, ...slides, firstClone];
+  const totalSlides = allSlides.length;
+
+  track.innerHTML = allSlides.map(s => `
+    <article class="unie-cg__carousel-card">
+      <div class="unie-cg__carousel-img-wrap">
+        <img src="${s.imgSrc || placeholderSVG(600,400)}" alt="${s.alt}" loading="lazy" width="600" height="400">
+      </div>
+      <div class="unie-cg__carousel-text">
+        <h3>${s.titulo}</h3>
+        <p>${s.texto}</p>
+      </div>
+    </article>
+  `).join('');
+
+  const cards = [...track.children];
+  let currentIndex = 1; // primer slide real
+  let isTransitioning = false;
+  let resizeTimer;
+  let autoplayInterval;
+  const autoplayDelay = 5000;
+
+  const prevBtn = container.querySelector('.unie-cg__btn-prev');
+  const nextBtn = container.querySelector('.unie-cg__btn-next');
+
+  /* Dots solo para los reales */
+  dotsContainer.innerHTML = '';
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.className = `unie-cg__dot${idx === 0 ? ' active' : ''}`;
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Ir a diapositiva ${idx + 1}`);
+    dot.setAttribute('aria-selected', idx === 0);
+    dot.addEventListener('click', () => {
+      goToRealIndex(idx);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const updateDots = (realIdx) => {
+    const dots = dotsContainer.querySelectorAll('.unie-cg__dot');
+    dots.forEach((dot, idx) => {
+      const active = idx === realIdx;
+      dot.classList.toggle('active', active);
+      dot.setAttribute('aria-selected', active);
+    });
+  };
+
+  const updateTransform = (instant = false) => {
+    track.style.transition = instant ? 'none' : 'transform 0.4s ease-in-out';
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  };
+
+  const getRealIndex = () => {
+    if (currentIndex === 0) return realCount - 1;
+    if (currentIndex === totalSlides - 1) return 0;
+    return currentIndex - 1;
+  };
+
+  const goToRealIndex = (realIdx) => {
+    currentIndex = realIdx + 1;
+    updateTransform();
+    updateDots(realIdx);
+  };
+
+  const nextSlide = () => {
+    if (isTransitioning) return;
+    currentIndex++;
+    updateTransform();
+    updateDots(getRealIndex());
+    isTransitioning = true;
+  };
+
+  const prevSlide = () => {
+    if (isTransitioning) return;
+    currentIndex--;
+    updateTransform();
+    updateDots(getRealIndex());
+    isTransitioning = true;
+  };
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    if (currentIndex === 0) {
+      currentIndex = realCount;
+      updateTransform(true);
+    } else if (currentIndex === totalSlides - 1) {
+      currentIndex = 1;
+      updateTransform(true);
+    }
+    updateDots(getRealIndex());
+  });
+
+  prevBtn?.addEventListener('click', () => { if (!isTransitioning) prevSlide(); });
+  nextBtn?.addEventListener('click', () => { if (!isTransitioning) nextSlide(); });
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      if (!isTransitioning && container.matches(':hover') === false && !container.contains(document.activeElement)) {
+        nextSlide();
+      }
+    }, autoplayDelay);
+  };
+  const stopAutoplay = () => clearInterval(autoplayInterval);
+
+  container.addEventListener('mouseenter', stopAutoplay);
+  container.addEventListener('focusin', stopAutoplay);
+  container.addEventListener('mouseleave', startAutoplay);
+  container.addEventListener('focusout', () => {
+    if (!container.contains(document.activeElement)) startAutoplay();
+  });
+
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (!isTransitioning) prevSlide();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (!isTransitioning) nextSlide();
+    }
+  });
+
+  let touchStartX = 0;
+  container.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+    stopAutoplay();
+  }, { passive: true });
+
+  container.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) { if (!isTransitioning) nextSlide(); }
+      else { if (!isTransitioning) prevSlide(); }
+    }
+    startAutoplay();
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => updateTransform(true), 150);
+  });
+
+  updateTransform(true);
+  updateDots(0);
+  startAutoplay();
+})();
+</script>

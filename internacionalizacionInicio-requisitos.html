@@ -136,6 +136,7 @@
             border-left: 3px solid #ff0008;
             border-radius: 16px;
             padding: 22px 20px;
+            padding-right: 10px;
             margin-top: 28px;
             position: relative;
         }
@@ -157,8 +158,7 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            flex: 1;
+            gap: 1px;
         }
         .steps-vertical .step-card {
             display: flex;
@@ -171,13 +171,13 @@
         }
 
         .step-number-badge {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 12px;
             background: #0132AF;
             color: #ffffff;
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -188,59 +188,47 @@
             font-weight: 700;
             color: #0d1b3e;
             margin-bottom: 3px;
-            font-size: 1rem;
+            font-size: 1.3rem;
         }
         .step-content p {
             color: #6b7280;
-            font-size: 0.88rem;
+            font-size: 1rem;
             line-height: 1.5;
         }
         .step-content p strong {
             color: #0132AF;
             font-weight: 600;
         }
-        .doc-link {
+
+        .arrow-down-section {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 32px;
-            padding: 14px 28px;
-            background: #0132AF;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            border-radius: 12px;
-            border: none;
-            outline: none;
-            width: 100%;
-            -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease !important;
-      }
-        .doc-link svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
+            gap: 12px;
+            margin-top: 20px;;
+        }
+        .arrow-down-section p {
+            font-size: 1rem;
+            color: #0132AF;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .arrow-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .arrow-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: #0132AF;
             fill: none;
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
+            animation: bounce 2s infinite;
         }
-        .doc-link:hover {
-            background: #0229a0;
-            color: #ffffff;
-        }
-        .doc-link:active:not(.active) {
-            background: #0132AF;
-            color: #ffffff;
-        }
-        .doc-link:focus {
-            outline: none !important;
-        }
-        .doc-link:focus-visible {
-            outline: none !important;
-        }
+
         @media (max-width: 860px) {
             .panel-grid {
                 grid-template-columns: 1fr;
@@ -271,9 +259,6 @@
                 font-weight: 900;
             }
             .destacado-title {
-                font-weight: 700;
-            }
-            .doc-link {
                 font-weight: 700;
             }
         }
@@ -318,10 +303,38 @@
                 padding: 16px 15px;
             }
             .destacado-title {
+                font-size: 0.8rem;
                 font-weight: 700;
             }
-            .doc-link {
-                font-weight: 700;
+            .arrow-down-section {
+                margin-top: 30px;
+            }
+            .arrow-down-section p {
+                font-size: 1rem;
+            }
+            .arrow-icon svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(8px);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -405,10 +418,13 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="doc-link">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                    Ver documentos requeridos
-                </a>
+                <div class="arrow-down-section">
+                                        <p>Lista de documentos necesarios</p>
+                    <div class="arrow-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="12 5 12 19"/><polyline points="5 12 12 19 19 12"/></svg>
+                    </div>
+
+                </div>
             </section>
 
         </div>

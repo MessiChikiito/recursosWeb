@@ -1,0 +1,1197 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ══════════════════════════════════════════
+           UNIEMPRESARIAL HEADER — prefijo ue-
+           Para usar en WP Code Snippets Header & Footer
+        ══════════════════════════════════════════ */
+        :root {
+            --ue-rojo: #C8102E;
+            --ue-rojo-oscuro: #9B0B22;
+            --ue-azul: #003DA5;
+            --ue-azul-oscuro: #002A75;
+            --ue-azul-medio: #1A57C8;
+            --ue-marino: #0D1B3E;
+            --ue-blanco: #FFFFFF;
+            --ue-gris-claro: #F4F6FA;
+            --ue-gris-borde: #E2E7F0;
+            --ue-texto: #1A2340;
+            --ue-texto-suave: #4A5878;
+            --ue-header-h: 72px;
+            --ue-font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* Reset solo para elementos dentro del header */
+        .ue-site-header *,
+        .ue-site-header *::before,
+        .ue-site-header *::after,
+        .ue-drawer *,
+        .ue-drawer *::before,
+        .ue-drawer *::after {
+            box-sizing: border-box;
+        }
+
+        .ue-site-header a,
+        .ue-drawer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .ue-site-header ul,
+        .ue-drawer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Compensar altura del header fijo en el body de WordPress */
+        body.ue-header-offset {
+            padding-top: var(--ue-header-h) !important;
+        }
+
+        /* ══════════════════════════════════════════
+           HEADER WRAPPER
+        ══════════════════════════════════════════ */
+        .ue-site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--ue-header-h);
+            z-index: 99999;
+            background: var(--ue-blanco);
+            border-bottom: 1px solid var(--ue-gris-borde);
+            transition: box-shadow .3s;
+            font-family: var(--ue-font);
+        }
+
+        .ue-site-header.ue-scrolled {
+            box-shadow: 0 2px 24px rgba(0,0,0,.10);
+        }
+
+        .ue-site-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ue-rojo) 0%, var(--ue-azul) 55%, var(--ue-azul-medio) 100%);
+        }
+
+        .ue-header-inner {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 clamp(12px, 2vw, 32px);
+            height: 100%;
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto auto;
+            align-items: center;
+            gap: clamp(8px, 1vw, 24px);
+        }
+
+        /* ── Logo ── */
+        .ue-header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .ue-header-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+
+        /* ── Nav desktop ── */
+        .ue-header-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: nowrap;
+        }
+
+        .ue-nav-item {
+            position: relative;
+        }
+
+        .ue-nav-item > a,
+        .ue-nav-item > button {
+            font-family: var(--ue-font);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: var(--ue-texto);
+            padding: 8px 11px;
+            border-radius: 6px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+            transition: color .2s, background .2s;
+            line-height: 1.1;
+            margin: 0;
+        }
+
+        .ue-nav-item > a:hover,
+        .ue-nav-item > button:hover {
+            color: var(--ue-azul);
+            background: rgba(0,61,165,.06);
+        }
+
+        .ue-nav-item.ue-active > a,
+        .ue-nav-item.ue-active > button {
+            color: var(--ue-azul);
+        }
+
+        .ue-nav-arrow {
+            width: 11px;
+            height: 11px;
+            transition: transform .25s;
+            flex-shrink: 0;
+            color: var(--ue-texto-suave);
+        }
+
+        .ue-nav-item.ue-open .ue-nav-arrow {
+            transform: rotate(180deg);
+        }
+
+        .ue-nav-item > a::after,
+        .ue-nav-item > button::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 60%;
+            height: 2px;
+            background: var(--ue-rojo);
+            border-radius: 2px;
+            transition: transform .22s;
+        }
+
+        .ue-nav-item > a:hover::after,
+        .ue-nav-item > button:hover::after,
+        .ue-nav-item.ue-open > button::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* Dropdown */
+        .ue-nav-dropdown {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-2px);
+            background: var(--ue-blanco);
+            border: 1px solid var(--ue-gris-borde);
+            border-radius: 10px;
+            padding: 8px 0;
+            min-width: 210px;
+            box-shadow: 0 12px 24px rgba(0,0,0,.08);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s, transform .2s;
+            z-index: 10;
+        }
+
+        .ue-nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: transparent;
+        }
+
+        .ue-nav-item.ue-open .ue-nav-dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .ue-dropdown-item {
+            position: relative;
+        }
+
+        .ue-dropdown-parent {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 16px;
+            font-size: .83rem;
+            font-family: var(--ue-font);
+            font-weight: 600;
+            color: var(--ue-texto-suave);
+            transition: color .18s, background .18s;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .ue-dropdown-parent::after {
+            content: '›';
+            font-size: 1rem;
+            line-height: 1;
+            margin-left: 6px;
+            color: var(--ue-gris-borde);
+        }
+
+        .ue-dropdown-parent:hover {
+            color: var(--ue-azul);
+            background: var(--ue-gris-claro);
+        }
+
+        .ue-submenu {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            margin-left: 4px;
+            background: var(--ue-blanco);
+            border: 1px solid var(--ue-gris-borde);
+            border-radius: 8px;
+            padding: 8px 0;
+            min-width: 200px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .18s, transform .18s;
+            transform: translateX(0);
+            z-index: 20;
+            box-shadow: 0 6px 16px rgba(0,0,0,.08);
+        }
+
+        .ue-submenu::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 12px;
+            height: 100%;
+            background: transparent;
+        }
+
+        .ue-dropdown-item:hover .ue-submenu {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .ue-submenu a {
+            display: block;
+            padding: 8px 16px;
+            font-size: .82rem;
+            font-family: var(--ue-font);
+            color: var(--ue-texto-suave);
+            transition: color .18s, background .18s;
+        }
+
+        .ue-submenu a:hover {
+            color: var(--ue-azul);
+            background: var(--ue-gris-claro);
+        }
+
+        .ue-nav-dropdown > a {
+            display: block;
+            padding: 9px 16px;
+            font-size: .83rem;
+            font-family: var(--ue-font);
+            font-weight: 600;
+            color: var(--ue-texto-suave);
+            transition: color .18s, background .18s;
+        }
+
+        .ue-nav-dropdown > a:hover {
+            color: var(--ue-azul);
+            background: var(--ue-gris-claro);
+        }
+
+        .ue-nav-dropdown-sep {
+            height: 1px;
+            background: var(--ue-gris-borde);
+            margin: 6px 0;
+        }
+
+        /* Campus Virtual — botón rojo */
+        .ue-nav-item.ue-campus-red > a {
+            color: var(--ue-blanco) !important;
+            font-weight: 700;
+            background: var(--ue-rojo);
+            border-radius: 24px;
+            padding: 8px 16px;
+            transition: background .2s, box-shadow .2s, transform .15s;
+            border: 2px solid var(--ue-rojo);
+        }
+
+        .ue-nav-item.ue-campus-red > a:hover {
+            background: var(--ue-rojo-oscuro);
+            border-color: var(--ue-rojo-oscuro);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(200,16,46,.25);
+        }
+
+        .ue-nav-item.ue-campus-red > a::after {
+            display: none;
+        }
+
+        /* Redes sociales desktop */
+        .ue-header-social {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ue-header-social a {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ue-texto-suave);
+            border: 1px solid var(--ue-gris-borde);
+            transition: color .2s, background .2s, border-color .2s, transform .18s;
+        }
+
+        .ue-header-social a:hover {
+            color: var(--ue-azul);
+            background: var(--ue-gris-claro);
+            border-color: var(--ue-azul);
+            transform: translateY(-1px);
+        }
+
+        .ue-header-social svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        /* Hamburguesa */
+        .ue-btn-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            width: 38px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            background: var(--ue-gris-claro);
+            border: 1px solid var(--ue-gris-borde);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .ue-btn-hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--ue-texto);
+            border-radius: 2px;
+            transition: transform .3s, opacity .3s, width .3s;
+            transform-origin: center;
+        }
+
+        .ue-btn-hamburger.ue-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .ue-btn-hamburger.ue-open span:nth-child(2) { opacity: 0; width: 0; }
+        .ue-btn-hamburger.ue-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ══════════════════════════════════════════
+           RESPONSIVE DESKTOP INTERMEDIO
+        ══════════════════════════════════════════ */
+        @media (max-width: 1450px) {
+            .ue-header-inner { padding: 0 20px; gap: 16px; }
+        }
+
+        @media (max-width: 1380px) {
+            .ue-header-inner { padding: 0 16px; gap: 12px; }
+            .ue-nav-item > a,
+            .ue-nav-item > button { font-size: .67rem; padding: 8px 8px; letter-spacing: .03em; }
+            .ue-nav-item.ue-campus-red > a { padding: 7px 12px; }
+        }
+
+        @media (max-width: 1280px) {
+            .ue-header-inner { padding: 0 12px; gap: 8px; grid-template-columns: auto 1fr auto; }
+            .ue-nav-item > a,
+            .ue-nav-item > button { font-size: .62rem; padding: 8px 6px; letter-spacing: .02em; gap: 2px; }
+            .ue-nav-arrow { width: 9px; height: 9px; }
+            .ue-header-social { display: none; }
+            .ue-nav-item.ue-campus-red > a { padding: 7px 10px; }
+            .ue-header-logo img { height: 38px; }
+        }
+
+        /* ══════════════════════════════════════════
+           MÓVIL: hamburguesa
+        ══════════════════════════════════════════ */
+        @media (max-width: 1220px) {
+            .ue-header-nav,
+            .ue-header-social { display: none; }
+            .ue-btn-hamburger { display: flex; }
+            .ue-header-inner { grid-template-columns: 1fr auto; padding: 0 16px; gap: 12px; }
+            .ue-header-logo img { height: 44px; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --ue-header-h: 68px; }
+            .ue-header-inner { padding: 0 14px; }
+            .ue-header-logo img { height: 38px; }
+        }
+
+        @media (max-width: 480px) {
+            :root { --ue-header-h: 64px; }
+            .ue-header-inner { padding: 0 12px; }
+            .ue-header-logo img { height: 34px; }
+            .ue-btn-hamburger { width: 36px; height: 36px; }
+        }
+
+        /* ══════════════════════════════════════════
+           DRAWER MÓVIL — fondo oscuro marino, texto blanco
+        ══════════════════════════════════════════ */
+        .ue-drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.55);
+            z-index: 100000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s;
+        }
+
+        .ue-drawer-overlay.ue-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .ue-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(320px, 92vw);
+            height: 100%;
+            /* Fondo oscuro para evitar el problema de "todo blanco" */
+            background: var(--ue-marino);
+            z-index: 100001;
+            transform: translateX(100%);
+            transition: transform .32s cubic-bezier(.4,0,.2,1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .ue-drawer.ue-open {
+            transform: translateX(0);
+        }
+
+        .ue-drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            flex-shrink: 0;
+            background: var(--ue-marino);
+        }
+
+        .ue-drawer-header img {
+            height: 36px;
+            width: auto;
+            /* Logo oscuro → aplicar filtro para invertir si el logo es oscuro */
+            filter: brightness(0) invert(1);
+        }
+
+        .ue-btn-close {
+            width: 34px;
+            height: 34px;
+            border-radius: 7px;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.15);
+            color: var(--ue-blanco);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 0;
+        }
+
+        .ue-btn-close svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .ue-drawer-body {
+            flex: 1;
+            padding: 8px 0 16px;
+            /* Evita el scroll interno que empuja contenido */
+            overflow-y: auto;
+        }
+
+        .ue-drawer-section-title {
+            font-family: var(--ue-font);
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.35);
+            padding: 14px 20px 6px;
+        }
+
+        .ue-drawer-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            font-family: var(--ue-font);
+            font-size: .88rem;
+            font-weight: 600;
+            color: rgba(255,255,255,.88);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            transition: color .18s, background .18s;
+            letter-spacing: .01em;
+        }
+
+        .ue-drawer-link:hover,
+        .ue-drawer-link.ue-active {
+            color: var(--ue-blanco);
+            background: rgba(255,255,255,.06);
+        }
+
+        .ue-drawer-link svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            color: rgba(255,255,255,.4);
+            transition: transform .25s;
+        }
+
+        .ue-drawer-link.ue-open svg {
+            transform: rotate(90deg);
+        }
+
+        /* Submenú primer nivel */
+        .ue-drawer-sub {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease;
+            background: rgba(0,0,0,.25);
+        }
+
+        .ue-drawer-sub.ue-open {
+            max-height: 600px;
+        }
+
+        .ue-drawer-sub a {
+            display: block;
+            padding: 10px 20px 10px 36px;
+            font-size: .84rem;
+            font-family: var(--ue-font);
+            color: rgba(255,255,255,.70);
+            transition: color .18s, background .18s;
+        }
+
+        .ue-drawer-sub a:hover {
+            color: var(--ue-blanco);
+            background: rgba(255,255,255,.06);
+        }
+
+        /* Submenú segundo nivel */
+        .ue-drawer-sub-item {
+            padding: 0 !important;
+        }
+
+        .ue-drawer-sub-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 10px 20px 10px 36px;
+            font-size: .84rem;
+            font-family: var(--ue-font);
+            color: rgba(255,255,255,.70);
+            text-align: left;
+            cursor: pointer;
+            transition: color .18s;
+        }
+
+        .ue-drawer-sub-toggle::after {
+            content: '+';
+            font-size: .9rem;
+            color: rgba(255,255,255,.35);
+            margin-left: 6px;
+            flex-shrink: 0;
+        }
+
+        .ue-drawer-sub-toggle.ue-open::after {
+            content: '−';
+        }
+
+        .ue-drawer-sub-toggle:hover {
+            color: var(--ue-blanco);
+        }
+
+        .ue-drawer-sub-sub {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease;
+        }
+
+        .ue-drawer-sub-sub.ue-open {
+            max-height: 400px;
+        }
+
+        .ue-drawer-sub-sub a {
+            padding: 8px 20px 8px 52px;
+            font-size: .80rem;
+            color: rgba(255,255,255,.55);
+        }
+
+        .ue-drawer-sub-sub a:hover {
+            color: var(--ue-blanco);
+        }
+
+        /* Campus Virtual en drawer */
+        .ue-drawer-link.ue-campus-red {
+            color: #ff6b7a !important;
+            font-weight: 700;
+        }
+
+        .ue-drawer-link.ue-campus-red:hover {
+            background: rgba(200,16,46,.15) !important;
+            color: var(--ue-blanco) !important;
+        }
+
+        /* Divider */
+        .ue-drawer-divider {
+            height: 1px;
+            background: rgba(255,255,255,.10);
+            margin: 8px 20px;
+        }
+
+        /* Redes sociales en drawer */
+        .ue-drawer-social {
+            padding: 16px 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            border-top: 1px solid rgba(255,255,255,.10);
+            flex-shrink: 0;
+        }
+
+        .ue-drawer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            color: rgba(255,255,255,.70);
+            transition: background .2s, color .2s, border-color .2s;
+        }
+
+        .ue-drawer-social a:hover {
+            background: var(--ue-azul);
+            border-color: var(--ue-azul);
+            color: var(--ue-blanco);
+        }
+
+        .ue-drawer-social svg {
+            width: 17px;
+            height: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="ue-site-header" id="ueSiteHeader">
+        <div class="ue-header-inner">
+
+            <!-- LOGO -->
+            <a href="https://uniempresarial.edu.co/" class="ue-header-logo">
+                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124-1.png"
+                    alt="Uniempresarial" />
+            </a>
+
+            <!-- NAV DESKTOP -->
+            <nav class="ue-header-nav" aria-label="Navegación principal">
+
+                <!-- Institución -->
+                <div class="ue-nav-item" id="ueNavInstitucion">
+                    <button aria-haspopup="true" aria-expanded="false">
+                        Institución
+                        <svg class="ue-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="ue-nav-dropdown" role="menu">
+                        <a href="https://uniempresarial.edu.co/sobre-nosotros/">Sobre nosotros</a>
+                        <a href="https://uniempresarial.edu.co/regimen-tributario-especial/">Régimen tributario especial</a>
+                        <a href="https://uniempresarial.edu.co/invitacion-publica/">Invitación pública</a>
+                        <a href="https://uniempresarial.edu.co/secretaria-general/">Secretaría general</a>
+                        <a href="https://uniempresarial.edu.co/observatorio-empresarial-info/">Observatorio empresarial</a>
+                    </div>
+                </div>
+
+                <!-- Programas -->
+                <div class="ue-nav-item" id="ueNavProgramas">
+                    <button aria-haspopup="true" aria-expanded="false">
+                        Programas
+                        <svg class="ue-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="ue-nav-dropdown">
+                        <div class="ue-dropdown-item">
+                            <a href="https://uniempresarial.edu.co/pregrados-presenciales/">
+                                <span class="ue-dropdown-parent">Pregrados Presenciales</span></a>
+                            <div class="ue-submenu">
+                                <a href="https://uniempresarial.edu.co/ingenieria-de-software/">Ingeniería de software</a>
+                                <a href="https://uniempresarial.edu.co/administracion-de-empresas/">Administración de empresas</a>
+                                <a href="https://uniempresarial.edu.co/marketing/">Marketing</a>
+                                <a href="https://uniempresarial.edu.co/negocios-internacionales/">Negocios internacionales</a>
+                                <a href="https://uniempresarial.edu.co/finanzas-y-comercio-exterior/">Finanzas y comercio exterior</a>
+                                <a href="https://uniempresarial.edu.co/ingenieria-industrial/">Ingeniería industrial</a>
+                            </div>
+                        </div>
+                        <div class="ue-dropdown-item">
+                            <a href="https://uniempresarial.edu.co/pregrados-virtuales/">
+                                <span class="ue-dropdown-parent">Pregrados Virtuales</span></a>
+                            <div class="ue-submenu">
+                                <a href="https://uniempresarial.edu.co/ingenieria-de-software-virtual/">Ingeniería de software</a>
+                                <a href="https://uniempresarial.edu.co/administracion-de-empresas-virtual/">Administración de empresas</a>
+                                <a href="https://uniempresarial.edu.co/marketing-virtual/">Marketing</a>
+                                <a href="https://uniempresarial.edu.co/ingenieria-industrial-virtual/">Ingeniería industrial</a>
+                            </div>
+                        </div>
+                        <div class="ue-dropdown-item">
+                            <a href="https://uniempresarial.edu.co/posgrados/">
+                                <span class="ue-dropdown-parent">Posgrado</span></a>
+                            <div class="ue-submenu">
+                                <a href="https://uniempresarial.edu.co/analitica-de-datos-para-la-gerencia-de-organizaciones-inteligentes/">Especialización en Analítica de datos</a>
+                                <a href="https://uniempresarial.edu.co/direccion-de-industrias-creativas/">Especialización en Dirección de Industrias Creativas</a>
+                                <a href="https://uniempresarial.edu.co/gerencia-y-arquitectura-empresarial-de-sistemas-de-ti/">Especialización en Gerencia y Arquitectura de TI</a>
+                                <a href="https://uniempresarial.edu.co/gerencia-y-proteccion-de-sistemas-de-informacion-empresarial/">Especialización en Gerencia y Protección de Sistemas</a>
+                            </div>
+                        </div>
+                        <div class="ue-dropdown-item">
+                            <a href="https://uniempresarial.edu.co/tecnologias/">
+                                <span class="ue-dropdown-parent">Tecnología</span></a>
+                            <div class="ue-submenu">
+                                <a href="https://uniempresarial.edu.co/gestion-del-talento-humano/">Gestión del talento humano</a>
+                                <a href="https://uniempresarial.edu.co/gestion-de-la-produccion-industrial/">Gestión en la producción industrial</a>
+                                <a href="https://uniempresarial.edu.co/gestion-comercial/">Gestión comercial</a>
+                            </div>
+                        </div>
+                        <div class="ue-nav-dropdown-sep"></div>
+                        <div class="ue-dropdown-item">
+                            <span class="ue-dropdown-parent">Educación Continua</span>
+                            <div class="ue-submenu">
+                                <a href="https://uniempresarial.edu.co/diplomado-en-creacion-y-optimizacion-de-prompts-para-ia/">Diplomado Creación y optimización de prompts para IA</a>
+                                <a href="https://uniempresarial.edu.co/diplomado-en-estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico/">Diplomado Estrategias para el éxito empresarial</a>
+                                <a href="https://uniempresarial.edu.co/diplomado-en-impulsa-tu-negocio-360-negocios-escalables-y-sostenibles/">Diplomado Impulsa tu negocio 360</a>
+                                <a href="https://uniempresarial.edu.co/diplomado-en-inteligencia-artificial-aplicada-al-marketing/">Diplomado IA aplicada al Marketing</a>
+                                <a href="https://uniempresarial.edu.co/diplomado-en-insolvencia-e-intervencion/">Diplomado Insolvencia e Intervención</a>
+                                <a href="https://uniempresarial.edu.co/diplomado-en-proteccion-de-datos-personales-en-entornos-digitales-empresariales/">Diplomado Protección de Datos Personales</a>
+                            </div>
+                        </div>
+                        <div class="ue-dropdown-item">
+                            <a href="https://uniempresarial.edu.co/cursos-homologables/">
+                                <span class="ue-dropdown-parent">Cursos Homologables</span></a>
+                            <div class="ue-submenu">
+                                <a href="https://uniempresarial.edu.co/curso-en-diseno-de-negocios-futuros/">Curso en Diseño de Negocios Futuros</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-herramientas-de-diagnostico-para-la-competitividad-empresarial/">Curso en Herramientas de Diagnóstico</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-creacion-formalizacion-y-tributacion-de-empresas-en-colombia/">Curso Creación y Formalización de Empresas</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-cultura-organizacional-y-empresas-con-proposito/">Curso Cultura Organizacional</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-liderazgo-y-coaching-para-el-desarrollo-del-talento-4-0/">Curso Liderazgo y Coaching</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-pensamiento-computacional-y-programacion-eficiente/">Curso Pensamiento Computacional</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-programacion-y-estructuras-de-datos-java-y-python/">Curso Programación Java y Python</a>
+                                <a href="https://uniempresarial.edu.co/curso-en-ecosistemas-digitales-y-ciberseguridad-empresarial/">Curso Ciberseguridad Empresarial</a>
+                                <a href="https://uniempresarial.edu.co/curso-frontend-master-diseno-e-interactividad-web-profesional/">Curso Frontend Master</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investigación -->
+                <div class="ue-nav-item" id="ueNavInvestigacion">
+                    <button aria-haspopup="true" aria-expanded="false">
+                        Investigación
+                        <svg class="ue-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="ue-nav-dropdown" role="menu">
+                        <div class="ue-dropdown-item">
+                            <span class="ue-dropdown-parent">Biblioteca</span>
+                            <div class="ue-submenu">
+                                <a href="https://login.intelproxy.com/v2/inicio?cuenta=hKppPLXejG2C4JkM&url=">Base de datos</a>
+                                <a href="https://biblioteca.uniempresarial.edu.co/cgi-bin/koha/opac-main.pl">Colecciones física</a>
+                                <a href="https://bibliotecadigital.ccb.org.co/communities/61cb3250-7a4f-4f87-8642-fa5805134131">Biblioteca digital</a>
+                            </div>
+                        </div>
+                        <a href="https://fabricasoluciones.uniempresarial.edu.co/">Fábrica de Soluciones</a>
+                        <a href="https://uniempresarial.edu.co/convenios-uniempresarial/">Convenios</a>
+                    </div>
+                </div>
+
+                <!-- Comunidad -->
+                <div class="ue-nav-item" id="ueNavComunidad">
+                    <button aria-haspopup="true" aria-expanded="false">
+                        Comunidad
+                        <svg class="ue-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="ue-nav-dropdown" role="menu">
+                        <a href="https://uniempresarial.edu.co/estudiantes/">Estudiantes</a>
+                        <a href="https://uniempresarial.edu.co/egresados/">Graduados</a>
+                        <a href="https://certificaciones.uniempresarial.edu.co:4437/">Colaboradores</a>
+                    </div>
+                </div>
+
+                <!-- Financiación -->
+                <div class="ue-nav-item">
+                    <a href="https://uniempresarial.edu.co/financiacion/">Financiación</a>
+                </div>
+
+                <!-- Pagos -->
+                <div class="ue-nav-item" id="ueNavPagos">
+                    <button aria-haspopup="true" aria-expanded="false">
+                        Pagos
+                        <svg class="ue-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="ue-nav-dropdown" role="menu">
+                        <a href="https://www.abcpagos.com/uniempresarial/donaciones">Recaudo Uniempresarial</a>
+                        <a href="https://www.abcpagos.com/uniempresarial/estudiantes">Pago Matrícula</a>
+                        <a href="https://www.abcpagos.com/uniempresarial/otros">Pagos pecuniarios</a>
+                    </div>
+                </div>
+
+                <!-- Soporte -->
+                <div class="ue-nav-item" id="ueNavSoporte">
+                    <button aria-haspopup="true" aria-expanded="false">
+                        Soporte
+                        <svg class="ue-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="ue-nav-dropdown" role="menu">
+                        <a href="https://helpdesk.uniempresarial.edu.co:4432/">GLPI IT</a>
+                        <a href="https://helpdesk.uniempresarial.edu.co:4432/marketplace/formcreator/front/formdisplay.php?id=1">GLPI PQRSF</a>
+                    </div>
+                </div>
+
+                <!-- Campus Virtual -->
+                <div class="ue-nav-item ue-campus-red">
+                    <a href="https://uniempresarial.edu.co/campus-virtual-inicio/">Campus Virtual</a>
+                </div>
+
+            </nav>
+
+            <!-- REDES SOCIALES DESKTOP -->
+            <div class="ue-header-social" aria-label="Redes sociales">
+                <a href="https://www.facebook.com/uniempresarial/" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/uniempresarial/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/channel/UC7Gal38pmeQ2QxrH0VJwOzg" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
+                <a href="https://x.com/uempresarial" target="_blank" rel="noopener" aria-label="X">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- HAMBURGUESA -->
+            <button class="ue-btn-hamburger" id="ueBtnHamburger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- DRAWER MÓVIL -->
+    <div class="ue-drawer-overlay" id="ueDrawerOverlay"></div>
+    <div class="ue-drawer" id="ueDrawer" role="dialog" aria-label="Menú de navegación" aria-modal="true">
+
+        <div class="ue-drawer-header">
+            <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/UE_Lg-con-filial-CCb-y-vigiilada-Mineducacion-768x124-1.png"
+                alt="Uniempresarial" />
+            <button class="ue-btn-close" id="ueBtnClose" aria-label="Cerrar menú">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="ue-drawer-body">
+            <p class="ue-drawer-section-title">Navegación</p>
+
+            <!-- Institución -->
+            <button class="ue-drawer-link" data-ue-sub="ueSubInstitucion">
+                Institución
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+            <div class="ue-drawer-sub" id="ueSubInstitucion">
+                <a href="https://uniempresarial.edu.co/sobre-nosotros/">Sobre nosotros</a>
+                <a href="https://uniempresarial.edu.co/regimen-tributario-especial/">Régimen tributario especial</a>
+                <a href="https://uniempresarial.edu.co/invitacion-publica/">Invitación pública</a>
+                <a href="https://uniempresarial.edu.co/secretaria-general/">Secretaría general</a>
+                <a href="https://uniempresarial.edu.co/observatorio-empresarial-info/">Observatorio empresarial</a>
+            </div>
+
+            <!-- Programas -->
+            <button class="ue-drawer-link" data-ue-sub="ueSubProgramas">
+                Programas
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+            <div class="ue-drawer-sub" id="ueSubProgramas">
+                <a href="https://uniempresarial.edu.co/pregrados-presenciales/">Pregrados Presenciales</a>
+                <a href="https://uniempresarial.edu.co/pregrados-virtuales/">Pregrados Virtuales</a>
+                <a href="https://uniempresarial.edu.co/posgrados/">Posgrado</a>
+                <a href="https://uniempresarial.edu.co/tecnologias/">Tecnología</a>
+                <div class="ue-drawer-sub-item">
+                    <button class="ue-drawer-sub-toggle" data-ue-subsub="ueSubEducacion">Educación Continua</button>
+                    <div class="ue-drawer-sub-sub" id="ueSubEducacion">
+                        <a href="https://uniempresarial.edu.co/diplomado-en-creacion-y-optimizacion-de-prompts-para-ia/">Diplomado Prompts para IA</a>
+                        <a href="https://uniempresarial.edu.co/diplomado-en-estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico/">Diplomado Éxito Empresarial</a>
+                        <a href="https://uniempresarial.edu.co/diplomado-en-impulsa-tu-negocio-360-negocios-escalables-y-sostenibles/">Diplomado Impulsa tu Negocio 360</a>
+                        <a href="https://uniempresarial.edu.co/diplomado-en-inteligencia-artificial-aplicada-al-marketing/">Diplomado IA en Marketing</a>
+                        <a href="https://uniempresarial.edu.co/diplomado-en-insolvencia-e-intervencion/">Diplomado Insolvencia e Intervención</a>
+                        <a href="https://uniempresarial.edu.co/diplomado-en-proteccion-de-datos-personales-en-entornos-digitales-empresariales/">Diplomado Protección de Datos</a>
+                    </div>
+                </div>
+                <a href="https://uniempresarial.edu.co/cursos-homologables/">Cursos Homologables</a>
+            </div>
+
+            <!-- Investigación -->
+            <button class="ue-drawer-link" data-ue-sub="ueSubInvestigacion">
+                Investigación
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+            <div class="ue-drawer-sub" id="ueSubInvestigacion">
+                <div class="ue-drawer-sub-item">
+                    <button class="ue-drawer-sub-toggle" data-ue-subsub="ueSubBiblioteca">Biblioteca</button>
+                    <div class="ue-drawer-sub-sub" id="ueSubBiblioteca">
+                        <a href="https://login.intelproxy.com/v2/inicio?cuenta=hKppPLXejG2C4JkM&url=">Base de datos</a>
+                        <a href="https://biblioteca.uniempresarial.edu.co/cgi-bin/koha/opac-main.pl">Colecciones física</a>
+                        <a href="https://bibliotecadigital.ccb.org.co/communities/61cb3250-7a4f-4f87-8642-fa5805134131">Biblioteca digital</a>
+                    </div>
+                </div>
+                <a href="https://fabricasoluciones.uniempresarial.edu.co/">Fábrica de Soluciones</a>
+                <a href="https://uniempresarial.edu.co/convenios-uniempresarial/">Convenios</a>
+            </div>
+
+            <!-- Comunidad -->
+            <button class="ue-drawer-link" data-ue-sub="ueSubComunidad">
+                Comunidad
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+            <div class="ue-drawer-sub" id="ueSubComunidad">
+                <a href="https://uniempresarial.edu.co/estudiantes/">Estudiantes</a>
+                <a href="https://uniempresarial.edu.co/egresados/">Graduados</a>
+                <a href="https://certificaciones.uniempresarial.edu.co:4437/">Colaboradores</a>
+            </div>
+
+            <!-- Financiación -->
+            <a href="https://uniempresarial.edu.co/financiacion/" class="ue-drawer-link">Financiación</a>
+
+            <!-- Pagos -->
+            <button class="ue-drawer-link" data-ue-sub="ueSubPagos">
+                Pagos
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+            <div class="ue-drawer-sub" id="ueSubPagos">
+                <a href="https://www.abcpagos.com/uniempresarial/donaciones">Recaudo Uniempresarial</a>
+                <a href="https://www.abcpagos.com/uniempresarial/estudiantes">Pago Matrícula</a>
+                <a href="https://www.abcpagos.com/uniempresarial/otros">Pagos pecuniarios</a>
+            </div>
+
+            <!-- Soporte -->
+            <button class="ue-drawer-link" data-ue-sub="ueSubSoporte">
+                Soporte
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+            <div class="ue-drawer-sub" id="ueSubSoporte">
+                <a href="https://helpdesk.uniempresarial.edu.co:4432/">GLPI IT</a>
+                <a href="https://helpdesk.uniempresarial.edu.co:4432/marketplace/formcreator/front/formdisplay.php?id=1">GLPI PQRSF</a>
+            </div>
+
+            <!-- Campus Virtual -->
+            <a href="https://uniempresarial.edu.co/campus-virtual-inicio/" class="ue-drawer-link ue-campus-red">Campus Virtual</a>
+
+            <div class="ue-drawer-divider"></div>
+        </div>
+
+        <div class="ue-drawer-social">
+            <a href="https://www.facebook.com/uniempresarial/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/uniempresarial/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UC7Gal38pmeQ2QxrH0VJwOzg" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none" />
+                </svg>
+            </a>
+            <a href="https://x.com/uempresarial" target="_blank" rel="noopener" aria-label="X">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* ── Shadow al hacer scroll ── */
+        const header = document.getElementById('ueSiteHeader');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                header.classList.toggle('ue-scrolled', window.scrollY > 10);
+            }, { passive: true });
+        }
+
+        /* ── Desktop: dropdowns por click ── */
+        document.querySelectorAll('.ue-nav-item > button').forEach(function(btn) {
+            var item = btn.closest('.ue-nav-item');
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var isOpen = item.classList.contains('ue-open');
+                document.querySelectorAll('.ue-nav-item').forEach(function(i) {
+                    i.classList.remove('ue-open');
+                    var b = i.querySelector('button');
+                    if (b) b.setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('ue-open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.ue-nav-item').forEach(function(i) {
+                i.classList.remove('ue-open');
+                var b = i.querySelector('button');
+                if (b) b.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        /* ── Drawer: abrir/cerrar ── */
+        var btnH    = document.getElementById('ueBtnHamburger');
+        var btnC    = document.getElementById('ueBtnClose');
+        var overlay = document.getElementById('ueDrawerOverlay');
+        var drawer  = document.getElementById('ueDrawer');
+
+        function openDrawer() {
+            drawer.classList.add('ue-open');
+            overlay.classList.add('ue-open');
+            btnH.classList.add('ue-open');
+            btnH.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+            drawer.classList.remove('ue-open');
+            overlay.classList.remove('ue-open');
+            btnH.classList.remove('ue-open');
+            btnH.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        if (btnH) btnH.addEventListener('click', openDrawer);
+        if (btnC) btnC.addEventListener('click', closeDrawer);
+        if (overlay) overlay.addEventListener('click', closeDrawer);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+
+        /* ── Drawer: submenús primer nivel ── */
+        document.querySelectorAll('.ue-drawer-link[data-ue-sub]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var sub = document.getElementById(btn.dataset.ueSub);
+                if (!sub) return;
+                var isOpen = sub.classList.contains('ue-open');
+                document.querySelectorAll('.ue-drawer-sub').forEach(function(s) { s.classList.remove('ue-open'); });
+                document.querySelectorAll('.ue-drawer-link[data-ue-sub]').forEach(function(b) { b.classList.remove('ue-open'); });
+                if (!isOpen) {
+                    sub.classList.add('ue-open');
+                    btn.classList.add('ue-open');
+                }
+            });
+        });
+
+        /* ── Drawer: submenús segundo nivel ── */
+        document.querySelectorAll('.ue-drawer-sub-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var targetId = btn.dataset.ueSubsub;
+                var subPanel = document.getElementById(targetId);
+                if (!subPanel) return;
+                var isOpen = subPanel.classList.contains('ue-open');
+                document.querySelectorAll('.ue-drawer-sub-sub').forEach(function(p) {
+                    if (p.id !== targetId) { p.classList.remove('ue-open'); }
+                });
+                document.querySelectorAll('.ue-drawer-sub-toggle').forEach(function(b) {
+                    if (b !== btn) b.classList.remove('ue-open');
+                });
+                subPanel.classList.toggle('ue-open', !isOpen);
+                btn.classList.toggle('ue-open', !isOpen);
+            });
+        });
+
+    })();
+    </script>
+</body>
+
+</html>

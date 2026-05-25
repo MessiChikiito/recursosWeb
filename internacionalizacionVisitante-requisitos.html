@@ -1,0 +1,250 @@
+<div class="unie-iv">
+
+  <style>
+
+    :root{
+      --radio-md:1rem;
+      --sombra:0 6px 12px rgba(0,0,0,.05);
+    }
+
+    .unie-iv{
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size:16px;
+      line-height:1.5;
+      color:#1e1e2f;
+
+      max-width:1280px;
+      margin:0 auto;
+      padding:32px 24px;
+    }
+
+    .unie-iv *{
+      box-sizing:border-box;
+    }
+
+    .unie-iv__title{
+      position:relative;
+      display:inline-block;
+
+      margin-bottom:32px;
+
+      font-size:32px;
+      font-weight:700;
+      color:#0132AF;
+    }
+
+    .unie-iv__title::after{
+      content:'';
+
+      position:absolute;
+      left:0;
+      bottom:-10px;
+
+      width:60px;
+      height:4px;
+
+      border-radius:2px;
+
+      background:#EF1218;
+    }
+
+    .unie-iv__list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+      gap:1.2rem;
+
+      margin:2rem 0;
+      padding:0;
+      list-style:none;
+    }
+
+    .unie-iv__list-item{
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+
+      padding:1.2rem;
+      border-radius:var(--radio-md);
+
+      background:#fff;
+
+      box-shadow:var(--sombra);
+    }
+
+    .unie-iv__list-icon{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      
+      width:48px;
+      height:48px;
+      flex-shrink:0;
+
+      background:#0132AF;
+      border-radius:50%;
+      
+      color:#fff;
+    }
+
+    .unie-iv__list-icon svg{
+      width:24px;
+      height:24px;
+      fill:currentColor;
+    }
+
+    .unie-iv__list-text{
+      margin:0;
+
+      font-weight:600;
+      color:#1e1e2f;
+      font-size:16px;
+    }
+
+    .unie-iv__note{
+      margin:1rem 0;
+      padding:1rem;
+
+      border-left:4px solid #EF1218;
+      border-radius:var(--radio-md);
+
+      font-size:.9rem;
+
+      background:#f0f3ff;
+    }
+
+    .unie-iv__note a{
+      color:#0132AF;
+      font-weight:600;
+      text-decoration:none;
+
+      transition:text-decoration 0.2s ease;
+    }
+
+    .unie-iv__note a:hover{
+      text-decoration:underline;
+    }
+
+    .unie-iv__budget{
+      display:inline-block;
+
+      margin-top:.7rem;
+      padding:.3rem 1rem;
+
+      border-radius:2rem;
+
+      font-weight:700;
+      color:#fff;
+
+      background:#0132AF;
+    }
+
+    @media (max-width:768px){
+
+      .unie-iv__list{
+        grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width:480px){
+
+      .unie-iv{
+        padding:20px 16px;
+      }
+
+      .unie-iv__list{
+        grid-template-columns:1fr;
+        gap:1rem;
+      }
+
+      .unie-iv__list-item{
+        padding:1rem;
+      }
+
+      .unie-iv__note{
+        font-size:.85rem;
+      }
+
+      .unie-iv__budget{
+        font-size:.85rem;
+      }
+    }
+
+  </style>
+
+  <section id="requisitos">
+
+    <h2 class="unie-iv__title">
+      Requisitos
+    </h2>
+
+    <ul class="unie-iv__list" aria-label="Requisitos para estudiante visitante">
+
+      <li class="unie-iv__list-item">
+        <div class="unie-iv__list-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <p class="unie-iv__list-text">Formulario de postulación</p>
+      </li>
+
+      <li class="unie-iv__list-item">
+        <div class="unie-iv__list-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 3.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5zm3.5 8.5H8v-.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5v.5h-2.5z"/></svg>
+        </div>
+        <p class="unie-iv__list-text">Pasaporte (internacionales)</p>
+      </li>
+
+      <li class="unie-iv__list-item">
+        <div class="unie-iv__list-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm4 8H8v-1c0-2 4-3.1 4-3.1s4 1.1 4 3.1v1z"/></svg>
+        </div>
+        <p class="unie-iv__list-text">Cédula de ciudadanía (nacionales)</p>
+      </li>
+
+      <li class="unie-iv__list-item">
+        <div class="unie-iv__list-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17Z"/></svg>
+        </div>
+        <p class="unie-iv__list-text">Certificado de calificaciones</p>
+      </li>
+
+      <li class="unie-iv__list-item">
+        <div class="unie-iv__list-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM15 14H9V12H15V14ZM18 11H6V9H18V11ZM18 8H6V6H18V8Z"/></svg>
+        </div>
+        <p class="unie-iv__list-text">Certificado español B1</p>
+      </li>
+
+      <li class="unie-iv__list-item">
+        <div class="unie-iv__list-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L4 5V11.09C4 16.14 7.41 20.85 12 22C16.59 20.85 20 16.14 20 11.09V5L12 2ZM16 13H13V16H11V13H8V11H11V8H13V11H16V13Z"/></svg>
+        </div>
+        <p class="unie-iv__list-text">Seguro médico internacional</p>
+      </li>
+
+    </ul>
+
+    <div class="unie-iv__note">
+
+      <strong>Información de visa:</strong>
+
+      Para estancias menores a 6 meses no debes tramitar visa de estudios.
+
+      <a
+        href="http://www.cancilleria.gov.co/tramites_servicios/visa"
+        target="_blank"
+        rel="noopener"
+      >
+        Más información aquí
+      </a>
+
+      <br>
+
+      <span class="unie-iv__budget">
+        Presupuesto sugerido: USD $800 mensuales
+      </span>
+
+    </div>
+
+  </section>
+
+</div>
