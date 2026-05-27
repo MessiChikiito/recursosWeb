@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -30,148 +31,249 @@
             background: #c50e13;
         }
 
-        .pp-programs-section {
-            max-width: 1200px;
+
+        .pg-programs-section {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 48px 0px 64px;
+            padding: 48px 32px 64px;
         }
 
-        .pp-programs-grid {
+        @media (max-width: 768px) {
+            .pg-programs-section {
+                padding: 32px 32px 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pg-programs-section {
+                padding: 24px 16px 32px;
+            }
+        }
+
+
+        .pg-programs-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 50px;
         }
 
-        .pp-program-card {
+        @media (max-width: 768px) {
+            .pg-programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pg-programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pg-program-card {
             background: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             padding: 30px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transition: all 0.3s ease !important;
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid #edf2f7;
-            transform: translateY(0);
-            will-change: transform, box-shadow;
-            overflow: visible;
+            border: 1px solid #cbd5e1;
+            animation: fadeInUp 0.4s ease forwards;
         }
 
-        .pp-program-card:hover {
-            border: 1px solid #e0e7ff;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        .pg-program-card:hover {
+            border-color: #cbd5e1;
         }
 
-        .pp-card-image-container {
+        .pg-program-card:nth-child(1) { animation-delay: 0.05s; }
+        .pg-program-card:nth-child(2) { animation-delay: 0.1s; }
+        .pg-program-card:nth-child(3) { animation-delay: 0.15s; }
+        .pg-program-card:nth-child(4) { animation-delay: 0.2s; }
+        .pg-program-card:nth-child(5) { animation-delay: 0.25s; }
+        .pg-program-card:nth-child(6) { animation-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            .pg-program-card {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pg-program-card {
+                padding: 14px;
+            }
+
+            .pg-badge-virtual, .pg-badge-nuevo {
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+        }
+
+        /* Elementos dentro de .pg-program-card */
+
+        .pg-card-image-container {
             width: calc(100% + 60px);
             height: 170px;
             margin: -30px -30px 20px -30px;
             overflow: hidden;
             border-radius: 12px 12px 0 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         @media (max-width: 768px) {
-            .pp-card-image-container {
-                width: 100%;
-                height: 170px;
-                margin: 0;
-                padding: 0;
+            .pg-card-image-container {
+                width: calc(100% + 32px);
+                height: 150px;
+                margin: -16px -16px 12px -16px;
             }
         }
 
-        .pp-card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        @media (max-width: 480px) {
+            .pg-card-image-container {
+                width: calc(100% + 28px);
+                height: 170px;
+                margin: -14px -14px 10px -14px;
+            }
         }
 
-        .pp-program-card:hover .pp-card-image {
-            transform: none;
-        }
-
-        .pp-card-tag {
+        .pg-badge-virtual, .pg-badge-nuevo {
             position: absolute;
-        top: 12px;
-        right: 12px;
-            background: #EF1218;
-            color: #ffffff;
-            font-size: .85rem;
-            padding: 6px 12px;
-            border-radius: 6px;
+            top: 12px;
+            right: 12px;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 2px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             border: 2px solid #e2e8f0;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
-        .pp-card-header {
-            margin-bottom: 16px;
+        .pg-badge-presencial {
+            background-color: #EF1218;
+            color: #ffffff;
+        }
+
+        .pg-badge-virtual {
+            background-color: #0BD926;
+            color: #ffffff;
+        }
+
+        .pg-badge-hibrida {
+            background-color: #7C3AED;
+            color: #ffffff;
+        }
+
+        .pg-badge-nuevo {
+            background-color: #EF1218;
+            color: #ffffff;
+            top: -8px;
+            right: 16px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .pg-badge-virtual, .pg-badge-nuevo {
+                font-size: 10px;
+                padding: 4px 8px;
+                top: 8px;
+                font-weight: 900;
+                right: 8px;
+                letter-spacing: 0.3px;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+            .pg-badge-nuevo {
+                top: 5px;
+                right: 8px;
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+        }
+
+        .pg-card-header {
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
-            position: relative;
+            gap: 12px;
+            padding-bottom: 20px;
         }
 
-        .pp-card-title {
-            font-size: 1.90rem;
-            font-weight: 900;
+        @media (max-width: 768px) {
+            .pg-card-header {
+                gap: 8px;
+                padding: 10px 12px;
+                padding-bottom: 20px;
+            }
+        }
+
+        .pg-card-title {
+            font-size: 1.5rem;
+            font-weight: 900 !important;
+            padding-bottom: 5px;
             color: #1f2937;
-            margin-bottom: 8px;
+            margin: 0;
             line-height: 1.3;
-            font-family: 'Segoe UI', 'Segoe UI Semibold', system-ui, -apple-system, 'Arial Black', Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
             text-rendering: optimizeLegibility;
-            font-synthesis: weight;
-            -webkit-text-stroke: 0.2px rgba(0,0,0,0.03);
-            text-shadow: 0 0 0.6px rgba(0,0,0,0.02);
         }
 
-        .pp-card-meta {
+        @media (max-width: 768px) {
+            .pg-card-title {
+                font-size: 1.4rem;
+                font-weight: 900 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+        }
+
+        .pg-card-meta {
             display: flex;
             align-items: center;
             gap: 0;
-            margin-bottom: 16px;
-            border: 1px solid #cbd5e1;
             background-color: #f8fafc;
-            border-radius: 8px;
             padding: 0;
-            margin: 0 0 16px 0;
+            border-radius: 8px;
+            margin: 0;
             overflow: hidden;
+            border: 1px solid #cbd5e1;
         }
 
-        .pp-meta-item {
+        .pg-meta-item {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             font-size: 13px;
-            color: #4a5568;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            padding: 12px;
-            flex: 1;
-            margin: 0;
+            color: #334155;
             font-weight: 600;
+            flex: 1;
+            padding: 12px;
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
 
-        .pp-meta-item:first-child {
+        .pg-meta-item:first-child {
             flex: 1;
         }
 
-        .pp-meta-item:not(:last-child) {
+        .pg-meta-item:not(:last-child) {
             border-right: 1px solid #cbd5e1;
         }
 
-        .pp-meta-item svg {
+        .pg-meta-item svg {
             width: 16px;
             height: 16px;
         }
 
-        .pp-meta-icon {
+        .pg-meta-icon {
             display: inline-block;
             width: 16px;
             height: 16px;
@@ -182,116 +284,77 @@
             opacity: 1;
         }
 
-        .pp-meta-icon.icon-calendar {
+        .pg-meta-icon.icon-calendar {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
         }
 
-        .pp-meta-icon.icon-clock {
+        .pg-meta-icon.icon-clock {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
         }
 
-        .pp-meta-icon.icon-location {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23067A2E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+        .pg-meta-icon.icon-location {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A449C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
             opacity: 1;
         }
 
-        .pp-card-bullets {
-            list-style: none;
-            margin: 0 0 20px 0;
-            gap: 1px;
-            padding-left: 5px;
-            flex-grow: 1;
-            text-align: left;
-        }
-        
-        .pp-card-bullets ul {
-            margin: 0;
-            padding: 0;
+        @media (max-width: 768px) {
+            .pg-meta-item {
+                font-size: 12px;
+                padding: 10px;
+                font-weight: 600 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
         }
 
-        .pp-card-bullets li {
+        .pg-card-bullets {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .pg-card-bullets li {
             font-size: 0.9rem;
             color: #4a5568;
-            padding: 2px 0;
-            padding-left: 20px;
+            padding: 6px 12px 6px 20px;
             position: relative;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.5;
+            margin: 0;
         }
 
-        .pp-card-bullets li::before {
+        .pg-card-bullets li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 10px;
+            top: 14px;
             width: 6px;
             height: 6px;
-            background: #067A2E;
+            background: #0132AF;
             border-radius: 50%;
         }
 
-        .pp-btn-secondary {
-            flex: 1;
-            padding: 12px 20px;
-            background: #374151;
-            color: #ffffff;
-            border: 2px solid #374151;
-            border-radius: 8px;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            text-align: center;
-            transform: translateY(0);
-            will-change: transform, background;
-            text-decoration: none;
-            display: inline-block;
+        @media (max-width: 768px) {
+            .pg-card-bullets li {
+                font-size: 0.85rem;
+                padding: 4px 12px 4px 18px;
+                font-weight: 400 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
         }
 
-        .pp-btn-secondary:hover {
-            background: #1f2937;
-            color: #ffffff;
-            border: 2px solid transparent;
-        }
-
-        .btn-secondary-cerrar {
-            flex: 1;
-            padding: 12px 20px;
-            background: #374151;
-            color: #ffffff;
-            border: 2px solid #374151;
-            border-radius: 8px;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            text-align: center;
-            transform: translateY(0);
-            will-change: transform, background;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-secondary-cerrar:hover {
-            background: #1f2937;
-            color: #ffffff;
-            border: 2px solid transparent;
-        }
-
-        .pp-card-buttons {
+        .pg-card-buttons {
             display: flex;
             gap: 10px;
             margin-top: auto;
         }
 
-        .pp-btn-info {
+        .pg-btn-secondary {
             flex: 1;
             padding: 12px 20px;
-            background: white;
-            color: #0bd926;
-            border: 2px solid #0bd926;
+            background: #374151;
+            color: #ffffff;
+            border: 2px solid #374151;
             border-radius: 8px;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             font-weight: 600;
@@ -299,16 +362,40 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             text-align: center;
-            transform: translateY(0);
-            will-change: transform, background;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .pp-btn-info:hover {
-            background: #0bd926;
+        .pg-btn-secondary:hover {
+            background: #2c3a4e;
+            color: #ffffff;
+            border: 2px solid transparent;
+        }
+
+        .pg-btn-info {
+            flex: 1;
+            padding: 12px 20px;
+            background: white;
+            color: #0b48e2;
+            border: 2px solid #0b48e2;
+            border-radius: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+        }
+
+        .pg-btn-info:hover {
+            background: #0b48e2;
             color: white;
             border: 2px solid transparent;
         }
 
+        /* ===================================================================
+           .modal-overlay (Overlay de modal)
+           =================================================================== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -331,12 +418,15 @@
             visibility: visible;
         }
 
+        /* ===================================================================
+           .modal (Caja del modal)
+           =================================================================== */
         .modal {
             background: #ffffff;
             border-radius: 16px;
             max-width: 600px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 95vh;
             overflow-y: auto;
             transform: translateY(30px) scale(0.95);
             opacity: 0;
@@ -349,11 +439,22 @@
             opacity: 1;
         }
 
+        @media (max-width: 768px) {
+            .modal {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+
+        /* Elementos dentro de .modal */
+
         .modal-header {
-            padding: 24px 24px 0;
+            padding: 15px 24px 0;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 16px;
         }
 
@@ -373,11 +474,19 @@
         .modal-title {
             font-size: 1.9rem;
             font-weight: 700;
-            color: #067A2E;
+            color: #0132AF;
             margin-top: 15px;
             margin-bottom: 8px;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .modal-title {
+                font-size: 1.3rem;
+                font-weight: 700 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
         }
 
         .modal-close {
@@ -452,8 +561,7 @@
         }
 
         .modal-body {
-            padding: 24px;
-            padding-top: 0px;
+            padding: 0px 24px;
         }
 
         .modal-meta {
@@ -477,12 +585,20 @@
         }
 
         .modal-meta-item svg {
-            color: #067A2E;
+            color: #0132AF;
         }
 
         .modal-meta-item .meta-icon {
             font-size: 16px;
-            color: #067A2E;
+            color: #0132AF;
+        }
+
+        @media (max-width: 768px) {
+            .modal-meta-item {
+                font-size: 0.8rem;
+                font-weight: 400 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
         }
 
         .modal-description {
@@ -507,21 +623,42 @@
             text-align: left;
         }
 
+        @media (max-width: 768px) {
+            .modal-description h3 {
+                font-size: 0.9rem;
+                font-weight: 600 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+
+            .modal-description p {
+                font-size: 0.85rem;
+                font-weight: 400 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+        }
+
         .modal-form {
-            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
-            padding: 10px 10px;
             border-radius: 12px;
-            border: 2px solid #a7f3d0;
-            margin-bottom: 10px;
+            border: 2px solid #ffffff;
+            min-height: auto;
+            overflow-y: auto;
         }
 
         .modal-form h3 {
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #047857;
+            color: #0132AF;
             margin-bottom: 16px;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .modal-form h3 {
+                font-size: 1.1rem;
+                font-weight: 700 !important;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
         }
 
         .form-row {
@@ -529,6 +666,13 @@
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
         }
 
         .form-group {
@@ -553,8 +697,7 @@
 
         .form-input:focus {
             outline: none;
-            border-color: #067A2E;
-            box-shadow: 0 0 0 3px rgba(6, 122, 46, 0.1);
+            border-color: #0132AF;
         }
 
         .form-input::placeholder {
@@ -566,14 +709,14 @@
             right: 14px;
             top: 50%;
             transform: translateY(-50%);
-            color: #067A2E;
+            color: #0132AF;
             pointer-events: none;
         }
 
         .form-submit {
             width: 100%;
             padding: 14px 24px;
-            background: linear-gradient(135deg, #054b2d 0%, #067A2E 100%);
+            background: #0132AF;
             color: white;
             border: none;
             border-radius: 50px;
@@ -581,13 +724,12 @@
             font-weight: 700;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease !important;
             margin-top: 8px;
         }
 
         .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(6, 122, 46, 0.3);
+            background: #0052D6;
         }
 
         .form-checkbox {
@@ -602,11 +744,11 @@
 
         .form-checkbox input {
             margin-top: 3px;
-            accent-color: #067A2E;
+            accent-color: #0132AF;
         }
 
         .form-checkbox a {
-            color: #067A2E;
+            color: #0132AF;
             text-decoration: underline;
         }
 
@@ -620,208 +762,48 @@
             flex: 1;
         }
 
-        .modal-footer .pp-btn-secondary {
+        .btn-secondary-cerrar {
+            flex: 1;
+            padding: 12px 20px;
+            background: #374151;
+            color: #ffffff;
+            border: 2px solid #374151;
+            border-radius: 8px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary-cerrar:hover {
+            background: #1f2937;
+            color: #ffffff;
+            border: 2px solid transparent;
+        }
+
+        .modal-footer .pg-btn-secondary {
             flex: 1;
         }
 
-        .badge-virtual-custom {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #0bd926;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 16px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1;
-            text-transform: uppercase;
-            text-align: center;
-            white-space: nowrap;
-            cursor: help;
-            box-shadow: 0 2px 8px rgba(11, 217, 38, 0.3);
-            border: none;
-            animation: color-pulse 2s ease-in-out infinite !important;
-            z-index: 999;
-            display: inline-block;
-            width: auto;
-            height: auto;
-            min-height: auto;
-            min-width: auto;
-            overflow: visible;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Tooltip */
-        .badge-virtual-custom::after {
-            content: 'También disponible en modalidad virtual';
-            position: absolute;
-            top: 100%;
-            right: 50%;
-            transform: translateX(50%);
-            background: #1a202c;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease !important;
-            z-index: 999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            display: block;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin-top: 8px;
-        }
-
-        .badge-virtual-custom:hover {
-            animation-play-state: paused;
-            background: #06f526;
-            box-shadow: 0 4px 12px rgba(11, 217, 38, 0.4);
-        }
-
-        .badge-virtual-custom:hover::after {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* ========== TABLET ========== */
-        /* Tablet */
-        @media (max-width: 768px) {
-            .pp-programs-grid {
-                grid-template-columns: repeat(1, 1fr);
-                gap: 24px;
-            }
-
-            .pp-program-card {
-                padding: 16px;
-            }
-
-            .pp-card-image-container {
-                width: calc(100% + 32px);
-                height: 170px;
-                margin: -16px -16px 12px -16px;
-            }
-
-            .pp-card-tag {
-                font-size: 12px;
-                padding: 4px 8px;
-                top: 5px;
-                right: 8px;
-                letter-spacing: 0.3px;
-                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                font-weight: 900;
-            }
-
-            .pp-card-header {
-                gap: 8px;
-                padding: 10px 12px;
-                padding-bottom: 0px;
-            }
-
-            .pp-card-title {
-                font-size: 1.4rem;
-                font-weight: 900 !important;
-                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            }
-
-            .pp-meta-item {
-                font-size: 12px;
-                padding: 10px;
-                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            }
-        }
-
-        /* ========== MOBILE ========== */
-        /* Móvil */
-        @media (max-width: 600px) {
-            .pp-programs-section {
-                padding: 24px 16px 32px;
-                margin-right: 0;
-                margin-left: 0;
-            }
-
-            .pp-programs-grid {
-                grid-template-columns: repeat(1, 1fr);
-                gap: 24px;
-            }
-
-            .pp-program-card {
-                padding: 16px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .modal {
-                max-width: calc(100% - 32px);
-                margin: 16px;
-            }
-
-            .badge-virtual-custom{
-                top: 5px;
-                right: 5px;
-                padding: 4px 8px;
-                font-size: 0.65rem;
-            }
-
-            .pp-card-header{
-                margin-bottom: 5px;
-                margin-top: 1px;
-            }
-
-            .pp-card-meta {
-            margin: 0 0 5px 0;
-            }
-        }
-
-        /* Mobile Extra Small */
-        @media (max-width: 480px) {
-            .pp-programs-section {
-                padding: 24px 16px 32px;
-            }
-
-            .pp-program-card {
-                padding: 14px;
-            }
-        }
-
-        /* Animación de carga de cards */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
-
-        .pp-program-card {
-            animation: fadeInUp 0.4s ease forwards;
-        }
-
-        .pp-program-card:nth-child(1) { animation-delay: 0.05s; }
-        .pp-program-card:nth-child(2) { animation-delay: 0.1s; }
-        .pp-program-card:nth-child(3) { animation-delay: 0.15s; }
-        .pp-program-card:nth-child(4) { animation-delay: 0.2s; }
-        .pp-program-card:nth-child(5) { animation-delay: 0.25s; }
-        .pp-program-card:nth-child(6) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
 
-    <!-- CAJA: GRID DE PROGRAMAS -->
-    <section class="pp-programs-section" id="pp-caja-programas">
-        <div class="pp-programs-grid" id="pp-programsGrid">
-            <!-- Placeholder para el editor de Elementor (desaparece cuando JS carga) -->
+    <section class="pg-programs-section" id="pg-caja-programas">
+        <div class="pg-programs-grid" id="pg-programsGrid">
+
             <div class="editor-placeholder" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #f0f4f8; border-radius: 12px; border: 2px dashed #cbd5e0;">
                 <p style="color: #718096; font-size: 1rem; margin: 0;">
                      <strong>Cards de programas</strong><br>
@@ -831,13 +813,11 @@
         </div>
     </section>
 
-    <!-- MODAL 1: Ingeniería de Software Virtual -->
     <div class="modal-overlay" id="modalOverlay1">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
                 <div>
-                    <span class="modal-tag">Nuevo</span>
-                    <h2 class="modal-title">Ingeniería de Software Virtual</h2>
+                    <h2 class="modal-title">Ingeniería de Software</h2>
                 </div>
                 <button class="modal-close" onclick="cerrarModal(1)" aria-label="Cerrar modal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -845,17 +825,17 @@
             </div>
             <div class="modal-body">
                 <div class="modal-meta">
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Virtual</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Flexible</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-clock"></span>Diurna / Nocturna</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
-                    <p>El mismo programa de alta calidad en Ingeniería de Software, ahora en modalidad virtual. Estudia desde cualquier lugar.</p>
+                    <p>Forma profesionales capaces de diseñar, desarrollar e implementar soluciones de software innovadoras que respondan a las necesidades del mercado actual.</p>
                 </div>
                 <div class="modal-form">
                     <h3>¡Regístrate y recibe más información!</h3>
-                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/256076.js"></script>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/237703.js"></script>
                 </div>
             </div>
             <div class="modal-footer">
@@ -864,13 +844,11 @@
         </div>
     </div>
 
-    <!-- MODAL 2: Administración de Empresas Virtual -->
     <div class="modal-overlay" id="modalOverlay2">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
                 <div>
-                    <span class="modal-tag">Nuevo</span>
-                    <h2 class="modal-title">Administración de Empresas Virtual</h2>
+                    <h2 class="modal-title">Marketing</h2>
                 </div>
                 <button class="modal-close" onclick="cerrarModal(2)" aria-label="Cerrar modal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -878,17 +856,17 @@
             </div>
             <div class="modal-body">
                 <div class="modal-meta">
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Virtual</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Flexible</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-clock"></span>Diurna</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
-                    <p>El mismo programa de alta calidad, ahora en modalidad virtual. Estudia desde cualquier lugar sin sacrificar la formación práctica empresarial.</p>
+                    <p>Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.</p>
                 </div>
                 <div class="modal-form">
                     <h3>¡Regístrate y recibe más información!</h3>
-                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/257369.js"></script>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234515.js"></script>
                 </div>
             </div>
             <div class="modal-footer">
@@ -897,13 +875,11 @@
         </div>
     </div>
 
-    <!-- MODAL 3: Marketing Virtual -->
     <div class="modal-overlay" id="modalOverlay3">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
                 <div>
-                    <span class="modal-tag">Nuevo</span>
-                    <h2 class="modal-title">Marketing Virtual</h2>
+                    <h2 class="modal-title">Administración de Empresas</h2>
                 </div>
                 <button class="modal-close" onclick="cerrarModal(3)" aria-label="Cerrar modal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -911,17 +887,17 @@
             </div>
             <div class="modal-body">
                 <div class="modal-meta">
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Virtual</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Flexible</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-clock"></span>Diurna / Nocturna</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
-                    <p>Especialízate en marketing digital desde cualquier lugar. Aprende las últimas estrategias en promoción de marca, social media y análisis de datos para empresas.</p>
+                    <p>Desarrolla competencias gerenciales para liderar organizaciones con visión estratégica y responsabilidad social empresarial.</p>
                 </div>
                 <div class="modal-form">
                     <h3>¡Regístrate y recibe más información!</h3>
-                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/257935.js"></script>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234523.js"></script>
                 </div>
             </div>
             <div class="modal-footer">
@@ -930,13 +906,11 @@
         </div>
     </div>
 
-    <!-- MODAL 4: Ingeniería Industrial Virtual -->
     <div class="modal-overlay" id="modalOverlay4">
         <div class="modal" role="dialog" aria-modal="true">
             <div class="modal-header">
                 <div>
-                    <span class="modal-tag">Nuevo</span>
-                    <h2 class="modal-title">Ingeniería Industrial Virtual</h2>
+                    <h2 class="modal-title">Negocios Internacionales</h2>
                 </div>
                 <button class="modal-close" onclick="cerrarModal(4)" aria-label="Cerrar modal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -944,17 +918,17 @@
             </div>
             <div class="modal-body">
                 <div class="modal-meta">
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-location"></span>Virtual</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-calendar"></span>7 semestres</span>
-                    <span class="modal-meta-item"><span class="pp-meta-icon icon-clock"></span>Flexible</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-clock"></span>Diurna</span>
                 </div>
                 <div class="modal-description">
                     <h3>Descripción del programa</h3>
-                    <p>Forma ingenieros capaces de optimizar procesos productivos y logísticos desde cualquier lugar. Especialízate en Lean Manufacturing y mejora continua en modalidad virtual.</p>
+                    <p>Prepara profesionales para gestionar operaciones de comercio internacional y expandir negocios a mercados globales.</p>
                 </div>
                 <div class="modal-form">
                     <h3>¡Regístrate y recibe más información!</h3>
-                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234527.js"></script>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234517.js"></script>
                 </div>
             </div>
             <div class="modal-footer">
@@ -963,102 +937,127 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="modalOverlay5">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Finanzas y Comercio Exterior</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(5)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-clock"></span>Diurna / Nocturna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Forma profesionales expertos en finanzas y comercio internacional, capaces de gestionar operaciones financieras en contextos globales.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234520.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(5)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay6">
+        <div class="modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Ingeniería Industrial</h2>
+                </div>
+                <button class="modal-close" onclick="cerrarModal(6)" aria-label="Cerrar modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-location"></span>Presencial</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-calendar"></span>7 semestres</span>
+                    <span class="modal-meta-item"><span class="pg-meta-icon icon-clock"></span>Diurna</span>
+                </div>
+                <div class="modal-description">
+                    <h3>Descripción del programa</h3>
+                    <p>Forma ingenieros capaces de optimizar procesos productivos y logísticos para mejorar la eficiencia organizacional.</p>
+                </div>
+                <div class="modal-form">
+                    <h3>¡Regístrate y recibe más información!</h3>
+                    <script type="text/javascript" src="https://api.clientify.net/web-marketing/superforms/script/234527.js"></script>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary-cerrar" onclick="cerrarModal(6)">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // ========================================
-        // DATOS DE PROGRAMAS
-        // Array con todos los programas académicos virtuales
-        // ========================================
+
         const programasData = [
             {
                 id: 1,
-                nombre: "Ingeniería de Software Virtual",
-                modalidad: "Virtual",
+                nombre: "Gestión del talento humano",
+                modalidad: "Presencial",
                 duracion: "7 semestres",
-                jornada: "Flexible",
-                imagen: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop",
                 bullets: [
-                    "100% virtual con tutorías en vivo",
-                    "Desarrollo de software empresarial",
-                    "Metodologías ágiles y DevOps"
+                    "Reclutamiento y selección de talento",
+                    "Desarrollo organizacional y cultura empresarial",
+                    "Compensación y beneficios estratégicos"
                 ],
-                descripcion: "El mismo programa de alta calidad en Ingeniería de Software, ahora en modalidad virtual. Estudia desde cualquier lugar.",
-                esNuevo: true,
-                tieneVirtual: false,
-                urlPrograma: "https://uniempresarial.edu.co/ingenieria-de-software-virtual/"
+                descripcion: "Forma profesionales capaces de gestionar el talento humano como factor estratégico para el éxito organizacional.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/gestion-del-talento-humano/"
             },
             {
                 id: 2,
-                nombre: "Administración de Empresas Virtual",
-                modalidad: "Virtual",
+                nombre: "Gestión en la producción industrial",
+                modalidad: "Presencial",
                 duracion: "7 semestres",
-                jornada: "Flexible",
-                imagen: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=200&fit=crop",
                 bullets: [
-                    "100% virtual con tutorías en vivo",
-                    "Plataforma interactiva 24/7",
-                    "Prácticas en empresas de tu ciudad"
+                    "Optimización de procesos productivos",
+                    "Lean Manufacturing y mejora continua",
+                    "Calidad y control de producción"
                 ],
-                descripcion: "El mismo programa de alta calidad, ahora en modalidad virtual. Estudia desde cualquier lugar sin sacrificar la formación práctica empresarial.",
-                esNuevo: true,
-                tieneVirtual: false,
-                urlPrograma: "https://uniempresarial.edu.co/administracion-de-empresas-virtual/"
+                descripcion: "Prepara gestores especializados en optimizar procesos de producción para mejorar eficiencia y competitividad industrial.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/gestion-produccion-industrial/"
             },
             {
                 id: 3,
-                nombre: "Marketing Virtual",
-                modalidad: "Virtual",
+                nombre: "Gestión comercial",
+                modalidad: "Presencial",
                 duracion: "7 semestres",
-                jornada: "Flexible",
-                imagen: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop",
                 bullets: [
-                    "100% virtual con tutorías en vivo",
-                    "Estrategias digitales y SEO",
-                    "Herramientas de marketing modernas"
+                    "Estrategia de ventas y canales comerciales",
+                    "Customer experience y fidelización",
+                    "Analítica comercial y toma de decisiones"
                 ],
-                descripcion: "Especialízate en marketing digital desde cualquier lugar. Aprende las últimas estrategias en promoción de marca, social media y análisis de datos para empresas.",
-                esNuevo: true,
-                tieneVirtual: false,
-                urlPrograma: "https://uniempresarial.edu.co/marketing-virtual/"
-            },
-                        {
-                id: 4,
-                nombre: "Ingeniería Industrial Virtual",
-                modalidad: "Virtual",
-                duracion: "7 semestres",
-                jornada: "Flexible",
-                imagen: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=200&fit=crop",
-                bullets: [
-                    "100% virtual con tutorías en vivo",
-                    "Optimización de procesos",
-                    "Gestión de la cadena de suministro"
-                ],
-                descripcion: "Forma ingenieros capaces de optimizar procesos productivos y logísticos desde cualquier lugar. Especialízate en Lean Manufacturing y mejora continua en modalidad virtual.",
-                esNuevo: true,
-                tieneVirtual: false,
-                urlPrograma: "https://uniempresarial.edu.co/ingenieria-industrial-virtual/"
+                descripcion: "Desarrolla competencias para liderar operaciones comerciales y estrategias de ventas que impulsen el crecimiento organizacional.",
+                esNuevo: false,
+                urlPrograma: "https://uniempresarial.edu.co/gestion-comercial/"
             }
         ];
 
-        // ========================================
-        // CONFIGURACIÓN GLOBAL
-        // ========================================
-        const URL_INSCRIBETE = "https://uniempresarial.edu.co/inscribete";
-
-        // ========================================
-        // VARIABLES GLOBALES
-        // ========================================
-        let tabActivo = 'Virtual';
+        let tabActivo = 'Presencial';
         let terminoBusqueda = '';
 
-        // ========================================
-        // ELEMENTOS DEL DOM
-        // ========================================
-        const grid = document.getElementById('pp-programsGrid');
+        const grid = document.getElementById('pg-programsGrid');
         const tabs = document.querySelectorAll('.tab-btn');
 
-        // ========================================
-        // FUNCIÓN: Renderizar cards de programas
-        // ========================================
         function renderizarProgramas() {
             const programasFiltrados = programasData.filter(programa => {
                 const coincideModalidad = programa.modalidad === tabActivo;
@@ -1085,7 +1084,7 @@
 
             programasFiltrados.forEach((programa, index) => {
                 const card = document.createElement('article');
-                card.className = 'pp-program-card';
+                card.className = 'pg-program-card';
                 card.style.animationDelay = `${index * 0.05}s`;
                 card.setAttribute('data-id', programa.id);
                 card.setAttribute('role', 'button');
@@ -1093,42 +1092,41 @@
                 card.setAttribute('aria-label', `Ver detalles de ${programa.nombre}`);
 
                 card.innerHTML = `
-                    ${programa.imagen ? `<div class="pp-card-image-container"><img src="${programa.imagen}" alt="${programa.nombre}" class="pp-card-image" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 200%27%3E%3Crect fill=%27%232A449C%27 width=%27400%27 height=%27200%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27white%27 font-size=%2720%27 font-family=%27Arial%27%3E${programa.nombre}%3C/text%3E%3C/svg%3E';"></div>` : ''}
-                    ${programa.esNuevo ? '<span class="pp-card-tag">Nuevo</span>' : ''}
-                    ${programa.tieneVirtual ? '<div class="badge-virtual-custom">VIRTUAL</div>' : ''}
-                    <div class="pp-card-header">
-                        <h3 class="pp-card-title">${programa.nombre}</h3>
-                        <div class="pp-card-meta">
-                            <span class="pp-meta-item">
-                                <span class="pp-meta-icon icon-calendar"></span>
+                    ${programa.imagen ? `<div class="pg-card-image-container" style="background-image: url('${programa.imagen}');"></div>` : ''}
+                    ${programa.esNuevo ? '<span class="pg-badge-nuevo">Nuevo</span>' : ''}
+                    <div class="pg-card-header">
+                        <h3 class="pg-card-title">${programa.nombre}</h3>
+                        <div class="pg-card-meta">
+                            <span class="pg-meta-item">
+                                <span class="pg-meta-icon icon-calendar"></span>
                                 ${programa.duracion}
                             </span>
-                            <span class="pp-meta-item">
-                                <span class="pp-meta-icon icon-clock"></span>
+                            <span class="pg-meta-item">
+                                <span class="pg-meta-icon icon-clock"></span>
                                 ${programa.jornada}
                             </span>
                         </div>
-                        <ul class="pp-card-bullets">
+                        <ul class="pg-card-bullets">
                             ${programa.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
                         </ul>
                     </div>
-                    <div class="pp-card-buttons">
-                        <button class="pp-btn-info" data-modal="true">
+                    <div class="pg-card-buttons">
+                        <button class="pg-btn-info" data-modal="true">
                             Más info
                         </button>
-                        <a href="${programa.urlPrograma || '#'}" class="pp-btn-secondary">
+                        <a href="${programa.urlPrograma || '#'}" class="pg-btn-secondary">
                             Ver programa
                         </a>
                     </div>
                 `;
 
-                const btnInfo = card.querySelector('.pp-btn-info');
+                const btnInfo = card.querySelector('.pg-btn-info');
                 btnInfo.addEventListener('click', (e) => {
                     e.stopPropagation();
                     abrirModal(programa);
                 });
 
-                const btnPrograma = card.querySelector('.pp-btn-secondary');
+                const btnPrograma = card.querySelector('.pg-btn-secondary');
                 btnPrograma.addEventListener('click', (e) => {
                     e.stopPropagation();
                 });
@@ -1137,9 +1135,6 @@
             });
         }
 
-        // ========================================
-        // FUNCIÓN: Abrir modal del programa
-        // ========================================
         function abrirModal(programa) {
             const overlay = document.getElementById(`modalOverlay${programa.id}`);
             if (!overlay) return;
@@ -1149,29 +1144,24 @@
             document.body.style.paddingRight = scrollbarWidth + 'px';
         }
 
-        // ========================================
-        // FUNCIÓN: Cerrar modal
-        // ========================================
         function cerrarModal(id) {
             const overlay = document.getElementById(`modalOverlay${id}`);
             if (overlay) overlay.classList.remove('active');
+
             if (!document.querySelector('.modal-overlay.active')) {
                 document.body.style.overflow = '';
                 document.body.style.paddingRight = '';
             }
         }
 
-        // ========================================
-        // EVENT LISTENERS
-        // ========================================
-        [1, 2, 3, 4].forEach(i => {
+        for (let i = 1; i <= 6; i++) {
             const overlay = document.getElementById(`modalOverlay${i}`);
             if (overlay) {
                 overlay.addEventListener('click', (e) => {
                     if (e.target === overlay) cerrarModal(i);
                 });
             }
-        });
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {

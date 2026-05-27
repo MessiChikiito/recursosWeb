@@ -301,10 +301,9 @@
         }
 
         .pp-btn-secondary:hover {
-            background: #2c3a4e;
+            background: #1f2937;
             color: #ffffff;
             border: 2px solid transparent;
-            transform: translateY(-2px);
         }
 
         .btn-secondary-cerrar {
@@ -360,7 +359,6 @@
             background: #FF6B35;
             color: white;
             border: 2px solid transparent;
-            transform: translateY(-2px);
         }
 
         .modal-overlay {
@@ -712,16 +710,12 @@
         border-radius: 6px;
         font-weight: 700;
         text-transform: uppercase;
-        cursor: help;
         letter-spacing: 1px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         border: 2px solid white;
         }
 
-        .badge-virtual-dual:hover {
-            background: #0087FF;
-        }
 
         .badge-virtual-dual:hover::after {
             opacity: 0;
@@ -740,15 +734,10 @@
         font-weight: 700;
         text-transform: uppercase;
         z-index: 3;
-        cursor: help;
         letter-spacing: 1px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         border: 2px solid white;
-        }
-
-        .badge-presencial:hover {
-            background: #ff733c;
         }
 
         .badge-presencial:hover::after {
@@ -1133,12 +1122,12 @@
                         ${programa.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
                     </ul>
                     <div class="pp-card-buttons">
-                        <a href="${programa.urlPrograma || '#'}" class="pp-btn-secondary">
-                            Ver programa
-                        </a>
                         <button class="pp-btn-info" data-modal="true">
                             Más info
                         </button>
+                        <a href="${programa.urlPrograma || '#'}" class="pp-btn-secondary">
+                            Ver programa
+                        </a>
                     </div>
                 `;
 

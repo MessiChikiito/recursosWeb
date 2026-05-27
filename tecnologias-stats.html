@@ -1,4 +1,10 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
     <style>
         * {
             margin: 0;
@@ -113,15 +119,15 @@
         }
 
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(3) {
-            border-top-color: #0BD926;
+            border-top-color: #0048ff;
         }
 
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(2) {
-            border-top-color: #0BD926;
+            border-top-color: #0048ff;
         }
 
         .pp-stats-grid .pp-stat-card:not(.pp-stat-card-becas):nth-child(4) {
-            border-top-color: #0BD926;
+            border-top-color: #0048ff;
         }
 
         .pp-stat-card > div {
@@ -135,13 +141,30 @@
         }
 
         .pp-stat-card p {
-            color: #0A943A;
-            font-size: 1rem;
+            color: #0048ff;
+            font-size: rem;
             margin: 0;
             font-weight: 600;
             line-height: 1.4;
         }
 
+        /* .pp-stat-card-discount (con descuento - comentado) */
+        /* display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border: 1px solid #e3edff;
+            border-top: 4px solid #0048ff;
+            border-radius: 8px;
+            padding: 32px 20px;
+            padding-top: 15px;
+            text-align: center;
+            transition: none !important;
+            box-shadow: 0 10px 24px rgba(2,6,23,.06);
+        */
+
+        /* Estilos nuevos para tarjeta sin descuento */
         .pp-stat-card-discount {
             display: flex;
             flex-direction: column;
@@ -149,10 +172,9 @@
             align-items: center;
             background: white;
             border: 1px solid #e3edff;
-            border-top: 4px solid #0BD926;
+            border-top: 4px solid #0048ff;
             border-radius: 8px;
             padding: 32px 20px;
-            padding-top: 15px;
             text-align: center;
             transition: none !important;
             box-shadow: 0 10px 24px rgba(2,6,23,.06);
@@ -166,18 +188,21 @@
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 10px;
-            display: inline-block;
+            display: none;
         }
 
-        .pp-discount-investment-old {
-            color: #4a5568;
+        /* .pp-discount-investment-old (con descuento - comentado) */
+        /* color: #4a5568;
             font-size: 0.95rem;
             text-decoration: line-through;
             margin-bottom: 12px;
+        */
+        .pp-discount-investment-old {
+            display: none;
         }
 
-        .pp-discount-investment-new {
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        /* .pp-discount-investment-new (con descuento - comentado) */
+        /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             display: block;
             font-size: 1.9rem;
             font-weight: 900;
@@ -186,11 +211,24 @@
             margin-top: -8px;
             letter-spacing: -0.5px;
             text-shadow: 0 0 0.6px rgba(0,0,0,0.02);
+        */
+
+        /* Estilos nuevos para precio sin descuento */
+        .pp-discount-investment-new {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 8px;
+            margin-top: 0px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 0.6px rgba(0,0,0,0.02);
         }
 
         .pp-stat-card-discount p {
-            color: #0A943A;
-            font-size: 1rem;
+            color: #0048ff;
+            font-size: rem;
             margin: 0;
             font-weight: 600;
             line-height: 1.4;
@@ -310,9 +348,9 @@
                 </div>
             </div>
             <div class="pp-stat-card-discount">
-                <div class="pp-discount-investment-badge">-40% DESCUENTO</div>
-                <div class="pp-discount-investment-old">$6.757.000</div>
-                <div class="pp-discount-investment-new">$4.054.200</div>
+                <!-- <div class="pp-discount-investment-badge">-20% DESCUENTO</div> -->
+                <!-- <div class="pp-discount-investment-old">$4.546.000</div>-->
+                 <div class="pp-discount-investment-new">$5.405.600</div> 
                 <p>Inversión por semestre</p>
             </div>
             <div class="pp-stat-card">

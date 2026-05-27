@@ -1,8 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes</title>
 <style>
 
     .faq-wrap {
       padding: 24px 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     }
     .faq-header {
       display: flex;
@@ -13,9 +19,10 @@
     }
     .faq-title {
       font-size: 32px;
-      font-weight: 900;
-      color: #0BD926;
+      font-weight: 900 !important;
+      color: #0132AF;
       margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     }
     .faq-intro {
       color: #626f7a;
@@ -29,8 +36,8 @@
     }
     .faq-item {
       border-left: 3px solid transparent;
-      border-top: 1px solid #0BD926;
-      transition: border-color 0.3s ease;
+      border-top: 1px solid #eef2f7;
+      transition: border-color 0.3s ease !important;
     }
     .faq-item:first-child {
       border-top: 1px solid #eef2f7;
@@ -42,7 +49,7 @@
       border-top: 1px solid #eef2f7;
     }
     .faq-item.open {
-      border-left-color: #0BD926;
+      border-left-color: #0132AF;
     }
     .faq-question {
       width: 100%;
@@ -66,9 +73,9 @@
       color: #0f172a;
     }
     .faq-question:focus {
-      outline: 3px solid rgba(6, 122, 46, 0.12);
-      outline-offset: -3px;
-      color: #0f172a;
+      outline: 3px solid rgba(1, 50, 175, 0.12) !important;
+      outline-offset: -3px !important;
+            color: #0f172a;
     }
     .faq-chevron {
       transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1) !important;
@@ -105,7 +112,7 @@
       }
       .faq-title {
         font-size: 26px;
-        font-weight: 900;
+        font-weight: 900 !important;
       }
       .faq-intro {
         font-size: 0.85rem;
@@ -129,7 +136,7 @@
       }
     }
   </style>
-</head>
+
 <body>
   <main class="faq-wrap">
     <header class="faq-header">
@@ -140,101 +147,85 @@
 
       <div class="faq-item" data-index="1">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-1" id="faq-q-1">
-          ¿Qué programas de pregrado ofrece Uniempresarial?
+          ¿La modalidad de estudio es presencial?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q-1">
-          <p>Uniempresarial ofrece programas como Administración de Empresas, Ingeniería de Software, Ingeniería Industrial, Marketing y Finanzas, diseñados para formar profesionales con enfoque empresarial.</p>
+          <p>
+            Sí. Los programas se desarrollan en modalidad presencial, lo que permite una experiencia académica basada en el aprendizaje práctico, la interacción directa con docentes y el desarrollo de proyectos aplicados en entornos empresariales reales.
+          </p>
         </div>
       </div>
 
       <div class="faq-item" data-index="2">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-2" id="faq-q-2">
-          ¿Uniempresarial tiene modalidad presencial o virtual?
+          ¿Qué ventajas tiene estudiar en modalidad presencial en Uniempresarial?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q-2">
-          <p>Uniempresarial ofrece modalidad presencial y modalidad virtual, para que los estudiantes puedan elegir la opción que mejor se adapte a su disponibilidad y estilo de aprendizaje.</p>
+          <p>
+            La modalidad presencial permite aprender haciendo, participar en proyectos reales, fortalecer habilidades de liderazgo y trabajo en equipo, y tener contacto directo con profesores y el entorno empresarial desde el inicio de la carrera.
+          </p>
         </div>
       </div>
 
       <div class="faq-item" data-index="3">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-3" id="faq-q-3">
-          ¿Qué diferencia a Uniempresarial de otras universidades?
+          ¿Dónde se realizan las clases?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-q-3">
-          <p>Su modelo educativo conecta la formación académica con el entorno empresarial, permitiendo a los estudiantes desarrollar habilidades prácticas y visión de negocio desde su etapa de formación.</p>
+          <p>
+            Las clases se desarrollan en el campus de Uniempresarial en Bogotá, un espacio diseñado para el aprendizaje colaborativo, la innovación y la conexión permanente con el entorno empresarial.
+          </p>
         </div>
       </div>
 
       <div class="faq-item" data-index="4">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-4" id="faq-q-4">
-          ¿Qué necesito para ingresar a un pregrado?
+          ¿Cómo es el proceso de admisión?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-q-4">
-          <p>Debes haber terminado el bachillerato, presentar tu documento de identidad, los resultados de las pruebas Saber 11 y completar el proceso de admisión.</p>
+          <p>
+            El proceso es sencillo. Debes registrarte en la plataforma de admisiones, completar tu información, cargar los documentos requeridos. Un asesor te acompañará durante todo el proceso.
+          </p>
         </div>
       </div>
 
       <div class="faq-item" data-index="5">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-5" id="faq-q-5">
-          ¿Cómo es el proceso de admisión?
+          ¿Qué documentos necesito para aplicar?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-q-5">
-          <p>El proceso incluye registro como aspirante, envío de documentos, revisión del perfil y formalización de la matrícula.</p>
+          <p>
+            Generalmente necesitarás documento de identidad, diploma o acta de grado de bachiller, resultados de las pruebas Saber 11 y diligenciar el formulario de inscripción. El equipo de admisiones te guiará paso a paso.
+          </p>
         </div>
       </div>
 
       <div class="faq-item" data-index="6">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-6" id="faq-q-6">
-          ¿Uniempresarial tiene convenios con empresas?
+          ¿Puedo recibir acompañamiento durante el proceso de admisión?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-6" role="region" aria-labelledby="faq-q-6">
-          <p>Sí. Uniempresarial mantiene relaciones con empresas que fortalecen la formación práctica y el desarrollo profesional de los estudiantes.</p>
+          <p>
+            Sí. Desde el primer contacto contarás con el acompañamiento de un asesor de admisiones, quien te ayudará a resolver dudas, completar tu inscripción y avanzar en cada etapa del proceso.
+          </p>
         </div>
       </div>
 
       <div class="faq-item" data-index="7">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-7" id="faq-q-7">
-          ¿Existen opciones de financiación?
+          ¿Puedo visitar el campus antes de tomar la decisión?
           <span class="faq-chevron">▾</span>
         </button>
         <div class="faq-answer" id="faq-7" role="region" aria-labelledby="faq-q-7">
-          <p>Sí. La universidad cuenta con diferentes alternativas de financiación y facilidades de pago para apoyar a los estudiantes en el pago de su matrícula.</p>
-        </div>
-      </div>
-
-      <div class="faq-item" data-index="8">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-8" id="faq-q-8">
-          ¿Puedo estudiar desde cualquier ciudad si elijo modalidad virtual?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-answer" id="faq-8" role="region" aria-labelledby="faq-q-8">
-          <p>Sí. Los programas en modalidad virtual permiten estudiar desde cualquier lugar, siempre que tengas acceso a internet.</p>
-        </div>
-      </div>
-
-      <div class="faq-item" data-index="9">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-9" id="faq-q-9">
-          ¿Cuánto dura un programa de pregrado?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-answer" id="faq-9" role="region" aria-labelledby="faq-q-9">
-          <p>La duración depende del programa, pero generalmente los pregrados tienen una duración aproximada de 8 a 10 semestres.</p>
-        </div>
-      </div>
-
-      <div class="faq-item" data-index="10">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-10" id="faq-q-10">
-          ¿Puedo recibir orientación antes de inscribirme?
-          <span class="faq-chevron">▾</span>
-        </button>
-        <div class="faq-answer" id="faq-10" role="region" aria-labelledby="faq-q-10">
-          <p>Sí. Puedes contactar al equipo de admisiones para recibir asesoría personalizada sobre programas, modalidades y proceso de inscripción.</p>
+          <p>
+            Sí. Puedes agendar una visita al campus o participar en eventos como Open Day, donde podrás conocer las instalaciones, hablar con el equipo académico y vivir la experiencia Uniempresarial.
+          </p>
         </div>
       </div>
 
@@ -260,13 +251,15 @@
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
         if (!isOpen) {
           item.classList.add('open');
-          btn.setAttribute('aria-expanded','true');
+          btn.setAttribute('aria-expanded', 'true');
           panel.style.maxHeight = panel.scrollHeight + 'px';
         } else {
           item.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
+          btn.setAttribute('aria-expanded', 'false');
           panel.style.maxHeight = null;
         }
       }
     })();
 </script>
+</body>
+</html>
