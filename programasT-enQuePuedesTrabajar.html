@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En qué puedes trabajar - Uniempresarial</title>
+    <style>
+    body{
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    
+    .ue-section-work{
+        margin-top: 0px !important;
+    }
+
+    .ue-work-title {
+        font-size: 33px;
+        font-weight: 700;
+        color: #0132AF !important;
+        margin: 0 0 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .ue-work-subtitle {
+        color: #7a8a99;
+        font-weight: 600;
+        margin: 0 0 24px;
+        font-size: 15px;
+    }
+
+    .ue-work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ue-work-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ue-work-item {
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e0e3e8;
+        border-left: 4px solid;
+        padding: 14px 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+    }
+
+    .ue-work-item-content {
+        overflow: hidden;
+        max-height: 500px;
+        transition: max-height 0.3s ease;
+    }
+
+    .ue-work-item-content.collapsed {
+        max-height: 0;
+    }
+
+    .ue-work-expanded-text {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #e0e3e8;
+        font-size: 13px;
+        color: #7a8a99;
+        line-height: 1.6;
+    }
+
+    .ue-work-item:nth-child(odd) {
+        border-left-color: #0132AF;
+    }
+
+    .ue-work-item:nth-child(even) {
+        border-left-color: #FF3B3B;
+    }
+
+    .ue-work-item:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        transform: translateX(4px) !important;
+    }
+
+    .ue-work-title-item {
+        color: #06325a;
+        font-weight: 700;
+        font-size: 18px;
+        margin: 0 0 0px 0;
+    }
+
+    .ue-work-desc {
+        color: #0132AF;
+        font-weight: 500;
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ue-work-desc::after {
+        content: '→';
+        transition: transform 0.3s ease;
+    }
+
+    .ue-work-item.expanded .ue-work-desc::after {
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 640px) {
+        .ue-work-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .ue-section-work{
+            margin-top: -40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 30px;
+        }
+
+        .ue-work-title {
+            font-size: 24px;
+        }
+
+        .ue-work-subtitle {
+            font-size: 13px;
+        }
+
+        .ue-work-title-item {
+            font-size: 15px;
+        }
+
+        .ue-work-desc {
+            font-size: 11px;
+        }
+
+        .ue-work-expanded-text {
+            font-size: 11px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<section class="ue-section-work" aria-label="Oportunidades laborales">
+    <h3 class="ue-work-title">Desarrolla competencias clave en gestión comercial:</h3>
+    <p class="ue-work-subtitle">Capacidades profesionales que demandan las empresas en el sector comercial.</p>
+
+    <div class="ue-work-grid">
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Investigación de Mercado</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Investigar el comportamiento del mercado, identificar tendencias y evaluar la competencia. Realiza análisis de mercado, estudia al consumidor y recopila información para tomar decisiones estratégicas informadas.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Estrategia y Gestión de Ventas</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Planificar y ejecutar estrategias de ventas efectivas, incluyendo la identificación de prospectos, negociación y cierre de acuerdos. Desarrolla planes comerciales, lidera equipos de venta y alcanza objetivos de rentabilidad.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Servicio al Cliente</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Brindar un servicio al cliente excepcional, resolver problemas y mantener relaciones comerciales sólidas. Crea experiencias positivas, maneja reclamaciones efectivamente y fideliza clientes a largo plazo.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ue-work-column">
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Marketing y Promoción</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Desarrollar y ejecutar campañas de marketing y promoción, utilizando herramientas digitales y tradicionales. Diseña estrategias de marca, gestiona redes sociales, publicidad y promociones para aumentar visibilidad y ventas.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Administración Comercial</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Organizar y administrar actividades comerciales, manejar documentos y seguir procesos eficientemente. Gestiona trámites comerciales, documentación, órdenes de pedido y asegura cumplimiento de procedimientos operacionales.</div>
+                </div>
+            </div>
+            <div class="ue-work-item">
+                <div class="ue-work-item-header">
+                    <p class="ue-work-title-item">Gestión de Relaciones Comerciales (CRM)</p>
+                    <p class="ue-work-desc">Saber más</p>
+                </div>
+                <div class="ue-work-item-content collapsed">
+                    <div class="ue-work-expanded-text">Gestionar relaciones comerciales utilizando sistemas CRM para mantener clientes satisfechos y rentables. Registra interacciones, realiza seguimiento de oportunidades, analiza comportamiento del cliente y mejora la retención y lealtad.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.ue-work-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const content = this.querySelector('.ue-work-item-content');
+            content.classList.toggle('collapsed');
+            this.classList.toggle('expanded');
+        });
+    });
+</script>
+
+</body>
+</html>

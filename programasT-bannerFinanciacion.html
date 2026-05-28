@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversión y Financiación - Uniempresarial</title>
+    <style>
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ue-section-financiacion {
+            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .ue-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .ue-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .ue-modal-content {
+            background-color: #ffffff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .ue-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e0e3e8;
+            padding-bottom: 16px;
+        }
+
+        .ue-modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: #0132AF;
+        }
+
+        .ue-modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease !important;
+        }
+
+        .ue-modal-close:hover {
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .ue-modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ue-partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .ue-partner-card {
+            border: 1px solid #e0e3e8;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafbfc;
+            transition: all 0.25s ease !important;
+        }
+
+        .ue-partner-card img {
+            max-width: 100%;
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+        .ue-modal-cta {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            background: #044DC2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: inherit;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+
+            box-sizing: border-box;
+        }
+        
+        .ue-modal-cta:hover {
+            background: #033c97;
+            color: white;
+        }
+        
+        .ue-h3{
+            color: #0132AF !important;
+        }
+        
+        .ue-headRow {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .ue-finGrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .ue-s6-card { 
+            background: white; 
+            border: 1px solid #e0e3e8; 
+            border-left: 8px solid; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ue-s6-card.orange { border-left-color: #FF6A00; }
+        .ue-s6-card.orange .ue-s6-title { color: #FF6A00; }
+        .ue-s6-card.blue { border-left-color: #0132AF; }
+        .ue-s6-card.blue .ue-s6-title { color: #0132AF; }
+
+        .ue-s6-title { margin-top: 0; font-weight: 800; font-size: 22px; margin-bottom: 10px; }
+
+        .ue-s6-list { 
+            padding-left: 20px; color: #000000; font-weight: 600; font-size: 18px; 
+            margin-bottom: 25px; columns: 2; margin-top: 0;
+        }
+        .ue-s6-list li { margin-bottom: 8px; line-height: 1.5; }
+
+        .ue-long-text { display: inline; }
+
+        .ue-s6-btn {
+            display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 700;
+            border: none; cursor: pointer; text-align: center; width: 100%; box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1) !important; font-family: inherit; font-size: 15px;
+            text-decoration: none;
+        }
+        .ue-s6-btn.orange { background: #FF6A00; color: white; }
+        .ue-s6-btn.orange:hover { background: #e65c00; }
+        .ue-s6-btn.blue { background: #0132AF; color: white; }
+        .ue-s6-btn.blue:hover { background: #01227a; }
+
+        .ue-s6-badge {
+            background: linear-gradient(135deg, #ff0000 0%, #fc3232 100%);
+            color: white; padding: 12px 18px; border-radius: 8px;
+            font-weight: 800; font-size: 16px; display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .ue-s6-price-old { color: #7e7e7e; font-size: 18px; margin-top: 5px; font-weight: 600; }
+        .ue-s6-price-old span { text-decoration: line-through; }
+        .ue-s6-price-new { font-size: 40px; font-weight: 900; margin: 5px 0 10px; line-height: 1; color: #0132AF; }
+        .ue-s6-save-text { color: #0BD926; font-weight: 800; font-size: 16px; margin-bottom: 25px; }
+
+        .ue-inv-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .ue-price-with-benefit {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ue-benefit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .ue-benefit-value {
+            font-size: 40px;
+            font-weight: 900;
+            color: #FF0000;
+            line-height: 1;
+        }
+
+        .ue-benefit-label {
+            font-size: 20px;
+            font-weight: 700;
+            padding-left: 4px;
+            color: #FF0000;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 980px) {
+            .ue-finGrid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .ue-section-financiacion {
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 30px;
+            }
+            .ue-s6-title { font-size: 18px; margin: 0px 0 15px 0;}
+            .ue-s6-price-new { font-size: 36px; }
+            .ue-s6-list { columns: 2; font-size: 16px; margin: 5px 0 15px 0; }
+            .ue-long-text { display: none; }
+            .ue-inv-flex {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .ue-benefit {
+                flex-shrink: 0;
+            }
+
+            .ue-s6-save-text{
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+        
+    <section id="financiacion" class="ue-section-financiacion" aria-label="Inversión, becas y financiación">
+        <div class="ue-headRow">
+            <div>
+                <h3 class="ue-h3" style="margin:0">Inversión, becas y financiación</h3>
+                <div class="ue-muted" style="font-weight:700;margin-top:8px;font-size:14px">
+                    Valores de referencia. Pueden variar por convenios y convocatorias.
+                </div>
+            </div>
+        </div>
+
+        <div class="ue-finGrid">
+
+            <!-- Card de Financiación -->
+            <div class="ue-s6-card orange">
+                <h3 class="ue-s6-title">Opciones de financiación</h3>
+                <ul class="ue-s6-list">
+                    <li>JFK <span class="ue-long-text">CF</span></li>
+                    <li>Finky</li>
+                    <li>Fincomercio</li>
+                    <li>Canapro</li>
+                </ul>
+                <button onclick="openFinancingModal()" class="ue-s6-btn orange">Ver opciones</button>
+            </div>
+
+            <!-- Card de Inversión (Con Descuento) -->
+            <div class="ue-s6-card blue">
+                <h3 class="ue-s6-title">Inversión Total</h3>
+                <div class="ue-price-with-benefit">
+                    <div class="ue-s6-price-new">$4.546.000</div>
+                    <div class="ue-benefit">
+                        <div class="ue-benefit-value">+1 Año</div>
+                        <div class="ue-benefit-label">De experiencia</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal de Opciones de Financiación -->
+    <div id="financingModal" class="ue-modal">
+        <div class="ue-modal-content">
+            <div class="ue-modal-header">
+                <h2>Opciones de Financiación</h2>
+                <button class="ue-modal-close" onclick="closeFinancingModal()">&times;</button>
+            </div>
+            <div class="ue-modal-body">
+                <p style="color: #06325a; margin: 0 0 20px; line-height: 1.6; font-weight: 600;">Contamos con aliados financieros para que puedas financiar tu carrera con facilidad:</p>
+
+                <div class="ue-partners-grid">
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/logo-jfkCooperativa-JFK.png" alt="JFK Cooperativa Financiera">
+                    </div>
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2025/02/Logo-Finky-768x432.png" alt="Finky">
+                    </div>
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/06/Fincomercio-100.jpg" alt="Fincomercio">
+                    </div>
+                    <div class="ue-partner-card">
+                        <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/02/logo-25-pag-web-01.webp" alt="Aliado financiero">
+                    </div>
+                </div>
+
+                <a href="https://uniempresarial.edu.co/financiacion/" target="_blank" class="ue-modal-cta">Conoce todas las opciones de financiación</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para abrir el modal
+        function openFinancingModal() {
+            const modal = document.getElementById('financingModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            const url = new URL(window.location);
+            url.searchParams.set('financiacion', 'true');
+            window.history.pushState({modal: true}, '', url);
+        }
+
+        // Función para cerrar el modal
+        function closeFinancingModal() {
+            const modal = document.getElementById('financingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            const url = new URL(window.location);
+            url.searchParams.delete('financiacion');
+            window.history.pushState({modal: false}, '', url);
+        }
+
+        // Cerrar modal al hacer click fuera del contenido
+        window.onclick = function(event) {
+            const modal = document.getElementById('financingModal');
+            if (event.target == modal) {
+                closeFinancingModal();
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFinancingModal();
+            }
+        });
+
+        // Abrir modal automáticamente si viene con query param
+        window.addEventListener('load', function() {
+            const url = new URL(window.location);
+            if (url.searchParams.get('financiacion') === 'true') {
+                openFinancingModal();
+            }
+        });
+
+        // Manejar botón atrás del navegador
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.modal) {
+                openFinancingModal();
+            } else {
+                closeFinancingModal();
+            }
+        });
+    </script>
+</body>
+</html>
