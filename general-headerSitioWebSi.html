@@ -39,11 +39,18 @@
             color: inherit;
         }
 
-        .ue-site-header ul,
-        .ue-drawer ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        .ue-site-header > ul,
+        .ue-drawer > ul {
+            list-style: none !important;                                     
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body ul:not(.ue-site-header *):not(.ue-drawer *),
+        body ol:not(.ue-site-header *):not(.ue-drawer *) {
+            list-style: revert;
+            margin: revert;
+            padding: revert;
         }
 
         body:has(#ueSiteHeader) {
@@ -276,6 +283,7 @@
             font-family: var(--ue-font);
             color: var(--ue-texto-suave);
             transition: color .18s, background .18s;
+            line-height: 1.4;
         }
 
         .ue-submenu a:hover {
@@ -738,6 +746,21 @@
             width: 17px;
             height: 17px;
         }
+        .ue-header-badge-nuevo {
+            display: inline-block;
+            background-color: var(--ue-rojo);
+            color: var(--ue-blanco);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 5px;
+            border-radius: 2px;
+            margin-left: 6px;
+            vertical-align: middle;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            line-height: 1;
+        }
     </style>
 </head>
 
@@ -821,6 +844,8 @@
                         <div class="ue-dropdown-item">
                             <span class="ue-dropdown-parent">Educación Continua</span>
                             <div class="ue-submenu">
+
+                                <a href="https://uniempresarial.edu.co/diplomado-en-innovacion-y-gestion-de-negocios-turisticos-y-hoteleros/">Diplomado en innovación y gestión de negocios turísticos y hoteleros<span class="ue-header-badge-nuevo">Nuevo</span></a>
                                 <a href="https://uniempresarial.edu.co/diplomado-en-creacion-y-optimizacion-de-prompts-para-ia/">Diplomado Creación y optimización de prompts para IA</a>
                                 <a href="https://uniempresarial.edu.co/diplomado-en-estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico/">Diplomado Estrategias para el éxito empresarial</a>
                                 <a href="https://uniempresarial.edu.co/diplomado-en-impulsa-tu-negocio-360-negocios-escalables-y-sostenibles/">Diplomado Impulsa tu negocio 360</a>
