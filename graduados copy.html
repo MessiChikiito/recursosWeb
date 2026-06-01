@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trámites - Icon Grid</title>
+    <style>
+        :root {
+            --gr-primary: #2563eb;
+            --gr-primary-hover: #1d4ed8;
+            --gr-text: #0f172a;
+            --gr-text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            color: var(--gr-text);
+            line-height: 1.5;
+        }
+
+        #tramites {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        #tramites h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        #tramites > p {
+            color: var(--gr-text-muted);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Grid sin contenedores */
+        .gr-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .gr-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            padding: 0.5rem;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .gr-icon-item:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+
+        /* Círculo de icono */
+        .gr-icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gr-primary), var(--gr-primary-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .gr-icon-item:hover .gr-icon-circle {
+            transform: scale(1.05);
+        }
+
+        .gr-icon-circle svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        /* Texto */
+        .gr-icon-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .gr-icon-item p {
+            font-size: 0.875rem;
+            color: var(--gr-text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Link de acción */
+        .gr-icon-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gr-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .gr-icon-link:hover {
+            color: var(--gr-primary-hover);
+        }
+
+        .gr-icon-link::after {
+            content: "→";
+            transition: transform 0.2s ease;
+        }
+
+        .gr-icon-item:hover .gr-icon-link::after {
+            transform: translateX(3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .gr-icon-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gr-icon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section id="tramites">
+    <h2>Trámites</h2>
+    <p>Accede a los trámites que necesitas de forma directa, sin pasos intermedios. Aquí encontrarás los servicios clave de la Oficina de Graduados.</p>
+
+    <div class="gr-icon-grid">
+        
+        <div class="gr-icon-item" onclick="openModal('modalAsesor')">
+            <div class="gr-icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M3 9.5L12 2l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </div>
+            <h3>Mesa de Atención</h3>
+            <p>Asesoría personalizada con nuestro equipo de graduados.</p>
+            <span class="gr-icon-link">Agendar</span>
+        </div>
+
+        <div class="gr-icon-item">
+            <div class="gr-icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="11" x2="12" y2="17"/>
+                    <line x1="9" y1="14" x2="15" y2="14"/>
+                </svg>
+            </div>
+            <h3>Certificados</h3>
+            <p>Obtén tu certificado oficial con tutorial y pago en línea.</p>
+            <a href="#" class="gr-icon-link" onclick="openModal('modalCertificado')">Solicitar</a>
+        </div>
+
+        <div class="gr-icon-item" onclick="openModal('modalCarne')">
+            <div class="gr-icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M6 21h12a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z"/>
+                </svg>
+            </div>
+            <h3>Carné Graduado</h3>
+            <p>Genera o renueva tu identificación oficial de graduado.</p>
+            <span class="gr-icon-link">Gestionar</span>
+        </div>
+
+        <div class="gr-icon-item" onclick="openModal('modalActualizar')">
+            <div class="gr-icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+            </div>
+            <h3>Actualizar Datos</h3>
+            <p>Mantén tu información de contacto y laboral actualizada.</p>
+            <span class="gr-icon-link">Actualizar</span>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    function openModal(id) { console.log('Modal:', id); }
+</script>
+
+</body>
+</html>

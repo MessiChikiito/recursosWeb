@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --rojo: #C8102E;
+      --rojo-oscuro: #9B0B22;
+      --azul: #003DA5;
+      --azul-oscuro: #002A75;
+      --azul-medio: #1A57C8;
+      --marino: #0D1B3E;
+      --marino-2: #0A1530;
+      --marino-3: #111f4a;
+      --blanco: #FFFFFF;
+      --gris-borde: #E2E7F0;
+      --texto-suave: #4A5878;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #eef1f8;
+      padding-top: 20px;
+    }
+
+    .footer-link { text-decoration: none; transition: color .22s, opacity .22s; }
+    .footer-list { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .footer-main {
+      background: var(--marino);
+      padding: 52px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rojo) 0%, var(--azul) 55%, var(--azul-medio) 100%);
+    }
+
+    .footer-main::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; right: -120px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,61,165,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr 1fr 1fr;
+      gap: 44px 48px;
+      position: relative;
+      z-index: 1;
+      align-items: start;
+    }
+
+    .brand-logo { display: block; margin-bottom: 20px; }
+    .brand-logo img { max-width: 195px; height: auto; display: block; }
+
+    .brand-desc {
+      font-size: .875rem;
+      color: #7a90b8;
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+
+    .social-label {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #405070;
+      margin-bottom: 10px;
+    }
+
+    .social-links { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+
+    .social-link {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      color: #7a90b8;
+      transition: background .22s, color .22s, border-color .22s, transform .18s;
+    }
+    .social-link:hover {
+      background: var(--azul);
+      border-color: var(--azul);
+      color: var(--blanco);
+      transform: translateY(-2px);
+    }
+    .social-link svg { width: 15px; height: 15px; }
+
+    .col-title {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      position: relative;
+    }
+
+    .col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,.08);
+      border-radius: 2px;
+    }
+
+    .col-title::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    .nav-sub-label {
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #3a5070;
+      margin: 16px 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-sub-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .nav-list { margin: 0; list-style: none; }
+    .nav-list li { margin-bottom: 4px; }
+
+    .nav-list .footer-link {
+      font-size: .875rem;
+      color: #7a90b8;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 0;
+      line-height: 1.4;
+    }
+    .nav-list .footer-link:hover { color: var(--blanco); }
+    .nav-list .footer-link:hover .nav-dot { transform: scale(1); opacity: 1; }
+
+    .nav-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--rojo);
+      flex-shrink: 0;
+      transform: scale(0);
+      opacity: 0;
+      transition: transform .18s, opacity .18s;
+    }
+
+    .nav-ext {
+      font-size: .72rem;
+      font-weight: 700;
+      color: #6a9adf;
+      background: rgba(0,61,165,.18);
+      border: 1px solid rgba(0,61,165,.28);
+      padding: 1px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-tag {
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 20px;
+      line-height: 1.6;
+      flex-shrink: 0;
+    }
+    .nav-tag.nuevo {
+      background: rgba(200,16,46,.15);
+      color: #e07585;
+      border: 1px solid rgba(200,16,46,.25);
+    }
+    .nav-tag.info {
+      background: rgba(0,61,165,.2);
+      color: #6a9adf;
+      border: 1px solid rgba(0,61,165,.3);
+    }
+
+    .footer-contact {
+      background: var(--marino-2);
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 32px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+
+    .contact-icon-wrap {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon-wrap.azul {
+      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+      box-shadow: 0 4px 12px rgba(0,61,165,.25);
+    }
+    .contact-icon-wrap.rojo {
+      background: linear-gradient(135deg, var(--rojo-oscuro), var(--rojo));
+      box-shadow: 0 4px 12px rgba(200,16,46,.25);
+    }
+    .contact-icon-wrap svg { width: 18px; height: 18px; color: var(--blanco); }
+
+    .contact-label {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #3a5070;
+      margin-bottom: 5px;
+    }
+    .contact-value { font-size: .875rem; color: #9ab0cc; line-height: 1.6; }
+    .contact-value a { color: #9ab0cc; }
+    .contact-value a:hover { color: var(--blanco); }
+
+    .footer-bottom { background: #060d1e; padding: 18px 0; }
+    .footer-bottom .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .copyright { font-size: .77rem; color: #334866; line-height: 1.6; }
+    .copyright .footer-link { color: #3d5a80; }
+    .copyright .footer-link:hover { color: #9ab0cc; }
+
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 16px;
+      align-items: center;
+    }
+    .footer-legal .footer-link {
+      font-size: .75rem;
+      color: #334866;
+      font-weight: 600;
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
+    .footer-legal .footer-link:hover { color: #9ab0cc; }
+    .footer-legal .sep {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: #1e2e4a;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .col-brand { grid-column: 1 / -1; }
+      .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .col-brand { grid-column: 1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-bottom .container { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <footer>
+
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="col-brand">
+            <a href="https://uniempresarial.edu.co/" class="brand-logo footer-link">
+              <img src="https://uniempresarial.edu.co/wp-content/uploads/2024/05/logo-blanco.png" alt="Uniempresarial" />
+            </a>
+            <p class="brand-desc">
+              Formamos líderes empresariales mediante la coformación y el aprendizaje aplicado al entorno real de los negocios. Institución de Educación Superior vigilada por el Ministerio de Educación Nacional.
+            </p>
+            <p class="social-label">Síguenos en redes</p>
+            <div class="social-links">
+              <a class="social-link footer-link" href="https://www.facebook.com/uniempresarial/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+              <a class="social-link footer-link" href="https://www.instagram.com/uniempresarial/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a class="social-link footer-link" href="https://www.youtube.com/channel/UC7Gal38pmeQ2QxrH0VJwOzg" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a class="social-link footer-link" href="https://x.com/uempresarial" target="_blank" rel="noopener" aria-label="X / Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-nav">
+            <p class="col-title">Institución</p>
+            <ul class="nav-list footer-list">
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/sobre-nosotros/"><span class="nav-dot"></span>Quiénes somos</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/wp-content/uploads/2024/05/Estatutos-Vigentes.pdf"><span class="nav-dot"></span>Estatutos Vigentes</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/wp-content/uploads/2025/12/Derechos-Pecunarios-2026.pdf"><span class="nav-dot"></span>Derechos Pecuniarios 2026</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/wp-content/uploads/2024/05/pei.pdf"><span class="nav-dot"></span>Proyecto Educativo Institucional (PEI)</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/wp-content/uploads/2025/02/Certificado-Politica-de-Proteccion-de-Datos-1.pdf"><span class="nav-dot"></span>Política de Protección de Datos</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/regimen-tributario-especial/"><span class="nav-dot"></span>Régimen Tributario Especial</a></li>
+            </ul>
+
+            <p class="nav-sub-label">Transparencia y calidad</p>
+            <ul class="nav-list footer-list">
+              <li><a class="footer-link" href="https://app.powerbi.com/view?r=eyJrIjoiYjkwNjY0Y2YtNWMwMi00MGEwLThkM2EtNWVhZTcxYTEzY2MxIiwidCI6IjQ3MDIxOWU3LTViYTEtNDQzNS04NGUwLTE4Njk2M2Q4ZTEyMCIsImMiOjR9&pageName=de08a10ebc602fc4b621%22"><span class="nav-dot"></span>Uniempresarial en Cifras</a></li>
+              <li><a class="footer-link" href="https://www.kawak.com.co/uniempresarial/index.php"><span class="nav-dot"></span>Sistema Integrado de Gestión (SIGAC)</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.datasae.co/siga_new/web/app.php/login_responsive"><span class="nav-dot"></span>Gestión Académica</a></li>
+              <li><a class="footer-link" href="https://helpdesk.uniempresarial.edu.co:4432/marketplace/formcreator/front/formdisplay.php?id=1"><span class="nav-dot"></span>Radicar PQRSF</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/faqs/"><span class="nav-dot"></span>Preguntas frecuentes (FAQ)</a></li>
+            </ul>
+          </div>
+
+          <div class="col-nav">
+            <p class="col-title">Programas</p>
+            <p class="nav-sub-label">Formación formal</p>
+            <ul class="nav-list footer-list">
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/pregrados-presenciales/"><span class="nav-dot"></span>Pregrados Presenciales</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/pregrados-virtuales/"><span class="nav-dot"></span>Pregrados Virtuales</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/posgrados/"><span class="nav-dot"></span>Posgrados</a></li>
+              <li><a class="footer-link" href="https://uniempresarial.edu.co/tecnologias/"><span class="nav-dot"></span>Tecnologías</a></li>
+            </ul>
+
+            <p class="nav-sub-label">Educación Continua</p>
+            <ul class="nav-list footer-list">
+              <li>
+                <a class="footer-link" href="https://uniempresarial.edu.co/diplomado-en-creacion-y-optimizacion-de-prompts-para-ia/">
+                  <span class="nav-dot"></span>Creación y optimización de prompts para IA
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="https://uniempresarial.edu.co/diplomado-en-estrategias-para-el-exito-empresarial-planificacion-eventos-y-marketing-logistico/">
+                  <span class="nav-dot"></span>Estrategias para el éxito empresarial
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="https://uniempresarial.edu.co/diplomado-en-impulsa-tu-negocio-360-negocios-escalables-y-sostenibles/">
+                  <span class="nav-dot"></span>Impulsa tu Negocio 360
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="https://uniempresarial.edu.co/diplomado-en-inteligencia-artificial-aplicada-al-marketing/">
+                  <span class="nav-dot"></span>IA aplicada al Marketing
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="https://uniempresarial.edu.co/diplomado-en-insolvencia-e-intervencion/">
+                  <span class="nav-dot"></span>Insolvencia e Intervención <span class="nav-tag nuevo">Nuevo</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="https://uniempresarial.edu.co/diplomado-en-proteccion-de-datos-personales-en-entornos-digitales-empresariales/">
+                  <span class="nav-dot"></span>Protección de Datos Personales
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-nav">
+            <p class="col-title">Solicita información</p>
+            <p class="nav-sub-label">Llámanos — Extensiones internas</p>
+            <ul class="nav-list footer-list">
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Admisiones
+                  <span class="nav-ext">7706 – 7707</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Dirección de Programas
+                  <span class="nav-ext">3410 – 3415</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Bienestar Universitario
+                  <span class="nav-ext">7701</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Dirección de Coformación
+                  <span class="nav-ext">3303</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Registro y Control Académico
+                  <span class="nav-ext">1104</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Facturación y Cartera
+                  <span class="nav-ext">5505</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Biblioteca
+                  <span class="nav-ext">3409</span>
+                </a>
+              </li>
+              <li>
+                <a class="footer-link" href="tel:+576017945718">
+                  <span class="nav-dot"></span>Talento Humano
+                  <span class="nav-ext">3405</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <div class="container">
+        <div class="contact-grid">
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap azul">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <p class="contact-label">Encuéntranos</p>
+              <p class="contact-value">
+                <a class="footer-link" href="https://maps.app.goo.gl/UEJczUPQsj2Y2aq7A" target="_blank" rel="noopener">
+                  Cra 33a # 30-20<br>Bogotá D.C., Colombia
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap rojo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.8 19.8 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14z"/></svg>
+            </div>
+            <div>
+              <p class="contact-label">Contáctanos</p>
+              <p class="contact-value">
+                <a class="footer-link" href="tel:+576017945718">+57 (601) 794 5718</a><br>
+                <a class="footer-link" href="https://wa.me/573142084103" target="_blank" rel="noopener">314 208 4103 (WhatsApp)</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap azul">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <p class="contact-label">Escríbenos</p>
+              <p class="contact-value">
+                <a class="footer-link" href="mailto:admisiones@uniempresarial.edu.co">admisiones@uniempresarial.edu.co</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon-wrap rojo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <p class="contact-label">Horario de atención</p>
+              <p class="contact-value">
+                Lun – Vie: 7:00 a.m. – 7:00 p.m.<br>
+                Sáb: 8:00 a.m. – 12:00 p.m.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright" id="copyright-text">
+          Uniempresarial – Fundación Universitaria Empresarial de la CCB.
+          Institución de Educación Superior sujeta a inspección y vigilancia del
+          <a class="footer-link" href="https://www.mineducacion.gov.co/" target="_blank" rel="noopener">Ministerio de Educación Nacional</a>.
+          NIT 830.084.876-6
+        </p>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+    const yr = new Date().getFullYear();
+    const cp = document.getElementById('copyright-text');
+    cp.innerHTML = `© ${yr} ` + cp.innerHTML;
+  </script>
+
+</body>
+
+</html>

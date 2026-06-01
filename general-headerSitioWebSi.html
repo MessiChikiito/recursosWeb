@@ -39,20 +39,6 @@
             color: inherit;
         }
 
-        .ue-site-header > ul,
-        .ue-drawer > ul {
-            list-style: none !important;                                     
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        body ul:not(.ue-site-header *):not(.ue-drawer *),
-        body ol:not(.ue-site-header *):not(.ue-drawer *) {
-            list-style: revert;
-            margin: revert;
-            padding: revert;
-        }
-
         body:has(#ueSiteHeader) {
             padding-top: 72px;
         }
@@ -691,7 +677,7 @@
             transition: max-height .3s ease;
         }
         .ue-drawer-sub-sub.ue-open { max-height: 400px; }
-        .ue-drawer-sub-sub a {
+        .ue-drawer-sub-sub > a {
             padding: 9px 20px 9px 52px !important;
             font-size: .80rem;
             color: var(--ue-texto-suave) !important;
