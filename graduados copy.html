@@ -1,215 +1,159 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trámites - Icon Grid</title>
-    <style>
-        :root {
-            --gr-primary: #2563eb;
-            --gr-primary-hover: #1d4ed8;
-            --gr-text: #0f172a;
-            --gr-text-muted: #64748b;
-        }
+<style>
+  /* =============================================
+     SECCIÓN FORMACIÓN - TARJETAS VERTICALES
+     Estilos autónomos, sin dependencias externas
+  ============================================= */
+  #sec-formacion {
+    background: linear-gradient(135deg, #f8fafc 0%, #eef1f5 100%);
+    padding: 80px 20px;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            color: var(--gr-text);
-            line-height: 1.5;
-        }
+  .formacion-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-        #tramites {
-            padding: 4rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+  .formacion-contenedor h2 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #0b1e33;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
 
-        #tramites h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
+  .formacion-contenedor > p {
+    font-size: 1.1rem;
+    color: #475569;
+    max-width: 640px;
+    margin: 0 auto 56px;
+    line-height: 1.6;
+  }
 
-        #tramites > p {
-            color: var(--gr-text-muted);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
+  .formacion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
 
-        /* Grid sin contenedores */
-        .gr-icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2.5rem 1.5rem;
-            padding: 1rem 0;
-        }
+  /* Tarjeta */
+  .formacion-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 28px 32px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
 
-        .gr-icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.5rem;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
+  /* Etiqueta */
+  .formacion-card-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
 
-        .gr-icon-item:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
-        }
+  .formacion-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
 
-        /* Círculo de icono */
-        .gr-icon-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gr-primary), var(--gr-primary-hover));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            transition: transform 0.2s ease;
-        }
+  .formacion-card p {
+    font-size: 0.98rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
 
-        .gr-icon-item:hover .gr-icon-circle {
-            transform: scale(1.05);
-        }
+  /* Botón limpio */
+  .formacion-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 24px;
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.25s;
+    margin-top: auto;
+  }
 
-        .gr-icon-circle svg {
-            width: 32px;
-            height: 32px;
-            stroke: white;
-            stroke-width: 1.5;
-            fill: none;
-            stroke-linecap: round;
-        }
+  .formacion-card-btn:hover {
+    background: #1e293b;
+  }
 
-        /* Texto */
-        .gr-icon-item h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+  .formacion-card-btn::after {
+    content: "→";
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+  }
 
-        .gr-icon-item p {
-            font-size: 0.875rem;
-            color: var(--gr-text-muted);
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
+  .formacion-card-btn:hover::after {
+    transform: translateX(4px);
+  }
 
-        /* Link de acción */
-        .gr-icon-link {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--gr-primary);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.2s ease;
-        }
+  /* Responsive */
+  @media (max-width: 900px) {
+    .formacion-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
 
-        .gr-icon-link:hover {
-            color: var(--gr-primary-hover);
-        }
+    .formacion-contenedor h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
 
-        .gr-icon-link::after {
-            content: "→";
-            transition: transform 0.2s ease;
-        }
+<section id="sec-formacion">
+  <div class="formacion-contenedor">
+    <h2>Formación Continua</h2>
+    <p>Sigue preparándote. La educación continua fortalece tu perfil frente a las nuevas demandas del mercado laboral.</p>
 
-        .gr-icon-item:hover .gr-icon-link::after {
-            transform: translateX(3px);
-        }
+    <div class="formacion-grid">
+      <!-- Card 1 -->
+      <div class="formacion-card">
+        <span class="formacion-card-tag">Educación Ejecutiva</span>
+        <h3>Cursos y Diplomados</h3>
+        <p>IA aplicada, transformación digital, protección de datos y gestión ágil bajo metodologías prácticas.</p>
+        <a href="#" class="formacion-card-btn">Explorar Programas</a>
+      </div>
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .gr-icon-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem 1rem;
-            }
-        }
+      <!-- Card 2 -->
+      <div class="formacion-card">
+        <span class="formacion-card-tag">Posgrados</span>
+        <h3>Especializaciones</h3>
+        <p>Lleva tu perfil al nivel directivo con posgrados enfocados en Analítica de Datos, Gerencia de TI y Finanzas Corporativas.</p>
+        <a href="#" class="formacion-card-btn">Ver Especializaciones</a>
+      </div>
 
-        @media (max-width: 400px) {
-            .gr-icon-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<section id="tramites">
-    <h2>Trámites</h2>
-    <p>Accede a los trámites que necesitas de forma directa, sin pasos intermedios. Aquí encontrarás los servicios clave de la Oficina de Graduados.</p>
-
-    <div class="gr-icon-grid">
-        
-        <div class="gr-icon-item" onclick="openModal('modalAsesor')">
-            <div class="gr-icon-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M3 9.5L12 2l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-            </div>
-            <h3>Mesa de Atención</h3>
-            <p>Asesoría personalizada con nuestro equipo de graduados.</p>
-            <span class="gr-icon-link">Agendar</span>
-        </div>
-
-        <div class="gr-icon-item">
-            <div class="gr-icon-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="12" y1="11" x2="12" y2="17"/>
-                    <line x1="9" y1="14" x2="15" y2="14"/>
-                </svg>
-            </div>
-            <h3>Certificados</h3>
-            <p>Obtén tu certificado oficial con tutorial y pago en línea.</p>
-            <a href="#" class="gr-icon-link" onclick="openModal('modalCertificado')">Solicitar</a>
-        </div>
-
-        <div class="gr-icon-item" onclick="openModal('modalCarne')">
-            <div class="gr-icon-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M6 21h12a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z"/>
-                </svg>
-            </div>
-            <h3>Carné Graduado</h3>
-            <p>Genera o renueva tu identificación oficial de graduado.</p>
-            <span class="gr-icon-link">Gestionar</span>
-        </div>
-
-        <div class="gr-icon-item" onclick="openModal('modalActualizar')">
-            <div class="gr-icon-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                </svg>
-            </div>
-            <h3>Actualizar Datos</h3>
-            <p>Mantén tu información de contacto y laboral actualizada.</p>
-            <span class="gr-icon-link">Actualizar</span>
-        </div>
-
+      <!-- Card 3 -->
+      <div class="formacion-card">
+        <span class="formacion-card-tag">Autoformación</span>
+        <h3>Cursos Cortos Virtuales</h3>
+        <p>Actualización a tu propio ritmo con cursos cortos autogestionados y sin costo a través de nuestro campus virtual.</p>
+        <a href="#" class="formacion-card-btn">Acceder al Campus</a>
+      </div>
     </div>
+  </div>
 </section>
-
-<script>
-    function openModal(id) { console.log('Modal:', id); }
-</script>
-
-</body>
-</html>

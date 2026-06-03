@@ -3,897 +3,807 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Egresados</title>
+    <title></title>
     <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box;}
 
         body {
+            scroll-behavior: smooth;
             font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #fff !important;
+            background-color: #ffffff;
             scroll-behavior: smooth;
             line-height: 1.5;
         }
 
-        .gr-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .gr-container > p {
-            font-size: 1.2rem;
-            color: #6b7280;
-            margin-bottom: 24px;
+        .gr-container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+            /* HEADER & HERO */
+            .gr-header {
+                background: #ffffff;
+                padding: 0 0;
+                border-bottom: 1px solid #e4e7ed;
+            }
+
+            .gr-header-hero {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: space-between;
+                gap: 80px;
+                max-width: 100%;
+                margin: 0 auto;
+                min-height: 700px;
+            }
+
+            .gr-header-hero-content {
+
+                text-align: left;
+                padding-right: 15%;
+            }
+
+            .gr-header-hero-image {
+                position: relative;
+                height: 700px;
+                overflow: hidden;
+                border-radius: 12px;
+            }
+
+            .gr-header-hero-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+
+            }
+
+            /* Gradiente desvanecido derecha */
+            .gr-header-hero-image::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 150px;
+                height: 100%;
+                background: linear-gradient(to left, #ffffff 0%, transparent 100%);
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .gr-eyebrow {
+                display: inline-block;
+                color: #EA0A2A;
+                font-size: 0.8rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                margin-bottom: 16px;
+            }
+
+            .gr-header h1 {
+                font-size: 3rem;
+                font-weight: 800;
+                color: #0132AF;
+                margin-bottom: 24px;
+                line-height: 1.15;
+                letter-spacing: -0.02em;
+                font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+
+            .gr-header p {
+                font-size: 1.15rem;
+                color: #4b5263;
+                max-width: 550px;
+                line-height: 1.6;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .gr-header-hero {
+                    flex-direction: column;
+                    gap: 40px;
+                    min-height: auto;
+                    padding: 60px 24px;
+                }
+
+                .gr-header p {
+                    font-size: 1rem;
+                }
+                
+                .gr-header-hero-image {
+                    height: 300px;
+                    width: 100%;
+                }
+
+                /* Quitar desvanecido en mobile */
+                .gr-header-hero-image::before,
+                .gr-header-hero-image::after {
+                    display: none;
+                }
+                
+                .gr-header h1 {
+                    font-size: 2rem;
+                }
+            }
+
+        /* SECCIONES */
+        .gr-section {
+            padding: 90px 24px;
+            border-bottom: 1px solid #e4e7ed;
+            background-color: #ffffff;
         }
 
-        header {
-            background: #ffffff;
-            padding: 80px 24px;
-            border-bottom: 1px solid #e5e7eb;
-        }
 
-        .gr-header-hero {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gr-eyebrow {
-            display: inline-block;
-            color: #EA0A2A;
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #EA0A2A;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            font-weight: 900;
+        .gr-section  h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
             color: #0132AF;
-            margin-bottom: 24px;
-            line-height: 1.2;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .gr-section  p { 
+            font-size: 1.1rem; 
+            color: #4b5263; 
+            margin-bottom: 25px; 
+            max-width: 700px; 
         }
 
-        header p {
-            font-size: 1.1rem;
-            color: #6b7280;
-            max-width: 600px;
-        }
-
+        /* SIDEBAR NAV */
         .gr-sidebar-nav {
             position: fixed;
-            right: 12px;
-            top: 92px;
-            width: 220px;
+            right: 32px; top: 100px;
+            width: 200px;
             background: #ffffff;
-            padding: 15px 0;
-            padding-bottom: 15px;
+            padding-bottom: 16px;
             z-index: 998;
-            max-height: calc(100vh - 104px);
+            max-height: calc(100vh - 120px);
             overflow-y: auto;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            box-shadow: -10px -5px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #e4e7ed;
+            box-shadow: 0 4px 20px rgba(26, 29, 35, 0.06);
         }
-
-        .gr-sidebar-nav ul {
-            list-style: none;
-        }
-
-        .gr-sidebar-nav li {
-            margin: 0;
-        }
+        .gr-sidebar-nav > ul { 
+            list-style: none; 
+            margin: 0; padding: 0; 
+    }
 
         .gr-nav-link {
             display: block;
             padding: 12px 20px;
             color: #000;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            border: 4px solid transparent;
-            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.2s ease !important;
+            border-left: 3px solid transparent;
+            border-bottom: 1px solid #f0f2f5;
         }
-
         .gr-nav-link:hover {
-            background: #f3f4f6;
-            border-left-color: #EA0A2A;
+            background: #f7f8fa;
+            color: #000;
+            border-left-color: #8c93a3;
         }
 
         .gr-nav-link.gr-active {
-            background: #e5e5e5;
-            border-left-color: #EA0A2A;
+            background: #f0f2f5;
+            border-left-color: #0132AF;
+            color: #000;
             font-weight: 600;
+        }
+
+        /* Importante: Mantén el borde azul incluso cuando hay hover */
+        .gr-nav-link.gr-active:hover {
+            border-left-color: #0132AF;
         }
 
         .gr-sidebar-btn-portal {
             display: block;
-            margin: 24px 12px 0 12px;
-            padding: 12px 16px;
+            margin: 16px 16px 0;
+            padding: 10px 14px;
             background: #EA0A2A;
             color: #ffffff;
             text-decoration: none;
             text-align: center;
             border-radius: 6px;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            transition: background 0.2s ease !important;
+        }
+        .gr-sidebar-btn-portal:hover { 
+            background: #ca0822;
+            color: #ffffff; 
         }
 
-        .gr-sidebar-btn-portal:hover {
-            background: #d60824;
+        /* BOTONES */
+        .gr-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease !important;
+            text-decoration: none;
+            outline: none;
+        }
+
+        /* Primary: azul institucional */
+        .gr-btn-primary { background: #0132AF; color: #ffffff; }
+        .gr-btn-primary:hover { background: #01288c; }
+
+        /* CTA: rojo */
+        .gr-btn-cta { background: #EA0A2A; color: #ffffff; }
+        .gr-btn-cta:hover { background: #ca0822; }
+
+        /* Secondary: gris oscuro */
+        .gr-btn-secondary {
+            background: transparent;
+            color: #3a3f4b;
+            border: 1px solid #cdd2db;
+        }
+        .gr-btn-secondary:hover {
+            background: #3a3f4b;
             color: #ffffff;
+            border-color: #3a3f4b;
         }
 
+        /* TRÁMITES */
+        .gr-service-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+        }
+
+        .gr-service-item { 
+            padding: 24px 15px;
+            background: #f7f7f7;
+            border: 1px solid #e4e7ed;
+            border-radius: 12px;
+            display: flex; 
+            gap: 20px; 
+            align-items: flex-start; 
+        }
+
+        .gr-service-icon {
+            flex-shrink: 0;
+            width: 48px; height: 48px;
+            background: #7e7e7e;
+            color: #fff;
+            border-radius: 8px;
+            display: flex; align-items: center; 
+            justify-content: center;
+        }
+        .gr-service-icon svg { 
+            width: 24px; 
+            height: 24px; 
+            stroke: currentColor; 
+            fill: none; 
+            stroke-width: 2; 
+        }
+
+        .gr-service-content h3 { 
+            font-size: 1.15rem; 
+            color: #1a1d23; 
+            margin-bottom: 6px; 
+            font-weight: 700; 
+        }
+        .gr-service-content p { 
+            font-size: 0.95rem; 
+            color: #4b5263; 
+            margin-bottom: 12px; 
+            line-height: 1.5; 
+        }
+        .gr-service-content .gr-btn { 
+            font-size: 0.8rem; 
+            padding: 6px 12px; 
+        }
+
+        /* BOLSA DE EMPLEO */
+        .gr-jobs-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            background: #f7f8fa;
+            border: 1px solid #e4e7ed;
+            border-radius: 12px;
+            padding: 48px;
+            align-items: center;
+        }
+        .gr-jobs-info h3 { 
+            font-size: 1.5rem; 
+            color: #1a1d23; 
+            margin-bottom: 12px; 
+            font-weight: 800; 
+        }
+        .gr-jobs-info p { 
+            color: #4b5263; 
+            margin-bottom: 16px; 
+            font-size: 0.95rem;
+         }
+        .gr-jobs-actions { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
+        }
+
+        /* EVENTOS */
+        .gr-events-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
+        }
+        .gr-event-row {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid #e4e7ed;
+        }
+        .gr-event-row:last-child { 
+            border-bottom: none; 
+        }
+
+        .gr-event-date {
+            background: #f0f2f5;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #e4e7ed;
+        }
+        .gr-event-date .day {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1d23;
+            display: block; line-height: 1;
+        }
+        .gr-event-date .month { 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            color: #8c93a3; 
+        }
+
+        .gr-event-info h3 { 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin-bottom: 4px; 
+        }
+        .gr-event-info p { 
+            font-size: 0.95rem; 
+            color: #4b5263; 
+            margin-bottom: 4px; 
+        }
+
+        .gr-event-meta { 
+            font-size: 0.8rem; 
+            color: #8c93a3; 
+        }
+        .gr-event-meta strong { 
+            color: #4b5263; 
+        }
+
+        .gr-event-action-panel { 
+            display: flex; 
+            align-items: center; 
+            gap: 16px; 
+        }
+
+        /* Badges */
+        .gr-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .gr-badge-upcoming {
+            background: #f0f2f5;
+            color: #4b5263;
+        }
+        .gr-badge-live {
+            background: #e6f4ef;
+            color: #1e6b4a;
+        }
+
+        /* BENEFICIOS */
+        .gr-benefits-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; 
+        }
+
+        .gr-benefit-item { 
+            display: flex; 
+            gap: 16px; 
+        }
+        .gr-benefit-item .icon { 
+            color: #EA0A2A; 
+            flex-shrink: 0; 
+            width: 24px; 
+            height: 24px; 
+        }
+        .gr-benefit-item .icon svg { 
+            width: 24px; 
+            height: 24px; 
+            stroke: currentColor; 
+            fill: none; 
+            stroke-width: 2; 
+        }
+        .gr-benefit-item h4 { 
+            font-size: 1.05rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin-bottom: 6px; 
+        }
+        .gr-benefit-item p { 
+            font-size: 0.9rem; 
+            color: #4b5263; 
+            line-height: 1.4; 
+        }
+
+        .gr-alliances-title { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin: 64px 0 24px; 
+        }
+
+        .gr-alliances-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 32px; 
+        }
+
+        .gr-alliance-item {
+            border-left: 3px solid #cdd2db;
+            padding-left: 20px;
+        }
+        .gr-alliance-item h4 { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin-bottom: 6px; 
+        }
+        .gr-alliance-item p { 
+            font-size: 0.9rem; 
+            color: #4b5263; 
+            margin-bottom: 12px; 
+        }
+        .gr-alliance-item a { 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            color: #0132AF; 
+            text-decoration: none; 
+        }
+        .gr-alliance-item a:hover { 
+            text-decoration: underline; 
+        }
+
+        /* FORMACIÓN */
+        .gr-formacion-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; 
+        }
+        .gr-formacion-item { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .gr-formacion-item:not(:last-child) { 
+            border-right: 1px solid #e4e7ed; 
+            padding-right: 40px; 
+        }
+
+        .gr-formacion-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0132AF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .gr-formacion-item h3 { 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin-bottom: 12px; 
+        }
+        .gr-formacion-item p { 
+            font-size: 0.95rem; 
+            color: #4b5263; 
+            margin-bottom: 24px; 
+            flex-grow: 1; 
+        }
+
+        /* RED GRADUADOS */
+        .gr-network-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        .gr-network-item {
+            display: flex; gap: 20px; align-items: center;
+            background: #ffffff;
+            border: 1px solid #e4e7ed;
+            padding: 24px; border-radius: 10px;
+        }
+        .gr-network-avatar {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: #f0f2f5;
+            color: #6b7280;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; flex-shrink: 0;
+            border: 1px solid #e4e7ed;
+        }
+        .gr-network-avatar svg { width: 24px; height: 24px; fill: currentColor; }
+        .gr-network-info { flex-grow: 1; }
+        .gr-network-info h4 { font-size: 1.1rem; font-weight: 700; color: #1a1d23; margin-bottom: 2px; }
+        .gr-network-info .role { font-size: 0.85rem; color: #0132AF; font-weight: 600; margin-bottom: 4px; }
+        .gr-network-info .meta { font-size: 0.8rem; color: #4b5263; }
+        .gr-network-action { flex-shrink: 0; }
+
+        /* CONTACTO */
+        .gr-contact-split { 
+            display: grid; 
+            grid-template-columns: 1.1fr 0.9fr; 
+            gap: 64px; 
+        }
+        .gr-contact-info-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 32px; 
+        }
+        .gr-contact-method { 
+            display: block; 
+            gap: 16px; 
+        }
+        .gr-contact-method .icon { 
+            width: 32px; 
+            height: 32px; 
+            color: #8c93a3; 
+            flex-shrink: 0; 
+            margin-bottom: 8px;
+        }
+        .gr-contact-method .icon svg { 
+            width: 32px; 
+            height: 32px; 
+            stroke: currentColor; 
+            fill: none; 
+            stroke-width: 2; 
+        }
+        .gr-contact-method h4 { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin-bottom: 4px; 
+        }
+        .gr-contact-method p { 
+            font-size: 0.95rem; 
+            color: #4b5263; 
+        }
+        .gr-contact-method a { 
+            color: #0132AF; 
+            text-decoration: none; 
+            font-weight: 600; 
+        }
+
+        .gr-pqrsf-panel {
+            background: #f7f8fa;
+            border: 1px solid #e4e7ed;
+            padding: 36px; border-radius: 12px;
+            display: flex; flex-direction: column; 
+            justify-content: center;
+        }
+        .gr-pqrsf-panel h3 { 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            color: #1a1d23; 
+            margin-bottom: 12px; 
+        }
+        .gr-pqrsf-panel p { 
+            font-size: 0.95rem; 
+            color: #4b5263; 
+            margin-bottom: 24px; 
+        }
+
+        /* HAMBURGER */
         .gr-hamburger {
             display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 56px;
-            height: 56px;
-            background: #0132AF;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
+            position: fixed; top: 80px; right: 20px;
+            width: 56px; height: 56px;
+            border: none; 
+            border-radius: 50%; 
+            cursor: none !important;
             z-index: 999;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background: #1a1d23 !important; 
+            border :none !important;
+            outline: none !important;     
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
             gap: 6px;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease !important;
+            box-shadow: 0 4px 12px rgba(26, 29, 35, 0.2);
         }
-
-        .gr-hamburger span {
-            width: 24px;
-            height: 2px;
+        .gr-hamburger:focus {
+            outline: none !important;
+        }
+        .gr-hamburger.gr-active {
+            background: #000000 !important;  
+            outline: none !important;     
+        }
+        .gr-hamburger span { 
+            width: 24px; 
+            height: 2px; 
             background: #ffffff;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            border-radius: 2px; 
+            transition: all 0.3s ease !important; 
         }
-
-        .gr-hamburger:hover {
-            background: #EA0A2A;
+        .gr-hamburger.gr-active span:nth-child(1) { 
+            transform: rotate(45deg) translate(5px, 6px); 
         }
-
-        .gr-hamburger.gr-active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
+        .gr-hamburger.gr-active span:nth-child(2) { 
+            opacity: 0; 
         }
-
-        .gr-hamburger.gr-active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .gr-hamburger.gr-active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        .gr-hamburger.gr-active span:nth-child(3) { 
+            transform: rotate(-45deg) translate(5px, -6px); 
         }
 
         .gr-sidebar-overlay {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            position: fixed; top: 0; 
+            left: 0; 
+            width: 100%; 
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(26, 29, 35, 0.4);
+            backdrop-filter: blur(4px);
             z-index: 997;
         }
-
-        .gr-sidebar-overlay.gr-active {
+        .gr-sidebar-overlay.gr-active { 
             display: block;
-        }
+         }
+            
 
-        main {
-            margin-right: 0;
-        }
+        main { margin: 0 auto; max-width: 100%; }
 
-        section {
-            padding: 80px 24px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        section:first-of-type {
-            border-top: none;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #0132AF;
-            margin-bottom: 32px;
-            line-height: 1.2;
-        }
-
-        section>p {
-            font-size: 1.1rem;
-            color: #6b7280;
-            margin-bottom: 24px;
-            max-width: 700px;
-        }
-
-        .gr-card {
-            position: relative;
-            background: #ffffff;
-            border: none;
-            border-radius: 16px;
-            padding: 36px 32px 32px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 
-                0 1px 3px rgba(0, 0, 0, 0.04),
-                0 4px 12px rgba(0, 0, 0, 0.03);
-            overflow: hidden;
-        }
-
-        .gr-card-icon {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            background: #fef2f2;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #EA0A2A;
-            z-index: 1;
-        }
-
-        .gr-card h3 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 14px;
-            line-height: 1.3;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gr-card p {
-            font-size: 0.95rem;
-            color: #64748b;
-            margin-bottom: 20px;
-            flex-grow: 1;
-            position: relative;
-            z-index: 1;
-            line-height: 1.7;
-        }
-
-        .gr-card-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #f1f5f9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gr-card.featured {
-            background: #0132AF;
-            color: #ffffff;
-        }
-
-        .gr-card.featured::before {
-            background: #EA0A2A;
-        }
-
-        .gr-card.featured .gr-card-icon {
-            background: rgba(255, 255, 255, 0.12);
-            color: #ffffff;
-        }
-
-        .gr-card.featured h3 {
-            color: #ffffff;
-        }
-
-        .gr-card.featured p {
-            color: rgba(255, 255, 255, 0.78);
-        }
-
-        .gr-card.featured .gr-card-actions {
-            border-top-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .gr-card.featured .gr-btn-primary {
-            background: #ffffff;
-            color: #0132AF;
-        }
-
-        .gr-card.featured .gr-btn-primary:hover {
-            background: #f1f5f9;
-        }
-
-        .gr-card.featured .gr-btn-cta {
-            background: #EA0A2A;
-            color: #ffffff;
-        }
-
-        .gr-card.featured .gr-btn-cta:hover {
-            background: #ff1a3f;
-        }
-
-        .gr-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gr-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: currentColor;
-        }
-
-        .gr-badge-upcoming {
-            background: #fef2f2;
-            color: #EA0A2A;
-        }
-
-        .gr-badge-live {
-            background: #ecfdf5;
-            color: #059669;
-        }
-
-        .gr-profile-card {
-            position: relative;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 32px 24px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .gr-profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            background: #0132AF;
-        }
-
-        .gr-profile-avatar {
-            position: relative;
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            background: #EA0A2A;
-            margin: 0 auto 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: #ffffff;
-            border: 4px solid #ffffff;
-            z-index: 1;
-        }
-
-        .gr-profile-card h4 {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 6px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gr-profile-role {
-            font-size: 0.85rem;
-            color: #0132AF;
-            font-weight: 600;
-            margin-bottom: 14px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gr-profile-card p {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.6;
-        }
-
-        .gr-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .gr-grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .gr-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .gr-btn-primary {
-            background: #0132AF;
-            color: #ffffff;
-        }
-
-        .gr-btn-primary:hover {
-            background: #0a2d88;
-        }
-
-        .gr-btn-primary:active:not(.gr-active) {
-            background: #0132AF;
-        }
-
-        .gr-btn-cta {
-            background: #EA0A2A;
-            color: #ffffff;
-        }
-
-        .gr-btn-cta:hover {
-            background: #d60824;
-        }
-
-        .gr-btn-cta:active:not(.gr-active) {
-            background: #EA0A2A;
-        }
-
-        .gr-btn-secondary {
-            background: transparent;
-            color: #0132AF;
-            border: 2px solid #0132AF;
-        }
-
-        .gr-btn-secondary:hover {
-            background: #0132AF;
-            color: #ffffff;
-        }
-
-        form {
-            max-width: 600px;
-        }
-
-        .gr-form-group {
-            margin-bottom: 20px;
-        }
-
-        .gr-form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1f2937;
-        }
-
+        /* FORMULARIOS & MODALES */
+        .gr-form-group { margin-bottom: 16px; }
+        .gr-form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.85rem; color: #1a1d23; }
         .gr-form-group input,
         .gr-form-group textarea,
         .gr-form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
+            width: 100%; padding: 10px 14px;
+            border: 1px solid #e4e7ed;
+            border-radius: 6px; font-size: 0.9rem; font-family: inherit;
+            transition: all 0.2s ease;
         }
-
         .gr-form-group input:focus,
         .gr-form-group textarea:focus,
         .gr-form-group select:focus {
             outline: none;
-            border-color: #0132AF;
-            box-shadow: 0 0 0 3px rgba(1, 50, 175, 0.1);
+            border-color: #4b5263;
+            box-shadow: 0 0 0 3px rgba(75, 82, 99, 0.1);
         }
-
-        .gr-form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+        .gr-form-group textarea { resize: vertical; min-height: 100px; }
 
         .gr-modal {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 29, 35, 0.55);
+            backdrop-filter: blur(4px);
+            z-index: 1000; align-items: center; justify-content: center;
         }
-
-        .gr-modal.gr-active {
-            display: flex;
-        }
-
+        .gr-modal.gr-active { display: flex; }
         .gr-modal-content {
             background: #ffffff;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
+            border-radius: 12px; padding: 36px; max-width: 480px; width: 90%;
             position: relative;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid #e4e7ed;
+            box-shadow: 0 20px 50px rgba(26, 29, 35, 0.12);
         }
-
         .gr-modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 32px;
-            height: 32px;
-            background: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #6b7280;
+            position: absolute; top: 16px; right: 16px;
+            width: 32px; height: 32px;
+            background: transparent; border: none; font-size: 24px; cursor: pointer;
+            color: #8c93a3;
         }
-
-        .gr-modal-close:hover {
-            color: #1f2937;
-        }
-
-        .gr-modal h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0132AF;
-            margin-bottom: 16px;
-        }
-
-        .gr-modal p {
-            color: #6b7280;
-            margin-bottom: 20px;
-        }
+        .gr-modal h3 { font-size: 1.35rem; font-weight: 700; color: #1a1d23; margin-bottom: 8px; }
+        .gr-modal p { font-size: 0.9rem; color: #4b5263; margin-bottom: 20px; }
 
         .gr-qr-placeholder {
-            width: 200px;
-            height: 200px;
-            background: #f3f4f6;
-            border: 2px dashed #d1d5db;
+            width: 160px; height: 160px;
+            background: #f0f2f5;
+            border: 2px dashed #e4e7ed;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            font-size: 14px;
-            color: #6b7280;
+            display: flex; align-items: center; justify-content: center;
+            margin: 20px auto; font-size: 13px; color: #8c93a3;
         }
 
-        footer {
-            background: #1f2937;
-            color: #ffffff;
-            padding: 60px 24px;
-            text-align: center;
-        }
+        /* RESPONSIVE */
+        @media (max-width: 1440px) { main { padding-right: 120px; } }
 
-        footer p {
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
+@media (max-width: 1200px) {
+    main { padding-right: 0; }
 
-        footer a {
-            color: #EA0A2A;
-            text-decoration: none;
-        }
+    .gr-sidebar-nav {
+        background: #ffffff;
+        position: fixed;
+        right: -280px;
+        left: auto;
+        top: 0;         
+        width: 200px;
+        max-height: 80vh;
+        border: 1px solid #e4e7ed;
+        border-radius: 8px;
+        box-shadow: -4px 4px 20px rgba(26, 29, 35, 0.15);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding-top: 8px;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    .gr-sidebar-nav.gr-active {
+        right: 16px;    
+        color: #000;
+    }
 
-        .gr-tramites {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: none; 
-        }
+    .gr-nav-link:hover {
+        border-left-color: #8c93a3;
+    }
 
-        .gr-tramites h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+    .gr-nav-link.gr-active {
+        border-left-color: transparent;
+    }
 
-        .gr-tramites > p {
-            color: #64748b;
-            margin-bottom: 40px;
-        }
+    .gr-hamburger { display: flex; }
+}
 
-        .gr-icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2.5rem 1.5rem;
-
-        }
-
-        .gr-icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.5rem;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .gr-icon-item:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
-        }
-
-        .gr-icon-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0132AF, #1d4ed8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            transition: transform 0.2s ease;
-        }
-
-        .gr-icon-item:hover .gr-icon-circle {
-            transform: scale(1.05);
-        }
-
-        .gr-icon-circle svg {
-            width: 32px;
-            height: 32px;
-            stroke: white;
-            stroke-width: 1.5;
-            fill: none;
-            stroke-linecap: round;
-        }
-
-        .gr-icon-item h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #0f172a;
-        }
-
-        .gr-icon-item p {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .gr-icon-link {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #0132AF;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.2s ease;
-        }
-
-        .gr-icon-link:hover {
-            color: #1d4ed8;
-        }
-
-        .gr-icon-link::after {
-            content: "→";
-            transition: transform 0.2s ease;
-        }
-
-        .gr-icon-item:hover .gr-icon-link::after {
-            transform: translateX(3px);
-        }
-
-        /* ---------- Media queries ---------- */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-                font-weight: 900;
+            .gr-header { 
+                padding: 0px 0px 0px; 
             }
-
-            header p {
-                font-size: 1rem;
-                font-weight: 400;
+            .gr-header h1 { 
+                font-size: 2.25rem; 
             }
-
-            section h2 {
-                font-size: 1.75rem;
-                font-weight: 900;
+            .gr-container { 
+                padding: 0 0px; 
             }
-
-            .gr-sidebar-nav {
-                position: fixed;
-                left: -100%;
-                right: auto;
-                top: 0;
-                width: 260px;
-                max-height: 100vh;
-                border-radius: 0 12px 12px 0;
-                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
-                transition: left 0.3s ease;
-                padding-top: 80px;
+            .gr-section { 
+                padding: 60px 24px; 
             }
-
-            .gr-sidebar-nav.gr-active {
-                left: 0;
+            .gr-section h2 { 
+                font-size: 1.75rem; 
             }
-
-            .gr-hamburger {
-                display: flex;
+            .gr-service-grid, .gr-jobs-split, .gr-benefits-grid,
+            .gr-alliances-grid, .gr-formacion-grid, .gr-network-grid, .gr-contact-split {
+                grid-template-columns: 1fr; gap: 32px;
             }
-
-            .gr-grid-2 {
-                grid-template-columns: 1fr;
+            .gr-jobs-split { 
+                padding: 24px; 
             }
-
-            .gr-grid-3 {
-                grid-template-columns: 1fr;
+            .gr-formacion-item:not(:last-child) { 
+                border-right: none; 
+                border-bottom: 1px solid #e4e7ed; 
+                padding-right: 0; 
+                padding-bottom: 32px; 
             }
-
-            section {
-                padding: 60px 24px;
+            .gr-event-row { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 16px; 
             }
-
-            .gr-card {
-                padding: 28px 24px;
+            .gr-event-date { 
+                display: inline-block; 
+                width: 70px; 
+                margin: 0 auto; 
             }
-
-            .gr-modal-content {
-                padding: 32px 24px;
+            .gr-event-action-panel { 
+                justify-content: center; 
+                flex-direction: column; 
+                gap: 8px; 
             }
-        }
-
-        @media (max-width: 600px) {
-            .gr-icon-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem 1rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .gr-icon-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 375px) {
-            header {
-                padding: 60px 16px;
-            }
-
-            header h1 {
-                font-size: 1.75rem;
-                font-weight: 900;
-            }
-
-            header p {
-                font-size: 0.95rem;
-                font-weight: 400;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-                font-weight: 900;
-            }
-
-            section h3 {
-                font-size: 1.1rem;
-                font-weight: 700;
-            }
-
-            section>p {
-                font-size: 0.95rem;
-                font-weight: 400;
-            }
-
-            .gr-container {
-                padding: 0 16px;
-            }
-
-            section {
-                padding: 48px 16px;
-            }
-
-            .gr-card {
-                padding: 24px 20px;
-            }
-
-            .gr-card h3 {
-                font-size: 1.1rem;
-                font-weight: 700;
-            }
-
-            .gr-card p {
-                font-size: 0.9rem;
-                font-weight: 400;
-            }
-
-            .gr-btn {
-                padding: 10px 16px;
-                font-size: 0.9rem;
-                font-weight: 600;
-            }
-
-            .gr-card-actions {
-                flex-direction: column;
-            }
-
-            .gr-btn {
-                width: 100%;
-            }
-
-            .gr-hamburger {
-                bottom: 16px;
-                right: 16px;
-                width: 48px;
-                height: 48px;
-            }
-
-            .gr-modal-content {
-                padding: 24px 16px;
-                width: 95%;
-            }
-
-            .gr-qr-placeholder {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        .gr-card-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .gr-card-icon svg.gr-icon-filled {
-            fill: currentColor !important;
-            stroke: none !important;
-        }
-
-        .gr-profile-avatar svg {
-            width: 40px;
-            height: 40px;
-            fill: currentColor;
-            stroke: none;
         }
     </style>
 </head>
@@ -901,11 +811,16 @@
 
     <div class="gr-sidebar-overlay" id="sidebarOverlay"></div>
 
-    <header>
+    <header class="gr-header">
         <div class="gr-header-hero">
+            <div class="gr-header-hero-content">
             <span class="gr-eyebrow">Bienvenido Egresado</span>
             <h1>Tu comunidad, tus oportunidades</h1>
             <p>Accede a beneficios exclusivos, oportunidades de empleo, formación continua y una red profesional diseñada para impulsar tu carrera como egresado de Uniempresarial.</p>
+            </div>
+            <div class="gr-header-hero-image">
+                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/hero-egresados-scaled.webp" alt="Egresados Uniempresarial">
+            </div>
         </div>
     </header>
 
@@ -923,423 +838,402 @@
     </nav>
 
     <button class="gr-hamburger" id="hamburger" aria-label="Menú">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </button>
 
     <main>
 
-        <section class="gr-tramites" id="tramites">
-            <h2>Trámites</h2>
-            <p>Accede a los trámites que necesitas de forma directa, sin pasos intermedios. Aquí encontrarás los servicios clave de la Oficina de Graduados.</p>
+        <section class="gr-section" id="tramites">
+            <div class="gr-container">
+                <h2>Trámites Directos</h2>
+                <p>Accede a los servicios clave de la Oficina de Graduados de manera directa y simplificada.</p>
 
-            <div class="gr-icon-grid">
-                <div class="gr-icon-item" onclick="openModal('modalAsesor')">
-                    <div class="gr-icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M3 9.5L12 2l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
+                <div class="gr-service-grid">
+                    <div class="gr-service-item">
+                        <div class="gr-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M3 9.5L12 2l9 7.5V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="gr-service-content">
+                            <h3>Mesa de Atención</h3>
+                            <p>Solicita asesoría personalizada con la oficina de graduados. Nuestro equipo está listo para resolver tus dudas.</p>
+                            <a href="#" class="gr-btn gr-btn-cta" onclick="openModal('modalAsesor')">Agendar Asesoría</a>
+                        </div>
                     </div>
-                    <h3>Mesa de Atención</h3>
-                    <p>Asesoría personalizada con nuestro equipo de graduados.</p>
-                    <span class="gr-icon-link">Agendar</span>
-                </div>
 
-                <div class="gr-icon-item">
-                    <div class="gr-icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="12" y1="11" x2="12" y2="17"/>
-                            <line x1="9" y1="14" x2="15" y2="14"/>
-                        </svg>
+                    <div class="gr-service-item">
+                        <div class="gr-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="11" x2="12" y2="17"/>
+                                <line x1="9" y1="14" x2="15" y2="14"/>
+                            </svg>
+                        </div>
+                        <div class="gr-service-content">
+                            <h3>Solicitud de Certificados</h3>
+                            <p>Obtén tu certificado oficial. Accede al video tutorial, radica el pago y gestiona el caso en GLPI.</p>
+                            <a href="https://youtu.be" class="gr-btn gr-btn-secondary" target="_blank" style="margin-right: 8px;">Ver Video</a>
+                            <a href="#" class="gr-btn gr-btn-primary" onclick="openModal('modalCertificado')">Solicitar</a>
+                        </div>
                     </div>
-                    <h3>Certificados</h3>
-                    <p>Obtén tu certificado oficial con tutorial y pago en línea.</p>
-                    <a href="#" class="gr-icon-link" onclick="openModal('modalCertificado')">Solicitar</a>
-                </div>
 
-                <div class="gr-icon-item" onclick="openModal('modalCarne')">
-                    <div class="gr-icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M6 21h12a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z"/>
-                        </svg>
+                    <div class="gr-service-item">
+                        <div class="gr-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M6 21h12a2 2 0 0 0 2-2v-1a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v1a2 2 0 0 0 2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="gr-service-content">
+                            <h3>Carné de Graduado</h3>
+                            <p>Genera o renueva tu identificación oficial como graduado de Uniempresarial para acceder a campus y beneficios.</p>
+                            <a href="#" class="gr-btn gr-btn-primary" onclick="openModal('modalCarne')">Gestionar Carné</a>
+                        </div>
                     </div>
-                    <h3>Carné Graduado</h3>
-                    <p>Genera o renueva tu identificación oficial de graduado.</p>
-                    <span class="gr-icon-link">Gestionar</span>
-                </div>
 
-                <div class="gr-icon-item" onclick="openModal('modalActualizar')">
-                    <div class="gr-icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                        </svg>
+                    <div class="gr-service-item">
+                        <div class="gr-service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </div>
+                        <div class="gr-service-content">
+                            <h3>Actualizar Datos</h3>
+                            <p>Mantén tu información de contacto y laboral al día para participar en convocatorias y estudios de egresados.</p>
+                            <a href="#" class="gr-btn gr-btn-primary" onclick="openModal('modalActualizar')">Actualizar</a>
+                        </div>
                     </div>
-                    <h3>Actualizar Datos</h3>
-                    <p>Mantén tu información de contacto y laboral actualizada.</p>
-                    <span class="gr-icon-link">Actualizar</span>
                 </div>
             </div>
         </section>
 
-        <section id="bolsa-empleo">
+        <section class="gr-section" id="bolsa-empleo">
             <div class="gr-container">
                 <h2>Bolsa de Empleo</h2>
-                <p>Tu vida profesional empieza aquí</p>
+                <p>Tu vida profesional empieza aquí. Empresas líderes buscan el talento de nuestros graduados.</p>
 
-                <div style="display: grid; grid-template-columns: 1fr; margin-bottom: 40px;">
-                    <div class="gr-card featured">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                                <line x1="12" y1="12" x2="12" y2="16"/>
-                                <line x1="10" y1="14" x2="14" y2="14"/>
-                            </svg>
-                        </div>
+                <div class="gr-jobs-split">
+                    <div class="gr-jobs-info">
                         <h3>Oportunidades Exclusivas SPE-CAFAM</h3>
-                        <p>Accede a oportunidades de empleo, eventos exclusivos, convenios estratégicos y formación continua diseñados para impulsar tu carrera.</p>
-                        <p>Empresas líderes del país buscan activamente el talento de nuestros graduados. Accede de forma gratuita y realiza tu inscripción en nuestra bolsa oficial a través del SPE-CAFAM.</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta" onclick="openModal('modalBolsa')">Ingresar a la Bolsa</a>
-                        </div>
+                        <p>Accede de forma gratuita y realiza tu inscripción en nuestra bolsa oficial a través del SPE-CAFAM. Conéctate con ofertas laborales de alta calidad y procesos de selección ágiles.</p>
+                        <p style="font-size: 0.85rem; color: #4b5263; font-style: italic;">Servicio de orientación y postulación libre de costos para toda nuestra comunidad.</p>
                     </div>
-                </div>
-
-                <div class="gr-grid-2">
-                    <a href="#" class="gr-btn gr-btn-primary" onclick="openModal('modalHojaVida')" style="text-decoration: none;">Registro de Hoja de Vida</a>
-                    <a href="#" class="gr-btn gr-btn-secondary" onclick="openModal('modalOrientacion')" style="text-decoration: none;">Orientación Ocupacional</a>
+                    <div class="gr-jobs-actions">
+                        <a href="#" class="gr-btn gr-btn-cta" onclick="openModal('modalBolsa')">Ingresar a la Bolsa</a>
+                        <a href="#" class="gr-btn gr-btn-primary" onclick="openModal('modalHojaVida')">Registrar Hoja de Vida</a>
+                        <a href="#" class="gr-btn gr-btn-secondary" onclick="openModal('modalOrientacion')">Orientación Ocupacional</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="eventos">
+        <section class="gr-section" id="eventos">
             <div class="gr-container">
-                <h2>Eventos</h2>
-                <p>Conversaciones íntimas con empresarios, webinars y talleres de actualización. Amplía tu red y sigue creciendo profesionalmente.</p>
+                <h2>Próximos Eventos</h2>
+                <p>Amplía tu red de contactos y actualiza tus conocimientos mediante talleres, webinars y encuentros con el sector productivo.</p>
 
-                <div class="gr-grid-2">
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                                <path d="M2 8h12v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                                <line x1="6" y1="1" x2="6" y2="3"/>
-                                <line x1="10" y1="1" x2="10" y2="3"/>
-                                <line x1="14" y1="1" x2="14" y2="3"/>
-                            </svg>
+                <div class="gr-events-list">
+                    <div class="gr-event-row">
+                        <div class="gr-event-date">
+                            <span class="day">15</span>
+                            <span class="month">Jun</span>
                         </div>
-                        <h3>Café con Empresarios</h3>
-                        <p>Conversaciones íntimas con empresarios exitosos que comparten su trayectoria, retos y consejos para crecer en el mundo empresarial.</p>
-                        <span class="gr-badge gr-badge-upcoming">Próximo</span>
-                        <p style="margin-top: 12px; font-size: 0.85rem; color: #6b7280;"><strong>Fecha:</strong> 15 de Junio, 2026 | <strong>Lugar:</strong> Campus Principal</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta">Inscribirse</a>
+                        <div class="gr-event-info">
+                            <h3>Café con Empresarios</h3>
+                            <p>Conversaciones íntimas con líderes corporativos que comparten trayectorias, retos y visiones de mercado.</p>
+                            <span class="gr-event-meta"><strong>Lugar:</strong> Campus Principal | <strong>Hora:</strong> 6:00 PM</span>
+                        </div>
+                        <div class="gr-event-action-panel">
+                            <span class="gr-badge gr-badge-upcoming">Próximo</span>
+                            <a href="#" class="gr-btn gr-btn-secondary">Inscribirse</a>
                         </div>
                     </div>
 
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
+                    <div class="gr-event-row">
+                        <div class="gr-event-date">
+                            <span class="day">08</span>
+                            <span class="month">Jun</span>
                         </div>
-                        <h3>Webinar: Actualización Profesional</h3>
-                        <p>Sesiones en línea que impulsen tu desarrollo profesional. Gratuitas para graduados, con contenido de alta demanda laboral.</p>
-                        <span class="gr-badge gr-badge-live">En Directo</span>
-                        <p style="margin-top: 12px; font-size: 0.85rem; color: #6b7280;"><strong>Fecha:</strong> 8 de Junio, 2026 | <strong>Hora:</strong> 3:00 PM</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta">Inscribirse</a>
+                        <div class="gr-event-info">
+                            <h3>Webinar: Actualización Profesional</h3>
+                            <p>Sesiones de transferencia tecnológica y de negocios orientadas a los perfiles de alta demanda laboral.</p>
+                            <span class="gr-event-meta"><strong>Modalidad:</strong> Virtual | <strong>Hora:</strong> 3:00 PM</span>
+                        </div>
+                        <div class="gr-event-action-panel">
+                            <span class="gr-badge gr-badge-live">En Directo</span>
+                            <a href="#" class="gr-btn gr-btn-primary">Inscribirse</a>
                         </div>
                     </div>
 
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M2 3h20v14H2z"/>
-                                <path d="M8 21h8"/>
-                                <path d="M12 17v4"/>
-                                <polyline points="6 12 10 8 14 10 18 6"/>
-                            </svg>
+                    <div class="gr-event-row">
+                        <div class="gr-event-date">
+                            <span class="day">22</span>
+                            <span class="month">Jun</span>
                         </div>
-                        <h3>Taller: Marketing Digital</h3>
-                        <p>Aprende estrategias modernas de marketing digital y posicionamiento en redes. Aplicable a cualquier industria.</p>
-                        <span class="gr-badge gr-badge-upcoming">Próximo</span>
-                        <p style="margin-top: 12px; font-size: 0.85rem; color: #6b7280;"><strong>Fecha:</strong> 22 de Junio, 2026 | <strong>Modalidad:</strong> Virtual</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta">Inscribirse</a>
+                        <div class="gr-event-info">
+                            <h3>Taller: Estrategia de Marketing Digital</h3>
+                            <p>Desarrollo práctico de habilidades digitales para posicionamiento de marcas corporativas y personales.</p>
+                            <span class="gr-event-meta"><strong>Modalidad:</strong> Virtual | <strong>Hora:</strong> 5:00 PM</span>
+                        </div>
+                        <div class="gr-event-action-panel">
+                            <span class="gr-badge gr-badge-upcoming">Próximo</span>
+                            <a href="#" class="gr-btn gr-btn-secondary">Inscribirse</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="beneficios">
+        <section class="gr-section" id="beneficios">
             <div class="gr-container">
-                <h2>Beneficios</h2>
-                <p>Para ti, siempre. Tu comunidad sigue contigo después de graduarte.</p>
+                <h2>Beneficios Permanentes</h2>
+                <p>Nuestra comunidad sigue respaldándote. Conoce las prerrogativas y accesos por pertenecer a Uniempresarial.</p>
 
-                <h3 style="font-size: 1.5rem; font-weight: 700; color: #0132AF; margin-top: 40px; margin-bottom: 24px;">Tus Beneficios como Egresado</h3>
-
-                <div class="gr-grid-2">
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
+                <div class="gr-benefits-grid">
+                    <div class="gr-benefit-item">
+                        <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                             </svg>
                         </div>
-                        <h3>Biblioteca</h3>
-                        <p>Acceso a salas y espacios de biblioteca. Continúa con tu investigación y desarrollo académico.</p>
+                        <div>
+                            <h4>Biblioteca</h4>
+                            <p>Uso de bases de datos digitales, salas de estudio y préstamo de material bibliográfico dentro del campus.</p>
+                        </div>
                     </div>
 
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="gr-icon-filled">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    <div class="gr-benefit-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="stroke: currentColor; fill: none;">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="2"/>
                             </svg>
                         </div>
-                        <h3>Bienestar Universitario</h3>
-                        <p>Acceso a servicios y programas de bienestar. Actividades deportivas, culturales y de salud mental.</p>
+                        <div>
+                            <h4>Bienestar Universitario</h4>
+                            <p>Programas de salud, actividades culturales, disciplinas deportivas y apoyo psicosocial continuo.</p>
+                        </div>
                     </div>
 
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
+                    <div class="gr-benefit-item">
+                        <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10"/>
                                 <line x1="2" y1="12" x2="22" y2="12"/>
                                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                             </svg>
                         </div>
-                        <h3>Movilidad Internacional</h3>
-                        <p>Oportunidades de intercambio y movilidad académica internacional para tu desarrollo profesional.</p>
-                    </div>
-
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M20 10H4V8h16m0 0V6a2 2 0 0 0-2-2h-2V2h-4v2h-2a2 2 0 0 0-2 2v2M4 10v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10m-6 3v4m-4-4v4"/>
-                            </svg>
+                        <div>
+                            <h4>Movilidad Internacional</h4>
+                            <p>Asesoría en procesos de internacionalización y acceso a convocatorias de intercambio global.</p>
                         </div>
-                        <h3>Descuentos en Programas</h3>
-                        <p><strong>30% de descuento</strong> en todos nuestros programas de educación continua y especialización.</p>
                     </div>
 
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
+                    <div class="gr-benefit-item">
+                        <div class="icon">
+                <svg width="48px" height="48px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" >
+
+                <g id="Shopicon">
+                    <rect x="2.201" y="22" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.9411 23.9997)" width="43.598" height="4"/>
+                    <path d="M14,22c4.418,0,8-3.582,8-8s-3.582-8-8-8s-8,3.582-8,8S9.582,22,14,22z M14,10c2.206,0,4,1.794,4,4c0,2.206-1.794,4-4,4
+                        s-4-1.794-4-4C10,11.794,11.794,10,14,10z"/>
+                    <path d="M34,42c4.418,0,8-3.582,8-8s-3.582-8-8-8s-8,3.582-8,8S29.582,42,34,42z M34,30c2.206,0,4,1.794,4,4c0,2.206-1.794,4-4,4
+                        s-4-1.794-4-4C30,31.794,31.794,30,34,30z"/>
+                </g>
+                </svg>
+                        </div>
+                        <div>
+                            <h4>Descuentos Especiales</h4>
+                            <p><strong>Hasta un 30% de descuento</strong> en programas académicos seleccionados y educación continua.</p>
+                        </div>
+                    </div>
+
+                    <div class="gr-benefit-item">
+                        <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                                 <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
                             </svg>
                         </div>
-                        <h3>Beneficios Empresariales</h3>
-                        <p><strong>20%</strong> en CORFERIAS | <strong>20%</strong> Parque Mundo Aventura | <strong>15%</strong> Droguería CAFAM los lunes</p>
+                        <div>
+                            <h4>Convenios Comerciales</h4>
+                            <p>Tarifas preferenciales en Corferias, Parque Mundo Aventura, convenios de salud y redes de droguerías.</p>
+                        </div>
                     </div>
 
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
+                    <div class="gr-benefit-item">
+                        <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10"/>
                                 <line x1="2" y1="12" x2="22" y2="12"/>
                                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                             </svg>
                         </div>
-                        <h3>Acceso Portales Aliados</h3>
-                        <p>Conexión con la red de convenios internacionales y nacionales para ampliar oportunidades profesionales.</p>
+                        <div>
+                            <h4>Portales Aliados</h4>
+                            <p>Enlace con plataformas profesionales y redes académicas aliadas a nivel nacional e internacional.</p>
+                        </div>
                     </div>
                 </div>
 
-                <h3 style="font-size: 1.5rem; font-weight: 700; color: #0132AF; margin-top: 60px; margin-bottom: 24px;">Alianzas Estratégicas</h3>
-
-                <div class="gr-grid-2">
-                    <div class="gr-card">
-                        <h3>Cámara de Comercio de Bogotá</h3>
-                        <p>Como institución de la CCB, accede a la red empresarial más grande del país. Cursos, convenios y clusters.</p>
-                        <div class="gr-card-actions">
-                            <a href="https://www.ccb.org.co" class="gr-btn gr-btn-primary" target="_blank">Explorar Recursos CCB</a>
-                        </div>
+                <h3 class="gr-alliances-title">Alianzas Estratégicas</h3>
+                <div class="gr-alliances-grid">
+                    <div class="gr-alliance-item">
+                        <h4>Cámara de Comercio de Bogotá</h4>
+                        <p>Como institución de la CCB, accede a la red empresarial más grande del país con recursos y eventos de networking.</p>
+                        <a href="https://www.ccb.org.co" target="_blank">Explorar Recursos CCB &rarr;</a>
                     </div>
-
-                    <div class="gr-card">
-                        <h3>Convenios Internacionales</h3>
-                        <p>Instituciones aliadas en el exterior para movilidad académica y profesional. Amplía tu horizonte global.</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-primary">Ver Convenios Activos</a>
-                        </div>
+                    <div class="gr-alliance-item">
+                        <h4>Convenios Internacionales</h4>
+                        <p>Vínculos institucionales en el exterior para desarrollo de estancias formativas y oportunidades laborales globales.</p>
+                        <a href="#">Ver Convenios Activos &rarr;</a>
                     </div>
-
-                    <div class="gr-card">
-                        <h3>Red de Instituciones Aliadas</h3>
-                        <p>Acceso a beneficios adicionales a través de nuestra red de convenios con organismos profesionales.</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-primary">Explorar Alianzas</a>
-                        </div>
+                    <div class="gr-alliance-item">
+                        <h4>Asociaciones Profesionales</h4>
+                        <p>Acceso a agremiaciones y mesas sectoriales para incidir activamente en el desarrollo de tu área de experticia.</p>
+                        <a href="#">Explorar Alianzas &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="formacion">
+        <section class="gr-section" id="formacion">
             <div class="gr-container">
-                <h2>Formación</h2>
-                <p>Sigue aprendiendo. El aprendizaje no termina con el grado. Accede a programas diseñados para profesionales como tú.</p>
+                <h2>Formación Continua</h2>
+                <p>Sigue preparándote. La educación continua fortalece tu perfil frente a las nuevas demandas del mercado laboral.</p>
 
-                <div class="gr-grid-2">
-                    <div class="gr-card">
-                        <h3>Educación Continua</h3>
-                        <p>Programas intensivos en IA aplicada, protección de datos, industrias creativas, marketing digital y más áreas de alta demanda.</p>
-                        <p style="font-weight: 600; color: #059669;">Descuento para Graduados</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta">Explorar Programas</a>
+                <div class="gr-formacion-grid">
+                    <div class="gr-formacion-item">
+                        <div>
+                            <span class="gr-formacion-tag">Educación Ejecutiva</span>
+                            <h3>Cursos y Diplomados</h3>
+                            <p>IA aplicada, transformación digital, protección de datos y gestión ágil bajo metodologías prácticas.</p>
                         </div>
+                        <a href="#" class="gr-btn gr-btn-primary">Explorar Programas</a>
                     </div>
 
-                    <div class="gr-card">
-                        <h3>Especializaciones y Posgrados</h3>
-                        <p>Avanza tu carrera con programas de especialización en analítica de datos, gerencia TI, arquitectura empresarial y más.</p>
-                        <p style="font-weight: 600; color: #059669;">Hasta 30% de Descuento</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta">Ver Especializaciones</a>
+                    <div class="gr-formacion-item">
+                        <div>
+                            <span class="gr-formacion-tag">Posgrados</span>
+                            <h3>Especializaciones</h3>
+                            <p>Lleva tu perfil al nivel directivo con posgrados enfocados en Analítica de Datos, Gerencia de TI y Finanzas Corporativas.</p>
                         </div>
+                        <a href="#" class="gr-btn gr-btn-primary">Ver Especializaciones</a>
                     </div>
 
-                    <div class="gr-card">
-                        <h3>Cursos Cortos Virtuales</h3>
-                        <p>Actualízate de manera flexible con sesiones virtuales gratuitas disponibles en modalidad virtual a través del campus.</p>
-                        <p style="font-weight: 600; color: #059669;">100% Gratuitos</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-cta">Acceder al Campus</a>
+                    <div class="gr-formacion-item">
+                        <div>
+                            <span class="gr-formacion-tag">Autoformación</span>
+                            <h3>Cursos Cortos Virtuales</h3>
+                            <p>Actualización a tu propio ritmo con cursos cortos autogestionados y sin costo a través de nuestro campus virtual.</p>
                         </div>
+                        <a href="#" class="gr-btn gr-btn-primary">Acceder al Campus</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="red-graduados">
+        <section class="gr-section" id="red-graduados">
             <div class="gr-container">
                 <h2>Red de Graduados</h2>
-                <p>Comunidad profesional. Conecta con profesionales graduados de todas las promociones y programas. Encuentra mentores, colaboradores, clientes o simplemente expande tu red de manera estratégica.</p>
+                <p>Nuestra comunidad profesional. Encuentra mentores, expande tu red de contactos y conéctate con profesionales destacados.</p>
 
-                <h3 style="font-size: 1.3rem; font-weight: 700; color: #0132AF; margin-top: 40px; margin-bottom: 24px;">Profesionales en Nuestra Red</h3>
-
-                <div class="gr-grid-3">
-                    <div class="gr-profile-card">
-                        <div class="gr-profile-avatar">
+                <div class="gr-network-grid">
+                    <div class="gr-network-item">
+                        <div class="gr-network-avatar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <circle cx="12" cy="8" r="4"/>
                                 <path d="M12 12c-4 0-6 2-6 6v4h12v-4c0-4-2-6-6-6z"/>
                             </svg>
                         </div>
-                        <h4>Carlos Mendoza</h4>
-                        <p class="gr-profile-role">Ingeniero de Sistemas - Gerente de Proyectos TI</p>
-                        <p>Bogotá, Colombia | Sector: Tecnología | Empresa: TechVision Solutions</p>
-                        <a href="#" class="gr-btn gr-btn-secondary" style="width: 100%;">Conectar</a>
+                        <div class="gr-network-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p class="role">Sistemas - Gerente de Proyectos TI</p>
+                            <p class="meta">TechVision Solutions | Bogotá</p>
+                        </div>
+                        <div class="gr-network-action">
+                            <a href="#" class="gr-btn gr-btn-secondary">Conectar</a>
+                        </div>
                     </div>
 
-                    <div class="gr-profile-card">
-                        <div class="gr-profile-avatar">
+                    <div class="gr-network-item">
+                        <div class="gr-network-avatar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <circle cx="12" cy="8" r="4"/>
                                 <path d="M12 12c-4 0-6 2-6 6v4h12v-4c0-4-2-6-6-6z"/>
                             </svg>
                         </div>
-                        <h4>María González</h4>
-                        <p class="gr-profile-role">Administradora de Empresas - Directora de Operaciones</p>
-                        <p>Medellín, Colombia | Sector: Logística | Empresa: GlobalShip</p>
-                        <a href="#" class="gr-btn gr-btn-secondary" style="width: 100%;">Conectar</a>
+                        <div class="gr-network-info">
+                            <h4>María González</h4>
+                            <p class="role">Administradora - Directora de Operaciones</p>
+                            <p class="meta">GlobalShip | Medellín</p>
+                        </div>
+                        <div class="gr-network-action">
+                            <a href="#" class="gr-btn gr-btn-secondary">Conectar</a>
+                        </div>
                     </div>
 
-                    <div class="gr-profile-card">
-                        <div class="gr-profile-avatar">
+                    <div class="gr-network-item">
+                        <div class="gr-network-avatar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <circle cx="12" cy="8" r="4"/>
                                 <path d="M12 12c-4 0-6 2-6 6v4h12v-4c0-4-2-6-6-6z"/>
                             </svg>
                         </div>
-                        <h4>Juan Rodríguez</h4>
-                        <p class="gr-profile-role">Especialista en Desarrollo Web - Consultor Digital</p>
-                        <p>Cali, Colombia | Sector: Consultoría | Empresa: Digital Minds</p>
-                        <a href="#" class="gr-btn gr-btn-secondary" style="width: 100%;">Conectar</a>
+                        <div class="gr-network-info">
+                            <h4>Juan Rodríguez</h4>
+                            <p class="role">Desarrollador Web - Consultor Digital</p>
+                            <p class="meta">Digital Minds | Cali</p>
+                        </div>
+                        <div class="gr-network-action">
+                            <a href="#" class="gr-btn gr-btn-secondary">Conectar</a>
+                        </div>
                     </div>
 
-                    <div class="gr-profile-card">
-                        <div class="gr-profile-avatar">
+                    <div class="gr-network-item">
+                        <div class="gr-network-avatar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <circle cx="12" cy="8" r="4"/>
                                 <path d="M12 12c-4 0-6 2-6 6v4h12v-4c0-4-2-6-6-6z"/>
                             </svg>
                         </div>
-                        <h4>Laura Pérez</h4>
-                        <p class="gr-profile-role">Contadora Pública - Analista Financiera Senior</p>
-                        <p>Bogotá, Colombia | Sector: Finanzas | Empresa: Audit & Co</p>
-                        <a href="#" class="gr-btn gr-btn-secondary" style="width: 100%;">Conectar</a>
+                        <div class="gr-network-info">
+                            <h4>Laura Pérez</h4>
+                            <p class="role">Contadora Pública - Analista Financiera</p>
+                            <p class="meta">Audit & Co | Bogotá</p>
+                        </div>
+                        <div class="gr-network-action">
+                            <a href="#" class="gr-btn gr-btn-secondary">Conectar</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto">
+        <section class="gr-section" id="contacto">
             <div class="gr-container">
-                <h2>Contacto</h2>
-                <p>¿Necesitas ayuda? Estamos aquí para apoyarte en cualquier momento de tu trayectoria profesional.</p>
+                <h2>Contacto de Egresados</h2>
+                <p>¿Tienes dudas o inquietudes? Estamos a tu disposición para ayudarte en cada paso.</p>
 
-                <div class="gr-grid-2" style="margin-top: 40px;">
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
-                                <polyline points="22,7 12,13 2,7"/>
-                            </svg>
+                <div class="gr-contact-split">
+                    <div class="gr-contact-info-list">
+                        <div class="gr-contact-method">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+                                    <polyline points="22,7 12,13 2,7"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Correo de Graduados</h4>
+                                <p><a href="mailto:egresados@uniempresarial.edu.co">egresados@uniempresarial.edu.co</a></p>
+                                <p style="font-size: 0.85rem; color: #4b5263; margin-top: 4px;">Respuesta garantizada en 48 horas hábiles.</p>
+                            </div>
                         </div>
-                        <h3>Correo de Graduados</h3>
-                        <p><a href="mailto:egresados@uniempresarial.edu.co" style="color: #0132AF; font-weight: 600;">egresados@uniempresarial.edu.co</a></p>
-                        <p style="font-size: 0.9rem; color: #6b7280;">Respuesta garantizada en máximo 48 horas.</p>
-                    </div>
-
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-                                <line x1="9" y1="14" x2="15" y2="14"/>
-                                <line x1="9" y1="11" x2="15" y2="11"/>
-                            </svg>
-                        </div>
-                        <h3>PQRSF</h3>
-                        <p>Presenta tus peticiones, quejas, reclamos, sugerencias y felicitaciones a través de nuestro sistema oficial.</p>
-                        <div class="gr-card-actions">
-                            <a href="#" class="gr-btn gr-btn-primary" target="_blank">Ir a PQRSF</a>
-                        </div>
-                    </div>
-
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </div>
-                        <h3>Sede Principal</h3>
-                        <p><strong>Carrera 33 a No. 30-20</strong><br>Bogotá D.C, Colombia</p>
-                        <p style="font-size: 0.9rem; color: #6b7280;">Lunes a Viernes: 8:00 AM - 5:00 PM</p>
-                    </div>
-
-                    <div class="gr-card">
-                        <div class="gr-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 2.13 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L6.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                        </div>
-                        <h3>Línea de Atención</h3>
-                        <p><strong>(601) XXXX-XXXX</strong></p>
-                        <p style="font-size: 0.9rem; color: #6b7280;">Por confirmar • Disponible próximamente</p>
                     </div>
                 </div>
             </div>
@@ -1347,11 +1241,12 @@
 
     </main>
 
-    <!-- Modales (exactamente igual que antes) -->
+    <!-- MODALES -->
     <div class="gr-modal" id="modalAsesor">
         <div class="gr-modal-content">
             <button class="gr-modal-close" onclick="closeModal('modalAsesor')">&times;</button>
             <h3>Agendar Asesoría Personalizada</h3>
+            <p>Completa el formulario para ponernos en contacto contigo.</p>
             <form>
                 <div class="gr-form-group">
                     <label for="nombre-asesor">Nombre Completo</label>
@@ -1379,11 +1274,10 @@
             <button class="gr-modal-close" onclick="closeModal('modalCertificado')">&times;</button>
             <h3>Solicitar Certificado Académico</h3>
             <p>Sigue estos pasos para obtener tu certificado:</p>
-            <ol style="margin: 16px 0; padding-left: 24px; color: #6b7280;">
-                <li>Ver el video tutorial en nuestro canal</li>
-                <li>Radicar el pago correspondiente</li>
-                <li>Asignar caso en GLPI para seguimiento</li>
-                <li>Recibe tu certificado en 3-5 días hábiles</li>
+            <ol style="margin: 12px 0 20px 20px; font-size: 0.85rem; color: #4b5263;">
+                <li>Verifica el video tutorial explicativo.</li>
+                <li>Realiza el pago por los medios autorizados.</li>
+                <li>Genera tu ticket en GLPI adjuntando el soporte.</li>
             </ol>
             <form>
                 <div class="gr-form-group">
@@ -1393,13 +1287,13 @@
                 <div class="gr-form-group">
                     <label for="tipo-cert">Tipo de Certificado</label>
                     <select id="tipo-cert" required>
-                        <option value="">Selecciona tipo</option>
+                        <option value="">Selecciona una opción</option>
                         <option value="academico">Académico</option>
-                        <option value="laboral">Laboral</option>
+                        <option value="laboral">Laboral / Prácticas</option>
                         <option value="diplomatico">Diplomático</option>
                     </select>
                 </div>
-                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Solicitar</button>
+                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Proceder a Solicitud</button>
             </form>
         </div>
     </div>
@@ -1408,7 +1302,7 @@
         <div class="gr-modal-content">
             <button class="gr-modal-close" onclick="closeModal('modalCarne')">&times;</button>
             <h3>Carné de Graduado</h3>
-            <p>Tu identificación oficial como egresado de Uniempresarial. Accede a todos los beneficios asociados.</p>
+            <p>Identificación para uso dentro de campus y convenios vigentes.</p>
             <form>
                 <div class="gr-form-group">
                     <label for="email-carne">Correo Electrónico</label>
@@ -1418,11 +1312,11 @@
                     <label>Selecciona Acción</label>
                     <select required>
                         <option value="">Elige una opción</option>
-                        <option value="generar">Generar Carné</option>
-                        <option value="renovar">Renovar Carné</option>
+                        <option value="generar">Generar Carné Nuevo</option>
+                        <option value="renovar">Duplicado / Renovación</option>
                     </select>
                 </div>
-                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Continuar</button>
+                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Continuar Proceso</button>
             </form>
         </div>
     </div>
@@ -1431,7 +1325,7 @@
         <div class="gr-modal-content">
             <button class="gr-modal-close" onclick="closeModal('modalActualizar')">&times;</button>
             <h3>Actualizar Datos de Contacto</h3>
-            <p>Mantén tu perfil actualizado para recibir todas las novedades.</p>
+            <p>Mantén tu perfil profesional vigente en nuestros sistemas.</p>
             <form>
                 <div class="gr-form-group">
                     <label for="nombre-actual">Nombre Completo</label>
@@ -1442,14 +1336,14 @@
                     <input type="email" id="email-actual" required>
                 </div>
                 <div class="gr-form-group">
-                    <label for="telefono-actual">Teléfono</label>
+                    <label for="telefono-actual">Teléfono de Contacto</label>
                     <input type="tel" id="telefono-actual" required>
                 </div>
                 <div class="gr-form-group">
-                    <label for="empresa-actual">Empresa Actual</label>
+                    <label for="empresa-actual">Empresa Actual / Cargo</label>
                     <input type="text" id="empresa-actual">
                 </div>
-                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Actualizar</button>
+                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Actualizar Registro</button>
             </form>
         </div>
     </div>
@@ -1458,10 +1352,10 @@
         <div class="gr-modal-content">
             <button class="gr-modal-close" onclick="closeModal('modalBolsa')">&times;</button>
             <h3>Ingresar a la Bolsa de Empleo</h3>
-            <p>Autoriza el acceso a la plataforma SPE-CAFAM para registrarte como candidato.</p>
-            <div class="gr-qr-placeholder">QR de Autorización CAFAM</div>
-            <p style="text-align: center; font-size: 0.9rem; color: #6b7280; margin-top: 16px;">Escanea el código QR con tu teléfono para autorizar el acceso</p>
-            <button type="button" class="gr-btn gr-btn-cta" style="width: 100%; margin-top: 24px;" onclick="alert('Redirección a SPE-CAFAM')">Ir a SPE-CAFAM</button>
+            <p>Autoriza la vinculación con la plataforma de empleo SPE-CAFAM.</p>
+            <div class="gr-qr-placeholder">Código QR SPE-CAFAM</div>
+            <p style="text-align: center; font-size: 0.8rem; color: #8c93a3; margin-top: 12px;">Escanea el código con tu celular para autorizar el ingreso</p>
+            <button type="button" class="gr-btn gr-btn-cta" style="width: 100%; margin-top: 16px;" onclick="alert('Redireccionando a SPE-CAFAM')">Ir a SPE-CAFAM</button>
         </div>
     </div>
 
@@ -1469,8 +1363,8 @@
         <div class="gr-modal-content">
             <button class="gr-modal-close" onclick="closeModal('modalHojaVida')">&times;</button>
             <h3>Registro de Hoja de Vida</h3>
-            <p>Crea tu perfil en la plataforma del SPE-CAFAM y haz que los empleadores te encuentren.</p>
-            <a href="#" class="gr-btn gr-btn-cta" style="display: block; text-align: center;">Ir a Registro de Hoja de Vida</a>
+            <p>Completa tu hoja de vida en el Servicio Público de Empleo administrado por CAFAM.</p>
+            <a href="#" class="gr-btn gr-btn-cta" style="display: block; text-align: center; text-decoration: none;">Ir al Registro Oficial</a>
         </div>
     </div>
 
@@ -1478,17 +1372,17 @@
         <div class="gr-modal-content">
             <button class="gr-modal-close" onclick="closeModal('modalOrientacion')">&times;</button>
             <h3>Orientación Ocupacional</h3>
-            <p>Recibe apoyo del equipo experto para mejorar tu hoja de vida, prepararte para entrevistas y orientar tu búsqueda laboral.</p>
+            <p>Asesoría en construcción de currículum y simulación de entrevistas de trabajo.</p>
             <form>
                 <div class="gr-form-group">
                     <label for="email-orient">Correo Electrónico</label>
                     <input type="email" id="email-orient" required>
                 </div>
                 <div class="gr-form-group">
-                    <label for="interes-orient">Área de Interés</label>
-                    <input type="text" id="interes-orient" required>
+                    <label for="interes-orient">Especialidad de Interés</label>
+                    <input type="text" id="interes-orient" required placeholder="Ej: TI, Finanzas, Mercadeo">
                 </div>
-                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Solicitar Asesoría</button>
+                <button type="submit" class="gr-btn gr-btn-cta" style="width: 100%;">Agendar Orientación</button>
             </form>
         </div>
     </div>
@@ -1500,63 +1394,72 @@
         const navLinks = document.querySelectorAll('.gr-nav-link');
 
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('gr-active');
+            if (!sidebarNav.classList.contains('gr-active')) {
+                const rect = hamburger.getBoundingClientRect();
+                sidebarNav.style.top = (rect.top - 8) + 'px';  
+            }
             sidebarNav.classList.toggle('gr-active');
-            sidebarOverlay.classList.toggle('gr-active');
+            hamburger.classList.toggle('gr-active');
         });
 
+        document.addEventListener('click', (e) => {
+            if (!sidebarNav.contains(e.target) && !hamburger.contains(e.target)) {  
+                sidebarNav.classList.remove('gr-active'); 
+                hamburger.classList.remove('gr-active');
+            }
+        });
         sidebarOverlay.addEventListener('click', () => {
-            hamburger.classList.remove('gr-active');
+            hamburger.classList.remove('gr-active');  // Ya está
             sidebarNav.classList.remove('gr-active');
             sidebarOverlay.classList.remove('gr-active');
         });
 
+        let isScrolling = true;
+
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); 
+                
+                isScrolling = false; 
+                
+                const targetId = link.getAttribute('href').slice(1);
+                const target = document.getElementById(targetId);
+                const offset = 5;
+                
+                window.scrollTo({
+                    top: target.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+                
                 navLinks.forEach(l => l.classList.remove('gr-active'));
                 link.classList.add('gr-active');
-                hamburger.classList.remove('gr-active');
-                sidebarNav.classList.remove('gr-active');
-                sidebarOverlay.classList.remove('gr-active');
+                
+                setTimeout(() => { isScrolling = true; }, 1000);  
             });
         });
 
         window.addEventListener('scroll', () => {
+            if (!isScrolling) return;  
+            
             const sections = document.querySelectorAll('section');
             let current = '';
-
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
+                if (scrollY >= sectionTop - 220) current = section.getAttribute('id');
             });
-
             navLinks.forEach(link => {
                 link.classList.remove('gr-active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('gr-active');
-                }
+                if (link.getAttribute('href').slice(1) === current) link.classList.add('gr-active');
             });
         });
 
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('gr-active');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('gr-active');
-        }
+        function openModal(modalId) { document.getElementById(modalId).classList.add('gr-active'); }
+        function closeModal(modalId) { document.getElementById(modalId).classList.remove('gr-active'); }
 
         document.querySelectorAll('.gr-modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('gr-active');
-                }
-            });
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('gr-active'); });
         });
     </script>
-
 </body>
 </html>

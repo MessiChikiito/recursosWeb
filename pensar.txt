@@ -1,0 +1,184 @@
+=== GALERÍAS DE INSPIRACIÓN WEB ===
+
+1. Landingfolio
+https://www.landingfolio.com
+
+Descripción:
+Colección enorme de landing pages reales. Ideal para encontrar inspiración en hero sections, pricing, testimonios, CTAs y estructuras completas de páginas.
+
+Uso recomendado:
+- Landing pages SaaS
+- Páginas de IA
+- Marketing
+- Startups
+- E-commerce
+
+
+2. Godly Website
+https://godly.website
+
+Descripción:
+Galería enfocada en diseños modernos, creativos y menos convencionales. Excelente para salir de los patrones repetitivos.
+
+Uso recomendado:
+- Diseños originales
+- Tipografías interesantes
+- Layouts diferentes
+- Tendencias visuales actuales
+
+
+3. Awwwards
+https://www.awwwards.com
+
+Descripción:
+Sitio que premia algunos de los mejores diseños web del mundo. Muchos proyectos son experimentales y muy creativos.
+
+Uso recomendado:
+- Inspiración visual
+- Animaciones
+- Composición
+- Efectos avanzados
+- Ideas fuera de lo común
+
+Nota:
+No copiar directamente. Tomar ideas y patrones.
+
+
+4. One Page Love
+https://onepagelove.com
+
+Descripción:
+Especializado en landing pages de una sola página. Diseños más realistas y aplicables a proyectos comerciales.
+
+Uso recomendado:
+- Landing pages
+- Portafolios
+- SaaS
+- Productos digitales
+- Páginas promocionales
+
+
+5. Mobbin
+https://mobbin.com
+
+Descripción:
+Biblioteca enorme de interfaces reales de aplicaciones y productos digitales.
+
+Uso recomendado:
+- Modales
+- Formularios
+- Dashboards
+- Menús
+- Onboarding
+- Componentes UI
+
+
+====================================================
+
+=== EMPRESAS DE REFERENCIA ===
+
+6. Linear
+https://linear.app
+
+Descripción:
+Uno de los referentes actuales en diseño SaaS minimalista y profesional.
+
+Analizar:
+- Espaciado
+- Tipografía
+- Jerarquía visual
+- Uso del color
+
+
+7. Stripe
+https://stripe.com
+
+Descripción:
+Probablemente la referencia más importante para diseño web moderno.
+
+Analizar:
+- Layouts
+- Secciones complejas
+- Gradientes sutiles
+- Organización visual
+
+
+8. Vercel
+https://vercel.com
+
+Descripción:
+Diseño técnico, limpio y orientado a desarrolladores.
+
+Analizar:
+- Diseño oscuro
+- Tipografía
+- Componentes
+- Animaciones discretas
+
+
+9. Raycast
+https://raycast.com
+
+Descripción:
+Excelente ejemplo de landing moderna enfocada en producto.
+
+Analizar:
+- Presentación del producto
+- Capturas
+- CTAs
+- Ritmo visual
+
+
+10. Arc Browser
+https://arc.net
+
+Descripción:
+Diseño creativo y moderno con una identidad visual fuerte.
+
+Analizar:
+- Storytelling
+- Uso de imágenes
+- Presentación de características
+
+
+11. Notion
+https://www.notion.so
+
+Descripción:
+Diseño minimalista centrado en claridad y contenido.
+
+Analizar:
+- Simplicidad
+- Espaciado
+- Organización de información
+- Legibilidad
+
+
+====================================================
+
+=== CUANDO NO TENGA IDEAS ===
+
+1. Buscar 3 referencias distintas.
+2. Analizar:
+   - Hero
+   - Colores
+   - Tipografía
+   - Espaciado
+   - Navegación
+   - CTA
+
+3. Combinar elementos:
+   - Hero de Linear
+   - Estructura de Stripe
+   - Tipografía de Raycast
+
+4. Evitar pedir a la IA:
+   "Haz una landing moderna."
+
+5. Pedir:
+   "Inspírate en Linear y Vercel. Usa mucho espacio en blanco,
+   tipografía grande, diseño minimalista y animaciones discretas.
+   Evita gradientes exagerados y tarjetas flotantes genéricas."
+
+Regla general:
+Copiar patrones. No copiar diseños completos.
