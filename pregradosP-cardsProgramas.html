@@ -138,21 +138,6 @@
             }
         }
 
-        .pg-badge-virtual, .pg-badge-nuevo {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 2px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            border: 2px solid #e2e8f0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
         .pg-badge-presencial {
             background-color: #EF1218;
             color: #ffffff;
@@ -188,7 +173,7 @@
             border-color: #0BD926;
         }
 
-        .pg-badge-virtual-label .virtual-text {
+        .virtual-text {
             color: #ffffff;
             background: #0BD926;
             font-weight: 900;
@@ -222,14 +207,22 @@
             color: #ffffff;
         }
 
-        .pg-badge-nuevo {
+        .pg-badge-nuevo{
+            position: absolute;
+            font-size: 13px;
+            padding: 5px 10px !important;
+            border-radius: 2px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border: 2px solid #e2e8f0;
             background-color: #EF1218;
             color: #ffffff;
-            top: -8px;
-            right: 16px;
-            padding: 8px 16px;
-            border-radius: 50px;
-            letter-spacing: 1px;
+            top: 12px;
+            left: 12px;
+            border-radius: 6px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         @media (max-width: 768px) {
@@ -1077,21 +1070,21 @@
             },
             {
                 id: 2,
-                nombre: "Marketing",
+                nombre: "Negocios Turísticos y Hoteleros",
                 modalidad: "Presencial",
                 duracion: "7 semestres",
                 jornada: "Diurna",
-                imagen: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=400&h=200&fit=crop",
+                imagen: "https://uniempresarial.edu.co/wp-content/uploads/2026/06/Negocios-Turisticos-y-Hoteleros-img.webp?w=400&h=200&fit=crop",
                 bullets: [
-                    "Estrategias de marketing digital",
-                    "Analítica de datos y métricas",
-                    "E-commerce y marketplaces"
+                    "Gestión de destinos",
+                    "Operación hotelera",
+                    "Planeación de eventos"
                 ],
-                descripcion: "Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.",
-                esNuevo: false,
+                descripcion: "Forma ingenieros capaces de optimizar procesos productivos y logísticos para mejorar la eficiencia organizacional.",
+                esNuevo: true,
                 tieneVirtual: true,
-                urlPrograma: "https://uniempresarial.edu.co/marketing/",
-                urlVirtual: "https://uniempresarial.edu.co/marketing-virtual/"
+                urlPrograma: "https://uniempresarial.edu.co/negocios-turisticos-y-hoteleros/",
+                urlVirtual: "https://uniempresarial.edu.co/negocios-turisticos-y-hoteleros-virtual/"
             },
             {
                 id: 3,
@@ -1160,6 +1153,24 @@
                 tieneVirtual: true,
                 urlPrograma: "https://uniempresarial.edu.co/ingenieria-industrial/",
                 urlVirtual: "https://uniempresarial.edu.co/ingenieria-industrial-virtual/"
+            },
+            {
+                id: 7,
+                nombre: "Marketing",
+                modalidad: "Presencial",
+                duracion: "7 semestres",
+                jornada: "Diurna",
+                imagen: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=400&h=200&fit=crop",
+                bullets: [
+                    "Estrategias de marketing digital",
+                    "Analítica de datos y métricas",
+                    "E-commerce y marketplaces"
+                ],
+                descripcion: "Prepara líderes en marketing capaces de diseñar estrategias digitales que impulsen el crecimiento de las organizaciones en el entorno digital.",
+                esNuevo: false,
+                tieneVirtual: true,
+                urlPrograma: "https://uniempresarial.edu.co/marketing/",
+                urlVirtual: "https://uniempresarial.edu.co/marketing-virtual/"
             }
         ];
 
