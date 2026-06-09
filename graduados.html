@@ -456,7 +456,59 @@
 
         .gr-alliances-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: 2fr 1fr; 
+            gap: 32px; 
+            align-items: start; 
+        }
+
+        .gr-alliance-video {
+            border-left: 3px solid #cdd2db;
+            padding-left: 20px;
+        }
+
+        .gr-alliance-video > h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0132AF;
+            margin-bottom: 6px;
+        }
+
+        .gr-alliance-video > p {
+            font-size: 0.9rem;
+            color: #4b5263;
+            margin: 12px 0;
+        }
+
+        .gr-alliance-video > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0132AF;
+            text-decoration: none;
+        }
+        .gr-alliance-video > a:hover {
+            text-decoration: underline;
+        }
+
+        .gr-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .gr-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .gr-alliance-items-column {
+            display: flex;
+            flex-direction: column;
             gap: 32px; 
         }
 
@@ -1080,24 +1132,41 @@
                     </div>
                 </div>
 
-                <h3 class="gr-alliances-title">Alianzas Estratégicas</h3>
-                <div class="gr-alliances-grid">
-                    <div class="gr-alliance-item">
-                        <h4>Cámara de Comercio de Bogotá</h4>
-                        <p>Como institución de la CCB, accede a la red empresarial más grande del país con recursos y eventos de networking.</p>
-                        <a href="https://www.ccb.org.co" target="_blank">Explorar Recursos CCB &rarr;</a>
-                    </div>
-                    <div class="gr-alliance-item">
-                        <h4>Convenios Internacionales</h4>
-                        <p>Vínculos institucionales en el exterior para desarrollo de estancias formativas y oportunidades laborales globales.</p>
-                        <a href="#">Ver Convenios Activos &rarr;</a>
-                    </div>
-                    <div class="gr-alliance-item">
-                        <h4>Asociaciones Profesionales</h4>
-                        <p>Acceso a agremiaciones y mesas sectoriales para incidir activamente en el desarrollo de tu área de experticia.</p>
-                        <a href="#">Explorar Alianzas &rarr;</a>
-                    </div>
+        <h3 class="gr-alliances-title">Alianzas Estratégicas</h3>
+        <div class="gr-alliances-grid">
+
+            <div class="gr-alliance-video">
+                <h4>Video Institucional</h4>
+                <div class="gr-video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/qUTxr0srvUk" 
+                        title="Video institucional Uniempresarial"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
+                <p>Conoce más sobre nuestra proyección, alianzas activas y el respaldo que te ofrecemos como egresado.</p>
+                <a href="https://youtu.be/qUTxr0srvUk" target="_blank">Ver en YouTube &rarr;</a>
+            </div>
+
+            <div class="gr-alliance-items-column">
+                <div class="gr-alliance-item">
+                    <h4>Cámara de Comercio de Bogotá</h4>
+                    <p>Como institución de la CCB, accede a la red empresarial más grande del país con recursos y eventos de networking.</p>
+                    <a href="https://www.ccb.org.co" target="_blank">Explorar Recursos CCB &rarr;</a>
+                </div>
+                <div class="gr-alliance-item">
+                    <h4>Convenios Internacionales</h4>
+                    <p>Vínculos institucionales en el exterior para desarrollo de estancias formativas y oportunidades laborales globales.</p>
+                    <a href="#">Ver Convenios Activos &rarr;</a>
+                </div>
+                <div class="gr-alliance-item">
+                    <h4>Asociaciones Profesionales</h4>
+                    <p>Acceso a agremiaciones y mesas sectoriales para incidir activamente en el desarrollo de tu área de experticia.</p>
+                    <a href="#">Explorar Alianzas &rarr;</a>
+                </div>
+            </div>
+        </div>
             </div>
         </section>
 
