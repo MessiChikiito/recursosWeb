@@ -28,7 +28,7 @@
         }
 
         .modular-left-panel {
-            background: linear-gradient(180deg, #2A449C 0%, #1e3a8a 100%);
+            background: #0132AF;
             padding: 50px 40px;
 
             display: flex;
@@ -134,7 +134,7 @@
 
         /* ============ TARJETA PRESENCIAL ============ */
         .modular-card-presencial {
-            background: #f5f5f5;
+            background: #fff;
             border-radius: 16px;
             padding: 24px;
             display: flex;
@@ -209,7 +209,7 @@
 
         /* ============ TARJETA VIRTUAL ============ */
         .modular-card-virtual {
-            background: #f5f5f5;
+            background: #fff;
             border-radius: 16px;
             padding: 24px;
             display: flex;
@@ -286,7 +286,7 @@
 
         /* ============ TARJETA POSGRADOS ============ */
         .modular-card-posgrados {
-            background: #f5f5f5;
+            background: #fff;
             border-radius: 16px;
             padding: 24px;
             display: flex;
@@ -516,7 +516,7 @@
             display: block;
             width: 100%;
             background: transparent;
-            color: #2A449C;
+            color: #0132AF;
             text-align: center;
             padding: 18px;
             border-radius: 12px;
@@ -524,11 +524,11 @@
             font-size: 1rem;
             text-decoration: none;
             transition: all 0.3s ease !important;
-            border: 2px solid #2A449C;
+            border: 2px solid #0132AF;
         }
 
         .modular-cta-btn:hover {
-            background: #2A449C;
+            background: #0132AF;
             color: white;
         }
 
@@ -561,174 +561,185 @@
             }
         }
 
-@media (max-width: 620px) {
-    .banner-beneficio {
-        min-height: auto;
-    }
+        @media (max-width: 620px) {
+            .banner-beneficio {
+                min-height: auto;
+            }
 
-    /* Panel izquierdo más holgado */
-    .modular-left-panel {
-        padding: 35px 25px;
-    }
+            .modular-left-panel {
+                padding: 35px 25px;
+            }
 
-    .modular-main-title {
-        font-size: 1.6rem;
-        margin-bottom: 14px;
-    }
+            .modular-main-title {
+                font-size: 1.8rem;
+                margin-bottom: 14px;
+            }
 
-    .modular-main-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 24px;
-    }
+            .modular-main-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+            }
 
-    .modular-stats-row {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
-        margin-top: 15px;
-    }
+            .modular-stats-row {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+                margin-top: 15px;
+            }
 
-    .modular-stat-mini {
-        padding: 10px 10px;
-    }
+            .modular-stat-mini {
+                padding: 10px 10px;
+            }
 
-    .modular-stat-number {
-        font-size: 1.4rem;
-    }
+            .modular-stat-number {
+                font-size: 1.5rem;
+            }
 
-    .modular-stat-label {
-        font-size: 0.5rem;
-    }
+            .modular-stat-label {
+                font-size: 0.6rem !important;
+                line-height: 1.2;
+            }
 
-    .modular-promo-badge {
-        font-size: 0.75rem;
-        padding: 6px 18px;
-    }
+            .modular-promo-badge {
+                font-size: 0.75rem;
+                padding: 6px 18px;
+            }
 
-    /* Panel derecho */
-    .modular-right-panel {
-        padding: 20px 15px;
-    }
+            /* Panel derecho */
+            .modular-right-panel {
+                padding: 20px 15px;
+            }
 
-    .modular-card-presencial,
-    .modular-card-virtual,
-    .modular-card-posgrados {
-        padding: 16px 0 44px 0;
-        gap: 0;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 12px;
-        overflow: hidden;
-    }
+            /* ── Cards: dos columnas (contenido | barra-flecha) ── */
+            .modular-card-presencial,
+            .modular-card-virtual,
+            .modular-card-posgrados {
+                padding: 0;
+                gap: 0;
+                flex-direction: row;       /* vuelve a fila */
+                align-items: stretch;
+                overflow: hidden;
+            }
 
-    .modular-card-presencial::after,
-    .modular-card-virtual::after,
-    .modular-card-posgrados::after {
-        display: none;
-    }
+            /* Quitar el pseudo-elemento decorativo en móvil */
+            .modular-card-presencial::after,
+            .modular-card-virtual::after,
+            .modular-card-posgrados::after {
+                display: none;
+            }
 
-    .modular-icon-presencial,
-    .modular-icon-virtual,
-    .modular-icon-posgrados {
-        display: flex;
-        width: 36px;
-        height: 36px;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        border-radius: 12px;
-    }
+            /* Zona izquierda: icono + texto */
+            .modular-icon-presencial,
+            .modular-icon-virtual,
+            .modular-icon-posgrados {
+                width: 40px;
+                height: 40px;
+                margin: 18px 0 18px 16px;
+                border-radius: 12px;
+                flex-shrink: 0;
+                align-self: center;
+            }
 
-    .modular-icon-presencial svg,
-    .modular-icon-virtual svg,
-    .modular-icon-posgrados svg {
-        width: 20px !important;
-        height: 20px !important;
-        stroke-width: 2.5 !important;
-        stroke-linecap: round !important;
-        stroke-linejoin: round !important;
-        fill: none !important;
-    }
+            .modular-icon-presencial svg,
+            .modular-icon-virtual svg,
+            .modular-icon-posgrados svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
 
-    .modular-card-content {
-        width: 100%;
-        text-align: center;
-    }
+            .modular-card-content {
+                flex: 1;
+                text-align: left;
+                padding: 16px 12px;
+                align-self: center;
+            }
 
-    .modular-card-content h4 {
-        font-size: 1.2rem;
-    }
+            .modular-card-content h4 {
+                font-size: 1rem;
+            }
 
-    .modular-card-subtitle {
-        font-size: 0.85rem;
-    }
+            .modular-card-subtitle {
+                font-size: 0.8rem;
+            }
 
-    .modular-card-presencial .modular-card-modality {
-        background: #F52C2C;
-    }
+            /* ── Barra lateral derecha con la flecha ── */
+            .modular-card-modality {
+                position: static;           /* sale del absolute */
+                transform: skewX(-15deg); 
+                top: auto;
+                right: 0;
+                width: 70px;
+                flex-shrink: 0;
+                align-self: stretch;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0;
+                margin: 0;
+                max-width: none;
+                margin-right: -20px;    
+            }
 
-    .modular-card-virtual .modular-card-modality {
-        background: #26ce13;
-    }
+            /* Color de fondo de la barra según tarjeta */
+            .modular-card-presencial .modular-card-modality { background: #F52C2C; }
+            .modular-card-virtual   .modular-card-modality { background: #26ce13; }
+            .modular-card-posgrados .modular-card-modality { background: #FF6B35; }
 
-    .modular-card-posgrados .modular-card-modality {
-        background: #FF6B35;
-    }
+            /* Ocultar el texto de modalidad — solo se muestra la flecha */
+            .modality-text {
+                display: none;
+            }
 
-    .modality-text {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 1;
-        white-space: nowrap;
-        transition: opacity 0.4s ease !important;
-        pointer-events: none;
-    }
+            .modality-arrow {
+                position: static;
+                transform: skewX(15deg);  
+                opacity: 1;                 /* siempre visible */
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: -16px; 
+                pointer-events: none;
+            }
 
-    .modality-arrow {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.4s ease !important;
-        pointer-events: none;
-    }
+            .modality-arrow svg {
+                width: 22px;
+                height: 22px;
+                stroke: white !important;
+                stroke-width: 2.5 !important;
+                fill: none !important;
+                stroke-linecap: round !important;
+                stroke-linejoin: round !important;
+            }
 
-    .modality-arrow svg {
-        width: 28px;
-        height: 28px;
-        stroke: white !important;
-        stroke-width: 3 !important;
-        fill: none !important;
-        stroke-linecap: round !important;
-        stroke-linejoin: round !important;
-    }
+            /* Cancelar animaciones hover/active en móvil */
+            .modular-card-presencial:hover .modality-text,
+            .modular-card-virtual:hover .modality-text,
+            .modular-card-posgrados:hover .modality-text,
+            .modular-card-presencial:active .modality-text,
+            .modular-card-virtual:active .modality-text,
+            .modular-card-posgrados:active .modality-text {
+                opacity: 0;
+                transform: none;
+            }
 
-    /* Estado activo en móvil: oculta texto y muestra flecha centrada */
-    .modular-card-presencial:active .modality-text,
-    .modular-card-virtual:active .modality-text,
-    .modular-card-posgrados:active .modality-text {
-        opacity: 0;
-    }
+            .modular-card-presencial:hover .modality-arrow,
+            .modular-card-virtual:hover .modality-arrow,
+            .modular-card-posgrados:hover .modality-arrow,
+            .modular-card-presencial:active .modality-arrow,
+            .modular-card-virtual:active .modality-arrow,
+            .modular-card-posgrados:active .modality-arrow {
+                opacity: 1;
+                transform: none;
+            }
 
-    .modular-card-presencial:active .modality-arrow,
-    .modular-card-virtual:active .modality-arrow,
-    .modular-card-posgrados:active .modality-arrow {
-        opacity: 1;
-    }
+            .modular-cards-stack {
+                gap: 8px;
+            }
 
-    .modular-cards-stack {
-        gap: 8px;
-    }
-
-    .modular-cta-btn {
-        font-size: 0.95rem;
-        padding: 16px;
-    }
-}
+            .modular-cta-btn {
+                font-size: 0.95rem;
+                padding: 16px;
+            }
+        }
     </style>
 </head>
 <body>
