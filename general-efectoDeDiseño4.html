@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Depth Background</title>
+    <style>
+        :root {
+            --bg: #e8ecf1;
+            --shadow-dark: #b8bec6;
+            --shadow-light: #ffffff;
+            --text: #5a6070;
+            --accent: #7b8fa0;
+            --card-bg: #e8ecf1;
+            --depth-1: #dce0e5;
+            --depth-2: #d0d5db;
+            --depth-3: #c4cad1;
+            --glow: rgba(255, 255, 255, 0.7);
+            --transition-speed: 0.6s;
+        }
+
+        .dark-mode {
+            --bg: #2a2d33;
+            --shadow-dark: #1a1c20;
+            --shadow-light: #3a3e45;
+            --text: #b0b8c4;
+            --accent: #8a9bae;
+            --card-bg: #2a2d33;
+            --depth-1: #24272c;
+            --depth-2: #1e2126;
+            --depth-3: #181b1f;
+            --glow: rgba(255, 255, 255, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: background var(--transition-speed) ease,
+                color var(--transition-speed) ease;
+            color: var(--text);
+            cursor: default;
+            position: relative;
+        }
+
+        /* ============ CAPAS DE PROFUNDIDAD DEL FONDO ============ */
+        .depth-layer {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: all var(--transition-speed) ease;
+            z-index: 0;
+        }
+
+        /* Capa 1 - La más lejana (profunda, hundida) */
+        .depth-layer-1 {
+            width: 70vw;
+            height: 70vw;
+            max-width: 900px;
+            max-height: 900px;
+            top: -20%;
+            left: -15%;
+            background: var(--depth-3);
+            box-shadow:
+                inset 25px 25px 60px var(--shadow-dark),
+                inset -20px -20px 50px var(--shadow-light),
+                0 30px 60px rgba(0, 0, 0, 0.08);
+            animation: floatDeep 18s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        /* Capa 2 - Intermedia (elevada) */
+        .depth-layer-2 {
+            width: 55vw;
+            height: 55vw;
+            max-width: 650px;
+            max-height: 650px;
+            bottom: -25%;
+            right: -10%;
+            background: var(--depth-1);
+            box-shadow:
+                30px 30px 70px var(--shadow-dark),
+                -25px -25px 60px var(--shadow-light),
+                0 20px 50px rgba(0, 0, 0, 0.06);
+            animation: floatMid 14s ease-in-out infinite reverse;
+            opacity: 0.7;
+        }
+
+        /* Capa 3 - Cercana (hundida, creando un valle) */
+        .depth-layer-3 {
+            width: 40vw;
+            height: 40vw;
+            max-width: 500px;
+            max-height: 500px;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--depth-2);
+            box-shadow:
+                inset 20px 20px 50px var(--shadow-dark),
+                inset -15px -15px 40px var(--shadow-light),
+                0 15px 40px rgba(0, 0, 0, 0.05);
+            animation: floatNear 12s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        /* Capa 4 - Pequeño acento flotante */
+        .depth-layer-4 {
+            width: 20vw;
+            height: 20vw;
+            max-width: 250px;
+            max-height: 250px;
+            top: 15%;
+            right: 20%;
+            background: var(--card-bg);
+            box-shadow:
+                18px 18px 40px var(--shadow-dark),
+                -14px -14px 35px var(--shadow-light),
+                0 10px 30px rgba(0, 0, 0, 0.04);
+            animation: floatSmall 10s ease-in-out infinite;
+            opacity: 0.55;
+        }
+
+        /* Capa 5 - Pequeño hundido */
+        .depth-layer-5 {
+            width: 15vw;
+            height: 15vw;
+            max-width: 180px;
+            max-height: 180px;
+            bottom: 20%;
+            left: 15%;
+            background: var(--depth-3);
+            box-shadow:
+                inset 12px 12px 30px var(--shadow-dark),
+                inset -10px -10px 25px var(--shadow-light);
+            animation: floatSmall 8s ease-in-out infinite reverse;
+            opacity: 0.45;
+        }
+
+        /* ============ ANIMACIONES DE FLOTACIÓN ============ */
+        @keyframes floatDeep {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(3vw, 2vw) scale(1.04);
+            }
+            50% {
+                transform: translate(-1vw, 4vw) scale(0.96);
+            }
+            75% {
+                transform: translate(-3vw, -1vw) scale(1.02);
+            }
+        }
+
+        @keyframes floatMid {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            30% {
+                transform: translate(-3vw, -3vw) scale(1.05);
+            }
+            60% {
+                transform: translate(2vw, 1vw) scale(0.95);
+            }
+            85% {
+                transform: translate(1vw, -2vw) scale(1.03);
+            }
+        }
+
+        @keyframes floatNear {
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            33% {
+                transform: translate(-48%, -52%) scale(1.03);
+            }
+            66% {
+                transform: translate(-52%, -48%) scale(0.97);
+            }
+        }
+
+        @keyframes floatSmall {
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(2vw, -1.5vw) rotate(3deg);
+            }
+        }
+
+        /* ============ REJILLA / TEXTURA SUTIL ============ */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(var(--shadow-dark) 1px, transparent 1px),
+                linear-gradient(90deg, var(--shadow-dark) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .dark-mode .grid-overlay {
+            opacity: 0.05;
+        }
+
+        /* ============ TARJETA CENTRAL (Demostración) ============ */
+        .main-card {
+            position: relative;
+            z-index: 10;
+            background: var(--card-bg);
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            width: 90%;
+            max-width: 480px;
+            box-shadow:
+                20px 20px 50px var(--shadow-dark),
+                -18px -18px 45px var(--shadow-light),
+                0 0 0 1px rgba(255, 255, 255, 0.08);
+            text-align: center;
+            transition: all var(--transition-speed) ease;
+            animation: cardBreathe 8s ease-in-out infinite;
+        }
+
+        @keyframes cardBreathe {
+            0%,
+            100% {
+                box-shadow: 20px 20px 50px var(--shadow-dark),
+                    -18px -18px 45px var(--shadow-light),
+                    0 0 0 1px rgba(255, 255, 255, 0.08);
+            }
+            50% {
+                box-shadow: 24px 24px 55px var(--shadow-dark),
+                    -20px -20px 50px var(--shadow-light),
+                    0 0 0 1px rgba(255, 255, 255, 0.12);
+            }
+        }
+
+        .main-card h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+            color: var(--text);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .main-card .subtitle {
+            font-size: 0.95rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color var(--transition-speed) ease;
+        }
+
+        /* ============ BOTONES NEUMÓRFICOS ============ */
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+        }
+
+        .btn-neumorphic {
+            padding: 0.85rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            background: var(--card-bg);
+            color: var(--text);
+            box-shadow:
+                8px 8px 20px var(--shadow-dark),
+                -6px -6px 18px var(--shadow-light);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-neumorphic:hover {
+            box-shadow:
+                10px 10px 25px var(--shadow-dark),
+                -8px -8px 22px var(--shadow-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-neumorphic:active {
+            box-shadow:
+                inset 6px 6px 14px var(--shadow-dark),
+                inset -4px -4px 12px var(--shadow-light);
+            transform: translateY(0);
+            color: var(--accent);
+        }
+
+        .btn-neumorphic.active-btn {
+            box-shadow:
+                inset 6px 6px 14px var(--shadow-dark),
+                inset -4px -4px 12px var(--shadow-light);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ============ INDICADORES DE PROFUNDIDAD ============ */
+        .depth-indicators {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.8rem;
+        }
+
+        .depth-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                3px 3px 8px var(--shadow-dark),
+                -2px -2px 6px var(--shadow-light);
+        }
+
+        .depth-dot:hover {
+            box-shadow:
+                4px 4px 10px var(--shadow-dark),
+                -3px -3px 8px var(--shadow-light);
+            transform: scale(1.2);
+        }
+
+        .depth-dot.pressed {
+            box-shadow:
+                inset 3px 3px 7px var(--shadow-dark),
+                inset -2px -2px 5px var(--shadow-light);
+            transform: scale(0.9);
+            background: var(--depth-1);
+        }
+
+        /* ============ TOGGLE MODO OSCURO ============ */
+        .theme-toggle-wrapper {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .theme-toggle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: var(--card-bg);
+            box-shadow:
+                10px 10px 22px var(--shadow-dark),
+                -8px -8px 20px var(--shadow-light);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .theme-toggle:hover {
+            box-shadow:
+                12px 12px 28px var(--shadow-dark),
+                -10px -10px 24px var(--shadow-light);
+            transform: rotate(10deg) scale(1.04);
+        }
+
+        .theme-toggle:active {
+            box-shadow:
+                inset 7px 7px 16px var(--shadow-dark),
+                inset -5px -5px 12px var(--shadow-light);
+            transform: rotate(0deg) scale(0.94);
+            transition: all 0.15s ease;
+        }
+
+        /* ============ PARTÍCULAS DE LUZ ============ */
+        .light-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 50%;
+            background: var(--glow);
+            filter: blur(30px);
+            transition: all var(--transition-speed) ease;
+            animation: particleDrift 12s ease-in-out infinite;
+        }
+
+        .light-particle:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 30%;
+            animation-delay: 0s;
+            animation-duration: 14s;
+        }
+        .light-particle:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            left: 60%;
+            animation-delay: -4s;
+            animation-duration: 11s;
+        }
+        .light-particle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 70%;
+            left: 25%;
+            animation-delay: -8s;
+            animation-duration: 16s;
+        }
+
+        @keyframes particleDrift {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+            25% {
+                transform: translate(3vw, -2vw) scale(1.3);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-2vw, 3vw) scale(0.8);
+                opacity: 0.35;
+            }
+            75% {
+                transform: translate(-1vw, -3vw) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 600px) {
+            .main-card {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
+                max-width: 92%;
+            }
+            .main-card h1 {
+                font-size: 1.4rem;
+            }
+            .btn-neumorphic {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.85rem;
+            }
+            .btn-group {
+                gap: 0.8rem;
+            }
+            .depth-layer-1 {
+                width: 90vw;
+                height: 90vw;
+                top: -30%;
+                left: -30%;
+            }
+            .depth-layer-2 {
+                width: 75vw;
+                height: 75vw;
+                bottom: -30%;
+                right: -25%;
+            }
+            .depth-layer-3 {
+                width: 55vw;
+                height: 55vw;
+            }
+            .theme-toggle-wrapper {
+                top: 1rem;
+                right: 1rem;
+            }
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Capas de profundidad neumórfica -->
+    <div class="depth-layer depth-layer-1"></div>
+    <div class="depth-layer depth-layer-2"></div>
+    <div class="depth-layer depth-layer-3"></div>
+    <div class="depth-layer depth-layer-4"></div>
+    <div class="depth-layer depth-layer-5"></div>
+
+    <!-- Rejilla sutil -->
+    <div class="grid-overlay"></div>
+
+    <!-- Partículas de luz ambiental -->
+    <div class="light-particle"></div>
+    <div class="light-particle"></div>
+    <div class="light-particle"></div>
+
+    <!-- Toggle Modo Oscuro -->
+    <div class="theme-toggle-wrapper">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo claro/oscuro" title="Cambiar tema">
+            🌓
+        </button>
+    </div>
+
+    <!-- Tarjeta central de demostración -->
+    <div class="main-card">
+        <h1>Neumorphic Depth</h1>
+        <p class="subtitle">Profundidad sensorial · Soft UI</p>
+
+        <div class="btn-group">
+            <button class="btn-neumorphic" data-depth="shallow">Elevado</button>
+            <button class="btn-neumorphic active-btn" data-depth="mid">Intermedio</button>
+            <button class="btn-neumorphic" data-depth="deep">Hundido</button>
+        </div>
+
+        <div class="depth-indicators">
+            <span class="depth-dot" data-index="0" title="Capa 1"></span>
+            <span class="depth-dot pressed" data-index="1" title="Capa 2"></span>
+            <span class="depth-dot" data-index="2" title="Capa 3"></span>
+            <span class="depth-dot" data-index="3" title="Capa 4"></span>
+            <span class="depth-dot pressed" data-index="4" title="Capa 5"></span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ============ MODO OSCURO ============
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+
+            // Detectar preferencia del sistema
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    themeToggle.textContent = '☀️';
+                } else {
+                    themeToggle.textContent = '🌙';
+                }
+                // Pequeña animación de pulso en el toggle
+                themeToggle.style.transform = 'scale(0.85)';
+                setTimeout(() => {
+                    themeToggle.style.transform = '';
+                }, 150);
+            });
+
+            // ============ BOTONES DE PROFUNDIDAD ============
+            const depthButtons = document.querySelectorAll('.btn-neumorphic[data-depth]');
+            const depthLayers = document.querySelectorAll('.depth-layer');
+
+            depthButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remover active de todos
+                    depthButtons.forEach(b => b.classList.remove('active-btn'));
+                    // Activar el clickeado
+                    btn.classList.add('active-btn');
+
+                    const depth = btn.getAttribute('data-depth');
+                    adjustDepthEmphasis(depth);
+                });
+            });
+
+            function adjustDepthEmphasis(depth) {
+                const layers = document.querySelectorAll('.depth-layer');
+                layers.forEach(layer => {
+                    layer.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+
+                switch (depth) {
+                    case 'shallow':
+                        // Enfatizar capas elevadas (más cercanas)
+                        document.querySelector('.depth-layer-1').style.opacity = '0.25';
+                        document.querySelector('.depth-layer-2').style.opacity = '0.85';
+                        document.querySelector('.depth-layer-3').style.opacity = '0.3';
+                        document.querySelector('.depth-layer-4').style.opacity = '0.75';
+                        document.querySelector('.depth-layer-5').style.opacity = '0.2';
+                        break;
+                    case 'mid':
+                        // Equilibrio
+                        document.querySelector('.depth-layer-1').style.opacity = '0.5';
+                        document.querySelector('.depth-layer-2').style.opacity = '0.6';
+                        document.querySelector('.depth-layer-3').style.opacity = '0.55';
+                        document.querySelector('.depth-layer-4').style.opacity = '0.5';
+                        document.querySelector('.depth-layer-5').style.opacity = '0.45';
+                        break;
+                    case 'deep':
+                        // Enfatizar capas hundidas (lejanas)
+                        document.querySelector('.depth-layer-1').style.opacity = '0.8';
+                        document.querySelector('.depth-layer-2').style.opacity = '0.3';
+                        document.querySelector('.depth-layer-3').style.opacity = '0.75';
+                        document.querySelector('.depth-layer-4').style.opacity = '0.25';
+                        document.querySelector('.depth-layer-5').style.opacity = '0.7';
+                        break;
+                }
+            }
+
+            // ============ INDICADORES DE CAPA ============
+            const depthDots = document.querySelectorAll('.depth-dot');
+            depthDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    dot.classList.toggle('pressed');
+                    // Efecto visual: las capas correspondientes cambian opacidad
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    const layerSelectors = [
+                        '.depth-layer-1',
+                        '.depth-layer-2',
+                        '.depth-layer-3',
+                        '.depth-layer-4',
+                        '.depth-layer-5'
+                    ];
+                    if (index >= 0 && index < layerSelectors.length) {
+                        const layer = document.querySelector(layerSelectors[index]);
+                        const isPressed = dot.classList.contains('pressed');
+                        layer.style.opacity = isPressed ? '0.75' : '0.35';
+                        layer.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        // También alterar ligeramente el box-shadow para simular hundimiento
+                        if (isPressed) {
+                            layer.style.boxShadow = layer.style.boxShadow.replace(
+                                /30px 30px 70px/,
+                                'inset 25px 25px 60px'
+                            ).replace(
+                                /-25px -25px 60px/,
+                                'inset -20px -20px 50px'
+                            );
+                        } else {
+                            // Restaurar (aproximado)
+                            layer.style.boxShadow = '';
+                        }
+                    }
+                });
+            });
+
+            // ============ EFECTO PARALLAX SUTIL CON EL MOUSE ============
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+                targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+            });
+
+            // También para dispositivos táctiles
+            document.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    targetX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+                    targetY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+                }
+            }, { passive: true });
+
+            function animateParallax() {
+                // Suavizado
+                mouseX += (targetX - mouseX) * 0.03;
+                mouseY += (targetY - mouseY) * 0.03;
+
+                const layers = document.querySelectorAll('.depth-layer');
+                const multipliers = [1.5, -1.2, 2.0, -0.8, 1.8]; // Diferentes profundidades de parallax
+
+                layers.forEach((layer, i) => {
+                    const mult = multipliers[i] || 1;
+                    const offsetX = mouseX * 25 * mult;
+                    const offsetY = mouseY * 25 * mult;
+                    // Solo aplicamos si no estamos en animación CSS activa
+                    // Usamos una transformación adicional
+                    const baseTransform = layer.style.transform || '';
+                    // Aplicar parallax preservando animaciones base
+                    layer.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                });
+
+                // Mover partículas de luz
+                const particles = document.querySelectorAll('.light-particle');
+                particles.forEach((particle, i) => {
+                    const pMult = [0.6, -0.9, 0.4][i] || 0.5;
+                    particle.style.transform = `translate(${mouseX * 20 * pMult}px, ${mouseY * 20 * pMult}px)`;
+                });
+
+                requestAnimationFrame(animateParallax);
+            }
+
+            animateParallax();
+
+            // ============ INTERACCIÓN: CLICK EN EL FONDO CREA ONDA ============
+            document.addEventListener('click', (e) => {
+                // Evitar interferir con clicks en elementos interactivos
+                if (e.target.closest('button') || e.target.closest('.depth-dot') || e.target.closest(
+                        '.main-card')) {
+                    return;
+                }
+
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                        position: fixed;
+                        pointer-events: none;
+                        z-index: 5;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        left: ${e.clientX - 10}px;
+                        top: ${e.clientY - 10}px;
+                        background: transparent;
+                        box-shadow:
+                            inset 3px 3px 8px var(--shadow-dark),
+                            inset -2px -2px 6px var(--shadow-light);
+                        animation: rippleEffect 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                    `;
+                document.body.appendChild(ripple);
+
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            });
+
+            // Estilo dinámico para la animación ripple
+            const rippleStyle = document.createElement('style');
+            rippleStyle.textContent = `
+                    @keyframes rippleEffect {
+                        0% {
+                            width: 20px;
+                            height: 20px;
+                            left: var(--ripple-x);
+                            top: var(--ripple-y);
+                            opacity: 0.8;
+                            box-shadow:
+                                inset 3px 3px 8px var(--shadow-dark),
+                                inset -2px -2px 6px var(--shadow-light);
+                        }
+                        100% {
+                            width: 180px;
+                            height: 180px;
+                            left: calc(var(--ripple-x) - 80px);
+                            top: calc(var(--ripple-y) - 80px);
+                            opacity: 0;
+                            box-shadow:
+                                inset 15px 15px 40px var(--shadow-dark),
+                                inset -10px -10px 30px var(--shadow-light);
+                        }
+                    }
+                `;
+            document.head.appendChild(rippleStyle);
+
+            // Actualizar variables CSS para el ripple
+            document.addEventListener('click', function updateRippleVars(e) {
+                if (e.target.closest('button') || e.target.closest('.depth-dot') || e.target.closest(
+                        '.main-card')) {
+                    return;
+                }
+                document.documentElement.style.setProperty('--ripple-x', e.clientX + 'px');
+                document.documentElement.style.setProperty('--ripple-y', e.clientY + 'px');
+            });
+
+            console.log(
+                '%c🧊 Neumorphic Depth Background %cactivo',
+                'font-size: 1.2em; font-weight: bold;',
+                'font-size: 1em; color: #7b8fa0;'
+            );
+            console.log('%c✨ Interactúa con los botones, dots y mueve el mouse', 'color: #5a6070;');
+            console.log('%c🌓 Usa el toggle arriba a la derecha para cambiar de tema', 'color: #5a6070;');
+        })();
+    </script>
+</body>
+</html>

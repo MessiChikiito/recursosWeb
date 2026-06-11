@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism + Cutout</title>
+  <style>
+    /* Fondo de página con imagen y gradiente de respaldo */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Fondo con imagen de Unsplash + fallback de gradiente */
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* Tarjeta de vidrio esmerilado con recorte (cutout) */
+    .glass-card {
+      position: relative;
+      width: 340px;
+      padding: 40px;
+      box-sizing: border-box;
+
+      /* Glassmorphism */
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+      /* Recorte (cutout) mediante máscara:
+         Una máscara radial que deja un círculo transparente */
+      -webkit-mask: radial-gradient(circle at 50% 30%, transparent 55px, black 56px);
+      mask: radial-gradient(circle at 50% 30%, transparent 55px, black 56px);
+
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Contenido textual de la tarjeta, colocado debajo del recorte */
+    .card-content {
+      margin-top: 100px; /* deja espacio para el agujero */
+      text-align: center;
+    }
+
+    .card-content h2 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .card-content p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    /* Anillo del recorte: simula el borde del agujero con profundidad */
+    .cutout-ring {
+      position: absolute;
+      top: calc(30% - 55px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25),
+        inset 0 2px 8px rgba(255, 255, 255, 0.5),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+      pointer-events: none; /* permite click a través del anillo */
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <!-- Anillo decorativo del recorte -->
+    <div class="cutout-ring"></div>
+
+    <!-- Contenido de la tarjeta -->
+    <div class="card-content">
+      <h2>Efecto Cutout</h2>
+      <p>El círculo muestra el fondo sin desenfoque, mientras el resto de la tarjeta tiene vidrio esmerilado.</p>
+    </div>
+  </div>
+</body>
+</html>

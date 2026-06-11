@@ -1,209 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero y Card Destacada</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-        }
+    .hero-banner {
+      position: relative;
+      padding: 180px 24px 180px;
+      overflow: hidden;
+      background: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/inducciones02.jpeg') center/cover no-repeat;
+    }
 
-        /* Hero Section */
-        .hero-section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 20px 20px 150px;
-            background-color: #00000000;
-            min-height: 60vh;
-        }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      mix-blend-mode: normal;
+      opacity: 1;
+    }
 
-        /* Contenedor de texto del hero */
-        .hero-text {
-            flex: 1 1 50%;
-            min-width: 300px;
-            padding-right: 2rem;
-        }
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      margin: 0;
+      color: white;
+      background: rgba(4, 22, 64, 0.683);
+      backdrop-filter: blur(12px) brightness(1.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
 
-        .hero-subtitle {
-            color: #ff0011;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 1rem;
-        }
+    .hero-title {
+      margin: 0 0 16px 0;
+      font-size: 36px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
 
-        .hero-title {
-            font-size: 4rem;
-            color: #0132AF;
-            margin: 1rem 0;
-            line-height: 1.1;
-            font-weight: 800;
-        }
+    .hero-description {
+      margin: 0 0 24px 0;
+      font-size: 18px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
 
-        .hero-logo {
-            display: block;
-            width: min(100%, 450px);
-            height: auto;
-            margin: 0 0 0.4rem 0;
-        }
+    .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 600;
+      font-size: 14px;
+    }
 
-        .hero-description {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            max-width: 90%;
-        }
+    .meta-pill {
+      padding: 10px 16px;
+      color: #fff;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px) brightness(0.95);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
 
-        .hero-button {
-            display: inline-block;
-            padding: 0.85rem 1.75rem;
-            background-color: #ff0011;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(226, 6, 19, 0.4);
-        }
+    @media (max-width: 768px) {
+      .hero-banner {
+        padding: 80px 16px 60px;
+      }
 
-        .hero-button:hover {
-            background-color: #d90010;
-            color: #fff;
-        }
+      .hero-content {
+        margin: 0;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+      }
 
-        /* Contenedor de la card destacada */
-        .hero-card-wrapper {
-            flex: 0 1 400px;
-            margin-top: 2rem;
-            min-width: 300px;
-            position: relative;
-        }
+      .hero-title {
+        font-size: 28px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
 
-        .card-label {
-            margin-bottom: 1rem;
-            text-align: left;
-        }
+      .hero-description {
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
 
-        .card-label-text {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #002855;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
+      .meta-info {
+        font-size: 10px;
+        gap: 3px;
+        flex-wrap: wrap;
+      }
 
-        /* Card */
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Imagen de la card */
-        .card-image {
-            height: 200px;
-            background-color: #cbd5e0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: #002855;
-            color: white;
-            padding: 0.35rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: bold;
-        }
-
-        /* Contenido de la card */
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-date {
-            color: #718096;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            color: #002855;
-            margin: 0 0 1rem 0;
-            line-height: 1.4;
-            font-weight: bold;
-        }
-
-        .card-description {
-            color: #4a5568;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-
-        .card-link {
-            color: #ff0011;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s;
-        }
-
-        .card-link:hover {
-            gap: 0.75rem;
-        }
-    </style>
+      .meta-pill {
+        padding: 3px 6px;
+        font-size: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-
-        <!-- Texto del Hero -->
-        <div class="hero-text">
-            <span class="hero-subtitle">Conocimiento a tu alcance</span>
-
-            <img class="hero-logo" src="https://uniempresarial.edu.co/wp-content/uploads/2026/03/Logo-scaled.webp" alt="Logo Blog Uniempresarial">
-            <p class="hero-description">
-                Todo lo que necesitas para construir una experiencia universitaria increíble.
-            </p>
-            <a href="#" class="hero-button">Regístrate al newsletter</a>
-        </div>
-        
-
-
-    </section>
-
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Administración de Empresas: qué es, beneficios y cómo elegir dónde estudiar </h1>
+      <p class="hero-description">Descubre qué es la Administración de Empresas, sus oportunidades laborales y cómo elegir una formación que te prepare para el mundo real.</p>
+      <div class="meta-info">
+        <div class="meta-pill">Autor: Uniempresarial</div>
+        <div class="meta-pill">Fecha: 21 Abr 2026</div>
+        <div class="meta-pill">Lectura: 8 min</div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

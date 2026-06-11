@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Layered Design | Diseño por Capas 3D</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1e2f;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    /* Contenedor con perspectiva para todo el escenario */
+    .scene {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    /* Tarjeta 3D que rotará */
+    .card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+      cursor: pointer;
+      border-radius: 2rem;
+      /* sombra base para dar sensación de elevación */
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+    }
+
+    /* Capa base (fondo) – todas las capas comparten posición absoluta */
+    .layer {
+      position: absolute;
+      inset: 0;
+      border-radius: 2rem;
+      backface-visibility: hidden;
+      overflow: hidden;
+      pointer-events: none; /* para que el ratón interactúe directamente con .card */
+    }
+
+    /* ---------- CAPAS ARTÍSTICAS ---------- */
+    /* Cielo (capa más lejana) */
+    .sky {
+      background: linear-gradient(180deg, #1b2b4e 0%, #3a5a8c 40%, #7ba4c7 80%, #c2d9e8 100%);
+      transform: translateZ(-80px) scale(1.15);
+    }
+
+    /* Sol */
+    .sun {
+      background: radial-gradient(circle at 30% 30%, #fff9d6, #f7b731);
+      width: 22%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      top: 12%;
+      left: 18%;
+      box-shadow: 0 0 60px #f7b731, 0 0 120px #f7b73166;
+      transform: translateZ(-40px) scale(1.06);
+    }
+
+    /* Nubes (capa media) */
+    .clouds {
+      transform: translateZ(-20px) scale(1.03);
+      background: transparent;
+    }
+
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 999px;
+      filter: blur(6px);
+    }
+
+    .cloud1 {
+      width: 30%;
+      height: 18%;
+      top: 15%;
+      left: 55%;
+    }
+
+    .cloud2 {
+      width: 24%;
+      height: 14%;
+      top: 28%;
+      left: 8%;
+    }
+
+    .cloud3 {
+      width: 20%;
+      height: 12%;
+      top: 8%;
+      left: 68%;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    /* Montañas (capa media-lejana) */
+    .mountains {
+      transform: translateZ(-10px) scale(1.02);
+      background: transparent;
+    }
+
+    .mountain {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 55%;
+      background: #2d4a3b;
+      clip-path: polygon(0% 100%, 20% 30%, 45% 70%, 65% 25%, 85% 65%, 100% 35%, 100% 100%);
+    }
+
+    .mountain-back {
+      background: #1f362b;
+      clip-path: polygon(0% 100%, 15% 45%, 35% 70%, 55% 40%, 75% 75%, 90% 50%, 100% 100%);
+      height: 45%;
+      transform: translateZ(-5px) scale(1.01);
+    }
+
+    /* Colinas delanteras (primer plano) */
+    .hills {
+      transform: translateZ(15px) scale(0.97);
+      background: transparent;
+    }
+
+    .hill {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 35%;
+      background: #3e5c3a;
+      border-radius: 80% 80% 0 0;
+      clip-path: ellipse(75% 100% at 50% 100%);
+    }
+
+    .hill-front {
+      background: #527a45;
+      height: 28%;
+      clip-path: ellipse(80% 100% at 30% 100%);
+    }
+
+    /* Árboles (silueta en primer plano) */
+    .trees {
+      transform: translateZ(30px) scale(0.95);
+      background: transparent;
+    }
+
+    .tree {
+      position: absolute;
+      bottom: 18%;
+      width: 10%;
+      height: 22%;
+      background: #2c4a2c;
+      clip-path: polygon(50% 0%, 0% 100%, 25% 85%, 10% 100%, 50% 95%, 90% 100%, 75% 85%, 100% 100%);
+    }
+
+    .tree1 { left: 8%; }
+    .tree2 { left: 25%; height: 18%; bottom: 20%; }
+    .tree3 { left: 68%; width: 12%; height: 25%; }
+    .tree4 { left: 82%; width: 8%; height: 16%; bottom: 22%; }
+
+    /* Capa de texto (la más cercana al espectador) */
+    .text-layer {
+      transform: translateZ(55px) scale(0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      background: transparent;
+    }
+
+    .title {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(180deg, #ffffff 30%, #ffd78c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      font-weight: 400;
+      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.4rem 1.6rem;
+      border-radius: 2rem;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Pequeño indicador de interacción */
+    .hint {
+      position: absolute;
+      bottom: 12px;
+      right: 20px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      background: rgba(0,0,0,0.25);
+      padding: 0.2rem 0.8rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(4px);
+      z-index: 10;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="card" id="layeredCard">
+      <!-- Capas ordenadas de atrás hacia adelante (en Z) -->
+      <div class="layer sky"></div>
+      <div class="layer sun"></div>
+      <div class="layer clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+      </div>
+      <div class="layer mountains">
+        <div class="mountain mountain-back"></div>
+        <div class="mountain"></div>
+      </div>
+      <div class="layer hills">
+        <div class="hill"></div>
+        <div class="hill hill-front"></div>
+      </div>
+      <div class="layer trees">
+        <div class="tree tree1"></div>
+        <div class="tree tree2"></div>
+        <div class="tree tree3"></div>
+        <div class="tree tree4"></div>
+      </div>
+      <div class="layer text-layer">
+        <h1 class="title">Explora</h1>
+        <p class="subtitle">Diseño por capas</p>
+      </div>
+      <div class="hint">Mueve el ratón 🖱️</div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const card = document.getElementById('layeredCard');
+
+      // Sensibilidad de la rotación (grados máximos)
+      const maxRotateX = 12; // inclinación vertical
+      const maxRotateY = 16; // giro horizontal
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+
+        // Coordenadas del ratón relativas al centro de la tarjeta (rango -0.5 a 0.5)
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const mouseX = (e.clientX - centerX) / (rect.width / 2);  // -1..1
+        const mouseY = (e.clientY - centerY) / (rect.height / 2); // -1..1
+
+        // Limitar para que no se exceda (por si el ratón está fuera)
+        const clampedX = Math.max(-1, Math.min(1, mouseX));
+        const clampedY = Math.max(-1, Math.min(1, mouseY));
+
+        // Calcular rotaciones: mover el ratón hacia arriba -> rotateX positivo (la tarjeta se inclina hacia atrás)
+        const rotateY = clampedX * maxRotateY;
+        const rotateX = -clampedY * maxRotateX; // negativo para que siga naturalmente el movimiento
+
+        // Aplicar transformación con perspectiva incluida (la tarjeta ya tiene preserve-3d)
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      // Al salir, volver suavemente a la posición original
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+
+      // Al entrar, quitar la transición para respuesta inmediata
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.1s ease-out';
+      });
+
+      // Opcional: para dispositivos táctiles también se puede usar un efecto similar con acelerómetro,
+      // pero aquí dejamos solo mouse para simplicidad.
+    })();
+  </script>
+</body>
+</html>

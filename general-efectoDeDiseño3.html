@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth Effect - Efecto de Profundidad 3D</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card-bg: #161625;
+            --accent: #7c5cfc;
+            --accent2: #4ec9f5;
+            --text: #e8e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        /* Contenedor de la escena */
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+        }
+
+        /* Capas de fondo (partículas decorativas) */
+        .layer {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.05s linear, box-shadow 0.05s linear;
+        }
+
+        /* Capa 1 - Profunda (lejana) */
+        .layer--1 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(124, 92, 252, 0.3), transparent 70%);
+            top: 15%;
+            left: 10%;
+            filter: blur(40px);
+        }
+
+        /* Capa 2 - Media profunda */
+        .layer--2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(78, 201, 245, 0.25), transparent 70%);
+            bottom: 10%;
+            right: 8%;
+            filter: blur(35px);
+        }
+
+        /* Capa 3 - Cercana */
+        .layer--3 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255, 140, 100, 0.35), transparent 70%);
+            top: 60%;
+            left: 20%;
+            filter: blur(25px);
+        }
+
+        /* Capa 4 - Muy cercana */
+        .layer--4 {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(124, 92, 252, 0.6), transparent 70%);
+            top: 25%;
+            right: 25%;
+            filter: blur(15px);
+        }
+
+        /* Pequeños puntos flotantes */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.08s ease-out;
+        }
+
+        .orb--1 {
+            width: 18px;
+            height: 18px;
+            background: #7c5cfc;
+            top: 20%;
+            left: 30%;
+            box-shadow: 0 0 25px #7c5cfc, 0 0 50px rgba(124, 92, 252, 0.4);
+        }
+        .orb--2 {
+            width: 12px;
+            height: 12px;
+            background: #4ec9f5;
+            bottom: 30%;
+            right: 20%;
+            box-shadow: 0 0 20px #4ec9f5, 0 0 40px rgba(78, 201, 245, 0.4);
+        }
+        .orb--3 {
+            width: 22px;
+            height: 22px;
+            background: #ff8c64;
+            top: 50%;
+            left: 60%;
+            box-shadow: 0 0 30px #ff8c64, 0 0 60px rgba(255, 140, 100, 0.4);
+        }
+        .orb--4 {
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            top: 70%;
+            right: 40%;
+            box-shadow: 0 0 20px #fff, 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+        .orb--5 {
+            width: 10px;
+            height: 10px;
+            background: #7c5cfc;
+            bottom: 15%;
+            left: 45%;
+            box-shadow: 0 0 15px #7c5cfc;
+        }
+
+        /* Tarjeta central */
+        .card {
+            position: relative;
+            width: 380px;
+            padding: 50px 40px;
+            background: var(--card-bg);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 10;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            user-select: none;
+        }
+
+        /* Brillo en el borde que se mueve */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 30px;
+            padding: 2px;
+            background: linear-gradient(135deg,
+                    rgba(124, 92, 252, 0.6),
+                    transparent 40%,
+                    transparent 60%,
+                    rgba(78, 201, 245, 0.6));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: background 0.3s ease;
+        }
+
+        .card__icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: block;
+            transform: translateZ(40px);
+            text-shadow: 0 10px 30px rgba(124, 92, 252, 0.5);
+        }
+
+        .card__title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            transform: translateZ(50px);
+            letter-spacing: -0.5px;
+        }
+
+        .card__text {
+            color: rgba(232, 232, 240, 0.6);
+            line-height: 1.6;
+            font-size: 1rem;
+            transform: translateZ(30px);
+        }
+
+        .card__btn {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent), #9b7cfc);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transform: translateZ(60px);
+            box-shadow: 0 15px 35px rgba(124, 92, 252, 0.4);
+            transition: box-shadow 0.3s, transform 0.1s ease-out;
+            letter-spacing: 0.3px;
+        }
+
+        /* Cursor personalizado */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #fff;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s linear;
+        }
+
+        /* Efectos de texto con sombras que cambian */
+        .floating-text {
+            position: absolute;
+            font-weight: 900;
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+            z-index: 1;
+            transition: transform 0.08s ease-out;
+            letter-spacing: -2px;
+            white-space: nowrap;
+        }
+        .floating-text--1 {
+            top: 8%;
+            left: 5%;
+        }
+        .floating-text--2 {
+            bottom: 5%;
+            right: 5%;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                width: 90%;
+                padding: 35px 25px;
+            }
+            .card__title {
+                font-size: 1.5rem;
+            }
+            .floating-text {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Escena 3D -->
+    <div class="scene" id="scene">
+        <!-- Capas de profundidad (fondo borroso) -->
+        <div class="layer layer--1" data-depth="0.015"></div>
+        <div class="layer layer--2" data-depth="0.02"></div>
+        <div class="layer layer--3" data-depth="0.03"></div>
+        <div class="layer layer--4" data-depth="0.05"></div>
+
+        <!-- Orbes flotantes -->
+        <div class="orb orb--1" data-depth="0.04"></div>
+        <div class="orb orb--2" data-depth="0.06"></div>
+        <div class="orb orb--3" data-depth="0.07"></div>
+        <div class="orb orb--4" data-depth="0.05"></div>
+        <div class="orb orb--5" data-depth="0.08"></div>
+
+        <!-- Textos flotantes de fondo -->
+        <div class="floating-text floating-text--1" data-depth="0.012">DEPTH</div>
+        <div class="floating-text floating-text--2" data-depth="0.018">EFFECT</div>
+
+        <!-- Tarjeta central -->
+        <div class="card" id="card" data-depth="0.12">
+            <span class="card__icon">🧊</span>
+            <h2 class="card__title">Profundidad 3D</h2>
+            <p class="card__text">
+                Mueve el ratón para sentir la profundidad. Cada capa reacciona a una velocidad distinta,
+                creando un efecto parallax tridimensional inmersivo.
+            </p>
+            <button class="card__btn">Explorar</button>
+        </div>
+    </div>
+
+    <!-- Cursores personalizados -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <script>
+        (function() {
+            const scene = document.getElementById('scene');
+            const card = document.getElementById('card');
+            const cursor = document.getElementById('cursor');
+            const cursorDot = document.getElementById('cursorDot');
+
+            // Todos los elementos con data-depth
+            const depthElements = document.querySelectorAll('[data-depth]');
+
+            // Coordenadas del ratón (normalizadas de -1 a 1)
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetMouseX = 0;
+            let targetMouseY = 0;
+
+            // Posición real del cursor para el cursor personalizado
+            let cursorX = window.innerWidth / 2;
+            let cursorY = window.innerHeight / 2;
+            let targetCursorX = cursorX;
+            let targetCursorY = cursorY;
+
+            // Factor de movimiento máximo en píxeles
+            const maxMove = 40;
+
+            // Escuchar movimiento del ratón
+            document.addEventListener('mousemove', (e) => {
+                // Normalizar coordenadas (-1 a 1)
+                targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                targetMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+
+                // Posición del cursor personalizado
+                targetCursorX = e.clientX;
+                targetCursorY = e.clientY;
+            });
+
+            // Para dispositivos táctiles
+            document.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                targetMouseX = (touch.clientX / window.innerWidth) * 2 - 1;
+                targetMouseY = (touch.clientY / window.innerHeight) * 2 - 1;
+                targetCursorX = touch.clientX;
+                targetCursorY = touch.clientY;
+            }, { passive: true });
+
+            // Bucle de animación con suavizado
+            function animate() {
+                // Interpolación suave (lerp)
+                mouseX += (targetMouseX - mouseX) * 0.08;
+                mouseY += (targetMouseY - mouseY) * 0.08;
+
+                cursorX += (targetCursorX - cursorX) * 0.15;
+                cursorY += (targetCursorY - cursorY) * 0.15;
+
+                // Calcular desplazamiento base
+                const moveX = mouseX * maxMove;
+                const moveY = mouseY * maxMove;
+
+                // Mover todos los elementos con data-depth
+                depthElements.forEach(el => {
+                    const depth = parseFloat(el.getAttribute('data-depth'));
+                    const translateX = moveX * depth;
+                    const translateY = moveY * depth;
+
+                    if (el.classList.contains('card')) {
+                        // Para la tarjeta: usar transform 3D con rotación
+                        const rotateY = mouseX * 12; // Rotación horizontal (-12º a 12º)
+                        const rotateX = -mouseY * 12; // Rotación vertical
+                        el.style.transform = `
+                            translate(${translateX}px, ${translateY}px)
+                            rotateY(${rotateY}deg)
+                            rotateX(${rotateX}deg)
+                        `;
+                        // Sombra dinámica
+                        const shadowX = -mouseX * 25;
+                        const shadowY = -mouseY * 25;
+                        el.style.boxShadow = `
+                            ${shadowX}px ${shadowY}px 60px rgba(0,0,0,0.5),
+                            0 0 0 1px rgba(255,255,255,0.05) inset,
+                            ${-shadowX * 0.4}px ${-shadowY * 0.4}px 30px rgba(124,92,252,0.15)
+                        `;
+                    } else if (el.classList.contains('layer') || el.classList.contains('orb') ||
+                        el.classList.contains('floating-text')) {
+                        el.style.transform = `translate(${translateX}px, ${translateY}px)`;
+                    }
+                });
+
+                // Mover cursor personalizado
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                cursorDot.style.left = cursorX + 'px';
+                cursorDot.style.top = cursorY + 'px';
+
+                requestAnimationFrame(animate);
+            }
+
+            // Efecto hover en el botón: agrandar cursor
+            const btn = document.querySelector('.card__btn');
+            btn.addEventListener('mouseenter', () => {
+                cursor.style.width = '50px';
+                cursor.style.height = '50px';
+                cursor.style.background = 'rgba(124,92,252,0.2)';
+                cursor.style.borderColor = 'rgba(124,92,252,0.8)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.background = 'rgba(255,255,255,0.15)';
+                cursor.style.borderColor = 'rgba(255,255,255,0.5)';
+            });
+
+            // Al hacer clic, animación de pulso en el cursor
+            document.addEventListener('mousedown', () => {
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(2.5)';
+                cursorDot.style.opacity = '0.5';
+            });
+            document.addEventListener('mouseup', () => {
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorDot.style.opacity = '1';
+            });
+
+            // Iniciar animación
+            animate();
+
+            // Restaurar cursor si se sale de la ventana
+            document.addEventListener('mouseleave', () => {
+                targetMouseX = 0;
+                targetMouseY = 0;
+                cursor.style.opacity = '0';
+                cursorDot.style.opacity = '0';
+            });
+            document.addEventListener('mouseenter', () => {
+                cursor.style.opacity = '1';
+                cursorDot.style.opacity = '1';
+            });
+
+            console.log('✨ Depth Effect activado. Mueve el ratón para sentir la profundidad 3D.');
+        })();
+    </script>
+</body>
+</html>

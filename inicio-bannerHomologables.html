@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Homologables | Formación Universitaria</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff !important;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .hs-hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 32px;
+
+        }
+
+        .hs-hero__container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hs-hero__content {
+            flex: 0 0 52%;
+            max-width: 52%;
+        }
+
+        .hs-hero__badge {
+            display: inline-block;
+            background-color: #eef2f7;
+            color: #1e3a5f;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 40px;
+            margin-bottom: 24px;
+        }
+
+        .hs-hero__title {
+            font-size: 50px;
+            font-weight: 800 !important;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.15;
+            color: #0d1b2a;
+            letter-spacing: -0.8px;
+            margin-bottom: 20px;
+        }
+
+        .hs-hero__subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #4a4a5e;
+            line-height: 1.65;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .hs-hero__cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #EA0A2A;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 8px;
+            border: 2px solid #EA0A2A;
+            cursor: pointer;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease !important;
+        }
+
+        .hs-hero__cta:hover {
+            background-color: #cb0a27;
+            border-color: #cb0a27;
+            color: #ffffff;
+        }
+
+        .hs-hero__cta:active {
+            background-color: #0f1f35;
+            border-color: #0f1f35;
+            color: #ffffff;
+        }
+
+        .hs-hero__cta:focus { outline: none !important; }
+        .hs-hero__cta:focus-visible {
+            outline: 2px solid #1e3a5f !important;
+            outline-offset: 3px;
+        }
+
+  
+        .hs-hero__figure {
+            background:
+                /* Fragmento 1 */
+                linear-gradient(25deg, transparent 60%, rgb(255, 255, 255) 60%, rgb(255, 255, 255) 61%, transparent 61%),
+                /* Fragmento 2 */
+                linear-gradient(155deg, transparent 30%, rgb(255, 255, 255) 30%, rgb(255, 255, 255) 31%, transparent 31%),
+                /* Fragmento 3 */
+                linear-gradient(80deg, transparent 80%, rgb(255, 255, 255) 80%, rgb(255, 255, 255) 81%, transparent 81%),
+                /* Fondo azul vibrante */
+                linear-gradient(135deg, #0132AF 0%, #005ce6 100%);
+            z-index: 1;
+            flex: 0 0 48%;
+            max-width: 48%;
+            margin: 0;
+            height: 520px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            border-radius: 30px;
+            justify-content: center;
+        }
+
+        .hs-hero__backlight {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.216) 30%,
+                transparent 70%
+            );
+            filter: blur(20px);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hs-hero__fade-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10%;
+            z-index: 4;
+            pointer-events: none;
+            background: linear-gradient(
+                to top,
+                rgb(255, 255, 255) 0%,
+                rgba(255, 255, 255, 0.7) 40%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            
+        }
+          .hs-hero__person-wrapper {
+            position: absolute;
+            bottom: -10%; 
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center;
+            z-index: 3;
+        }
+
+
+        .hs-hero__person-img {
+            max-width: 100%;
+            height: 110%; 
+            width: auto;
+            object-fit: contain;
+            object-position: bottom center;
+            display: block;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+            .hs-hero__container { gap: 40px; }
+            .hs-hero__title { font-size: 34px; }
+            .hs-hero__figure { height: 420px; }
+        }
+
+        @media (max-width: 768px) {
+            .hs-hero { padding: 56px 20px; }
+            .hs-hero__container {
+                flex-direction: column-reverse;
+                gap: 36px;
+            }
+            .hs-hero__content { flex: 1 1 auto; max-width: 100%; }
+            .hs-hero__figure {
+                flex: 1 1 auto;
+                max-width: 100%;
+                width: 100%;
+                height: 320px;
+            }
+            .hs-hero__title { font-size: 30px; }
+            .hs-hero__subtitle { font-size: 16px; margin-bottom: 24px; }
+            .hs-hero__badge { font-size: 13px; padding: 7px 16px; }
+            .hs-hero__cta { font-size: 15px; padding: 14px 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .hs-hero { padding: 40px 16px; }
+            .hs-hero__container { gap: 28px; }
+            .hs-hero__figure { height: 260px; }
+            .hs-hero__title { font-size: 30px; margin-top: 25px; }
+            .hs-hero__subtitle { font-size: 15px; }
+            .hs-hero__cta { width: 100%; text-align: center; }
+            .hs-hero__fade-bottom { height: 10%; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hs-hero" aria-labelledby="hs-hero-heading">
+        <div class="hs-hero__container">
+            <article class="hs-hero__content">
+                <h2 class="hs-hero__title" id="hs-hero-heading">Impulsa tu carrera con cursos homologables</h2>
+                <p class="hs-hero__subtitle">Estudia a tu ritmo, obtén certificación universitaria y aprovecha la posibilidad de homologar tu formación en futuros procesos académicos.</p>
+                <a href="#" class="hs-hero__cta" role="button">Ver cursos disponibles →</a>
+            </article>
+
+            <figure class="hs-hero__figure" aria-label="Estudiante universitario">
+                
+                <div class="hs-hero__backlight" aria-hidden="true"></div>
+
+                <div class="hs-hero__person-wrapper">
+                    <img
+                        class="hs-hero__person-img"
+                        src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Cursos-Homologables-Uniempresarial.png"
+                        alt="Estudiante universitario sonriente"
+                        loading="eager"
+                    >
+                      <div class="hs-hero__fade-bottom" aria-hidden="true"></div>
+                </div>
+
+            </figure>
+        </div>
+    </section>
+</body>
+</html>
