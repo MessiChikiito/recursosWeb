@@ -34,7 +34,7 @@
 
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: var(--color-gray-900);
             line-height: 1.6;
             padding: 40px 20px;
@@ -55,7 +55,7 @@
             margin-bottom: 20px;
         }
 
-        .pd-header h1 {
+        .pd-header h2 {
             font-size: 2.5rem;
             font-weight: 900;
             color: var(--color-gray-900);
@@ -202,7 +202,7 @@
         .pd-total-carrera {
             position: sticky;
             top: 20px;
-            background: linear-gradient(135deg, #0132AF 0%, #5b9fd8 100%);
+            background: #0132AF;
             border-radius: 12px;
             padding: 24px;
             text-align: center;
@@ -413,7 +413,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .pd-header h1 {
+            .pd-header h2 {
                 font-size: 1.8rem;
             }
 
@@ -469,7 +469,7 @@
         }
 
         @media (max-width: 480px) {
-            .pd-header h1 {
+            .pd-header h2 {
                 font-size: 1.5rem;
             }
 
@@ -697,7 +697,7 @@
     <div class="pd-container" id="pensum">
         <!-- HEADER -->
         <div class="pd-header">
-            <h1>Pénsum del Programa</h1>
+            <h2>Pénsum del Programa</h2>
             <p>Explora las materias de cada periodo</p>
         </div>
 
@@ -838,60 +838,45 @@
         // ============================================
 
         const semestreData = {
-            // PRIMER SEMESTRE
+            // PERIODO 1
             1: [
-                { nombre: "Álgebra y programación lineal", creditos: "3", tipo: "nucleo" },
-                { nombre: "Cálculo I", creditos: "3", tipo: "nucleo" },
-                { nombre: "Física", creditos: "3", tipo: "nucleo" },
-                { nombre: "Lenguajes de programación", creditos: "2", tipo: "prof" },
-                { nombre: "Introducción a la Programación", creditos: "3", tipo: "prof" },
-                { nombre: "Herramientas de diagnóstico empresarial", creditos: "3", tipo: "prof" },
+                { nombre: "Fundamentos de marketing I", creditos: "3", tipo: "prof" },
+                { nombre: "Fundamentos de marketing II", creditos: "2", tipo: "prof" },
+                { nombre: "Análisis microeconómico", creditos: "2", tipo: "prof" },
+                { nombre: "Inteligencia de mercados", creditos: "3", tipo: "nucleo" },
+                { nombre: "Planeación y estrategia comercial", creditos: "4", tipo: "nucleo" },
                 { nombre: "Cátedra Uniempresarial (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Entorno Colombiano (Virtual)", creditos: "2", tipo: "transv" },
                 { nombre: "Fundamentos estadísticos para el entorno empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "English Beginners (Blended)", creditos: "2", tipo: "transv" },
+                { nombre: "English Beginners (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Basic English (Virtual)", creditos: "2", tipo: "transv" },
             ],
 
-            // SEGUNDO SEMESTRE
+            // PERIODO 2
             2: [
-                { nombre: "Cálculo II", creditos: "2", tipo: "nucleo" },
-                { nombre: "Cálculo III", creditos: "2", tipo: "nucleo" },
-                { nombre: "Infraestructura TI Y Cloud computing", creditos: "2", tipo: "prof" },
-                { nombre: "Programación Orientada a Objetos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Metodologías y Requerimientos de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Pruebas de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación Web – FrontEnd", creditos: "2", tipo: "nucleo" },
-                { nombre: "Diseño UI/UX", creditos: "1", tipo: "nucleo" },
-                { nombre: "Bases de datos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
-                { nombre: "Ética y responsabilidad social empresarial (Virtual)", creditos: "2", tipo: "transv" },
-                { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
-                { nombre: "Basic English (Blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Elementary English (Blended)", creditos: "2", tipo: "transv" },
+                { nombre: "Práctica empresarial en inteligencia de mercados", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en planeación y estrategia comercial", creditos: "10", tipo: "practica" },
+                { nombre: "Elementary English (Virtual)", creditos: "2", tipo: "transv" },
+                { nombre: "Preintermediate English (Virtual)", creditos: "2", tipo: "transv" },
             ],
 
-            // TERCER SEMESTRE (PRÁCTICAS)
+            // PERIODO 3
             3: [
-                { nombre: "Práctica empresarial en Fundamentos de Ingeniería de Software y Programación", creditos: "10", tipo: "practica" },
-                { nombre: "Práctica empresarial en Desarrollo fronted", creditos: "10", tipo: "practica" },
-            ],
-
-            // CUARTO SEMESTRE
-            4: [
-                { nombre: "Probabilidad, estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Arquitectura de software", creditos: "2", tipo: "prof" },
-                { nombre: "Big data y analítica", creditos: "3", tipo: "prof" },
-                { nombre: "Programación Framewok's Backend", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo con Framework's Frontend", creditos: "1", tipo: "nucleo" },
-                { nombre: "Aplicaciones Cloud Nativas", creditos: "1", tipo: "nucleo" },
-                { nombre: "Desarrollo de Videojuegos 2D y 3D", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo Conceptual de videojuegos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación gráfica 2D y 3D", creditos: "1", tipo: "nucleo" },
-                { nombre: "Innovación", creditos: "2", tipo: "prof" },
-                { nombre: "Preintermediate English(Blended)", creditos: "2", tipo: "transv" },
-                { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
+                { nombre: "Estrategia de producto y precio", creditos: "2", tipo: "prof" },
+                { nombre: "Rueda de negocios", creditos: "2", tipo: "prof" },
+                { nombre: "ERP & Data Base Management", creditos: "2", tipo: "prof" },
+                { nombre: "Big data y Analítica de datos", creditos: "2", tipo: "prof" },
+                { nombre: "Métodos de ventas y negociación", creditos: "4", tipo: "nucleo" },
+                { nombre: "Gestión de ventas", creditos: "4", tipo: "nucleo" },
+                { nombre: "Ética y responsabilidad social empresarial", creditos: "2", tipo: "transv" },
                 { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
             ],
 
+            // PERIODO 4
+            4: [
+                { nombre: "Práctica empresarial Métodos de ventas y negociación", creditos: "10", tipo: "practica" },
+                { nombre: "Práctica empresarial en Gestión de ventas", creditos: "10", tipo: "practica" },
+            ],
         };
 
         function renderMaterias(semestre) {
