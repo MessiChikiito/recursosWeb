@@ -21,9 +21,11 @@
         .banner-beneficio {
             display: grid;
             grid-template-columns: 1fr 1fr;     
+
             width: 1400px;
             max-width: 100%;
-            margin: 0 auto;                   
+            margin: 0 auto; 
+            margin-right: 9%;                  
             box-shadow: none;
         }
 
@@ -362,10 +364,87 @@
             stroke: #FF6B35 !important;
         }
 
+        /* ============ TARJETA TECNOLOGÍAS ============ */
+        .modular-card-tecnologias {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #0132AF;
+            transition: background-color 0.45s ease, border-color 0.45s ease !important;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modular-card-tecnologias::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 170px;
+            height: 200px;
+            z-index: 1;
+            background: #0132AF;
+            transform: skew(160deg, 10deg);
+            transition: opacity 0.45s ease, transform 0.8s ease !important;
+        }
+
+        .modular-card-tecnologias:hover {
+            background-color: #0132AF;
+            border-color: #0132AF;
+        }
+
+        .modular-card-tecnologias:hover::after {
+            opacity: 0;
+            transform: skew(10deg, 10deg) scale(1);
+        }
+
+        .modular-card-tecnologias:hover .modular-card-content h4,
+        .modular-card-tecnologias:hover .modular-card-subtitle {
+            color: #ffffff;
+        }
+
+        .modular-icon-tecnologias {
+            background: #0132AF !important;
+            border: 2px solid #0132AF;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            transition: background-color 0.45s ease, border-color 0.45s ease !important;
+        }
+
+        .modular-icon-tecnologias svg {
+            stroke: #ffffff !important;
+            stroke-width: 2.5 !important;
+            stroke-linecap: round !important;
+            stroke-linejoin: round !important;
+            fill: none !important;
+            transition: stroke 0.45s ease !important;
+        }
+
+        /* Hover de la tarjeta → icono blanco con trazo azul */
+        .modular-card-tecnologias:hover .modular-icon-tecnologias {
+            background: #ffffff !important;
+            border-color: #ffffff !important;
+        }
+
+        .modular-card-tecnologias:hover .modular-icon-tecnologias svg {
+            stroke: #0132AF !important;
+        }
+
         /* ============ ICONOS ============ */
         .modular-icon-presencial,
         .modular-icon-virtual,
-        .modular-icon-posgrados {
+        .modular-icon-posgrados,
+        .modular-icon-tecnologias {
             width: 56px;
             height: 56px;
             border-radius: 14px;
@@ -388,10 +467,14 @@
         .modular-icon-posgrados {
             border: 2px solid #FF6B35;
         }
+        .modular-icon-tecnologias {
+            border: 2px solid #0132AF;
+        }
 
         .modular-icon-presencial svg,
         .modular-icon-virtual svg,
-        .modular-icon-posgrados svg {
+        .modular-icon-posgrados svg,
+        .modular-icon-tecnologias svg {
             width: 26px;
             height: 26px;
             stroke-width: 2.5 !important;
@@ -408,6 +491,9 @@
             stroke: #fff !important;
         }
         .modular-icon-posgrados svg {
+            stroke: #fff !important;
+        }
+        .modular-icon-tecnologias svg {
             stroke: #fff !important;
         }
 
@@ -466,7 +552,7 @@
             z-index: 2;
             text-align: right;
             line-height: 1.3;
-            max-width: 120px;
+            max-width:130px;
             white-space: normal;
             word-break: break-word;
             overflow: visible;
@@ -496,41 +582,47 @@
         /* Hover: texto desaparece a la derecha, flecha aparece desde la izquierda (centrada) */
         .modular-card-presencial:hover .modality-text,
         .modular-card-virtual:hover .modality-text,
-        .modular-card-posgrados:hover .modality-text {
+        .modular-card-posgrados:hover .modality-text,
+        .modular-card-tecnologias:hover .modality-text {
             opacity: 0;
             transform: translateX(80px);
         }
 
         .modular-card-presencial:hover .modality-arrow,
         .modular-card-virtual:hover .modality-arrow,
-        .modular-card-posgrados:hover .modality-arrow {
+        .modular-card-posgrados:hover .modality-arrow,
+        .modular-card-tecnologias:hover .modality-arrow {
             opacity: 1;
             transform: translate(20%, -50%) translateX(0);
         }
 
         /* ============ BOTÓN CTA ============ */
         .modular-cta-bottom {
-            margin-top: 24px;
+            margin-top: 28px;
+            display: flex;
+            justify-content: right;
+            
         }
 
         .modular-cta-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             display: block;
-            width: 100%;
+            width: fit-content;
             background: transparent;
             color: #0132AF;
             text-align: center;
-            padding: 18px;
+            text-decoration: none;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
+            font-size: 1.2rem;
             transition: all 0.3s ease !important;
-            border: 2px solid #0132AF;
         }
 
         .modular-cta-btn:hover {
-            background: #0132AF;
-            color: white;
+            color: #012581;
+            transform: translateY(-2px);
         }
 
         /* ============ RESPONSIVE ============ */
@@ -613,7 +705,8 @@
             /* ── Cards: dos columnas (contenido | barra-flecha) ── */
             .modular-card-presencial,
             .modular-card-virtual,
-            .modular-card-posgrados {
+            .modular-card-posgrados,
+            .modular-card-tecnologias {
                 padding: 0;
                 gap: 0;
                 flex-direction: row;       /* vuelve a fila */
@@ -624,14 +717,16 @@
             /* Quitar el pseudo-elemento decorativo en móvil */
             .modular-card-presencial::after,
             .modular-card-virtual::after,
-            .modular-card-posgrados::after {
+            .modular-card-posgrados::after,
+            .modular-card-tecnologias::after {
                 display: none;
             }
 
             /* Zona izquierda: icono + texto */
             .modular-icon-presencial,
             .modular-icon-virtual,
-            .modular-icon-posgrados {
+            .modular-icon-posgrados,
+            .modular-icon-tecnologias {
                 width: 40px;
                 height: 40px;
                 margin: 18px 0 18px 16px;
@@ -642,7 +737,8 @@
 
             .modular-icon-presencial svg,
             .modular-icon-virtual svg,
-            .modular-icon-posgrados svg {
+            .modular-icon-posgrados svg,
+            .modular-icon-tecnologias svg {
                 width: 20px !important;
                 height: 20px !important;
             }
@@ -684,6 +780,7 @@
             .modular-card-presencial .modular-card-modality { background: #F52C2C; }
             .modular-card-virtual   .modular-card-modality { background: #26ce13; }
             .modular-card-posgrados .modular-card-modality { background: #FF6B35; }
+            .modular-card-tecnologias .modular-card-modality { background: #0132AF; }
 
             /* Ocultar el texto de modalidad — solo se muestra la flecha */
             .modality-text {
@@ -715,9 +812,11 @@
             .modular-card-presencial:hover .modality-text,
             .modular-card-virtual:hover .modality-text,
             .modular-card-posgrados:hover .modality-text,
+            .modular-card-tecnologias:hover .modality-text,
             .modular-card-presencial:active .modality-text,
             .modular-card-virtual:active .modality-text,
-            .modular-card-posgrados:active .modality-text {
+            .modular-card-posgrados:active .modality-text,
+            .modular-card-tecnologias:active .modality-text {
                 opacity: 0;
                 transform: none;
             }
@@ -725,9 +824,11 @@
             .modular-card-presencial:hover .modality-arrow,
             .modular-card-virtual:hover .modality-arrow,
             .modular-card-posgrados:hover .modality-arrow,
+            .modular-card-tecnologias:hover .modality-arrow,
             .modular-card-presencial:active .modality-arrow,
             .modular-card-virtual:active .modality-arrow,
-            .modular-card-posgrados:active .modality-arrow {
+            .modular-card-posgrados:active .modality-arrow,
+            .modular-card-tecnologias:active .modality-arrow {
                 opacity: 1;
                 transform: none;
             }
@@ -748,8 +849,8 @@
         <div class="modular-left-panel">
             <div class="modular-left-content">
                 <span class="modular-promo-badge">Oferta limitada</span>
-                <h2 class="modular-main-title">Tu futuro comienza con el beneficio correcto</h2>
-                <p class="modular-main-subtitle">Aplica ahora y obtén descuento en TODA tu carrera. Sin letra pequeña, sin sorpresas.</p>
+                <h2 class="modular-main-title">Estudia hoy con beneficios exclusivos para tu matrícula</h2>
+                <p class="modular-main-subtitle">Accede a beneficios exclusivos para tu matrícula y comienza tu formación con una propuesta académica conectada al mundo empresarial.</p>
                 <div class="modular-stats-row">
                     <div class="modular-stat-mini">
                         <div class="modular-stat-number">+350</div>
@@ -781,10 +882,10 @@
                     </div>
                     <div class="modular-card-content">
                         <h4>Pregrados Presenciales</h4>
-                        <p class="modular-card-subtitle">Vive la experiencia completa en campus</p>
+                        <p class="modular-card-subtitle">Vive la experiencia completa en campus.</p>
                     </div>
                     <span class="modular-card-modality">
-                        <span class="modality-text">Modalidad Dual</span>
+                        <span class="modality-text">Modalidad Presencial Dual</span>
                         <span class="modality-arrow">
                             <svg viewBox="0 0 24 24">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -805,7 +906,7 @@
                     </div>
                     <div class="modular-card-content">
                         <h4>Pregrados Virtuales</h4>
-                        <p class="modular-card-subtitle">Flexibilidad total para tu ritmo</p>
+                        <p class="modular-card-subtitle">Flexibilidad total para tu ritmo.</p>
                     </div>
                     <span class="modular-card-modality">
                         <span class="modality-text">Modalidad Virtual Dual</span>
@@ -829,10 +930,34 @@
                     </div>
                     <div class="modular-card-content">
                         <h4>Posgrados</h4>
-                        <p class="modular-card-subtitle">Especialización y avance profesional</p>
+                        <p class="modular-card-subtitle">Especialízate y fortalece tu perfil profesional.</p>
                     </div>
                     <span class="modular-card-modality">
-                        <span class="modality-text">Virtual Dual y Presencial</span>
+                        <span class="modality-text">Modalidad Virtual Dual o Presencial Dual</span>
+                        <span class="modality-arrow">
+                            <svg viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </span>
+                </a>
+
+                <!-- Tecnologías -->
+                <a class="modular-card-tecnologias" href="https://uniempresarial.edu.co/tecnologias/" aria-label="Ir a landing de tecnologías">
+                    <div class="modular-icon-tecnologias">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <div class="modular-card-content">
+                        <h4>Tecnologías</h4>
+                        <p class="modular-card-subtitle">Programas con alta proyección laboral.</p>
+                    </div>
+                    <span class="modular-card-modality">
+                        <span class="modality-text">Modalidad Presencial Dual</span>
                         <span class="modality-arrow">
                             <svg viewBox="0 0 24 24">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -843,7 +968,7 @@
                 </a>
             </div>
             <div class="modular-cta-bottom">
-                <a href="https://wa.me/573142084103" class="modular-cta-btn">Quiero más información →</a>
+                <a href="https://wa.me/573142084103" class="modular-cta-btn" >Solicitar una asesoría →</a>
             </div>
         </div>
     </div>
