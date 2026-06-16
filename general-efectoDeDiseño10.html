@@ -1,0 +1,65 @@
+<div class="spotlight-gallery">
+  <div class="spotlight-item" style="background-image: url('https://picsum.photos/id/101/400/300');"></div>
+  <div class="spotlight-item" style="background-image: url('https://picsum.photos/id/102/400/300');"></div>
+  <div class="spotlight-item" style="background-image: url('https://picsum.photos/id/103/400/300');"></div>
+</div>
+<style>
+  body { margin: 0; background: #0a0a0a; display: flex; justify-content: center; align-items: center; height: 100vh; }
+  .spotlight-gallery { display: flex; gap: 20px; }
+  .spotlight-item {
+    width: 300px; height: 250px;
+    border-radius: 15px;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    filter: brightness(0.2);
+    transition: filter 0.3s;
+  }
+  .spotlight-item::after {
+    content: '';
+    position: absolute;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -75px; left: -75px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  .spotlight-item:hover { filter: brightness(1); }
+  .spotlight-item:hover::after { opacity: 1; }
+</style>
+<script>
+  document.querySelectorAll('.spotlight-item').forEach(item => {
+    item.addEventListener('mousemove', e => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const pseudo = item.querySelector('::after');
+      item.style.setProperty('--x', x + 'px');
+      item.style.setProperty('--y', y + 'px');
+      // Aplicar directamente con estilo inline sobre pseudo no se puede,
+      // así que creamos un div interno como spotlight:
+      if (!item.querySelector('.spot')) {
+        const spot = document.createElement('div');
+        spot.classList.add('spot');
+        spot.style.cssText = `
+          position:absolute; width:150px; height:150px;
+          background:radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+          border-radius:50%; pointer-events:none; mix-blend-mode:overlay;
+          top:0; left:0;
+        `;
+        item.appendChild(spot);
+      }
+      const spot = item.querySelector('.spot');
+      spot.style.left = (x - 75) + 'px';
+      spot.style.top = (y - 75) + 'px';
+    });
+    item.addEventListener('mouseleave', () => {
+      const spot = item.querySelector('.spot');
+      if (spot) spot.remove();
+    });
+  });
+</script>

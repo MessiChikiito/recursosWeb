@@ -1,0 +1,40 @@
+<header class="sticky-header">
+  <div class="header-brand">BRAND</div>
+  <nav class="header-nav">
+    <a href="#">Inicio</a><a href="#">Productos</a><a href="#">Contacto</a>
+  </nav>
+</header>
+<main class="content" style="height: 3000px; background: linear-gradient(180deg, #111, #333);"></main>
+<style>
+  body { margin: 0; font-family: 'Inter', sans-serif; }
+  .sticky-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 30px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+    transition: padding 0.4s, background 0.4s;
+    z-index: 100; color: white;
+  }
+  .sticky-header.shrink {
+    padding: 15px 60px;
+    background: rgba(0,0,0,0.95);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .header-brand { font-size: 1.8rem; font-weight: 700; transition: font-size 0.4s; }
+  .sticky-header.shrink .header-brand { font-size: 1.4rem; }
+  .header-nav a {
+    color: white; text-decoration: none; margin-left: 30px;
+    position: relative; padding-bottom: 5px;
+  }
+  .header-nav a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 2px; background: white;
+    transition: width 0.3s;
+  }
+  .header-nav a:hover::after { width: 100%; }
+</style>
+<script>
+  window.addEventListener('scroll', () => {
+    document.querySelector('.sticky-header').classList.toggle('shrink', window.scrollY > 50);
+  });
+</script>

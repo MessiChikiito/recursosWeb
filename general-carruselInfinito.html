@@ -1,0 +1,25 @@
+<div class="marquee">
+  <div class="marquee-track">
+    <span>🚀 BRAND X</span><span>💡 BRAND Y</span><span>🔥 BRAND Z</span>
+    <span>⚡ STARTUP</span><span>🎯 ENTERPRISE</span><span>🌟 STUDIO</span>
+    <!-- duplicado para loop -->
+    <span>🚀 BRAND X</span><span>💡 BRAND Y</span><span>🔥 BRAND Z</span>
+    <span>⚡ STARTUP</span><span>🎯 ENTERPRISE</span><span>🌟 STUDIO</span>
+  </div>
+</div>
+<style>
+  body { background:#0f0f1a; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+  .marquee { overflow:hidden; width:80%; }
+  .marquee-track {
+    display:flex; gap: 60px; width:max-content;
+    animation: scroll 10s linear infinite;
+  }
+  .marquee-track span {
+    font-size:2rem; font-weight:900; color:white; opacity:0.8; white-space:nowrap;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>

@@ -1,0 +1,23 @@
+<button class="morph-btn">
+  <span>Comprar ahora</span>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</button>
+<style>
+  .morph-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 18px 40px; font-size: 1.1rem; font-weight: 600;
+    border: none; border-radius: 60px;
+    background: linear-gradient(135deg, #635bff, #8b5cf6);
+    color: white; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    box-shadow: 0 10px 30px rgba(99,91,255,0.3);
+  }
+  .morph-btn:hover {
+    padding: 18px 50px; gap: 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(99,91,255,0.5);
+  }
+  .morph-btn svg { transition: transform 0.3s; }
+  .morph-btn:hover svg { transform: translateX(5px); }
+  body { background: #0d0d1a; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+</style>

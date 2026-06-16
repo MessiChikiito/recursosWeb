@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidad - Hero Section Premium</title>
+    <style>
+        :root {
+            /* ─── Paleta de colores ─── */
+            --bg-deep: #06060e;
+            --bg-surface: #0c0c1a;
+            --accent-cyan: #22d3ee;
+            --accent-blue: #3b82f6;
+            --accent-violet: #8b5cf6;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --glow-cyan: rgba(34, 211, 238, 0.35);
+            --glow-blue: rgba(59, 130, 246, 0.4);
+            --glow-violet: rgba(139, 92, 246, 0.35);
+            --glow-amber: rgba(245, 158, 11, 0.25);
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+
+            /* ─── Tipografía ─── */
+            --font-heading: 'Georgia', 'Times New Roman', serif;
+            --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+            /* ─── Dimensiones ─── */
+            --hero-height-desktop: 100vh;
+            --hero-min-height: 650px;
+            --content-max-width: 1280px;
+            --person-width: 480px;
+            --person-width-mobile: 280px;
+
+            /* ─── Transiciones ─── */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --duration-slow: 1.2s;
+            --duration-medium: 0.7s;
+        }
+
+        /* ─── Reset & Base ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ─── Hero Section ─── */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: var(--hero-min-height);
+            height: var(--hero-height-desktop);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--bg-deep);
+            perspective: 800px;
+        }
+
+        /* ─── Capas de fondo con gradientes radiales ─── */
+        .hero__bg-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Capa 1: Gradiente base profundo */
+        .hero__bg-layer--1 {
+            background:
+                radial-gradient(ellipse 75% 90% at 15% 50%, rgba(15, 20, 45, 0.95) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 85% 35%, rgba(20, 15, 40, 0.9) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 70% at 50% 100%, rgba(10, 12, 30, 0.98) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 60% at 75% 70%, rgba(25, 18, 35, 0.7) 0%, transparent 50%);
+            background-color: var(--bg-deep);
+        }
+
+        /* Capa 2: Luces suaves difuminadas (efecto glow abstracto) */
+        .hero__bg-layer--2 {
+            background:
+                radial-gradient(circle 380px at 72% 38%, var(--glow-cyan) 0%, transparent 70%),
+                radial-gradient(circle 300px at 28% 55%, var(--glow-violet) 0%, transparent 65%),
+                radial-gradient(circle 250px at 60% 72%, var(--glow-blue) 0%, transparent 60%),
+                radial-gradient(circle 180px at 78% 28%, rgba(34, 211, 238, 0.2) 0%, transparent 50%);
+            filter: blur(60px);
+            opacity: 0.85;
+            animation: bgGlowPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgGlowPulse {
+            0% {
+                opacity: 0.75;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.95;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 0.8;
+                transform: scale(1.03);
+            }
+        }
+
+        /* Capa 3: Formas abstractas geométricas desenfocadas */
+        .hero__bg-layer--3 {
+            background:
+                /* Círculo grande semi-transparente */
+                radial-gradient(circle 420px at 70% 40%, rgba(59, 130, 246, 0.12) 0%, transparent 70%),
+                /* Elipse alargada */
+                radial-gradient(ellipse 500px 200px at 25% 65%, rgba(139, 92, 246, 0.1) 0%, transparent 60%),
+                /* Forma angular simulada con gradiente lineal */
+                conic-gradient(from 200deg at 72% 38%, transparent 0deg, rgba(34, 211, 238, 0.06) 60deg, transparent 120deg, rgba(139, 92, 246, 0.05) 200deg, transparent 260deg, rgba(245, 158, 11, 0.04) 310deg, transparent 360deg);
+            filter: blur(30px);
+            opacity: 0.7;
+            animation: bgShapesShift 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShapesShift {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(15px, -10px) rotate(3deg);
+                opacity: 0.85;
+            }
+        }
+
+        /* ─── Grid / textura sutil ─── */
+        .hero__grid {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        /* ─── Partículas decorativas flotantes (detrás) ─── */
+        .hero__particles-back {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .particle-dot {
+            position: absolute;
+            border-radius: 50%;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+        .particle-dot--1 {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-cyan);
+            top: 22%;
+            left: 60%;
+            box-shadow: 0 0 12px var(--glow-cyan);
+            animation-delay: 0s;
+            animation-duration: 5.5s;
+        }
+        .particle-dot--2 {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-violet);
+            top: 48%;
+            left: 55%;
+            box-shadow: 0 0 10px var(--glow-violet);
+            animation-delay: 1.2s;
+            animation-duration: 6.2s;
+        }
+        .particle-dot--3 {
+            width: 5px;
+            height: 5px;
+            background: var(--accent-blue);
+            top: 35%;
+            left: 68%;
+            box-shadow: 0 0 14px var(--glow-blue);
+            animation-delay: 2.5s;
+            animation-duration: 5.8s;
+        }
+        .particle-dot--4 {
+            width: 3px;
+            height: 3px;
+            background: var(--accent-amber);
+            top: 58%;
+            left: 62%;
+            box-shadow: 0 0 8px var(--glow-amber);
+            animation-delay: 3.8s;
+            animation-duration: 7s;
+        }
+        .particle-dot--5 {
+            width: 7px;
+            height: 7px;
+            background: var(--accent-cyan);
+            top: 28%;
+            left: 74%;
+            box-shadow: 0 0 16px var(--glow-cyan);
+            animation-delay: 0.7s;
+            animation-duration: 6.5s;
+            opacity: 0.7;
+        }
+
+        @keyframes particleFloat {
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.5;
+            }
+            25% {
+                transform: translateY(-20px) translateX(8px) scale(1.4);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(-8px) translateX(-5px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-28px) translateX(3px) scale(1.3);
+                opacity: 0.85;
+            }
+        }
+
+        /* ─── Contenedor principal ─── */
+        .hero__container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: clamp(30px, 6vw, 80px);
+            min-height: inherit;
+        }
+
+        /* ─── Contenido textual ─── */
+        .hero__content {
+            position: relative;
+            z-index: 12;
+            max-width: 580px;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.1s both;
+        }
+        .hero__badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--glow-cyan);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 8px var(--glow-cyan);
+            }
+            50% {
+                box-shadow: 0 0 20px var(--glow-cyan), 0 0 35px rgba(34, 211, 238, 0.5);
+            }
+        }
+
+        .hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.2s both;
+        }
+        .hero__title-highlight {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 40%, var(--accent-violet) 75%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            /* fallback */;
+        }
+
+        .hero__description {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 460px;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.3s both;
+        }
+
+        .hero__cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.4s both;
+        }
+
+        .hero__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.35s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+
+        .hero__cta--primary {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-violet) 100%);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(34, 211, 238, 0.3), 0 2px 8px rgba(59, 130, 246, 0.25);
+        }
+        .hero__cta--primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+        .hero__cta--primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(34, 211, 238, 0.45), 0 4px 14px rgba(59, 130, 246, 0.35);
+        }
+        .hero__cta--primary:hover::after {
+            opacity: 1;
+        }
+        .hero__cta--primary:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .hero__cta--secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .hero__cta--secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .hero__cta--secondary:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .hero__cta-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+        .hero__cta:hover .hero__cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ─── Zona de la persona ─── */
+        .hero__visual {
+            position: relative;
+            z-index: 8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 450px;
+            animation: fadeInUp 0.9s var(--ease-out-expo) 0.25s both;
+        }
+
+        /* ─── Elementos decorativos DETRÁS de la persona ─── */
+        .hero__decor-back {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+            /* Centrado en la zona de la persona */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 550px;
+            height: 550px;
+        }
+
+        .decor-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            animation: ringPulse 5s ease-in-out infinite;
+        }
+        .decor-ring--1 {
+            width: 420px;
+            height: 420px;
+            animation-delay: 0s;
+            border-color: rgba(34, 211, 238, 0.12);
+            box-shadow: 0 0 60px rgba(34, 211, 238, 0.08), inset 0 0 60px rgba(34, 211, 238, 0.04);
+        }
+        .decor-ring--2 {
+            width: 340px;
+            height: 340px;
+            animation-delay: 0.8s;
+            border-color: rgba(139, 92, 246, 0.15);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
+        }
+        .decor-ring--3 {
+            width: 260px;
+            height: 260px;
+            animation-delay: 1.6s;
+            border-color: rgba(59, 130, 246, 0.18);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.12);
+            border-style: dashed;
+            border-width: 1px;
+        }
+
+        @keyframes ringPulse {
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.06);
+                opacity: 1;
+            }
+        }
+
+        /* Arcos decorativos detrás */
+        .decor-arc {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: rgba(34, 211, 238, 0.25);
+            border-right-color: rgba(139, 92, 246, 0.2);
+            transform: translate(-50%, -50%) rotate(-30deg);
+            animation: arcSpin 15s linear infinite;
+        }
+        .decor-arc--2 {
+            width: 440px;
+            height: 440px;
+            border-top-color: rgba(245, 158, 11, 0.2);
+            border-left-color: rgba(59, 130, 246, 0.22);
+            border-right-color: transparent;
+            transform: translate(-50%, -50%) rotate(40deg);
+            animation-direction: reverse;
+            animation-duration: 18s;
+        }
+
+        @keyframes arcSpin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Puntos en órbita */
+        .decor-orbit-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 18px var(--glow-cyan), 0 0 35px rgba(34, 211, 238, 0.5);
+            animation: orbitFloat 6s ease-in-out infinite;
+        }
+        .decor-orbit-dot--1 {
+            top: 15%;
+            left: 70%;
+            animation-delay: 0s;
+            background: var(--accent-cyan);
+        }
+        .decor-orbit-dot--2 {
+            top: 72%;
+            left: 20%;
+            animation-delay: 2s;
+            background: var(--accent-violet);
+            box-shadow: 0 0 18px var(--glow-violet), 0 0 35px rgba(139, 92, 246, 0.5);
+        }
+        .decor-orbit-dot--3 {
+            top: 40%;
+            left: 82%;
+            animation-delay: 4s;
+            background: var(--accent-blue);
+            box-shadow: 0 0 18px var(--glow-blue), 0 0 35px rgba(59, 130, 246, 0.5);
+            width: 7px;
+            height: 7px;
+        }
+
+        @keyframes orbitFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.6;
+            }
+            33% {
+                transform: translate(18px, -22px) scale(1.5);
+                opacity: 1;
+            }
+            66% {
+                transform: translate(-12px, 16px) scale(0.8);
+                opacity: 0.5;
+            }
+        }
+
+        /* ─── Imagen de la persona ─── */
+        .hero__person-wrapper {
+            position: relative;
+            z-index: 7;
+            width: var(--person-width);
+            max-width: 90%;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 40px rgba(34, 211, 238, 0.15));
+            animation: personFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes personFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+
+        .hero__person-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: bottom center;
+            /* ✨ Reemplaza el src con tu PNG transparente ✨ */
+            display: block;
+            position: relative;
+            z-index: 7;
+        }
+
+        /* Placeholder estilizado (visible si no hay imagen o como fallback) */
+        .hero__person-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero__person-silhouette {
+            width: 75%;
+            height: 88%;
+            background: linear-gradient(180deg,
+                    rgba(180, 190, 210, 0.35) 0%,
+                    rgba(140, 150, 180, 0.25) 30%,
+                    rgba(100, 110, 150, 0.18) 60%,
+                    rgba(60, 70, 100, 0.1) 100%);
+            border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+            position: relative;
+        }
+        .hero__person-silhouette::before {
+            content: '';
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55%;
+            height: 28%;
+            background: rgba(180, 195, 220, 0.3);
+            border-radius: 50%;
+        }
+
+        /* ─── Elementos decorativos DELANTE de la persona ─── */
+        .hero__decor-front {
+            position: absolute;
+            z-index: 9;
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+        }
+
+        /* Fragmentos de vidrio/luz flotantes delante */
+        .decor-shard {
+            position: absolute;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: shardFloat 7s ease-in-out infinite;
+        }
+        .decor-shard--1 {
+            width: 40px;
+            height: 40px;
+            top: 20%;
+            left: 75%;
+            transform: rotate(25deg);
+            animation-delay: 0s;
+            border-color: rgba(34, 211, 238, 0.25);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+        }
+        .decor-shard--2 {
+            width: 25px;
+            height: 25px;
+            top: 55%;
+            left: 78%;
+            transform: rotate(-15deg);
+            animation-delay: 2.3s;
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 16px rgba(139, 92, 246, 0.25);
+            border-radius: 50%;
+        }
+        .decor-shard--3 {
+            width: 35px;
+            height: 35px;
+            top: 38%;
+            left: 82%;
+            transform: rotate(50deg);
+            animation-delay: 4.1s;
+            border-color: rgba(59, 130, 246, 0.28);
+            box-shadow: 0 0 18px rgba(59, 130, 246, 0.22);
+            border-radius: 4px;
+        }
+        .decor-shard--4 {
+            width: 18px;
+            height: 18px;
+            top: 65%;
+            left: 72%;
+            transform: rotate(10deg);
+            animation-delay: 5.5s;
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 0 14px rgba(245, 158, 11, 0.2);
+            border-radius: 50%;
+        }
+
+        @keyframes shardFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(var(--r, 0deg)) scale(1);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translate(12px, -18px) rotate(calc(var(--r, 0deg) + 10deg)) scale(1.3);
+                opacity: 0.9;
+            }
+            60% {
+                transform: translate(-8px, 10px) rotate(calc(var(--r, 0deg) - 8deg)) scale(0.85);
+                opacity: 0.4;
+            }
+        }
+
+        /* Línea de luz horizontal delante */
+        .decor-light-line {
+            position: absolute;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.5), rgba(139, 92, 246, 0.4), transparent);
+            border-radius: 1px;
+            animation: lightLineSweep 5s ease-in-out infinite;
+        }
+        .decor-light-line--1 {
+            width: 180px;
+            top: 42%;
+            left: 58%;
+            animation-delay: 0s;
+        }
+        .decor-light-line--2 {
+            width: 130px;
+            top: 52%;
+            left: 62%;
+            animation-delay: 2.5s;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), rgba(59, 130, 246, 0.35), transparent);
+        }
+
+        @keyframes lightLineSweep {
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(15px);
+            }
+        }
+
+        /* ─── Destello / flare delante ─── */
+        .hero__flare {
+            position: absolute;
+            z-index: 4;
+            pointer-events: none;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+            filter: blur(40px);
+            top: 28%;
+            left: 60%;
+            animation: flarePulse 7s ease-in-out infinite;
+        }
+        @keyframes flarePulse {
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.25);
+            }
+        }
+
+        /* ─── Animaciones de entrada ─── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+            .hero__container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto;
+                gap: 40px;
+                text-align: center;
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+            .hero__content {
+                order: 1;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .hero__description {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero__cta-group {
+                justify-content: center;
+            }
+            .hero__visual {
+                order: 0;
+                min-height: 350px;
+                max-height: 420px;
+            }
+            .hero__person-wrapper {
+                width: var(--person-width-mobile);
+                max-width: 75%;
+            }
+            .hero__decor-back {
+                width: 380px;
+                height: 380px;
+            }
+            .hero__decor-front {
+                width: 360px;
+                height: 360px;
+            }
+            .decor-ring--1 {
+                width: 320px;
+                height: 320px;
+            }
+            .decor-ring--2 {
+                width: 260px;
+                height: 260px;
+            }
+            .decor-ring--3 {
+                width: 200px;
+                height: 200px;
+            }
+            .decor-arc {
+                width: 300px;
+                height: 300px;
+            }
+            .decor-arc--2 {
+                width: 340px;
+                height: 340px;
+            }
+            .hero__title {
+                font-size: clamp(2rem, 6vw, 3.2rem);
+            }
+            .hero__flare {
+                top: 20%;
+                left: 50%;
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                min-height: auto;
+                height: auto;
+                padding: 30px 0 50px;
+            }
+            .hero__container {
+                padding-top: 50px;
+                padding-bottom: 30px;
+                gap: 24px;
+            }
+            .hero__visual {
+                min-height: 260px;
+                max-height: 320px;
+            }
+            .hero__person-wrapper {
+                width: 200px;
+                max-width: 70%;
+            }
+            .hero__decor-back {
+                width: 260px;
+                height: 260px;
+            }
+            .hero__decor-front {
+                width: 250px;
+                height: 250px;
+            }
+            .decor-ring--1 {
+                width: 230px;
+                height: 230px;
+            }
+            .decor-ring--2 {
+                width: 180px;
+                height: 180px;
+            }
+            .decor-ring--3 {
+                width: 140px;
+                height: 140px;
+            }
+            .decor-arc {
+                width: 210px;
+                height: 210px;
+            }
+            .decor-arc--2 {
+                width: 240px;
+                height: 240px;
+            }
+            .hero__badge {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
+            .hero__cta {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            .hero__cta-group {
+                gap: 10px;
+            }
+            .hero__title {
+                font-size: clamp(1.7rem, 7vw, 2.4rem);
+            }
+            .hero__description {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+            }
+            .decor-shard--1 {
+                width: 25px;
+                height: 25px;
+                top: 18%;
+                left: 70%;
+            }
+            .decor-shard--2 {
+                width: 16px;
+                height: 16px;
+                top: 50%;
+                left: 72%;
+            }
+            .decor-shard--3 {
+                width: 22px;
+                height: 22px;
+                top: 35%;
+                left: 76%;
+            }
+            .decor-shard--4 {
+                width: 12px;
+                height: 12px;
+                top: 60%;
+                left: 68%;
+            }
+            .decor-light-line--1 {
+                width: 100px;
+                top: 40%;
+                left: 55%;
+            }
+            .decor-light-line--2 {
+                width: 80px;
+                top: 50%;
+                left: 58%;
+            }
+            .hero__flare {
+                width: 140px;
+                height: 140px;
+                top: 22%;
+                left: 48%;
+            }
+            .particle-dot--1 {
+                top: 18%;
+                left: 55%;
+            }
+            .particle-dot--3 {
+                top: 30%;
+                left: 62%;
+            }
+            .particle-dot--5 {
+                top: 24%;
+                left: 68%;
+            }
+        }
+
+        /* ─── Reducción de animaciones ─── */
+        @media (prefers-reduced-motion: reduce) {
+            .hero__bg-layer--2,
+            .hero__bg-layer--3,
+            .particle-dot,
+            .decor-ring,
+            .decor-arc,
+            .decor-orbit-dot,
+            .decor-shard,
+            .decor-light-line,
+            .hero__flare,
+            .hero__person-wrapper,
+            .hero__badge-dot {
+                animation: none !important;
+                transition: none !important;
+            }
+            .hero__title,
+            .hero__description,
+            .hero__cta-group,
+            .hero__badge,
+            .hero__visual {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO SECTION - Universidad Premium 2026  -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-heading">
+
+        <!-- Capas de fondo con gradientes radiales -->
+        <div class="hero__bg-layer hero__bg-layer--1" aria-hidden="true"></div>
+        <div class="hero__bg-layer hero__bg-layer--2" aria-hidden="true"></div>
+        <div class="hero__bg-layer hero__bg-layer--3" aria-hidden="true"></div>
+
+        <!-- Grid / textura sutil -->
+        <div class="hero__grid" aria-hidden="true"></div>
+
+        <!-- Partículas flotantes detrás -->
+        <div class="hero__particles-back" aria-hidden="true">
+            <span class="particle-dot particle-dot--1"></span>
+            <span class="particle-dot particle-dot--2"></span>
+            <span class="particle-dot particle-dot--3"></span>
+            <span class="particle-dot particle-dot--4"></span>
+            <span class="particle-dot particle-dot--5"></span>
+        </div>
+
+        <!-- Destello / flare ambiental -->
+        <div class="hero__flare" aria-hidden="true"></div>
+
+        <!-- Contenedor principal -->
+        <div class="hero__container">
+
+            <!-- ─── Contenido textual ─── -->
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="hero__badge-dot" aria-hidden="true"></span>
+                    Admisiones 2026 Abiertas
+                </div>
+                <h1 class="hero__title" id="hero-heading">
+                    Impulsa tu futuro con
+                    <span class="hero__title-highlight">educación de clase mundial</span>
+                </h1>
+                <p class="hero__description">
+                    Forma parte de una comunidad académica que transforma el talento en liderazgo.
+                    Programas innovadores, profesores de excelencia y una experiencia universitaria
+                    diseñada para el mundo real.
+                </p>
+                <div class="hero__cta-group">
+                    <a href="#programas" class="hero__cta hero__cta--primary">
+                        Explorar programas
+                        <span class="hero__cta-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href="#contacto" class="hero__cta hero__cta--secondary">
+                        Solicitar información
+                    </a>
+                </div>
+            </div>
+
+            <!-- ─── Zona visual con la persona ─── -->
+            <div class="hero__visual">
+
+                <!-- Elementos decorativos DETRÁS de la persona -->
+                <div class="hero__decor-back" aria-hidden="true">
+                    <div class="decor-ring decor-ring--1"></div>
+                    <div class="decor-ring decor-ring--2"></div>
+                    <div class="decor-ring decor-ring--3"></div>
+                    <div class="decor-arc decor-arc--1"></div>
+                    <div class="decor-arc decor-arc--2"></div>
+                    <div class="decor-orbit-dot decor-orbit-dot--1"></div>
+                    <div class="decor-orbit-dot decor-orbit-dot--2"></div>
+                    <div class="decor-orbit-dot decor-orbit-dot--3"></div>
+                </div>
+
+                <!-- Imagen de la persona (PNG transparente) -->
+                <div class="hero__person-wrapper">
+                    <!--
+                    ╔══════════════════════════════════════════════╗
+                    ║  REEMPLAZA EL 'src' POR TU PNG TRANSPARENTE ║
+                    ║  Ejemplo: src="./estudiante.png"           ║
+                    ╚══════════════════════════════════════════════╝
+                    -->
+                    <img
+                    class="hero__person-img"
+                    src="14.657616197496125.png"
+                    alt="Estudiante universitario"
+                    loading="eager"
+                    >
+                    <!-- Placeholder sutil debajo (fallback visual) -->
+                    <div class="hero__person-placeholder" aria-hidden="true">
+                        <div class="hero__person-silhouette"></div>
+                    </div>
+                </div>
+
+                <!-- Elementos decorativos DELANTE de la persona -->
+                <div class="hero__decor-front" aria-hidden="true">
+                    <div class="decor-shard decor-shard--1" style="--r: 25deg;"></div>
+                    <div class="decor-shard decor-shard--2" style="--r: -15deg;"></div>
+                    <div class="decor-shard decor-shard--3" style="--r: 50deg;"></div>
+                    <div class="decor-shard decor-shard--4" style="--r: 10deg;"></div>
+                    <div class="decor-light-line decor-light-line--1"></div>
+                    <div class="decor-light-line decor-light-line--2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── JavaScript: Parallax sutil al mover el mouse ─── -->
+    <script>
+        (function() {
+            const hero = document.querySelector('.hero');
+            const personWrapper = document.querySelector('.hero__person-wrapper');
+            const decorBack = document.querySelector('.hero__decor-back');
+            const decorFront = document.querySelector('.hero__decor-front');
+            const flare = document.querySelector('.hero__flare');
+            const particles = document.querySelectorAll('.particle-dot');
+
+            if (!hero || !personWrapper) return;
+
+            let rafId = null;
+            let mouseX = 0;
+            let mouseY = 0;
+            let currentX = 0;
+            let currentY = 0;
+            const ease = 0.04;
+
+            function onMouseMove(e) {
+                const rect = hero.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                mouseX = (x / rect.width - 0.5) * 2; // -1 a 1
+                mouseY = (y / rect.height - 0.5) * 2; // -1 a 1
+            }
+
+            function onTouchMove(e) {
+                if (e.touches.length === 1) {
+                    const rect = hero.getBoundingClientRect();
+                    const x = e.touches[0].clientX - rect.left;
+                    const y = e.touches[0].clientY - rect.top;
+                    mouseX = (x / rect.width - 0.5) * 2;
+                    mouseY = (y / rect.height - 0.5) * 2;
+                }
+            }
+
+            function animate() {
+                currentX += (mouseX - currentX) * ease;
+                currentY += (mouseY - currentY) * ease;
+
+                const moveX = currentX * 18;
+                const moveY = currentY * 14;
+                const moveXSubtle = currentX * 8;
+                const moveYSubtle = currentY * 6;
+                const moveXFront = currentX * 28;
+                const moveYFront = currentY * 20;
+
+                // Persona: movimiento medio
+                if (personWrapper) {
+                    personWrapper.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                }
+
+                // Decoración trasera: movimiento sutil
+                if (decorBack) {
+                    decorBack.style.transform = `translate(calc(-50% + ${moveXSubtle}px), calc(-50% + ${moveYSubtle}px))`;
+                }
+
+                // Decoración delantera: movimiento más pronunciado (efecto 3D)
+                if (decorFront) {
+                    decorFront.style.transform = `translate(calc(-50% + ${moveXFront}px), calc(-50% + ${moveYFront}px))`;
+                }
+
+                // Flare: sigue al mouse
+                if (flare) {
+                    flare.style.transform = `translate(${moveX * 1.2}px, ${moveY * 1.2}px)`;
+                }
+
+                // Partículas: movimiento individual sutil
+                particles.forEach((p, i) => {
+                    const factor = 5 + i * 3;
+                    p.style.transform = `translate(${currentX * factor}px, ${currentY * factor}px)`;
+                });
+
+                rafId = requestAnimationFrame(animate);
+            }
+
+            hero.addEventListener('mousemove', onMouseMove, { passive: true });
+            hero.addEventListener('touchmove', onTouchMove, { passive: true });
+            hero.addEventListener('mouseleave', () => {
+                mouseX = 0;
+                mouseY = 0;
+            });
+            hero.addEventListener('touchend', () => {
+                mouseX = 0;
+                mouseY = 0;
+            });
+
+            // Iniciar animación
+            rafId = requestAnimationFrame(animate);
+
+            // Cleanup (buena práctica)
+            const cleanup = () => {
+                if (rafId) cancelAnimationFrame(rafId);
+                hero.removeEventListener('mousemove', onMouseMove);
+                hero.removeEventListener('touchmove', onTouchMove);
+            };
+
+            // Para SPAs o navegación dinámica
+            window.addEventListener('beforeunload', cleanup);
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<div class="explode-text" id="explodeText">CLICK</div>
+<canvas id="explodeCanvas" style="position:fixed;top:0;left:0;pointer-events:none;"></canvas>
+<style>
+  .explode-text {
+    font-size: 8rem; font-weight: 900; color: #ff4757;
+    cursor: pointer; text-shadow: 0 0 20px #ff4757;
+    user-select: none;
+  }
+  body { background: #111; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+</style>
+<script>
+  const textEl = document.getElementById('explodeText');
+  const canvas = document.getElementById('explodeCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let particles = [];
+
+  textEl.addEventListener('click', (e) => {
+    const rect = textEl.getBoundingClientRect();
+    const centerX = rect.left + rect.width/2;
+    const centerY = rect.top + rect.height/2;
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: centerX, y: centerY,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8,
+        size: Math.random() * 6 + 2,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        life: 1
+      });
+    }
+    textEl.style.transform = 'scale(0)';
+    setTimeout(() => { textEl.style.transform = 'scale(1)'; }, 300);
+  });
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles = particles.filter(p => p.life > 0);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      p.vy += 0.2; // gravity
+      p.life -= 0.02;
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+</script>

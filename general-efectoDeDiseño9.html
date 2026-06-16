@@ -1,0 +1,37 @@
+<h1 class="typewriter" data-text='["Hola Mundo","Efectos Geniales","CSS + JS","¡Impactante!"]'></h1>
+<style>
+  .typewriter {
+    font-family: 'Courier New', monospace;
+    font-size: 3rem;
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+    border-right: 3px solid #0f0;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: blink 0.8s infinite;
+  }
+  @keyframes blink { 50% { border-color: transparent; } }
+  body { background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+</style>
+<script>
+  const el = document.querySelector('.typewriter');
+  const phrases = JSON.parse(el.dataset.text);
+  let phraseIndex = 0, charIndex = 0, isDeleting = false;
+  function typeEffect() {
+    const current = phrases[phraseIndex];
+    el.textContent = current.substring(0, charIndex);
+    if (!isDeleting && charIndex < current.length) {
+      charIndex++;
+      setTimeout(typeEffect, 100);
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(typeEffect, 50);
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(typeEffect, isDeleting ? 800 : 300);
+    }
+  }
+  typeEffect();
+</script>

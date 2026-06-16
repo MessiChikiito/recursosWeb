@@ -1,0 +1,32 @@
+<div class="story">
+  <div class="story-sticky">
+    <div class="story-image" id="storyImage" style="background-image:url('https://picsum.photos/id/500/600/400');"></div>
+  </div>
+  <div class="story-sections">
+    <div class="story-section" data-image="https://picsum.photos/id/500/600/400"><h2>Fase 1</h2><p>Descripción de la primera fase.</p></div>
+    <div class="story-section" data-image="https://picsum.photos/id/501/600/400"><h2>Fase 2</h2><p>Descripción de la segunda fase.</p></div>
+    <div class="story-section" data-image="https://picsum.photos/id/502/600/400"><h2>Fase 3</h2><p>Descripción de la tercera fase.</p></div>
+    <div class="story-section" data-image="https://picsum.photos/id/503/600/400"><h2>Fase 4</h2><p>Descripción de la cuarta fase.</p></div>
+  </div>
+</div>
+<style>
+  body { margin:0; background:#0a0a0a; color:white; font-family:sans-serif; }
+  .story { display:flex; }
+  .story-sticky { position:sticky; top:0; width:50%; height:100vh; display:flex; align-items:center; justify-content:center; }
+  .story-image { width:80%; height:70%; background-size:cover; background-position:center; border-radius:20px; transition: background-image 0.3s; }
+  .story-sections { width:50%; }
+  .story-section { height:100vh; display:flex; flex-direction:column; justify-content:center; padding:40px; }
+</style>
+<script>
+  const sections = document.querySelectorAll('.story-section');
+  const image = document.getElementById('storyImage');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const newImg = entry.target.dataset.image;
+        image.style.backgroundImage = `url(${newImg})`;
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(sec => observer.observe(sec));
+</script>

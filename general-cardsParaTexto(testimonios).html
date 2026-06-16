@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios - Elevación en Fila</title>
+    <style>
+        :root {
+            --bg-deep: #06060c;
+            --bg-card: rgba(18, 18, 36, 0.55);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(120, 180, 255, 0.3);
+            --text-primary: #e8e8f0;
+            --text-secondary: #a0a0c0;
+            --text-muted: #6a6a88;
+            --accent-purple: #8b5cf6;
+            --accent-magenta: #e040fb;
+            --radius-lg: 28px;
+            --transition-elevate: 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg-deep);
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .section {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* ============================================================
+           CONTENEDOR DE LA FILA (con perspectiva común)
+           ============================================================ */
+        .testimonials-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;           /* Permite que en móvil bajen a varias líneas */
+            perspective: 1200px;
+        }
+
+        /* Tarjeta individual */
+        .testimonial-card {
+            flex: 1 1 260px;
+            max-width: 320px;
+            min-width: 250px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform var(--transition-elevate),
+                        opacity var(--transition-elevate),
+                        box-shadow var(--transition-elevate),
+                        border-color var(--transition-elevate);
+            transform-style: preserve-3d;
+            cursor: default;
+            /* Estado base */
+            transform: translateY(10px) scale(0.95);
+            opacity: 0.75;
+            will-change: transform, opacity;
+        }
+
+        /* La tarjeta activa (hover) se eleva como en el stack */
+        .testimonial-card:hover {
+            transform: translateY(-25px) scale(1.03);
+            opacity: 1;
+            border-color: var(--border-glow);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.7), 0 0 45px rgba(139,92,246,0.25);
+            z-index: 2;
+        }
+
+        /* Efecto sutil en las tarjetas vecinas cuando el ratón está en el contenedor */
+        .testimonials-row:hover .testimonial-card:not(:hover) {
+            transform: translateY(18px) scale(0.93);
+            opacity: 0.55;
+            filter: blur(1px);
+            transition: transform 0.5s, opacity 0.5s, filter 0.5s;
+        }
+
+        /* Contenido de la tarjeta */
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: auto;
+        }
+        .author-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-magenta));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+        .author strong { font-size: 0.85rem; }
+        .author span { color: var(--text-muted); font-size: 0.7rem; display: block; }
+
+        @media (max-width: 900px) {
+            .testimonials-row { gap: 1rem; }
+            .testimonial-card { flex: 1 1 220px; min-width: 220px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <span class="section-label">✦ Testimonios</span>
+        <h2 class="section-title">Amado por<br>Innovadores.</h2>
+        <p class="section-desc">Cada tarjeta se eleva con foco al pasar el cursor, igual que en el stack, pero ahora puedes leerlas todas.</p>
+
+        <div class="testimonials-row">
+            <!-- Tarjeta 1 -->
+            <div class="testimonial-card" data-tilt data-tilt-max="8">
+                <p class="testimonial-text">"Nexus AI transformó nuestro flujo de trabajo. Semanas de desarrollo se volvieron horas."</p>
+                <div class="author">
+                    <div class="author-avatar">S</div>
+                    <div>
+                        <strong>Sarah Chen</strong>
+                        <span>CTO, Synthex Labs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="testimonial-card" data-tilt data-tilt-max="8">
+                <p class="testimonial-text">"La latencia y precisión que ofrece Nexus es algo que no encontramos en ningún otro lugar."</p>
+                <div class="author">
+                    <div class="author-avatar">M</div>
+                    <div>
+                        <strong>Marcus Rivera</strong>
+                        <span>Lead Engineer, QuantumPay</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="testimonial-card" data-tilt data-tilt-max="8">
+                <p class="testimonial-text">"Documentación impecable y soporte que responde en minutos. La mejor experiencia dev."</p>
+                <div class="author">
+                    <div class="author-avatar">A</div>
+                    <div>
+                        <strong>Aiko Tanaka</strong>
+                        <span>Fundadora, PixelMind AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 (agregamos más sin perder visibilidad) -->
+            <div class="testimonial-card" data-tilt data-tilt-max="8">
+                <p class="testimonial-text">"Migrar a Nexus redujo nuestros errores un 40%. El equipo de soporte es increíble."</p>
+                <div class="author">
+                    <div class="author-avatar">D</div>
+                    <div>
+                        <strong>David Park</strong>
+                        <span>VP of Engineering, DataFlow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) {
+                const cards = document.querySelectorAll('[data-tilt]');
+                cards.forEach(card => {
+                    const maxTilt = parseFloat(card.getAttribute('data-tilt-max')) || 8;
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateX = ((y - centerY) / centerY) * -maxTilt;
+                        const rotateY = ((x - centerX) / centerX) * maxTilt;
+                        // Combinamos la elevación con el tilt
+                        card.style.transform = `translateY(-25px) scale(1.03) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transition = 'transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)';
+                        card.style.transform = 'translateY(10px) scale(0.95) perspective(800px) rotateX(0) rotateY(0)';
+                        setTimeout(() => card.style.transition = '', 550);
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

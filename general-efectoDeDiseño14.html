@@ -901,76 +901,95 @@
                 }
             }
 
-            // ══════════════════════════════════════════════════════════
-            // EFECTO 7: Interactive Noise Surface
-            // ══════════════════════════════════════════════════════════
-            class Effect7_NoiseSurface extends CanvasEffect {
-                constructor() {
-                    super('visual-7', 7);
-                    this.time = 0;
-                    this.noiseCache = null;
-                    this.cacheSize = 0;
-                    this.start();
-                }
-                update(dt) {
-                    this.time += dt;
-                }
-                draw(ctx, w, h) {
-                    const cellSize = 6;
-                    const cols = Math.ceil(w / cellSize);
-                    const rows = Math.ceil(h / cellSize);
-                    const totalCells = cols * rows;
-                    if (!this.noiseCache || this.cacheSize !== totalCells) {
-                        this.noiseCache = new Float32Array(totalCells);
-                        this.cacheSize = totalCells;
-                        for (let i = 0; i < totalCells; i++) this.noiseCache[i] = Math.random();
-                    }
-                    const mx = this.mouseInside ? this.mouseX : -999;
-                    const my = this.mouseInside ? this.mouseY : -999;
-                    const imageData = ctx.createImageData(w, h);
-                    const data = imageData.data;
-                    for (let r = 0; r < rows; r++) {
-                        for (let c = 0; c < cols; c++) {
-                            const idx = r * cols + c;
-                            let val = this.noiseCache[idx];
-                            // Influencia del mouse
-                            if (mx > -100 && this.mouseInside) {
-                                const cx_cell = c * cellSize + cellSize / 2;
-                                const cy_cell = r * cellSize + cellSize / 2;
-                                const dx = cx_cell - mx;
-                                const dy = cy_cell - my;
-                                const dist = Math.sqrt(dx * dx + dy * dy);
-                                if (dist < 120) {
-                                    val += (1 - dist / 120) * 0.6 * Math.sin(dist * 0.08 + this.time * 3);
-                                }
-                            }
-                            val = Math.max(0, Math.min(1, val));
-                            const r_val = Math.floor(val * 40 + 10);
-                            const g_val = Math.floor(val * 30 + 8);
-                            const b_val = Math.floor(val * 80 + 20);
-                            const px = c * cellSize;
-                            const py = r * cellSize;
-                            for (let dy = 0; dy < cellSize && py + dy < h; dy++) {
-                                for (let dx = 0; dx < cellSize && px + dx < w; dx++) {
-                                    const di = ((py + dy) * w + (px + dx)) * 4;
-                                    data[di] = r_val;
-                                    data[di + 1] = g_val;
-                                    data[di + 2] = b_val;
-                                    data[di + 3] = 255;
-                                }
-                            }
-                        }
-                    }
-                    ctx.putImageData(imageData, 0, 0);
-                    // Vignette
-                    const vignette = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.5, w / 2, h / 2, Math.max(w,
-                        h) * 0.75);
-                    vignette.addColorStop(0, 'transparent');
-                    vignette.addColorStop(1, 'rgba(0,0,0,0.5)');
-                    ctx.fillStyle = vignette;
-                    ctx.fillRect(0, 0, w, h);
-                }
+// ══════════════════════════════════════════════════════════
+// EFECTO 7: Interactive Noise Surface (Optimizado)
+// ══════════════════════════════════════════════════════════
+class Effect7_NoiseSurface extends CanvasEffect {
+    constructor() {
+        super('visual-7', 7);
+        this.time = 0;
+        this.cellSize = 10; // Ligeramente más grande para mejor rendimiento
+        this.noiseCache = [];
+        this.cols = 0;
+        this.rows = 0;
+        this._initCache();
+        this.start();
+    }
+
+    _initCache() {
+        const w = this.width || 500;
+        const h = this.height || 350;
+        this.cols = Math.ceil(w / this.cellSize);
+        this.rows = Math.ceil(h / this.cellSize);
+        const total = this.cols * this.rows;
+        if (this.noiseCache.length !== total) {
+            this.noiseCache = new Float32Array(total);
+            for (let i = 0; i < total; i++) {
+                this.noiseCache[i] = Math.random();
             }
+        }
+    }
+
+    _resize() {
+        super._resize();
+        this._initCache();
+    }
+
+    update(dt) {
+        this.time += dt;
+    }
+
+    draw(ctx, w, h) {
+        // Fondo base
+        ctx.fillStyle = '#060610';
+        ctx.fillRect(0, 0, w, h);
+
+        const mx = this.mouseInside ? this.mouseX : -999;
+        const my = this.mouseInside ? this.mouseY : -999;
+        const cellW = this.cellSize;
+        const cellH = this.cellSize;
+
+        // Dibujar cada celda como un rectángulo de color sólido
+        for (let r = 0; r < this.rows; r++) {
+            for (let c = 0; c < this.cols; c++) {
+                const idx = r * this.cols + c;
+                let val = this.noiseCache[idx];
+
+                // Influencia del cursor (campo de interacción)
+                if (mx > -100 && this.mouseInside) {
+                    const cx_cell = c * cellW + cellW / 2;
+                    const cy_cell = r * cellH + cellH / 2;
+                    const dx = cx_cell - mx;
+                    const dy = cy_cell - my;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 130) {
+                        // Perturbación orgánica basada en distancia y tiempo
+                        val += (1 - dist / 130) * 0.65 * Math.sin(dist * 0.09 + this.time * 3.5);
+                    }
+                }
+
+                val = Math.max(0, Math.min(1, val));
+                // Paleta de color oscura con matices violetas/azules
+                const rCol = Math.floor(val * 35 + 8);
+                const gCol = Math.floor(val * 25 + 6);
+                const bCol = Math.floor(val * 75 + 18);
+
+                ctx.fillStyle = `rgb(${rCol},${gCol},${bCol})`;
+                ctx.fillRect(c * cellW, r * cellH, cellW + 1, cellH + 1); // +1 para evitar líneas de gap
+            }
+        }
+
+        // Viñeta suave para dar profundidad
+        const vignette = ctx.createRadialGradient(
+            w / 2, h / 2, Math.min(w, h) * 0.45,
+            w / 2, h / 2, Math.max(w, h) * 0.75
+        );
+        vignette.addColorStop(0, 'transparent');
+        vignette.addColorStop(1, 'rgba(0,0,0,0.55)');
+        ctx.fillStyle = vignette;
+        ctx.fillRect(0, 0, w, h);
+    }
+}
 
             // ══════════════════════════════════════════════════════════
             // EFECTO 8: Holographic Card (CSS 3D)

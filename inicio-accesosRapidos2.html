@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accesos Rápidos</title>
+  <title></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
@@ -18,7 +18,7 @@
       justify-content: center;
       gap: 15px;
       width: 100%;
-      margin: 0 auto;
+      margin: 0;
     }
 
     .access-item {
@@ -29,7 +29,7 @@
       padding: 10px 25px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: all 0.3s ease !important;
-      border: 1px solid #eee;
+      border: 1px solid #d5d7dc;
       text-decoration: none !important;
       color: #333333 !important;
       flex: 1 1 auto;
@@ -48,23 +48,28 @@
       margin-right: 12px;
       font-size: 14px;
       flex-shrink: 0;
+      transition: all 0.3s ease !important;
     }
 
     .access-label {
       font-weight: 500;
       font-size: 1.1rem;
-      color: #333333 !important;
+      color: #000 !important;
       white-space: nowrap;
     }
 
     .access-item:hover {
-      background: #fdfdfd !important;
-      border-color: #FE1C33 !important;
-      transform: scale(1.05) !important;
+      background: #ff0000 !important;
+      border-color: #ff0000 !important;
+    }
+
+    .access-item:hover i {
+      background: #fff !important;
+      color: #ff0000 !important;
     }
     
     .access-item:hover .access-label {
-      color: #FE1C33 !important;
+      color: #fff;
     }
 
     @media (max-width: 1300px) {
@@ -122,7 +127,8 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 12px 8px;
-        padding: 10px 0;
+        padding: 40px 35PX;
+        background: #ffffff;
       }
       
       .access-item {
@@ -138,7 +144,6 @@
       .access-item:hover {
         background: transparent !important;
         border-color: transparent !important;
-        transform: scale(1.03) !important;
       }
 
       .access-item i {
@@ -158,13 +163,25 @@
         line-height: 1.2;
         white-space: normal;
         word-break: break-word;
+        color: #000 !important;
         width: 100%;
+      }
+      .acces-label:hover {
+        color: #000 !important;
+      }
+      .access-label:active {
+        color: #000 !important;
       }
 
       .access-item:active i {
         background: #FE1C33 !important;
-        color: #ffffff !important;
+        color: #000 !important;
       }
+
+          .access-item:hover i {
+      background: #fff !important;
+      color: #ff0000 !important;
+    }
     }
   </style>
 </head>
@@ -191,7 +208,7 @@
       <i><span class="fas fa-calendar-alt"></span></i>
       <span class="access-label">Calendario Académico</span>
     </a>
-    <a href="#" class="access-item">
+    <a href="https://uniempresarial.datasae.co/siga_new/web/app.php/login_responsive" class="access-item">
       <i><span class="fas fa-book"></span></i>
       <span class="access-label">Gestión Académica</span>
     </a>

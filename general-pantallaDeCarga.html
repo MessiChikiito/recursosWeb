@@ -1,0 +1,55 @@
+<div class="loader" id="loader">
+  <div class="loader-percent">0%</div>
+</div>
+<canvas id="loaderCanvas" style="position:fixed;top:0;left:0;pointer-events:none;"></canvas>
+<style>
+  body { background:#0a0a0a; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+  .loader { font-size:4rem; color:white; font-family:monospace; }
+</style>
+<script>
+  const percentEl = document.querySelector('.loader-percent');
+  const canvas = document.getElementById('loaderCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let percent = 0;
+  let particles = [];
+  const interval = setInterval(() => {
+    percent += Math.floor(Math.random() * 5) + 1;
+    if (percent >= 100) {
+      percent = 100;
+      clearInterval(interval);
+      explodeParticles();
+      setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 1000);
+    }
+    percentEl.textContent = percent + '%';
+  }, 100);
+
+  function explodeParticles() {
+    const rect = percentEl.getBoundingClientRect();
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height/2;
+    for(let i=0; i<120; i++) {
+      particles.push({
+        x: cx, y: cy,
+        vx: (Math.random()-0.5)*15,
+        vy: (Math.random()-0.5)*15,
+        size: Math.random()*5+2,
+        color: `hsl(${Math.random()*360}, 100%, 70%)`,
+        life: 1
+      });
+    }
+  }
+  function animateParticles() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles = particles.filter(p => p.life > 0);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.vy += 0.3; p.life -= 0.02;
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+</script>
