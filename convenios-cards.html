@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficios Afiliados | 3 Columnas 50/50</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px;
+            color: #1a1a1a;
+        }
+
+        .panel {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Contenedor externo: sin clip-path, solo posicionamiento */
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            min-height: 200px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --border-color: #ccc;
+            --shadow-color: rgba(0, 0, 0, 0.04);
+            --border-width: 4px;
+        }
+
+        /* Pseudo-elemento que pinta el borde (sin estar recortado por la tarjeta) */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: calc(-1 * var(--border-width));
+            background: var(--border-color);
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            z-index: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+
+        /* Capa interna: fondo blanco y recorte, encima del borde */
+        .card-inner {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            padding: 20px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        /* Columna izquierda: imagen (50% del ancho) */
+        .card-left {
+            flex: 1 1 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-left img {
+            width: 100%;
+            max-width: 130px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #f0f4ff;
+            padding: 12px;
+            transition: transform 0.3s;
+        }
+
+        /* Columna derecha: contenido (50% del ancho) */
+        .card-right {
+            flex: 1 1 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-right h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+        }
+
+        .card-right ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+
+        .card-right ul li {
+            font-size: 0.9rem;
+            color: #3a3a3a;
+            line-height: 1.5;
+            margin-bottom: 5px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .card-right ul li::before {
+            content: '•';
+            color: var(--bullet-color, #1274fc);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--btn-bg, #3b8cff);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.4px;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+            align-self: flex-start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .btn:hover {
+            background: #2a6edb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+        }
+
+        /* Colores para cada tarjeta (borde, sombra, bullet y botón) */
+        .card:nth-child(1) {
+            --border-color: #0132AF;
+            --shadow-color: rgba(59, 140, 255, 0.2);
+            --bullet-color: #0132AF;
+            --btn-bg: #0132AF;
+        }
+        .card:nth-child(1) h4 {
+            color: #0132AF;
+        }
+
+        .card:nth-child(2) {
+            --border-color: #ff0000;
+            --shadow-color: rgba(255, 90, 122, 0.2);
+            --bullet-color: #ff0000;
+            --btn-bg: #ff0000;
+        }
+        .card:nth-child(2) h4 {
+            color: #ff0000;
+        }
+
+        .card:nth-child(3) {
+            --border-color: #0132AF;
+            --shadow-color: rgba(45, 204, 138, 0.2);
+            --bullet-color: #0132AF;
+            --btn-bg: #0132AF;
+        }
+        .card:nth-child(3) h4 {
+            color: #0132AF;
+        }
+
+        .card:nth-child(4) {
+            --border-color: #ff0000;
+            --shadow-color: rgba(245, 166, 35, 0.2);
+            --bullet-color: #ff0000;
+            --btn-bg: #ff0000;
+        }
+        .card:nth-child(4) h4 {
+            color: #ff0000;
+        }
+
+        .card:nth-child(5) {
+            --border-color: #0132AF;
+            --shadow-color: rgba(165, 94, 234, 0.2);
+            --bullet-color: #0132AF;
+            --btn-bg: #0132AF;
+        }
+        .card:nth-child(5) h4 {
+            color: #0132AF;
+        }
+
+        .card:nth-child(6) {
+            --border-color: #ff0000;
+            --shadow-color: rgba(255, 127, 63, 0.2);
+            --bullet-color: #ff0000;
+            --btn-bg: #ff0000;
+        }
+        .card:nth-child(6) h4 {
+            color: #ff0000;
+        }
+
+        .card:nth-child(7) {
+            --border-color: #0132AF;
+            --shadow-color: rgba(69, 184, 184, 0.2);
+            --bullet-color: #0132AF;
+            --btn-bg: #0132AF;
+        }
+        .card:nth-child(7) h4 {
+            color: #0132AF;
+        }
+
+        /* Hover: endereza y eleva */
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .card:hover::before {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            background: #555;
+            inset: calc(-1 * var(--border-width));
+        }
+
+        .card:hover .card-inner {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .card:hover .card-left img {
+            transform: scale(1.08);
+        }
+
+        /* Ajuste para centrar la última tarjeta cuando queda sola en su fila (3 columnas, 7 tarjetas) */
+        @media (min-width: 769px) {
+            .panel > .card:last-child:nth-child(3n+1) {
+                grid-column: 2 / 3;
+            }
+        }
+
+        /* Responsive: 2 columnas en tablets */
+        @media (max-width: 992px) {
+            .panel {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            .card-inner {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+            .card-left {
+                flex: 0 0 auto;
+                margin-bottom: 10px;
+            }
+            .card-left img {
+                max-width: 100px;
+            }
+            .btn {
+                align-self: center;
+            }
+            /* Quitar regla de centrado para última tarjeta en 2 columnas */
+            .panel > .card:last-child:nth-child(3n+1) {
+                grid-column: auto;
+            }
+        }
+
+        /* Responsive: 1 columna en móviles */
+        @media (max-width: 600px) {
+            .panel {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .card-inner {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+            .card-left {
+                flex: 0 0 auto;
+                margin-bottom: 10px;
+            }
+            .card-left img {
+                max-width: 110px;
+            }
+            .btn {
+                align-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <!-- Tarjeta 1: Analfe -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2951/2951134.png" alt="descuento">
+                </div>
+                <div class="card-right">
+                    <h4>Analfe</h4>
+                    <ul>
+                        <li>15% dto. en matrícula</li>
+                        <li>Educación continuada incluida</li>
+                        <li>Beneficios exclusivos para afiliados</li>
+                    </ul>
+                    <a href="#" class="btn">Más información</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2: Coasmedas -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="formación">
+                </div>
+                <div class="card-right">
+                    <h4>Coasmedas</h4>
+                    <ul>
+                        <li>25% dto. en matrícula ordinaria</li>
+                        <li>Impulso a tu formación profesional</li>
+                        <li>Acceso a programas especializados</li>
+                    </ul>
+                    <a href="#" class="btn">Averigua más</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3: Cooptrais -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991106.png" alt="oportunidad">
+                </div>
+                <div class="card-right">
+                    <h4>Cooptrais</h4>
+                    <ul>
+                        <li>25% dto. en matrícula ordinaria</li>
+                        <li>Momento ideal para seguir educándote</li>
+                        <li>Plataforma de crecimiento laboral</li>
+                    </ul>
+                    <a href="#" class="btn">Descubre más</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 4: SENATIC -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721287.png" alt="tecnología">
+                </div>
+                <div class="card-right">
+                    <h4>SENATIC</h4>
+                    <ul>
+                        <li>MinTIC + SENA + OIT</li>
+                        <li>Formación en tecnologías de la información</li>
+                        <li>Iniciativa de transformación digital</li>
+                    </ul>
+                    <a href="#" class="btn">Conoce el programa</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 5: Círculo de afiliados -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="círculo">
+                </div>
+                <div class="card-right">
+                    <h4>Círculo de Afiliados</h4>
+                    <ul>
+                        <li>Hasta 25% dto. en matrícula</li>
+                        <li>Ventajas exclusivas para miembros</li>
+                        <li>Impulsa tu carrera profesional</li>
+                    </ul>
+                    <a href="#" class="btn">Explora beneficios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 6: SENA -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="SENA">
+                </div>
+                <div class="card-right">
+                    <h4>SENA</h4>
+                    <ul>
+                        <li>25% dto. en matrícula</li>
+                        <li>Beneficios para comunidad SENA Bogotá</li>
+                        <li>Formación de calidad garantizada</li>
+                    </ul>
+                    <a href="#" class="btn">Aprovecha ahora</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 7: Colsubsidio -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Colsubsidio">
+                </div>
+                <div class="card-right">
+                    <h4>Colsubsidio</h4>
+                    <ul>
+                        <li>Hasta 25% dto. en matrícula</li>
+                        <li>Ventajas para afiliados Colsubsidio</li>
+                        <li>Educación accesible y de calidad</li>
+                    </ul>
+                    <a href="#" class="btn">Más ventajas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
