@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+        /* Reset y estilos base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Sección exterior */
+        .con-hero {
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                0 12px 40px rgba(0, 0, 0, 0.07),
+                0 30px 80px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Línea editorial superior – sigue el padding-left dinámico */
+        .con-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: max(40px, calc((100% - 1400px) / 2));
+            right: 0;
+            height: 1px;
+            background: #e8e5df;
+            z-index: 3;
+        }
+
+        /* Contenedor interno: ancho completo, padding izquierdo dinámico */
+        .con-hero-inner {
+            width: 100%;
+            padding-left: max(40px, calc((100% - 1400px) / 2));
+            padding-right: 0;
+            height: 600px;               /* altura fija */
+            display: flex;
+            align-items: center;
+            gap: 65px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Bloque de texto (izquierda) – ancho fijo, alineado al inicio del área de 1400px */
+        .con-hero-text {
+            flex: 0 0 auto;
+            width: 620px;
+            max-width: 620px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .con-hero-title {
+            font-size: clamp(2.6rem, 4.2vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            color: #121117;
+            line-height: 1.06;
+            margin: 0 0 18px 0;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            text-wrap: balance;
+
+            /* --- NUEVO: posicionamiento para el borde con ::after --- */
+            position: relative;
+            padding-left: 20px; /* separación del borde */
+        }
+
+        /* Borde izquierdo de 4px con color #0132AF */
+        .con-hero-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #ff0000;
+            border-radius: 2px; /* opcional, suaviza las puntas */
+        }
+
+        .con-hero-subtitle {
+            font-size: 0.95rem;
+            color: #5c5770;
+            line-height: 1.65;
+            max-width: 620px;
+            margin: 0 0 28px 0;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-wrap: balance;
+        }
+
+        .con-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background-color: #0132AF;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            font-family: 'Inter', system-ui, sans-serif;
+            outline: none;
+            transition:
+                background-color 0.28s ease,
+                transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1.2),
+                box-shadow 0.28s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .con-hero-cta::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.06) 0%,
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .con-hero-cta:hover {
+            background-color: #002584;
+            transform: translateX(4px);
+            color: #ffffff;
+        }
+        .con-hero-cta:active {
+            background-color: #002584;
+            transform: translateX(4px);
+        }
+
+        .con-hero-cta-arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+            font-weight: 400;
+            font-size: 1.05em;
+        }
+        .con-hero-cta:hover .con-hero-cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Contenedor de la imagen (derecha) – ocupa todo el espacio restante */
+        .con-hero-image {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .con-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Gradiente desvanecido hacia la izquierda (fusión con fondo blanco) */
+        .con-hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 100%;
+            background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsivo: apilado vertical, altura automática */
+        @media (max-width: 1000px) {
+            .con-hero-inner {
+                flex-direction: column;
+                height: auto;
+                min-height: 700px;
+                gap: 35px;
+                padding: 40px 30px;      /* padding simétrico en móvil */
+            }
+            .con-hero-image {
+                width: 100%;
+                height: 300px;
+                flex: 0 0 auto;
+            }
+            .con-hero-image img {
+                height: 100%;
+                width: 100%;
+            }
+            .con-hero-text {
+                max-width: 100%;
+                width: 100%;
+            }
+            .con-hero::before {
+                left: 30px;
+                right: 30px;
+            }
+            .con-hero-image::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .con-hero-inner {
+                padding: 30px 18px;
+                gap: 24px;
+                min-height: auto;
+            }
+            .con-hero-title {
+                font-size: 1.9rem;
+                padding-left: 16px; /* ajuste fino en móvil */
+            }
+            .con-hero::before {
+                left: 18px;
+                right: 18px;
+            }
+            .con-hero-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="con-hero" aria-labelledby="con-hero-heading">
+        <div class="con-hero-inner">
+
+            <header class="con-hero-text">
+                <h1 class="con-hero-title" id="con-hero-heading">
+                    Accede a descuentos y oportunidades exclusivas
+                </h1>
+                <p class="con-hero-subtitle">
+                    Accede a beneficios exclusivos, oportunidades de empleo, formación continua y una red profesional diseñada para impulsar tu carrera como egresado de Uniempresarial.
+                </p>
+                <a href="#" class="con-hero-cta">
+                    Habla con un asesor
+                    <span class="con-hero-cta-arrow">→</span>
+                </a>
+            </header>
+
+            <div class="con-hero-image">
+                <img src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Convenios-Uniempresarial-scaled.webp" alt="Egresados Uniempresarial" />
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

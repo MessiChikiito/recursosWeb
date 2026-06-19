@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Right Panel - Opción B - 10 Variantes | Uniempresarial</title>
+    <style>
+        /* =============================================
+           VARIABLES GLOBALES (Paleta Uniempresarial)
+           ============================================= */
+        :root {
+            --blue-dark: #003366;
+            --blue-primary: #0056b3;
+            --blue-light: #e8f4fc;
+            --blue-accent: #4a90d9;
+            --red-cta: #c8102e;
+            --red-hover: #a00d24;
+            --text-dark: #1a1a2e;
+            --text-muted: #6b7280;
+            --text-light: #ffffff;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --bg-translucent: rgba(255, 255, 255, 0.92);
+            --shadow-soft: 0 4px 20px rgba(0, 51, 102, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 51, 102, 0.12);
+            --shadow-hover: 0 12px 40px rgba(0, 51, 102, 0.18);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* =============================================
+           RESET Y ESTILOS BASE
+           ============================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(135deg, #e8f4fc 0%, #f0f4f8 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        /* Contenedor de demostración */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-title {
+            text-align: center;
+            color: var(--blue-dark);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .option-wrapper {
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 2px dashed #d1d5db;
+        }
+
+        .option-label {
+            background: var(--blue-dark);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* =============================================
+           ESTILOS COMUNES PARA TODOS LOS PANELES
+           ============================================= */
+        .hero-panel {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* Links de acción (accesibilidad) */
+        .hero-panel a:focus-visible {
+            outline: 3px solid var(--blue-accent);
+            outline-offset: 3px;
+        }
+
+        /* Iconos SVG */
+        .icon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        /* =============================================
+           OPCIÓN 1: Glassmorphism Elegante
+           Elementor: Container con backdrop-filter
+           ============================================= */
+        .panel-v1 {
+            background: var(--bg-translucent);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .panel-v1 .pill {
+            /* Elementor: Heading widget con estilo pill */
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--blue-light);
+            color: var(--blue-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 16px;
+        }
+
+        .panel-v1 .title {
+            /* Elementor: Heading widget H2 */
+            color: var(--blue-dark);
+            font-size: 1.65rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .panel-v1 .actions {
+            /* Elementor: Container flex column */
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .panel-v1 .action-btn {
+            /* Elementor: Button widget personalizado */
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: var(--bg-white);
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .panel-v1 .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--blue-accent);
+        }
+
+        .panel-v1 .action-btn.primary {
+            background: var(--red-cta);
+            color: var(--text-light);
+            border-color: var(--red-cta);
+        }
+
+        .panel-v1 .action-btn.primary:hover {
+            background: var(--red-hover);
+        }
+
+        .panel-v1 .action-btn .icon {
+            color: var(--blue-primary);
+        }
+
+        .panel-v1 .action-btn.primary .icon {
+            color: var(--text-light);
+        }
+
+        .panel-v1 .secondary-link {
+            /* Elementor: Text Editor con link */
+            display: block;
+            text-align: center;
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .panel-v1 .secondary-link:hover {
+            color: var(--blue-dark);
+            text-decoration: underline;
+        }
+
+        .panel-v1 .trust-text {
+            /* Elementor: Text Editor widget */
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* =============================================
+           OPCIÓN 2: Cards con Gradiente Sutil
+           Elementor: Container con gradient background
+           ============================================= */
+        .panel-v2 {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #e8eef3;
+        }
+
+        .panel-v2 .pill {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-accent));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+
+        .panel-v2 .title {
+            color: var(--blue-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+
+        .panel-v2 .actions {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .panel-v2 .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 18px;
+            background: white;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .panel-v2 .action-btn:hover {
+            border-left-color: var(--blue-primary);
+            box-shadow: var(--shadow-medium);
+            transform: translateX(4px);
+        }
+
+        .panel-v2 .action-btn.primary {
+            background: linear-gradient(135deg, var(--red-cta), #e02040);
+            color: white;
+            border-left-color: var(--red-hover);
+        }
+
+        .panel-v2 .action-btn.primary:hover {
+            transform: translateX(4px) scale(1.01);
+        }
+
+        .panel-v2 .action-btn .icon {
+            color: var(--blue-primary);
+        }
+
+        .panel-v2 .action-btn.primary .icon {
+            color: white;
+        }
+
+        .panel-v2 .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid #e8eef3;
+        }
+
+        .panel-v2 .secondary-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: var(--transition);
+        }
+
+        .panel-v2 .secondary-link:hover {
+            color: var(--blue-primary);
+        }
+
+        .panel-v2 .trust-text {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* =============================================
+           OPCIÓN 3: Minimalista con Líneas
+           Elementor: Container limpio con borders
+           ============================================= */
+        .panel-v3 {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-soft);
+            border-top: 4px solid var(--blue-primary);
+        }
+
+        .panel-v3 .pill {
+            color: var(--blue-primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-v3 .pill::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .panel-v3 .title {
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            line-height: 1.25;
+        }
+
+        .panel-v3 .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 28px;
+        }
+
+        .panel-v3 .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .panel-v3 .action-btn:first-child {
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .panel-v3 .action-btn:hover {
+            padding-left: 12px;
+            color: var(--blue-primary);
+        }
+
+        .panel-v3 .action-btn.primary {
+            color: var(--red-cta);
+            font-weight: 600;
+        }
+
+        .panel-v3 .action-btn .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .panel-v3 .action-btn .arrow {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .panel-v3 .action-btn:hover .arrow {
+            color: var(--blue-primary);
+            transform: translateX(4px);
+        }
+
+        .panel-v3 .action-btn.primary:hover .arrow {
+            color: var(--red-cta);
+        }
+
+        .panel-v3 .bottom-section {
+            text-align: center;
+        }
+
+        .panel-v3 .secondary-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .panel-v3 .secondary-link:hover {
+            color: var(--blue-primary);
+            text-decoration: underline;
+        }
+
+        .panel-v3 .trust-text {
+            color: #9ca3af;
+            font-size: 0.75rem;
+            margin-top: 16px;
+        }
+
+        /* =============================================
+           OPCIÓN 4: Neumorphism Suave
+           Elementor: Container con sombras internas
+           ============================================= */
+        .panel-v4 {
+            background: #f0f4f8;
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            box-shadow: 
+                8px 8px 20px rgba(163, 177, 198, 0.5),
+                -8px -8px 20px rgba(255, 255, 255, 0.9);
+        }
+
+        .panel-v4 .pill {
+            background: var(--bg-white);
+            color: var(--blue-primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 16px;
+            box-shadow: 
+                3px 3px 8px rgba(163, 177, 198, 0.4),
+                -3px -3px 8px rgba(255, 255, 255, 0.8);
+        }
+
+        .panel-v4 .title {
+            color: var(--blue-dark);
+            font-size: 1.55rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+
+        .panel-v4 .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .panel-v4 .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: #f0f4f8;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 
+                4px 4px 12px rgba(163, 177, 198, 0.5),
+                -4px -4px 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .panel-v4 .action-btn:hover {
+            box-shadow: 
+                inset 4px 4px 12px rgba(163, 177, 198, 0.4),
+                inset -4px -4px 12px rgba(255, 255, 255, 0.7);
+        }
+
+        .panel-v4 .action-btn.primary {
+            background: var(--red-cta);
+            color: white;
+            box-shadow: 
+                4px 4px 12px rgba(200, 16, 46, 0.3),
+                -4px -4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .panel-v4 .action-btn.primary:hover {
+            box-shadow: 
+                inset 4px 4px 12px rgba(0, 0, 0, 0.15),
+                inset -4px -4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .panel-v4 .action-btn .icon {
+            color: var(--blue-primary);
+        }
+
+        .panel-v4 .action-btn.primary .icon {
+            color: white;
+        }
+
+        .panel-v4 .secondary-link {
+            display: block;
+            text-align: center;
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            margin-bottom: 12px;
+        }
+
+        .panel-v4 .secondary-link:hover {
+            text-decoration: underline;
+        }
+
+        .panel-v4 .trust-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        /* =============================================
+           OPCIÓN 5: Tarjetas Flotantes
+           Elementor: Container con cards individuales
+           ============================================= */
+        .panel-v5 {
+            background: transparent;
+            padding: 20px;
+        }
+
+        .panel-v5 .header-card {
+            background: var(--blue-dark);
+            color: white;
+            padding: 28px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            text-align: center;
+        }
+
+        .panel-v5 .pill {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .panel-v5 .title {
+            font-size: 1.45rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .panel-v5 .actions-card {
+            background: white;
+            padding: 24px;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .panel-v5 .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .panel-v5 .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--bg-light);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .panel-v5 .action-btn:hover {
+            background: var(--blue-light);
+            transform: scale(1.02);
+        }
+
+        .panel-v5 .action-btn.primary {
+            background: var(--red-cta);
+            color: white;
+        }
+
+        .panel-v5 .action-btn.primary:hover {
+            background: var(--red-hover);
+        }
+
+        .panel-v5 .action-btn .icon {
+            color: var(--blue-primary);
+        }
+
+        .panel-v5 .action-btn.primary .icon {
+            color: white;
+        }
+
+        .panel-v5 .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .panel-v5 .secondary-link {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .panel-v5 .secondary-link:hover {
+            text-decoration: underline;
+        }
+
+        .panel-v5 .trust-text {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        /* =============================================
+           OPCIÓN 6: Sidebar con Iconos Grandes
+           Elementor: Icon Box widgets
+           ============================================= */
+        .panel-v6 {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #e8eef3;
+        }
+
+        .panel-v6 .header {
+            margin-bottom: 28px;
+        }
+
+        .panel-v6 .pill {
+            color: var(--blue-primary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .panel-v6 .title {
+            color: var(--blue-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .panel-v6 .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .panel-v6 .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 24px 16px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .panel-v6 .action-btn:hover {
+            background: var(--blue-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .panel-v6 .action-btn.primary {
+            grid-column: span 2;
+            flex-direction: row;
+            justify-content: center;
+            background: var(--red-cta);
+            color: white;
+            padding: 18px;
+        }
+
+        .panel-v6 .action-btn.primary:hover {
+            background: var(--red-hover);
+        }
+
+        .panel-v6 .action-btn .icon {
+            width: 36px;
+            height: 36px;
+            color: var(--blue-primary);
+        }
+
+        .panel-v6 .action-btn.primary .icon {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .panel-v6 .footer-section {
+            text-align: center;
+        }
+
+        .panel-v6 .secondary-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .panel-v6 .secondary-link:hover {
+            color: var(--blue-primary);
+            text-decoration: underline;
+        }
+
+        .panel-v6 .trust-text {
+            color: #9ca3af;
+            font-size: 0.72rem;
+            margin-top: 12px;
+        }
+
+        /* =============================================
+           OPCIÓN 7: Estilo "App" Moderno
+           Elementor: Container tipo app card
+           ============================================= */
+        .panel-v7 {
+            background: white;
+            border-radius: 28px;
+            padding: 0;
+            box-shadow: var(--shadow-medium);
+            overflow: hidden;
+        }
+
+        .panel-v7 .header {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 100%);
+            padding: 28px 28px 36px;
+            text-align: center;
+            color: white;
+        }
+
+        .panel-v7 .pill {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .panel-v7 .title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .panel-v7 .content {
+            padding: 28px;
+            margin-top: -16px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .panel-v7 .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .panel-v7 .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--bg-light);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .panel-v7 .action-btn:hover {
+            background: var(--blue-light);
+        }
+
+        .panel-v7 .action-btn.primary {
+            background: var(--red-cta);
+            color: white;
+        }
+
+        .panel-v7 .action-btn.primary:hover {
+            background: var(--red-hover);
+        }
+
+        .panel-v7 .action-btn .icon {
+            width: 24px;
+            height: 24px;
+            padding: 8px;
+            background: white;
+            border-radius: 10px;
+            color: var(--blue-primary);
+            box-sizing: content-box;
+        }
+
+        .panel-v7 .action-btn.primary .icon {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .panel-v7 .action-btn .label {
+            flex: 1;
+        }
+
+        .panel-v7 .action-btn .chevron {
+            color: #ccc;
+        }
+
+        .panel-v7 .action-btn.primary .chevron {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .panel-v7 .footer-section {
+            text-align: center;
+            padding-top: 16px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .panel-v7 .secondary-link {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .panel-v7 .secondary-link:hover {
+            text-decoration: underline;
+        }
+
+        .panel-v7 .trust-text {
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            margin-top: 8px;
+        }
+
+        /* =============================================
+           OPCIÓN 8: Cards con Hover Dinámico
+           Elementor: Animated Icon Boxes
+           ============================================= */
+        .panel-v8 {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .panel-v8 .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .panel-v8 .pill {
+            background: var(--blue-primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .panel-v8 .title {
+            color: var(--blue-dark);
+            font-size: 1.55rem;
+            font-weight: 700;
+        }
+
+        .panel-v8 .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .panel-v8 .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-v8 .action-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: var(--blue-primary);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .panel-v8 .action-btn:hover::before {
+            width: 100%;
+        }
+
+        .panel-v8 .action-btn:hover {
+            color: white;
+        }
+
+        .panel-v8 .action-btn .icon,
+        .panel-v8 .action-btn .label {
+            position: relative;
+            z-index: 1;
+        }
+
+        .panel-v8 .action-btn .icon {
+            color: var(--blue-primary);
+            transition: var(--transition);
+        }
+
+        .panel-v8 .action-btn:hover .icon {
+            color: white;
+        }
+
+        .panel-v8 .action-btn.primary {
+            background: var(--red-cta);
+            color: white;
+        }
+
+        .panel-v8 .action-btn.primary::before {
+            background: var(--red-hover);
+        }
+
+        .panel-v8 .action-btn.primary .icon {
+            color: white;
+        }
+
+        .panel-v8 .footer-section {
+            text-align: center;
+        }
+
+        .panel-v8 .secondary-link {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+
+        .panel-v8 .secondary-link:hover {
+            text-decoration: underline;
+        }
+
+        .panel-v8 .trust-text {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
+
+        /* =============================================
+           OPCIÓN 9: Estilo "Dashboard" Compacto
+           Elementor: Stats/Quick Links widget
+           ============================================= */
+        .panel-v9 {
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+
+        .panel-v9 .header {
+            background: var(--blue-dark);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-v9 .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .panel-v9 .pill {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .panel-v9 .title {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .panel-v9 .content {
+            padding: 20px;
+        }
+
+        .panel-v9 .actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .panel-v9 .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 12px;
+            background: var(--bg-light);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.78rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .panel-v9 .action-btn:hover {
+            border-color: var(--blue-primary);
+            background: var(--blue-light);
+        }
+
+        .panel-v9 .action-btn.primary {
+            background: var(--red-cta);
+            color: white;
+        }
+
+        .panel-v9 .action-btn.primary:hover {
+            background: var(--red-hover);
+            border-color: var(--red-hover);
+        }
+
+        .panel-v9 .action-btn .icon {
+            width: 32px;
+            height: 32px;
+            color: var(--blue-primary);
+        }
+
+        .panel-v9 .action-btn.primary .icon {
+            color: white;
+        }
+
+        .panel-v9 .footer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: #fafbfc;
+            border-top: 1px solid #eee;
+        }
+
+        .panel-v9 .secondary-link {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .panel-v9 .secondary-link:hover {
+            text-decoration: underline;
+        }
+
+        .panel-v9 .trust-text {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        /* =============================================
+           OPCIÓN 10: Ultra Moderno con Blob
+           Elementor: Container con SVG decorativo
+           ============================================= */
+        .panel-v10 {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-v10 .blob {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--blue-light) 0%, #d4e8f8 100%);
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .panel-v10 .blob-2 {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #fce8ec 0%, #f8d7dd 100%);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .panel-v10 .content-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .panel-v10 .pill {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-accent));
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .panel-v10 .pill svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .panel-v10 .title {
+            color: var(--blue-dark);
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .panel-v10 .subtitle {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 28px;
+        }
+
+        .panel-v10 .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .panel-v10 .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: var(--bg-light);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .panel-v10 .action-btn:hover {
+            background: white;
+            border-color: var(--blue-accent);
+            box-shadow: 0 4px 16px rgba(74, 144, 217, 0.15);
+            transform: translateX(6px);
+        }
+
+        .panel-v10 .action-btn.primary {
+            background: linear-gradient(135deg, var(--red-cta) 0%, #e02040 100%);
+            color: white;
+            border: none;
+        }
+
+        .panel-v10 .action-btn.primary:hover {
+            transform: translateX(6px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.3);
+        }
+
+        .panel-v10 .action-btn .icon-wrapper {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .panel-v10 .action-btn.primary .icon-wrapper {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .panel-v10 .action-btn .icon {
+            color: var(--blue-primary);
+        }
+
+        .panel-v10 .action-btn.primary .icon {
+            color: white;
+        }
+
+        .panel-v10 .action-btn .text-content {
+            flex: 1;
+        }
+
+        .panel-v10 .action-btn .text-content .main-text {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .panel-v10 .action-btn .text-content .sub-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .panel-v10 .action-btn.primary .text-content .sub-text {
+            color: rgba(255,255,255,0.75);
+        }
+
+        .panel-v10 .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-v10 .secondary-link {
+            color: var(--blue-primary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .panel-v10 .secondary-link:hover {
+            text-decoration: underline;
+        }
+
+        .panel-v10 .trust-text {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .panel-v10 .trust-text svg {
+            width: 14px;
+            height: 14px;
+            color: #22c55e;
+        }
+
+        /* =============================================
+           RESPONSIVE DESIGN
+           ============================================= */
+        @media (max-width: 480px) {
+            .hero-panel {
+                max-width: 100%;
+            }
+
+            /* V6 Grid a 1 columna */
+            .panel-v6 .actions {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-v6 .action-btn.primary {
+                grid-column: span 1;
+            }
+
+            /* V9 Grid a 1 columna */
+            .panel-v9 .actions {
+                grid-template-columns: 1fr;
+            }
+
+            /* Ajustes generales de padding */
+            .panel-v1,
+            .panel-v2,
+            .panel-v3,
+            .panel-v4,
+            .panel-v6,
+            .panel-v8 {
+                padding: 24px;
+            }
+
+            .panel-v5 {
+                padding: 12px;
+            }
+
+            .panel-v7 .header,
+            .panel-v7 .content {
+                padding: 20px;
+            }
+
+            .panel-v10 {
+                padding: 28px 20px;
+            }
+
+            /* Títulos más pequeños */
+            .panel-v1 .title,
+            .panel-v2 .title,
+            .panel-v3 .title,
+            .panel-v4 .title,
+            .panel-v6 .title,
+            .panel-v8 .title,
+            .panel-v10 .title {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="demo-container">
+    <h1 class="demo-title">Hero Right Panel - Opción B</h1>
+    <p class="demo-subtitle">10 variantes de diseño para el módulo "¿Qué quieres hacer hoy?" - Uniempresarial</p>
+
+    <!-- =============================================
+         OPCIÓN 1: Glassmorphism Elegante
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 1 — Glassmorphism Elegante</span>
+        <div class="hero-panel panel-v1">
+            <!-- Elementor: Heading widget con estilo pill -->
+            <span class="pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Guía rápida
+            </span>
+            <!-- Elementor: Heading widget H2 -->
+            <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            <!-- Elementor: Container flex column -->
+            <div class="actions">
+                <!-- Elementor: Button widget personalizado -->
+                <a href="/pregrados/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                    <span>Ver pregrados</span>
+                </a>
+                <a href="#solicitar-info" class="action-btn primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>Solicitar información</span>
+                </a>
+                <a href="/financiacion/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                    <span>Financiación</span>
+                </a>
+            </div>
+            <!-- Elementor: Text Editor con link -->
+            <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+            <!-- Elementor: Text Editor widget -->
+            <p class="trust-text">Te tomará menos de 1 minuto.</p>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 2: Cards con Gradiente Sutil
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 2 — Cards con Gradiente Sutil</span>
+        <div class="hero-panel panel-v2">
+            <span class="pill">Guía rápida</span>
+            <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            <div class="actions">
+                <a href="/pregrados/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                    <span>Ver pregrados</span>
+                </a>
+                <a href="#solicitar-info" class="action-btn primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>Solicitar información</span>
+                </a>
+                <a href="/financiacion/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                    <span>Financiación</span>
+                </a>
+            </div>
+            <div class="footer">
+                <a href="/campus-virtual/" class="secondary-link">
+                    <span>Ya soy estudiante</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </a>
+                <span class="trust-text">Menos de 1 min</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 3: Minimalista con Líneas
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 3 — Minimalista con Líneas</span>
+        <div class="hero-panel panel-v3">
+            <div class="pill">Guía rápida</div>
+            <h2 class="title">¿Qué quieres<br>hacer hoy?</h2>
+            <div class="actions">
+                <a href="/pregrados/" class="action-btn">
+                    <span class="left">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                        </svg>
+                        <span>Ver pregrados</span>
+                    </span>
+                    <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </a>
+                <a href="#solicitar-info" class="action-btn primary">
+                    <span class="left">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span>Solicitar información</span>
+                    </span>
+                    <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </a>
+                <a href="/financiacion/" class="action-btn">
+                    <span class="left">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M12 8v8M8 12h8"/>
+                        </svg>
+                        <span>Financiación</span>
+                    </span>
+                    <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="bottom-section">
+                <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante</a>
+                <p class="trust-text">Te tomará menos de 1 minuto.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 4: Neumorphism Suave
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 4 — Neumorphism Suave</span>
+        <div class="hero-panel panel-v4">
+            <span class="pill">Guía rápida</span>
+            <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            <div class="actions">
+                <a href="/pregrados/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                    <span>Ver pregrados</span>
+                </a>
+                <a href="#solicitar-info" class="action-btn primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>Solicitar información</span>
+                </a>
+                <a href="/financiacion/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                    <span>Financiación</span>
+                </a>
+            </div>
+            <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+            <p class="trust-text">Te tomará menos de 1 minuto.</p>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 5: Tarjetas Flotantes
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 5 — Tarjetas Flotantes</span>
+        <div class="hero-panel panel-v5">
+            <div class="header-card">
+                <span class="pill">Guía rápida</span>
+                <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            </div>
+            <div class="actions-card">
+                <div class="actions">
+                    <a href="/pregrados/" class="action-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                        </svg>
+                        <span>Ver pregrados</span>
+                    </a>
+                    <a href="#solicitar-info" class="action-btn primary">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span>Solicitar información</span>
+                    </a>
+                    <a href="/financiacion/" class="action-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M12 8v8M8 12h8"/>
+                        </svg>
+                        <span>Financiación</span>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+                    <span class="trust-text">Te tomará menos de 1 minuto.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 6: Sidebar con Iconos Grandes
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 6 — Sidebar con Iconos Grandes</span>
+        <div class="hero-panel panel-v6">
+            <div class="header">
+                <div class="pill">Guía rápida</div>
+                <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            </div>
+            <div class="actions">
+                <a href="/pregrados/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                    <span>Ver pregrados</span>
+                </a>
+                <a href="/financiacion/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                    <span>Financiación</span>
+                </a>
+                <a href="#solicitar-info" class="action-btn primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>Solicitar información</span>
+                </a>
+            </div>
+            <div class="footer-section">
+                <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+                <p class="trust-text">Te tomará menos de 1 minuto.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 7: Estilo "App" Moderno
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 7 — Estilo "App" Moderno</span>
+        <div class="hero-panel panel-v7">
+            <div class="header">
+                <span class="pill">Guía rápida</span>
+                <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            </div>
+            <div class="content">
+                <div class="actions">
+                    <a href="/pregrados/" class="action-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                        </svg>
+                        <span class="label">Ver pregrados</span>
+                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </a>
+                    <a href="#solicitar-info" class="action-btn primary">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span class="label">Solicitar información</span>
+                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </a>
+                    <a href="/financiacion/" class="action-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M12 8v8M8 12h8"/>
+                        </svg>
+                        <span class="label">Financiación</span>
+                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+                    <p class="trust-text">Te tomará menos de 1 minuto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 8: Cards con Hover Dinámico
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 8 — Cards con Hover Dinámico</span>
+        <div class="hero-panel panel-v8">
+            <div class="header">
+                <span class="pill">Guía rápida</span>
+                <h2 class="title">¿Qué quieres hacer hoy?</h2>
+            </div>
+            <div class="actions">
+                <a href="/pregrados/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                    <span class="label">Ver pregrados</span>
+                </a>
+                <a href="#solicitar-info" class="action-btn primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span class="label">Solicitar información</span>
+                </a>
+                <a href="/financiacion/" class="action-btn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+                    <span class="label">Financiación</span>
+                </a>
+            </div>
+            <div class="footer-section">
+                <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+                <p class="trust-text">Te tomará menos de 1 minuto.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 9: Estilo "Dashboard" Compacto
+         ============================================= -->
+    <div class="option-wrapper">
+        <span class="option-label">Opción 9 — Estilo "Dashboard" Compacto</span>
+        <div class="hero-panel panel-v9">
+            <div class="header">
+                <div class="header-left">
+                    <span class="pill">Guía</span>
+                    <h2 class="title">¿Qué quieres hacer?</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="actions">
+                    <a href="/pregrados/" class="action-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                        </svg>
+                        <span>Pregrados</span>
+                    </a>
+                    <a href="#solicitar-info" class="action-btn primary">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span>Info</span>
+                    </a>
+                    <a href="/financiacion/" class="action-btn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M12 8v8M8 12h8"/>
+                        </svg>
+                        <span>Financiar</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <a href="/campus-virtual/" class="secondary-link">Ya soy estudiante →</a>
+                <span class="trust-text">Menos de 1 min</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================
+         OPCIÓN 10: Ultra Moderno con Blob
+         ============================================= -->
+    <div class="option-wrapper" style="border-bottom: none;">
+        <span class="option-label">Opción 10 — Ultra Moderno con Blob</span>
+        <div class="hero-panel panel-v10">
+            <!-- Elementos decorativos -->
+            <div class="blob"></div>
+            <div class="blob-2"></div>
+            
+            <div class="content-inner">
+                <span class="pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    Guía rápida
+                </span>
+                <h2 class="title">¿Qué quieres hacer hoy?</h2>
+                <p class="subtitle">Encuentra tu camino en segundos</p>
+                
+                <div class="actions">
+                    <a href="/pregrados/" class="action-btn">
+                        <div class="icon-wrapper">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                            </svg>
+                        </div>
+                        <div class="text-content">
+                            <div class="main-text">Ver pregrados</div>
+                            <div class="sub-text">Explora nuestras carreras</div>
+                        </div>
+                    </a>
+                    <a href="#solicitar-info" class="action-btn primary">
+                        <div class="icon-wrapper">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="text-content">
+                            <div class="main-text">Solicitar información</div>
+                            <div class="sub-text">Un asesor te contactará</div>
+                        </div>
+                    </a>
+                    <a href="/financiacion/" class="action-btn">
+                        <div class="icon-wrapper">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M12 8v8M8 12h8"/>
+                            </svg>
+                        </div>
+                        <div class="text-content">
+                            <div class="main-text">Financiación</div>
+                            <div class="sub-text">Opciones de pago flexibles</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="footer-section">
+                    <a href="/campus-virtual/" class="secondary-link">
+                        Ya soy estudiante
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <span class="trust-text">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <path d="M22 4L12 14.01l-3-3"/>
+                        </svg>
+                        Te tomará menos de 1 minuto.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    /* =============================================
+       JavaScript Vanilla - Interacciones Básicas
+       ============================================= */
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Agregar clase de animación al cargar
+        const panels = document.querySelectorAll('.hero-panel');
+        panels.forEach((panel, index) => {
+            panel.style.opacity = '0';
+            panel.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                panel.style.transition = 'all 0.5s ease';
+                panel.style.opacity = '1';
+                panel.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+
+        // Manejo del clic en "Solicitar información" (ejemplo de modal placeholder)
+        const infoButtons = document.querySelectorAll('a[href="#solicitar-info"]');
+        infoButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Aquí se podría abrir un modal
+                alert('Aquí se abriría el modal de "Solicitar información".\n\nEn producción, integrar con el formulario real.');
+            });
+        });
+
+        // Accesibilidad: Mejorar focus para teclado
+        const allButtons = document.querySelectorAll('.action-btn, .secondary-link');
+        allButtons.forEach(btn => {
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

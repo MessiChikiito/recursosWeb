@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Efectos Avanzados — Laboratorio Visual (Light)</title>
+    <style>
+        :root {
+            --bg: #f8f7fc;
+            --surface: #ffffff;
+            --surface2: #f3f1fa;
+            --border: #e2dfee;
+            --border-glow: #c5bfe0;
+            --text: #2a2638;
+            --text-dim: #6e6880;
+            --accent: #6c4cf0;
+            --accent2: #2ea5d4;
+            --accent3: #d42e8c;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(108, 76, 240, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 30%, rgba(46, 165, 212, 0.03) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 70%, rgba(212, 46, 140, 0.03) 0%, transparent 55%);
+            background-attachment: fixed;
+        }
+
+        /* ─── HEADER ──────────────────────────── */
+        .gallery-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .gallery-header .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(108, 76, 240, 0.08);
+            border: 1px solid rgba(108, 76, 240, 0.2);
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .gallery-header h1 {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #3a3060 0%, #5a4a90 40%, #2a2048 70%, #3a3060 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .gallery-header .subtitle {
+            color: var(--text-dim);
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            font-weight: 400;
+        }
+        .gallery-header .line {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 16px auto;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        /* ─── GRID ────────────────────────────── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+            gap: 28px;
+            padding: 20px 28px 60px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        @media (max-width: 520px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                padding: 12px 14px 40px;
+                gap: 18px;
+            }
+        }
+
+        /* ─── CARD ────────────────────────────── */
+        .effect-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 12px rgba(100, 90, 140, 0.06);
+        }
+        .effect-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 40px rgba(108, 76, 240, 0.08), 0 8px 32px rgba(80, 60, 130, 0.1);
+        }
+        .effect-card .card-visual {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            background: var(--surface2);
+            cursor: crosshair;
+            overflow: hidden;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .effect-card .card-visual canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .effect-card .card-info {
+            padding: 18px 20px 20px;
+        }
+        .effect-card .card-info .index {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .effect-card .card-info h3 {
+            font-size: 1.15rem;
+            font-weight: 650;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
+            color: #1e1a2c;
+        }
+        .effect-card .card-info p {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ─── SCROLLBAR ───────────────────────── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d8d4e8;
+            border-radius: 3px;
+        }
+
+        /* ─── FOOTER ──────────────────────────── */
+        .gallery-footer {
+            text-align: center;
+            padding: 20px 20px 50px;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="gallery-header">
+        <div class="badge">Laboratorio Visual · 20 Efectos</div>
+        <h1>Galería de Efectos Avanzados</h1>
+        <div class="line"></div>
+        <p class="subtitle">Cada bloque es una demostración profesional independiente — Tema Claro</p>
+    </header>
+
+    <main class="gallery-grid" id="galleryGrid"></main>
+
+    <footer class="gallery-footer">
+        HTML · CSS · JavaScript Vanilla — Sin dependencias externas — Light Theme
+    </footer>
+
+    <script>
+        (function() {
+            const effectDefs = [
+                { id: 1, title: 'Mouse Distortion Field',
+                    desc: 'Campo invisible que deforma una cuadrícula de puntos cercanos al cursor, creando una lente gravitacional interactiva.',
+                    type: 'canvas' },
+                { id: 2, title: 'Liquid Cursor Trail',
+                    desc: 'Estela líquida que sigue el cursor usando metaballs dinámicas que se fusionan y separan orgánicamente.',
+                    type: 'canvas' },
+                { id: 3, title: 'Volumetric Light Beams',
+                    desc: 'Rayos de luz volumétricos simulados en profundidad con partículas flotantes que revelan el haz luminoso.',
+                    type: 'canvas' },
+                { id: 4, title: 'Magnetic Particle System',
+                    desc: 'Partículas con comportamiento gravitacional alrededor del cursor, oscilando entre atracción y repulsión magnética.',
+                    type: 'canvas' },
+                { id: 5, title: 'Organic Blob Morphing',
+                    desc: 'Forma orgánica que cambia constantemente usando ruido simplex multicapa sin patrones repetitivos.',
+                    type: 'canvas' },
+                { id: 6, title: 'Infinite Perspective Grid',
+                    desc: 'Rejilla infinita estilo sci-fi con sensación de profundidad y desplazamiento continuo hacia el horizonte.',
+                    type: 'canvas' },
+                { id: 7, title: 'Interactive Noise Surface',
+                    desc: 'Superficie con ruido procedural generado en tiempo real que reacciona al movimiento del cursor.',
+                    type: 'canvas' },
+                { id: 8, title: 'Holographic Card',
+                    desc: 'Tarjeta con reflejos holográficos dinámicos que cambian según la inclinación y posición del mouse.',
+                    type: 'css3d' },
+                { id: 9, title: 'Depth Layered Parallax',
+                    desc: 'Múltiples capas de geometría flotante simulando profundidad real con respuesta al movimiento del cursor.',
+                    type: 'canvas' },
+                { id: 10, title: 'RGB Digital Corruption',
+                    desc: 'Distorsión digital avanzada tipo glitch cinematográfico con separación de canales RGB y desplazamiento.',
+                    type: 'canvas' },
+                { id: 11, title: 'Fluid Background Simulation',
+                    desc: 'Fondo que simula fluido real usando un campo de velocidades con difusión y advección simplificada.',
+                    type: 'canvas' },
+                { id: 12, title: 'Aurora Shader Effect',
+                    desc: 'Aurora boreal animada con bandas de color orgánicas que ondulan usando funciones sinusoidales compuestas.',
+                    type: 'canvas' },
+                { id: 13, title: 'Particle Repulsion Wave',
+                    desc: 'Onda expansiva radial que empuja partículas hacia afuera al hacer clic, con recuperación elástica.',
+                    type: 'canvas' },
+                { id: 14, title: 'Infinite Tunnel Illusion',
+                    desc: 'Túnel infinito con sensación de movimiento continuo usando anillos concéntricos que se expanden.',
+                    type: 'canvas' },
+                { id: 15, title: 'Dynamic Mesh Gradient',
+                    desc: 'Gradiente vivo generado mediante puntos de control animados que distorsionan el campo cromático.',
+                    type: 'canvas' },
+                { id: 16, title: 'Mouse Driven Spotlight',
+                    desc: 'Iluminación volumétrica que sigue el cursor revelando una escena con múltiples capas de profundidad.',
+                    type: 'canvas' },
+                { id: 17, title: 'Morphing SVG Generator',
+                    desc: 'Forma SVG que evoluciona continuamente entre curvas bezier usando interpolación armónica.',
+                    type: 'svg' },
+                { id: 18, title: 'Digital Rain — Variación Moderna',
+                    desc: 'Variante del efecto Matrix con caracteres que caen a distintas velocidades y opacidades con tinta oscura.',
+                    type: 'canvas' },
+                { id: 19, title: 'Procedural Galaxy',
+                    desc: 'Galaxia generada matemáticamente con brazos espirales, nebulosas de partículas y estrellas titilantes.',
+                    type: 'canvas' },
+                { id: 20, title: 'Cinematic Fog Layer',
+                    desc: 'Niebla dinámica en múltiples planos de profundidad con partículas que se mueven a distintas velocidades.',
+                    type: 'canvas' },
+            ];
+
+            const grid = document.getElementById('galleryGrid');
+            effectDefs.forEach((def) => {
+                const card = document.createElement('div');
+                card.className = 'effect-card';
+                card.setAttribute('data-effect-id', def.id);
+                card.setAttribute('data-effect-type', def.type);
+                card.innerHTML = `
+                    <div class="card-visual" id="visual-${def.id}">
+                        ${def.type === 'svg' ? '<svg id="svg-'+def.id+'" style="width:100%;height:100%;display:block;"></svg>' : ''}
+                    </div>
+                    <div class="card-info">
+                        <div class="index">Efecto ${String(def.id).padStart(2,'0')}</div>
+                        <h3>${def.title}</h3>
+                        <p>${def.desc}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            const effectInstances = {};
+
+            class CanvasEffect {
+                constructor(containerId, effectId) {
+                    this.container = document.getElementById(containerId);
+                    this.effectId = effectId;
+                    this.canvas = document.createElement('canvas');
+                    this.canvas.style.display = 'block';
+                    this.canvas.style.width = '100%';
+                    this.canvas.style.height = '100%';
+                    this.container.appendChild(this.canvas);
+                    this.ctx = this.canvas.getContext('2d');
+                    this.width = 0;
+                    this.height = 0;
+                    this.mouseX = -999;
+                    this.mouseY = -999;
+                    this.mouseInside = false;
+                    this.animId = null;
+                    this.running = true;
+                    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    this._resize();
+                    this._bindMouse();
+                    this._bindResize();
+                }
+                _resize() {
+                    const rect = this.container.getBoundingClientRect();
+                    this.width = rect.width;
+                    this.height = rect.height;
+                    this.canvas.width = rect.width * this.dpr;
+                    this.canvas.height = rect.height * this.dpr;
+                    this.canvas.style.width = rect.width + 'px';
+                    this.canvas.style.height = rect.height + 'px';
+                    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+                }
+                _bindMouse() {
+                    this.container.addEventListener('mousemove', (e) => {
+                        const rect = this.container.getBoundingClientRect();
+                        this.mouseX = e.clientX - rect.left;
+                        this.mouseY = e.clientY - rect.top;
+                        this.mouseInside = true;
+                    });
+                    this.container.addEventListener('mouseleave', () => {
+                        this.mouseInside = false;
+                        this.mouseX = -999;
+                        this.mouseY = -999;
+                    });
+                    this.container.addEventListener('click', (e) => {
+                        const rect = this.container.getBoundingClientRect();
+                        const cx = e.clientX - rect.left;
+                        const cy = e.clientY - rect.top;
+                        this.onClick && this.onClick(cx, cy);
+                    });
+                }
+                _bindResize() {
+                    this._resizeHandler = () => this._resize();
+                    window.addEventListener('resize', this._resizeHandler);
+                }
+                onClick(cx, cy) {}
+                update(dt) {}
+                draw(ctx, w, h) {}
+                start() {
+                    let lastTime = performance.now();
+                    const loop = (time) => {
+                        if (!this.running) return;
+                        const dt = Math.min((time - lastTime) / 1000, 0.1);
+                        lastTime = time;
+                        this.update(dt);
+                        this.ctx.clearRect(0, 0, this.width, this.height);
+                        this.draw(this.ctx, this.width, this.height);
+                        this.animId = requestAnimationFrame(loop);
+                    };
+                    this.animId = requestAnimationFrame(loop);
+                }
+                destroy() {
+                    this.running = false;
+                    if (this.animId) cancelAnimationFrame(this.animId);
+                    window.removeEventListener('resize', this._resizeHandler);
+                    if (this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
+                }
+            }
+
+            // ═══════════════ EFECTO 1: Mouse Distortion Field (light) ═══════════════
+            class Effect1_DistortionField extends CanvasEffect {
+                constructor() {
+                    super('visual-1', 1);
+                    this.points = [];
+                    this.gridSize = 22;
+                    this.basePoints = [];
+                    this._initGrid();
+                    this.start();
+                }
+                _initGrid() {
+                    this.points = [];
+                    this.basePoints = [];
+                    const gw = this.gridSize;
+                    const cols = Math.floor(this.width / gw) + 2;
+                    const rows = Math.floor(this.height / gw) + 2;
+                    for (let r = 0; r < rows; r++) {
+                        for (let c = 0; c < cols; c++) {
+                            const bx = c * gw;
+                            const by = r * gw;
+                            this.basePoints.push({ x: bx, y: by });
+                            this.points.push({ x: bx, y: by });
+                        }
+                    }
+                }
+                _resize() { super._resize();
+                    this._initGrid(); }
+                update(dt) {
+                    const mx = this.mouseX;
+                    const my = this.mouseY;
+                    const radius = 130;
+                    const strength = 55;
+                    for (let i = 0; i < this.points.length; i++) {
+                        const bp = this.basePoints[i];
+                        const p = this.points[i];
+                        const dx = bp.x - mx;
+                        const dy = bp.y - my;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < radius && this.mouseInside && mx > -100) {
+                            const force = Math.pow(1 - dist / radius, 2.5) * strength;
+                            const angle = Math.atan2(dy, dx);
+                            const tx = bp.x + Math.cos(angle) * force;
+                            const ty = bp.y + Math.sin(angle) * force;
+                            p.x += (tx - p.x) * 0.25;
+                            p.y += (ty - p.y) * 0.25;
+                        } else {
+                            p.x += (bp.x - p.x) * 0.08;
+                            p.y += (bp.y - p.y) * 0.08;
+                        }
+                    }
+                }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#faf9fd';
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.strokeStyle = 'rgba(100,80,160,0.35)';
+                    ctx.lineWidth = 0.8;
+                    const cols = Math.floor(w / this.gridSize) + 2;
+                    const rows = Math.floor(h / this.gridSize) + 2;
+                    for (let r = 0; r < rows; r++) {
+                        for (let c = 0; c < cols; c++) {
+                            const idx = r * cols + c;
+                            if (idx >= this.points.length) continue;
+                            const p = this.points[idx];
+                            if (c < cols - 1) {
+                                const right = this.points[idx + 1];
+                                if (right) { ctx.beginPath();
+                                    ctx.moveTo(p.x, p.y);
+                                    ctx.lineTo(right.x, right.y);
+                                    ctx.stroke(); }
+                            }
+                            if (r < rows - 1) {
+                                const bottom = this.points[(r + 1) * cols + c];
+                                if (bottom) { ctx.beginPath();
+                                    ctx.moveTo(p.x, p.y);
+                                    ctx.lineTo(bottom.x, bottom.y);
+                                    ctx.stroke(); }
+                            }
+                        }
+                    }
+                    for (const p of this.points) {
+                        const dx = p.x - this.mouseX;
+                        const dy = p.y - this.mouseY;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        const glow = this.mouseInside && dist < 100 ? 0.8 : 0.3;
+                        ctx.fillStyle = `rgba(90,60,160,${glow})`;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            }
+
+            // ═══════════════ EFECTO 2: Liquid Cursor Trail (light) ═══════════════
+            class Effect2_LiquidTrail extends CanvasEffect {
+                constructor() {
+                    super('visual-2', 2);
+                    this.drops = [];
+                    this.maxDrops = 40;
+                    this.start();
+                }
+                update(dt) {
+                    if (this.mouseInside && this.mouseX > -100) {
+                        this.drops.push({ x: this.mouseX, y: this.mouseY, vx: (Math.random() - 0.5) * 20, vy: (Math
+                                .random() - 0.5) * 20, life: 1, radius: 18 + Math.random() * 16 });
+                    }
+                    for (let i = this.drops.length - 1; i >= 0; i--) {
+                        const d = this.drops[i];
+                        d.x += d.vx * dt;
+                        d.y += d.vy * dt;
+                        d.life -= dt * 1.3;
+                        d.vx *= 0.96;
+                        d.vy *= 0.96;
+                        d.radius *= 0.998;
+                        if (d.life <= 0) this.drops.splice(i, 1);
+                    }
+                    while (this.drops.length > this.maxDrops) this.drops.shift();
+                }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#f7f5fc';
+                    ctx.fillRect(0, 0, w, h);
+                    if (this.drops.length < 2) {
+                        if (this.drops.length === 1) {
+                            const d = this.drops[0];
+                            ctx.fillStyle = 'rgba(120,90,200,0.35)';
+                            ctx.beginPath();
+                            ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                        return;
+                    }
+                    const offscreen = new OffscreenCanvas(w * this.dpr, h * this.dpr);
+                    const octx = offscreen.getContext('2d');
+                    octx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+                    octx.fillStyle = '#fff';
+                    octx.fillRect(0, 0, w, h);
+                    octx.fillStyle = '#000';
+                    octx.shadowColor = '#000';
+                    octx.shadowBlur = 40;
+                    for (const d of this.drops) {
+                        octx.globalAlpha = d.life;
+                        octx.beginPath();
+                        octx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
+                        octx.fill();
+                    }
+                    octx.shadowBlur = 0;
+                    octx.globalAlpha = 1;
+                    octx.globalCompositeOperation = 'source-in';
+                    const grad = octx.createLinearGradient(0, 0, w, h);
+                    grad.addColorStop(0, '#6c3aed');
+                    grad.addColorStop(0.4, '#3ea9d4');
+                    grad.addColorStop(0.7, '#b02680');
+                    grad.addColorStop(1, '#6c3aed');
+                    octx.fillStyle = grad;
+                    octx.fillRect(0, 0, w, h);
+                    octx.globalCompositeOperation = 'source-over';
+                    const imageData = octx.getImageData(0, 0, w * this.dpr, h * this.dpr);
+                    const data = imageData.data;
+                    for (let i = 3; i < data.length; i += 4) {
+                        if (data[i] > 20) { data[i] = Math.min(255, data[i] * 2.5); } else { data[i] = 0; }
+                    }
+                    octx.putImageData(imageData, 0, 0);
+                    ctx.drawImage(offscreen, 0, 0, w, h);
+                }
+            }
+
+            // ═══════════════ EFECTO 3: Volumetric Light Beams (light) ═══════════════
+            class Effect3_LightBeams extends CanvasEffect {
+                constructor() {
+                    super('visual-3', 3);
+                    this.beams = [];
+                    this.particles = [];
+                    this.time = 0;
+                    for (let i = 0; i < 5; i++) { this.beams.push({ angle: (i / 5) * Math.PI * 2 + Math.random() * 0.4,
+                            speed: 0.15 + Math.random() * 0.35, width: 30 + Math.random() * 50, alpha: 0.3 + Math
+                            .random() * 0.4, hue: 240 + Math.random() * 60 }); }
+                    for (let i = 0; i < 80; i++) { this.particles.push({ x: Math.random() * (this.width || 500), y: Math
+                                .random() * (this.height || 350), z: Math.random() * 200, size: 0.5 + Math.random() * 2.5,
+                            speed: 0.3 + Math.random() * 1.5 }); }
+                    this.start();
+                }
+                update(dt) {
+                    this.time += dt;
+                    for (const p of this.particles) { p.z -= p.speed * dt * 60; if (p.z < 0) p.z = 200; const scale = 200 / (
+                            200 + p.z);
+                        p.sx = (p.x - (this.width || 500) / 2) * scale + (this.width || 500) / 2;
+                        p.sy = (p.y - (this.height || 350) / 2) * scale + (this.height || 350) / 2; }
+                    for (const b of this.beams) { b.angle += b.speed * dt * 0.3; }
+                }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#f9f8fd';
+                    ctx.fillRect(0, 0, w, h);
+                    const cx = w / 2;
+                    const cy = h * 0.3;
+                    for (const b of this.beams) {
+                        const angle = b.angle + Math.sin(this.time * 0.7 + b.angle) * 0.25;
+                        const dx = Math.cos(angle);
+                        const dy = Math.sin(angle) * 0.6 + 0.8;
+                        const len = h * 1.4;
+                        const x2 = cx + dx * len;
+                        const y2 = cy + dy * len;
+                        const grad = ctx.createLinearGradient(cx, cy, x2, y2);
+                        grad.addColorStop(0, `hsla(${b.hue},60%,55%,${b.alpha})`);
+                        grad.addColorStop(0.5, `hsla(${b.hue},50%,40%,${b.alpha*0.5})`);
+                        grad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = grad;
+                        ctx.beginPath();
+                        const perpX = -dy * b.width;
+                        const perpY = dx * b.width;
+                        ctx.moveTo(cx + perpX * 0.1, cy + perpY * 0.1);
+                        ctx.lineTo(cx - perpX * 0.1, cy - perpY * 0.1);
+                        ctx.lineTo(x2 - perpX, y2 - perpY);
+                        ctx.lineTo(x2 + perpX, y2 + perpY);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                    for (const p of this.particles) {
+                        const alpha = 0.4 + (1 - p.z / 200) * 0.5;
+                        const size = p.size * (1 - p.z / 200) * 2;
+                        ctx.fillStyle = `rgba(80,60,140,${alpha})`;
+                        ctx.beginPath();
+                        ctx.arc(p.sx, p.sy, size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 120);
+                    glow.addColorStop(0, 'rgba(180,160,220,0.6)');
+                    glow.addColorStop(0.3, 'rgba(150,130,200,0.25)');
+                    glow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow;
+                    ctx.fillRect(cx - 120, cy - 120, 240, 240);
+                }
+            }
+
+            // ═══════════════ EFECTO 4: Magnetic Particle System (light) ═══════════════
+            class Effect4_MagneticParticles extends CanvasEffect {
+                constructor() {
+                    super('visual-4', 4);
+                    this.particles = [];
+                    this.mode = 'attract';
+                    this.modeTimer = 0;
+                    for (let i = 0; i < 90; i++) { this.particles.push({ x: Math.random() * (this.width || 500), y: Math
+                                .random() * (this.height || 350), vx: (Math.random() - 0.5) * 40, vy: (Math.random() -
+                                0.5) * 40, baseX: 0, baseY: 0, size: 1.5 + Math.random() * 3,
+                        hue: 250 + Math.random() * 80 }); }
+                    this.start();
+                }
+                update(dt) {
+                    this.modeTimer += dt; if (this.modeTimer > 3.5) { this.modeTimer = 0;
+                        this.mode = this.mode === 'attract' ? 'repel' : 'attract'; }
+                    const mx = this.mouseInside ? this.mouseX : -999;
+                    const my = this.mouseInside ? this.mouseY : -999;
+                    for (const p of this.particles) { if (mx > -100 && this.mouseInside) { const dx = mx - p.x; const dy =
+                                my - p.y; const dist = Math.sqrt(dx * dx + dy * dy) + 1; const forceDir = this.mode ===
+                            'attract' ? 1 : -1; const force = (forceDir * 800) / (dist * dist + 50);
+                            p.vx += (dx / dist) * force * dt;
+                            p.vy += (dy / dist) * force * dt; }
+                        p.vx *= 0.98;
+                        p.vy *= 0.98; const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy); if (speed > 200) { p.vx = (p.vx /
+                                speed) * 200;
+                            p.vy = (p.vy / speed) * 200; }
+                        p.x += p.vx * dt;
+                        p.y += p.vy * dt; if (p.x < -20) p.x = this.width + 20; if (p.x > this.width + 20) p.x = -20; if (p
+                            .y < -20) p.y = this.height + 20; if (p.y > this.height + 20) p.y = -20; }
+                }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#faf9fd';
+                    ctx.fillRect(0, 0, w, h);
+                    for (let i = 0; i < this.particles.length; i++) { for (let j = i + 1; j < this.particles.length; j++) {
+                            const a = this.particles[i]; const b = this.particles[j]; const dx = a.x - b.x; const dy =
+                                a.y - b.y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < 80) {
+                                ctx.strokeStyle = `rgba(100,80,160,${0.2*(1-dist/80)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.beginPath();
+                                ctx.moveTo(a.x, a.y);
+                                ctx.lineTo(b.x, b.y);
+                                ctx.stroke();
+                            } } }
+                    for (const p of this.particles) { const dx = p.x - this.mouseX; const dy = p.y - this.mouseY; const dist =
+                            Math.sqrt(dx * dx + dy * dy); const glow = this.mouseInside && dist < 100 ? 1 : 0.55;
+                        ctx.fillStyle = `hsla(${p.hue},60%,45%,${glow})`;
+                        ctx.shadowColor = `hsla(${p.hue},70%,40%,${glow*0.6})`;
+                        ctx.shadowBlur = glow * 10;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill(); }
+                    ctx.shadowBlur = 0;
+                    const label = this.mode === 'attract' ? 'ATRACCIÓN' : 'REPULSIÓN';
+                    ctx.fillStyle = 'rgba(40,30,60,0.7)';
+                    ctx.font = '11px ' + getComputedStyle(document.body).fontFamily;
+                    ctx.fillText(label, 14, 24);
+                }
+            }
+
+            // ═══════════════ EFECTO 5: Organic Blob Morphing (light) ═══════════════
+            class Effect5_BlobMorphing extends CanvasEffect {
+                constructor() {
+                    super('visual-5', 5);
+                    this.time = 0;
+                    this.noiseOffsets = [];
+                    for (let i = 0; i < 8; i++) { this.noiseOffsets.push({ angle: (i / 8) * Math.PI * 2, speed: 0.3 + Math
+                                .random() * 0.7, amplitude: 0.6 + Math.random() * 1.4, phase: Math.random() * Math.PI *
+                            2 }); }
+                    this.start();
+                }
+                noiseVal(x, y, t) { let val = 0; for (const n of this.noiseOffsets) { val += Math.sin(x * n.amplitude *
+                            0.01 + n.phase + t * n.speed) * Math.cos(y * n.amplitude * 0.012 + n.angle + t * n.speed *
+                        0.7); } return val / this.noiseOffsets.length; }
+                update(dt) { this.time += dt; }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#f7f5fc';
+                    ctx.fillRect(0, 0, w, h);
+                    const cx = w / 2;
+                    const cy = h / 2;
+                    const baseRadius = Math.min(w, h) * 0.35;
+                    const points = 120;
+                    ctx.fillStyle = 'rgba(130,100,220,0.4)';
+                    ctx.strokeStyle = 'rgba(100,70,180,0.7)';
+                    ctx.lineWidth = 2.5;
+                    ctx.shadowColor = 'rgba(100,70,180,0.3)';
+                    ctx.shadowBlur = 25;
+                    ctx.beginPath();
+                    for (let i = 0; i <= points; i++) { const angle = (i / points) * Math.PI * 2; const nx = Math.cos(
+                            angle) * 3; const ny = Math.sin(angle) * 3; const noise = this.noiseVal(nx + cx, ny + cy,
+                            this.time); const r = baseRadius + noise * baseRadius * 0.5; const x = cx + Math.cos(
+                            angle) * r; const y = cy + Math.sin(angle) * r; if (i === 0) ctx.moveTo(x, y); else ctx
+                        .lineTo(x, y); }
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                    const innerGrad = ctx.createRadialGradient(cx, cy, baseRadius * 0.3, cx, cy, baseRadius * 1.1);
+                    innerGrad.addColorStop(0, 'rgba(160,140,220,0.3)');
+                    innerGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = innerGrad;
+                    ctx.fill();
+                }
+            }
+
+            // ═══════════════ EFECTO 6: Infinite Perspective Grid (light) ═══════════════
+            class Effect6_PerspectiveGrid extends CanvasEffect {
+                constructor() {
+                    super('visual-6', 6);
+                    this.time = 0;
+                    this.speed = 60;
+                    this.start();
+                }
+                update(dt) { this.time += dt; if (this.mouseInside && this.mouseX > -100) { this.speed += ((this.mouseY / Math
+                        .max(this.height, 1)) * 180 - this.speed) * 2 * dt; } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#faf9fe';
+                    ctx.fillRect(0, 0, w, h);
+                    const cx = w / 2;
+                    const cy = h * 0.55;
+                    const horizonY = cy;
+                    const offset = (this.time * this.speed) % 80;
+                    const numHLines = 30;
+                    for (let i = 0; i < numHLines; i++) { let z = i * 30 + offset; if (z < 2) z = 2; const y = horizonY - (1 /
+                            z) * 8000; const alpha = Math.min(0.5, 1 - (z / (numHLines * 30)) * 0.85); if (y < -50 || y >
+                            h + 50) continue;
+                        ctx.strokeStyle = `rgba(80,60,140,${alpha})`;
+                        ctx.lineWidth = 0.6 + (1 - z / (numHLines * 30)) * 2;
+                        ctx.beginPath();
+                        ctx.moveTo(0, y);
+                        ctx.lineTo(w, y);
+                        ctx.stroke(); }
+                    const numVLines = 25;
+                    for (let i = -numVLines / 2; i <= numVLines / 2; i++) { const xBase = cx + i * 55; for (let seg = 0; seg <
+                            15; seg++) { const z1 = seg * 25 + offset; const z2 = (seg + 1) * 25 + offset; if (z1 < 1)
+                                continue; const y1 = horizonY - (1 / Math.max(z1, 1)) * 8000; const y2 = horizonY - (1 / Math
+                                .max(z2, 1)) * 8000; const scale1 = 1 / Math.max(z1, 1) * 8000; const scale2 = 1 / Math.max(
+                                z2, 1) * 8000; const x1 = cx + (xBase - cx) * (scale1 / (scale1 + 1)); const x2 = cx + (
+                                xBase - cx) * (scale2 / (scale2 + 1)); const alpha = Math.min(0.4, 1 - (z1 / 400) * 0.8);
+                        ctx.strokeStyle = `rgba(70,50,130,${alpha})`;
+                        ctx.lineWidth = 0.5 + (1 - z1 / 400) * 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(x1, Math.max(-50, y1));
+                        ctx.lineTo(x2, Math.min(h + 50, y2));
+                        ctx.stroke(); } }
+                    const glow = ctx.createLinearGradient(0, horizonY - 40, 0, horizonY + 40);
+                    glow.addColorStop(0, 'transparent');
+                    glow.addColorStop(0.5, 'rgba(120,100,180,0.3)');
+                    glow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow;
+                    ctx.fillRect(0, horizonY - 40, w, 80);
+                }
+            }
+
+            // ═══════════════ EFECTO 7: Interactive Noise Surface (light) ═══════════════
+            class Effect7_NoiseSurface extends CanvasEffect {
+                constructor() {
+                    super('visual-7', 7);
+                    this.time = 0;
+                    this.cellSize = 10;
+                    this.noiseCache = [];
+                    this.cols = 0;
+                    this.rows = 0;
+                    this._initCache();
+                    this.start();
+                }
+                _initCache() { const w = this.width || 500; const h = this.height || 350;
+                    this.cols = Math.ceil(w / this.cellSize);
+                    this.rows = Math.ceil(h / this.cellSize); const total = this.cols * this.rows; if (this.noiseCache
+                        .length !== total) { this.noiseCache = new Float32Array(total); for (let i = 0; i < total; i++) { this
+                            .noiseCache[i] = Math.random(); } } }
+                _resize() { super._resize();
+                    this._initCache(); }
+                update(dt) { this.time += dt; }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#fdfdfe';
+                    ctx.fillRect(0, 0, w, h);
+                    const mx = this.mouseInside ? this.mouseX : -999;
+                    const my = this.mouseInside ? this.mouseY : -999;
+                    const cellW = this.cellSize;
+                    const cellH = this.cellSize;
+                    for (let r = 0; r < this.rows; r++) { for (let c = 0; c < this.cols; c++) { const idx = r * this.cols +
+                                c; let val = this.noiseCache[idx]; if (mx > -100 && this.mouseInside) { const cx_cell =
+                                    c * cellW + cellW / 2; const cy_cell = r * cellH + cellH / 2; const dx = cx_cell -
+                                mx; const dy = cy_cell - my; const dist = Math.sqrt(dx * dx + dy * dy); if (dist <
+                                    130) { val += (1 - dist / 130) * 0.65 * Math.sin(dist * 0.09 + this.time *
+                                    3.5); } }
+                            val = Math.max(0, Math.min(1, val)); const rCol = Math.floor(val * 55 + 200); const gCol = Math
+                                .floor(val * 40 + 210); const bCol = Math.floor(val * 55 + 195);
+                            ctx.fillStyle = `rgb(${rCol},${gCol},${bCol})`;
+                            ctx.fillRect(c * cellW, r * cellH, cellW + 1, cellH + 1); } }
+                    const vignette = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.45, w / 2, h / 2, Math.max(w,
+                        h) * 0.75);
+                    vignette.addColorStop(0, 'transparent');
+                    vignette.addColorStop(1, 'rgba(0,0,0,0.08)');
+                    ctx.fillStyle = vignette;
+                    ctx.fillRect(0, 0, w, h);
+                }
+            }
+
+            // ═══════════════ EFECTO 8: Holographic Card (light) ═══════════════
+            class Effect8_HolographicCard {
+                constructor() {
+                    this.container = document.getElementById('visual-8');
+                    this.card = document.createElement('div');
+                    this.card.style.cssText = `
+                        width:200px;height:260px;margin:30px auto;
+                        background:linear-gradient(135deg,rgba(180,160,230,0.5),rgba(220,180,210,0.5),rgba(160,200,230,0.5));
+                        border-radius:18px;position:relative;transform-style:preserve-3d;
+                        transform:perspective(600px) rotateY(0deg) rotateX(0deg);
+                        transition:transform 0.15s ease-out;box-shadow:0 15px 40px rgba(0,0,0,0.1);
+                        cursor:pointer;display:flex;align-items:center;justify-content:center;
+                        font-size:2.5rem;color:rgba(60,40,100,0.7);letter-spacing:0.04em;font-weight:700;
+                        border:1px solid rgba(120,100,180,0.2);overflow:hidden;
+                    `;
+                    this.card.textContent = '⚡';
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position:absolute;inset:0;border-radius:18px;
+                        background:repeating-linear-gradient(0deg,transparent,transparent 6px,rgba(255,255,255,0.4) 6px,rgba(255,255,255,0.4) 7px),
+                        linear-gradient(135deg,rgba(255,255,255,0.3) 0%,transparent 50%,rgba(255,255,255,0.2) 100%);
+                        pointer-events:none;
+                    `;
+                    this.card.appendChild(overlay);
+                    this.specular = document.createElement('div');
+                    this.specular.style.cssText = `
+                        position:absolute;inset:0;border-radius:18px;pointer-events:none;
+                        background:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.7) 0%,transparent 60%);
+                        opacity:0;
+                    `;
+                    this.card.appendChild(this.specular);
+                    this.container.appendChild(this.card);
+                    this._bind();
+                }
+                _bind() {
+                    this.container.addEventListener('mousemove', (e) => { const rect = this.container.getBoundingClientRect();
+                        const x = e.clientX - rect.left; const y = e.clientY - rect.top; const rotY = ((x / rect.width) -
+                            0.5) * 35; const rotX = ((y / rect.height) - 0.5) * -25; this.card.style.transform =
+                            `perspective(600px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+                        this.specular.style.opacity = '0.7';
+                        this.specular.style.background =
+                            `radial-gradient(circle at ${(x/rect.width)*100}% ${(y/rect.height)*100}%,rgba(255,255,255,0.75) 0%,transparent 55%)`; });
+                    this.container.addEventListener('mouseleave', () => { this.card.style.transform =
+                            'perspective(600px) rotateY(0deg) rotateX(0deg)';
+                        this.specular.style.opacity = '0'; });
+                }
+                destroy() { if (this.card.parentNode) this.card.parentNode.removeChild(this.card); }
+            }
+
+            // ═══════════════ EFECTO 9: Depth Layered Parallax (light) ═══════════════
+            class Effect9_Parallax extends CanvasEffect {
+                constructor() {
+                    super('visual-9', 9);
+                    this.layers = [{ depth: 0.08, shapes: [], color: 'rgba(180,175,200,0.5)', count: 15 }, { depth: 0.2,
+                        shapes: [], color: 'rgba(150,140,190,0.45)', count: 20 }, { depth: 0.4, shapes: [],
+                        color: 'rgba(120,100,170,0.4)', count: 18 }, { depth: 0.7, shapes: [],
+                        color: 'rgba(90,70,150,0.35)', count: 12 }, { depth: 1.0, shapes: [],
+                        color: 'rgba(60,40,120,0.3)', count: 8 }, ];
+                    this._initShapes();
+                    this.targetMX = 0;
+                    this.targetMY = 0;
+                    this.currentMX = 0;
+                    this.currentMY = 0;
+                    this.start();
+                }
+                _initShapes() { const w = this.width || 500; const h = this.height || 350; for (const layer of this.layers) {
+                        layer.shapes = []; for (let i = 0; i < layer.count; i++) { layer.shapes.push({ x: Math.random() * w,
+                                y: Math.random() * h, radius: 8 + Math.random() * 35, baseX: 0, baseY: 0 }); } } }
+                _resize() { super._resize();
+                    this._initShapes(); }
+                update(dt) { if (this.mouseInside && this.mouseX > -100) { this.targetMX = (this.mouseX - this.width / 2) / (
+                            this.width / 2);
+                        this.targetMY = (this.mouseY - this.height / 2) / (this.height / 2); } else { this.targetMX *=
+                        0.9;
+                        this.targetMY *= 0.9; }
+                    this.currentMX += (this.targetMX - this.currentMX) * 3 * dt;
+                    this.currentMY += (this.targetMY - this.currentMY) * 3 * dt; }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#f8f7fc';
+                    ctx.fillRect(0, 0, w, h);
+                    for (const layer of this.layers) { const offsetX = this.currentMX * layer.depth * 200; const offsetY = this
+                            .currentMY * layer.depth * 150;
+                        ctx.fillStyle = layer.color; for (const shape of layer.shapes) { const sx = shape.x + offsetX; const
+                                sy = shape.y + offsetY; const r = shape.radius;
+                            ctx.beginPath(); const shapeType = Math.floor(shape.x * 7) % 3; if (shapeType === 0) { ctx.arc(
+                                sx, sy, r, 0, Math.PI * 2); } else if (shapeType === 1) { ctx.moveTo(sx, sy - r);
+                                ctx.lineTo(sx + r * 0.8, sy + r * 0.6);
+                                ctx.lineTo(sx - r * 0.8, sy + r * 0.6);
+                                ctx.closePath(); } else { ctx.roundRect(sx - r, sy - r * 0.7, r * 2, r * 1.4, r * 0.3); }
+                            ctx.fill(); } }
+                }
+            }
+
+            // ═══════════════ EFECTO 10: RGB Digital Corruption (light) ═══════════════
+            class Effect10_RGBGlitch extends CanvasEffect {
+                constructor() {
+                    super('visual-10', 10);
+                    this.time = 0;
+                    this.glitchIntensity = 0;
+                    this.textLines = ['SYS_LOG://v4.2.1', 'DATA_STREAM: ACTIVE', 'ENCRYPT: AES-256',
+                        'NODE: 0x7F3A_B991', 'LATENCY: 12ms', 'THROUGHPUT: 8.4Gbps', '>> BUFFER OVERFLOW <<'
+                    ];
+                    this.start();
+                }
+                update(dt) { this.time += dt; if (Math.random() < dt * 2.5) { this.glitchIntensity = Math.random() * 1; } this
+                        .glitchIntensity *= Math.pow(0.05, dt); if (this.glitchIntensity < 0.001) this.glitchIntensity =
+                        0; }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#fcfbfe';
+                    ctx.fillRect(0, 0, w, h);
+                    const gi = this.glitchIntensity;
+                    ctx.font = '14px ' + getComputedStyle(document.body).fontFamily;
+                    ctx.textAlign = 'center';
+                    const lineHeight = 28;
+                    const startY = h / 2 - (this.textLines.length * lineHeight) / 2;
+                    for (let li = 0; li < this.textLines.length; li++) { const y = startY + li * lineHeight; const shakeX = gi *
+                            (Math.random() - 0.5) * 30; const shakeY = gi * (Math.random() - 0.5) * 6;
+                        ctx.fillStyle = `rgba(200,30,30,${0.5+gi*0.3})`;
+                        ctx.fillText(this.textLines[li], w / 2 + shakeX * 1.5 + gi * 8, y + shakeY);
+                        ctx.fillStyle = `rgba(30,160,30,${0.5+gi*0.3})`;
+                        ctx.fillText(this.textLines[li], w / 2 + shakeX * 0.5, y + shakeY - gi * 3);
+                        ctx.fillStyle = `rgba(50,50,200,${0.5+gi*0.3})`;
+                        ctx.fillText(this.textLines[li], w / 2 + shakeX - gi * 8, y + shakeY + gi * 2);
+                        ctx.fillStyle = 'rgba(30,25,50,0.85)';
+                        ctx.fillText(this.textLines[li], w / 2, y); }
+                    if (gi > 0.2) { for (let i = 0; i < Math.floor(gi * 8); i++) { const gy = Math.random() * h; const gh =
+                                2 + Math.random() * 8;
+                            ctx.fillStyle =
+                                `rgba(${Math.random()>0.5?180:0},${Math.random()>0.5?140:0},${Math.random()>0.5?200:0},0.4)`;
+                            ctx.fillRect(Math.random() * w * 0.3, gy, w * 0.7, gh); } }
+                    for (let sy = 0; sy < h; sy += 3) { ctx.fillStyle = 'rgba(0,0,0,0.04)';
+                        ctx.fillRect(0, sy, w, 1); }
+                }
+            }
+
+            // ═══════════════ EFECTO 11: Fluid Background Simulation (light) ═══════════════
+            class Effect11_FluidBg extends CanvasEffect {
+                constructor() {
+                    super('visual-11', 11);
+                    this.time = 0;
+                    this.dyeParticles = [];
+                    for (let i = 0; i < 200; i++) { this.dyeParticles.push({ x: Math.random() * (this.width || 500), y: Math
+                                .random() * (this.height || 350), vx: (Math.random() - 0.5) * 15, vy: (Math.random() -
+                                0.5) * 15, hue: 240 + Math.random() * 100 }); }
+                    this.start();
+                }
+                update(dt) { this.time += dt; const mx = this.mouseInside ? this.mouseX : -999; const my = this.mouseInside ?
+                        this.mouseY : -999; for (const p of this.dyeParticles) { const waveX = Math.sin(p.y * 0.02 + this
+                            .time * 1.3) * 20; const waveY = Math.cos(p.x * 0.025 + this.time * 1.1) * 18;
+                        p.vx += (waveX - p.vx) * 0.8 * dt;
+                        p.vy += (waveY - p.vy) * 0.8 * dt; if (mx > -100 && this.mouseInside) { const dx = mx - p.x; const
+                                dy = my - p.y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < 100 && dist > 1) { const
+                                force = (1 - dist / 100) * 200;
+                                p.vx += (dx / dist) * force * dt;
+                                p.vy += (dy / dist) * force * dt; } }
+                        p.vx *= 0.995;
+                        p.vy *= 0.995;
+                        p.x += p.vx * dt;
+                        p.y += p.vy * dt; if (p.x < -30) p.x = this.width + 30; if (p.x > this.width + 30) p.x = -30; if (p
+                            .y < -30) p.y = this.height + 30; if (p.y > this.height + 30) p.y = -30; } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = 'rgba(250,249,254,0.25)';
+                    ctx.fillRect(0, 0, w, h);
+                    for (const p of this.dyeParticles) { const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 22);
+                        grad.addColorStop(0, `hsla(${p.hue},60%,50%,0.4)`);
+                        grad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = grad;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, 22, 0, Math.PI * 2);
+                        ctx.fill(); }
+                }
+            }
+
+            // ═══════════════ EFECTO 12: Aurora Shader Effect (light) ═══════════════
+            class Effect12_Aurora extends CanvasEffect {
+                constructor() {
+                    super('visual-12', 12);
+                    this.time = 0;
+                    this.start();
+                }
+                update(dt) { this.time += dt; }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#fcfbfe';
+                    ctx.fillRect(0, 0, w, h);
+                    const bands = [{ baseY: h * 0.3, amplitude: 50, freq: 0.006, speed: 0.5, hue: 170, alpha: 0.4 }, { baseY: h *
+                            0.35, amplitude: 40, freq: 0.008, speed: 0.65, hue: 190, alpha: 0.35 }, { baseY: h * 0.28,
+                            amplitude: 60, freq: 0.005, speed: 0.4, hue: 210, alpha: 0.38 }, { baseY: h * 0.4,
+                            amplitude: 35, freq: 0.009, speed: 0.7, hue: 150, alpha: 0.3 }, ];
+                    for (const band of bands) {
+                        ctx.beginPath();
+                        ctx.moveTo(0, band.baseY); for (let x = 0; x <= w; x += 3) { const y = band.baseY + Math.sin(x * band
+                                .freq + this.time * band.speed) * band.amplitude + Math.sin(x * band.freq * 1.7 + this.time *
+                                band.speed * 0.8) * band.amplitude * 0.5 + Math.sin(x * band.freq * 0.4 + this.time * band
+                                .speed * 1.3) * band.amplitude * 0.3;
+                            ctx.lineTo(x, y); }
+                        ctx.lineTo(w, h);
+                        ctx.lineTo(0, h);
+                        ctx.closePath(); const grad = ctx.createLinearGradient(0, band.baseY - band.amplitude, 0, band.baseY +
+                            band.amplitude * 2);
+                        grad.addColorStop(0, `hsla(${band.hue},70%,50%,${band.alpha})`);
+                        grad.addColorStop(0.5, `hsla(${band.hue+20},60%,40%,${band.alpha*0.5})`);
+                        grad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = grad;
+                        ctx.fill();
+                    }
+                    const starSeed = 42; for (let i = 0; i < 40; i++) { const sx = ((i * 173 + starSeed) % w); const sy = ((i *
+                            91 + starSeed * 3) % (h * 0.6)); const twinkle = 0.3 + Math.sin(this.time * 3 + i) * 0.3;
+                        ctx.fillStyle = `rgba(60,50,100,${twinkle})`;
+                        ctx.beginPath();
+                        ctx.arc(sx, sy, 0.8, 0, Math.PI * 2);
+                        ctx.fill(); }
+                }
+            }
+
+            // ═══════════════ EFECTO 13: Particle Repulsion Wave (light) ═══════════════
+            class Effect13_RepulsionWave extends CanvasEffect {
+                constructor() {
+                    super('visual-13', 13);
+                    this.particles = [];
+                    this.waves = [];
+                    for (let i = 0; i < 100; i++) { this.particles.push({ x: Math.random() * (this.width || 500), y: Math
+                                .random() * (this.height || 350), baseX: 0, baseY: 0, vx: 0, vy: 0, size: 1.5 + Math.random() *
+                            3 });
+                        this.particles[i].baseX = this.particles[i].x;
+                        this.particles[i].baseY = this.particles[i].y; }
+                    this.start();
+                }
+                onClick(cx, cy) { this.waves.push({ x: cx, y: cy, radius: 5, strength: 300, life: 1 }); }
+                update(dt) { for (const w of this.waves) { w.radius += 400 * dt;
+                        w.life -= dt * 1.5;
+                        w.strength *= 0.97; } for (let i = this.waves.length - 1; i >= 0; i--) { if (this.waves[i].life <=
+                            0) this.waves.splice(i, 1); } for (const p of this.particles) { let fx = 0,
+                        fy = 0; for (const w of this.waves) { const dx = p.x - w.x; const dy = p.y - w.y; const dist = Math
+                                .sqrt(dx * dx + dy * dy); const ringDist = Math.abs(dist - w.radius); if (ringDist < 40 &&
+                                dist > 1) { const force = w.strength * (1 - ringDist / 40) * w.life;
+                                fx += (dx / dist) * force;
+                                fy += (dy / dist) * force; } } const dxb = p.baseX - p.x; const dyb = p.baseY - p.y;
+                        fx += dxb * 1.5;
+                        fy += dyb * 1.5;
+                        p.vx += fx * dt;
+                        p.vy += fy * dt;
+                        p.vx *= 0.9;
+                        p.vy *= 0.9;
+                        p.x += p.vx * dt;
+                        p.y += p.vy * dt; } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#f8f7fc';
+                    ctx.fillRect(0, 0, w, h); for (const w of this.waves) {
+                        ctx.strokeStyle = `rgba(140,100,200,${w.life*0.5})`;
+                        ctx.lineWidth = 3 * w.life;
+                        ctx.shadowColor = `rgba(120,80,180,${w.life*0.4})`;
+                        ctx.shadowBlur = 15;
+                        ctx.beginPath();
+                        ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+                        ctx.stroke(); }
+                    ctx.shadowBlur = 0; for (const p of this.particles) { ctx.fillStyle = 'rgba(100,70,170,0.7)';
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill(); }
+                    ctx.fillStyle = 'rgba(40,30,60,0.5)';
+                    ctx.font = '11px ' + getComputedStyle(document.body).fontFamily;
+                    ctx.fillText('Haz clic para generar ondas', 14, 24);
+                }
+            }
+
+            // ═══════════════ EFECTO 14: Infinite Tunnel Illusion (light) ═══════════════
+            class Effect14_Tunnel extends CanvasEffect {
+                constructor() {
+                    super('visual-14', 14);
+                    this.time = 0;
+                    this.speed = 1;
+                    this.start();
+                }
+                update(dt) { this.time += dt; if (this.mouseInside && this.mouseX > -100) { this.speed += ((this.mouseY / Math
+                        .max(this.height, 1)) * 4 - this.speed) * 2 * dt; } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#fcfbfe';
+                    ctx.fillRect(0, 0, w, h);
+                    const cx = w / 2;
+                    const cy = h / 2;
+                    const maxR = Math.sqrt(cx * cx + cy * cy) + 20;
+                    const numRings = 50;
+                    const baseOffset = (this.time * this.speed * 80) % (maxR / numRings * 2);
+                    for (let i = 0; i < numRings; i++) { const r = i * (maxR / numRings) + baseOffset; if (r > maxR || r < 2)
+                            continue; const alpha = 0.1 + (1 - r / maxR) * 0.6; const hue = (230 + i * 3) % 360;
+                        ctx.strokeStyle = `hsla(${hue},55%,40%,${alpha})`;
+                        ctx.lineWidth = 1 + (1 - r / maxR) * 3;
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                        ctx.stroke(); }
+                    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 0.15);
+                    glow.addColorStop(0, 'rgba(100,80,160,0.35)');
+                    glow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow;
+                    ctx.fillRect(cx - maxR * 0.15, cy - maxR * 0.15, maxR * 0.3, maxR * 0.3);
+                }
+            }
+
+            // ═══════════════ EFECTO 15: Dynamic Mesh Gradient (light) ═══════════════
+            class Effect15_MeshGradient extends CanvasEffect {
+                constructor() {
+                    super('visual-15', 15);
+                    this.time = 0;
+                    this.controlPoints = [];
+                    for (let i = 0; i < 6; i++) { this.controlPoints.push({ x: Math.random() * (this.width || 500), y: Math
+                                .random() * (this.height || 350), vx: (Math.random() - 0.5) * 20, vy: (Math.random() -
+                                0.5) * 20, hue: Math.random() * 360, hueSpeed: (Math.random() - 0.5) * 40 }); }
+                    this.start();
+                }
+                update(dt) { this.time += dt; const w = this.width || 500; const h = this.height || 350; for (const cp of this
+                        .controlPoints) { cp.x += cp.vx * dt;
+                        cp.y += cp.vy * dt;
+                        cp.hue += cp.hueSpeed * dt; if (cp.x < -50) cp.x = w + 50; if (cp.x > w + 50) cp.x = -50; if (cp.y <
+                            -50) cp.y = h + 50; if (cp.y > h + 50) cp.y = -50; if (cp.hue > 360) cp.hue -= 360; if (cp.hue <
+                            0) cp.hue += 360; } }
+                draw(ctx, w, h) {
+                    const cellSize = 30;
+                    const cols = Math.ceil(w / cellSize) + 1;
+                    const rows = Math.ceil(h / cellSize) + 1;
+                    for (let r = 0; r < rows - 1; r++) { for (let c = 0; c < cols - 1; c++) { const cx_cell = c * cellSize +
+                                cellSize / 2; const cy_cell = r * cellSize + cellSize / 2; let totalHue = 0; let totalWeight =
+                                0; for (const cp of this.controlPoints) { const dx = cx_cell - cp.x; const dy = cy_cell -
+                                    cp.y; const dist = Math.sqrt(dx * dx + dy * dy); const weight = 1 / (dist + 80);
+                                totalHue += cp.hue * weight;
+                                totalWeight += weight; } const hue = totalWeight > 0 ? totalHue / totalWeight : 240; const
+                            saturation = 35 + Math.sin(cx_cell * 0.01 + this.time) * 15; const lightness = 78 + Math.cos(
+                                cy_cell * 0.012 + this.time * 0.7) * 15;
+                        ctx.fillStyle = `hsl(${hue},${saturation}%,${lightness}%)`;
+                        ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize); } }
+                    for (const cp of this.controlPoints) { ctx.fillStyle = 'rgba(60,40,100,0.5)';
+                        ctx.beginPath();
+                        ctx.arc(cp.x, cp.y, 5, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.strokeStyle = 'rgba(40,20,80,0.6)';
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke(); }
+                }
+            }
+
+            // ═══════════════ EFECTO 16: Mouse Driven Spotlight (light) ═══════════════
+            class Effect16_Spotlight extends CanvasEffect {
+                constructor() {
+                    super('visual-16', 16);
+                    this.time = 0;
+                    this.targetX = 0;
+                    this.targetY = 0;
+                    this.lightX = 0;
+                    this.lightY = 0;
+                    this.sceneObjects = [];
+                    for (let i = 0; i < 25; i++) { this.sceneObjects.push({ x: Math.random() * (this.width || 500), y: Math
+                                .random() * (this.height || 350), radius: 8 + Math.random() * 25, shape: Math.floor(Math
+                                .random() * 3) }); }
+                    this.start();
+                }
+                update(dt) { this.time += dt; if (this.mouseInside && this.mouseX > -100) { this.targetX = this.mouseX;
+                        this.targetY = this.mouseY; }
+                    this.lightX += (this.targetX - this.lightX) * 6 * dt;
+                    this.lightY += (this.targetY - this.lightY) * 6 * dt; if (!this.mouseInside) { this.targetX = this.width /
+                            2 + Math.sin(this.time * 0.5) * this.width * 0.35;
+                        this.targetY = this.height / 2 + Math.cos(this.time * 0.6) * this.height * 0.3; } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#eae8f4';
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = 'rgba(200,195,215,0.6)'; for (const obj of this.sceneObjects) { ctx.beginPath(); if (obj
+                            .shape === 0) ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2); else if (obj.shape === 1) ctx
+                            .roundRect(obj.x - obj.radius, obj.y - obj.radius * 0.6, obj.radius * 2, obj.radius * 1.2,
+                                4);
+                        else { ctx.moveTo(obj.x, obj.y - obj.radius);
+                            ctx.lineTo(obj.x + obj.radius, obj.y + obj.radius);
+                            ctx.lineTo(obj.x - obj.radius, obj.y + obj.radius);
+                            ctx.closePath(); }
+                        ctx.fill(); }
+                    const spotGrad = ctx.createRadialGradient(this.lightX, this.lightY, 10, this.lightX, this.lightY,
+                    180);
+                    spotGrad.addColorStop(0, 'rgba(255,255,255,0.85)');
+                    spotGrad.addColorStop(0.4, 'rgba(255,252,245,0.5)');
+                    spotGrad.addColorStop(0.75, 'rgba(240,230,210,0.12)');
+                    spotGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = spotGrad;
+                    ctx.fillRect(0, 0, w, h);
+                }
+            }
+
+            // ═══════════════ EFECTO 17: Morphing SVG Generator (light) ═══════════════
+            class Effect17_MorphingSVG {
+                constructor() {
+                    this.container = document.getElementById('visual-17');
+                    this.svg = document.getElementById('svg-17');
+                    if (!this.svg) { this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                        this.svg.setAttribute('width', '100%');
+                        this.svg.setAttribute('height', '100%');
+                        this.svg.style.display = 'block';
+                        this.container.appendChild(this.svg); }
+                    this.svg.setAttribute('viewBox', '0 0 400 320');
+                    this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    this.path.setAttribute('fill', 'rgba(130,100,210,0.4)');
+                    this.path.setAttribute('stroke', 'rgba(100,70,180,0.65)');
+                    this.path.setAttribute('stroke-width', '2');
+                    this.svg.appendChild(this.path);
+                    this.time = 0;
+                    this.animId = null;
+                    this.running = true;
+                    this._loop();
+                }
+                _loop() { if (!this.running) return;
+                    this.time += 0.016; const t = this.time; const cx = 200,
+                        cy = 160; const numPoints = 8; let d = ''; for (let i = 0; i <= numPoints; i++) { const angle = (i /
+                                numPoints) * Math.PI * 2; const r = 70 + Math.sin(angle * 3 + t * 1.3) * 25 + Math.cos(
+                                angle * 5 + t * 0.9) * 18 + Math.sin(angle * 2 + t * 1.7) * 30; const x = cx + Math.cos(
+                                angle) * r; const y = cy + Math.sin(angle) * r; if (i === 0) d += `M ${x} ${y} `; else d +=
+                            `L ${x} ${y} `; }
+                    d += 'Z';
+                    this.path.setAttribute('d', d);
+                    this.animId = requestAnimationFrame(() => this._loop()); }
+                destroy() { this.running = false; if (this.animId) cancelAnimationFrame(this.animId); if (this.path.parentNode)
+                        this.path.parentNode.removeChild(this.path); }
+            }
+
+            // ═══════════════ EFECTO 18: Digital Rain — light ═══════════════
+            class Effect18_DigitalRain extends CanvasEffect {
+                constructor() {
+                    super('visual-18', 18);
+                    this.columns = [];
+                    this.characters =
+                        'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789';
+                    this._initColumns();
+                    this.start();
+                }
+                _initColumns() { const colWidth = 16; const cols = Math.ceil((this.width || 500) / colWidth);
+                    this.columns = []; for (let i = 0; i < cols; i++) { this.columns.push({ x: i * colWidth, y: Math.random() *
+                                -(this.height || 350), speed: 40 + Math.random() * 120, chars: [], length: 6 + Math.floor(Math
+                                .random() * 18) }); } }
+                _resize() { super._resize();
+                    this._initColumns(); }
+                update(dt) { for (const col of this.columns) { col.y += col.speed * dt; if (col.y > (this.height || 350) +
+                        100) { col.y = Math.random() * -200;
+                        col.length = 6 + Math.floor(Math.random() * 18);
+                        col.speed = 40 + Math.random() * 120; } } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = 'rgba(250,249,254,0.3)';
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.font = '13px ' + getComputedStyle(document.body).fontFamily; for (const col of this.columns) { for (
+                            let j = 0; j < col.length; j++) { const charY = col.y - j * 18; if (charY < -20 || charY > h +
+                                20) continue; const alpha = j === 0 ? 0.85 : Math.max(0.04, 1 - j / col.length); const
+                            isHead = j === 0;
+                            ctx.fillStyle = isHead ? 'rgba(30,20,50,0.9)' :
+                                `rgba(70,50,120,${alpha})`; const charIndex = Math.floor(Math.random() * this.characters
+                                .length);
+                            ctx.fillText(this.characters[charIndex], col.x, charY); } }
+                }
+            }
+
+            // ═══════════════ EFECTO 19: Procedural Galaxy (light) ═══════════════
+            class Effect19_Galaxy extends CanvasEffect {
+                constructor() {
+                    super('visual-19', 19);
+                    this.time = 0;
+                    this.stars = [];
+                    this.spiralParticles = [];
+                    for (let i = 0; i < 150; i++) { this.stars.push({ x: Math.random() * (this.width || 500), y: Math.random() *
+                                (this.height || 350), size: 0.4 + Math.random() * 1.8, twinkleSpeed: 2 + Math.random() * 5,
+                            twinklePhase: Math.random() * Math.PI * 2 }); }
+                    const cx = (this.width || 500) / 2;
+                    const cy = (this.height || 350) / 2;
+                    for (let i = 0; i < 400; i++) { const arm = Math.floor(Math.random() * 4); const armAngle = (arm / 4) * Math
+                            .PI * 2; const dist = Math.random() * Math.min(cx, cy) * 1.1; const spiralAngle = dist * 0.02; const
+                            spread = (Math.random() - 0.5) * 0.6; const angle = armAngle + spiralAngle + spread; const x = cx +
+                            Math.cos(angle) * dist; const y = cy + Math.sin(angle) * dist * 0.7; this.spiralParticles.push({ x,
+                            y, baseX: x, baseY: y, size: 0.5 + Math.random() * 2.5 * (1 - dist / Math.min(cx, cy)),
+                            dist, angle, arm }); }
+                    this.start();
+                }
+                update(dt) { this.time += dt; const cx = (this.width || 500) / 2; const cy = (this.height || 350) / 2; for (
+                        const p of this.spiralParticles) { const newAngle = p.angle + dt * 0.15 * (1 - p.dist / Math.min(cx,
+                            cy) * 0.8);
+                        p.angle = newAngle;
+                        p.x = cx + Math.cos(newAngle) * p.dist;
+                        p.y = cy + Math.sin(newAngle) * p.dist * 0.7; } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#f9f8fd';
+                    ctx.fillRect(0, 0, w, h);
+                    const cx = w / 2;
+                    const cy = h / 2;
+                    const nebula = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(w, h) * 0.5);
+                    nebula.addColorStop(0, 'rgba(160,140,200,0.12)');
+                    nebula.addColorStop(0.3, 'rgba(120,100,170,0.06)');
+                    nebula.addColorStop(1, 'transparent');
+                    ctx.fillStyle = nebula;
+                    ctx.fillRect(0, 0, w, h); for (const p of this.spiralParticles) { const alpha = 0.2 + (1 - p.dist / Math
+                            .min(cx, cy)) * 0.5;
+                        ctx.fillStyle = `rgba(80,60,150,${alpha})`;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill(); } for (const s of this.stars) { const twinkle = 0.3 + Math.sin(this.time * s.twinkleSpeed +
+                            s.twinklePhase) * 0.35;
+                        ctx.fillStyle = `rgba(40,30,70,${twinkle})`;
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                        ctx.fill(); }
+                    const coreGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 30);
+                    coreGlow.addColorStop(0, 'rgba(100,80,160,0.7)');
+                    coreGlow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = coreGlow;
+                    ctx.fillRect(cx - 30, cy - 30, 60, 60);
+                }
+            }
+
+            // ═══════════════ EFECTO 20: Cinematic Fog Layer (light) ═══════════════
+            class Effect20_CinematicFog extends CanvasEffect {
+                constructor() {
+                    super('visual-20', 20);
+                    this.time = 0;
+                    this.fogLayers = [{ particles: [], depth: 0.2, speed: 8, alpha: 0.2, count: 25 }, { particles: [],
+                        depth: 0.5, speed: 18, alpha: 0.28, count: 30 }, { particles: [], depth: 0.8, speed: 30,
+                        alpha: 0.24, count: 35 }, ];
+                    this._initFog();
+                    this.start();
+                }
+                _initFog() { const w = this.width || 500; const h = this.height || 350; for (const layer of this.fogLayers) {
+                        layer.particles = []; for (let i = 0; i < layer.count; i++) { layer.particles.push({ x: Math.random() *
+                                    w * 1.5 - w * 0.25, y: Math.random() * h, radius: 30 + Math.random() * 60,
+                                offset: Math.random() * Math.PI * 2 }); } } }
+                _resize() { super._resize();
+                    this._initFog(); }
+                update(dt) { this.time += dt; const w = this.width || 500; for (const layer of this.fogLayers) { for (const p of
+                            layer.particles) { p.x += layer.speed * dt;
+                            p.y += Math.sin(this.time * 0.4 + p.offset) * 8 * dt; if (p.x > w + 100) p.x = -100; if (p.x <
+                                -100) p.x = w + 100; } } }
+                draw(ctx, w, h) {
+                    ctx.fillStyle = '#faf9fe';
+                    ctx.fillRect(0, 0, w, h); for (const layer of this.fogLayers) { for (const p of layer.particles) { const
+                                grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+                            grad.addColorStop(0, `rgba(180,175,195,${layer.alpha})`);
+                            grad.addColorStop(0.5, `rgba(160,155,180,${layer.alpha*0.5})`);
+                            grad.addColorStop(1, 'transparent');
+                            ctx.fillStyle = grad;
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                            ctx.fill(); } }
+                    const vignette = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.4, w / 2, h / 2, Math.max(w,
+                        h) * 0.8);
+                    vignette.addColorStop(0, 'transparent');
+                    vignette.addColorStop(1, 'rgba(0,0,0,0.06)');
+                    ctx.fillStyle = vignette;
+                    ctx.fillRect(0, 0, w, h);
+                }
+            }
+
+            const effectConstructors = { 1: Effect1_DistortionField, 2: Effect2_LiquidTrail, 3: Effect3_LightBeams,
+                4: Effect4_MagneticParticles, 5: Effect5_BlobMorphing, 6: Effect6_PerspectiveGrid,
+                7: Effect7_NoiseSurface, 8: Effect8_HolographicCard, 9: Effect9_Parallax, 10: Effect10_RGBGlitch,
+                11: Effect11_FluidBg, 12: Effect12_Aurora, 13: Effect13_RepulsionWave, 14: Effect14_Tunnel,
+                15: Effect15_MeshGradient, 16: Effect16_Spotlight, 17: Effect17_MorphingSVG, 18: Effect18_DigitalRain,
+                19: Effect19_Galaxy, 20: Effect20_CinematicFog };
+
+            const loadedEffects = new Set();
+            const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry
+                        .isIntersecting) { const card = entry.target; const effectId = parseInt(card.getAttribute(
+                            'data-effect-id')); if (!loadedEffects.has(effectId)) { loadedEffects.add(effectId); const
+                            Constructor = effectConstructors[effectId]; if (Constructor) { const instance =
+                                new Constructor();
+                            effectInstances[effectId] = instance; } } } }); }, { rootMargin: '200px',
+                threshold: 0.05 });
+
+            document.querySelectorAll('.effect-card').forEach((card) => { observer.observe(card); });
+
+            window._destroyAllEffects = function() { Object.values(effectInstances).forEach((inst) => { if (inst &&
+                        typeof inst.destroy === 'function') inst.destroy(); });
+                loadedEffects.clear(); };
+
+            console.log('%c🔬 Galería Light inicializada %c| %c20 efectos independientes listos',
+                'color:#6c4cf0;font-size:1.1em;', '', 'color:#666;');
+        })();
+    </script>
+</body>
+</html>

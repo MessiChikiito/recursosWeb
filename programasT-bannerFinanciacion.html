@@ -19,6 +19,8 @@
             max-width: 1200px;
             margin: 0 auto;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .ue-modal {
@@ -66,6 +68,7 @@
             animation: slideUp 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
+            box-sizing: border-box;
         }
 
         .ue-modal-header {
@@ -98,6 +101,7 @@
             justify-content: center;
             border-radius: 8px;
             transition: all 0.2s ease !important;
+            flex-shrink: 0;
         }
 
         .ue-modal-close:hover {
@@ -126,6 +130,7 @@
             justify-content: center;
             background: #fafbfc;
             transition: all 0.25s ease !important;
+            box-sizing: border-box;
         }
 
         .ue-partner-card img {
@@ -149,7 +154,6 @@
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease !important;
-
             box-sizing: border-box;
         }
         
@@ -169,12 +173,16 @@
             align-items: flex-start;
             margin-bottom: 28px;
             flex-wrap: wrap;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .ue-finGrid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .ue-s6-card { 
@@ -242,6 +250,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            flex-wrap: wrap;
         }
 
         .ue-benefit {
@@ -249,6 +258,7 @@
             flex-direction: column;
             align-items: center;
             gap: 2px;
+            flex-shrink: 0;
         }
 
         .ue-benefit-value {
@@ -274,26 +284,124 @@
 
         @media (max-width: 640px) {
             .ue-section-financiacion {
-                padding-left: 15px;
-                padding-right: 15px;
-                padding-bottom: 30px;
+                padding: 0;
             }
-            .ue-s6-title { font-size: 18px; margin: 0px 0 15px 0;}
-            .ue-s6-price-new { font-size: 36px; }
-            .ue-s6-list { columns: 2; font-size: 16px; margin: 5px 0 15px 0; }
-            .ue-long-text { display: none; }
+            
+            .ue-headRow {
+                padding: 0 16px;
+                margin-bottom: 20px;
+            }
+            
+            .ue-finGrid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 0 16px;
+                margin-bottom: 20px;
+            }
+            
+            .ue-s6-card {
+                padding: 20px;
+            }
+            
+            .ue-s6-title { 
+                font-size: 18px; 
+                margin: 0 0 15px 0;
+            }
+            
+            .ue-s6-price-new { 
+                font-size: 32px; 
+            }
+            
+            .ue-s6-list { 
+                columns: 2; 
+                font-size: 16px; 
+                margin: 5px 0 15px 0; 
+                padding-left: 16px;
+            }
+            
+            .ue-long-text { 
+                display: none; 
+            }
+            
             .ue-inv-flex {
                 flex-direction: row;
                 align-items: center;
-                gap: 16px;
+                gap: 12px;
             }
 
             .ue-benefit {
                 flex-shrink: 0;
             }
 
-            .ue-s6-save-text{
+            .ue-benefit-value {
+                font-size: 32px;
+            }
+
+            .ue-benefit-label {
+                font-size: 14px;
+                padding-left: 2px;
+            }
+
+            .ue-s6-save-text {
                 margin-bottom: 5px;
+            }
+
+            .ue-modal-content {
+                width: 95%;
+                padding: 24px;
+            }
+
+            .ue-modal-header h2 {
+                font-size: 20px;
+            }
+
+            .ue-partners-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ue-headRow {
+                padding: 0 12px;
+            }
+
+            .ue-finGrid {
+                padding: 0 12px;
+                gap: 12px;
+            }
+
+            .ue-s6-card {
+                padding: 16px;
+            }
+
+            .ue-s6-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .ue-s6-list {
+                font-size: 14px;
+                padding-left: 25px;
+                margin: 0 0 12px 0;
+            }
+
+            .ue-price-with-benefit {
+                gap: 8px;
+            }
+
+            .ue-benefit-value {
+                font-size: 30px;
+            }
+
+            .ue-benefit-label {
+                font-size: 14px;
+            }
+
+            .ue-s6-price-new {
+                font-size: 30px;
+                margin: 5px 0 8px;
             }
         }
     </style>

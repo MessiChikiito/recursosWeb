@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beneficios Afiliados | 3 Columnas 50/50</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Convenios Uniempresarial</title>
     <style>
         * {
             margin: 0;
@@ -11,119 +11,201 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f8f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 30px;
-            color: #1a1a1a;
+        .con-cards {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 40px 20px;
         }
 
-        .panel {
+        .con-panel {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             max-width: 1400px;
             width: 100%;
         }
 
-        /* Contenedor externo: sin clip-path, solo posicionamiento */
-        .card {
+        .con-card {
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: left;
-            min-height: 200px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 380px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
             --border-color: #ccc;
-            --shadow-color: rgba(0, 0, 0, 0.04);
-            --border-width: 4px;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --border-width: 2px;
+            filter: drop-shadow(0 10px 15px var(--shadow-color));
         }
 
-        /* Pseudo-elemento que pinta el borde (sin estar recortado por la tarjeta) */
-        .card::before {
+        .con-card::before {
             content: '';
             position: absolute;
-            inset: calc(-1 * var(--border-width));
+            top: calc(-1 * var(--border-width));
+            left: 0;
+            right: 0;
+            height: var(--border-width);
             background: var(--border-color);
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%);
             z-index: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
             pointer-events: none;
         }
 
-        /* Capa interna: fondo blanco y recorte, encima del borde */
-        .card-inner {
+        .con-card::after {
+            content: '';
+            position: absolute;
+            bottom: calc(-1 * var(--border-width));
+            left: 0;
+            right: 0;
+            height: var(--border-width);
+            background: var(--border-color);
+            clip-path: polygon(0 0, 90% 0, 90% 100%, 0 100%);
+            z-index: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            pointer-events: none;
+        }
+
+        a.con-card-inner {
             position: relative;
             z-index: 1;
             background: #ffffff;
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-            padding: 20px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            height: 100%;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px var(--shadow-color);
-        }
-
-        /* Columna izquierda: imagen (50% del ancho) */
-        .card-left {
-            flex: 1 1 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-left img {
-            width: 100%;
-            max-width: 130px;
-            height: auto;
-            object-fit: contain;
-            border-radius: 50%;
-            background: #f0f4ff;
-            padding: 12px;
-            transition: transform 0.3s;
-        }
-
-        /* Columna derecha: contenido (50% del ancho) */
-        .card-right {
-            flex: 1 1 50%;
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            --side-line-color: var(--border-color);
+        }
+
+        a.con-card-inner::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -6px;
+            width: 2px;
+            height: calc(100% + 12px);
+            background: linear-gradient(to bottom,
+                    var(--side-line-color) 7px,
+                    transparent 7px,
+                    transparent calc(100% - 7px),
+                    var(--side-line-color) calc(100% - 7px));
+            z-index: 5;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            pointer-events: none;
+        }
+
+        a.con-card-inner::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: -6px;
+            width: 2px;
+            height: calc(100% + 12px);
+            background: linear-gradient(to bottom,
+                    var(--side-line-color) 7px,
+                    transparent 7px,
+                    transparent calc(100% - 7px),
+                    var(--side-line-color) calc(100% - 7px));
+            z-index: 5;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            pointer-events: none;
+        }
+
+        .con-card-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            height: 120px;
+            flex-shrink: 0;
+        }
+
+        .con-card-left img,
+        .con-card-left .con-icono-proximo {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s !important;
+        }
+
+        .con-logo-analfe {
+            max-width: 220px;
+        }
+        .con-logo-coasmedas {
+            max-width: 240px;
+        }
+        .con-logo-cooptrais {
+            max-width: 240px;
+        }
+        .con-logo-senatic {
+            max-width: 180px;
+        }
+        .con-logo-circulo {
+            max-width: 90px;
+        }
+        .con-logo-sena {
+            max-width: 100px;
+        }
+        .con-logo-colsubsidio {
+            max-width: 220px;
+        }
+
+        .con-card-left .con-icono-proximo {
+            width: 70px;
+            height: 70px;
+        }
+
+        .con-card-right {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
         }
 
-        .card-right h4 {
-            font-size: 1.2rem;
+        .con-card-right h4 {
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #1a1a1a;
             letter-spacing: 0.5px;
         }
 
-        .card-right ul {
+        .con-card-right ul {
             list-style: none;
             padding: 0;
-            margin: 0 0 15px 0;
+            margin: 0 0 12px 0;
+            display: inline-block;
+            text-align: left;
         }
 
-        .card-right ul li {
-            font-size: 0.9rem;
+        .con-card-right ul li {
+            font-size: 0.95rem;
             color: #3a3a3a;
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 5px;
             padding-left: 18px;
             position: relative;
         }
 
-        .card-right ul li::before {
+        .con-card-right ul li::before {
             content: '•';
             color: var(--bullet-color, #1274fc);
             font-weight: bold;
@@ -133,306 +215,381 @@
             line-height: 1.2;
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--btn-bg, #3b8cff);
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.4px;
-            text-align: center;
-            transition: background 0.3s, transform 0.2s;
-            align-self: flex-start;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        .con-click-hint {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 5px;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s !important;
+            pointer-events: none;
         }
 
-        .btn:hover {
-            background: #2a6edb;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
-        }
-
-        /* Colores para cada tarjeta (borde, sombra, bullet y botón) */
-        .card:nth-child(1) {
+        .con-card:nth-child(1) {
             --border-color: #0132AF;
-            --shadow-color: rgba(59, 140, 255, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #0132AF;
-            --btn-bg: #0132AF;
         }
-        .card:nth-child(1) h4 {
+        .con-card:nth-child(1) h4 {
             color: #0132AF;
         }
 
-        .card:nth-child(2) {
+        .con-card:nth-child(2) {
             --border-color: #ff0000;
-            --shadow-color: rgba(255, 90, 122, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #ff0000;
-            --btn-bg: #ff0000;
         }
-        .card:nth-child(2) h4 {
+        .con-card:nth-child(2) h4 {
             color: #ff0000;
         }
 
-        .card:nth-child(3) {
+        .con-card:nth-child(3) {
             --border-color: #0132AF;
-            --shadow-color: rgba(45, 204, 138, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #0132AF;
-            --btn-bg: #0132AF;
         }
-        .card:nth-child(3) h4 {
+        .con-card:nth-child(3) h4 {
             color: #0132AF;
         }
 
-        .card:nth-child(4) {
+        .con-card:nth-child(4) {
             --border-color: #ff0000;
-            --shadow-color: rgba(245, 166, 35, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065  );
             --bullet-color: #ff0000;
-            --btn-bg: #ff0000;
         }
-        .card:nth-child(4) h4 {
+        .con-card:nth-child(4) h4 {
             color: #ff0000;
         }
 
-        .card:nth-child(5) {
+        .con-card:nth-child(5) {
             --border-color: #0132AF;
-            --shadow-color: rgba(165, 94, 234, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #0132AF;
-            --btn-bg: #0132AF;
         }
-        .card:nth-child(5) h4 {
+        .con-card:nth-child(5) h4 {
             color: #0132AF;
         }
 
-        .card:nth-child(6) {
+        .con-card:nth-child(6) {
             --border-color: #ff0000;
-            --shadow-color: rgba(255, 127, 63, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065  );
             --bullet-color: #ff0000;
-            --btn-bg: #ff0000;
         }
-        .card:nth-child(6) h4 {
+        .con-card:nth-child(6) h4 {
             color: #ff0000;
         }
 
-        .card:nth-child(7) {
+        .con-card:nth-child(7) {
             --border-color: #0132AF;
-            --shadow-color: rgba(69, 184, 184, 0.2);
+            --shadow-color: rgba(87, 87, 87, 0.065 );
             --bullet-color: #0132AF;
-            --btn-bg: #0132AF;
         }
-        .card:nth-child(7) h4 {
+        .con-card:nth-child(7) h4 {
             color: #0132AF;
         }
 
-        /* Hover: endereza y eleva */
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
+        .con-card:nth-child(8) {
+            --border-color: #888888;
+            --shadow-color: rgba(136, 136, 136, 0.065);
+            --bullet-color: #888888;
+        }
+        .con-card:nth-child(8) h4 {
+            color: #555555;
         }
 
-        .card:hover::before {
+        .con-card:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 18px 25px rgba(0, 0, 0, 0.11));
+        }
+
+        .con-card:hover .con-card-left img,
+        .con-card:hover .con-card-left .con-icono-proximo {
+            transform: scale(1.02);
+        }
+
+        .con-card:hover::before {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            background: #555;
-            inset: calc(-1 * var(--border-width));
         }
 
-        .card:hover .card-inner {
+        .con-card:hover::after {
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
         }
 
-        .card:hover .card-left img {
-            transform: scale(1.08);
+        .con-card:hover a.con-card-inner {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
         }
 
-        /* Ajuste para centrar la última tarjeta cuando queda sola en su fila (3 columnas, 7 tarjetas) */
+        .con-card:hover .con-click-hint {
+            opacity: 1;
+            transform: translateY(0);
+            color: #444;
+        }
+
         @media (min-width: 769px) {
-            .panel > .card:last-child:nth-child(3n+1) {
-                grid-column: 2 / 3;
+            .con-panel > .con-card:last-child:nth-child(2n+1) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                max-width: 50%;
+                width: 100%;
             }
         }
 
-        /* Responsive: 2 columnas en tablets */
         @media (max-width: 992px) {
-            .panel {
+            .con-panel {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
-            .card-inner {
-                flex-direction: column;
-                text-align: center;
+            .con-card {
+                height: 360px;
+            }
+            a.con-card-inner {
                 padding: 25px 20px;
+                gap: 15px;
             }
-            .card-left {
-                flex: 0 0 auto;
-                margin-bottom: 10px;
+            .con-card-left {
+                height: 110px;
             }
-            .card-left img {
-                max-width: 100px;
+            .con-logo-analfe {
+                max-width: 140px;
             }
-            .btn {
-                align-self: center;
+            .con-logo-coasmedas {
+                max-width: 150px;
             }
-            /* Quitar regla de centrado para última tarjeta en 2 columnas */
-            .panel > .card:last-child:nth-child(3n+1) {
+            .con-logo-cooptrais {
+                max-width: 140px;
+            }
+            .con-logo-senatic {
+                max-width: 130px;
+            }
+            .con-logo-circulo {
+                max-width: 130px;
+            }
+            .con-logo-sena {
+                max-width: 130px;
+            }
+            .con-logo-colsubsidio {
+                max-width: 160px;
+            }
+            .con-card-left .con-icono-proximo {
+                width: 60px;
+                height: 60px;
+            }
+            .con-panel > .con-card:last-child:nth-child(2n+1) {
                 grid-column: auto;
+                max-width: none;
             }
         }
 
-        /* Responsive: 1 columna en móviles */
         @media (max-width: 600px) {
-            .panel {
+            .con-panel {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            .card-inner {
-                flex-direction: column;
-                text-align: center;
+            .con-card {
+                height: 340px;
+            }
+            a.con-card-inner {
                 padding: 25px 20px;
+                gap: 15px;
             }
-            .card-left {
-                flex: 0 0 auto;
-                margin-bottom: 10px;
+            .con-card-left {
+                height: 100px;
             }
-            .card-left img {
+            .con-logo-analfe {
+                max-width: 120px;
+            }
+            .con-logo-coasmedas {
+                max-width: 130px;
+            }
+            .con-logo-cooptrais {
+                max-width: 120px;
+            }
+            .con-logo-senatic {
                 max-width: 110px;
             }
-            .btn {
-                align-self: center;
+            .con-logo-circulo {
+                max-width: 110px;
+            }
+            .con-logo-sena {
+                max-width: 120px;
+            }
+            .con-logo-colsubsidio {
+                max-width: 140px;
+            }
+            .con-card-left .con-icono-proximo {
+                width: 50px;
+                height: 50px;
+            }
+            .con-panel > .con-card:last-child:nth-child(2n+1) {
+                grid-column: auto;
+                max-width: none;
             }
         }
     </style>
 </head>
 <body>
+    
+    <div class="con-cards">
 
-    <div class="panel">
+    <div class="con-panel">
+
         <!-- Tarjeta 1: Analfe -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2951/2951134.png" alt="descuento">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-analfe"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Analfe-convenio-uniempresarial.png"
+                    alt="Analfe" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>Analfe</h4>
                     <ul>
                         <li>15% dto. en matrícula</li>
                         <li>Educación continuada incluida</li>
                         <li>Beneficios exclusivos para afiliados</li>
                     </ul>
-                    <a href="#" class="btn">Más información</a>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Tarjeta 2: Coasmedas -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="formación">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-coasmedas"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Coasmedas-convenio-uniempresarial.png"
+                    alt="Coasmedas" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>Coasmedas</h4>
                     <ul>
                         <li>25% dto. en matrícula ordinaria</li>
                         <li>Impulso a tu formación profesional</li>
                         <li>Acceso a programas especializados</li>
                     </ul>
-                    <a href="#" class="btn">Averigua más</a>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Tarjeta 3: Cooptrais -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991106.png" alt="oportunidad">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-cooptrais"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Cooptraiss-convenio-uniempresarial.webp"
+                    alt="Cooptrais" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>Cooptrais</h4>
                     <ul>
                         <li>25% dto. en matrícula ordinaria</li>
                         <li>Momento ideal para seguir educándote</li>
                         <li>Plataforma de crecimiento laboral</li>
                     </ul>
-                    <a href="#" class="btn">Descubre más</a>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Tarjeta 4: SENATIC -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721287.png" alt="tecnología">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-senatic"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Senatic-convenio-uniempresarial.webp"
+                    alt="SENATIC" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>SENATIC</h4>
                     <ul>
                         <li>MinTIC + SENA + OIT</li>
                         <li>Formación en tecnologías de la información</li>
                         <li>Iniciativa de transformación digital</li>
                     </ul>
-                    <a href="#" class="btn">Conoce el programa</a>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Tarjeta 5: Círculo de afiliados -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="círculo">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-circulo"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2024/11/Logo_Circulo_de_afiliados-removebg-preview.png"
+                    alt="Círculo de afiliados" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>Círculo de Afiliados</h4>
                     <ul>
                         <li>Hasta 25% dto. en matrícula</li>
                         <li>Ventajas exclusivas para miembros</li>
                         <li>Impulsa tu carrera profesional</li>
                     </ul>
-                    <a href="#" class="btn">Explora beneficios</a>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Tarjeta 6: SENA -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="SENA">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-sena"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/SENA-conevenio-uniempresarial.png"
+                    alt="SENA" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>SENA</h4>
                     <ul>
                         <li>25% dto. en matrícula</li>
                         <li>Beneficios para comunidad SENA Bogotá</li>
                         <li>Formación de calidad garantizada</li>
                     </ul>
-                    <a href="#" class="btn">Aprovecha ahora</a>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Tarjeta 7: Colsubsidio -->
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Colsubsidio">
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <img class="con-logo-colsubsidio"
+                    src="https://uniempresarial.edu.co/wp-content/uploads/2026/06/Colsubsidio-convenio-uniempresarial-scaled.png"
+                    alt="Colsubsidio" />
                 </div>
-                <div class="card-right">
+                <div class="con-card-right">
                     <h4>Colsubsidio</h4>
                     <ul>
                         <li>Hasta 25% dto. en matrícula</li>
                         <li>Ventajas para afiliados Colsubsidio</li>
                         <li>Educación accesible y de calidad</li>
                     </ul>
-                    <a href="#" class="btn">Más ventajas</a>
                 </div>
-            </div>
+            </a>
         </div>
+
+        <!-- Tarjeta 8: Más convenios próximamente -->
+        <div class="con-card">
+            <a href="#" class="con-card-inner">
+                <div class="con-card-left">
+                    <svg class="con-icono-proximo" viewBox="0 0 24 24" fill="none" stroke="#888888"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+            </div>
+            <div class="con-card-right">
+                <h4>Próximamente</h4>
+                <ul>
+                    <li>Nuevos convenios en camino</li>
+                    <li>Más beneficios para ti</li>
+                    <li>¡Espéralos pronto!</li>
+                </ul>
+            </div>
+        </a>
     </div>
+</div>
+</div>
 
 </body>
 </html>

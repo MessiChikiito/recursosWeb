@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff !important;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Sección exterior: ancho completo, fondo blanco */
+        .con-hero {
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                0 12px 40px rgba(0, 0, 0, 0.07),
+                0 30px 80px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Línea editorial superior */
+        .con-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 40px;
+            right: 40px;
+            height: 1px;
+            background: #e8e5df;
+            z-index: 3;
+        }
+
+        /* Contenedor interno: 1400px, centrado, altura fija 700px */
+        .con-hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 700px;
+            display: flex;
+            align-items: center;
+            gap: 55px;
+            padding: 40px 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Bloque de texto */
+        .con-hero-text {
+            flex: 1 1 620px;
+            position: relative;
+            z-index: 2;
+            max-width: 620px;
+        }
+
+        .con-hero-title {
+            font-size: clamp(2.6rem, 4.2vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            color: #121117;
+            line-height: 1.06;
+            margin: 0 0 18px 0;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            text-wrap: balance;
+        }
+
+        .con-hero-subtitle {
+            font-size: 0.95rem;
+            color: #5c5770;
+            line-height: 1.65;
+            max-width: 380px;
+            margin: 0 0 28px 0;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-wrap: balance;
+        }
+
+                .con-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background-color: #121117;
+            color: #ffffff;
+            border: none;
+            border-radius: 2px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            font-family: 'Inter', system-ui, sans-serif;
+            outline: none;
+            transition:
+                background-color 0.28s ease,
+                transform 0.22s cubic-bezier(0.25, 0.8, 0.25, 1.2),
+                box-shadow 0.28s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .con-hero-cta::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.06) 0%,
+                    transparent 60%);
+            pointer-events: none;
+        }
+
+        .con-hero-cta:hover {
+            background-color: #2a2738;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(18, 17, 23, 0.25);
+        }
+        .con-hero-cta:active {
+            background-color: #1a1728;
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(18, 17, 23, 0.3);
+        }
+
+        .con-hero-cta-arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+            font-weight: 400;
+            font-size: 1.05em;
+        }
+        .con-hero-cta:hover .con-hero-cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Contenedor de la galería */
+        .con-hero-gallery {
+            flex: 1.2 1 500px;
+            height: 100%;
+            display: flex;
+            align-items: right;
+            justify-content: right;
+            position: relative;
+            z-index: 2;
+        }
+
+        .con-hero-gallery svg {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            display: block;
+            filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.07));
+        }
+
+        /* Piezas del mosaico */
+        .mosaic-piece {
+            cursor: pointer;
+            transition:
+                filter 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-origin: center center;
+        }
+
+        .mosaic-piece:hover {
+            filter: brightness(1.12) contrast(1.06) saturate(1.08);
+            transform: scale(1.025);
+            z-index: 5;
+        }
+
+        .mosaic-piece:active {
+            filter: brightness(1.05) contrast(1.03);
+            transform: scale(1.01);
+        }
+
+        /* Responsivo por debajo de 1000px: apilado vertical manteniendo altura auto */
+        @media (max-width: 1000px) {
+            .con-hero-inner {
+                flex-direction: column;
+                height: auto;
+                min-height: 700px;
+                gap: 35px;
+                padding: 40px 30px;
+            }
+            .con-hero-gallery {
+                width: 100%;
+                height: auto;
+                flex: 1 1 auto;
+            }
+            .con-hero-gallery svg {
+                width: 100%;
+                height: auto;
+                max-height: 500px;
+            }
+            .con-hero-text {
+                max-width: 100%;
+            }
+            .con-hero::before {
+                left: 30px;
+                right: 30px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .con-hero-inner {
+                padding: 30px 18px;
+                gap: 24px;
+                min-height: auto;
+            }
+            .con-hero-title {
+                font-size: 1.9rem;
+            }
+            .con-hero::before {
+                left: 18px;
+                right: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="con-hero" aria-labelledby="con-hero-heading">
+        <div class="con-hero-inner">
+
+            <header class="con-hero-text">
+                <h1 class="con-hero-title" id="con-hero-heading">
+                    Beneficios exclusivos para afiliados
+                </h1>
+                <p class="con-hero-subtitle">
+                    Accede a descuentos exclusivos en matrícula y beneficios especiales gracias a nuestras alianzas con empresas, fondos de empleados, cooperativas y organizaciones aliadas.
+                </p>
+                                </p>
+                <a href="#" class="con-hero-cta">
+                    Ver proyectos
+                    <span class="con-hero-cta-arrow">→</span>
+                </a>
+
+            </header>
+
+            <div class="con-hero-gallery" role="img" aria-label="Collage geométrico: fragmentos angulares tallados como piezas de un mosaico">
+                <svg viewBox="0 0 440 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <!-- ============================================
+                        Cuadriláteros irregulares únicamente.
+                        Ningún lado es completamente horizontal o vertical.
+                        Las uniones blancas (4-8px) simulan el corte entre fragmentos.
+                        ============================================ -->
+
+                        <clipPath id="shardA">
+                            <polygon points="3,3 285,32 242,156 3,168" />
+                        </clipPath>
+                        <clipPath id="shardB">
+                            <polygon points="295,3 437,28 435,162 252,160" />
+                        </clipPath>
+                        <clipPath id="shardC">
+                            <polygon points="3,176 232,158 248,288 3,302" />
+                        </clipPath>
+                        <clipPath id="shardD">
+                            <polygon points="242,164 437,168 434,296 256,291" />
+                        </clipPath>
+                        <clipPath id="shardE">
+                            <polygon points="3,310 240,290 256,417 3,417" />
+                        </clipPath>
+                        <clipPath id="shardF">
+                            <polygon points="250,294 437,300 435,417 264,417" />
+                        </clipPath>
+                    </defs>
+
+                    <!-- Fondo blanco (separación entre fragmentos) -->
+                    <rect x="0" y="0" width="440" height="420" fill="#ffffff" />
+
+                    <!-- Fragmento A -->
+                    <g class="mosaic-piece" clip-path="url(#shardA)">
+                        <image href="https://picsum.photos/seed/architectural_form/600/400"
+                        x="0" y="0" width="295" height="175" preserveAspectRatio="xMidYMid slice" />
+                    </g>
+
+                    <!-- Fragmento B -->
+                    <g class="mosaic-piece" clip-path="url(#shardB)">
+                        <image href="https://picsum.photos/seed/concrete_texture_light/500/400"
+                        x="248" y="0" width="192" height="170" preserveAspectRatio="xMidYMid slice" />
+                    </g>
+
+                    <!-- Fragmento C -->
+                    <g class="mosaic-piece" clip-path="url(#shardC)">
+                        <image href="https://picsum.photos/seed/geometric_abstract/500/350"
+                        x="0" y="152" width="255" height="155" preserveAspectRatio="xMidYMid slice" />
+                    </g>
+
+                    <!-- Fragmento D -->
+                    <g class="mosaic-piece" clip-path="url(#shardD)">
+                        <image href="https://picsum.photos/seed/marble_surface_dark/500/350"
+                        x="238" y="158" width="202" height="142" preserveAspectRatio="xMidYMid slice" />
+                    </g>
+
+                    <!-- Fragmento E -->
+                    <g class="mosaic-piece" clip-path="url(#shardE)">
+                        <image href="https://picsum.photos/seed/shadow_play_geometry/500/350"
+                        x="0" y="286" width="262" height="135" preserveAspectRatio="xMidYMid slice" />
+                    </g>
+
+                    <!-- Fragmento F -->
+                    <g class="mosaic-piece" clip-path="url(#shardF)">
+                        <image href="https://picsum.photos/seed/steel_structure_modern/500/350"
+                        x="246" y="290" width="194" height="130" preserveAspectRatio="xMidYMid slice" />
+                    </g>
+
+                    <!-- Líneas blancas editoriales (detalle arquitectónico) -->
+                    <g pointer-events="none" opacity="0.28">
+                        <line x1="3" y1="168" x2="242" y2="156" stroke="#ffffff" stroke-width="0.6" />
+                        <line x1="252" y1="160" x2="435" y2="162" stroke="#ffffff" stroke-width="0.6" />
+                        <line x1="3" y1="302" x2="248" y2="288" stroke="#ffffff" stroke-width="0.6" />
+                        <line x1="256" y1="291" x2="434" y2="296" stroke="#ffffff" stroke-width="0.6" />
+                        <line x1="3" y1="417" x2="256" y2="417" stroke="#ffffff" stroke-width="0.6" />
+                        <line x1="264" y1="417" x2="435" y2="417" stroke="#ffffff" stroke-width="0.6" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
