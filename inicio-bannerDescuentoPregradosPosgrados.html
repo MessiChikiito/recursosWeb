@@ -20,19 +20,18 @@
 
         .banner-beneficio {
             display: grid;
-            grid-template-columns: 1fr 1fr;     
-
+            grid-template-columns: 1fr 1fr;   
+            gap: 0;  
             width: 1400px;
             max-width: 100%;
             margin: 0 auto; 
-            margin-right: 9%;                  
+            margin-left: 12%;                 
             box-shadow: none;
         }
 
         .modular-left-panel {
             background: #0132AF;
             padding: 50px 40px;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -124,9 +123,11 @@
         .modular-right-panel {
             background: #ffffff;
             padding: 40px;
+            padding-right: 0px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-left: 10%;
         }
 
         .modular-cards-stack {
@@ -629,10 +630,15 @@
         @media (max-width: 900px) {
             .banner-beneficio {
                 grid-template-columns: 1fr;
+                margin-left: 0% !important;
             }
 
             .modular-left-panel {
                 padding: 40px 30px;
+            }
+            .modular-left-panel::before {
+                display: none !important;
+                width: 0 !important;
             }
 
             .modular-main-title {
@@ -657,6 +663,7 @@
         @media (max-width: 620px) {
             .banner-beneficio {
                 min-height: auto;
+                margin-left: 0%;  
             }
 
             .modular-left-panel {
@@ -699,6 +706,7 @@
 
             /* Panel derecho */
             .modular-right-panel {
+                            margin-left: 0%;
                 padding: 20px 15px;
             }
 

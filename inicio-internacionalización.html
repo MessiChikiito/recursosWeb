@@ -14,14 +14,35 @@
     }
 
     .intl-section {
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #ffffff;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+      background: #ffffff !important;
       padding: 0px 24px;
+      position: relative;
     }
 
+    .intl-section::before {
+      content: '';
+      position: absolute;
+      top: -3%;
+      left: 58%;
+      width: 10px;
+      height: 106%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #ff0008d7 5%,
+        #ff0008d7 95%,
+        transparent 100%
+      );
+      transform: rotate(18deg);
+      z-index: 0;
+      pointer-events: none;
+    }
     .intl-container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .intl-content {
@@ -33,7 +54,7 @@
 
     .intl-text {
       flex: 1;
-      max-width: 480px;
+      max-width: 700px;
     }
 
     .intl-subtitle {
@@ -46,12 +67,26 @@
     }
 
     .intl-title {
-      font-size: 2.6rem;
-      font-weight: 900;
+      font-size: 3.4rem;
+      font-weight: 900 !important;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
       line-height: 1.1;
-      color: #0132AF;
+      color: #000;
       letter-spacing: -0.02em;
       margin-bottom: 16px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .intl-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #EF1218;
+      border-radius: 2px;
     }
 
     .intl-description {
@@ -63,7 +98,7 @@
 
     .intl-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-bottom: 32px;
     }
@@ -101,18 +136,27 @@
       padding: 12px 28px;
       border-radius: 40px;
       text-decoration: none;
-      transition: background 0.2s ease;
+      transition: background 0.4s ease !important;
       border: none;
       cursor: pointer;
     }
 
     .intl-cta:hover {
-      background: #0116CC;
+      background: #0112a8;
       color: #fff;
     }
 
+    .intl-cta-arrow {
+      display: inline-block;
+      transform: translateX(0);
+      transition: transform 0.4s ease !important;
+    }
+
+    .intl-cta:hover .intl-cta-arrow {
+      transform: translateX(4px) !important;
+    }
+
     .intl-globe-wrapper {
-      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -202,7 +246,7 @@
 
     @media (max-width: 1024px) {
       .intl-content {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 48px;
       }
 
@@ -217,6 +261,10 @@
 
       .intl-title {
         font-size: 2.2rem;
+      }
+
+      .intl-section::before {
+        display: none;
       }
     }
 
@@ -234,7 +282,7 @@
       }
 
       .intl-stats {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 12px;
       }
 
@@ -258,6 +306,10 @@
         font-size: 8px;
         padding: 1px 4px;
       }
+
+      .intl-section::before {
+        display: none;
+      }
     }
 
     @media (max-width: 480px) {
@@ -266,7 +318,7 @@
       }
 
       .intl-title {
-        font-size: 1.6rem;
+        font-size: 2rem;
         margin-bottom: 12px;
       }
 
@@ -277,6 +329,7 @@
 
       .intl-stats {
         margin-bottom: 24px;
+        line-height: 1;
       }
 
       .intl-stat-number {
@@ -286,10 +339,13 @@
       .intl-stat-label {
         font-size: 0.75rem;
       }
-
+      .intl-cta-wrapper {
+        display: flex;
+        justify-content: right;
+      }
       .intl-cta {
-        font-size: 0.85rem;
-        padding: 10px 20px;
+        font-size: 0.95rem;
+        padding: 12px 25px;
       }
 
       .intl-globe-wrapper {
@@ -314,6 +370,10 @@
         font-size: 30px;
         line-height: 30px;
       }
+
+      .intl-section::before {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -323,50 +383,58 @@
   <div class="intl-container">
     <div class="intl-content">
       <div class="intl-text">
-        <div class="intl-subtitle">Presencia Global</div>
+
         <h2 class="intl-title">Uniempresarial Internacional</h2>
         <p class="intl-description">En Uniempresarial, la internacionalización no es una aspiración, es una realidad. Contamos con alianzas estratégicas en 8 países que abren puertas a nuestros estudiantes para vivir experiencias académicas transformadoras en el mundo.</p>
         
         <div class="intl-stats">
           <div class="intl-stat">
-            <span class="intl-stat-number">14</span>
+            <span class="intl-stat-number">16</span>
             <span class="intl-stat-label">Universidades aliadas</span>
           </div>
           <div class="intl-stat">
-            <span class="intl-stat-number">8</span>
+            <span class="intl-stat-number">9</span>
             <span class="intl-stat-label">Países con convenio</span>
           </div>
+          <div class="intl-stat">
+            <span class="intl-stat-number">2</span>
+            <span class="intl-stat-label">Convenios nacionales</span>
+          </div>
         </div>
-
-        <a href="#internacionalización" class="intl-cta">Explorar alianzas →</a>
+        <div class="intl-cta-wrapper">
+        <a href="https://uniempresarial.edu.co/internacionalizacion/" class="intl-cta">Explorar alianzas<span class="intl-cta-arrow">→</span></a>
+        </div>
       </div>
 
       <div class="intl-globe-wrapper">
         <div class="intl-globe-container" id="intl-globe-container">
           <canvas id="intl-globe-canvas"></canvas>
 
-          <a id="intl-flag-colombia" class="intl-country-flag" href="https://example.com/colombia" target="_blank" data-country="colombia">
+          <a id="intl-flag-colombia" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="colombia">
             <span class="fi fi-co"></span>
           </a>
-          <a id="intl-flag-mexico" class="intl-country-flag" href="https://embamex.sre.gob.mx/colombia/index.php/comunicados-de-prensa-blog/33-servicios-consulares/756-visa-de-residente-temporal-estudiante" target="_blank" data-country="mexico">
+          <a id="intl-flag-mexico" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="mexico">
             <span class="fi fi-mx"></span>
           </a>
-          <a id="intl-flag-ecuador" class="intl-country-flag" href="https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-estudiante" target="_blank" data-country="ecuador">
+          <a id="intl-flag-ecuador" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="ecuador">
             <span class="fi fi-ec"></span>
           </a>
-          <a id="intl-flag-uruguay" class="intl-country-flag" href="https://www.gub.uy/ministerio-relaciones-exteriores/embajada-republica-oriental-del-uruguay-colombia/tramites-consulares/visas" target="_blank" data-country="uruguay">
+          <a id="intl-flag-uruguay" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="uruguay">
             <span class="fi fi-uy"></span>
           </a>
-          <a id="intl-flag-espana" class="intl-country-flag" href="https://www.exteriores.gob.es/Consulados/bogota/es/ServiciosConsulares/Paginas/index.aspx?scco=Colombia&scd=31&scca=Visados&scs=Visados+Nacionales+-+Visado+de+estudios" target="_blank" data-country="espana">
+          <a id="intl-flag-paraguay" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="paraguay">
+            <span class="fi fi-py"></span>
+          </a>
+          <a id="intl-flag-espana" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="espana">
             <span class="fi fi-es"></span>
           </a>
-          <a id="intl-flag-alemania" class="intl-country-flag" href="https://bogota.diplo.de/co-es/service/visa-einreise/1808586-1808586" target="_blank" data-country="alemania">
+          <a id="intl-flag-alemania" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="alemania">
             <span class="fi fi-de"></span>
           </a>
-          <a id="intl-flag-japon" class="intl-country-flag" href="https://www.colombia.emb-japan.go.jp/itpr_es/ReactivaVisa.html" target="_blank" data-country="japon">
+          <a id="intl-flag-japon" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="japon">
             <span class="fi fi-jp"></span>
           </a>
-          <a id="intl-flag-corea" class="intl-country-flag" href="https://www.mofa.go.kr/co-es/wpge/m_6692/contents.do" target="_blank" data-country="corea">
+          <a id="intl-flag-corea" class="intl-country-flag" href="https://uniempresarial.edu.co/internacionalizacion/" target="_blank" data-country="corea">
             <span class="fi fi-kr"></span>
           </a>
 
@@ -374,6 +442,7 @@
           <div id="intl-label-mexico" class="intl-country-label">México</div>
           <div id="intl-label-ecuador" class="intl-country-label">Ecuador</div>
           <div id="intl-label-uruguay" class="intl-country-label">Uruguay</div>
+          <div id="intl-label-paraguay" class="intl-country-label">Paraguay</div>
           <div id="intl-label-espana" class="intl-country-label">España</div>
           <div id="intl-label-alemania" class="intl-country-label">Alemania</div>
           <div id="intl-label-japon" class="intl-country-label">Japón</div>
@@ -401,6 +470,7 @@
     { id: 'mexico',    lat: 5, lng: -114 },
     { id: 'ecuador',   lat: -18, lng: -92 },
     { id: 'uruguay',   lat: -44, lng: -56 },
+    { id: 'paraguay',  lat: -32, lng: -62 },
     { id: 'espana',    lat: 29, lng: -16 },
     { id: 'alemania',  lat: 44, lng: -3 },
     { id: 'japon',     lat: 23, lng: 129 },
@@ -583,4 +653,3 @@
 
 </body>
 </html>
-
