@@ -14,10 +14,28 @@
         .con-cards {
             font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #ffffff !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center ;
             padding: 40px 20px;
+        }
+
+        /* Texto guía superior */
+        .con-guia {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+            letter-spacing: 0.4px;
+            margin-bottom: 25px;
+            padding: 10px 28px;
+            border-radius: 30px;
+            background: #f7f9fc;
+            border: 1px solid #e0e6ed;
+            display: inline-block !important;
+            align-items: left !important;
+            transition: all 0.3s ease;
         }
 
         .con-panel {
@@ -255,7 +273,7 @@
 
         .con-card:nth-child(4) {
             --border-color: #ff0000;
-            --shadow-color: rgba(87, 87, 87, 0.065  );
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #ff0000;
         }
         .con-card:nth-child(4) h4 {
@@ -273,7 +291,7 @@
 
         .con-card:nth-child(6) {
             --border-color: #ff0000;
-            --shadow-color: rgba(87, 87, 87, 0.065  );
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #ff0000;
         }
         .con-card:nth-child(6) h4 {
@@ -282,7 +300,7 @@
 
         .con-card:nth-child(7) {
             --border-color: #0132AF;
-            --shadow-color: rgba(87, 87, 87, 0.065 );
+            --shadow-color: rgba(87, 87, 87, 0.065);
             --bullet-color: #0132AF;
         }
         .con-card:nth-child(7) h4 {
@@ -325,6 +343,41 @@
             opacity: 1;
             transform: translateY(0);
             color: #444;
+        }
+        .con-icono-proximo {
+            width: 24px;
+            height: 24px;
+            fill: none !important;
+            stroke: currentColor !important;
+            stroke-width: 1.5 !important;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .con-card.clicked {
+        transform: scale(1.02);
+        filter: drop-shadow(0 18px 25px rgba(0, 0, 0, 0.11));
+        }
+
+        .con-card.clicked::before,
+        .con-card.clicked::after {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .con-card.clicked a.con-card-inner {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+        }
+        a.con-card-inner:focus {
+            outline: none;
+        }
+
+        .con-card.clicked .con-click-hint {
+        opacity: 1;
+        transform: translateY(0);
+        color: #444;
         }
 
         @media (min-width: 769px) {
@@ -426,12 +479,26 @@
                 grid-column: auto;
                 max-width: none;
             }
+            .con-guia {
+                font-size: 1.1rem;
+                line-height: 1.1;
+                font-weight: 600;
+                color: #555;
+                margin-bottom: 25px;
+                padding: 10px 28px;
+            }
         }
     </style>
+
 </head>
 <body>
-    
-    <div class="con-cards">
+
+<div class="con-cards">
+
+    <!-- Texto guía general encima de las tarjetas -->
+    <p class="con-guia">
+        Haz clic en una tarjeta para conocer más información
+    </p>
 
     <div class="con-panel">
 
@@ -450,6 +517,7 @@
                         <li>Educación continuada incluida</li>
                         <li>Beneficios exclusivos para afiliados</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -469,6 +537,7 @@
                         <li>Impulso a tu formación profesional</li>
                         <li>Acceso a programas especializados</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -488,6 +557,7 @@
                         <li>Momento ideal para seguir educándote</li>
                         <li>Plataforma de crecimiento laboral</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -507,6 +577,7 @@
                         <li>Formación en tecnologías de la información</li>
                         <li>Iniciativa de transformación digital</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -526,6 +597,7 @@
                         <li>Ventajas exclusivas para miembros</li>
                         <li>Impulsa tu carrera profesional</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -545,6 +617,7 @@
                         <li>Beneficios para comunidad SENA Bogotá</li>
                         <li>Formación de calidad garantizada</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -564,6 +637,7 @@
                         <li>Ventajas para afiliados Colsubsidio</li>
                         <li>Educación accesible y de calidad</li>
                     </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
                 </div>
             </a>
         </div>
@@ -572,24 +646,57 @@
         <div class="con-card">
             <a href="#" class="con-card-inner">
                 <div class="con-card-left">
-                    <svg class="con-icono-proximo" viewBox="0 0 24 24" fill="none" stroke="#888888"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                </svg>
-            </div>
-            <div class="con-card-right">
-                <h4>Próximamente</h4>
-                <ul>
-                    <li>Nuevos convenios en camino</li>
-                    <li>Más beneficios para ti</li>
-                    <li>¡Espéralos pronto!</li>
-                </ul>
-            </div>
-        </a>
+                    <svg
+                        class="con-icono-proximo"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <div class="con-card-right">
+                    <h4>Próximamente</h4>
+                    <ul>
+                        <li>Nuevos convenios en camino</li>
+                        <li>Más beneficios para ti</li>
+                        <li>¡Espéralos pronto!</li>
+                    </ul>
+                    <span class="con-click-hint">Haz clic para conocer más</span>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
-</div>
+
+<script>
+  document.querySelectorAll('.con-card-inner').forEach(card => {
+    card.addEventListener('click', function(e) {
+      const isMobile = window.innerWidth <= 992;
+      
+      if (isMobile) {
+        e.preventDefault();
+        
+        const cardContainer = this.closest('.con-card');
+        cardContainer.style.pointerEvents = 'none';
+        
+        // Agregar clase que simula el hover
+        cardContainer.classList.add('clicked');
+        
+        // Esperar a que termine la animación y redirigir
+        setTimeout(() => {
+          const href = this.getAttribute('href');
+          if (href && href !== '#') {
+            window.location.href = href;
+          }
+        }, 400); // Duración similar a la animación (0.4s)
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

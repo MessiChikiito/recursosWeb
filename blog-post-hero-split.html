@@ -1,129 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #0f172a;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero · Card Naranja Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,700&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .hero-banner {
-      position: relative;
-      padding: 180px 24px 180px;
-      overflow: hidden;
-      background: url('https://uniempresarial.edu.co/wp-content/uploads/2025/12/inducciones02.jpeg') center/cover no-repeat;
-    }
+        .hero-banner {
+            position: relative;
+            padding: 160px 80px 140px;
+            overflow: hidden;
+            background: url('https://uniempresarial.edu.co/wp-content/uploads/2026/07/De-Chiquinquira-la-Consejo-La-historia-de-un-egresado-que-eligio-servir-Uniempresarial.webp') center/cover no-repeat;
+            background-blend-mode: overlay;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: transparent;
-      mix-blend-mode: normal;
-      opacity: 1;
-    }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 30%,
+                rgba(0, 0, 0, 0.75) 80%,
+                #000000 100%
+            );
+        }
 
-    .hero-content {
-      position: relative;
-      max-width: 700px;
-      margin: 0;
-      color: white;
-      background: rgba(4, 22, 64, 0.683);
-      backdrop-filter: blur(12px) brightness(1.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 48px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 80px;
+            right: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #f89717 30%, #f89717 70%, transparent 100%);
+            z-index: 3;
+        }
 
-    .hero-title {
-      margin: 0 0 16px 0;
-      font-size: 36px;
-      line-height: 1.1;
-      font-weight: 700;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0;
+            /* Fondo naranja sólido con ligera textura */
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 4px solid #ffffff;
+            border-radius: 2px;
+            padding: 52px 56px;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
+            color: #0a0a0a;
+        }
 
-    .hero-description {
-      margin: 0 0 24px 0;
-      font-size: 18px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.95);
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    }
+        .hero-title {
+            margin: 0 0 20px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            line-height: 1.15;
+            font-weight: 700;
+            color: #f89717;
+            letter-spacing: -0.02em;
+        }
 
-    .meta-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      color: rgba(255, 255, 255, 0.78);
-      font-weight: 600;
-      font-size: 14px;
-    }
+        .hero-description {
+            margin: 0 0 28px 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #ffffff;
+            letter-spacing: 0.01em;
+            max-width: 580px;
+        }
 
-    .meta-pill {
-      padding: 10px 16px;
-      color: #fff;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      background: rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(12px) brightness(0.95);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
 
-    @media (max-width: 768px) {
-      .hero-banner {
-        padding: 80px 16px 60px;
+        .meta-pill {
+            padding: 8px 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #f89717;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+      @media (max-width: 768px) {
+          .hero-banner {
+              padding: 100px 24px 80px;
+              min-height: 70vh;
+              background-position: 75% center;  /* desplaza el foco a la derecha */
+          }
+
+          .hero-banner::before,
+          .hero-banner::after {
+              left: 24px;
+              right: 24px;
+          }
+
+          .hero-content {
+              max-width: 100%;
+              padding: 32px 24px;
+              border-left-width: 3px;
+          }
+
+          .hero-title {
+              font-size: 1.6rem;
+              margin-bottom: 12px;
+          }
+
+          .hero-description {
+              font-size: 0.85rem;
+              margin-bottom: 18px;
+          }
+
+          .meta-pill {
+              padding: 6px 12px;
+              font-size: 0.62rem;
+          }
       }
 
-      .hero-content {
-        margin: 0;
-        max-width: 100%;
-        padding: 20px;
-        border-radius: 12px;
-      }
+      @media (max-width: 480px) {
+          .hero-banner {
+              padding: 80px 16px 60px;
+              min-height: 60vh;
+              background-position: 80% center;  /* aún más a la derecha en pantallas pequeñas */
+          }
 
-      .hero-title {
-        font-size: 28px;
-        margin-bottom: 8px;
-        line-height: 1.2;
-      }
+          .hero-banner::before,
+          .hero-banner::after {
+              left: 16px;
+              right: 16px;
+          }
 
-      .hero-description {
-        font-size: 15px;
-        margin-bottom: 16px;
-      }
+          .hero-content {
+              padding: 24px 18px;
+          }
 
-      .meta-info {
-        font-size: 10px;
-        gap: 3px;
-        flex-wrap: wrap;
-      }
+          .hero-title {
+              font-size: 1.4rem;
+          }
 
-      .meta-pill {
-        padding: 3px 6px;
-        font-size: 8px;
+          .hero-description {
+              font-size: 0.8rem;
+          }
+
+          .meta-info {
+              gap: 8px;
+          }
+
+          .meta-pill {
+              padding: 5px 10px;
+              font-size: 0.5rem;
+          }
       }
-    }
-  </style>
+        
+    </style>
 </head>
 <body>
-  <section class="hero-banner">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Administración de Empresas: qué es, beneficios y cómo elegir dónde estudiar </h1>
-      <p class="hero-description">Descubre qué es la Administración de Empresas, sus oportunidades laborales y cómo elegir una formación que te prepare para el mundo real.</p>
-      <div class="meta-info">
-        <div class="meta-pill">Autor: Uniempresarial</div>
-        <div class="meta-pill">Fecha: 21 Abr 2026</div>
-        <div class="meta-pill">Lectura: 8 min</div>
-      </div>
-    </div>
-  </section>
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+
+            <h1 class="hero-title">De Uniempresarial al Concejo de Bogotá</h1>
+            <p class="hero-description">David Saavedra llegó a Bogotá sin más equipaje que el sueño de sus padres y el rigor de la educación dual de Uniempresarial. Hoy es concejal de la ciudad.</p>
+            <div class="meta-info">
+                <span class="meta-pill">Autor: Uniempresarial</span>
+                <span class="meta-pill">01 Jul 2026</span>
+                <span class="meta-pill">Lectura: 7 min</span>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

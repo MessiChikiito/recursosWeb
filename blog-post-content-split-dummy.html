@@ -1,403 +1,814 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRIONDA: El balón más inteligente en la historia de los Mundiales FIFA</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #0f172a;
-      background: #f8fafc;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista · David Saavedra · Uniempresarial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,700;1,800&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .main-container {
-      margin-top: -100px;
-      margin-left: 0px;
-      margin-right: 0px;
-      padding: 0px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .content-article {
-      background: white;
-      border-radius: 18px;
-      padding: 40px;
-      box-shadow: 0 18px 38px rgba(4, 77, 194, 0.08);
-      border: 1px solid #e2e8f0;
-    }
+        body {
 
-    .tags-container {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 12px 0 22px;
-    }
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    .tag {
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: #dce9ff;
-      color: #044DC2;
-      font-weight: 700;
-      border: 1px solid rgba(4, 77, 194, 0.15);
-    }
+        .body-content {
+            margin-top: -100px;
+            background: #00000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+        }
 
-    h2 {
-      margin: 32px 0 16px;
-      font-size: 28px;
-      font-weight: 700;
-      color: #0132AF;
-      
-    }
+        .magazine-wrapper {
+            z-index: 2; 
+            max-width: 1280px;
+            width: 100%;
+            background: #0d0d0d;
+            border: 1px solid #1e1e1e;
+            border-radius: 4px;
+            padding: 60px 70px;
+            position: relative;
 
-    h3 {
-      margin: 24px 0 12px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #0f172a !important;
-    }
+        }
 
-    p {
-      margin: 0 0 18px;
-      color: #475569;
-    }
+        /* Línea decorativa superior */
+        .magazine-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 70px;
+            right: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #f89717 30%, #f89717 70%, transparent 100%);
+        }
 
-    ul {
-      padding-left: 20px;
-      color: #475569;
-      margin: 0 0 18px;
-    }
+        .magazine-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 70px;
+            right: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #f89717 30%, #f89717 70%, transparent 100%);
+        }
 
-    li {
-      margin-bottom: 8px;
-    }
+        /* Header */
+        .article-header {
+            margin-bottom: 48px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 36px;
+        }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin: 24px 0 32px;
-    }
+        .kicker {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #f89717;
+            margin-bottom: 16px;
+        }
 
-    .stat-card {
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid #e2e8f0;
-      background: rgba(4, 77, 194, 0.04);
-    }
+        .article-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #ffffff;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            max-width: 100%;
+        }
 
-    .stat-card strong {
-      color: #044DC2;
-      font-size: 1.1em;
-    }
+        .article-header .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+            max-width: 750px;
+            border-left: 2px solid #f89717;
+            padding-left: 18px;
+        }
 
-    blockquote {
-      margin: 32px 0;
-      padding: 24px;
-      border-left: 5px solid #EF1218;
-      background: #fff5f5;
-      color: #0f172a;
-      border-radius: 0 12px 12px 0;
-      font-style: italic;
-      font-size: 1.1em;
-    }
+        .tags-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
 
-    /* Enlaces en el texto */
-    .content-article p a {
-      color: #044DC2;
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 2px solid rgba(4, 77, 194, 0.2);
-      transition: all 0.3s ease !important;
-    }
-    
-    .content-article p a:hover {
-      color: #EF1218;
-      border-bottom-color: #EF1218;
-    }
+        .tag-chip {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 0;
+            background: transparent;
+            color: #f89717;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+        }
 
-    /* Botones y CTAs */
-    .action-buttons {
-      display: flex;
-      gap: 16px;
-      margin: 32px 0 0;
-      flex-wrap: wrap;
-    }
+        /* Grid de dos columnas */
+        .interview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            margin-bottom: 52px;
+            position: relative;
+        }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 16px;
-      text-decoration: none;
-      transition: all 0.3s ease !important;
-      cursor: pointer;
-      border: none;
-    }
+        /* Línea divisoria vertical entre columnas */
+        .interview-grid::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #1a1a1a;
+            transform: translateX(-50%);
+        }
 
-    .btn-primary {
-      background: #044DC2;
-      color: #fff;
-      border: 2px solid #044DC2;
-    }
-    
-    .btn-primary:hover {
-      background: #033a94;
-      border-color: #033a94;
-      color: #fff;
-    }
+        .column-left,
+        .column-right {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
 
-    .btn-secondary {
-      background: #EF1218;
-      color: #ffffff !important;
-      border: 2px solid #EF1218;
-    }
+        /* Bloque de pregunta-respuesta */
+        .qa-block {
+            break-inside: avoid;
+        }
 
-    .btn-secondary:hover {
-      background: #d10f14;
-      border-color: #d10f14;
-    }
+        .question {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #f89717;
+            line-height: 1.45;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-left: 0;
+        }
 
-    .btn-icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      display: inline-block;
-    }
+        .question::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #f89717;
+            margin-right: 10px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+            flex-shrink: 0;
+        }
 
-    /* Tarjeta de programa relacionado */
-    .recommended-program {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-left: 5px solid #044DC2;
-      border-radius: 12px;
-      padding: 32px;
-      margin-top: 20px;
-      margin-bottom: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    
-    .recommended-program h3 {
-      margin: 0 0 8px 0;
-      color: #044DC2;
-    }
+        .answer {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #d5d5d5;
+            line-height: 1.75;
+            letter-spacing: 0.01em;
+        }
 
-    .recommended-program p {
-      margin: 0;
-      font-size: 16px;
-    }
+        .answer p {
+            margin-bottom: 14px;
+        }
 
-    @media (min-width: 481px) {
-      .recommended-program {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        .answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Cita destacada */
+        .pullquote {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #f89717;
+            line-height: 1.5;
+            padding: 24px 0;
+            border-top: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2a;
+            margin: 8px 0;
+            letter-spacing: -0.01em;
+            text-align: center;
+            position: relative;
+        }
+
+        .pullquote .quote-mark {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: #f89717;
+            opacity: 0.25;
+            line-height: 0;
+            display: block;
+            margin-bottom: 8px;
+            letter-spacing: 0;
+        }
+
+        .pullquote .attribution {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 10px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* Sección de programas relacionados */
+        .section-divider {
+            border: none;
+            border-top: 1px solid #1a1a1a;
+            margin: 15px 0 40px;
+        }
+
+        .related-programs {
+            margin-bottom: 44px;
+        }
+
+        .related-programs h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .related-programs h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: #f89717;
+            margin-top: 6px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .program-card {
+            background: #111111;
+            border: 1px solid #1e1e1e;
+            padding: 24px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            min-height: 160px;
+        }
+
+        .program-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .program-card .program-level {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: #f89717;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        .program-card .program-desc {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #999;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .program-card .card-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: #f89717;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: color 0.4s ease !important;
+            align-self: flex-start;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .card-link-arrow {
+          font-size: 1rem;
+          display: inline-block; 
+          transition: transform 0.4s ease, color 0.4s ease
+        }
+
+        .card-link:hover .card-link-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Próximos pasos */
+        .next-steps {
+            background: #111111;
+            border: 1px solid #1e1e1e;
+            padding: 36px 40px;
+            border-radius: 2px;
+            margin-bottom: 40px;
+            border-left: 3px solid #f89717;
+        }
+
+        .next-steps h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .next-steps p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 650px;
+        }
+
+        .next-steps p a {
+            color: #f89717;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(248, 151, 23, 0.3);
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .next-steps p a:hover {
+            border-bottom-color: #f89717;
+        }
+
+        /* Botones */
+        .action-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 2px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #f89717;
+            color: #0a0a0a;
+            border-color: #f89717;
+        }
+
+        .btn-primary:hover {
+            background: #e08810;
+            border-color: #e08810;
+            color: #0a0a0a;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #e0e0e0;
+            border-color: #333333;
+        }
+
+        .btn-outline:hover {
+            background: #1a1a1a;
+            border-color: #f89717;
+            color: #f89717;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #f89717;
+            border-color: #f89717;
+        }
+
+        .btn-secondary:hover {
+            background: #f89717;
+            color: #0a0a0a;
+        }
+
+        .btn-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            display: inline-block;
+            transition: transform 0.4s ease ! important;
+        }
+
+        .btn-primary:hover .btn-icon {
+            transform: translateX(-4px);
+        }
+
+        /* Footer de entrevista */
+        .interview-footer {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: #bababa;
+            text-align: right;
+            letter-spacing: 0.05em;
+            margin-top: 8px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 16px;
+        }
+
+      @media (max-width: 1024px) {
+          .magazine-wrapper {
+              padding: 40px 36px;
+          }
+
+          .magazine-wrapper::before,
+          .magazine-wrapper::after {
+              left: 36px;
+              right: 36px;
+          }
+
+          .interview-grid {
+              gap: 36px;
+          }
+
+          .question {
+              font-size: 1rem;
+          }
+
+          .answer {
+              font-size: 0.85rem;
+          }
+
+          .pullquote {
+              font-size: 1rem;
+          }
       }
-      .recommended-program .program-info {
-        max-width: 65%;
-      }
-      .recommended-program .btn {
-        flex-shrink: 0;
-      }
-    }
 
-    @media (max-width: 768px) {
-      .main-container {
-        margin-top: 0;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 16px;
-      }
-      
-      .content-article {
-        padding: 20px;
-        border-radius: 12px;
+      @media (max-width: 768px) {
+          body {
+              padding: 24px;
+          }
+
+          .body-content {
+              margin-top: 0;
+          }
+
+          .magazine-wrapper {
+              padding: 36px 28px;
+              border-radius: 2px;
+          }
+
+          .magazine-wrapper::before,
+          .magazine-wrapper::after {
+              left: 28px;
+              right: 28px;
+          }
+
+          .interview-grid {
+              grid-template-columns: 1fr;
+              gap: 28px;
+          }
+
+          .interview-grid::before {
+              display: none;
+          }
+
+          .article-header h2 {
+              font-size: 1.7rem;
+              hyphens: auto;
+          }
+
+          .article-header .subtitle {
+              font-size: 0.9rem;
+          }
+
+          .question {
+              font-size: 0.95rem;
+          }
+
+          .answer {
+              font-size: 0.85rem;
+          }
+
+          .pullquote {
+              font-size: 0.95rem;
+              padding: 18px 0;
+          }
+
+          .pullquote .quote-mark {
+              font-size: 2.2rem;
+          }
+
+          .programs-grid {
+              grid-template-columns: 1fr;
+          }
+
+          .next-steps {
+              padding: 28px 24px;
+          }
+
+          .action-buttons {
+              flex-direction: column;
+          }
+
+          .btn {
+              width: 100%;
+              padding: 12px 20px;
+              font-size: 0.8rem;
+              white-space: normal;
+              text-align: center;
+          }
+
+          .tag-chip {
+              font-size: 0.68rem;
+              padding: 5px 10px;
+          }
+
+          .column-left,
+          .column-right {
+              gap: 24px;
+          }
+
+          .interview-footer {
+              text-align: left;
+              font-size: 0.7rem;
+          }
       }
 
-      h2 {
-        font-size: 22px;
-        margin: 24px 0 12px;
-      }
+      @media (max-width: 480px) {
+          body {
+              padding: 16px;
+          }
 
-      h3 {
-        font-size: 18px;
-        margin: 18px 0 10px;
-      }
+          .magazine-wrapper {
+              padding: 28px 18px;
+          }
 
-      p {
-        font-size: 15px;
-        margin-bottom: 14px;
-      }
+          .magazine-wrapper::before,
+          .magazine-wrapper::after {
+              left: 18px;
+              right: 18px;
+          }
 
-      .stats-grid {
-        grid-template-columns: 1fr;
-        margin: 18px 0 24px;
-      }
+          .article-header h2 {
+              font-size: 1.35rem;
+              line-height: 1.25;
+          }
 
-      .stat-card {
-        padding: 16px;
-      }
+          .article-header .subtitle {
+              font-size: 0.82rem;
+              padding-left: 14px;
+          }
 
-      blockquote {
-        font-size: 1em;
-        padding: 16px;
-        margin: 20px 0;
-      }
+          .interview-grid {
+              gap: 24px;
+              margin-bottom: 0px;
+          }
 
-      .recommended-program {
-        margin: 24px 0;
-        padding: 20px;
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-      }
+          .question {
+              font-size: 0.88rem;
+          }
 
-      .recommended-program .program-info {
-        max-width: 100%;
-      }
+          .answer {
+              font-size: 0.78rem;
+              line-height: 1.65;
+          }
 
-      .action-buttons {
-        flex-direction: column;
-        gap: 12px;
-      }
+          .pullquote {
+              font-size: 0.85rem;
+              padding: 16px 0;
+          }
 
-      .btn {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px 20px;
-        font-size: 14px;
-      }
-      
-      .tag {
-        padding: 6px 10px;
-        font-size: 12px;
-      }
-    }
-  </style>
+          .pullquote .quote-mark {
+              font-size: 2rem;
+              margin-bottom: 4px;
+          }
+
+          .next-steps {
+              padding: 24px 18px;
+          }
+
+          .next-steps p {
+              font-size: 0.82rem;
+          }
+
+          .btn {
+              padding: 12px 16px;
+              font-size: 0.78rem;
+          }
+
+          .program-card {
+              padding: 20px;
+          }
+
+          .tags-row {
+              gap: 6px;
+          }
+
+          .tag-chip {
+              font-size: 0.65rem;
+              padding: 4px 8px;
+          }
+
+          .interview-footer {
+              font-size: 0.68rem;
+          }
+        }
+    </style>
 </head>
 <body>
-  <main class="main-container">
-    <article class="content-article">
-      <div class="tags-container">
-        <span class="tag">Ingeniería de Software</span>
-        <span class="tag">Tecnología e Innovación</span>
-        <span class="tag">Inteligencia Artificial</span>
-        <span class="tag">Deporte</span>
-      </div>
+  <div class="body-content">
+    <div class="magazine-wrapper">
+        <!-- Cabecera del artículo -->
+        <header class="article-header">
+            <p class="kicker">Entrevista · Egresados Uniempresarial</p>
+            <h2>De Chiquinquirá al Concejo:<br>la historia de un egresado que eligió servir</h2>
+            <p class="subtitle">David Saavedra llegó a Bogotá sin más equipaje que el sueño de sus padres y el rigor de la educación dual de Uniempresarial. Hoy es concejal de la ciudad.</p>
+            <div class="tags-row">
+                <span class="tag-chip">Innovación</span>
+                <span class="tag-chip">Liderazgo</span>
+                <span class="tag-chip">Vida Universitaria</span>
+                <span class="tag-chip">Educación Dual</span>
+            </div>
+        </header>
 
-      <h2 style="color: #000; font-size: 2rem;">TRIONDA: El balón más inteligente en la historia de los Mundiales FIFA</h2>
+        <!-- Grid de entrevista a dos columnas -->
+        <div class="interview-grid">
+            <!-- Columna izquierda -->
+            <div class="column-left">
+                <div class="qa-block">
+                    <p class="question">Uniempresarial fue su primer destino al llegar a Bogotá. ¿Quién era David Saavedra antes de la política?</p>
+                    <div class="answer">
+                        <p>Llegué un 2 de enero, directo al preuniversitario de la novena con 16, al edificio antiguo de la Cámara de Comercio. Venía de Chiquinquirá, de una familia donde el estudio era la única herencia posible. Mi mamá, profesora de la normal, me sembró la convicción de que esforzarse era la única forma de salir adelante.</p>
+                        <p>En ese tránsito entre Soacha y el norte de Bogotá —marcando tarjeta a las 7 a.m. en Alfa Gres mientras cursaba primer semestre— entendí que la ciudad no te regala nada: te la construyes. Y esa Bogotá tan ruda, tan caótica, fue la que me cambió la vocación. Yo creía que iba a ser un ejecutivo corporativo. La ciudad me convirtió en servidor público.</p>
+                    </div>
+                </div>
 
-      <p>La Copa Mundial de la FIFA 2026 no solo marcará un hito por ser la primera edición organizada conjuntamente por tres países —Estados Unidos, México y Canadá— y por contar con 48 selecciones participantes. También será recordada por presentar uno de los desarrollos tecnológicos más avanzados aplicados a un balón de fútbol: el adidas TRIONDA.</p>
+                <div class="qa-block">
+                    <p class="question">¿Qué le dio Uniempresarial que no le dio ningún otro lugar?</p>
+                    <div class="answer">
+                        <p>La simultaneidad de aprender y hacer. Yo no llegué al mundo laboral cuando me gradué; llegué en primer semestre. Eso forja algo que en los currículos uno llama 'habilidades blandas' pero que en realidad es madurez: puntualidad real, no la del salón de clase; responsabilidad con consecuencias concretas; visión periférica para leer una empresa desde múltiples ángulos.</p>
+                        <p>Mis compañeros que estudiaron en universidades convencionales llegaron al primer empleo sin saber qué era el mundo real. Yo ya llevaba siete semestres trabajándolo.</p>
+                    </div>
+                </div>
 
-      <p>Este balón representa la evolución de décadas de innovación en ingeniería, aerodinámica, análisis de datos y tecnología deportiva, convirtiéndose en una herramienta clave para el rendimiento deportivo y la toma de decisiones arbitrales.</p>
+                <!-- Cita destacada -->
+                <div class="pullquote">
+                    <span class="quote-mark">"</span>
+                    Es muy chévere ser grande, pero es más grande ser chévere.
+                    <span class="attribution">— Héctor Lavoe</span>
+                </div>
 
-      <h2>Un diseño pensado desde la ciencia</h2>
+                <div class="qa-block">
+                    <p class="question">Usted lidera en el Concejo un acuerdo de educación financiera para colegios distritales. ¿Por qué ese tema?</p>
+                    <div class="answer">
+                        <p>Porque el 70 % de los colombianos se gasta el salario antes de que llegue el siguiente. Y eso no es un defecto de carácter: es una falla del sistema educativo. En Uniempresarial aprendí a hacer presupuestos, a entender los intereses, a leer un balance.</p>
+                        <p>Esas herramientas me salvaron de decisiones que hunden a familias enteras. Los niños de colegio distrital —los que más necesitan esas herramientas— son precisamente los que nunca las reciben. Cambiar eso es transformación cultural, no política de partido.</p>
+                    </div>
+                </div>
+            </div>
 
-      <p>Uno de los aspectos más llamativos del TRIONDA es su estructura de cuatro paneles. Históricamente, los balones de fútbol han utilizado entre 14 y 32 paneles, pero adidas redujo esta cantidad al mínimo para optimizar su comportamiento en vuelo.</p>
+            <!-- Columna derecha -->
+            <div class="column-right">
+                <div class="qa-block">
+                    <p class="question">¿Cómo lidera a un equipo multidisciplinario donde conviven abogados, comunicadores, financieros?</p>
+                    <div class="answer">
+                        <p>Alejándome para ver mejor. Eso también lo aprendí rotando por las áreas de Alfa Gres: marketing, producción, administración. Cuando uno se acerca demasiado a un problema solo ve una cara.</p>
+                        <p>En el Concejo tengo catorce personas y trato de que cada una tenga un perfil amplio, no especializado en una sola cosa. La ciudad nos paga para responderle a todo, no solo al tema que nos queda cómodo.</p>
+                    </div>
+                </div>
 
-      <p>La construcción de cuatro paneles termosellados genera una superficie más uniforme y reduce irregularidades aerodinámicas. Según FIFA y adidas, esta configuración permite una trayectoria más estable, un mejor control y una respuesta más predecible durante el juego. Además, incorpora costuras profundas diseñadas estratégicamente para distribuir mejor el flujo de aire alrededor del balón.</p>
+                <div class="qa-block">
+                    <p class="question">¿Qué tan difícil es escuchar cuando hay tantas urgencias?</p>
+                    <div class="answer">
+                        <p>Es lo más importante precisamente porque es lo más difícil. Nosotros llegamos a los barrios no a hablar sino a escuchar. Le digo a mi equipo: nada de mesas donde los funcionarios quedan de un lado y los ciudadanos del otro. Mesa redonda, siempre.</p>
+                        <p>La gente no va a esas reuniones a aplaudirnos; va porque tiene un problema. Y el que alza la mano primero para dar su opinión casi siempre está pensando en sí mismo. Yo aprendo más de quien escucha antes de hablar.</p>
+                    </div>
+                </div>
 
-      <p>Estudios recientes sobre su comportamiento aerodinámico muestran que el TRIONDA fue desarrollado para ofrecer mayor estabilidad en acciones de precisión como tiros libres, centros y saques de esquina, reduciendo movimientos impredecibles que afectaron a balones de generaciones anteriores.</p>
+                <div class="qa-block">
+                    <p class="question">¿Qué habilidades necesita hoy un joven para destacar en el mundo profesional?</p>
+                    <div class="answer">
+                        <p>Primero, saber para qué es bueno —y tener la honestidad de buscarlo aunque no coincida con lo que esperan los demás. Segundo, la capacidad de organizarse mentalmente: la administración le enseña a uno economía, contabilidad, comunicación, producción. Es la carrera más transversal que existe.</p>
+                        <p>Tercero, y esto lo aprendí en la práctica más que en el aula: gestionar el conocimiento. Saber a quién preguntarle qué, construir una red de personas con distintas expertises, es una ventaja que la mayoría de profesionales nunca desarrolla.</p>
+                    </div>
+                </div>
 
-      <h2>Un balón conectado: tecnología de sensores en tiempo real</h2>
+                <div class="qa-block">
+                    <p class="question">Si pudiera enviarle un mensaje a ese muchacho de provincia que llegó a Bogotá el 2 de enero, ¿qué le diría?</p>
+                    <div class="answer">
+                        <p>Que tenga sueños muy grandes y que les trabaje durísimo. Que los sueños no se logran solos: se logran sumando personas, sumando esfuerzos, construyendo equipo. Que cuando encuentre para qué es bueno, se le meta de frente y sin miedo.</p>
+                        <p>Que cada peldaño tiene su propia satisfacción, y que no hay que esperar llegar a la cima para sentir que valió la pena.</p>
+                        <p>Mi mamá cerraba sus charlas de 'Juventud y Política' en la normal de Chiquinquirá diciéndole a los estudiantes que ojalá su hijo llegara a ser concejal de Bogotá. Le cumplí ese sueño. Eso me enseñó que los sueños también son compartidos.</p>
+                    </div>
+                </div>
 
-      <p>La innovación más importante del TRIONDA se encuentra en su interior. El balón incorpora la tecnología denominada "Connected Ball Technology", desarrollada por FIFA y adidas. En su núcleo existe un sensor de movimiento de alta precisión capaz de capturar información aproximadamente 500 veces por segundo (500 Hz).</p>
-
-      <p>Este sistema registra:</p>
-      <ul>
-        <li>Momento exacto en que un jugador golpea el balón.</li>
-        <li>Velocidad.</li>
-        <li>Aceleración.</li>
-        <li>Dirección.</li>
-        <li>Trayectoria tridimensional.</li>
-        <li>Cambios de movimiento en tiempo real.</li>
-      </ul>
-
-      <p>Toda esta información es transmitida instantáneamente al sistema arbitral y al VAR.</p>
-
-      <h2>Cómo ayuda al VAR</h2>
-
-      <p>Antes de la llegada de esta tecnología, los árbitros dependían principalmente de cámaras de video para determinar el instante exacto en que un jugador tocaba el balón. Sin embargo, incluso las cámaras más avanzadas tienen limitaciones en la cantidad de cuadros por segundo que pueden capturar.</p>
-
-      <p>Gracias al sensor integrado, el sistema puede identificar con precisión milimétrica el momento exacto del contacto. Esta información se combina con los sistemas de seguimiento de jugadores y las tecnologías de fuera de juego semiautomatizado.</p>
-
-      <p>Esto permite:</p>
-      <ul>
-        <li>Detectar posiciones adelantadas con mayor precisión.</li>
-        <li>Reducir errores arbitrales.</li>
-        <li>Tomar decisiones más rápidas.</li>
-        <li>Analizar posibles manos o desvíos difíciles de observar.</li>
-      </ul>
-
-      <p>En otras palabras, el balón ya no es solo un elemento del juego: también es una fuente de datos.</p>
-
-      <h2>Tecnología para condiciones reales de juego</h2>
-
-      <p>El Mundial 2026 se disputará en diferentes climas y altitudes a lo largo de Norteamérica. Por esta razón, el TRIONDA incorpora una superficie texturizada con relieves especiales que mejoran el agarre y el control en condiciones de humedad o lluvia. Además, su construcción termosellada evita la absorción de agua y ayuda a mantener características consistentes durante todo el partido.</p>
-
-      <h2>Un balón que genera datos para el futuro</h2>
-
-      <p>La información recopilada por el balón no solo sirve para el arbitraje. Los datos generados permiten desarrollar nuevos modelos de análisis deportivo, estudiar patrones de juego y mejorar la comprensión del rendimiento de jugadores y equipos. La combinación entre sensores, inteligencia artificial, análisis de datos y sistemas de visión computacional está transformando el fútbol en un entorno cada vez más digital.</p>
-
-      <h2>Ingeniería detrás de cada pase</h2>
-
-      <p>Cuando un jugador realiza un pase, un disparo o un centro, intervienen disciplinas tecnológicas complejas:</p>
-      <ul>
-        <li>Ingeniería de software.</li>
-        <li>Ciencia de datos.</li>
-        <li>Inteligencia artificial.</li>
-        <li>Sistemas embebidos.</li>
-        <li>Internet de las Cosas (IoT).</li>
-        <li>Computación en tiempo real.</li>
-        <li>Análisis predictivo.</li>
-        <li>Procesamiento de señales.</li>
-      </ul>
-
-      <p>Lo que para millones de personas es simplemente un balón, para los ingenieros es un ecosistema tecnológico capaz de generar información, apoyar decisiones críticas y mejorar la experiencia deportiva.</p>
-
-      <h2>El Mundial también es una vitrina para los ingenieros del futuro</h2>
-
-      <p>La tecnología del balón TRIONDA demuestra que la innovación ya no ocurre únicamente en laboratorios o empresas tecnológicas. Hoy también se desarrolla en estadios, eventos deportivos y experiencias que impactan a millones de personas alrededor del mundo.</p>
-
-      <p>Detrás de cada sensor, cada algoritmo y cada sistema de análisis existe un equipo de profesionales que diseñó, programó y puso en funcionamiento estas soluciones. Por eso, si te apasiona la tecnología, la innovación y la creación de soluciones que transformen industrias completas, estudiar Ingeniería de Software puede abrirte las puertas para desarrollar proyectos de alto impacto en cualquier sector: deporte, salud, educación, entretenimiento, finanzas o sostenibilidad.</p>
-
-      <p>Porque la próxima gran innovación no necesariamente estará en Silicon Valley. Puede estar en una universidad, una startup, una empresa global o incluso en el próximo Mundial de fútbol. Y tú podrías ser quien la desarrolle.</p>
-
-      <h2>Programas Relacionados</h2>
-      <div class="recommended-program" style="margin-bottom: 20px;">
-        <div class="program-info">
-          <h3>Ingeniería de Software</h3>
-          <p>Domina las herramientas y metodologías para desarrollar soluciones tecnológicas innovadoras. Aprende a crear sistemas que impacten en cualquier industria y trasformen la forma en que vivimos.</p>
+                <!-- Cita destacada -->
+                <div class="pullquote">
+                    <span class="quote-mark">"</span>
+                    Yo creo en los milagros, pero hay que trabajar duro para que los milagros se hagan realidad.
+                </div>
+            </div>
         </div>
-        <a href="https://uniempresarial.edu.co/ingenieria-de-software/" class="btn btn-primary">Ver programa</a>
-      </div>
-            <div class="recommended-program" style="margin-top: 5px;">
-        <div class="program-info">
-          <h3>Ingeniería de Software Virtual</h3>
-          <p>Domina las herramientas y metodologías para desarrollar soluciones tecnológicas innovadoras. Aprende a crear sistemas que impacten en cualquier industria y trasformen la forma en que vivimos.</p>
-        </div>
-        <a href="https://uniempresarial.edu.co/ingenieria-de-software-virtual/" class="btn btn-primary">Ver programa</a>
-      </div>
 
-      <h2>Conclusiones y próximo paso</h2>
-      <p>La innovación tecnológica en el deporte es solo una muestra del impacto que pueden tener los ingenieros de software en la sociedad. Si te apasiona crear soluciones tecnológicas de clase mundial, te invitamos a explorar nuestros programas de Ingeniería de Software.</p>
+        <!-- Pie de entrevista -->
+        <p class="interview-footer">Entrevista: Juan Pablo Dueñas Quiroga · Uniempresarial, junio de 2026</p>
 
-      <p>¿Listo para ser parte de la próxima generación de innovadores? Contáctanos hoy para conocer más sobre nuestras oportunidades educativas.</p>
+        <hr class="section-divider">
 
-      <div class="action-buttons">
-        <a href="https://uniempresarial.edu.co/blog/" class="btn btn-secondary"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volver a Todos los Blogs</span></a>
-      </div>
-    </article>
-  </main>
+        <!-- Programas Relacionados -->
+        <section class="related-programs">
+            <h2>Programas Relacionados</h2>
+            <div class="programs-grid">
+                <!-- Pregrados Presenciales -->
+                <div class="program-card">
+                    <span class="program-level">Pregrado Presencial</span>
+                    <h3>Administración de Empresas</h3>
+                    <p class="program-desc">Formación dual que conecta teoría y práctica desde el primer semestre con proyección al entorno corporativo real.</p>
+                    <a href="https://uniempresarial.edu.co/administracion-de-empresas/" class="card-link">Ver programa <span class="card-link-arrow">→</span></a>
+                </div>
+                <div class="program-card">
+                    <span class="program-level">Pregrado Presencial</span>
+                    <h3>Marketing</h3>
+                    <p class="program-desc">Estrategia, creatividad y datos para liderar áreas comerciales en un mercado dinámico y competitivo.</p>
+                    <a href="https://uniempresarial.edu.co/marketing/" class="card-link">Ver programa <span class="card-link-arrow">→</span></a>
+                </div>
+                <div class="program-card">
+                    <span class="program-level">Posgrado</span>
+                    <h3>Especialización en Gerencia y Arquitectura Empresarial de TI</h3>
+                    <p class="program-desc">Diseña y gobierna la arquitectura tecnológica que alinea los sistemas con la estrategia del negocio.</p>
+                    <a href="https://uniempresarial.edu.co/gerencia-y-arquitectura-empresarial-de-sistemas-de-ti/" class="card-link">Ver programa <span class="card-link-arrow">→</span></a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Próximos pasos -->
+        <section class="next-steps">
+            <h2>Próximos pasos</h2>
+            <p>Si esta historia te inspira y quieres construir tu propio camino con una formación que une aula y mundo real, te invitamos a <a href="https://wa.me/573142084103">agendar una asesoría gratuita</a> para evaluar tu perfil y descubrir el programa que mejor se ajusta a tus metas.</p>
+            <div class="action-buttons">
+                <a href="https://uniempresarial.edu.co/blog/" class="btn btn-primary">
+                    <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Volver a Todos los Blogs</span>
+                </a>
+            </div>
+        </section>
+    </div>
+  </div>
 </body>
 </html>
