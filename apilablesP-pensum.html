@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios v2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #1a202c;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .pd-mobile-br {
+            display: none;
+        }
+
+        .pd-container {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            padding: 40px 20px;
+            padding-bottom: 20px;
+            position: relative;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
+            border-radius: 12px;
+        }
+
+        .pd-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pd-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1a202c;
+            margin-bottom: 0px;
+            line-height: 1.3;
+            padding: 0px 120px;
+        }
+
+        .pd-header p {
+            font-size: 1.1rem;
+            color: #718096;
+            margin-bottom: 30px;
+            margin-top: 12px;
+        }
+
+        .pd-semesters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 0 20px 0;
+            border-bottom: 2px solid #edf2f7;
+        }
+
+        .pd-semester-btn {
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            font-family: inherit;
+            white-space: normal;
+            line-height: 1.2;
+            flex: 1;
+            text-align: center;
+        }
+
+        .pd-semester-btn:hover {
+            border-color: #0132AF;
+            color: #0132AF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .pd-semester-btn.active {
+            background: linear-gradient(135deg, #0132AF 0%, #011e6c 100%);
+            border-color: #0132AF; 
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        
+
+        
+        .pd-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease !important;
+            margin-bottom: 24px;
+        }
+
+        .pd-content.expanded {
+            max-height: 2000px;
+        }
+
+        .pd-content-inner {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            animation: slideIn 0.4s ease !important;
+        }
+
+        
+        .pd-credits-box {
+            background: linear-gradient(135deg, rgba(1, 50, 175, 0.05) 0%, rgba(1, 50, 175, 0.02) 100%);
+            border: 2px solid #0132AF;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pd-credits-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pd-credits-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #0132AF;
+        }
+
+        .pd-credits-unit {
+            font-size: 0.85rem;
+            color: #718096;
+            font-weight: 600;
+        }
+
+        
+        .pd-credits-box-mobile {
+            display: none;
+        }
+
+        .pd-credits-box-desktop {
+            display: block;
+        }
+
+        
+        .pd-total-carrera {
+            position: sticky;
+            top: 20px;
+            background: linear-gradient(135deg, #0132AF 0%, #011E6C 100%);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .pd-total-carrera-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .pd-total-carrera-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .pd-total-carrera-unit {
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeInStaggered {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pd-materias.fade-out {
+            animation: fadeOut 0.3s ease forwards !important;
+        }
+
+        .pd-materia {
+            animation: fadeInStaggered 0.5s ease forwards !important;
+        }
+
+        .pd-materia:nth-child(1) { animation-delay: 0.1s; }
+        .pd-materia:nth-child(2) { animation-delay: 0.15s; }
+        .pd-materia:nth-child(3) { animation-delay: 0.2s; }
+        .pd-materia:nth-child(4) { animation-delay: 0.25s; }
+        .pd-materia:nth-child(5) { animation-delay: 0.3s; }
+        .pd-materia:nth-child(6) { animation-delay: 0.35s; }
+        .pd-materia:nth-child(7) { animation-delay: 0.4s; }
+        .pd-materia:nth-child(8) { animation-delay: 0.45s; }
+        .pd-materia:nth-child(9) { animation-delay: 0.5s; }
+        .pd-materia:nth-child(10) { animation-delay: 0.55s; }
+        .pd-materia:nth-child(11) { animation-delay: 0.6s; }
+        .pd-materia:nth-child(12) { animation-delay: 0.65s; }
+        .pd-materia:nth-child(13) { animation-delay: 0.7s; }
+        .pd-materia:nth-child(14) { animation-delay: 0.75s; }
+        .pd-materia:nth-child(15) { animation-delay: 0.8s; }
+        .pd-materia:nth-child(16) { animation-delay: 0.85s; }
+
+        .pd-materias {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pd-materia {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            transition: all 0.3s ease !important;
+            cursor: default;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .pd-materia-info {
+            flex: 1;
+        }
+
+        .pd-materia.nucleo {
+            border-left-color: #0132AF;
+            background: rgba(1, 50, 175, 0.05);
+        }
+
+        .pd-materia.prof {
+            border-left-color: var(--color-prof);
+            background: rgba(255, 59, 59, 0.05);
+        }
+
+        .pd-materia.electiva {
+            border-left-color: var(--color-electiva);
+            background: rgba(0, 137, 123, 0.05);
+        }
+
+        .pd-materia.transv {
+            border-left-color: var(--color-transv);
+            background: rgba(217, 70, 239, 0.05);
+        }
+
+        .pd-materia.practica {
+            border-left-color: var(--color-practica);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .pd-materia-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a202c;
+            margin-bottom: 0;
+        }
+
+        .pd-materia-credit {
+            font-size: 0.85rem;
+            color: #718096;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-left: 12px;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        
+        @media (max-width: 768px) {
+            .pd-mobile-br {
+                display: block;
+            }
+            .pd-desktop-space {
+                display: none;
+            }
+
+            .pd-header h2 {
+                font-size: 2rem;
+                padding: 0 10px;
+            }
+
+            .pd-header p {
+                font-size: 14px;
+                padding: 0;
+            }
+
+            .pd-semesters {
+                flex-wrap: nowrap;
+                gap: 8px;
+            }
+
+            .pd-semester-btn {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+                flex: 1;
+            }
+
+            .pd-content-inner {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            
+            .pd-credits-box-mobile {
+                display: block;
+            }
+
+            .pd-credits-box-desktop {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .pd-header h2 {
+                font-size: 2rem;
+                padding: 0 10px;
+            }
+
+            .pd-header p {
+                font-size: 14px;
+                padding: 0;
+            }
+
+            .pd-container {
+                padding: 20px 16px;
+                margin: 0 0 20px;
+            }
+
+            
+            .pd-credits-box-mobile {
+                display: block;
+            }
+
+            .pd-credits-box-desktop {
+                display: none;
+            }
+
+            .pd-content-inner {
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .pd-semesters {
+                gap: 6px;
+                margin-bottom: 0px;
+            }
+            
+            .pd-semester-btn {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+                flex: 1;
+            }
+        }
+
+        .pd-materia-content {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease;
+            width: 100%;
+        }
+
+        .pd-materia-content.expanded {
+            max-height: 500px;
+        }
+
+        .pd-materia-expanded-text {
+            padding-top: 5px;
+            border-top: 1px solid #edf2f7;
+            font-size: 0.85rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .pd-materia-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .pd-materia {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .pd-materia-desc {
+            color: #0132AF;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pd-materia-desc::after {
+            content: '';
+            transition: transform 0.3s ease;
+        }
+
+        .pd-materia-header.expanded .pd-materia-desc::after {
+            transform: rotate(90deg);
+        }
+        
+                 .homologacion-banner {
+    background: #ffffff;
+    border-left: 4px solid #EF1218;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 30px 0 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.homologacion-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 100%;
+}
+
+.homologacion-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 28px;
+    min-height: 28px;
+    flex-shrink: 0;
+    margin-top: 0px;
+}
+
+/* Forzar reset del fill en caso de que WordPress intente sobrescribirlo */
+.homologacion-icon path,
+.homologacion-icon polyline,
+.homologacion-icon circle {
+    fill: none !important;
+    stroke: #EF1218 !important;
+    stroke-width: 2;
+}
+
+.homologacion-text {
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.homologacion-text strong {
+    color: #EF1218;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .homologacion-banner {
+        padding: 16px 20px;
+    }
+    
+    .homologacion-text {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="pd-container" id="pensum">
+        <div class="pd-header">
+            <h2>Contenido del Curso</h2>
+            <p>Explora los ejes temáticos y sus contenidos</p>
+        </div>
+
+        <div class="pd-semesters" id="semestresContainer">
+            <button class="pd-semester-btn active" data-semestre="1">Eje Temático 1</button>
+            <button class="pd-semester-btn" data-semestre="2">Eje Temático 2</button>
+        </div>
+
+        <div class="pd-content expanded" id="contentContainer">
+            <div class="pd-content-inner">
+                <div>
+                    <div class="pd-materias" id="materiasContainer"></div>
+                </div>
+
+                <div>
+                    <div class="pd-total-carrera">
+                        <div class="pd-total-carrera-label">Total</div>
+                        <div class="pd-total-carrera-value" id="creditosCarrera">32</div>
+                        <div class="pd-total-carrera-unit">horas en total</div>
+                    </div>
+                </div>
+            </div>
+                    <!-- HTML PARA OPIAR -->
+    <div style="width: 100%;">
+        <div class="homologacion-banner">
+            <div class="homologacion-content">
+                <svg class="homologacion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <p class="homologacion-text">
+                    Al terminar este curso podrás homologar la materia <strong>"Herramientas de Diagnóstico Empresarial"</strong> en la carrera de <strong>"Administración de Empresas o Ingeniería de Software".</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <script>
+        const semestreData = {
+            1: [
+                { nombre: `Fundamentos del Diagnóstico Empresarial "Descubre tu Empresa: Claves del Diagnóstico Organizacional"`, tipo: "nucleo", temas: "Empresa y concepto.<br>Organizaciones.<br>El diagnóstico externo.<br>El diagnóstico interno." }
+            ],
+            2: [
+                { nombre: `Herramientas de diagnóstico empresarial "Herramientas Estratégicas para Impulsar tu Empresa"`, tipo: "nucleo", temas: "Herramientas de Planificación Estratégica: Análisis DAFO – SWOT<br>Análisis CAME<br>Análisis VRIO<br>Cuadro de mando integral - Balanced Scorecard<br>Análisis PESTEL<br>Cinco Fuerzas de Porter" }
+            ]
+        };
+
+        function renderMaterias(semestre) {
+            const container = document.getElementById('materiasContainer');
+            const materias = semestreData[semestre];
+            
+            container.innerHTML = materias.map(materia => `
+                <div class="pd-materia ${materia.tipo}">
+                    <div class="pd-materia-header">
+                        <div class="pd-materia-info">
+                            <div class="pd-materia-title">` + materia.nombre + `</div>
+                            ` + (materia.temas ? `<div class="pd-materia-desc">Temas</div>` : '') + `
+                        </div>
+                    </div>
+                    ` + (materia.temas ? `
+                    <div class="pd-materia-content expanded" style="max-height: 2000px;">
+                        <div class="pd-materia-expanded-text">
+                            ` + materia.temas + `
+                        </div>
+                    </div>` : '') + `
+                </div>
+            `).join('');
+        }
+
+        function setupSemestres() {
+            const botones = document.querySelectorAll('.pd-semester-btn');
+            
+            botones.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const semestre = this.dataset.semestre;
+                    const materiasContainer = document.getElementById('materiasContainer');
+                    
+                    botones.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    materiasContainer.classList.add('fade-out');
+                    
+                    setTimeout(() => {
+                        materiasContainer.classList.remove('fade-out');
+                        
+                        renderMaterias(parseInt(semestre));
+                        
+                        materiasContainer.offsetHeight;
+                    }, 300);
+                    
+                    const contentContainer = document.getElementById('contentContainer');
+                    if (!contentContainer.classList.contains('expanded')) {
+                        contentContainer.classList.add('expanded');
+                    }
+                });
+            });
+        }
+
+        renderMaterias(1);
+        setupSemestres();
+    </script>
+</body>
+</html>
+ 

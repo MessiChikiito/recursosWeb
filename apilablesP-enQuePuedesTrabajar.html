@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<style>
+    body{
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #06325a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    
+    .ue-section-work{
+        margin-top: 0px !important;
+    }
+
+    .ue-work-title {
+        font-size: 33px;
+        font-weight: 700;
+        color: #0132AF !important;
+        margin: 0 0 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .ue-work-subtitle {
+        color: #7a8a99;
+        font-weight: 600;
+        margin: 0 0 24px;
+        font-size: 15px;
+    }
+
+
+
+    .ue-work-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .ue-work-item {
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e0e3e8;
+        padding: 16px 20px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+    }
+
+    .ue-work-item-header {
+        position: relative;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 48px; /* Da un poco más de aire central */
+    }
+
+    .ue-work-item-header::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        border-radius: 4px;
+    }
+
+    .ue-work-item:nth-child(odd) .ue-work-item-header::before {
+        background-color: #0132AF;
+    }
+
+    .ue-work-item:nth-child(even) .ue-work-item-header::before {
+        background-color: #ff0000;
+    }
+
+    .ue-work-item:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        transform: translateX(4px) !important;
+    }
+
+    .ue-work-item-content {
+        overflow: hidden;
+        max-height: 500px;
+        transition: max-height 0.3s ease;
+        padding-left: 32px;
+    }
+
+    .ue-work-item-content.collapsed {
+        max-height: 0;
+    }
+
+    .ue-work-expanded-text {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #e0e3e8;
+        font-size: 14px;
+        color: #7a8a99;
+        line-height: 1.6;
+    }
+
+    .ue-work-title-item {
+        color: #06325a;
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0 0 0px 0;
+        line-height: 1.3;
+    }
+
+    .ue-work-desc {
+        color: #0132AF;
+        font-weight: 500;
+        font-size: 13px;
+        margin: 0;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ue-work-desc::after {
+        content: '→';
+        transition: transform 0.3s ease;
+    }
+
+    .ue-work-item.expanded .ue-work-desc::after {
+        transform: rotate(90deg);
+    }
+
+
+
+    @media (max-width: 640px) {
+        .ue-work-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .ue-section-work{
+            margin-top: -40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 30px;
+        }
+        
+                .ue-work-title {
+            font-size: 24px;
+        }
+
+        .ue-work-subtitle {
+            font-size: 13px;
+        }
+
+        .ue-work-title-item {
+            font-size: 15px;
+        }
+
+        .ue-work-desc {
+            font-size: 11px;
+        }
+
+        .ue-work-expanded-text {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<section class="ue-section-work" aria-label="Habilidades a desarrollar">
+    <h3 class="ue-work-title">Estudia y prepárate para desarrollar las siguientes habilidades:</h3>
+    <p class="ue-work-subtitle">Competencias clave para tu perfil profesional.</p>
+
+    <div class="ue-work-grid">
+        <div class="ue-work-item">
+            <div class="ue-work-item-header">
+                <p class="ue-work-title-item">Fundamentos de empresa y organización</p>
+                <p class="ue-work-desc">Saber más</p>
+            </div>
+            <div class="ue-work-item-content collapsed">
+                <div class="ue-work-expanded-text">Comprende los conceptos fundamentales de empresa y organización, analizando su entorno interno y externo.</div>
+            </div>
+        </div>
+        <div class="ue-work-item">
+            <div class="ue-work-item-header">
+                <p class="ue-work-title-item">Diagnósticos estratégicos empresariales</p>
+                <p class="ue-work-desc">Saber más</p>
+            </div>
+            <div class="ue-work-item-content collapsed">
+                <div class="ue-work-expanded-text">Realiza diagnósticos estratégicos mediante el uso de herramientas como DOFA (SWOT) y PESTEL.</div>
+            </div>
+        </div>
+        <div class="ue-work-item">
+            <div class="ue-work-item-header">
+                <p class="ue-work-title-item">Evaluación de competitividad empresarial</p>
+                <p class="ue-work-desc">Saber más</p>
+            </div>
+            <div class="ue-work-item-content collapsed">
+                <div class="ue-work-expanded-text">Evalúa la competitividad empresarial aplicando modelos como las Cinco Fuerzas de Porter y el análisis VRIO.</div>
+            </div>
+        </div>
+        <div class="ue-work-item">
+            <div class="ue-work-item-header">
+                <p class="ue-work-title-item">Diseño de estrategias organizacionales</p>
+                <p class="ue-work-desc">Saber más</p>
+            </div>
+            <div class="ue-work-item-content collapsed">
+                <div class="ue-work-expanded-text">Diseña estrategias organizacionales a partir del análisis CAME y otros instrumentos de planificación estratégica.</div>
+            </div>
+        </div>
+        <div class="ue-work-item">
+            <div class="ue-work-item-header">
+                <p class="ue-work-title-item">Cuadro de Mando Integral (Balanced Scorecard)</p>
+                <p class="ue-work-desc">Saber más</p>
+            </div>
+            <div class="ue-work-item-content collapsed">
+                <div class="ue-work-expanded-text">Interpreta y utiliza el Cuadro de Mando Integral para el seguimiento y control de la gestión estratégica.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.ue-work-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const content = this.querySelector('.ue-work-item-content');
+            content.classList.toggle('collapsed');
+            this.classList.toggle('expanded');
+        });
+    });
+</script>
+
+</body>
+</html>
