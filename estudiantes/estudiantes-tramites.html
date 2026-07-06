@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios al Estudiante</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI";
+      background: #ffffff !important;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================
+       SECCIÓN PRINCIPAL
+    ============================================ */
+    .es-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0px 40px;
+      width: 100%;
+    }
+
+    .es-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ============================================
+       COLUMNA IZQUIERDA — CARDS DE SERVICIOS
+    ============================================ */
+    .es-services {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .es-services-header {
+      margin-bottom: 28px;
+    }
+
+    .es-services-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #EF1218;
+      border-bottom: 2px solid #EF1218;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+    }
+
+    .es-services-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0132AF;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI" ;
+    }
+
+    /* Card individual */
+    .es-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      color: inherit;
+      position: relative;
+      animation: esFadeInUp 0.4s ease forwards;
+      opacity: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI";
+    }
+
+    /* Fila interna: SVG + texto en horizontal */
+    .es-card-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .es-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    /* Sin hover en cards — solo hover en botones */
+
+    /* Delays secuenciales */
+    .es-card:nth-child(1) { animation-delay: 0.05s; }
+    .es-card:nth-child(2) { animation-delay: 0.1s; }
+    .es-card:nth-child(3) { animation-delay: 0.15s; }
+    .es-card:nth-child(4) { animation-delay: 0.2s; }
+    .es-card:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes esFadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Icono con borde azul y fondo blanco */
+    .es-card-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: #ffffff;
+      border: 1.5px solid #0132AF;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s ease !important;
+    }
+
+    .es-card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #0132AF;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Contenido textual */
+    .es-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .es-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1f2937;
+      line-height: 1.3;
+      margin-bottom: 2px;
+      
+    }
+
+    .es-card-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Botón acción — rojo, mismo ancho */
+    .es-card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: inherit;
+      color: #ffffff;
+      background: #EF1218;
+      border: 1.5px solid #EF1218;
+      text-decoration: none;
+      white-space: nowrap;
+      width: 172px;
+      flex-shrink: 0;
+      transition: all 0.25s ease !important;
+    }
+
+    .es-card-btn:hover {
+      background: #c50e13;
+      border-color: #c50e13;
+      color: #ffffff;
+    }
+
+    .es-card-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    /* ============================================
+       COLUMNA DERECHA — VIDEO
+    ============================================ */
+    .es-video-col {
+      position: sticky;
+      top: 32px;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      
+    }
+
+    .es-video-card {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+
+    .es-video-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #EF1218;
+      margin-bottom: 8px;
+    }
+
+    .es-video-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0132AF;
+      margin-bottom: 16px;
+      line-height: 1.25;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI";
+    }
+
+    .es-video-wrapper {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      min-height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .es-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 1024px) {
+      .es-grid {
+        gap: 40px;
+      }
+      .es-services-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .es-section {
+        padding: 40px 16px;
+      }
+
+      .es-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .es-services-header {
+        margin-bottom: 20px;
+        margin-left: 16px;
+      }
+
+      .es-services-title {
+        font-size: 1.8rem;
+      }
+
+      /* Cards: SVG+texto en fila, botón debajo ancho completo */
+      .es-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 16px;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .es-card-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+      }
+
+      .es-card-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .es-card-title {
+        font-size: 0.9rem;
+      }
+
+      .es-card-desc {
+        font-size: 0.78rem;
+      }
+
+      .es-card-btn {
+        width: 100%;
+        padding: 10px 10px;
+        font-size: 0.82rem;
+      }
+
+      .es-video-col {
+        position: static;
+      }
+
+      .es-video-card {
+        padding: 16px;
+      }
+
+      .es-video-title {
+        font-size: 1.1rem;
+      }
+
+      /* Video más horizontal (relación 16:9) */
+      .es-video-wrapper {
+        min-height: auto;
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .es-section {
+        padding: 32px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="es-section">
+    <div class="es-grid">
+
+      <!-- ===== COLUMNA IZQUIERDA: Cards de servicios ===== -->
+      <div class="es-services">
+
+        <div class="es-services-header">
+          <span class="es-services-eyebrow">Trámites y servicios
+          </span>
+          <h2 class="es-services-title">Todo lo que necesitas<br>como estudiante</h2>
+        </div>
+
+        <!-- Card 1 — Trámite Registro y Control -->
+        <div class="es-card">
+          <div class="es-card-row">
+            <div class="es-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <div class="es-card-body">
+              <div class="es-card-title">Trámite Registro y Control</div>
+              <div class="es-card-desc">Gestión de matrícula, registro académico y certificaciones oficiales.</div>
+            </div>
+          </div>
+          <a class="es-card-btn" href="#">
+            Saber más
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 2 — Mesa de Atención a Estudiantes -->
+        <div class="es-card">
+          <div class="es-card-row">
+            <div class="es-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="es-card-body">
+              <div class="es-card-title">Mesa de Atención a Estudiantes</div>
+              <div class="es-card-desc">Soporte presencial y virtual para resolver todas tus inquietudes.</div>
+            </div>
+          </div>
+          <a class="es-card-btn" href="# ">
+            Solicitar atención
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 3 — Solicitud de Certificados -->
+        <div class="es-card">
+          <div class="es-card-row">
+            <div class="es-card-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="7" />
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+              </svg>
+            </div>
+            <div class="es-card-body">
+              <div class="es-card-title">Solicitud de Certificados</div>
+              <div class="es-card-desc">Certificados de estudio, notas, y documentos académicos oficiales.</div>
+            </div>
+          </div>
+          <a class="es-card-btn" href="#">
+            Solicitar certificado
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 4 — Actualización de Datos -->
+        <div class="es-card">
+          <div class="es-card-row">
+            <div class="es-card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <div class="es-card-body">
+              <div class="es-card-title">Actualización de Datos</div>
+              <div class="es-card-desc">Mantén tus datos personales al día para recibir información importante.</div>
+            </div>
+          </div>
+          <a class="es-card-btn" href="# ">
+            Actualizar datos
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Card 5 — Sistema de Gestión Académica -->
+        <div class="es-card">
+          <div class="es-card-row">
+            <div class="es-card-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div class="es-card-body">
+              <div class="es-card-title">Sistema de Gestión Académica</div>
+              <div class="es-card-desc">Acceso a notas, horarios, inscripciones y más servicios académicos.</div>
+            </div>
+          </div>
+          <a class="es-card-btn" href="#">
+            Ingresar
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ===== COLUMNA DERECHA: Video ===== -->
+      <div class="es-video-col">
+        <div class="es-video-card">
+          <div class="es-video-label">Conoce más</div>
+          <h3 class="es-video-title">Experiencia de Servicio Uniempresarial</h3>
+          <div class="es-video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/sQXTZZ3Bs7I?rel=0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -13,7 +13,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #fff !important;
+            background-color: #ffffff !important;
             font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -22,11 +22,6 @@
         /* Sección exterior: ancho completo, fondo blanco */
         .con-hero {
             width: 100%;
-            background-color: #ffffff;
-            box-shadow:
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                0 12px 40px rgba(0, 0, 0, 0.07),
-                0 30px 80px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
@@ -39,7 +34,7 @@
             left: 40px;
             right: 40px;
             height: 1px;
-            background: #e8e5df;
+            background: #ffffff !important;
             z-index: 3;
         }
 
@@ -55,6 +50,14 @@
             box-sizing: border-box;
             position: relative;
             z-index: 2;
+        }
+
+        /* En escritorio: texto a la izquierda (order 0), mosaico a la derecha (order 1) */
+        .con-hero-text {
+            order: 0;
+        }
+        .con-hero-gallery {
+            order: 1;
         }
 
         /* Bloque de texto */
@@ -115,10 +118,7 @@
             text-decoration: none;
             font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             outline: none;
-            transition:
-                background-color 0.28s ease,
-                transform 0.22s cubic-bezier(0.25, 0.8, 0.25, 1.2) ,
-                box-shadow 0.28s ease !important;
+
             position: relative;
             overflow: hidden;
         }
@@ -135,6 +135,7 @@
 
         .con-hero-cta:hover {
             background-color: #012b94;
+            color: #fff;
         }
         .con-hero-cta:active {
             background-color: #012b94;
@@ -146,9 +147,11 @@
             transition: transform 0.25s ease !important;
             font-weight: 400;
             font-size: 1.3em;
+            color: #fff;
         }
         .con-hero-cta:hover .con-hero-cta-arrow {
             transform: translateY(3px);
+            color: #fff;
         }
 
         /* Contenedor de la galería */
@@ -190,7 +193,7 @@
             transform: scale(1.01);
         }
 
-        /* Responsivo por debajo de 1000px: apilado vertical manteniendo altura auto */
+        /* Responsivo por debajo de 1000px: apilado vertical, mosaico arriba */
         @media (max-width: 1000px) {
             .con-hero-inner {
                 flex-direction: column;
@@ -198,6 +201,12 @@
                 min-height: 700px;
                 gap: 35px;
                 padding: 40px 30px;
+            }
+            .con-hero-gallery {
+                order: 0;
+            }
+            .con-hero-text {
+                order: 0;
             }
             .con-hero-gallery {
                 width: 100%;
@@ -211,6 +220,7 @@
             }
             .con-hero-text {
                 max-width: 100%;
+                flex: 1 1 auto;
             }
             .con-hero::before {
                 left: 30px;
@@ -239,21 +249,7 @@
     <section class="con-hero" aria-labelledby="con-hero-heading">
         <div class="con-hero-inner">
 
-            <header class="con-hero-text">
-                <h1 class="con-hero-title" id="con-hero-heading">
-                    Atención al Estudiante
-                </h1>
-                <p class="con-hero-subtitle">
-                   Apoyamos la formación permanente e integral de nuestros egresados por medio de beneficios y servicios orientados en el fortalecimiento de sus competencias profesionales y personales, que les permitan enfrentar nuevos retos y responder a las necesidades de un mundo globalizado.
-                </p>
-                                </p>
-                <a href="#" class="con-hero-cta">
-                    Conoce tus beneficios
-                    <span class="con-hero-cta-arrow">↓</span>
-                </a>
-
-            </header>
-
+            <!-- Mosaico primero en DOM → arriba en móvil -->
             <div class="con-hero-gallery" role="img" aria-label="Collage geométrico: fragmentos angulares tallados como piezas de un mosaico">
                 <svg viewBox="0 0 440 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
@@ -333,6 +329,21 @@
                     </g>
                 </svg>
             </div>
+
+            <!-- Texto después del mosaico → abajo en móvil -->
+            <header class="con-hero-text">
+                <h1 class="con-hero-title" id="con-hero-heading">
+                    Atención al Estudiante
+                </h1>
+                <p class="con-hero-subtitle">
+                   Apoyamos la formación permanente e integral de nuestros egresados por medio de beneficios y servicios orientados en el fortalecimiento de sus competencias profesionales y personales, que les permitan enfrentar nuevos retos y responder a las necesidades de un mundo globalizado.
+                </p>
+                <a href="#" class="con-hero-cta">
+                    Conoce tus beneficios
+                    <span class="con-hero-cta-arrow">↓</span>
+                </a>
+            </header>
+
         </div>
     </section>
 

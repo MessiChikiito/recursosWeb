@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios que ofrecerá el área</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff !important;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================
+       SECCIÓN PRINCIPAL
+    ============================================ */
+    .srv-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0px 40px;
+      width: 100%;
+    }
+
+    /* ============================================
+       HEADER DE LA SECCIÓN
+    ============================================ */
+    .srv-header {
+      margin-bottom: 32px;
+    }
+
+    .srv-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #EF1218;
+      border-bottom: 2px solid #EF1218;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+    }
+
+    .srv-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0132AF;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    /* ============================================
+       GRUPOS DESPLEGABLES (en lugar de 11 botones)
+    ============================================ */
+    .srv-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .srv-group {
+      position: relative;
+    }
+
+    .srv-group-btn {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background-color: #f1f3f5;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .srv-group-btn:hover {
+      background-color: #e5e7eb;
+      color: #1f2937;
+    }
+
+    .srv-group-btn:focus {
+      outline: none;
+    }
+
+    .srv-group-btn:focus-visible {
+      outline: none;
+    }
+
+    .srv-group-arrow {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+
+    .srv-group-btn.open .srv-group-arrow {
+      transform: rotate(180deg);
+    }
+
+    .srv-group-items {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 240px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      z-index: 100;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .srv-group-items.open {
+      display: flex;
+    }
+
+    .srv-group-item {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      padding: 12px 18px;
+      border: none;
+      background: none;
+      text-align: left;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      color: #1a202c;
+    }
+
+    .srv-group-item:hover {
+      background: #f1f5f9;
+    }
+
+    .srv-group-item.active {
+      background: #f1f3f5;
+      color: #1f2937;
+      font-weight: 700;
+    }
+
+    .srv-group-item + .srv-group-item {
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* ============================================
+       PANELES DE CONTENIDO
+    ============================================ */
+    .srv-tab-panel {
+      display: none;
+      animation: srvFadeIn 0.3s ease;
+    }
+
+    .srv-tab-panel.active {
+      display: block;
+    }
+
+    @keyframes srvFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       ACORDEÓN FAQ
+    ============================================ */
+    .srv-faq-accordion {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    .srv-faq-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .srv-faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .srv-faq-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 18px 20px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      color: #092b57;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      cursor: pointer;
+      text-align: left;
+      transition: color 0.3s ease, background 0.3s ease;
+      gap: 12px;
+    }
+
+    .srv-faq-btn:hover {
+      color: #0132AF;
+      background: #f9fafb;
+    }
+    
+    .srv-faq-btn[aria-expanded="true"] {
+      color: #0132AF !important;
+    }
+
+    .srv-faq-icon {
+      font-size: 20px;
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.35s ease;
+      color: #6b7280;
+    }
+
+    .srv-faq-btn[aria-expanded="true"] .srv-faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .srv-faq-panel {
+      overflow: hidden;
+      height: 0;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .srv-faq-panel-inner {
+      padding: 4px 20px 20px 20px;
+    }
+
+    .srv-faq-panel-inner p {
+      color: #374151;
+      font-size: 14px;
+      line-height: 1.65;
+      margin: 0 0 12px 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    .srv-faq-panel-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    .srv-faq-panel-inner ul,
+    .srv-faq-panel-inner ol {
+      margin: 0 0 12px 0;
+      padding-left: 20px;
+      color: #374151;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .srv-faq-panel-inner ul:last-child,
+    .srv-faq-panel-inner ol:last-child {
+      margin-bottom: 0;
+    }
+
+    .srv-faq-panel-inner li {
+      margin-bottom: 4px;
+    }
+
+    .srv-faq-panel-inner a {
+      color: #0132AF;
+      text-decoration: underline;
+    }
+
+    /* ============================================
+       TABLA DE TARIFAS (Registro y Control)
+    ============================================ */
+    .srv-table-wrapper {
+      margin-top: 24px;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .srv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    .srv-table thead {
+      background: #f1f3f5;
+      color: #1f2937;
+    }
+
+    .srv-table thead th {
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .srv-table thead th:last-child {
+      text-align: center;
+    }
+
+    .srv-table thead th:nth-child(2) {
+      text-align: right;
+    }
+
+    .srv-table tbody td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+    }
+
+    .srv-table tbody td:nth-child(2) {
+      text-align: right;
+      font-weight: 700;
+      color: #0132AF;
+      white-space: nowrap;
+    }
+
+    .srv-table tbody td:last-child {
+      text-align: center;
+      color: #64748b;
+    }
+
+    .srv-table tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .srv-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ============================================
+       CONTACTOS EN BIENESTAR
+    ============================================ */
+    .srv-contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .srv-contact-card {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .srv-contact-name {
+      font-weight: 700;
+      color: #1f2937;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .srv-contact-program {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+
+    .srv-contact-email {
+      font-size: 13px;
+      color: #0132AF;
+    }
+
+    .srv-contact-email a {
+      color: #0132AF;
+      text-decoration: none;
+    }
+
+    .srv-contact-email a:hover {
+      text-decoration: underline;
+    }
+
+    /* ============================================
+       LISTA DE UNIVERSIDADES (Internacionalización)
+    ============================================ */
+    .srv-uni-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .srv-uni-card {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .srv-uni-country {
+      font-weight: 700;
+      color: #0132AF;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .srv-uni-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .srv-uni-list li {
+      font-size: 13px;
+      color: #374151;
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .srv-uni-list li::before {
+      content: "•";
+      color: #EF1218;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 768px) {
+      .srv-section {
+        padding: 40px 16px;
+      }
+
+      .srv-title {
+        font-size: 1.6rem;
+      }
+
+      .srv-group-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+
+      .srv-group-items {
+        min-width: 200px;
+      }
+
+      .srv-faq-btn {
+        padding: 14px 16px;
+        line-height: 1.1;
+        font-size: 15px;
+      }
+
+      .srv-faq-panel-inner {
+        padding: 4px 16px 16px 16px;
+      }
+
+      .srv-faq-panel-inner p {
+        font-size: 13px;
+      }
+
+      .srv-table thead th,
+      .srv-table tbody td {
+        padding: 10px 14px;
+        font-size: 12px;
+      }
+
+      .srv-contacts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .srv-uni-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .srv-section {
+        padding: 38px 18px;
+      }
+
+      .srv-groups {
+        flex-wrap: nowrap;
+        gap: 8px;
+        justify-content: center;
+      }
+
+      .srv-group-btn {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+        gap: 4px;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .srv-group-arrow {
+        font-size: 10px;
+      }
+
+      .srv-group-items {
+        min-width: 180px;
+        left: 0;
+      }
+
+      .srv-faq-btn {
+        padding: 12px 14px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .srv-faq-panel-inner p {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="srv-section">
+
+    <!-- ===== HEADER ===== -->
+    <div class="srv-header">
+      <span class="srv-eyebrow">Servicios</span>
+      <h2 class="srv-title">Servicios que ofrecerá el área</h2>
+    </div>
+
+    <!-- ===== GRUPOS DESPLEGABLES ===== -->
+    <div class="srv-groups">
+
+      <div class="srv-group">
+        <button class="srv-group-btn" data-group="academicos">
+          Académicos
+          <span class="srv-group-arrow">▾</span>
+        </button>
+        <div class="srv-group-items" id="group-academicos">
+          <button class="srv-group-item active" data-tab="centro-idiomas">Centro de Idiomas</button>
+          <button class="srv-group-item" data-tab="coformacion">Coformación Empresarial</button>
+          <button class="srv-group-item" data-tab="internacionalizacion">Internacionalización</button>
+          <button class="srv-group-item" data-tab="educacion-continua">Educación Continua</button>
+        </div>
+      </div>
+
+      <div class="srv-group">
+        <button class="srv-group-btn" data-group="tramites">
+          Trámites
+          <span class="srv-group-arrow">▾</span>
+        </button>
+        <div class="srv-group-items" id="group-tramites">
+          <button class="srv-group-item" data-tab="registro-control">Registro y Control</button>
+          <button class="srv-group-item" data-tab="bienestar">Bienestar</button>
+          <button class="srv-group-item" data-tab="biblioteca">Biblioteca</button>
+          <button class="srv-group-item" data-tab="facturacion-cartera">Facturación y Cartera</button>
+        </div>
+      </div>
+
+      <div class="srv-group">
+        <button class="srv-group-btn" data-group="crecimiento">
+          Crecimiento
+          <span class="srv-group-arrow">▾</span>
+        </button>
+        <div class="srv-group-items" id="group-crecimiento">
+          <button class="srv-group-item" data-tab="emprendimiento">Emprendimiento</button>
+          <button class="srv-group-item" data-tab="egresados">Egresados</button>
+        </div>
+      </div>
+
+      <div class="srv-group">
+        <button class="srv-group-btn" data-group="soporte">
+          Soporte
+          <span class="srv-group-arrow">▾</span>
+        </button>
+        <div class="srv-group-items" id="group-soporte">
+          <button class="srv-group-item" data-tab="tecnologia">Tecnología</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== PANEL: CENTRO DE IDIOMAS ===== -->
+    <div class="srv-tab-panel active" id="panel-centro-idiomas">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>1. ¿Cómo puedo cumplir con el requisito de inglés?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Inglés es un espacio académico incluido dentro de su plan de estudio donde deberá cursar los niveles programados y aprobarlos, sin embargo, en caso de que no logre cursar todos los niveles durante sus semestres hay tres opciones:</p>
+              <ul>
+                <li>Cursar y aprobar los niveles incluidos en el programa.</li>
+                <li>Presentar la prueba de suficiencia y obtener nivel B1, mínimo.</li>
+                <li>Presentar el resultado de un examen internacional (MCRL) y obtener nivel B1, mínimo.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>2. ¿Puedo estudiar inglés en otra institución y traer el certificado?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>No se acepta certificado de otra institución, no es válido para aprobar los niveles de inglés exigidos en Uniempresarial. Sin embargo, puedes prepararte en otra institución y presentar un examen internacional, teniendo en cuenta que hasta que tengas el certificado debes cursar los niveles programados.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>3. ¿Cómo puedo cancelar inglés?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Inglés es un espacio académico del plan de estudios. Sin embargo, puedes solicitar la cancelación antes de la tercera semana de clase por medio de una carta justificando la solicitud.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>4. ¿Cuál es el proceso para presentar la prueba de suficiencia?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Una vez salga la convocatoria que se envía a los correos institucionales:</p>
+              <ul>
+                <li>Debe realizar la inscripción en el link enviado, realizar el pago y enviar el soporte al Centro de Idiomas.</li>
+                <li>Para el día de la prueba es indispensable presentar el documento de identidad y el carné estudiantil.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>5. ¿Qué otros idiomas puedo estudiar?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para los estudiantes que ya alcanzaron el nivel de inglés exigido por la institución podrán opcionalmente tomar el curso de alemán básico.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: COFORMACIÓN EMPRESARIAL ===== -->
+    <div class="srv-tab-panel" id="panel-coformacion">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>1. ¿Qué es Coformación?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>La coformación es un espacio académico del plan de estudios, que se considera como la fase empresa y comprende el momento formativo que realiza el estudiante matriculado en programas académicos en modalidad dual, la formación se desarrolla en un ambiente real de aprendizaje (empresa), articulada por un eje de conocimiento definido en el programa académico, en el cual se integran los objetivos de aprendizaje que determinan las competencias a lograr y el proyecto que realizará el estudiante durante la fase empresa en cada uno de los periodos que determine la ruta formativa.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>2. ¿Cuáles son las etapas del proceso de Coformación o Fase Empresa?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <ol>
+                <li>Validación de documentos de los estudiantes. La dirección de coformación solicitará a los estudiantes los documentos necesarios para realizar el trámite de vinculación del estudiante.</li>
+                <li>Perfilamiento de los estudiantes en cuanto al periodo y programa académico en el cual se encuentran matriculados.</li>
+                <li>Validación de continuidades, identificación, evaluación, recepción y análisis de necesidades empresariales.</li>
+                <li>Perfilamiento de las empresas.</li>
+                <li>Formalización de las empresas coformadoras.</li>
+                <li>Preparación para entrevistas y fase empresa. El estudiante debe priorizar su participación en los procesos de selección a los que sea convocado, así mismo, debe prepararse para esto, atendiendo oportunamente los requerimientos que desde la coordinación de coformación se realicen.</li>
+                <li>Preselección de candidatos para empresas coformadoras.</li>
+                <li>Entrevistas. Uniempresarial gestionará el proceso de entrevistas para vincular a los estudiantes en las empresas Coformadoras, de acuerdo con los procedimientos establecidos para tal fin, hasta el momento en que sea seleccionado. Si el estudiante no es seleccionado por una empresa coformadora en un máximo de cinco procesos de entrevista o si el estudiante presenta una condición de fuerza mayor que no le permita realizar su fase en empresa, deberá acogerse a las indicaciones que la institución le otorgue para el desarrollo de su proceso de aprendizaje.</li>
+                <li>Selección y formalización del estudiante en la empresa coformadora.</li>
+                <li>Asignación de profesores acompañantes y su preparación.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>3. ¿Puedo rechazar una empresa Coformadora o solicitar cambio?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>No es posible rechazar una empresa pues es considerado como faltas disciplinarias:</p>
+              <ol>
+                <li>Negarse a ser candidato a determinada organización o manifestar al entrevistador de manera expresa o velada que no tiene interés en el escenario de coformación, en la organización o en las condiciones de vinculación.</li>
+                <li>Rechazar la posición asignada para la realización de la etapa de coformación, por razones no justificadas.</li>
+              </ol>
+              <p>En cuanto al cambio de Empresa. Las solicitudes de cambio de empresa no se gestionarán para la fase de coformación en curso.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>4. ¿Puedo tener apoyo de sostenimiento de la Empresa Coformadora?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para todos los casos la fase de coformación por tratarse de un espacio de aprendizaje en empresa no obliga a las empresas coformadoras a brindar un apoyo de sostenimiento.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>5. ¿La Ubicación geográfica de la Empresa Coformadora debe estar cerca al lugar en donde vivo?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>No es obligación de Uniempresarial ubicar la empresa coformadora cerca al domicilio del estudiante, por lo tanto, no es posible desistir del proceso por este motivo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>6. ¿Puedo perder mi Fase Empresa?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Si se puede perder en caso de no cumplir con lo establecido en el documento de vinculación con la empresa coformadora o las faltas en que se pueda incurrir según reglamento estudiantil, por lo anterior, en caso de no aprobar la fase de coformación para el periodo académico en curso se someterá a lo establecido en los artículos 19 y 20 del Reglamento Estudiantil de Uniempresarial.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>7. ¿Si se presenta alguna situación en el desarrollo de mi fase empresa a dónde me puedo contactar?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Puede comunicarse a la Coordinación de Coformación a través del número 3808000 Ext 3301, 3302, 3303 o al correo institucional <a href="mailto:coformacion@uniempresarial.edu.co">coformacion@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>8. ¿Qué modalidades de vinculación puedo tener con las empresas coformadoras?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>A la fecha contamos con dos modalidades:</p>
+              <ol>
+                <li>Contrato de Aprendizaje: Modalidad de contratación regulada en la Ley 789 de 2002, mediante el cual una persona natural desarrolla formación teórica práctica en una entidad autorizada.</li>
+                <li>Vinculación Formativa: Acuerdo de voluntades tripartito suscrito por la empresa coformadora, la Institución Educativa y el estudiante, mediante el cual se autoriza a los últimos a adelantar la etapa práctica de su formación dual en sus respectivas entidades. Por su expresa naturaleza educativa, la vinculación formativa no otorga categoría laboral a los practicantes.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>9. ¿Debo tener afiliación activa a la EPS durante mi fase empresa?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>En caso de que su contrato sea de vinculación formativa, es obligatorio tener afiliación a EPS.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>10. ¿Puedo realizar mi fase empresa en el ámbito internacional?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El estudiante deberá estar como mínimo en V semestre, contar con el aval del Director de Programas, el acompañamiento de la Jefatura de Relaciones Interinstitucionales y Egresados y la aprobación de la Dirección de Coformación Empresarial para realizar el proceso de fase empresa internacional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>11. ¿Puedo realizar mi fase empresa en el ámbito nacional?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Uniempresarial ofrece su fase de coformación únicamente en Bogotá – Región.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>12. ¿Dónde encuentro la normatividad aplicable al proceso de Coformación?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El Reglamento Estudiantil de la Fundación Universitaria Empresarial de la Cámara de Comercio de Bogotá – Uniempresarial y la Decisión Rectoral 04 Manual de Coformación lo pueden encontrar en la página <a href="https://uniempresarial.edu.co/" target="_blank" rel="noopener">uniempresarial.edu.co</a> en el apartado Ley de Transparencia – Normatividad, estos documentos contienen información amplia y detallada del proceso de coformación.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: INTERNACIONALIZACIÓN ===== -->
+    <div class="srv-tab-panel" id="panel-internacionalizacion">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué es Internacionalización?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>La internacionalización es un proceso transversal a la formación dual, que busca integrar la perspectiva internacional y el aprendizaje intercultural de la comunidad Uniempresarial en contextos académicos y empresariales nacionales e internacionales.</p>
+              <p>Con este proceso brindamos a nuestros estudiantes, profesores, empresas co-formadoras, y aliados empresariales externos, iniciativas, acciones y programas que contribuyen a la formación de ciudadanos globales y competitivos internacionalmente, capaces de enfrentar los desafíos del mundo empresarial.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué servicios ofrece la dirección de Internacionalización de Uniempresarial?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <ul>
+                <li><strong>Relacionamiento estratégico y fomento empresarial:</strong> Diálogo activo y permanente con el sector externo académico y empresarial para la participación en redes y asociaciones, proyectos de investigación transnacional, identificación de convocatorias y becas.</li>
+                <li><strong>Gestión de la Internacionalización Uniempresarial:</strong> Fomento a estrategias de promoción de internacionalización interna y externa.</li>
+                <li><strong>Internacionalización en casa y del currículo:</strong> Eventos de socialización y promoción de temas de tendencial mundial, workshops de análisis de temas transnacionales, docentes extranjeros invitados.</li>
+                <li><strong>Movilidad virtual y presencial:</strong> Intercambio académico, prácticas internacionales, misiones académicas y misiones empresariales, cursos cortos y cursos a la medida.</li>
+                <li><strong>Asesoría y acompañamiento personalizado:</strong> Orientación y promoción de escenarios de aprendizaje para estudiantes, docentes, egresados.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué es el intercambio académico?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Es la posibilidad que tiene un estudiante de Uniempresarial de realizar un semestre académico en una de las universidades con las que existe convenio de movilidad, adelantando allí asignaturas homologables en el programa de estudios que se cursa Uniempresarial.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Con cuáles universidades tenemos convenio para movilidad internacional?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Actualmente Uniempresarial cuenta con convenios internacionales que permiten el intercambio académico en los siguientes destinos:</p>
+              <div class="srv-uni-grid">
+                <div class="srv-uni-card">
+                  <div class="srv-uni-country">Alemania</div>
+                  <ul class="srv-uni-list">
+                    <li>Baden-Wuerttemberg Cooperative State University (DHBW Campus Mosbach)</li>
+                  </ul>
+                </div>
+                <div class="srv-uni-card">
+                  <div class="srv-uni-country">Italia</div>
+                  <ul class="srv-uni-list">
+                    <li>Universidad de Pisa (UNIPI)</li>
+                  </ul>
+                </div>
+                <div class="srv-uni-card">
+                  <div class="srv-uni-country">México</div>
+                  <ul class="srv-uni-list">
+                    <li>Universidad Autónoma de Nuevo León (UANL)</li>
+                    <li>Universidad de Celaya</li>
+                    <li>Universidad Interamericana para el Desarrollo (UNID)</li>
+                    <li>Universidad Popular Autónoma del Estado de Puebla (UPAEP)</li>
+                  </ul>
+                </div>
+                <div class="srv-uni-card">
+                  <div class="srv-uni-country">Paraguay</div>
+                  <ul class="srv-uni-list">
+                    <li>Universidad Autónoma de Asunción (UAA)</li>
+                  </ul>
+                </div>
+                <div class="srv-uni-card">
+                  <div class="srv-uni-country">Portugal</div>
+                  <ul class="srv-uni-list">
+                    <li>Universidade du Porto (UPORTO)</li>
+                  </ul>
+                </div>
+                <div class="srv-uni-card">
+                  <div class="srv-uni-country">República Dominicana</div>
+                  <ul class="srv-uni-list">
+                    <li>Universidad de Acción Pro Educación y Cultura (UNAPEC)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cuáles son los requisitos para realizar un proceso de movilidad como intercambio, practica internacional o misión académica?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Los procesos de movilidad requieren una fase preparación o postulación en la que se incluye la preparación de documentos personales (pasaporte, formulario de aplicación, cartas de motivación), la revisión académica (asignaturas, contenidos) y la articulación con el proceso académico que el estudiante adelanta con Uniempresarial (tiempos, homologación). Los requisitos específicos de postulación se encuentran descritos en cada convocatoria.</p>
+              <p>Para cualquier de los procesos de movilidad, los requisitos mínimos son:</p>
+              <ul>
+                <li>Ser estudiante activo o egresado de Uniempresarial.</li>
+                <li>No tener sanciones disciplinarias</li>
+                <li>Haber superado el 40% de los créditos del plan de estudios de su programa académico, o el mínimo requerido por la institución destino o programa en particular</li>
+                <li>Tener un promedio acumulado igual o superior a 3.8/5.0</li>
+                <li>Demostrar dominio de segunda lengua cuando el programa se imparta en un idioma diferente a español.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: EDUCACIÓN CONTINUA ===== -->
+    <div class="srv-tab-panel" id="panel-educacion-continua">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>1. ¿Dónde puedo consultar los programas de Educación Continua?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para conocer los diferentes programas de Educación Continua, la metodología, temática e intensidad horaria entre otros, ingresar a <a href="https://uniempresarial.edu.co/" target="_blank" rel="noopener">uniempresarial.edu.co</a> en la opción Educación Continua en el menú principal de la página.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>2. ¿Cuál es el tipo de certificación de los programas de Educación Continua?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Uniempresarial otorga certificado de asistencia a los participantes que cumplan como mínimo al 80% del total de las horas programadas. En casos especiales se otorgan certificados adicionales.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>3. ¿Uniempresarial ofrece programas de formación a la medida?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Uniempresarial mediante la Dirección de Educación Continua ofrece el servicio de asesoría en formación, para la elaboración de propuestas académicas y económicas, diseñadas y ajustadas a las necesidades y expectativas de las empresas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>4. ¿Cómo es el proceso de inscripción y pago de los diferentes programas?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para conocer toda la información relacionada con requisitos, inscripción y pagos, ingresar a <a href="https://uniempresarial.edu.co/" target="_blank" rel="noopener">uniempresarial.edu.co</a> opción <em>Educación Continua</em> donde encontrará el portafolio de programas y los detalles de cada uno.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>5. ¿Cuáles son las formas de pago?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Efectivo, en Banco de Occidente, con tarjeta de crédito, PSE en la página web de la institución y con tarjeta débito y crédito directamente en la oficina de cartera.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>6. Si necesito contactarme, ¿con quién puedo hacerlo?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Yeimi Neme<br>311 4926767</p>
+              <p>Claudia Sofia Rativa.<br>310 4519746</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: REGISTRO Y CONTROL ===== -->
+    <div class="srv-tab-panel" id="panel-registro-control">
+      <div class="srv-table-wrapper">
+        <table class="srv-table">
+          <thead>
+            <tr>
+              <th>Trámite</th>
+              <th>Valor año 2023</th>
+              <th>Tiempo de respuesta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Constancia de Admisión o Inscripción</td>
+              <td>$ 21.000</td>
+              <td>5 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Constancia de Estudio</td>
+              <td>$ 21.000</td>
+              <td>5 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Certificado de Conducta</td>
+              <td>$ 21.000</td>
+              <td>5 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Certificación de terminación de Estudios o Grado</td>
+              <td>$ 25.000</td>
+              <td>5 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Contenidos Programáticos por periodo académico</td>
+              <td>$ 25.000</td>
+              <td>10 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Contenidos Programáticos por Programa</td>
+              <td>$ 94.000</td>
+              <td>10 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Certificado de Notas por Periodo Académico</td>
+              <td>$ 25.000</td>
+              <td>5 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Certificado de notas de la carrera</td>
+              <td>$ 49.000</td>
+              <td>5 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Copia de Acta de grado Pregrado, Posgrado</td>
+              <td>$ 73.000</td>
+              <td>10 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Copia de Diploma Pregrado, Posgrado</td>
+              <td>$ 146.000</td>
+              <td>15 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Copia de Acta de grado Técnico Laboral</td>
+              <td>$ 18.000</td>
+              <td>10 días hábiles</td>
+            </tr>
+            <tr>
+              <td>Copia de Diploma Técnico Laboral</td>
+              <td>$ 189.000</td>
+              <td>15 días hábiles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== PANEL: BIENESTAR ===== -->
+    <div class="srv-tab-panel" id="panel-bienestar">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>1. ¿Cómo saber el estado de mis actividades de Bienestar?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>En este momento nos encontramos en proceso de migración de las notas de actividades de bienestar al nuevo sistema académico. Por ello, para conocer tu estado de actividades de bienestar puedes enviar un correo a <a href="mailto:bienestar@uniempresarial.edu.co">bienestar@uniempresarial.edu.co</a> solicitando la información.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>2. ¿Cómo puedo recuperar las actividades de bienestar?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para conocer tu estado de actividades de bienestar puedes enviar un correo a <a href="mailto:bienestar@uniempresarial.edu.co">bienestar@uniempresarial.edu.co</a> solicitando la información.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>3. Necesito apoyo psicológico y psicopedagógico ¿cómo puedo acceder a este servicio?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Puedes escribirnos al correo <a href="mailto:bienestar@uniempresarial.edu.co">bienestar@uniempresarial.edu.co</a> solicitando la información. Además, damos a conocer la persona encargada para apoyar a los estudiantes de cada programa y tecnología.</p>
+              <div class="srv-contacts-grid">
+                <div class="srv-contact-card">
+                  <div class="srv-contact-name">Luisa Niño</div>
+                  <div class="srv-contact-program">Ingeniería de Software</div>
+                  <div class="srv-contact-email"><a href="mailto:lnino@uniempresarial.edu.co">lnino@uniempresarial.edu.co</a></div>
+                </div>
+                <div class="srv-contact-card">
+                  <div class="srv-contact-name">Millerlandhy Vega</div>
+                  <div class="srv-contact-program">Finanzas y Comercio Exterior y Tecnología en Gestión Comercial</div>
+                  <div class="srv-contact-email"><a href="mailto:mvega@uniempresarial.edu.co">mvega@uniempresarial.edu.co</a></div>
+                </div>
+                <div class="srv-contact-card">
+                  <div class="srv-contact-name">Angie Guevara</div>
+                  <div class="srv-contact-program">Ingeniería Industrial y Marketing</div>
+                  <div class="srv-contact-email"><a href="mailto:aguevara@uniempresarial.edu.co">aguevara@uniempresarial.edu.co</a></div>
+                </div>
+                <div class="srv-contact-card">
+                  <div class="srv-contact-name">David Giraldo</div>
+                  <div class="srv-contact-program">Negocios Internacionales y Contaduría Pública</div>
+                  <div class="srv-contact-email"><a href="mailto:jgiraldof@uniempresarial.edu.co">jgiraldof@uniempresarial.edu.co</a></div>
+                </div>
+                <div class="srv-contact-card">
+                  <div class="srv-contact-name">David Mira</div>
+                  <div class="srv-contact-program">Administración de Empresas, Tecnología en Gestión del Talento Humano y Tecnología en la Gestión de la Producción Industrial</div>
+                  <div class="srv-contact-email"><a href="mailto:dmira@uniempresarial.edu.co">dmira@uniempresarial.edu.co</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: BIBLIOTECA ===== -->
+    <div class="srv-tab-panel" id="panel-biblioteca">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cuál es el horario de la Biblioteca?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>La Biblioteca está abierta al público de lunes a viernes, de 7:00 a.m. a 7:00 p.m. Sin embargo, fuera de este horario, puedes acceder a los servicios virtuales de bases de datos a través del micrositio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿La biblioteca presta servicios virtuales?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Puedes acceder a bases de datos y solicitar información a través del micrositio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Dónde puedo consultar los libros físicos?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para buscar un libro desde tu casa, ingresa a <em>Catálogo en Línea</em> de Uniempresarial: <a href="https://www.abcpagos.com/uniempresarial/estudiantes" target="_blank" rel="noopener">https://www.abcpagos.com/uniempresarial/estudiantes</a>. Allí encontrarás una caja de búsqueda donde puedes realizar consultas utilizando opciones de búsqueda básica, avanzada o según tus preferencias.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Dónde encuentro las bases de datos y cuál es la contraseña para acceder a ellas?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para acceder a las bases de datos, visita la página de <em>Bases de Datos</em> de Uniempresarial: <a href="https://login.intelproxy.com/v2/inicio?cuenta=hKppPLXejG2C4JkM&url=" target="_blank" rel="noopener">https://login.intelproxy.com/v2/inicio?cuenta=hKppPLXejG2C4JkM&url=</a> e ingresa con el usuario y contraseña de tu correo UE.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Se ofrecen capacitaciones para el uso de las bases de datos?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Sí, Biblioteca realiza periódicamente capacitaciones sobre el uso de las diferentes bases de datos. Estas capacitaciones se anuncian a través de invitaciones por correo electrónico. Si necesitas formación en una base de datos o recurso específico, puedes solicitarla al correo <a href="mailto:biblioteca@uniempresarial.edu.co">biblioteca@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cómo puedo consultar mi estado de cuenta con la biblioteca?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Ingresa a <em>Catálogo en Línea</em> con tu código de carné si eres estudiante, o con tu número de cédula si eres docente o colaborador. En la primera página que aparece después de iniciar sesión, podrás ver si tienes préstamos o multas pendientes. También puedes realizar reservas y renovaciones de material bibliográfico en <a href="https://biblioteca.uniempresarial.edu.co/cgi-bin/koha/opac-library.pl" target="_blank" rel="noopener">https://biblioteca.uniempresarial.edu.co/cgi-bin/koha/opac-library.pl</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Puedo hacer uso de los servicios de la biblioteca si soy egresado(a)?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Si eres egresado(a), puedes acceder a nuestros recursos virtuales, como las bases de datos, con correo y contraseña del correo institucional, si ya no usas el correo o no recuerdas los pasaportes puedes comunicarte con <a href="mailto:mesadeservicios@uniempresarial.edu.co">mesadeservicios@uniempresarial.edu.co</a> para reestablecerla, también puedes reservar las salas de estudio como el servicio coworking.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: EMPRENDIMIENTO ===== -->
+    <div class="srv-tab-panel" id="panel-emprendimiento">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué es la Dirección de Emprendimiento?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Es un área de carácter transversal adscrita a la Vicerrectoría Académica, encargada de generar los mecanismos necesarios para el desarrollo de la competencia de creatividad, emprendimiento e innovación en la comunidad de Uniempresarial, en cumplimiento a las directrices institucionales y en articulación con las diferentes Escuelas y Direcciones que conforman la Institución.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cuáles son los servicios que ofrece la Dirección de Emprendimiento de Uniempresarial?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>En la dirección de Emprendimiento se ofrecen 5 servicios principales relacionados a continuación:</p>
+              <ul>
+                <li>Modalidad de grado en "Emprendimiento"</li>
+                <li>Práctica empresarial formativa en emprendimiento</li>
+                <li>Iniciativa fábrica de software</li>
+                <li>Programa de acompañamiento a emprendedores</li>
+                <li>Acompañamiento a emprendedores para participar en concursos dentro del ecosistema de emprendimiento</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué es la modalidad de grado en "Emprendimiento"?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Se define como una estrategia de fomento al desarrollo de la competencia de emprendimiento y empresarismo relacionada con la puesta en marcha de un proyecto empresarial o intraempresarial, mediante procesos de validación técnica, comercial y financiera del producto o servicio propuesto en el sector real. Esta opción de grado es aplicable a los estudiantes de todos los programas académicos, de pregrado y posgrado.</p>
+              <p>Para su aprobación inicial se debe inscribir ante el Programa Académico en las convocatorias que abre la institución en junio y diciembre para tal fin.</p>
+              <p>Para acceder a esta modalidad el estudiante deberá inscribirse en las convocatorias institucionales para opciones de grado que realice Uniempresarial, una vez inscrito recibirá mediante correo electrónico la confirmación del inicio del proceso.</p>
+              <p><strong>Nota:</strong> La duración máxima de este proceso es de seis meses.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué es la práctica empresarial formativa en emprendimiento?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>La práctica empresarial bajo la modalidad de emprendimiento puede ser optada por los interesados a partir de la finalización de los períodos de formación básica definidos por la Institución así: A partir de V semestre los programas de formación dual y a partir de VIII cuatrimestre para los programas de calendario internacional.</p>
+              <p>Los estudiantes que deseen realizar su práctica en emprendimiento deberán radicar la solicitud formal con el formato establecido en la Dirección de Prácticas Empresariales, mínimo un (1) mes antes de iniciar la fase práctica, tiempo en el cual se evaluará la viabilidad y aprobación del proyecto que deberá ser pertinente al programa de estudios correspondiente. El correo al que pueden dirigirse es <a href="mailto:jvalderrama@uniempresarial.edu.co">jvalderrama@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué es la iniciativa fábrica de software?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Programa que conecta necesidades de desarrollo tecnológico de emprendedores de Uniempresarial, con estudiantes de Ingeniería de Software, para que se dé respuesta a dichas necesidades en el marco del proceso de formación en aula, entregando como resultados prototipos tecnológicos en bruto.</p>
+              <p>Los emprendedores que deseen beneficiarse de este servicio deben inscribirse en la dirección de emprendimiento al correo electrónico <a href="mailto:btaborda@uniempresarial.edu.co">btaborda@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cuáles son las etapas de acompañamiento a emprendedores?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Este acompañamiento se realiza para las siguientes etapas del proceso emprendedor:</p>
+              <ul>
+                <li>Ideación</li>
+                <li>Prototipado</li>
+                <li>Modelo de negocio</li>
+                <li>Plan de negocios</li>
+              </ul>
+              <p>Pueden acceder a este acompañamiento estudiantes desde el primer semestre, deben inscribirse al correo electrónico <a href="mailto:btaborda@uniempresarial.edu.co">btaborda@uniempresarial.edu.co</a>, y recibirán las indicaciones de fechas específicas y pasos a seguir para el inicio del proceso.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿En qué consiste el acompañamiento a emprendedores para participar en concursos dentro del ecosistema de emprendimiento?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Este acompañamiento se realiza a los emprendedores que buscan articularse a las oportunidades del ecosistema de emprendimiento e innovación, pueden acceder a este programa estudiantes desde primer semestre.</p>
+              <p>Los emprendedores que deseen beneficiarse de este servicio deben inscribirse en la dirección de emprendimiento al correo electrónico <a href="mailto:btaborda@uniempresarial.edu.co">btaborda@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: EGRESADOS ===== -->
+    <div class="srv-tab-panel" id="panel-egresados">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cómo puedo realizar el trámite de mi tarjeta profesional?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para las profesiones que requieren este trámite es necesario:</p>
+              <ul>
+                <li>Ingresar al enlace de Tarjetas y matriculas profesionales alojado en el Portal de Egresados (en la nueva web institucional).</li>
+                <li>De acuerdo con cada profesión ingresar al link respectivo.</li>
+                <li>Realizar directamente el trámite con la entidad respectiva.</li>
+                <li>Tener presente los requisitos de la solicitud y la duración del trámite que tiene cada entidad.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cómo puedo obtener mi carné como graduado de Uniempresarial?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p><strong>Cuando se pierde:</strong></p>
+              <p>En el caso de pérdida, el egresado debe realizar el trámite y pagar el valor correspondiente para a la generación de un nuevo documento de la siguiente forma:</p>
+              <ul>
+                <li>Consultar el valor de los certificados en el link de derechos pecuniarios: <a href="https://uniempresarial.edu.co/wp-content/uploads/2024/05/derechos-pecuniarios-2024.pdf" target="_blank" rel="noopener">https://uniempresarial.edu.co/wp-content/uploads/2024/05/derechos-pecuniarios-2024.pdf</a></li>
+                <li>Para realizar el pago debes ingresar en el siguiente enlace y diligenciar la información respectiva: <a href="https://www.abcpagos.com/uniempresarial/estudiantes" target="_blank" rel="noopener">https://www.abcpagos.com/uniempresarial/estudiantes</a></li>
+                <li>Después, el sistema lo enviará a una nueva ventana, donde podrá elegir la forma de pago de su inscripción en tres botones, es decir por PSE, por tarjeta Crédito o Imprimir "Print" su orden de pago, para dirigirse a un Banco de Occidente a cancelarlo de forma presencial.</li>
+                <li>Posteriormente, enviar un correo electrónico a: <a href="mailto:oficinadeegresados@uniempresarial.edu.co">oficinadeegresados@uniempresarial.edu.co</a> haciendo la solicitud del carné y adjuntando el soporte del pago realizado.</li>
+                <li>La Oficina de Egresados generará el carné en un plazo de 3 días hábiles, fecha en la cual podrá acercarse a reclamarlo a esta dependencia.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Qué apoyo ofrece Uniempresarial para conseguir empleo a los egresados y los estudiantes?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>La Oficina de Egresados ofrece el servicio de intermediación laboral y tiene una alianza con Elempleo.com, ofrece la posibilidad de acceder de forma gratuita y ágil a las ofertas de empleo de las mejores empresas del país y para ello cuenta con la bolsa de empleo institucional. Esta plataforma permite el registro de usuarios y la aplicación a las ofertas laborales, las cuales son filtradas y aprobadas previamente.</p>
+              <p>Los servicios de la bolsa de empleo se potencian con la realización de conferencias, charlas, seminarios, talleres y webinars sobre procesos de selección: hoja de vida, entrevista, networking, redes sociales y estrategia de búsqueda de oportunidades laborales para estudiantes y egresados.</p>
+              <p>Desde la Oficina de Egresados se brinda asesoría para la elaboración de la hoja de vida, para ello se requiere establecer comunicación al teléfono 3808000 Ext. 592 o escribir al correo electrónico: <a href="mailto:oficinadeegresados@uniempresarial.edu.co">oficinadeegresados@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cómo puedo aplicar a las ofertas laborales de la bolsa de empleo de Uniempresarial?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Para aplicar a las ofertas laborales de la bolsa de empleo de Uniempresarial debe ser estudiante o egresado y tener presente los siguientes pasos:</p>
+              <ul>
+                <li>Ingresar al enlace de la bolsa de empleo: Bolsa de Empleo</li>
+                <li>Seleccionar la opción Registrar hoja de vida que se encuentra en el menú principal.</li>
+                <li>Seleccionar el tipo de identificación, digitar el número y un correo electrónico en los campos correspondientes, luego seleccionar el botón continuar, así podemos saber si pertenece a nuestra comunidad universitaria.</li>
+                <li>Si su identificación hace parte de nuestra institución, podrá registrar su hoja de vida ingresando su correo electrónico y contraseña de elempleo.com para finalizar el registro.</li>
+                <li>Si no tiene cuenta en elempleo.com, completa la información básica solicitada en el formulario de registro y al finalizar selecciona el botón Crear cuenta.</li>
+                <li>Cuando termine el proceso recibirá un correo electrónico que confirmará el registro exitoso de su hoja de vida</li>
+                <li>Consulta de forma periódica las ofertas laborales, estas se pueden filtrar.</li>
+                <li>Realizar su postulación a las ofertas de la bolsa de empleo de Uniempresarial.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: TECNOLOGÍA ===== -->
+    <div class="srv-tab-panel" id="panel-tecnologia">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>¿Cómo puedo reestablecer la contraseña de mi cuenta de correo institucional?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Debes realizar la solicitud al correo <a href="mailto:mesadeservicios@uniempresarial.edu.co">mesadeservicios@uniempresarial.edu.co</a>, describiendo la solicitud y enviarnos una foto del carnet, jornada y correo electrónico que se requiere reestablecer.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== PANEL: FACTURACIÓN Y CARTERA ===== -->
+    <div class="srv-tab-panel" id="panel-facturacion-cartera">
+      <div class="srv-faq-accordion">
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>1. ¿Cuándo generan la orden de matrícula?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Las ordenes de matrícula se generan 30 días antes de finalizar periodo académico, a los estudiantes se le informa al correo institucional cuando estén listas para que puedan ingresar a la página de Uniempresarial y generarlas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>2. ¿Cómo se hace para realizar los pagos de los certificados?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El estudiante debe ingresar a la página de Uniempresarial, ubicar la sección <em>Pagos</em>, luego debe ir al icono de <em>otros conceptos</em>, allí debe indicar su número de identificación y desplegar la ventana donde aparecen los pecuniarios y ubicar el concepto que desea cancelar por pecuniario.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>3. ¿Cómo puedo descargar mi matricula?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El estudiante puede ingresar en el siguiente link, digitando su número de identificación:</p>
+              <p><a href="https://www.abcpagos.com/uniempresarial/estudiantes" target="_blank" rel="noopener">https://www.abcpagos.com/uniempresarial/estudiantes</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>4. ¿En cuáles entidades financieras puedo hacer pagos?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>En el Banco de Occidente, presentando la orden de matrícula con el código de barras.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>5. ¿Cómo puedo pagar mi matrícula?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>La matrícula la puede cancelar en efectivo en el Banco de Occidente. Así mismo puede efectuar el pago mediante el botón PSE o con tarjeta crédito o débito en las oficinas de cartera, ubicadas en la sede principal de la institución.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>6. ¿Uniempresarial ofrece acuerdos de pago?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Actualmente no se ofrecen acuerdo de pagos con la institución. Se han realizado varias alianzas con entidades financieras, con el fin que el estudiante analice con cuál puede tomar el crédito.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>7. ¿Qué descuentos maneja la universidad para la matrícula?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p><strong>Para estudiantes nuevos:</strong> aplica el descuento por pronto pago 10%, 25% por ser egresado del SENA, por ser familiar de funcionario que labore en entidad pública el 10%.</p>
+              <p><strong>Para estudiantes Antiguos:</strong> Estudiantes que ingresaron antes del periodo 2018-2 se les ofrece los descuentos por estar afiliados a la Caja de Compensación Colsubsidio, renovación Matrícula Mercantil 10% y Circulo de afiliados de la CCB 10%; para dicho descuento deben radicar los soportes al correo <a href="mailto:coordinadorcartera@uniempresarial.edu.co">coordinadorcartera@uniempresarial.edu.co</a> 30 días hábiles antes de finalizar su periodo académico.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>8. ¿Con qué entidades financieras tienen alianza para solicitar un préstamo educativo?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Uniempresarial tiene alianza con diferentes entidades financieras (Cooperativas, Bancos), entre las cuales se tienen Fincomercio, Sufi, Banco Pichincha, Coopcanapro, entre otras. En el siguiente link puede observar la totalidad de las entidades con las que se tienen alianza: <a href="https://uniempresarial.edu.co/financiacion/" target="_blank" rel="noopener">https://uniempresarial.edu.co/financiacion/</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>9. ¿Cuál es el proceso para solicitar la devolución de un dinero que tengo a favor?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>Si un estudiante presenta saldo a favor, (área de facturación y cartera verifica previamente para informar al estudiante y su concepto, es decir por donación de prácticas empresariales, consignación auxilio educativo, mayor valor consignado, entre otras), el estudiante debe radicar en el área de facturación y cartera la solicitud del reintegro del dinero, adjuntando copia del documento de identificación y certificación bancaria, con el fin de iniciar el trámite respectivo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>10. ¿Por qué tengo bloqueado mi carné?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El carné del estudiante puede estar bloqueado por falta de pago por matrícula, por cambio de periodo académico (el área de cartera verifica si ya efectuó el pago y procede a activarlo) o por inconveniente del carné (dañado, deteriorado, entre otros conceptos), se debe dirigir al área de audiovisuales para verificar su estado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>11. ¿Cuál es mi estado de cartera?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El área de facturación y cartera validará el estado financiero del estudiante, es decir si está al día en el pago de sus periodos académicos, si adeuda saldo de algún periodo o si no ha cancelado su periodo académico, esto con el fin de proceder a emitir la orden de matrícula.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>12. ¿Cuál es el horario de atención del área de cartera?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El área de facturación y cartera tiene un horario de atención de lunes a viernes de 7:00 a.m. a 5:00 p.m. en jornada continua.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="srv-faq-item">
+          <button class="srv-faq-btn" aria-expanded="false">
+            <span>13. ¿Cuál es mi estado del crédito que tengo con el ICETEX?</span>
+            <span class="srv-faq-icon">▾</span>
+          </button>
+          <div class="srv-faq-panel">
+            <div class="srv-faq-panel-inner">
+              <p>El área de Facturación y Cartera verificará en la página del Icetex el estado del crédito del estudiante, es decir si está aprobado, si el estudiante ya legalizó el crédito, si actualizó sus datos y renovó el crédito, si el crédito está negado o rechazado, entre otros conceptos, toda esta información la puede solicitar por medio del siguiente correo electrónico <a href="mailto:atenciónalusurario@uniempresarial.edu.co">atenciónalusurario@uniempresarial.edu.co</a>.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // --- GRUPOS DESPLEGABLES ---
+      const groupBtns = document.querySelectorAll('.srv-group-btn');
+      const groupItems = document.querySelectorAll('.srv-group-item');
+      const tabPanels = document.querySelectorAll('.srv-tab-panel');
+
+      // Cerrar todos los dropdowns
+      function closeAllDropdowns() {
+        document.querySelectorAll('.srv-group-items.open').forEach(function(el) {
+          el.classList.remove('open');
+        });
+        groupBtns.forEach(function(b) { b.classList.remove('open'); });
+      }
+
+      // Abrir dropdown de un grupo
+      function openDropdown(btn) {
+        const groupId = btn.getAttribute('data-group');
+        const target = document.getElementById('group-' + groupId);
+        if (target) {
+          closeAllDropdowns();
+          target.classList.add('open');
+          btn.classList.add('open');
+        }
+      }
+
+      // Toggle grupo al hacer clic en el botón del grupo
+      groupBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const groupId = this.getAttribute('data-group');
+          const target = document.getElementById('group-' + groupId);
+          if (target && target.classList.contains('open')) {
+            target.classList.remove('open');
+            this.classList.remove('open');
+          } else {
+            openDropdown(this);
+          }
+        });
+      });
+
+      // Seleccionar item dentro de un grupo
+      groupItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          const targetTab = this.getAttribute('data-tab');
+
+          // Marcar item activo
+          groupItems.forEach(function(i) { i.classList.remove('active'); });
+          this.classList.add('active');
+
+          // Cambiar panel
+          tabPanels.forEach(function(p) { p.classList.remove('active'); });
+          const targetPanel = document.getElementById('panel-' + targetTab);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+          }
+
+          // Cerrar dropdown
+          closeAllDropdowns();
+        });
+      });
+
+      // Cerrar dropdown al hacer clic fuera
+      document.addEventListener('click', function() {
+        closeAllDropdowns();
+      });
+
+      // --- ACORDEONES (independientes) ---
+      const allAccordions = document.querySelectorAll('.srv-faq-accordion');
+
+      allAccordions.forEach(function(accordion) {
+        const faqButtons = accordion.querySelectorAll('.srv-faq-btn');
+
+        faqButtons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const panel = this.nextElementSibling;
+
+            if (isExpanded) {
+              this.setAttribute('aria-expanded', 'false');
+              panel.style.height = '0';
+            } else {
+              this.setAttribute('aria-expanded', 'true');
+              const inner = panel.querySelector('.srv-faq-panel-inner');
+              if (inner) {
+                panel.style.height = inner.scrollHeight + 'px';
+              }
+            }
+          });
+        });
+      });
+
+    });
+  </script>
+
+</body>
+</html>
