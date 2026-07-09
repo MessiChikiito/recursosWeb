@@ -89,7 +89,7 @@
             width: 4px;
             height: 100%;
             background-color: #ff0000;
-            border-radius: 2px; /* opcional, suaviza las puntas */
+            border-radius: 2px;
         }
 
         .con-hero-subtitle {
@@ -173,9 +173,24 @@
             filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.07));
         }
 
-        /* Piezas del mosaico — sin hover */
+        /* Piezas del mosaico */
         .mosaic-piece {
+            cursor: pointer;
+            transition:
+                filter 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
             transform-origin: center center;
+        }
+
+        .mosaic-piece:hover {
+            filter: brightness(1.12) contrast(1.06) saturate(1.08);
+            transform: scale(1.025);
+            z-index: 5;
+        }
+
+        .mosaic-piece:active {
+            filter: brightness(1.05) contrast(1.03);
+            transform: scale(1.01);
         }
 
         /* Responsivo por debajo de 1000px: apilado vertical, mosaico arriba */
@@ -238,11 +253,6 @@
             <div class="con-hero-gallery" role="img" aria-label="Collage geométrico: fragmentos angulares tallados como piezas de un mosaico">
                 <svg viewBox="0 0 440 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
-                        <!-- ============================================
-                        Cuadriláteros irregulares únicamente.
-                        Ningún lado es completamente horizontal o vertical.
-                        Las uniones blancas (4-8px) simulan el corte entre fragmentos.
-                        ============================================ -->
 
                         <clipPath id="shardA">
                             <polygon points="3,3 285,32 242,156 3,168" />
@@ -269,42 +279,41 @@
 
                     <!-- Fragmento A -->
                     <g class="mosaic-piece" clip-path="url(#shardA)">
-                        <image href="https://uniempresarial.edu.co/wp-content/uploads/2026/07/Estudiantes-3-Uniempresarial.webp"
-                        
+                        <image href="https://picsum.photos/seed/architectural_form/600/400"
                         x="0" y="0" width="295" height="175" preserveAspectRatio="xMidYMid slice" />
                     </g>
 
                     <!-- Fragmento B -->
                     <g class="mosaic-piece" clip-path="url(#shardB)">
-                        <image href="https://uniempresarial.edu.co/wp-content/uploads/2026/07/Estudiantes-5-Uniempresarial.webp"
+                        <image href="https://picsum.photos/seed/concrete_texture_light/500/400"
                         x="248" y="0" width="192" height="170" preserveAspectRatio="xMidYMid slice" />
                     </g>
 
                     <!-- Fragmento C -->
                     <g class="mosaic-piece" clip-path="url(#shardC)">
-                        <image href="https://uniempresarial.edu.co/wp-content/uploads/2026/07/Estudiantes-6-Uniempresarial.webp"
+                        <image href="https://picsum.photos/seed/geometric_abstract/500/350"
                         x="0" y="152" width="255" height="155" preserveAspectRatio="xMidYMid slice" />
                     </g>
 
                     <!-- Fragmento D -->
                     <g class="mosaic-piece" clip-path="url(#shardD)">
-                        <image href="https://uniempresarial.edu.co/wp-content/uploads/2026/07/Estudiantes-1-Uniempresarial.webp"
+                        <image href="https://picsum.photos/seed/marble_surface_dark/500/350"
                         x="238" y="158" width="202" height="142" preserveAspectRatio="xMidYMid slice" />
                     </g>
 
                     <!-- Fragmento E -->
                     <g class="mosaic-piece" clip-path="url(#shardE)">
-                        <image href="https://uniempresarial.edu.co/wp-content/uploads/2026/07/Estudiantes-2-Uniempresarial-scaled.webp"
+                        <image href="https://picsum.photos/seed/shadow_play_geometry/500/350"
                         x="0" y="286" width="262" height="135" preserveAspectRatio="xMidYMid slice" />
                     </g>
 
                     <!-- Fragmento F -->
                     <g class="mosaic-piece" clip-path="url(#shardF)">
-                        <image href="https://uniempresarial.edu.co/wp-content/uploads/2026/07/Estudiantes-4-Uniempresarial.webp"
+                        <image href="https://picsum.photos/seed/steel_structure_modern/500/350"
                         x="246" y="290" width="194" height="130" preserveAspectRatio="xMidYMid slice" />
                     </g>
 
-                    <!-- Líneas blancas editoriales (detalle arquitectónico) -->
+                    <!-- Líneas blancas editoriales -->
                     <g pointer-events="none" opacity="0.28">
                         <line x1="3" y1="168" x2="242" y2="156" stroke="#ffffff" stroke-width="0.6" />
                         <line x1="252" y1="160" x2="435" y2="162" stroke="#ffffff" stroke-width="0.6" />

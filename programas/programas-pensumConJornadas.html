@@ -32,6 +32,9 @@
             --color-practica: #FF6B35;
         }
 
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -44,7 +47,7 @@
             max-width: 1200px;
             margin: 0 auto 20px;
             padding: 40px 20px;
-                        padding-bottom: 20px;
+            padding-bottom: 20px;
             position: relative;
             background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
             border-radius: 12px;
@@ -204,7 +207,7 @@
         .pd-total-carrera {
             position: sticky;
             top: 20px;
-            background: linear-gradient(135deg, #0132AF 0%, #5b9fd8 100%);
+            background: #0132AF;
             border-radius: 12px;
             padding: 24px;
             text-align: center;
@@ -679,6 +682,45 @@
         }
 
 
+        /* ===== BOTÓN DESCARGAR PÉNSUM PDF ===== */
+        .pd-download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: #fff;
+            border-radius: 10px;
+            color: var(--color-accent, #0132AF);
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease !important;
+            margin-top: 16px;
+        }
+
+        .pd-download-btn:hover{
+            color: #0132AF;
+        }
+
+        .pd-download-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            fill: none !important;
+            stroke: currentColor !important;
+            stroke-width: 2 !important;
+            stroke-linecap: round !important;
+            stroke-linejoin: round !important;
+            transition: transform 0.3s ease;
+        }
+
+        .pd-download-btn:hover svg {
+            transform: translateY(4px);
+        }
+
         @media(max-width: 768px) {
             .pd-jornada {
                 padding: 16px;
@@ -764,6 +806,15 @@
                         <div class="pd-total-carrera-value" id="creditosCarrera">0</div>
                         <div class="pd-total-carrera-unit">créditos para graduarte</div>
                     </div>
+
+                    <a href="pensum-detallado-ingenieria-software.pdf" class="pd-download-btn" download>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Descargar PDF
+                    </a>
 
                     <div class="pd-legend" style="margin-top: 30px;">
                     <div class="pd-legend-title">Tipo de materia</div>
@@ -858,16 +909,12 @@
 
             // SEGUNDO SEMESTRE
             2: [
-                { nombre: "Cálculo II", creditos: "2", tipo: "nucleo" },
-                { nombre: "Cálculo III", creditos: "2", tipo: "nucleo" },
+                { nombre: "Cálculo II", creditos: "2", tipo: "prof" },
+                { nombre: "Cálculo III", creditos: "2", tipo: "prof" },
                 { nombre: "Infraestructura TI Y Cloud computing", creditos: "2", tipo: "prof" },
-                { nombre: "Programación Orientada a Objetos", creditos: "2", tipo: "nucleo" },
-                { nombre: "Metodologías y Requerimientos de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Pruebas de Software", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación Web – FrontEnd", creditos: "2", tipo: "nucleo" },
-                { nombre: "Diseño UI/UX", creditos: "1", tipo: "nucleo" },
-                { nombre: "Bases de datos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "prof" },
+                { nombre: "Fundamentos de Ingeniería de Software y Programación", creditos: "4", tipo: "nucleo" },
+                { nombre: "Desarrollo fronted", creditos: "4", tipo: "nucleo" },
+                { nombre: "Creatividad y prospectiva emprendedora", creditos: "2", tipo: "transv" },
                 { nombre: "Ética y responsabilidad social empresarial (Virtual)", creditos: "2", tipo: "transv" },
                 { nombre: "Métodos de obtención y análisis de observación empresarial", creditos: "2", tipo: "transv" },
                 { nombre: "Basic English (Blended)", creditos: "2", tipo: "transv" },
@@ -882,16 +929,12 @@
 
             // CUARTO SEMESTRE
             4: [
-                { nombre: "Probabilidad, estadística y métodos numéricos", creditos: "2", tipo: "nucleo" },
+                { nombre: "Probabilidad, estadística y métodos numéricos", creditos: "2", tipo: "prof" },
                 { nombre: "Arquitectura de software", creditos: "2", tipo: "prof" },
                 { nombre: "Big data y analítica", creditos: "3", tipo: "prof" },
-                { nombre: "Programación Framewok's Backend", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo con Framework's Frontend", creditos: "1", tipo: "nucleo" },
-                { nombre: "Aplicaciones Cloud Nativas", creditos: "1", tipo: "nucleo" },
-                { nombre: "Desarrollo de Videojuegos 2D y 3D", creditos: "2", tipo: "nucleo" },
-                { nombre: "Desarrollo Conceptual de videojuegos", creditos: "1", tipo: "nucleo" },
-                { nombre: "Programación gráfica 2D y 3D", creditos: "1", tipo: "nucleo" },
-                { nombre: "Innovación", creditos: "2", tipo: "prof" },
+                { nombre: "Desarrollo Full Stack", creditos: "4", tipo: "nucleo" },
+                { nombre: "Diseño y Desarrollo de videojuegos", creditos: "4", tipo: "nucleo" },
+                { nombre: "Innovación", creditos: "2", tipo: "transv" },
                 { nombre: "Preintermediate English(Blended)", creditos: "2", tipo: "transv" },
                 { nombre: "Electiva libre", creditos: "3", tipo: "electiva" },
                 { nombre: "Electiva libre", creditos: "2", tipo: "electiva" },
